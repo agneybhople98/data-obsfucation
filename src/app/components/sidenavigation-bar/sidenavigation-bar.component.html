@@ -11,7 +11,7 @@
   <mat-sidenav
     #sidenav
     [mode]="side"
-    [opened]="true"
+    [opened]="isExpanded"
     class="sidenav"
     [class.expanded]="isExpanded"
   >
@@ -133,7 +133,7 @@
           [matMenuTriggerFor]="userMenu"
           class="user-avatar"
         >
-          <img src="assets/user-avatar.png" alt="User Avatar" />
+          <img src="../../../assets/avatar.png" alt="User Avatar" />
         </button>
         <mat-menu #userMenu="matMenu">
           <button mat-menu-item>

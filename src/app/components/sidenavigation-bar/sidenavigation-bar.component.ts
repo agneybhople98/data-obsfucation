@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDrawerMode, MatSidenav } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
 
 interface NavItem {
@@ -17,7 +18,8 @@ export class SidenavigationBarComponent implements OnInit {
   isExpanded = true;
   userName = 'Michael J';
   userRole = 'Admin';
-  side: any = 'side';
+  side: MatDrawerMode = 'side';
+  @ViewChild('sidenav') sidenav!: MatSidenav;
 
   navItems: NavItem[] = [
     { icon: 'dashboard', label: 'Dashboard', route: '/dashboard' },
@@ -33,7 +35,6 @@ export class SidenavigationBarComponent implements OnInit {
 
   toggleSidebar() {
     this.isExpanded = !this.isExpanded;
-
     this.side = this.isExpanded ? 'side' : 'over';
   }
 

@@ -1,0 +1,162 @@
+<mat-sidenav-container class="sidenav-container">
+  <!-- Side Navigation -->
+
+  <mat-drawer #drawer class="drawer" mode="side" opened="true">
+    <mat-toolbar class="header">
+      <div>Logo</div>
+      <mat-icon class="close" (click)="drawer.close()">close</mat-icon>
+    </mat-toolbar>
+    <div class="contents">Drawer</div>
+  </mat-drawer>
+  <mat-sidenav
+    #sidenav
+    [mode]="side"
+    [opened]="true"
+    class="sidenav"
+    [class.expanded]="isExpanded"
+  >
+    <!-- Logo Section -->
+    <div class="logo-container">
+      <img src="assets/do_logo.png" alt="DO Logo" class="logo" />
+    </div>
+
+    <!-- Navigation Items -->
+    <mat-nav-list>
+      <aside class="sidebar">
+        <nav class="sidebar-nav">
+          <ul class="nav-list">
+            <li
+              class="nav-item flex items-center justify-center"
+              routerLinkActive="active"
+            >
+              <a class="nav-link" routerLink="/dashboard">
+                <!-- <mat-icon>dashboard</mat-icon> -->
+                <div class="flex flex-col items-center justify-center">
+                  <mat-icon>
+                    <span class="material-symbols-outlined">home</span>
+                  </mat-icon>
+
+                  <div>
+                    <span class="text-xs font-bold">Dashboard</span>
+                  </div>
+                </div>
+              </a>
+            </li>
+            <li
+              class="nav-item flex items-center justify-center"
+              routerLinkActive="active"
+            >
+              <a class="nav-link" routerLink="/configuration">
+                <div class="flex flex-col items-center justify-center">
+                  <mat-icon>
+                    <span class="material-symbols-outlined"> settings </span>
+                  </mat-icon>
+
+                  <div>
+                    <span class="text-xs font-bold">Configuration</span>
+                  </div>
+                </div>
+              </a>
+            </li>
+            <li
+              class="nav-item flex items-center justify-center"
+              routerLinkActive="active"
+            >
+              <a class="nav-link" routerLink="/process">
+                <div class="flex flex-col items-center justify-center">
+                  <mat-icon>
+                    <span class="material-symbols-outlined">
+                      rotate_right
+                    </span>
+                  </mat-icon>
+
+                  <div>
+                    <span class="text-xs font-bold">Process</span>
+                  </div>
+                </div>
+              </a>
+            </li>
+            <li
+              class="nav-item flex items-center justify-center"
+              routerLinkActive="active"
+            >
+              <a class="nav-link" routerLink="/tracking">
+                <div class="flex flex-col items-center justify-center">
+                  <mat-icon>
+                    <span class="material-symbols-outlined">schedule</span>
+                  </mat-icon>
+
+                  <div>
+                    <span class="text-xs font-bold">Tracking</span>
+                  </div>
+                </div>
+              </a>
+            </li>
+            <li class="nav-item flex items-center justify-center">
+              <a class="nav-link" routerLink="/history">
+                <div class="flex flex-col items-center justify-center">
+                  <mat-icon>
+                    <span class="material-symbols-outlined">history</span>
+                  </mat-icon>
+
+                  <div>
+                    <span class="text-xs font-bold">History</span>
+                  </div>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <!-- Main Content -->
+  <mat-sidenav-content>
+    <!-- Top Navigation Bar -->
+    <mat-toolbar class="top-toolbar">
+      <button
+        class="mat-menu !text-white"
+        mat-icon-button
+        (click)="toggleSidebar()"
+      >
+        <mat-icon>menu</mat-icon>
+      </button>
+
+      <span class="toolbar-spacer"></span>
+
+      <!-- User Profile Section -->
+      <div class="user-profile">
+        <span class="user-name" *ngIf="isExpanded">{{ userName }}</span>
+        <button
+          mat-icon-button
+          [matMenuTriggerFor]="userMenu"
+          class="user-avatar"
+        >
+          <img src="assets/user-avatar.png" alt="User Avatar" />
+        </button>
+        <mat-menu #userMenu="matMenu">
+          <button mat-menu-item>
+            <mat-icon>person</mat-icon>
+            <span>Profile</span>
+          </button>
+          <button mat-menu-item>
+            <mat-icon>settings</mat-icon>
+            <span>Settings</span>
+          </button>
+          <button mat-menu-item>
+            <mat-icon>logout</mat-icon>
+            <span>Logout</span>
+          </button>
+        </mat-menu>
+      </div>
+    </mat-toolbar>
+
+    <!-- Page Content -->
+    <div class="content p-5">
+      <ng-content></ng-content>
+    </div>
+  </mat-sidenav-content>
+
+  <mat-toolbar class="main footer"> Footer </mat-toolbar>
+</mat-sidenav-container>

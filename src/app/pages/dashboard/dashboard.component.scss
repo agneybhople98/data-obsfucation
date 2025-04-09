@@ -1,0 +1,393 @@
+// Variables
+$primary-color: #4a6bff;
+$primary-light: #e8edff;
+$primary-dark: #3a56cc;
+$secondary-color: #f8f9fa;
+$text-color: #333;
+$light-text: #6c757d;
+$border-radius: 12px;
+$box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+$sidebar-width: 250px;
+$header-height: 80px;
+$transition-speed: 0.3s;
+$form-spacing: 16px;
+$section-spacing: 24px;
+$header-height: 80px;
+$timeline-background: 308aec;
+
+// Base styles
+* {
+  box-sizing: border-box;
+}
+
+// Container for the entire app
+.app-container {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f5f7fa;
+  color: $text-color;
+  transition: background-color $transition-speed ease;
+}
+
+.toggle-label {
+  margin-left: 8px;
+  font-size: 0.9rem;
+  color: $light-text;
+}
+
+// Main content area
+.main-content {
+  flex: 1;
+  margin-left: 100px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  transition: margin-left $transition-speed ease;
+}
+
+.main-header {
+  height: $header-height;
+  background-color: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  padding: 0 30px;
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+
+.header-content {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.page-title {
+  h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: $text-color;
+  }
+
+  .subtitle {
+    margin: 5px 0 0;
+    color: $light-text;
+    font-size: 0.9rem;
+  }
+}
+
+.add-patient-btn {
+  background-color: $primary-color;
+  color: white;
+  border-radius: 8px;
+  padding: 0 20px;
+  height: 42px;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: darken($primary-color, 5%);
+    box-shadow: 0 4px 12px rgba($primary-color, 0.3);
+    transform: translateY(-2px);
+  }
+
+  mat-icon {
+    margin-right: 8px;
+  }
+}
+
+// Content area
+.content-wrapper {
+  padding: 30px;
+  flex: 1;
+}
+
+.search-container {
+  margin-bottom: 25px;
+}
+
+.patients-container {
+  position: relative;
+  min-height: 300px;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 20px;
+
+  h3 {
+    margin: 0 0 10px;
+    color: $text-color;
+    font-weight: 500;
+  }
+
+  p {
+    color: $light-text;
+    margin: 0;
+  }
+}
+
+.isLoadingContainer {
+  height: 50vh;
+}
+
+// Hide toggle icon
+::ng-deep .mat-mdc-slide-toggle-icon {
+  display: none !important;
+}
+
+// Responsive styles
+@media (max-width: 992px) {
+  .sidebar {
+    width: 70px;
+
+    .logo-text,
+    .nav-link span,
+    .toggle-label {
+      display: none;
+    }
+
+    .nav-link {
+      justify-content: center;
+      padding: 15px;
+
+      mat-icon {
+        margin-right: 0;
+      }
+    }
+  }
+
+  .main-content {
+    margin-left: 70px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-content {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px 0;
+  }
+
+  .page-title {
+    margin-bottom: 15px;
+  }
+
+  .main-header {
+    height: auto;
+  }
+
+  .content-wrapper {
+    padding: 20px;
+  }
+}
+
+// Dark theme styles
+.darkMode {
+  .app-container {
+    background-color: #121212;
+    color: #f5f5f5;
+  }
+
+  .main-header {
+    background-color: #1e1e1e;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .page-title {
+    h1 {
+      color: #f5f5f5;
+    }
+
+    .subtitle {
+      color: #a0a0a0;
+    }
+  }
+
+  .add-patient-btn {
+    &:hover {
+      background-color: lighten($primary-color, 5%);
+      box-shadow: 0 4px 12px rgba($primary-color, 0.5);
+    }
+  }
+
+  .empty-state {
+    h3 {
+      color: #f5f5f5;
+    }
+
+    p {
+      color: #a0a0a0;
+    }
+
+    strong {
+      color: lighten($primary-color, 10%);
+    }
+  }
+}
+
+// Table styles
+::ng-deep {
+  .mat-mdc-table {
+    background: white !important;
+    width: 100%;
+  }
+
+  .mat-mdc-header-row {
+    background-color: #f8f9fa !important;
+    border-bottom: 1px solid #e9ecef !important;
+  }
+
+  .mat-mdc-row {
+    background: transparent !important;
+    border-bottom: 1px solid white !important;
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.04);
+    }
+  }
+
+  .mat-mdc-cell {
+    color: #333;
+    border-bottom: 1px solid #e9ecef;
+    padding: 12px 24px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .mat-mdc-header-cell {
+    color: #495057;
+    font-weight: 600;
+    padding: 12px 24px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  // Column width adjustments
+  .mat-column-position {
+    width: 15%;
+    min-width: 120px;
+  }
+
+  .mat-column-name {
+    width: 20%;
+    min-width: 160px;
+  }
+
+  .mat-column-weight {
+    width: 30%;
+    min-width: 240px;
+  }
+
+  .mat-column-symbol {
+    width: 15%;
+    min-width: 120px;
+  }
+
+  .mat-column-progress {
+    width: 20%;
+    min-width: 160px;
+  }
+
+  // Ensure table takes full width
+  .mat-mdc-table {
+    table-layout: fixed;
+  }
+}
+
+// Status indicator styles
+.status-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.875rem;
+  width: fit-content;
+
+  .status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+
+  .status-text {
+    text-transform: capitalize;
+  }
+
+  &.success {
+    background-color: rgba(40, 167, 69, 0.1);
+    color: #28a745;
+
+    .status-dot {
+      background-color: #28a745;
+    }
+  }
+
+  &.in-progress {
+    background-color: rgba(255, 193, 7, 0.1);
+    color: #ffc107;
+
+    .status-dot {
+      background-color: #ffc107;
+    }
+  }
+
+  &.failed {
+    background-color: rgba(220, 53, 69, 0.1);
+    color: #dc3545;
+
+    .status-dot {
+      background-color: #dc3545;
+    }
+  }
+}
+
+// Progress bar styles
+.progress-bar-container {
+  width: 100%;
+  height: 24px;
+  background-color: #e9ecef;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-bar {
+  height: 100%;
+  border-radius: 12px;
+  transition: width 0.3s ease;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .progress-text {
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 500;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  }
+
+  &.success {
+    background-color: #34a135;
+  }
+
+  &.in-progress {
+    background-color: #3179e5;
+  }
+
+  &.failed {
+    background-color: #fa896b;
+  }
+}

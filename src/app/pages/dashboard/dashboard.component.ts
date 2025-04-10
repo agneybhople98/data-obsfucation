@@ -115,28 +115,34 @@ export class DashboardComponent implements AfterViewInit {
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
   jobs = [
     {
-      name: 'Total number of jobs',
+      name: 'Total jobs',
       count: 234,
+      path: '../../../assets/total-jobs.svg',
     },
     {
       name: 'Successful Jobs',
-      count: 234,
+      count: 100,
+      path: '../../../assets/succesfull-jobs.svg',
     },
     {
       name: 'In Progress Jobs',
-      count: 234,
+      count: 126,
+      path: '../../../assets/in-progress.svg',
     },
     {
       name: 'DO Success Rate',
-      count: 234,
+      count: '85%',
+      path: '../../../assets/do-success-rate.svg',
     },
     {
-      name: 'Ave. Masking Time',
-      count: 234,
+      name: 'Ave.Masking Time',
+      count: '30 Sec/GB',
+      path: '../../../assets/avg-masking-time.svg',
     },
     {
       name: 'Failed Jobs',
-      count: '14',
+      count: 8,
+      path: '../../../assets/failed-jobs.svg',
     },
   ];
 

@@ -30,15 +30,15 @@ const ELEMENT_DATA: JobElement[] = [
       {
         taskId: 'TASK-12346',
         taskDescription: 'Encrypting social security numbers',
-        status: 'Completed',
-        errorMessage: null,
+        status: 'Failed',
+        errorMessage: 'Cant upated index data',
         startTime: '2024-04-01 08:45:30',
         endTime: '2024-04-01 09:00:45',
       },
       {
         taskId: 'TASK-12347',
         taskDescription: 'Anonymizing addresses',
-        status: 'Completed',
+        status: 'In Progress',
         errorMessage: null,
         startTime: '2024-04-01 09:01:10',
         endTime: '2024-04-01 09:15:22',

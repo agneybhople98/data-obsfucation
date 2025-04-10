@@ -64,6 +64,10 @@
   &.active-link {
     background: rgba(255, 255, 255, 0.1);
   }
+  &.active {
+    background-color: #143362;
+    color: white;
+  }
 
   .nav-icon {
     margin-right: 12px;
@@ -107,7 +111,6 @@
 }
 
 .content {
-  padding: 24px;
   min-height: calc(
     100vh - 64px - 60px
   ); // viewport height - toolbar height - footer height
@@ -174,4 +177,8 @@
       text-align: center;
     }
   }
+}
+
+::ng-deep .mdc-list {
+  padding: 0px !important;
 }

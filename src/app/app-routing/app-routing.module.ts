@@ -6,7 +6,7 @@ import { JobDetailsComponent } from '../pages/job-details/job-details.component'
 
 const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
-  { path: 'configuration', component: ConfigurationComponent },
+  { path: 'jobs', component: ConfigurationComponent },
   { path: 'job-details/:id', component: JobDetailsComponent },
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: '**', redirectTo: '/dashboard' }, // Redirect to home for unknown routes

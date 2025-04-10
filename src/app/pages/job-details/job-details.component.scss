@@ -157,3 +157,20 @@
     background-color: #fa896b;
   }
 }
+
+.task-status {
+  padding: 5px 10px;
+  border-radius: 50px;
+  text-align: center;
+  width: 108px;
+
+  &.Completed {
+    background-color: rgba(209, 252, 209, 1);
+  }
+  &.In-Progress {
+    background-color: rgba(212, 223, 255, 1);
+  }
+  &.Failed {
+    background-color: rgba(255, 216, 205, 1);
+  }
+}

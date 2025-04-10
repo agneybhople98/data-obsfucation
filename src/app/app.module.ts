@@ -22,6 +22,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { SidenavigationBarComponent } from './components/sidenavigation-bar/sidenavigation-bar.component';
 import { JobDetailsComponent } from './pages/job-details/job-details.component';
+import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { JobDetailsComponent } from './pages/job-details/job-details.component';
     JobCardComponent,
     SidenavigationBarComponent,
     JobDetailsComponent,
+    BreadcrumbComponent,
   ],
   imports: [
     BrowserModule,

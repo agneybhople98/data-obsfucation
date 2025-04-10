@@ -31,6 +31,7 @@
       <ng-container matColumnDef="position">
         <th mat-header-cell *matHeaderCellDef>Job ID</th>
         <td
+          (click)="openJobDetails(element.jobId)"
           class="font-medium cursor-pointer"
           style="color: #3179e5"
           mat-cell

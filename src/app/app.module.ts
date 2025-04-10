@@ -16,11 +16,12 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { JobCardComponent } from './components/job-card/job-card.component';
-import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
-import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { SidenavigationBarComponent } from './components/sidenavigation-bar/sidenavigation-bar.component';
+import { JobDetailsComponent } from './pages/job-details/job-details.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { SidenavigationBarComponent } from './components/sidenavigation-bar/side
     SidebarComponent,
     JobCardComponent,
     SidenavigationBarComponent,
+    JobDetailsComponent,
   ],
   imports: [
     BrowserModule,

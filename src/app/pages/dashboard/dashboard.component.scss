@@ -196,7 +196,7 @@ $timeline-background: 308aec;
   }
 
   .mat-mdc-header-row {
-    background-color: #f8f9fa !important;
+    background-color: #f1f1f1 !important;
     border-bottom: 1px solid #e9ecef !important;
   }
 
@@ -228,28 +228,28 @@ $timeline-background: 308aec;
 
   // Column width adjustments
   .mat-column-position {
-    width: 15%;
-    min-width: 120px;
+    width: 10%;
+    // min-width: 120px;
   }
 
   .mat-column-name {
-    width: 20%;
-    min-width: 160px;
+    width: 15%;
+    // min-width: 160px;
   }
 
   .mat-column-weight {
-    width: 30%;
-    min-width: 240px;
+    width: 45%;
+    // min-width: 240px;
   }
 
   .mat-column-symbol {
-    width: 15%;
-    min-width: 120px;
+    width: 20%;
+    // min-width: 120px;
   }
 
   .mat-column-progress {
     width: 20%;
-    min-width: 160px;
+    // min-width: 160px;
   }
 
   // Ensure table takes full width

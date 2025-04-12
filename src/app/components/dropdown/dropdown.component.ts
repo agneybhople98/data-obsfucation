@@ -8,6 +8,8 @@ import {
   Output,
   Self,
   ViewChild,
+  Renderer2,
+  OnDestroy,
 } from '@angular/core';
 import { FormControl, NG_VALUE_ACCESSOR, NgControl } from '@angular/forms';
 
@@ -24,7 +26,7 @@ import { FormControl, NG_VALUE_ACCESSOR, NgControl } from '@angular/forms';
     },
   ],
 })
-export class DropdownComponent {
+export class DropdownComponent implements OnDestroy {
   @Input() label: string = '';
   @Input() placeholder: string = 'Select an option';
   @Input() options: any[] = [];
@@ -57,9 +59,23 @@ export class DropdownComponent {
   onChange: any = () => {};
   onTouched: any = () => {};
 
-  constructor(@Optional() @Self() public ngControl: NgControl) {
+  private overlayElement: HTMLElement | null = null;
+  private clickOutsideListener: (() => void) | null = null;
+
+  constructor(
+    @Optional() @Self() public ngControl: NgControl,
+    private renderer: Renderer2,
+    private elementRef: ElementRef
+  ) {
     if (this.ngControl) {
       this.ngControl.valueAccessor = this;
+    }
+  }
+
+  ngOnDestroy() {
+    this.removeOverlay();
+    if (this.clickOutsideListener) {
+      this.clickOutsideListener();
     }
   }
 
@@ -125,11 +141,88 @@ export class DropdownComponent {
       return;
     }
 
+    // Always remove existing overlay first
+    this.removeOverlay();
+
     this.isOpen = !this.isOpen;
     if (this.isOpen) {
+      this.createOverlay();
       this.onFocus();
     } else {
       this.onBlur();
+    }
+  }
+
+  private createOverlay() {
+    // Double check that any existing overlay is removed
+    this.removeOverlay();
+
+    const selectElement = this.selectElement.nativeElement;
+    const rect = selectElement.getBoundingClientRect();
+
+    this.overlayElement = this.renderer.createElement('div');
+    this.renderer.addClass(this.overlayElement, 'dropdown-options');
+    this.renderer.addClass(this.overlayElement, 'open');
+
+    // Position the overlay
+    this.renderer.setStyle(this.overlayElement, 'top', `${rect.bottom}px`);
+    this.renderer.setStyle(this.overlayElement, 'left', `${rect.left}px`);
+    this.renderer.setStyle(this.overlayElement, 'width', `${rect.width}px`);
+
+    // Add options to overlay
+    this.options.forEach((option) => {
+      const optionElement = this.renderer.createElement('div');
+      this.renderer.addClass(optionElement, 'dropdown-option');
+
+      // Add selected class if this is the selected option
+      if (this.isOptionSelected(option)) {
+        this.renderer.addClass(optionElement, 'selected');
+      }
+
+      this.renderer.setProperty(
+        optionElement,
+        'textContent',
+        typeof option === 'object' ? option[this.displayField] : option
+      );
+
+      this.renderer.listen(optionElement, 'click', (event) => {
+        event.stopPropagation();
+        this.selectOption(option);
+      });
+
+      this.renderer.appendChild(this.overlayElement, optionElement);
+    });
+
+    this.renderer.appendChild(document.body, this.overlayElement);
+
+    // Remove any existing click outside listener
+    if (this.clickOutsideListener) {
+      this.clickOutsideListener();
+    }
+
+    // Add new click outside listener
+    this.clickOutsideListener = this.renderer.listen(
+      'document',
+      'click',
+      (event) => {
+        if (!this.elementRef.nativeElement.contains(event.target)) {
+          this.isOpen = false;
+          this.removeOverlay();
+        }
+      }
+    );
+  }
+
+  private removeOverlay() {
+    if (this.overlayElement) {
+      this.renderer.removeChild(document.body, this.overlayElement);
+      this.overlayElement = null;
+    }
+
+    // Also remove click outside listener
+    if (this.clickOutsideListener) {
+      this.clickOutsideListener();
+      this.clickOutsideListener = null;
     }
   }
 
@@ -140,6 +233,8 @@ export class DropdownComponent {
     this.valueChange.emit(value);
     this.selectionChange.emit(option);
     this.isOpen = false;
+    this.removeOverlay(); // Ensure overlay is removed after selection
+    this.onBlur(); // Ensure proper state cleanup
   }
 
   onBlur(): void {
@@ -154,5 +249,12 @@ export class DropdownComponent {
 
   focus(): void {
     this.selectElement.nativeElement.focus();
+  }
+
+  private isOptionSelected(option: any): boolean {
+    if (typeof option === 'object') {
+      return option[this.valueField] === this._value;
+    }
+    return option === this._value;
   }
 }

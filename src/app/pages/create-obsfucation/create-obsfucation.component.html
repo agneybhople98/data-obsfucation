@@ -5,58 +5,21 @@
         <app-input [label]="'Search'"></app-input>
       </div>
       <mat-list role="list">
-        <mat-list-item role="listitem" class="border-b border-gray-200">
-          <div class="flex gap-2">
-            <img src="../../../assets/table.svg" alt="" />
-            <div>CI_BILL</div>
-          </div>
-        </mat-list-item>
-        <mat-list-item role="listitem" class="border-b border-gray-200">
-          <div class="flex gap-2">
-            <img src="../../../assets/table.svg" alt="" />
-            <div>CI_PER_NAME</div>
-          </div>
-        </mat-list-item>
-        <mat-list-item role="listitem" class="border-b border-gray-200">
-          <div class="flex gap-2">
-            <img src="../../../assets/table.svg" alt="" />
-            <div>CI_PER_PHONE</div>
-          </div>
-        </mat-list-item>
-        <mat-list-item role="listitem" class="border-b border-gray-200">
-          <div class="flex gap-2">
-            <img src="../../../assets/table.svg" alt="" />
-            <div>CI_PER</div>
-          </div></mat-list-item
+        <mat-list-item
+          *ngFor="let item of tableItems"
+          role="listitem"
+          class="border-b border-gray-200 cursor-pointer"
+          [ngClass]="{ 'bg-primary text-primary': selectedItem === item }"
+          (click)="selectItem(item)"
         >
-        <mat-list-item role="listitem" class="border-b border-gray-200">
-          <div class="flex gap-2">
+          <div class="flex gap-2 items-center">
             <img src="../../../assets/table.svg" alt="" />
-            <div>CI_PER_ADDR_REAS</div>
-          </div>
-        </mat-list-item>
-        <mat-list-item role="listitem" class="border-b border-gray-200">
-          <div class="flex gap-2">
-            <img src="../../../assets/table.svg" alt="" />
-            <div>CI_ACCT</div>
-          </div>
-        </mat-list-item>
-        <mat-list-item role="listitem" class="border-b border-gray-200">
-          <div class="flex gap-2">
-            <img src="../../../assets/table.svg" alt="" />
-            <div>CI_PER_CHAR</div>
-          </div>
-        </mat-list-item>
-        <mat-list-item role="listitem" class="border-b border-gray-200">
-          <div class="flex gap-2">
-            <img src="../../../assets/table.svg" alt="" />
-            <div>CI_PRCE_CALC</div>
-          </div>
-        </mat-list-item>
-        <mat-list-item role="listitem" class="border-b border-gray-200">
-          <div class="flex gap-2">
-            <img src="../../../assets/table.svg" alt="" />
-            <div>CI_POLICY_PER</div>
+            <div
+              class="font-normal text-sm"
+              [ngClass]="{ ' text-white': selectedItem === item }"
+            >
+              {{ item }}
+            </div>
           </div>
         </mat-list-item>
       </mat-list>
@@ -83,7 +46,7 @@
       <div class="!ms-5">
         <div>Set Obsfucation Strategies</div>
 
-        <div class="jobs-table mt-4">
+        <div class="jobs-table !mt-4">
           <table
             mat-table
             [dataSource]="this.dataSource"
@@ -134,7 +97,7 @@
               </th>
               <td mat-cell *matCellDef="let element" class="p-4">
                 <div class="!mt-2">
-                  <app-dropdown></app-dropdown>
+                  <app-dropdown [options]="obsStrategies"></app-dropdown>
                 </div>
               </td>
             </ng-container>
@@ -149,8 +112,8 @@
               </th>
               <td mat-cell *matCellDef="let element" class="p-4">
                 <div class="flex gap-4 !mt-2">
-                  <app-dropdown></app-dropdown>
-                  <app-dropdown></app-dropdown>
+                  <app-dropdown [options]="obsRulesOptions"></app-dropdown>
+                  <app-dropdown [options]="obsRulesNumbers"></app-dropdown>
                 </div>
               </td>
             </ng-container>

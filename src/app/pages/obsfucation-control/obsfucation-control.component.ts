@@ -32,12 +32,6 @@ import { Router } from '@angular/router';
 export class ObsfucationControl implements OnInit, AfterViewInit {
   expandedElement: any | null = null;
   isConnected = false;
-  displayedColumns: string[] = [
-    'obsControlId',
-    'obsControlName',
-    'obsControlDescription',
-    'createdBy',
-  ];
   columnsToDisplayWithExpand = [
     'expand',
     'obsControlId',

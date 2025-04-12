@@ -12,9 +12,17 @@ import { SelectionModel } from '@angular/cdk/collections';
 })
 export class CreateObsfucationComponent {
   public dataSource: any;
+  public obsStrategies = ['Starify', 'Hashing', 'Faker'];
+  public obsRulesOptions = ['Left', 'Right', 'Type', 'Date'];
+  public obsRulesNumbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
   constructor(private _obsufactionService: ObsfucationService) {}
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   selection = new SelectionModel<any>(true, []);
+  foods: any[] = [
+    { value: 'steak-0', viewValue: 'Steak' },
+    { value: 'pizza-1', viewValue: 'Pizza' },
+    { value: 'tacos-2', viewValue: 'Tacos' },
+  ];
 
   displayedColumns: string[] = [
     'select',
@@ -22,7 +30,6 @@ export class CreateObsfucationComponent {
     'obsfucationStrategy',
     'obsfucationRules',
   ];
-  categories: string[] = ['Electronics', 'Books', 'Clothing', 'Food'];
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
   }
@@ -47,5 +54,23 @@ export class CreateObsfucationComponent {
     }
 
     this.selection.select(...this.dataSource.data);
+  }
+
+  tableItems = [
+    'CI_BILL',
+    'CI_PER_NAME',
+    'CI_PER_PHONE',
+    'CI_PER',
+    'CI_PER_ADDR_REAS',
+    'CI_ACCT',
+    'CI_PER_CHAR',
+    'CI_PRCE_CALC',
+    'CI_POLICY_PER',
+  ];
+
+  selectedItem: string | null = null;
+
+  selectItem(item: string) {
+    this.selectedItem = item;
   }
 }

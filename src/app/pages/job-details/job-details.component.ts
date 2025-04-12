@@ -4,27 +4,45 @@ import { JobsDataService } from '../../jobs-data.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ChangeDetectorRef } from '@angular/core';
+import {
+  animate,
+  state,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
 
 @Component({
   selector: 'app-job-details',
   templateUrl: './job-details.component.html',
   styleUrl: './job-details.component.scss',
   standalone: false,
+  animations: [
+    trigger('detailExpand', [
+      state('collapsed', style({ height: '0px', minHeight: '0' })),
+      state('expanded', style({ height: '*' })),
+      transition(
+        'expanded <=> collapsed',
+        animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')
+      ),
+    ]),
+  ],
 })
 export class JobDetailsComponent implements OnInit, AfterViewInit {
+  expandedElement: any | null = null;
   public jobId: any;
   jobDetails: any; // Consider creating a proper interface/type for your job data
   loading = true;
   error: string | null = null;
   public dataSource = new MatTableDataSource<any>([]);
-  displayedColumns: string[] = [
+  columnsToDisplay: string[] = [
     'taskId',
     'taskDescription',
     'status',
-    'errorMessage',
     'startTime',
     'endTime',
   ];
+  columnsToDisplayWithExpand = ['expand', ...this.columnsToDisplay];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -58,6 +76,14 @@ export class JobDetailsComponent implements OnInit, AfterViewInit {
       }
     });
   }
+
+  toggleRow(element: any): void {
+    this.expandedElement = this.expandedElement === element ? null : element;
+    this.changeDetectorRef.detectChanges();
+  }
+
+  isExpansionDetailRow = (i: number, row: any) =>
+    row.hasOwnProperty('detailRow');
 
   startSequentialUpdates(jobId: string): void {
     // Start the sequential update process

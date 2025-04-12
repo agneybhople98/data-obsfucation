@@ -29,6 +29,7 @@ import { CreateObsfucationComponent } from './pages/create-obsfucation/create-ob
 import { DropdownComponent } from './components/dropdown/dropdown.component';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -64,6 +65,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatInputModule,
     MatMenuModule,
     MatCheckboxModule,
+    MatSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

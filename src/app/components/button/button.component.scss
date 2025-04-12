@@ -1,0 +1,55 @@
+/* button.component.css */
+.btn {
+  display: inline-block;
+  padding: 5px 10px;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.btn:focus {
+  outline: none;
+}
+
+.btn-primary {
+  background-color: #1e3a8a;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #172b6e;
+}
+
+.btn-success {
+  background-color: #4caf50;
+  color: white;
+}
+
+.btn-success:hover {
+  background-color: #3d8b40;
+}
+
+.btn-default {
+  background-color: transparent;
+  color: #333;
+}
+
+.btn-default:hover {
+  background-color: #f5f5f5;
+}
+
+.btn-link {
+  background-color: transparent;
+  color: #333;
+  padding: 10px 0;
+  text-decoration: none;
+}
+
+.btn.disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}

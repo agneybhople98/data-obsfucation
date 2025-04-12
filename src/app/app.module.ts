@@ -30,6 +30,8 @@ import { DropdownComponent } from './components/dropdown/dropdown.component';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
+import { ButtonComponent } from './components/button/button.component';
+import { JobControlComponent } from './pages/job-control/job-control.component';
 
 @NgModule({
   declarations: [
@@ -44,8 +46,10 @@ import { MatSelectModule } from '@angular/material/select';
     BreadcrumbComponent,
     CreateJobComponent,
     InputComponent,
+    ButtonComponent,
     CreateObsfucationComponent,
     DropdownComponent,
+    JobControlComponent,
   ],
   imports: [
     BrowserModule,

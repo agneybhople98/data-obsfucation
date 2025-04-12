@@ -73,9 +73,7 @@ export class DashboardComponent implements AfterViewInit {
   }
 
   openJobDetails(jobId: string) {
-    // Implement the logic to open the job details page
-    console.log('Opening job details for:', jobId);
-    this._router.navigate(['/job-details', jobId]);
+    this._router.navigate(['/dashboard/job-details', jobId]);
   }
   // startSequentialUpdates(jobId: string): void {
   //   // Start the sequential update process
@@ -96,4 +94,8 @@ export class DashboardComponent implements AfterViewInit {
   //     () => console.log('Sequential task updates completed')
   //   );
   // }
+
+  isJobDetailsRoute(): boolean {
+    return this._router.url.includes('/job-details');
+  }
 }

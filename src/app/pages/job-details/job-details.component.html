@@ -5,7 +5,12 @@
   <div class="!m-3">
     <div class="flex justify-between items-center !p-4 !mx-2">
       <div class="text-md font-semibold">Job Run Details</div>
-      <button mat-raised-button color="primary">View configuration</button>
+      <app-button
+        text="View Obfuscation Control"
+        variant="primary"
+        (clicked)="(null)"
+      >
+      </app-button>
     </div>
     <div>
       <div class="!bg-[#F2F7FF] !pb-4">
@@ -182,3 +187,4 @@
     </mat-paginator>
   </div>
 </div>
+<router-outlet></router-outlet>

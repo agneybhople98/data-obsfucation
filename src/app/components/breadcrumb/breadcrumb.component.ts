@@ -47,7 +47,8 @@ export class BreadcrumbComponent implements OnInit {
         currentPath += `/${urlSegments[i]}`;
         const label = this.getPageLabel(urlSegments[i]);
 
-        if (label) {
+        // Skip adding Dashboard if it's not the first segment
+        if (label && (i > 0 || label !== 'Dashboard')) {
           this.breadcrumbs.push({
             label: label,
             url: currentPath,
@@ -61,7 +62,7 @@ export class BreadcrumbComponent implements OnInit {
     switch (segment) {
       case 'dashboard':
         return 'Dashboard';
-      case 'obsfucation-Control':
+      case 'obsfucation-control':
         return 'Obfuscation Control';
       case 'create-obsfucation':
         return 'Create Obfuscation';
@@ -71,6 +72,8 @@ export class BreadcrumbComponent implements OnInit {
         return 'Process';
       case 'tracking':
         return 'Tracking';
+      case 'job-control-list':
+        return 'Job Control List';
       case 'history':
         return 'History';
       default:

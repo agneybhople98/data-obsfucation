@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { JobsDataService } from '../../jobs-data.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-job-details',
@@ -29,7 +30,8 @@ export class JobDetailsComponent implements OnInit, AfterViewInit {
 
   constructor(
     private route: ActivatedRoute,
-    private jobService: JobsDataService
+    private jobService: JobsDataService,
+    private changeDetectorRef: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
@@ -42,6 +44,9 @@ export class JobDetailsComponent implements OnInit, AfterViewInit {
         if (this.jobDetails && this.jobDetails.tasks) {
           this.dataSource.data = this.jobDetails.tasks;
           this.loading = false;
+
+          // Update tasks sequentially with 1-second intervals
+          this.startSequentialUpdates(this.jobId);
         } else {
           this.error = 'Job details not found';
           this.loading = false;
@@ -52,6 +57,26 @@ export class JobDetailsComponent implements OnInit, AfterViewInit {
         this.loading = false;
       }
     });
+  }
+
+  startSequentialUpdates(jobId: string): void {
+    // Start the sequential update process
+    this.jobService.updateTasksSequentially(jobId).subscribe(
+      (updatedJob) => {
+        if (updatedJob) {
+          // Update the component's job details reference
+          this.jobDetails = updatedJob;
+
+          // Update the data source to reflect changes in the UI
+          this.dataSource.data = [...updatedJob.tasks];
+
+          // Force change detection if needed
+          this.changeDetectorRef.detectChanges();
+        }
+      },
+      (error) => console.error('Error updating tasks:', error),
+      () => console.log('Sequential task updates completed')
+    );
   }
 
   ngAfterViewInit() {

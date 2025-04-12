@@ -10,7 +10,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 
 import { AppRoutingModule } from './app-routing/app-routing.module';
-import { ConfigurationComponent } from './pages/configuration/configuration.component';
+import { ObsfucationControl } from './pages/obsfucation-control/obsfucation-control.component';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -23,18 +23,22 @@ import { MatInputModule } from '@angular/material/input';
 import { SidenavigationBarComponent } from './components/sidenavigation-bar/sidenavigation-bar.component';
 import { JobDetailsComponent } from './pages/job-details/job-details.component';
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
+import { CreateJobComponent } from './components/create-job/create-job.component';
+import { InputComponent } from './components/input/input.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
-    ConfigurationComponent,
+    ObsfucationControl,
     NavbarComponent,
     SidebarComponent,
     JobCardComponent,
     SidenavigationBarComponent,
     JobDetailsComponent,
     BreadcrumbComponent,
+    CreateJobComponent,
+    InputComponent,
   ],
   imports: [
     BrowserModule,

@@ -3,6 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { JobElement, JobsDataService } from '../../jobs-data.service';
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,7 +13,11 @@ import { JobElement, JobsDataService } from '../../jobs-data.service';
 })
 export class DashboardComponent implements AfterViewInit {
   public dataSource: any;
-  constructor(private _router: Router, public jobService: JobsDataService) {
+  constructor(
+    private _router: Router,
+    public jobService: JobsDataService,
+    private changeDetectorRef: ChangeDetectorRef
+  ) {
     this.dataSource = new MatTableDataSource<JobElement>(
       this.jobService.getAllJobs()
     );
@@ -20,6 +25,7 @@ export class DashboardComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
+    // this.startSequentialUpdates(this.dataSource.data[0].jobId);
   }
   displayedColumns: string[] = [
     'position',
@@ -71,4 +77,23 @@ export class DashboardComponent implements AfterViewInit {
     console.log('Opening job details for:', jobId);
     this._router.navigate(['/job-details', jobId]);
   }
+  // startSequentialUpdates(jobId: string): void {
+  //   // Start the sequential update process
+  //   this.jobService.updateTasksSequentially(jobId).subscribe(
+  //     (updatedJob) => {
+  //       if (updatedJob) {
+  //         // Update the component's job details reference
+  //         this.dataSource = updatedJob;
+
+  //         // Update the data source to reflect changes in the UI
+  //         this.dataSource.data = [...updatedJob.tasks];
+
+  //         // Force change detection if needed
+  //         this.changeDetectorRef.detectChanges();
+  //       }
+  //     },
+  //     (error) => console.error('Error updating tasks:', error),
+  //     () => console.log('Sequential task updates completed')
+  //   );
+  // }
 }

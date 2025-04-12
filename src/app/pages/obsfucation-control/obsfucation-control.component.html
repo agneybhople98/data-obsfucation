@@ -1,0 +1,319 @@
+<!-- obsfucation-control.component.html -->
+
+<mat-drawer-container
+  class="example-container !min-h-[calc(100vh-64px-60px)]"
+  [hasBackdrop]="false"
+>
+  <mat-drawer #drawer mode="over" position="end" class="!w-[50%] !rounded-none">
+    <div class="header bg-secondary flex justify-between items-center !p-4">
+      <div class="font-semibold">Create Obsfucation Control</div>
+
+      <div
+        (click)="drawer.close()"
+        class="border-[2px] rounded-full cursor-pointer flex justify-center items-center"
+      >
+        <mat-icon
+          class="flex justify-center items-center !p-[2px] !text-[20px] !font-semibold"
+          >close</mat-icon
+        >
+      </div>
+    </div>
+
+    <div class="flex gap-2 !p-4">
+      <app-input
+        class="flex-1"
+        label="Name"
+        formControlName="name"
+        value="Healthcare Service Meta"
+      >
+      </app-input>
+      <app-input
+        class="flex-1"
+        label="Username"
+        formControlName="username"
+        [required]="true"
+        value="Healthcare services UMG schema - A created for masking production"
+        [additionalInfo]="'Last connection Date: 09/04/2025 11:50 PM'"
+      >
+      </app-input>
+    </div>
+
+    <div class="!mb-4 !mx-4">
+      <div class="font-medium text-md">Source Database Details</div>
+      <div class="element-diagram border-[0.5px] !px-4 !py-3">
+        <div class="flex gap-4">
+          <div class="flex-1">
+            <app-input label="Name" formControlName="name" [value]="'Testing'">
+            </app-input>
+          </div>
+          <div class="flex-1">
+            <app-input
+              label="Databse Type"
+              formControlName="databaseType"
+              [value]="'Oracle Database'"
+            >
+            </app-input>
+          </div>
+        </div>
+        <div class="flex gap-3">
+          <div class="flex-1">
+            <app-input
+              label="URL"
+              formControlName="url"
+              [required]="true"
+              [value]="'https://do.uat.riaproducts.com/'"
+            >
+            </app-input>
+          </div>
+          <div class="flex-1">
+            <app-input
+              label="Schema Name"
+              formControlName="password"
+              [required]="true"
+              [value]="'MSKADM'"
+            >
+            </app-input>
+          </div>
+        </div>
+        <div class="flex gap-3 items-center">
+          <div class="flex-2">
+            <app-input
+              label="Username"
+              formControlName="username"
+              [required]="true"
+              [value]="'RIA_Advisory'"
+              [additionalInfo]="'Last connection Date: 09/04/2025 11:50 PM'"
+            >
+            </app-input>
+          </div>
+          <div class="flex-1">
+            <app-input
+              label="Password"
+              formControlName="password"
+              [required]="true"
+              [value]="'riahealthcare123'"
+            >
+            </app-input>
+          </div>
+          <div class="flex-1">
+            <button mat-raised-button (click)="isConnected = true">
+              Test Connection
+            </button>
+            <div
+              *ngIf="isConnected"
+              class="!text-[#34A135] !text-[10px] !text-center !mt-2"
+            >
+              Connection successfull
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer bg-secondary !w-[100%] absolute bottom-0">
+      <div class="flex justify-end items-center !m-2">
+        <button (click)="drawer.close()" mat-button>Close</button>
+        <button mat-raised-button>Create</button>
+      </div>
+    </div>
+  </mat-drawer>
+  <mat-drawer-content>
+    <div class="bg-white">
+      <app-breadcrumb></app-breadcrumb>
+    </div>
+    <div class="bg-white p-4 !m-5">
+      <div class="!m-3">
+        <div class="flex justify-between items-center !p-3 !mx-2">
+          <div class="font-semibold">Obsfucation Control</div>
+          <button mat-raised-button color="primary" (click)="drawer.toggle()">
+            Add Obsfucation Control
+          </button>
+        </div>
+        <div>
+          <table
+            mat-table
+            [dataSource]="dataSource"
+            multiTemplateDataRows
+            class="mat-elevation-z8"
+          >
+            <!-- Expand Column -->
+            <ng-container matColumnDef="expand">
+              <th mat-header-cell *matHeaderCellDef aria-label="row actions">
+                &nbsp;
+              </th>
+              <td mat-cell *matCellDef="let element">
+                <button
+                  class="bg-primary text-white rounded-xs !h-[24px] !w-[24px] cursor-pointer"
+                  aria-label="expand row"
+                  (click)="
+                    expandedElement =
+                      expandedElement === element ? null : element;
+                    $event.stopPropagation()
+                  "
+                >
+                  <mat-icon
+                    *ngIf="expandedElement !== element"
+                    class="!p-[0.5px]"
+                  >
+                    add
+                  </mat-icon>
+                  <mat-icon
+                    *ngIf="expandedElement === element"
+                    class="!p-[0.5px]"
+                    >remove</mat-icon
+                  >
+                </button>
+              </td>
+            </ng-container>
+
+            <!-- Obsfucation Control ID Column -->
+            <ng-container matColumnDef="obsControlId">
+              <th mat-header-cell *matHeaderCellDef>Obsfucation Control ID</th>
+              <td
+                class="font-medium cursor-pointer"
+                style="color: #3179e5"
+                mat-cell
+                *matCellDef="let element"
+              >
+                {{ element.obsControlId }}
+              </td>
+            </ng-container>
+
+            <!-- Obsfucation Name Column -->
+            <ng-container matColumnDef="obsControlName">
+              <th mat-header-cell *matHeaderCellDef>Obsfucation Name</th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.obsControlName }}
+              </td>
+            </ng-container>
+
+            <!-- Obsfucation Description Column -->
+            <ng-container matColumnDef="obsControlDescription">
+              <th mat-header-cell *matHeaderCellDef>Obsfucation Description</th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.obsControlDescription }}
+              </td>
+            </ng-container>
+
+            <!-- Created By Column -->
+            <ng-container matColumnDef="createdBy">
+              <th mat-header-cell *matHeaderCellDef>Created By</th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.createdBy }}
+              </td>
+            </ng-container>
+
+            <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+            <ng-container matColumnDef="expandedDetail">
+              <td
+                mat-cell
+                *matCellDef="let element"
+                [attr.colspan]="columnsToDisplayWithExpand.length"
+              >
+                <div
+                  class="element-detail"
+                  [@detailExpand]="
+                    element == expandedElement ? 'expanded' : 'collapsed'
+                  "
+                >
+                  <div class="element-diagram">
+                    <div class="flex gap-4">
+                      <div class="flex-1">
+                        <app-input
+                          label="Name"
+                          formControlName="name"
+                          [value]="element.details.name"
+                        >
+                        </app-input>
+                      </div>
+                      <div class="flex-1">
+                        <app-input
+                          label="Databse Type"
+                          formControlName="databaseType"
+                          [value]="element.details.databaseType"
+                        >
+                        </app-input>
+                      </div>
+                      <div class="flex-2">
+                        <app-input
+                          label="URL"
+                          formControlName="url"
+                          [required]="true"
+                          [value]="element.details.url"
+                        >
+                        </app-input>
+                      </div>
+                    </div>
+                    <div class="flex w-[60%] gap-3 !mt-3">
+                      <div class="flex-1">
+                        <app-input
+                          label="Username"
+                          formControlName="username"
+                          [required]="true"
+                          [value]="element.details.username"
+                          [additionalInfo]="
+                            'Last connection Date: 09/04/2025 11:50 PM'
+                          "
+                        >
+                        </app-input>
+                      </div>
+                      <div class="flex-1">
+                        <app-input
+                          label="Password"
+                          formControlName="password"
+                          [required]="true"
+                          [value]="element.details.password"
+                        >
+                        </app-input>
+                      </div>
+                      <div class="flex-1">
+                        <app-input
+                          label="Schema Name"
+                          formControlName="password"
+                          [required]="true"
+                          [value]="element.details.schemaName"
+                        >
+                        </app-input>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </ng-container>
+
+            <!-- Header Row -->
+            <tr
+              mat-header-row
+              *matHeaderRowDef="columnsToDisplayWithExpand"
+            ></tr>
+
+            <!-- Data Row -->
+            <tr
+              mat-row
+              *matRowDef="let element; columns: columnsToDisplayWithExpand"
+              class="element-row"
+              [class.expanded-row]="expandedElement === element"
+            ></tr>
+            <!-- 
+            (click)="
+            expandedElement = expandedElement === element ? null : element
+          " -->
+
+            <!-- Expanded Detail Row -->
+            <tr
+              mat-row
+              *matRowDef="let row; columns: ['expandedDetail']"
+              class="detail-row"
+            ></tr>
+          </table>
+        </div>
+
+        <mat-paginator
+          [pageSizeOptions]="[5, 10, 20]"
+          showFirstLastButtons
+          aria-label="Select page of periodic elements"
+        >
+        </mat-paginator>
+      </div>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>

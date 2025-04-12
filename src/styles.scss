@@ -1,6 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-@import "tailwindcss";
-@import "material-icons/iconfont/material-icons.css";
+@use "tailwindcss";
 
 html,
 body {
@@ -27,4 +26,10 @@ body {
 }
 .mat-mdc-paginator-container {
   background-color: white !important;
+}
+.bg-primary {
+  background-color: #143362 !important;
+}
+.bg-secondary {
+  background-color: #f1f1f1 !important;
 }

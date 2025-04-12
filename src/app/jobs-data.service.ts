@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { concat, map, Observable, of, switchMap, timer } from 'rxjs';
 
 export interface JobElement {
   jobId: string;
@@ -16,13 +17,13 @@ const ELEMENT_DATA: JobElement[] = [
     jobName: 'Data Masking - Customer Records',
     jobDescription: 'DIH UHG Health Care Production 001 data set ',
     triggeredOn: '2024-04-01 08:30:15',
-    status: 'success',
-    progress: 100,
+    status: 'in-progress',
+    progress: 17,
     tasks: [
       {
         taskId: 'TASK-12345',
         taskDescription: 'Masking customer names',
-        status: 'Completed',
+        status: 'In Progress',
         errorMessage: null,
         startTime: '2024-04-01 08:30:15',
         endTime: '2024-04-01 08:45:00',
@@ -30,7 +31,7 @@ const ELEMENT_DATA: JobElement[] = [
       {
         taskId: 'TASK-12346',
         taskDescription: 'Encrypting social security numbers',
-        status: 'Failed',
+        status: 'In Progress',
         errorMessage: 'Cant upated index data',
         startTime: '2024-04-01 08:45:30',
         endTime: '2024-04-01 09:00:45',
@@ -46,7 +47,7 @@ const ELEMENT_DATA: JobElement[] = [
       {
         taskId: 'TASK-12348',
         taskDescription: 'Masking phone numbers',
-        status: 'Completed',
+        status: 'In Progress',
         errorMessage: null,
         startTime: '2024-04-01 09:20:00',
         endTime: '2024-04-01 09:30:18',
@@ -54,7 +55,7 @@ const ELEMENT_DATA: JobElement[] = [
       {
         taskId: 'TASK-12349',
         taskDescription: 'Shuffling demographic data',
-        status: 'Completed',
+        status: 'In Progress',
         errorMessage: null,
         startTime: '2024-04-01 09:35:10',
         endTime: '2024-04-01 10:15:30',
@@ -62,7 +63,7 @@ const ELEMENT_DATA: JobElement[] = [
       {
         taskId: 'TASK-12350',
         taskDescription: 'Substituting email addresses',
-        status: 'Completed',
+        status: 'In Progress',
         errorMessage: null,
         startTime: '2024-04-01 10:20:00',
         endTime: '2024-04-01 10:25:18',
@@ -247,5 +248,72 @@ export class JobsDataService {
 
   getAllJobs(): JobElement[] {
     return this.jobsData;
+  }
+
+  /**
+   * Updates a single task status to "Completed"
+   * @param jobId The ID of the job containing the task
+   * @param taskIndex The index of the task in the tasks array
+   * @returns The updated job if successful, undefined otherwise
+   */
+  private updateSingleTaskStatus(
+    jobId: string,
+    taskIndex: number
+  ): JobElement | undefined {
+    const job = this.getJobById(jobId);
+    if (!job || !job.tasks || taskIndex >= job.tasks.length) {
+      return undefined;
+    }
+
+    // Update the task at the specified index
+    const task = job.tasks[taskIndex];
+    task.status = 'Completed';
+    // Set end time if it doesn't exist
+    if (!task.endTime) {
+      task.endTime = new Date()
+        .toISOString()
+        .replace('T', ' ')
+        .substring(0, 19);
+    }
+
+    // Calculate progress based on completed tasks
+    const completedTasks = job.tasks.filter(
+      (t: any) => t.status === 'Completed'
+    ).length;
+    job.progress = Math.round((completedTasks / job.tasks.length) * 100);
+
+    // Update job status if all tasks are completed
+    if (completedTasks === job.tasks.length) {
+      job.status = 'success';
+    }
+
+    return job;
+  }
+
+  /**
+   * Updates task statuses one by one with a 1-second interval between each update
+   * @param jobId The ID of the job containing the tasks
+   * @returns An Observable that emits the updated job after each task update
+   */
+  updateTasksSequentially(jobId: string): Observable<JobElement | undefined> {
+    const job = this.getJobById(jobId);
+    if (!job || !job.tasks || job.tasks.length === 0) {
+      return of(undefined);
+    }
+
+    // Create an array of observables, each updating one task after a delay
+    const taskCount = job.tasks.length;
+    const updateObservables: Observable<JobElement | undefined>[] = [];
+
+    for (let i = 0; i < taskCount; i++) {
+      // The delay increases by 1 second for each task
+      const updateObservable = timer(300 * (i + 1)).pipe(
+        map(() => this.updateSingleTaskStatus(jobId, i))
+      );
+      updateObservables.push(updateObservable);
+    }
+
+    // Concat all observables to run them sequentially
+    return concat(...updateObservables);
   }
 }

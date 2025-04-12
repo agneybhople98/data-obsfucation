@@ -1,126 +1,140 @@
 <!-- obsfucation-control.component.html -->
 
-<mat-drawer-container
-  class="example-container !min-h-[calc(100vh-64px-60px)]"
-  [hasBackdrop]="false"
->
-  <mat-drawer #drawer mode="over" position="end" class="!w-[50%] !rounded-none">
-    <div class="header bg-secondary flex justify-between items-center !p-4">
-      <div class="font-semibold">Create Obsfucation Control</div>
+<div class="bg-white">
+  <app-breadcrumb></app-breadcrumb>
+</div>
 
-      <div
-        (click)="drawer.close()"
-        class="border-[2px] rounded-full cursor-pointer flex justify-center items-center"
-      >
-        <mat-icon
-          class="flex justify-center items-center !p-[2px] !text-[20px] !font-semibold"
-          >close</mat-icon
+<router-outlet></router-outlet>
+
+<div class="bg-white p-4" *ngIf="!router.url.includes('create-obsfucation')">
+  <mat-drawer-container
+    class="example-container !min-h-[calc(100vh-64px-60px)]"
+    [hasBackdrop]="false"
+  >
+    <mat-drawer
+      #drawer
+      mode="over"
+      position="end"
+      class="!w-[50%] !rounded-none"
+    >
+      <div class="header bg-secondary flex justify-between items-center !p-4">
+        <div class="font-semibold">Create Obsfucation Control</div>
+
+        <div
+          (click)="drawer.close()"
+          class="border-[2px] rounded-full cursor-pointer flex justify-center items-center"
         >
+          <mat-icon
+            class="flex justify-center items-center !p-[2px] !text-[20px] !font-semibold"
+            >close</mat-icon
+          >
+        </div>
       </div>
-    </div>
 
-    <div class="flex gap-2 !p-4">
-      <app-input
-        class="flex-1"
-        label="Name"
-        formControlName="name"
-        value="Healthcare Service Meta"
-      >
-      </app-input>
-      <app-input
-        class="flex-1"
-        label="Username"
-        formControlName="username"
-        [required]="true"
-        value="Healthcare services UMG schema - A created for masking production"
-        [additionalInfo]="'Last connection Date: 09/04/2025 11:50 PM'"
-      >
-      </app-input>
-    </div>
+      <div class="flex gap-2 !p-4">
+        <app-input
+          class="flex-1"
+          label="Name"
+          formControlName="name"
+          value="Healthcare Service Meta"
+        >
+        </app-input>
+        <app-input
+          class="flex-1"
+          label="Username"
+          formControlName="username"
+          [required]="true"
+          value="Healthcare services UMG schema - A created for masking production"
+          [additionalInfo]="'Last connection Date: 09/04/2025 11:50 PM'"
+        >
+        </app-input>
+      </div>
 
-    <div class="!mb-4 !mx-4">
-      <div class="font-medium text-md">Source Database Details</div>
-      <div class="element-diagram border-[0.5px] !px-4 !py-3">
-        <div class="flex gap-4">
-          <div class="flex-1">
-            <app-input label="Name" formControlName="name" [value]="'Testing'">
-            </app-input>
+      <div class="!mb-4 !mx-4">
+        <div class="font-medium text-md">Source Database Details</div>
+        <div class="element-diagram border-[0.5px] !px-4 !py-3">
+          <div class="flex gap-4">
+            <div class="flex-1">
+              <app-input
+                label="Name"
+                formControlName="name"
+                [value]="'Testing'"
+              >
+              </app-input>
+            </div>
+            <div class="flex-1">
+              <app-input
+                label="Databse Type"
+                formControlName="databaseType"
+                [value]="'Oracle Database'"
+              >
+              </app-input>
+            </div>
           </div>
-          <div class="flex-1">
-            <app-input
-              label="Databse Type"
-              formControlName="databaseType"
-              [value]="'Oracle Database'"
-            >
-            </app-input>
+          <div class="flex gap-3">
+            <div class="flex-1">
+              <app-input
+                label="URL"
+                formControlName="url"
+                [required]="true"
+                [value]="'https://do.uat.riaproducts.com/'"
+              >
+              </app-input>
+            </div>
+            <div class="flex-1">
+              <app-input
+                label="Schema Name"
+                formControlName="password"
+                [required]="true"
+                [value]="'MSKADM'"
+              >
+              </app-input>
+            </div>
           </div>
-        </div>
-        <div class="flex gap-3">
-          <div class="flex-1">
-            <app-input
-              label="URL"
-              formControlName="url"
-              [required]="true"
-              [value]="'https://do.uat.riaproducts.com/'"
-            >
-            </app-input>
-          </div>
-          <div class="flex-1">
-            <app-input
-              label="Schema Name"
-              formControlName="password"
-              [required]="true"
-              [value]="'MSKADM'"
-            >
-            </app-input>
-          </div>
-        </div>
-        <div class="flex gap-3 items-center">
-          <div class="flex-2">
-            <app-input
-              label="Username"
-              formControlName="username"
-              [required]="true"
-              [value]="'RIA_Advisory'"
-              [additionalInfo]="'Last connection Date: 09/04/2025 11:50 PM'"
-            >
-            </app-input>
-          </div>
-          <div class="flex-1">
-            <app-input
-              label="Password"
-              formControlName="password"
-              [required]="true"
-              [value]="'riahealthcare123'"
-            >
-            </app-input>
-          </div>
-          <div class="flex-1">
-            <button mat-raised-button (click)="isConnected = true">
-              Test Connection
-            </button>
-            <div
-              *ngIf="isConnected"
-              class="!text-[#34A135] !text-[10px] !text-center !mt-2"
-            >
-              Connection successfull
+          <div class="flex gap-3 items-center">
+            <div class="flex-2">
+              <app-input
+                label="Username"
+                formControlName="username"
+                [required]="true"
+                [value]="'RIA_Advisory'"
+                [additionalInfo]="'Last connection Date: 09/04/2025 11:50 PM'"
+              >
+              </app-input>
+            </div>
+            <div class="flex-1">
+              <app-input
+                label="Password"
+                formControlName="password"
+                [required]="true"
+                [value]="'riahealthcare123'"
+              >
+              </app-input>
+            </div>
+            <div class="flex-1">
+              <button mat-raised-button (click)="isConnected = true">
+                Test Connection
+              </button>
+              <div
+                *ngIf="isConnected"
+                class="!text-[#34A135] !text-[10px] !text-center !mt-2"
+              >
+                Connection successfull
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="footer bg-secondary !w-[100%] absolute bottom-0">
-      <div class="flex justify-end items-center !m-2">
-        <button (click)="drawer.close()" mat-button>Close</button>
-        <button mat-raised-button>Create</button>
+      <div class="footer bg-secondary !w-[100%] absolute bottom-0">
+        <div class="flex justify-end items-center !m-2">
+          <button (click)="drawer.close()" mat-button>Close</button>
+          <button mat-raised-button routerLink="create-obsfucation">
+            Create
+          </button>
+        </div>
       </div>
-    </div>
-  </mat-drawer>
-  <mat-drawer-content>
-    <div class="bg-white">
-      <app-breadcrumb></app-breadcrumb>
-    </div>
-    <div class="bg-white p-4 !m-5">
+    </mat-drawer>
+    <mat-drawer-content>
       <div class="!m-3">
         <div class="flex justify-between items-center !p-3 !mx-2">
           <div class="font-semibold">Obsfucation Control</div>
@@ -314,6 +328,6 @@
         >
         </mat-paginator>
       </div>
-    </div>
-  </mat-drawer-content>
-</mat-drawer-container>
+    </mat-drawer-content>
+  </mat-drawer-container>
+</div>

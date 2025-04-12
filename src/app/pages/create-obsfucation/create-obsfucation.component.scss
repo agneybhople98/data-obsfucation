@@ -1,0 +1,29 @@
+/* In your component's CSS file or global styles */
+.mat-mdc-table {
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.mat-mdc-header-row {
+  background-color: #f9fafb;
+}
+
+.mat-mdc-header-cell {
+  font-weight: 500;
+  color: #374151;
+}
+
+.mat-column-select {
+  width: 100px;
+}
+
+/* Fix for checkbox alignment */
+.mat-mdc-checkbox .mdc-checkbox {
+  margin-right: 8px;
+}
+
+/* Ensure app-dropdown components look like the ones in the image */
+app-dropdown {
+  display: block;
+  min-width: 200px;
+}

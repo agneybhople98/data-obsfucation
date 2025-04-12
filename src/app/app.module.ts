@@ -25,6 +25,10 @@ import { JobDetailsComponent } from './pages/job-details/job-details.component';
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 import { CreateJobComponent } from './components/create-job/create-job.component';
 import { InputComponent } from './components/input/input.component';
+import { CreateObsfucationComponent } from './pages/create-obsfucation/create-obsfucation.component';
+import { DropdownComponent } from './components/dropdown/dropdown.component';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -39,10 +43,13 @@ import { InputComponent } from './components/input/input.component';
     BreadcrumbComponent,
     CreateJobComponent,
     InputComponent,
+    CreateObsfucationComponent,
+    DropdownComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    MatDividerModule,
     RouterModule,
     MatIconModule,
     MatButtonModule,
@@ -56,6 +63,7 @@ import { InputComponent } from './components/input/input.component';
     MatFormFieldModule,
     MatInputModule,
     MatMenuModule,
+    MatCheckboxModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

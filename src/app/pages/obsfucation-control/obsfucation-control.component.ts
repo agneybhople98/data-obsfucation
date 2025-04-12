@@ -11,6 +11,7 @@ import {
   trigger,
 } from '@angular/animations';
 import { MatPaginator } from '@angular/material/paginator';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-obsfucation-control',
@@ -48,7 +49,8 @@ export class ObsfucationControl implements OnInit, AfterViewInit {
 
   constructor(
     private _dialog: MatDialog,
-    private obsfucationService: ObsfucationService
+    private obsfucationService: ObsfucationService,
+    public router: Router
   ) {}
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 

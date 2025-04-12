@@ -1,0 +1,64 @@
+<div
+  class="dropdown-container"
+  [class.focused]="focused"
+  [class.has-value]="hasValue"
+  [class.disabled]="disabled"
+  [class.invalid]="invalid"
+  [class.open]="isOpen"
+>
+  <div class="dropdown-wrapper">
+    <label *ngIf="label" class="dropdown-label">
+      {{ label }} <span *ngIf="required" class="required-indicator">*</span>
+    </label>
+
+    <div
+      #selectElement
+      class="dropdown-select"
+      tabindex="0"
+      (click)="toggleDropdown()"
+      (keydown.enter)="toggleDropdown()"
+      (keydown.space)="toggleDropdown(); $event.preventDefault()"
+    >
+      <div class="selected-text">
+        {{ hasValue ? displayValue : placeholder }}
+      </div>
+
+      <div class="dropdown-arrow">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="dropdown-underline">
+    <div class="dropdown-ripple"></div>
+  </div>
+
+  <div class="dropdown-options" [class.open]="isOpen">
+    <div
+      *ngFor="let option of options"
+      class="dropdown-option"
+      [class.selected]="selectedOption === option"
+      (click)="selectOption(option); $event.stopPropagation()"
+    >
+      {{ typeof option === 'object' ? option[displayField] : option }}
+    </div>
+  </div>
+
+  <div *ngIf="invalid && control?.errors" class="error-messages">
+    <div *ngIf="control?.errors?.['required']" class="error-message">
+      This field is required
+    </div>
+  </div>
+</div>

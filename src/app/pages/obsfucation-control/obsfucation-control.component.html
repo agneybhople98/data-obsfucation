@@ -6,8 +6,8 @@
 
 <div class="bg-white p-4" *ngIf="!router.url.includes('create-obsfucation')">
   <mat-drawer-container
-    class="example-container !min-h-[calc(100vh-64px-60px)]"
-    [hasBackdrop]="false"
+    class="!min-h-[calc(100vh-64px-60px)]"
+    hasBackdrop="false"
   >
     <mat-drawer
       #drawer
@@ -123,12 +123,18 @@
           </div>
         </div>
       </div>
-      <div class="footer bg-secondary !w-[100%] absolute bottom-0">
-        <div class="flex justify-end items-center !m-2">
-          <button (click)="drawer.close()" mat-button>Close</button>
-          <button mat-raised-button routerLink="create-obsfucation">
-            Create
-          </button>
+      <div
+        class="footer border-t-1 border-gray-200 !w-[100%] absolute bottom-0"
+      >
+        <div class="flex justify-end items-center !m-2 !p-2">
+          <app-button text="Close" variant="default" (clicked)="drawer.close()">
+          </app-button>
+          <app-button
+            routerLink="create-obsfucation"
+            text="Create"
+            variant="success"
+          >
+          </app-button>
         </div>
       </div>
     </mat-drawer>
@@ -136,9 +142,11 @@
       <div class="!m-3">
         <div class="flex justify-between items-center !p-3 !mx-2">
           <div class="font-semibold">Obsfucation Control</div>
-          <button mat-raised-button color="primary" (click)="drawer.toggle()">
-            Add Obsfucation Control
-          </button>
+          <app-button
+            (clicked)="drawer.toggle()"
+            text="Add Obsfucation Control"
+            variant="primary"
+          ></app-button>
         </div>
         <div>
           <table

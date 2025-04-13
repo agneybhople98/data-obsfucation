@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
@@ -11,13 +11,14 @@ import { ChangeDetectorRef } from '@angular/core';
   styleUrl: './dashboard.component.scss',
   standalone: false,
 })
-export class DashboardComponent implements AfterViewInit {
+export class DashboardComponent implements AfterViewInit, OnInit {
   public dataSource: any;
   constructor(
     private _router: Router,
     public jobService: JobsDataService,
     private changeDetectorRef: ChangeDetectorRef
-  ) {
+  ) {}
+  ngOnInit(): void {
     this.dataSource = new MatTableDataSource<JobElement>(
       this.jobService.getAllJobs()
     );

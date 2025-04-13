@@ -1,3 +1,226 @@
 <div class="bg-white">
   <app-breadcrumb></app-breadcrumb>
 </div>
+
+<div class="bg-white">
+  <mat-drawer-container
+    class="!min-h-[calc(100vh-64px-60px)]"
+    hasBackdrop="false"
+  >
+    <mat-drawer
+      #drawer
+      mode="over"
+      position="end"
+      class="!w-[50%] !rounded-none"
+    >
+      <div class="header bg-secondary flex justify-between items-center !p-4">
+        <div class="font-semibold">Create Job Control</div>
+
+        <div
+          (click)="drawer.close()"
+          class="border-[2px] rounded-full cursor-pointer flex justify-center items-center"
+        >
+          <mat-icon
+            class="flex justify-center items-center !p-[2px] !text-[20px] !font-semibold"
+            >close</mat-icon
+          >
+        </div>
+      </div>
+
+      <div class="flex gap-2 !px-4">
+        <app-input
+          class="flex-1"
+          label="Name"
+          formControlName="name"
+          value="Healthcare Service Meta"
+        >
+        </app-input>
+        <app-input
+          class="flex-2"
+          label="Description"
+          formControlName="description"
+          value="Healthcare services UMG schema - A created for masking production"
+          [additionalInfo]="'Last connection Date: 09/04/2025 11:50 PM'"
+        >
+        </app-input>
+      </div>
+      <div class="flex gap-2 !px-4 w-[40%]">
+        <div class="flex-1">
+          <app-dropdown
+            label="Select Obsfucation Control"
+            [options]="obsControlOptions"
+          ></app-dropdown>
+        </div>
+      </div>
+
+      <div class="!mb-4 !mx-4">
+        <div class="font-medium text-md">Source Database Details</div>
+        <div class="element-diagram border-[0.5px] !px-4 !py-3">
+          <div class="flex gap-4">
+            <div class="flex-1">
+              <app-input
+                label="Name"
+                formControlName="name"
+                [value]="'Testing'"
+              >
+              </app-input>
+            </div>
+            <div class="flex-1">
+              <app-input
+                label="Databse Type"
+                formControlName="databaseType"
+                [value]="'Oracle Database'"
+              >
+              </app-input>
+            </div>
+          </div>
+          <div class="flex gap-3">
+            <div class="flex-1">
+              <app-input
+                label="URL"
+                formControlName="url"
+                [required]="true"
+                [value]="'https://do.uat.riaproducts.com/'"
+              >
+              </app-input>
+            </div>
+            <div class="flex-1">
+              <app-input
+                label="Schema Name"
+                formControlName="password"
+                [required]="true"
+                [value]="'MSKADM'"
+              >
+              </app-input>
+            </div>
+          </div>
+          <div class="flex gap-3 items-center">
+            <div class="flex-2">
+              <app-input
+                label="Username"
+                formControlName="username"
+                [required]="true"
+                [value]="'RIA_Advisory'"
+                [additionalInfo]="'Last connection Date: 09/04/2025 11:50 PM'"
+              >
+              </app-input>
+            </div>
+            <div class="flex-1">
+              <app-input
+                label="Password"
+                formControlName="password"
+                [required]="true"
+                [value]="'riahealthcare123'"
+              >
+              </app-input>
+            </div>
+            <div class="flex-1">
+              <button mat-raised-button (click)="(true)">
+                Test Connection
+              </button>
+              <div
+                *ngIf="false"
+                class="!text-[#34A135] !text-[10px] !text-center !mt-2"
+              >
+                Connection successfull
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="footer border-t-1 border-gray-200 !w-[100%] absolute bottom-0"
+      >
+        <div class="flex justify-end items-center !m-2 !p-2">
+          <app-button text="Close" variant="default" (clicked)="drawer.close()">
+          </app-button>
+          <app-button
+            routerLink="create-obsfucation"
+            text="Execute"
+            variant="success"
+          >
+          </app-button>
+        </div>
+      </div>
+    </mat-drawer>
+    <mat-drawer-content>
+      <div class="bg-white">
+        <div class="!px-3 !mx-2">
+          <div class="flex justify-between items-center">
+            <div class="font-semibold text-md">Job Control List</div>
+            <div class="flex items-center gap-4">
+              <app-input label="Search Job Control"></app-input>
+              <app-button
+                (clicked)="drawer.toggle()"
+                text="Create Job Control"
+                variant="success"
+              ></app-button>
+            </div>
+          </div>
+        </div>
+
+        <div class="!px-4">
+          <table
+            mat-table
+            [dataSource]="dataSource"
+            multiTemplateDataRows
+            class="mat-elevation-z8"
+          >
+            <!-- Job Control ID  -->
+            <ng-container matColumnDef="jobControlId">
+              <th mat-header-cell *matHeaderCellDef>Job Control ID</th>
+              <td
+                class="font-medium cursor-pointer"
+                style="color: #3179e5"
+                mat-cell
+                *matCellDef="let element"
+              >
+                {{ element.jobControlId }}
+              </td>
+            </ng-container>
+
+            <!-- Job Control Name Column -->
+            <ng-container matColumnDef="jobControlName">
+              <th mat-header-cell *matHeaderCellDef>Job Control Name</th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.jobControlName }}
+              </td>
+            </ng-container>
+
+            <!-- Job Control Description Column -->
+            <ng-container matColumnDef="jobControlDescription">
+              <th mat-header-cell *matHeaderCellDef>Obsfucation Description</th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.jobControlDescription }}
+              </td>
+            </ng-container>
+
+            <!-- Last Triggerd On Column -->
+            <ng-container matColumnDef="lastTriggeredOn">
+              <th mat-header-cell *matHeaderCellDef>Last Triggered On</th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.lastTriggeredOn }}
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="actions">
+              <th mat-header-cell *matHeaderCellDef></th>
+              <td mat-cell *matCellDef="let element">
+                <app-button variant="primary" text="Run Job"></app-button>
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+          </table>
+          <mat-paginator
+            [pageSizeOptions]="[5, 10, 20]"
+            showFirstLastButtons
+            aria-label="Select page of periodic elements"
+          >
+          </mat-paginator>
+        </div>
+      </div>
+    </mat-drawer-content>
+  </mat-drawer-container>
+</div>

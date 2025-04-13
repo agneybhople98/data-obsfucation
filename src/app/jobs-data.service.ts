@@ -11,6 +11,13 @@ export interface JobElement {
   tasks: any;
 }
 
+export interface JobDataControlElement {
+  jobControlId: string;
+  jobControlName: any;
+  jobControlDescription: string;
+  lastTriggeredOn: string;
+}
+
 const ELEMENT_DATA: JobElement[] = [
   {
     jobId: 'RUN-98765',
@@ -163,11 +170,53 @@ const ELEMENT_DATA: JobElement[] = [
   },
 ];
 
+const ELEMENT_DATA_JOB_CONTROL: JobDataControlElement[] = [
+  {
+    jobControlId: 'RUN-98765',
+    jobControlName: 'Healthcare service US',
+    jobControlDescription: 'Healthcare Service Prod data - US',
+    lastTriggeredOn: '04/01/2025 07:23:12AM',
+  },
+  {
+    jobControlId: 'RUN-00123',
+    jobControlName: 'Insurance Claims Db',
+    jobControlDescription: 'Insurance claims settlement prod instance',
+    lastTriggeredOn: '04/02/2025 07:33:22AM',
+  },
+  {
+    jobControlId: 'RUN-98763',
+    jobControlName: 'Healthcare service US',
+    jobControlDescription: 'Healthcare Service Prod data - NA',
+    lastTriggeredOn: '04/04/2025 08:22:10AM',
+  },
+  {
+    jobControlId: 'RUN-98762',
+    jobControlName: 'Healthcare service US',
+    jobControlDescription: 'Healthcare Service Prod data - AUS',
+    lastTriggeredOn: '04/05/2025 09:30:33AM',
+  },
+  {
+    jobControlId: 'RUN-98762',
+    jobControlName: 'RadiologyImages_Metadata',
+    jobControlDescription:
+      'Metadata about X-rays, MRIs, and CT scans (excluding actual images)',
+    lastTriggeredOn: '04/05/2025 09:30:33AM',
+  },
+  {
+    jobControlId: 'RUN-98762',
+    jobControlName: 'PATIENT_MASTER_PROD',
+    jobControlDescription: 'Master Db for patient demographics',
+    lastTriggeredOn: '04/05/2025 09:30:33AM',
+  },
+];
+
 @Injectable({
   providedIn: 'root',
 })
 export class JobsDataService {
   private jobsData: JobElement[] = ELEMENT_DATA;
+  private jobsDataControlData: JobDataControlElement[] =
+    ELEMENT_DATA_JOB_CONTROL;
 
   constructor() {}
 
@@ -177,6 +226,10 @@ export class JobsDataService {
 
   getAllJobs(): JobElement[] {
     return this.jobsData;
+  }
+
+  getAllJobControlData(): JobDataControlElement[] {
+    return this.jobsDataControlData;
   }
 
   /**

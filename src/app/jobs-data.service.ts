@@ -25,7 +25,7 @@ const ELEMENT_DATA: JobElement[] = [
     jobDescription: 'Healthcare Service Prod data - US',
     triggeredOn: '04/01/2025 07:23:12AM',
     status: 'in-progress',
-    progress: 75,
+    progress: 17,
     tasks: [
       {
         taskId: 'TASK-12345',
@@ -289,7 +289,7 @@ export class JobsDataService {
 
     for (let i = 0; i < taskCount; i++) {
       // The delay increases by 1 second for each task
-      const updateObservable = timer(300 * (i + 1)).pipe(
+      const updateObservable = timer(400 * (i + 1)).pipe(
         map(() => this.updateSingleTaskStatus(jobId, i))
       );
       updateObservables.push(updateObservable);

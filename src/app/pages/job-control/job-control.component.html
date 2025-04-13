@@ -151,7 +151,11 @@
           <div class="flex justify-between items-center">
             <div class="font-semibold text-md">Job Control List</div>
             <div class="flex items-center gap-4">
-              <app-input label="Search Job Control"></app-input>
+              <app-input
+                style="width: 300px"
+                label="Search Job Control"
+                class="search-input"
+              ></app-input>
               <app-button
                 (clicked)="drawer.toggle()"
                 text="Create Job Control"

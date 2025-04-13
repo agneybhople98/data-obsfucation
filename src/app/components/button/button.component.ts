@@ -11,6 +11,7 @@ export class ButtonComponent {
   @Input() variant: 'primary' | 'success' | 'default' | 'link' = 'default';
   @Input() disabled: boolean = false;
   @Input() type: 'button' | 'submit' | 'reset' = 'button';
+  @Input() path: string = '';
   @Output() clicked = new EventEmitter<void>();
 
   onClick(): void {

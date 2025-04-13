@@ -115,12 +115,14 @@
               </app-input>
             </div>
             <div class="flex-1">
-              <button mat-raised-button (click)="(true)">
-                Test Connection
-              </button>
+              <app-button
+                variant="primary"
+                text="Test Connection"
+                (clicked)="isConnected = true"
+              ></app-button>
               <div
-                *ngIf="false"
-                class="!text-[#34A135] !text-[10px] !text-center !mt-2"
+                *ngIf="isConnected"
+                class="!text-[#34A135] !text-[10px] !ms-4 !mt-2"
               >
                 Connection successfull
               </div>
@@ -206,7 +208,11 @@
             <ng-container matColumnDef="actions">
               <th mat-header-cell *matHeaderCellDef></th>
               <td mat-cell *matCellDef="let element">
-                <app-button variant="primary" text="Run Job"></app-button>
+                <app-button
+                  path="../../../assets/play.svg"
+                  variant="primary"
+                  text="Run Job"
+                ></app-button>
               </td>
             </ng-container>
 

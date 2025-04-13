@@ -4,5 +4,10 @@
   [disabled]="disabled"
   (click)="onClick()"
 >
-  {{ text }}
+  <div class="flex items-center gap-2">
+    <img *ngIf="path" [src]="path" alt="" />
+    <span>
+      {{ text }}
+    </span>
+  </div>
 </button>

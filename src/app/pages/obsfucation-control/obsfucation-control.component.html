@@ -4,7 +4,7 @@
 
 <router-outlet></router-outlet>
 
-<div class="bg-white p-4" *ngIf="!router.url.includes('create-obsfucation')">
+<div class="bg-white" *ngIf="!router.url.includes('create-obsfucation')">
   <mat-drawer-container
     class="!min-h-[calc(100vh-64px-60px)]"
     hasBackdrop="false"
@@ -110,12 +110,14 @@
               </app-input>
             </div>
             <div class="flex-1">
-              <button mat-raised-button (click)="isConnected = true">
-                Test Connection
-              </button>
+              <app-button
+                variant="primary"
+                text="Test Connection"
+                (clicked)="isConnected = true"
+              ></app-button>
               <div
                 *ngIf="isConnected"
-                class="!text-[#34A135] !text-[10px] !text-center !mt-2"
+                class="!text-[#34A135] !text-[10px] !ms-4 !mt-2"
               >
                 Connection successfull
               </div>
@@ -139,196 +141,202 @@
       </div>
     </mat-drawer>
     <mat-drawer-content>
-      <div class="!m-3">
-        <div class="flex justify-between items-center !p-3 !mx-2">
-          <div class="font-semibold">Obsfucation Control</div>
-          <app-button
-            (clicked)="drawer.toggle()"
-            text="Add Obsfucation Control"
-            variant="primary"
-          ></app-button>
-        </div>
-        <div>
-          <table
-            mat-table
-            [dataSource]="dataSource"
-            multiTemplateDataRows
-            class="mat-elevation-z8"
-          >
-            <!-- Expand Column -->
-            <ng-container matColumnDef="expand">
-              <th mat-header-cell *matHeaderCellDef aria-label="row actions">
-                &nbsp;
-              </th>
-              <td mat-cell *matCellDef="let element">
-                <button
-                  class="bg-primary text-white rounded-xs !h-[24px] !w-[24px] cursor-pointer"
-                  aria-label="expand row"
-                  (click)="
-                    expandedElement =
-                      expandedElement === element ? null : element;
-                    $event.stopPropagation()
-                  "
-                >
-                  <mat-icon
-                    *ngIf="expandedElement !== element"
-                    class="!p-[0.5px]"
+      <div class="bg-white">
+        <div class="!px-3 !mx-2">
+          <div class="flex justify-between items-center !p-3 !mx-2">
+            <div class="font-semibold">Obsfucation Control</div>
+            <app-button
+              (clicked)="drawer.toggle()"
+              text="Add Obsfucation Control"
+              variant="primary"
+            ></app-button>
+          </div>
+          <div>
+            <table
+              mat-table
+              [dataSource]="dataSource"
+              multiTemplateDataRows
+              class="mat-elevation-z8"
+            >
+              <!-- Expand Column -->
+              <ng-container matColumnDef="expand">
+                <th mat-header-cell *matHeaderCellDef aria-label="row actions">
+                  &nbsp;
+                </th>
+                <td mat-cell *matCellDef="let element">
+                  <button
+                    class="bg-primary text-white rounded-xs !h-[24px] !w-[24px] cursor-pointer"
+                    aria-label="expand row"
+                    (click)="
+                      expandedElement =
+                        expandedElement === element ? null : element;
+                      $event.stopPropagation()
+                    "
                   >
-                    add
-                  </mat-icon>
-                  <mat-icon
-                    *ngIf="expandedElement === element"
-                    class="!p-[0.5px]"
-                    >remove</mat-icon
-                  >
-                </button>
-              </td>
-            </ng-container>
+                    <mat-icon
+                      *ngIf="expandedElement !== element"
+                      class="!p-[0.5px]"
+                    >
+                      add
+                    </mat-icon>
+                    <mat-icon
+                      *ngIf="expandedElement === element"
+                      class="!p-[0.5px]"
+                      >remove</mat-icon
+                    >
+                  </button>
+                </td>
+              </ng-container>
 
-            <!-- Obsfucation Control ID Column -->
-            <ng-container matColumnDef="obsControlId">
-              <th mat-header-cell *matHeaderCellDef>Obsfucation Control ID</th>
-              <td
-                class="font-medium cursor-pointer"
-                style="color: #3179e5"
-                mat-cell
-                *matCellDef="let element"
-              >
-                {{ element.obsControlId }}
-              </td>
-            </ng-container>
-
-            <!-- Obsfucation Name Column -->
-            <ng-container matColumnDef="obsControlName">
-              <th mat-header-cell *matHeaderCellDef>Obsfucation Name</th>
-              <td mat-cell *matCellDef="let element">
-                {{ element.obsControlName }}
-              </td>
-            </ng-container>
-
-            <!-- Obsfucation Description Column -->
-            <ng-container matColumnDef="obsControlDescription">
-              <th mat-header-cell *matHeaderCellDef>Obsfucation Description</th>
-              <td mat-cell *matCellDef="let element">
-                {{ element.obsControlDescription }}
-              </td>
-            </ng-container>
-
-            <!-- Created By Column -->
-            <ng-container matColumnDef="createdBy">
-              <th mat-header-cell *matHeaderCellDef>Created By</th>
-              <td mat-cell *matCellDef="let element">
-                {{ element.createdBy }}
-              </td>
-            </ng-container>
-
-            <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
-            <ng-container matColumnDef="expandedDetail">
-              <td
-                mat-cell
-                *matCellDef="let element"
-                [attr.colspan]="columnsToDisplayWithExpand.length"
-              >
-                <div
-                  class="element-detail"
-                  [@detailExpand]="
-                    element == expandedElement ? 'expanded' : 'collapsed'
-                  "
+              <!-- Obsfucation Control ID Column -->
+              <ng-container matColumnDef="obsControlId">
+                <th mat-header-cell *matHeaderCellDef>
+                  Obsfucation Control ID
+                </th>
+                <td
+                  class="font-medium cursor-pointer"
+                  style="color: #3179e5"
+                  mat-cell
+                  *matCellDef="let element"
                 >
-                  <div class="element-diagram">
-                    <div class="flex gap-4">
-                      <div class="flex-1">
-                        <app-input
-                          label="Name"
-                          formControlName="name"
-                          [value]="element.details.name"
-                        >
-                        </app-input>
+                  {{ element.obsControlId }}
+                </td>
+              </ng-container>
+
+              <!-- Obsfucation Name Column -->
+              <ng-container matColumnDef="obsControlName">
+                <th mat-header-cell *matHeaderCellDef>Obsfucation Name</th>
+                <td mat-cell *matCellDef="let element">
+                  {{ element.obsControlName }}
+                </td>
+              </ng-container>
+
+              <!-- Obsfucation Description Column -->
+              <ng-container matColumnDef="obsControlDescription">
+                <th mat-header-cell *matHeaderCellDef>
+                  Obsfucation Description
+                </th>
+                <td mat-cell *matCellDef="let element">
+                  {{ element.obsControlDescription }}
+                </td>
+              </ng-container>
+
+              <!-- Created By Column -->
+              <ng-container matColumnDef="createdBy">
+                <th mat-header-cell *matHeaderCellDef>Created By</th>
+                <td mat-cell *matCellDef="let element">
+                  {{ element.createdBy }}
+                </td>
+              </ng-container>
+
+              <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+              <ng-container matColumnDef="expandedDetail">
+                <td
+                  mat-cell
+                  *matCellDef="let element"
+                  [attr.colspan]="columnsToDisplayWithExpand.length"
+                >
+                  <div
+                    class="element-detail"
+                    [@detailExpand]="
+                      element == expandedElement ? 'expanded' : 'collapsed'
+                    "
+                  >
+                    <div class="element-diagram">
+                      <div class="flex gap-4">
+                        <div class="flex-1">
+                          <app-input
+                            label="Name"
+                            formControlName="name"
+                            [value]="element.details.name"
+                          >
+                          </app-input>
+                        </div>
+                        <div class="flex-1">
+                          <app-input
+                            label="Databse Type"
+                            formControlName="databaseType"
+                            [value]="element.details.databaseType"
+                          >
+                          </app-input>
+                        </div>
+                        <div class="flex-2">
+                          <app-input
+                            label="URL"
+                            formControlName="url"
+                            [required]="true"
+                            [value]="element.details.url"
+                          >
+                          </app-input>
+                        </div>
                       </div>
-                      <div class="flex-1">
-                        <app-input
-                          label="Databse Type"
-                          formControlName="databaseType"
-                          [value]="element.details.databaseType"
-                        >
-                        </app-input>
-                      </div>
-                      <div class="flex-2">
-                        <app-input
-                          label="URL"
-                          formControlName="url"
-                          [required]="true"
-                          [value]="element.details.url"
-                        >
-                        </app-input>
-                      </div>
-                    </div>
-                    <div class="flex w-[60%] gap-3 !mt-3">
-                      <div class="flex-1">
-                        <app-input
-                          label="Username"
-                          formControlName="username"
-                          [required]="true"
-                          [value]="element.details.username"
-                          [additionalInfo]="
-                            'Last connection Date: 09/04/2025 11:50 PM'
-                          "
-                        >
-                        </app-input>
-                      </div>
-                      <div class="flex-1">
-                        <app-input
-                          label="Password"
-                          formControlName="password"
-                          [required]="true"
-                          [value]="element.details.password"
-                        >
-                        </app-input>
-                      </div>
-                      <div class="flex-1">
-                        <app-input
-                          label="Schema Name"
-                          formControlName="password"
-                          [required]="true"
-                          [value]="element.details.schemaName"
-                        >
-                        </app-input>
+                      <div class="flex w-[60%] gap-3 !mt-3">
+                        <div class="flex-1">
+                          <app-input
+                            label="Username"
+                            formControlName="username"
+                            [required]="true"
+                            [value]="element.details.username"
+                            [additionalInfo]="
+                              'Last connection Date: 09/04/2025 11:50 PM'
+                            "
+                          >
+                          </app-input>
+                        </div>
+                        <div class="flex-1">
+                          <app-input
+                            label="Password"
+                            formControlName="password"
+                            [required]="true"
+                            [value]="element.details.password"
+                          >
+                          </app-input>
+                        </div>
+                        <div class="flex-1">
+                          <app-input
+                            label="Schema Name"
+                            formControlName="password"
+                            [required]="true"
+                            [value]="element.details.schemaName"
+                          >
+                          </app-input>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              </td>
-            </ng-container>
+                </td>
+              </ng-container>
 
-            <!-- Header Row -->
-            <tr
-              mat-header-row
-              *matHeaderRowDef="columnsToDisplayWithExpand"
-            ></tr>
+              <!-- Header Row -->
+              <tr
+                mat-header-row
+                *matHeaderRowDef="columnsToDisplayWithExpand"
+              ></tr>
 
-            <!-- Data Row -->
-            <tr
-              mat-row
-              *matRowDef="let element; columns: columnsToDisplayWithExpand"
-              class="element-row"
-              [class.expanded-row]="expandedElement === element"
-            ></tr>
+              <!-- Data Row -->
+              <tr
+                mat-row
+                *matRowDef="let element; columns: columnsToDisplayWithExpand"
+                class="element-row"
+                [class.expanded-row]="expandedElement === element"
+              ></tr>
 
-            <!-- Expanded Detail Row -->
-            <tr
-              mat-row
-              *matRowDef="let row; columns: ['expandedDetail']"
-              class="detail-row"
-            ></tr>
-          </table>
+              <!-- Expanded Detail Row -->
+              <tr
+                mat-row
+                *matRowDef="let row; columns: ['expandedDetail']"
+                class="detail-row"
+              ></tr>
+            </table>
+          </div>
+
+          <mat-paginator
+            [pageSizeOptions]="[5, 10, 20]"
+            showFirstLastButtons
+            aria-label="Select page of periodic elements"
+          >
+          </mat-paginator>
         </div>
-
-        <mat-paginator
-          [pageSizeOptions]="[5, 10, 20]"
-          showFirstLastButtons
-          aria-label="Select page of periodic elements"
-        >
-        </mat-paginator>
       </div>
     </mat-drawer-content>
   </mat-drawer-container>

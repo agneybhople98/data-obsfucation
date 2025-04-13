@@ -14,6 +14,7 @@ import {
   styleUrl: './job-control.component.scss',
 })
 export class JobControlComponent {
+  isConnected = false;
   obsControlOptions = [
     'OC-98675',
     'OC-98674',

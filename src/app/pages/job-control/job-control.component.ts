@@ -6,6 +6,8 @@ import {
   JobDataControlElement,
   JobsDataService,
 } from '../../jobs-data.service';
+import { MatDrawer } from '@angular/material/sidenav';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-job-control',
@@ -14,6 +16,7 @@ import {
   styleUrl: './job-control.component.scss',
 })
 export class JobControlComponent {
+  @ViewChild('drawer') drawer!: MatDrawer;
   isConnected = false;
   obsControlOptions = [
     'OC-98675',
@@ -34,7 +37,8 @@ export class JobControlComponent {
   ];
   constructor(
     private _dialog: MatDialog,
-    private _jobDataService: JobsDataService
+    private _jobDataService: JobsDataService,
+    private router: Router
   ) {}
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -45,5 +49,10 @@ export class JobControlComponent {
     this.dataSource = new MatTableDataSource<any>(
       this._jobDataService.getAllJobControlData()
     );
+  }
+
+  createJob() {
+    this.drawer.close();
+    this.router.navigate(['/dashboard/job-details/RUN-98765']);
   }
 }

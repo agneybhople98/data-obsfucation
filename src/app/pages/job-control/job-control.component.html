@@ -133,14 +133,12 @@
       <div
         class="footer border-t-1 border-gray-200 !w-[100%] absolute bottom-0"
       >
-        <div class="flex justify-end items-center !m-2 !p-2">
+        <div class="flex justify-end items-center !m-2 !p-2 !gap-3">
           <app-button text="Close" variant="default" (clicked)="drawer.close()">
           </app-button>
-          <app-button
-            routerLink="create-obsfucation"
-            text="Execute"
-            variant="success"
-          >
+          <app-button text="Create" variant="primary" (clicked)="createJob()">
+          </app-button>
+          <app-button text="Execute" variant="success" (clicked)="createJob()">
           </app-button>
         </div>
       </div>

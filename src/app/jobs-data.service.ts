@@ -34,6 +34,7 @@ const ELEMENT_DATA: JobElement[] = [
         status: 'Completed',
         startTime: '04/01/2025 07:23:12AM',
         endTime: '04/01/2025 07:23:12AM',
+        message: 'SQL Log: Cloning Schema is Successful',
       },
       {
         taskId: 'TASK-20547689',
@@ -41,6 +42,7 @@ const ELEMENT_DATA: JobElement[] = [
         status: 'Completed',
         startTime: '04/02/2025 07:33:22AM',
         endTime: '04/02/2025 07:33:22AM',
+        message: 'SQL Log: Cloning Schema is Successful',
       },
       {
         taskId: 'TASK-30982345',
@@ -48,6 +50,7 @@ const ELEMENT_DATA: JobElement[] = [
         status: 'Completed',
         startTime: '04/03/2025 08:11:09AM',
         endTime: '04/03/2025 08:11:09AM',
+        message: 'SQL Log: Cloning Schema is Successful',
       },
       {
         taskId: 'TASK-55678901',
@@ -55,6 +58,7 @@ const ELEMENT_DATA: JobElement[] = [
         status: 'Completed',
         startTime: '04/04/2025 08:22:10AM',
         endTime: '04/04/2025 08:22:10AM',
+        message: 'SQL Log: Cloning Schema is Successful',
       },
       {
         taskId: 'TASK-55678902',
@@ -62,6 +66,7 @@ const ELEMENT_DATA: JobElement[] = [
         status: 'Failed',
         startTime: '04/05/2025 09:30:33AM',
         endTime: '04/05/2025 09:30:33AM',
+        message: 'SQL Log: Cloning Schema is Successful',
       },
       {
         taskId: 'TASK-55678903',
@@ -69,6 +74,7 @@ const ELEMENT_DATA: JobElement[] = [
         status: 'In Progress',
         startTime: '04/02/2025 07:33:22AM',
         endTime: '04/02/2025 07:33:22AM',
+        message: 'SQL Log: Cloning Schema is Successful',
       },
       {
         taskId: 'TASK-55678904',
@@ -76,6 +82,7 @@ const ELEMENT_DATA: JobElement[] = [
         status: 'Pending',
         startTime: '',
         endTime: '',
+        message: 'SQL Log: Cloning Schema is Successful',
       },
       {
         taskId: 'TASK-55678905',
@@ -83,6 +90,7 @@ const ELEMENT_DATA: JobElement[] = [
         status: 'Pending',
         startTime: '',
         endTime: '',
+        message: 'SQL Log: Cloning Schema is Successful',
       },
     ],
   },
@@ -101,6 +109,7 @@ const ELEMENT_DATA: JobElement[] = [
         errorMessage: null,
         startTime: '2024-04-01 08:45:30',
         endTime: '2024-04-01 09:00:45',
+        message: 'SQL Log: Cloning Schema is Successful',
       },
     ],
   },
@@ -119,6 +128,7 @@ const ELEMENT_DATA: JobElement[] = [
         errorMessage: 'Invalid address format detected',
         startTime: '2024-04-01 09:01:10',
         endTime: '2024-04-01 09:15:22',
+        message: 'SQL Log: Cloning Schema is Successful',
       },
     ],
   },
@@ -138,6 +148,7 @@ const ELEMENT_DATA: JobElement[] = [
         errorMessage: null,
         startTime: '2024-04-01 10:05:12',
         endTime: '2024-04-01 10:30:45',
+        message: 'SQL Log: Cloning Schema is Successful',
       },
     ],
   },
@@ -157,6 +168,7 @@ const ELEMENT_DATA: JobElement[] = [
         errorMessage: null,
         startTime: '2024-04-01 10:35:10',
         endTime: '2024-04-01 11:15:30',
+        message: 'SQL Log: Cloning Schema is Successful',
       },
     ],
   },
@@ -175,6 +187,7 @@ const ELEMENT_DATA: JobElement[] = [
         errorMessage: `'SQL Error: ORA-00904: "EMAILID": invalid identifier https://docs.oracle.com/error-help/db/ora-00904/00904. 00000 - "%s: invalid identifier"'`,
         startTime: '2024-04-01 11:20:00',
         endTime: '2024-04-01 11:25:18',
+        message: 'SQL Log: Cloning Schema is Successful',
       },
     ],
   },
@@ -193,6 +206,7 @@ const ELEMENT_DATA: JobElement[] = [
         errorMessage: `'SQL Error: ORA-00904: "EMAILID": invalid identifier https://docs.oracle.com/error-help/db/ora-00904/00904. 00000 - "%s: invalid identifier"'`,
         startTime: '2024-04-01 11:20:00',
         endTime: '2024-04-01 11:25:18',
+        message: 'SQL Log: Cloning Schema is Successful',
       },
     ],
   },
@@ -338,7 +352,7 @@ export class JobsDataService {
 
     for (let i = 0; i < taskCount; i++) {
       // The delay increases by 1 second for each task
-      const updateObservable = timer(400 * (i + 1)).pipe(
+      const updateObservable = timer(300 * (i + 1)).pipe(
         map(() => this.updateSingleTaskStatus(jobId, i))
       );
       updateObservables.push(updateObservable);

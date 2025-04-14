@@ -2,184 +2,344 @@
   <app-breadcrumb></app-breadcrumb>
 </div>
 <div class="bg-white p-4">
-  <div class="!m-3">
-    <div class="flex justify-between items-center !p-4 !mx-2">
-      <div class="text-md font-semibold">Job Run Details</div>
-      <app-button
-        routerLink="/obsfucation-control"
-        text="View Obfuscation Control"
-        variant="primary"
-      >
-      </app-button>
-    </div>
-    <div>
-      <div class="!bg-[#F2F7FF] !pb-4">
-        <div class="flex items-center justify-between !p-4 !mx-2">
-          <div>
-            <div class="text-sm">Job Run Id</div>
-            <div class="font-medium !mt-1 text-sm">{{ jobDetails.jobId }}</div>
-          </div>
-          <div>
-            <div class="text-sm">Job Run Name</div>
-            <div class="font-medium !mt-1 text-sm">
-              {{ jobDetails.jobName }}
-            </div>
-          </div>
-          <div>
-            <div class="text-sm">Job Run Description</div>
-            <div class="font-medium !mt-1 text-sm">
-              {{ jobDetails.jobDescription }}
-            </div>
-          </div>
-          <div>
-            <div class="text-sm">Job Control</div>
-            <div class="font-semibold !mt-1 text-sm !text-[#3179e5]">
-              {{ jobDetails.jobName }}
-            </div>
-          </div>
-          <div>
-            <div class="text-sm">Triggered On</div>
-            <div class="font-medium !mt-1 text-sm">
-              {{ jobDetails.triggeredOn }}
-            </div>
-          </div>
+  <mat-drawer-container
+    class="!min-h-[calc(100vh-64px-60px)]"
+    hasBackdrop="false"
+  >
+    <mat-drawer
+      #drawer
+      mode="over"
+      position="end"
+      class="!w-[50%] !rounded-none"
+    >
+      <div class="header bg-secondary flex justify-between items-center !p-4">
+        <div class="font-semibold">View Job Control</div>
+
+        <div
+          (click)="drawer.close()"
+          class="border-[2px] rounded-full cursor-pointer flex justify-center items-center"
+        >
+          <mat-icon
+            class="flex justify-center items-center !p-[2px] !text-[20px] !font-semibold"
+            >close</mat-icon
+          >
         </div>
-        <div class="!mx-5">
-          <div class="flex gap-5 items-center">
-            <div class="text-sm">Status</div>
-            <div class="progress-bar-container !mt-1">
-              <div
-                class="progress-bar text-sm"
-                [ngClass]="jobDetails.status"
-                [style.width.%]="jobDetails.progress"
+      </div>
+
+      <div class="flex gap-2 !px-4">
+        <app-input
+          class="flex-1"
+          label="Name"
+          formControlName="name"
+          value="Healthcare Service Meta"
+        >
+        </app-input>
+        <app-input
+          class="flex-2"
+          label="Description"
+          formControlName="description"
+          value="Healthcare services UMG schema - A created for masking production"
+          [additionalInfo]="'Last connection Date: 09/04/2025 11:50 PM'"
+        >
+        </app-input>
+      </div>
+      <div class="flex gap-2 !px-4 w-[40%]">
+        <div class="flex-1">
+          <app-dropdown
+            label="Select Obsfucation Control"
+            [options]="obsControlOptions"
+          ></app-dropdown>
+        </div>
+      </div>
+
+      <div class="!mb-4 !mx-4">
+        <div class="font-medium text-md">Source Database Details</div>
+        <div class="element-diagram border-[0.5px] !px-4 !py-3">
+          <div class="flex gap-4">
+            <div class="flex-1">
+              <app-input
+                label="Name"
+                formControlName="name"
+                [value]="'Testing'"
               >
-                <span class="progress-text">{{ jobDetails.progress }}%</span>
+              </app-input>
+            </div>
+            <div class="flex-1">
+              <app-input
+                label="Databse Type"
+                formControlName="databaseType"
+                [value]="'Oracle Database'"
+              >
+              </app-input>
+            </div>
+          </div>
+          <div class="flex gap-3">
+            <div class="flex-1">
+              <app-input
+                label="URL"
+                formControlName="url"
+                [required]="true"
+                [value]="'https://do.uat.riaproducts.com/'"
+              >
+              </app-input>
+            </div>
+            <div class="flex-1">
+              <app-input
+                label="Schema Name"
+                formControlName="password"
+                [required]="true"
+                [value]="'MSKADM'"
+              >
+              </app-input>
+            </div>
+          </div>
+          <div class="flex gap-3 items-center">
+            <div class="flex-2">
+              <app-input
+                label="Username"
+                formControlName="username"
+                [required]="true"
+                [value]="'RIA_Advisory'"
+                [additionalInfo]="'Last connection Date: 09/04/2025 11:50 PM'"
+              >
+              </app-input>
+            </div>
+            <div class="flex-1">
+              <app-input
+                label="Password"
+                formControlName="password"
+                [required]="true"
+                [value]="'riahealthcare123'"
+              >
+              </app-input>
+            </div>
+            <div class="flex-1">
+              <app-button
+                variant="primary"
+                text="Test Connection"
+                (clicked)="isConnected = true"
+              ></app-button>
+              <div
+                *ngIf="isConnected"
+                class="!text-[#34A135] !text-[10px] !ms-4 !mt-2"
+              >
+                Connection successfull
               </div>
             </div>
           </div>
         </div>
       </div>
-
-      <!-- Fixed expandable table -->
-      <table
-        mat-table
-        [dataSource]="dataSource"
-        class="mat-elevation-z8"
-        multiTemplateDataRows
+      <div
+        class="footer border-t-1 border-gray-200 !w-[100%] absolute bottom-0"
       >
-        <!-- Expand Column -->
-        <ng-container matColumnDef="expand">
-          <th mat-header-cell *matHeaderCellDef aria-label="row actions">
-            &nbsp;
-          </th>
-          <td mat-cell *matCellDef="let element">
-            <button
-              class="bg-primary text-white rounded-xs !h-[24px] !w-[24px] cursor-pointer"
-              aria-label="expand row"
-              (click)="toggleRow(element); $event.stopPropagation()"
-            >
-              <mat-icon *ngIf="expandedElement !== element" class="!p-[0.5px]"
-                >add</mat-icon
-              >
-              <mat-icon *ngIf="expandedElement === element" class="!p-[0.5px]"
-                >remove</mat-icon
-              >
-            </button>
-          </td>
-        </ng-container>
-
-        <ng-container matColumnDef="taskId">
-          <th mat-header-cell *matHeaderCellDef>Task ID</th>
-          <td class="cursor-pointer" mat-cell *matCellDef="let element">
-            {{ element.taskId }}
-          </td>
-        </ng-container>
-
-        <ng-container matColumnDef="taskDescription">
-          <th mat-header-cell *matHeaderCellDef>Task Description</th>
-          <td mat-cell *matCellDef="let element">
-            {{ element.taskDescription }}
-          </td>
-        </ng-container>
-
-        <ng-container matColumnDef="status">
-          <th mat-header-cell *matHeaderCellDef>Status</th>
-          <td mat-cell *matCellDef="let element">
-            <div
-              class="task-status"
-              [ngClass]="element.status.replace(' ', '-')"
-            >
-              {{ element.status }}
-            </div>
-          </td>
-        </ng-container>
-
-        <ng-container matColumnDef="startTime">
-          <th mat-header-cell *matHeaderCellDef>Start Time</th>
-          <td mat-cell *matCellDef="let element">
-            {{ element.startTime }}
-          </td>
-        </ng-container>
-
-        <ng-container matColumnDef="endTime">
-          <th mat-header-cell *matHeaderCellDef>End Time</th>
-          <td mat-cell *matCellDef="let element">
-            {{ element.endTime }}
-          </td>
-        </ng-container>
-
-        <!-- Expanded Content Column -->
-        <ng-container matColumnDef="expandedDetail">
-          <td
-            mat-cell
-            *matCellDef="let element"
-            [attr.colspan]="columnsToDisplayWithExpand.length"
+        <div class="flex justify-end items-center !m-2 !gap-3 !p-2">
+          <app-button text="Close" variant="default" (clicked)="drawer.close()">
+          </app-button>
+          <app-button text="Execute" variant="success" (clicked)="(null)">
+          </app-button>
+        </div>
+      </div>
+    </mat-drawer>
+    <mat-drawer-content>
+      <div class="!m-3">
+        <div class="flex justify-between items-center !p-4 !mx-2">
+          <div class="text-md font-semibold">Job Run Details</div>
+          <app-button
+            routerLink="/obsfucation-control"
+            text="View Obfuscation Control"
+            variant="primary"
           >
-            <div
-              class="element-detail"
-              [@detailExpand]="
-                element === expandedElement ? 'expanded' : 'collapsed'
-              "
-            >
-              <div class="element-diagram">
-                <div class="p-4">
-                  <div>
-                    {{ element.errorMessage }}
+          </app-button>
+        </div>
+        <div>
+          <div class="!bg-[#F2F7FF] !pb-4">
+            <div class="flex items-center justify-between !p-4 !mx-2">
+              <div>
+                <div class="text-sm">Job Run Id</div>
+                <div class="font-medium !mt-1 text-sm">
+                  {{ jobDetails.jobId }}
+                </div>
+              </div>
+              <div>
+                <div class="text-sm">Job Run Name</div>
+                <div class="font-medium !mt-1 text-sm">
+                  {{ jobDetails.jobName }}
+                </div>
+              </div>
+              <div>
+                <div class="text-sm">Job Run Description</div>
+                <div class="font-medium !mt-1 text-sm">
+                  {{ jobDetails.jobDescription }}
+                </div>
+              </div>
+              <div>
+                <div class="text-sm">Job Control</div>
+                <div
+                  (click)="drawer.toggle()"
+                  class="font-semibold !mt-1 text-sm !text-[#3179e5]"
+                >
+                  {{ jobDetails.jobName }}
+                </div>
+              </div>
+              <div>
+                <div class="text-sm">Triggered On</div>
+                <div class="font-medium !mt-1 text-sm">
+                  {{ jobDetails.triggeredOn }}
+                </div>
+              </div>
+            </div>
+            <div class="!mx-5">
+              <div class="flex gap-5 items-center">
+                <div class="text-sm">Status</div>
+                <div class="progress-bar-container !mt-1">
+                  <div
+                    class="progress-bar text-sm"
+                    [ngClass]="jobDetails.status"
+                    [style.width.%]="jobDetails.progress"
+                  >
+                    <span class="progress-text"
+                      >{{ jobDetails.progress }}%</span
+                    >
                   </div>
                 </div>
               </div>
             </div>
-          </td>
-        </ng-container>
+          </div>
 
-        <!-- Header Row -->
-        <tr mat-header-row *matHeaderRowDef="columnsToDisplayWithExpand"></tr>
+          <!-- Fixed expandable table -->
+          <table
+            mat-table
+            [dataSource]="dataSource"
+            class="mat-elevation-z8"
+            multiTemplateDataRows
+          >
+            <!-- Expand Column -->
+            <ng-container matColumnDef="expand">
+              <th mat-header-cell *matHeaderCellDef aria-label="row actions">
+                &nbsp;
+              </th>
+              <td mat-cell *matCellDef="let element">
+                <button
+                  class="bg-primary text-white rounded-xs !h-[24px] !w-[24px] cursor-pointer"
+                  aria-label="expand row"
+                  (click)="toggleRow(element); $event.stopPropagation()"
+                >
+                  <mat-icon
+                    *ngIf="expandedElement !== element"
+                    class="!p-[0.5px]"
+                    >add</mat-icon
+                  >
+                  <mat-icon
+                    *ngIf="expandedElement === element"
+                    class="!p-[0.5px]"
+                    >remove</mat-icon
+                  >
+                </button>
+              </td>
+            </ng-container>
 
-        <!-- Data Row -->
-        <tr
-          mat-row
-          *matRowDef="let element; columns: columnsToDisplayWithExpand"
-          class="element-row"
-          [class.expanded-row]="expandedElement === element"
-          (click)="toggleRow(element)"
-        ></tr>
+            <ng-container matColumnDef="taskId">
+              <th mat-header-cell *matHeaderCellDef>Task ID</th>
+              <td class="cursor-pointer" mat-cell *matCellDef="let element">
+                {{ element.taskId }}
+              </td>
+            </ng-container>
 
-        <!-- Expanded Detail Row -->
-        <tr
-          mat-row
-          *matRowDef="let row; columns: ['expandedDetail']"
-          [hidden]="expandedElement !== row"
-          class="detail-row"
-        ></tr>
-      </table>
-    </div>
+            <ng-container matColumnDef="taskDescription">
+              <th mat-header-cell *matHeaderCellDef>Task Description</th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.taskDescription }}
+              </td>
+            </ng-container>
 
-    <mat-paginator
-      [pageSizeOptions]="[5, 10, 20]"
-      showFirstLastButtons
-      aria-label="Select page of periodic elements"
-    >
-    </mat-paginator>
-  </div>
+            <ng-container matColumnDef="status">
+              <th mat-header-cell *matHeaderCellDef>Status</th>
+              <td mat-cell *matCellDef="let element">
+                <div
+                  class="task-status"
+                  [ngClass]="element.status.replace(' ', '-')"
+                >
+                  {{ element.status }}
+                </div>
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="startTime">
+              <th mat-header-cell *matHeaderCellDef>Start Time</th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.startTime }}
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="endTime">
+              <th mat-header-cell *matHeaderCellDef>End Time</th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.endTime }}
+              </td>
+            </ng-container>
+
+            <!-- Expanded Content Column -->
+            <ng-container matColumnDef="expandedDetail">
+              <td
+                mat-cell
+                *matCellDef="let element"
+                [attr.colspan]="columnsToDisplayWithExpand.length"
+              >
+                <div
+                  class="element-detail"
+                  [@detailExpand]="
+                    element === expandedElement ? 'expanded' : 'collapsed'
+                  "
+                >
+                  <div class="element-diagram">
+                    <div class="p-4">
+                      <div
+                        class="font-semibold"
+                        [ngClass]="{
+                          '!text-[#34a135]': element.status === 'Completed'
+                        }"
+                      >
+                        {{ element.message }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </ng-container>
+
+            <!-- Header Row -->
+            <tr
+              mat-header-row
+              *matHeaderRowDef="columnsToDisplayWithExpand"
+            ></tr>
+
+            <!-- Data Row -->
+            <tr
+              mat-row
+              *matRowDef="let element; columns: columnsToDisplayWithExpand"
+              class="element-row"
+              [class.expanded-row]="expandedElement === element"
+              (click)="toggleRow(element)"
+            ></tr>
+
+            <!-- Expanded Detail Row -->
+            <tr
+              mat-row
+              *matRowDef="let row; columns: ['expandedDetail']"
+              [hidden]="expandedElement !== row"
+              class="detail-row"
+            ></tr>
+          </table>
+        </div>
+
+        <mat-paginator
+          [pageSizeOptions]="[5, 10, 20]"
+          showFirstLastButtons
+          aria-label="Select page of periodic elements"
+        >
+        </mat-paginator>
+      </div>
+    </mat-drawer-content>
+  </mat-drawer-container>
 </div>
 <router-outlet></router-outlet>

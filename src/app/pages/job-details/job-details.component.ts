@@ -29,6 +29,15 @@ import {
   ],
 })
 export class JobDetailsComponent implements OnInit, AfterViewInit {
+  isConnected = false;
+  obsControlOptions = [
+    'OC-98675',
+    'OC-98674',
+    'OC-98674',
+    'OC-98673',
+    'OC-98672',
+    'OC-98671',
+  ];
   expandedElement: any | null = null;
   public jobId: any;
   jobDetails: any; // Consider creating a proper interface/type for your job data

@@ -28,6 +28,7 @@ export class JobControlComponent {
     'jobControlId',
     'jobControlName',
     'jobControlDescription',
+    'obsfucationControlId',
     'lastTriggeredOn',
     'actions',
   ];

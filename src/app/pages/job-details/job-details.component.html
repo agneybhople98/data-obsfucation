@@ -6,9 +6,9 @@
     <div class="flex justify-between items-center !p-4 !mx-2">
       <div class="text-md font-semibold">Job Run Details</div>
       <app-button
+        routerLink="/obsfucation-control"
         text="View Obfuscation Control"
         variant="primary"
-        (clicked)="(null)"
       >
       </app-button>
     </div>
@@ -32,9 +32,9 @@
             </div>
           </div>
           <div>
-            <div class="text-sm">Job Control Id</div>
-            <div class="font-medium !mt-1 text-sm">
-              {{ jobDetails.jobControlId }}
+            <div class="text-sm">Job Control</div>
+            <div class="font-semibold !mt-1 text-sm !text-[#3179e5]">
+              {{ jobDetails.jobName }}
             </div>
           </div>
           <div>
@@ -90,12 +90,7 @@
 
         <ng-container matColumnDef="taskId">
           <th mat-header-cell *matHeaderCellDef>Task ID</th>
-          <td
-            class="font-medium cursor-pointer"
-            style="color: #3179e5"
-            mat-cell
-            *matCellDef="let element"
-          >
+          <td class="cursor-pointer" mat-cell *matCellDef="let element">
             {{ element.taskId }}
           </td>
         </ng-container>

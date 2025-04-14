@@ -133,6 +133,11 @@ tr.detail-row {
     color: #fa896b;
     font-weight: 500;
   }
+  &.Pending {
+    background-color: #ffedce;
+    color: #ffae1f;
+    font-weight: 500;
+  }
 }
 
 // Table

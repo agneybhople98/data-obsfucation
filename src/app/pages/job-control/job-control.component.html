@@ -176,7 +176,7 @@
             <ng-container matColumnDef="jobControlId">
               <th mat-header-cell *matHeaderCellDef>Job Control ID</th>
               <td
-                class="font-medium cursor-pointer"
+                class="font-semibold cursor-pointer"
                 style="color: #3179e5"
                 mat-cell
                 *matCellDef="let element"
@@ -195,9 +195,17 @@
 
             <!-- Job Control Description Column -->
             <ng-container matColumnDef="jobControlDescription">
-              <th mat-header-cell *matHeaderCellDef>Obsfucation Description</th>
+              <th mat-header-cell *matHeaderCellDef>Job Control Description</th>
               <td mat-cell *matCellDef="let element">
                 {{ element.jobControlDescription }}
+              </td>
+            </ng-container>
+
+            <!-- Job Control Description Column -->
+            <ng-container matColumnDef="obsfucationControlId">
+              <th mat-header-cell *matHeaderCellDef>Obfuscation Control Id</th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.obsfucationControlId }}
               </td>
             </ng-container>
 
@@ -215,7 +223,9 @@
                 <app-button
                   [routerLink]="[
                     '/dashboard/job-details',
-                    element.jobControlId
+                    element.jobControlId.startsWith('JC-')
+                      ? 'RUN-' + element.jobControlId.substring(3)
+                      : element.jobControlId
                   ]"
                   path="../../../assets/play.svg"
                   variant="primary"

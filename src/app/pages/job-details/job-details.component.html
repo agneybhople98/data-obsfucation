@@ -53,7 +53,7 @@
       </div>
 
       <div class="!mb-4 !mx-4">
-        <div class="font-medium text-md">Source Database Details</div>
+        <div class="font-medium text-md">Target Database Details</div>
         <div class="element-diagram border-[0.5px] !px-4 !py-3">
           <div class="flex gap-4">
             <div class="flex-1">
@@ -176,7 +176,7 @@
                 <div class="text-sm">Job Control</div>
                 <div
                   (click)="drawer.toggle()"
-                  class="font-semibold !mt-1 text-sm !text-[#3179e5]"
+                  class="font-semibold !mt-1 text-sm !text-[#3179e5] cursor-pointer"
                 >
                   {{ jobDetails.jobName }}
                 </div>
@@ -294,9 +294,11 @@
                   <div class="element-diagram">
                     <div class="p-4">
                       <div
-                        class="font-semibold"
+                        class="font-semibold !w-[60%]"
                         [ngClass]="{
-                          '!text-[#34a135]': element.status === 'Completed'
+                          '!text-[#34a135]': element.status === 'Completed',
+                          '!text-[#FA896B]': element.status === 'Failed',
+                          '!text-[#5D87FF]': element.status === 'In Progress'
                         }"
                       >
                         {{ element.message }}
@@ -319,7 +321,6 @@
               *matRowDef="let element; columns: columnsToDisplayWithExpand"
               class="element-row"
               [class.expanded-row]="expandedElement === element"
-              (click)="toggleRow(element)"
             ></tr>
 
             <!-- Expanded Detail Row -->
@@ -333,7 +334,8 @@
         </div>
 
         <mat-paginator
-          [pageSizeOptions]="[5, 10, 20]"
+          [pageSizeOptions]="[10, 15, 20]"
+          jon
           showFirstLastButtons
           aria-label="Select page of periodic elements"
         >

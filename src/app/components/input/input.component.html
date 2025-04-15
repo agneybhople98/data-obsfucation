@@ -14,7 +14,7 @@
       <input
         #input
         [id]="'input-' + label"
-        [type]="type"
+        [type]="showPassword ? 'text' : type"
         [placeholder]="placeholder"
         [value]="value"
         [disabled]="disabled"
@@ -29,6 +29,13 @@
         *ngIf="label.toLowerCase().includes('search')"
         >search</mat-icon
       >
+      <mat-icon
+        class="password-toggle-icon"
+        *ngIf="type === 'password'"
+        (click)="togglePasswordVisibility()"
+      >
+        {{ showPassword ? "visibility" : "visibility_off" }}
+      </mat-icon>
     </div>
   </div>
 

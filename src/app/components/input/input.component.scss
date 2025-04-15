@@ -156,3 +156,22 @@
     }
   }
 }
+
+.password-toggle-icon {
+  position: absolute;
+  right: 8px;
+  color: #757575;
+  font-size: 20px;
+  height: 20px;
+  width: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Adjust input padding when password field has an icon */
+input[type="password"],
+input[type="text"].password-field {
+  padding-right: 32px; /* Make room for the eye icon */
+}

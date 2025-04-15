@@ -17,10 +17,12 @@ import { FormControl, NgControl } from '@angular/forms';
   styleUrl: './input.component.scss',
 })
 export class InputComponent {
+  showPassword = false;
   @Input() label: string = '';
   @Input() placeholder: string = '';
   @Input() type: string = 'text';
   @Input() additionalInfo: string = '';
+
   @Input() disabled: boolean = false;
   @Input() required: boolean = false;
 
@@ -103,5 +105,12 @@ export class InputComponent {
 
   focus(): void {
     this.inputElement.nativeElement.focus();
+  }
+
+  // Add this method to your component class:
+  togglePasswordVisibility() {
+    if (!this.disabled) {
+      this.showPassword = !this.showPassword;
+    }
   }
 }

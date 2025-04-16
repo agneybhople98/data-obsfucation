@@ -136,7 +136,12 @@
         <div class="flex justify-end items-center !m-2 !gap-3 !p-2">
           <app-button text="Close" variant="default" (clicked)="drawer.close()">
           </app-button>
-          <app-button text="Execute" variant="success" (clicked)="(null)">
+          <app-button
+            text="Execute"
+            variant="success"
+            (clicked)="(null)"
+            [disabled]="!this.isConnected"
+          >
           </app-button>
         </div>
       </div>
@@ -302,7 +307,7 @@
                   "
                 >
                   <div class="element-diagram">
-                    <div class="p-4">
+                    <div class="p-4 !px-[96px]">
                       <div
                         *ngIf="element.status === 'Failed'"
                         class="error-message"

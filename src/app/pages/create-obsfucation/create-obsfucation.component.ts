@@ -57,15 +57,12 @@ export class CreateObsfucationComponent {
   }
 
   tableItems = [
-    'CI_BILL',
+    'CI_CUSTOMERS',
+    'CI_ORDERS',
+    'CI_PER',
+    'CI_PER_ADDR_SEAS',
     'CI_PER_NAME',
     'CI_PER_PHONE',
-    'CI_PER',
-    'CI_PER_ADDR_REAS',
-    'CI_ACCT',
-    'CI_PER_CHAR',
-    'CI_PRCE_CALC',
-    'CI_POLICY_PER',
   ];
 
   selectedItem: string | null = null;

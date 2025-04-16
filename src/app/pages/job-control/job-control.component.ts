@@ -132,4 +132,20 @@ export class JobControlComponent implements OnInit, OnDestroy {
       console.error('No matching obfuscation control data found');
     }
   }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+    this.dataSource.filterPredicate = (
+      data: JobDataControlElement,
+      filter: string
+    ) => {
+      return (
+        data.jobControlId.toLowerCase().includes(filter) ||
+        data.jobControlName.toLowerCase().includes(filter) ||
+        data.jobControlDescription.toLowerCase().includes(filter) ||
+        data.obsfucationControlId.toLowerCase().includes(filter)
+      );
+    };
+  }
 }

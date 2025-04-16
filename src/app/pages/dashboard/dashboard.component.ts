@@ -74,6 +74,13 @@ export class DashboardComponent implements AfterViewInit, OnInit {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+    this.dataSource.filterPredicate = (data: JobElement, filter: string) => {
+      return (
+        data.jobId.toLowerCase().includes(filter) ||
+        data.jobName.toLowerCase().includes(filter) ||
+        data.jobDescription.toLowerCase().includes(filter)
+      );
+    };
   }
 
   openJobDetails(jobId: string) {

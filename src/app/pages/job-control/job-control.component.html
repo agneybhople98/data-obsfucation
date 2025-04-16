@@ -139,6 +139,7 @@
                 style="width: 300px"
                 label="Search Job Control"
                 class="search-input"
+                (input)="applyFilter($event)"
               ></app-input>
               <app-button
                 (clicked)="drawer.toggle()"

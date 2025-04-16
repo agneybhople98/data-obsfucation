@@ -37,6 +37,8 @@ import { Subscription } from 'rxjs';
 })
 export class JobDetailsComponent implements OnInit, AfterViewInit, OnDestroy {
   isConnected = false;
+  selectedObsControl = 'OC-98675'; // Default selected value
+
   obsControlOptions = [
     'OC-98675',
     'OC-98674',

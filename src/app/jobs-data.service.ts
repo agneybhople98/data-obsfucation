@@ -16,6 +16,7 @@ export interface JobElement {
   triggeredOn: string;
   progress: number;
   status: 'success' | 'in-progress' | 'failed';
+  obsfucationControlName: string;
   tasks: any;
 }
 
@@ -34,6 +35,7 @@ const ELEMENT_DATA: JobElement[] = [
     jobDescription: 'Healthcare Service Prod data - US',
     triggeredOn: '04/01/2025 07:23:12AM',
     status: 'in-progress',
+    obsfucationControlName: 'Healthcare service - Meta',
     progress: 17,
     tasks: [
       {
@@ -107,17 +109,18 @@ const ELEMENT_DATA: JobElement[] = [
     jobName: 'Insurance Claims Db',
     jobDescription: 'Insurance claims settlement prod instance',
     triggeredOn: '04/02/2025 07:33:22AM',
-    status: 'success',
-    progress: 100,
+    status: 'failed',
+    obsfucationControlName: 'Healthcare service - Meta',
+    progress: 90,
     tasks: [
       {
         taskId: 'TASK-12346',
         taskDescription: 'Encrypting social security numbers',
-        status: 'Completed',
-        errorMessage: null,
+        status: 'Failed',
+        errorMessage: '`SQL Error: ORA-00904: "EMAILID": invalid identifier`',
+        message: `'SQL Error: ORA-00904: "EMAILID": invalid identifier https://docs.oracle.com/error-help/db/ora-00904/00904. 00000 - "%s: invalid identifier"'`,
         startTime: '2024-04-01 08:45:30',
         endTime: '2024-04-01 09:00:45',
-        message: 'SQL Log: Cloning Schema is Successful',
       },
     ],
   },
@@ -127,16 +130,17 @@ const ELEMENT_DATA: JobElement[] = [
     jobDescription: 'Healthcare Service Prod data - NA',
     triggeredOn: '04/04/2025 08:22:10AM',
     status: 'failed',
+    obsfucationControlName: 'Healthcare service - Meta',
     progress: 50,
     tasks: [
       {
         taskId: 'TASK-12347',
         taskDescription: 'Anonymizing addresses',
         status: 'Failed',
-        errorMessage: 'Invalid address format detected',
+        errorMessage: '`SQL Error: ORA-00904: "EMAILID": invalid identifier`',
         startTime: '2024-04-01 09:01:10',
         endTime: '2024-04-01 09:15:22',
-        message: 'SQL Log: Cloning Schema is Successful',
+        message: `'SQL Error: ORA-00904: "EMAILID": invalid identifier https://docs.oracle.com/error-help/db/ora-00904/00904. 00000 - "%s: invalid identifier"'`,
       },
     ],
   },
@@ -147,6 +151,8 @@ const ELEMENT_DATA: JobElement[] = [
       'Obfuscating Healthcare Provider db for Testing environment setup',
     triggeredOn: '04/03/2025 08:11:09AM',
     status: 'success',
+    obsfucationControlName: 'Healthcare service - Meta',
+
     progress: 100,
     tasks: [
       {
@@ -167,6 +173,7 @@ const ELEMENT_DATA: JobElement[] = [
       'Metadata about X-rays, MRIs, and CT scans (excluding actual images)',
     triggeredOn: '04/05/2025 09:30:33AM',
     status: 'success',
+    obsfucationControlName: 'Healthcare service - Meta',
     progress: 100,
     tasks: [
       {
@@ -186,6 +193,7 @@ const ELEMENT_DATA: JobElement[] = [
     jobDescription: 'Electronic Health Records for U.S. patients',
     triggeredOn: '04/05/2025 09:30:33AM',
     status: 'success',
+    obsfucationControlName: 'Healthcare service - Meta',
     progress: 100,
     tasks: [
       {
@@ -205,6 +213,7 @@ const ELEMENT_DATA: JobElement[] = [
     jobDescription: 'Master Db for patient demographics',
     triggeredOn: '04/05/2025 09:30:33AM',
     status: 'success',
+    obsfucationControlName: 'Healthcare service - Meta',
     progress: 100,
     tasks: [
       {

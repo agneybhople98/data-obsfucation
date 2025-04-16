@@ -8,6 +8,11 @@ tr.detail-row {
 .element-row td {
   border-bottom-width: 0;
 }
+.error-message {
+  padding-left: 0;
+  color: #333;
+  font-family: sans-serif;
+}
 
 .element-detail {
   overflow: hidden;

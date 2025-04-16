@@ -146,7 +146,7 @@
         <div class="flex justify-between items-center !p-4 !mx-2">
           <div class="text-md font-semibold">Job Run Details</div>
           <app-button
-            routerLink="/obsfucation-control"
+            routerLink="/obsfucation-control/create-obsfucation"
             text="View Obfuscation Control"
             variant="primary"
           >
@@ -180,6 +180,15 @@
                   class="font-semibold !mt-1 text-sm !text-[#3179e5] cursor-pointer"
                 >
                   {{ jobDetails.jobName }}
+                </div>
+              </div>
+              <div>
+                <div class="text-sm">Obsfucation Control</div>
+                <div
+                  (click)="drawer.toggle()"
+                  class="font-semibold !mt-1 text-sm !text-[#3179e5] cursor-pointer"
+                >
+                  {{ jobDetails.obsfucationControlName }}
                 </div>
               </div>
               <div>
@@ -295,7 +304,28 @@
                   <div class="element-diagram">
                     <div class="p-4">
                       <div
-                        class="font-semibold !w-[60%]"
+                        *ngIf="element.status === 'Failed'"
+                        class="error-message"
+                      >
+                        <div class="font-medium">
+                          {{ element.errorMessage }}
+                        </div>
+                        <div class="mt-1">
+                          <a
+                            *ngIf="
+                              element.message &&
+                              element.message.includes('https://')
+                            "
+                            [href]="extractUrl(element.message)"
+                            class="text-blue-600 hover:underline"
+                            >{{ extractUrl(element.message) }}</a
+                          >
+                          {{ extractNonUrlText(element.message) }}
+                        </div>
+                      </div>
+                      <div
+                        *ngIf="element.status !== 'Failed'"
+                        class="font-semibold"
                         [ngClass]="{
                           '!text-[#34a135]': element.status === 'Completed',
                           '!text-[#FA896B]': element.status === 'Failed',

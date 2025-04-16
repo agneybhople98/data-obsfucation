@@ -138,4 +138,20 @@ export class JobDetailsComponent implements OnInit, AfterViewInit, OnDestroy {
       () => {}
     );
   }
+
+  extractUrl(message: string): string {
+    if (!message) return '';
+
+    const urlRegex = /(https?:\/\/[^\s]+)/g;
+    const match = message.match(urlRegex);
+    return match ? match[0] : '';
+  }
+
+  extractNonUrlText(message: string): string {
+    if (!message) return '';
+
+    // Remove the URL from the message
+    const urlRegex = /(https?:\/\/[^\s]+)/g;
+    return message.replace(urlRegex, '');
+  }
 }

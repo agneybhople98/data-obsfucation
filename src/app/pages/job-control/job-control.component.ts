@@ -27,6 +27,7 @@ export class JobControlComponent implements OnInit, OnDestroy {
     'OC-98672',
     'OC-98671',
   ];
+  selectedObsControl = 'OC-98675'; // Default selected value
   dataSource!: MatTableDataSource<any>;
   displayedColumns: any[] = [
     'jobControlId',

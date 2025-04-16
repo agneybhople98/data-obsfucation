@@ -1,5 +1,13 @@
 import { Injectable } from '@angular/core';
-import { concat, map, Observable, of, switchMap, timer } from 'rxjs';
+import {
+  concat,
+  map,
+  Observable,
+  of,
+  switchMap,
+  timer,
+  BehaviorSubject,
+} from 'rxjs';
 
 export interface JobElement {
   jobId: string;
@@ -277,26 +285,33 @@ const ELEMENT_DATA_JOB_CONTROL: JobDataControlElement[] = [
   providedIn: 'root',
 })
 export class JobsDataService {
-  private jobsData: JobElement[] = ELEMENT_DATA;
-  private jobsDataControlData: JobDataControlElement[] =
-    ELEMENT_DATA_JOB_CONTROL;
+  private jobsDataSubject = new BehaviorSubject<JobElement[]>(ELEMENT_DATA);
+  private jobsDataControlData = new BehaviorSubject<JobDataControlElement[]>(
+    ELEMENT_DATA_JOB_CONTROL
+  );
+
+  // private jobsDataControlData: JobDataControlElement[] =
+  //   ELEMENT_DATA_JOB_CONTROL;
+
+  // Observable to subscribe to job data changes
+  jobsData$ = this.jobsDataSubject.asObservable();
 
   constructor() {}
 
   resetJobData() {
-    this.jobsData = JSON.parse(JSON.stringify(ELEMENT_DATA));
+    this.jobsDataSubject.next(JSON.parse(JSON.stringify(ELEMENT_DATA)));
   }
 
   getJobById(jobId: string): JobElement | undefined {
-    return this.jobsData.find((job) => job.jobId === jobId);
+    return this.jobsDataSubject.value.find((job) => job.jobId === jobId);
   }
 
   getAllJobs(): JobElement[] {
-    return this.jobsData;
+    return this.jobsDataSubject.value;
   }
 
   getAllJobControlData(): JobDataControlElement[] {
-    return this.jobsDataControlData;
+    return this.jobsDataControlData.value;
   }
 
   /**
@@ -309,32 +324,45 @@ export class JobsDataService {
     jobId: string,
     taskIndex: number
   ): JobElement | undefined {
-    const job = this.getJobById(jobId);
-    if (!job || !job.tasks || taskIndex >= job.tasks.length) {
+    const currentJobs = this.jobsDataSubject.value;
+    const jobIndex = currentJobs.findIndex((job) => job.jobId === jobId);
+
+    if (
+      jobIndex === -1 ||
+      !currentJobs[jobIndex].tasks ||
+      taskIndex >= currentJobs[jobIndex].tasks.length
+    ) {
       return undefined;
     }
 
-    // Update the task at the specified index
-    const task = job.tasks[taskIndex];
+    // Create a new array with the updated job
+    const updatedJobs = [...currentJobs];
+    const job = { ...updatedJobs[jobIndex] };
+    const tasks = [...job.tasks];
+    const task = { ...tasks[taskIndex] };
+
+    // Update the task
     task.status = 'Completed';
-    // Set end time if it doesn't exist
     if (!task.endTime) {
       task.endTime = new Date()
         .toISOString()
         .replace('T', ' ')
         .substring(0, 19);
     }
+    tasks[taskIndex] = task;
 
-    // Calculate progress based on completed tasks
-    const completedTasks = job.tasks.filter(
+    // Update the job
+    job.tasks = tasks;
+    const completedTasks = tasks.filter(
       (t: any) => t.status === 'Completed'
     ).length;
-    job.progress = Math.round((completedTasks / job.tasks.length) * 100);
-
-    // Update job status if all tasks are completed
-    if (completedTasks === job.tasks.length) {
+    job.progress = Math.round((completedTasks / tasks.length) * 100);
+    if (completedTasks === tasks.length) {
       job.status = 'success';
     }
+
+    updatedJobs[jobIndex] = job;
+    this.jobsDataSubject.next(updatedJobs);
 
     return job;
   }
@@ -355,14 +383,12 @@ export class JobsDataService {
     const updateObservables: Observable<JobElement | undefined>[] = [];
 
     for (let i = 0; i < taskCount; i++) {
-      // The delay increases by 1 second for each task
-      const updateObservable = timer(300 * (i + 1)).pipe(
+      const updateObservable = timer(150 * (i + 1)).pipe(
         map(() => this.updateSingleTaskStatus(jobId, i))
       );
       updateObservables.push(updateObservable);
     }
 
-    // Concat all observables to run them sequentially
     return concat(...updateObservables);
   }
 }

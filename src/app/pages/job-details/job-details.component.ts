@@ -1,4 +1,10 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  AfterViewInit,
+  OnDestroy,
+} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { JobsDataService } from '../../jobs-data.service';
 import { MatPaginator } from '@angular/material/paginator';
@@ -11,6 +17,7 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-job-details',
@@ -28,7 +35,7 @@ import {
     ]),
   ],
 })
-export class JobDetailsComponent implements OnInit, AfterViewInit {
+export class JobDetailsComponent implements OnInit, AfterViewInit, OnDestroy {
   isConnected = false;
   obsControlOptions = [
     'OC-98675',
@@ -40,7 +47,7 @@ export class JobDetailsComponent implements OnInit, AfterViewInit {
   ];
   expandedElement: any | null = null;
   public jobId: any;
-  jobDetails: any; // Consider creating a proper interface/type for your job data
+  jobDetails: any;
   loading = true;
   error: string | null = null;
   public dataSource = new MatTableDataSource<any>([]);
@@ -52,6 +59,8 @@ export class JobDetailsComponent implements OnInit, AfterViewInit {
     'endTime',
   ];
   columnsToDisplayWithExpand = ['expand', ...this.columnsToDisplay];
+
+  private subscription = new Subscription();
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -66,24 +75,49 @@ export class JobDetailsComponent implements OnInit, AfterViewInit {
     this.route.paramMap.subscribe((params) => {
       this.jobId = params.get('id');
       if (this.jobId) {
+        // Subscribe to job data changes
+        this.subscription.add(
+          this.jobService.jobsData$.subscribe((jobs) => {
+            this.jobDetails = this.jobService.getJobById(this.jobId);
+            if (this.jobDetails && this.jobDetails.tasks) {
+              this.dataSource.data = this.jobDetails.tasks;
+              this.loading = false;
+              this.changeDetectorRef.detectChanges();
+            } else {
+              this.error = 'Job details not found';
+              this.loading = false;
+            }
+          })
+        );
+
+        // Get initial job details
         this.jobDetails = this.jobService.getJobById(this.jobId);
-        console.log('jobDetails', this.jobDetails);
         if (this.jobDetails && this.jobDetails.tasks) {
           this.dataSource.data = this.jobDetails.tasks;
           this.loading = false;
 
-          // Update tasks sequentially with 1-second intervals
-          this.startSequentialUpdates(this.jobId);
+          // Start sequential updates if the job is in progress
+          if (this.jobDetails.status === 'in-progress') {
+            this.startSequentialUpdates(this.jobId);
+          }
         } else {
           this.error = 'Job details not found';
           this.loading = false;
         }
-        console.log('dataSource data', this.dataSource.data);
       } else {
         this.error = 'No job ID provided';
         this.loading = false;
       }
     });
+  }
+
+  ngAfterViewInit(): void {
+    this.dataSource.paginator = this.paginator;
+  }
+
+  ngOnDestroy(): void {
+    // Clean up subscription
+    this.subscription.unsubscribe();
   }
 
   toggleRow(element: any): void {
@@ -94,29 +128,14 @@ export class JobDetailsComponent implements OnInit, AfterViewInit {
   isExpansionDetailRow = (i: number, row: any) =>
     row.hasOwnProperty('detailRow');
 
-  startSequentialUpdates(jobId: string): void {
-    // Start the sequential update process
+  startSequentialUpdates(jobId: string) {
     this.jobService.updateTasksSequentially(jobId).subscribe(
       (updatedJob) => {
         if (updatedJob) {
-          // Update the component's job details reference
-          this.jobDetails = updatedJob;
-
-          // Update the data source to reflect changes in the UI
-          this.dataSource.data = [...updatedJob.tasks];
-
-          // Force change detection if needed
-          this.changeDetectorRef.detectChanges();
         }
       },
       (error) => console.error('Error updating tasks:', error),
-      () => console.log('Sequential task updates completed')
+      () => {}
     );
-  }
-
-  ngAfterViewInit() {
-    if (this.paginator) {
-      this.dataSource.paginator = this.paginator;
-    }
   }
 }

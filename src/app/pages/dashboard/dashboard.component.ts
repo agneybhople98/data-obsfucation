@@ -19,9 +19,12 @@ export class DashboardComponent implements AfterViewInit, OnInit {
     private changeDetectorRef: ChangeDetectorRef
   ) {}
   ngOnInit(): void {
-    this.dataSource = new MatTableDataSource<JobElement>(
-      this.jobService.getAllJobs()
-    );
+    this.jobService.jobsData$.subscribe((jobs) => {
+      this.dataSource = new MatTableDataSource<JobElement>(
+        this.jobService.getAllJobs()
+      );
+    });
+    this.jobService.resetJobData();
   }
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   ngAfterViewInit() {
@@ -76,25 +79,6 @@ export class DashboardComponent implements AfterViewInit, OnInit {
   openJobDetails(jobId: string) {
     this._router.navigate(['/dashboard/job-details', jobId]);
   }
-  // startSequentialUpdates(jobId: string): void {
-  //   // Start the sequential update process
-  //   this.jobService.updateTasksSequentially(jobId).subscribe(
-  //     (updatedJob) => {
-  //       if (updatedJob) {
-  //         // Update the component's job details reference
-  //         this.dataSource = updatedJob;
-
-  //         // Update the data source to reflect changes in the UI
-  //         this.dataSource.data = [...updatedJob.tasks];
-
-  //         // Force change detection if needed
-  //         this.changeDetectorRef.detectChanges();
-  //       }
-  //     },
-  //     (error) => console.error('Error updating tasks:', error),
-  //     () => console.log('Sequential task updates completed')
-  //   );
-  // }
 
   isJobDetailsRoute(): boolean {
     return this._router.url.includes('/job-details');

@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, OnInit, OnDestroy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
@@ -8,6 +8,7 @@ import {
 } from '../../jobs-data.service';
 import { MatDrawer } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-job-control',
@@ -15,7 +16,7 @@ import { Router } from '@angular/router';
   templateUrl: './job-control.component.html',
   styleUrl: './job-control.component.scss',
 })
-export class JobControlComponent {
+export class JobControlComponent implements OnInit, OnDestroy {
   @ViewChild('drawer') drawer!: MatDrawer;
   isConnected = false;
   obsControlOptions = [
@@ -35,23 +36,46 @@ export class JobControlComponent {
     'lastTriggeredOn',
     'actions',
   ];
+
+  private subscription = new Subscription();
+
   constructor(
     private _dialog: MatDialog,
     private _jobDataService: JobsDataService,
     private router: Router
   ) {}
+
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
   }
+
   ngOnInit() {
     // Reset job data to original state
     this._jobDataService.resetJobData();
 
+    // Subscribe to job data changes
+    this.subscription.add(
+      this._jobDataService.jobsData$.subscribe((jobs) => {
+        // Update the data source when job data changes
+        this.dataSource = new MatTableDataSource<any>(
+          this._jobDataService.getAllJobControlData()
+        );
+        if (this.paginator) {
+          this.dataSource.paginator = this.paginator;
+        }
+      })
+    );
+
     this.dataSource = new MatTableDataSource<any>(
       this._jobDataService.getAllJobControlData()
     );
+  }
+
+  ngOnDestroy() {
+    // Clean up subscription
+    this.subscription.unsubscribe();
   }
 
   createJob() {
@@ -60,23 +84,22 @@ export class JobControlComponent {
   }
 
   runJob(jobControlId: string) {
+    const jobId = jobControlId.startsWith('JC-')
+      ? 'RUN-' + jobControlId.substring(3)
+      : jobControlId;
+    this.router.navigate(['/dashboard/job-details', jobId]);
+
     // Start the sequential update process
-    this._jobDataService.updateTasksSequentially(jobControlId).subscribe(
+    this._jobDataService.updateTasksSequentially(jobId).subscribe(
       (updatedJob) => {
         if (updatedJob) {
-          // // Update the component's job details reference
-          // this.jobDetails = updatedJob;
-
-          // // Update the data source to reflect changes in the UI
-          // this.dataSource.data = [...updatedJob.tasks];
-
-          // // Force change detection if needed
-          // this.changeDetectorRef.detectChanges();
           console.log('Updated job:', updatedJob);
         }
       },
       (error) => console.error('Error updating tasks:', error),
-      () => console.log('Sequential task updates completed')
+      () => {
+        console.log('Sequential task updates completed');
+      }
     );
   }
 }

@@ -52,8 +52,8 @@
       <div class="!ms-5">
         <div>Set Obsfucation Strategies</div>
 
-        <div class="table-container">
-          <mat-form-field>
+        <div class="table-container !mt-4">
+          <!-- <mat-form-field>
             <mat-label>Select Table</mat-label>
             <mat-select
               [(value)]="selectedTable"
@@ -66,9 +66,29 @@
                 {{ table.tableName }}
               </mat-option>
             </mat-select>
-          </mat-form-field>
+          </mat-form-field> -->
 
           <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+            <ng-container matColumnDef="select">
+              <th mat-header-cell *matHeaderCellDef>
+                <mat-checkbox
+                  (change)="$event ? toggleAllRows() : null"
+                  [checked]="selection.hasValue() && isAllSelected()"
+                  [indeterminate]="selection.hasValue() && !isAllSelected()"
+                  [aria-label]="checkboxLabel()"
+                >
+                </mat-checkbox>
+              </th>
+              <td mat-cell *matCellDef="let row">
+                <mat-checkbox
+                  (click)="$event.stopPropagation()"
+                  (change)="$event ? selection.toggle(row) : null"
+                  [checked]="selection.isSelected(row)"
+                  [aria-label]="checkboxLabel(row)"
+                >
+                </mat-checkbox>
+              </td>
+            </ng-container>
             <!-- Column Name Column -->
             <ng-container matColumnDef="columnName">
               <th mat-header-cell *matHeaderCellDef>Column Name</th>

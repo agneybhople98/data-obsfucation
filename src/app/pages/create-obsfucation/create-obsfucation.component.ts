@@ -17,19 +17,18 @@ import { SelectionModel } from '@angular/cdk/collections';
 export class CreateObsfucationComponent implements OnInit {
   tableData = TABLE_DATA;
   selectedTable = this.tableData.selectedTable;
-  displayedColumns: string[] = ['columnName', 'obfStrategy', 'obfRules'];
+  displayedColumns: string[] = [
+    'select',
+    'columnName',
+    'obfStrategy',
+    'obfRules',
+  ];
   dataSource = new MatTableDataSource<ColumnDefinition>([]);
   // public dataSource: any;
   // public obsStrategies = ['Starify', 'Hashing', 'Faker'];
   // public obsRulesOptions = ['Left', 'Right', 'Type', 'Date'];
   // public obsRulesNumbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
   public selection = new SelectionModel<any>(true, []);
-  // public displayedColumns = [
-  //   'select',
-  //   'selectColumn',
-  //   'obsfucationStrategy',
-  //   'obsfucationRules',
-  // ];
 
   tableItems = [
     'CI_CUSTOMERS',
@@ -44,15 +43,7 @@ export class CreateObsfucationComponent implements OnInit {
 
   constructor(private _obsufactionService: ObsfucationService) {}
 
-  /** Whether the number of selected elements matches the total number of rows. */
-  isAllSelected() {
-    const numSelected = this.selection.selected.length;
-    const numRows = this.dataSource.data.length;
-    return numSelected === numRows;
-  }
-
-  /** Selects all rows if they are not all selected; otherwise clear selection. */
-  masterToggle() {
+  toggleAllRows() {
     if (this.isAllSelected()) {
       this.selection.clear();
       return;
@@ -61,15 +52,29 @@ export class CreateObsfucationComponent implements OnInit {
     this.selection.select(...this.dataSource.data);
   }
 
+  /** The label for the checkbox on the passed row */
+  checkboxLabel(row?: ColumnDefinition): string {
+    if (!row) {
+      return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
+    }
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${
+      row.columnName + 1
+    }`;
+  }
+
+  /** Whether the number of selected elements matches the total number of rows. */
+  isAllSelected() {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.dataSource.data.length;
+    return numSelected === numRows;
+  }
+
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
   }
   ngOnInit() {
-    // this.dataSource = new MatTableDataSource<any>(
-    //   this._obsufactionService.getAllObsfucationStrategies()
-    // );
     this.onTableChange();
   }
 

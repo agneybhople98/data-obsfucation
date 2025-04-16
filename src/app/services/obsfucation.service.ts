@@ -188,7 +188,10 @@ export const TABLE_DATA: TableData = {
           columnName: 'PHONE_NUMBER',
           displayName: 'Phone Number',
           obfStrategy: 'FAKER',
-          obfRules: 'PHONE',
+          obfRules: {
+            first: 'PHONE',
+            second: undefined,
+          },
         },
       ],
     },
@@ -244,13 +247,19 @@ export const TABLE_DATA: TableData = {
           columnName: 'SHIPPING_ADDRESS',
           displayName: 'Shipping Address',
           obfStrategy: 'FAKER',
-          obfRules: 'ADDRESS',
+          obfRules: {
+            first: 'ADDRESS',
+            second: undefined,
+          },
         },
         {
           columnName: 'STATUS',
           displayName: 'Status',
           obfStrategy: 'REPLACE_WITH_CONSTANT',
-          obfRules: 'Delivered',
+          obfRules: {
+            first: 'Delivered',
+            second: undefined,
+          },
         },
       ],
     },
@@ -306,7 +315,10 @@ export const TABLE_DATA: TableData = {
           columnName: 'EMAILID',
           displayName: 'Email ID',
           obfStrategy: 'FAKER',
-          obfRules: 'EMAIL',
+          obfRules: {
+            first: 'EMAIL',
+            second: undefined,
+          },
         },
         {
           columnName: 'OVRD_MAIL_NAME1',

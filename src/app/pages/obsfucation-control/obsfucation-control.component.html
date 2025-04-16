@@ -133,6 +133,7 @@
           <app-button text="Close" variant="default" (clicked)="drawer.close()">
           </app-button>
           <app-button
+            [disabled]="!this.isConnected"
             routerLink="create-obsfucation"
             text="Create"
             variant="success"

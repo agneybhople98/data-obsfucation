@@ -220,12 +220,7 @@
               <th mat-header-cell *matHeaderCellDef></th>
               <td mat-cell *matCellDef="let element">
                 <app-button
-                  [routerLink]="[
-                    '/dashboard/job-details',
-                    element.jobControlId.startsWith('JC-')
-                      ? 'RUN-' + element.jobControlId.substring(3)
-                      : element.jobControlId
-                  ]"
+                  (clicked)="runJob(element.jobControlId)"
                   path="../../../assets/play.svg"
                   variant="primary"
                   text="Run Job"

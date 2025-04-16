@@ -283,6 +283,10 @@ export class JobsDataService {
 
   constructor() {}
 
+  resetJobData() {
+    this.jobsData = JSON.parse(JSON.stringify(ELEMENT_DATA));
+  }
+
   getJobById(jobId: string): JobElement | undefined {
     return this.jobsData.find((job) => job.jobId === jobId);
   }

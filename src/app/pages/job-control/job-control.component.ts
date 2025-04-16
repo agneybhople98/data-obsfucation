@@ -46,6 +46,9 @@ export class JobControlComponent {
     this.dataSource.paginator = this.paginator;
   }
   ngOnInit() {
+    // Reset job data to original state
+    this._jobDataService.resetJobData();
+
     this.dataSource = new MatTableDataSource<any>(
       this._jobDataService.getAllJobControlData()
     );
@@ -54,5 +57,26 @@ export class JobControlComponent {
   createJob() {
     this.drawer.close();
     this.router.navigate(['/dashboard/job-details/RUN-98765']);
+  }
+
+  runJob(jobControlId: string) {
+    // Start the sequential update process
+    this._jobDataService.updateTasksSequentially(jobControlId).subscribe(
+      (updatedJob) => {
+        if (updatedJob) {
+          // // Update the component's job details reference
+          // this.jobDetails = updatedJob;
+
+          // // Update the data source to reflect changes in the UI
+          // this.dataSource.data = [...updatedJob.tasks];
+
+          // // Force change detection if needed
+          // this.changeDetectorRef.detectChanges();
+          console.log('Updated job:', updatedJob);
+        }
+      },
+      (error) => console.error('Error updating tasks:', error),
+      () => console.log('Sequential task updates completed')
+    );
   }
 }

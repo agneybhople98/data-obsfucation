@@ -183,6 +183,7 @@
                 style="color: #3179e5"
                 mat-cell
                 *matCellDef="let element"
+                (click)="runJob(element.jobControlId)"
               >
                 {{ element.jobControlId }}
               </td>

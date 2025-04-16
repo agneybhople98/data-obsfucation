@@ -7,7 +7,10 @@ import {
   switchMap,
   timer,
   BehaviorSubject,
+  tap,
+  catchError,
 } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 export interface JobElement {
   jobId: string;
@@ -294,6 +297,7 @@ const ELEMENT_DATA_JOB_CONTROL: JobDataControlElement[] = [
   providedIn: 'root',
 })
 export class JobsDataService {
+  private apiUrl = 'https://merry-measured-trout.ngrok-free.app/api/job/run';
   private jobsDataSubject = new BehaviorSubject<JobElement[]>(ELEMENT_DATA);
   private jobsDataControlData = new BehaviorSubject<JobDataControlElement[]>(
     ELEMENT_DATA_JOB_CONTROL
@@ -305,7 +309,7 @@ export class JobsDataService {
   // Observable to subscribe to job data changes
   jobsData$ = this.jobsDataSubject.asObservable();
 
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
   resetJobData() {
     this.jobsDataSubject.next(JSON.parse(JSON.stringify(ELEMENT_DATA)));
@@ -399,5 +403,16 @@ export class JobsDataService {
     }
 
     return concat(...updateObservables);
+  }
+
+  // Move this method to job service where you will have all the REST API
+  runJobByName(jobName: string = 'OBF_EXECUTE_MAIN_JOB'): Observable<any> {
+    return this.http.post(`${this.apiUrl}?jobName=${jobName}`, {}).pipe(
+      tap((response) => console.log('Job run response:', response)),
+      catchError((error) => {
+        console.error('Error running job:', error);
+        throw error;
+      })
+    );
   }
 }

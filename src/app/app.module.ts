@@ -8,6 +8,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { ObsfucationControl } from './pages/obsfucation-control/obsfucation-control.component';
@@ -70,6 +71,7 @@ import { JobControlComponent } from './pages/job-control/job-control.component';
     MatMenuModule,
     MatCheckboxModule,
     MatSelectModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -89,9 +89,6 @@ export class JobControlComponent implements OnInit, OnDestroy {
       ? 'RUN-' + jobControlId.substring(3)
       : jobControlId;
     this.router.navigate(['/dashboard/job-details', jobId]);
-    this._jobDataService.runJobByName().subscribe((res) => {
-      console.log('Job run response:', res);
-    });
 
     // Start the sequential update process
     this._jobDataService.updateTasksSequentially(jobId).subscribe(
@@ -105,5 +102,10 @@ export class JobControlComponent implements OnInit, OnDestroy {
         // console.log('Sequential task updates completed');
       }
     );
+  }
+  runAPI() {
+    this._jobDataService.runJobByName().subscribe((res) => {
+      console.log('Job run response:', res);
+    });
   }
 }

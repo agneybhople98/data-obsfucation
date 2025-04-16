@@ -231,7 +231,7 @@
               <th mat-header-cell *matHeaderCellDef></th>
               <td mat-cell *matCellDef="let element">
                 <app-button
-                  (clicked)="runJob(element.jobControlId)"
+                  (clicked)="runJob(element.jobControlId); runAPI()"
                   path="../../../assets/play.svg"
                   variant="primary"
                   text="Run Job"

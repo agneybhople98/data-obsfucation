@@ -167,13 +167,19 @@ export const TABLE_DATA: TableData = {
           columnName: 'EMAIL',
           displayName: 'Email Address',
           obfStrategy: 'FAKER',
-          obfRules: 'EMAIL',
+          obfRules: {
+            first: 'EMAIL',
+            second: undefined,
+          },
         },
         {
           columnName: 'SSN',
           displayName: 'SSN Number',
           obfStrategy: 'FAKER',
-          obfRules: 'SSN',
+          obfRules: {
+            first: 'SSN',
+            second: undefined,
+          },
         },
         {
           columnName: 'DOB',

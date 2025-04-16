@@ -76,6 +76,12 @@ export class CreateObsfucationComponent implements OnInit {
   }
   ngOnInit() {
     this.onTableChange();
+    // Check rows that have all required values
+    this.dataSource.data.forEach((row: ColumnDefinition) => {
+      if (row.columnName && row.obfStrategy && row.obfRules?.first) {
+        this.selection.select(row);
+      }
+    });
   }
 
   /**
@@ -100,6 +106,16 @@ export class CreateObsfucationComponent implements OnInit {
 
     // Update table data
     this.updateTableData();
+
+    // Clear existing selections
+    this.selection.clear();
+
+    // Check rows that have all required values
+    this.dataSource.data.forEach((row: ColumnDefinition) => {
+      if (row.columnName && row.obfStrategy && row.obfRules?.first) {
+        this.selection.select(row);
+      }
+    });
   }
 
   /**

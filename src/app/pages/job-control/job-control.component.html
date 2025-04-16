@@ -208,7 +208,13 @@
             <!-- Job Control Description Column -->
             <ng-container matColumnDef="obsfucationControlId">
               <th mat-header-cell *matHeaderCellDef>Obfuscation Control Id</th>
-              <td mat-cell *matCellDef="let element">
+              <td
+                class="font-semibold cursor-pointer"
+                style="color: #3179e5"
+                mat-cell
+                *matCellDef="let element"
+                routerLink="/obsfucation-control/create-obsfucation"
+              >
                 {{ element.obsfucationControlId }}
               </td>
             </ng-container>

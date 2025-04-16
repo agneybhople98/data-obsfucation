@@ -145,7 +145,7 @@
     <mat-drawer-content>
       <div class="bg-white">
         <div class="!px-3 !mx-2">
-          <div class="flex justify-between items-center !p-3 !mx-2">
+          <div class="flex justify-between items-center">
             <div class="font-semibold">Obsfucation Control</div>
             <app-button
               (clicked)="drawer.toggle()"
@@ -153,7 +153,7 @@
               variant="primary"
             ></app-button>
           </div>
-          <div>
+          <div class="!mt-4">
             <table
               mat-table
               [dataSource]="dataSource"
@@ -200,6 +200,7 @@
                   style="color: #3179e5"
                   mat-cell
                   *matCellDef="let element"
+                  routerLink="/obsfucation-control/create-obsfucation"
                 >
                   {{ element.obsControlId }}
                 </td>

@@ -37,3 +37,9 @@ body {
 .text-primary {
   color: #ffffff !important;
 }
+.mdc-text-field--filled {
+  background-color: transparent !important;
+  &:hover {
+    background-color: white !important;
+  }
+}

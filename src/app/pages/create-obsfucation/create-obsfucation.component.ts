@@ -1,5 +1,9 @@
-import { Component, ViewChild } from '@angular/core';
-import { ObsfucationService } from '../../services/obsfucation.service';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import {
+  ColumnDefinition,
+  ObsfucationService,
+  TABLE_DATA,
+} from '../../services/obsfucation.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { SelectionModel } from '@angular/cdk/collections';
@@ -10,25 +14,22 @@ import { SelectionModel } from '@angular/cdk/collections';
   styleUrl: './create-obsfucation.component.scss',
   standalone: false,
 })
-export class CreateObsfucationComponent {
-  public dataSource: any;
-  public obsStrategies = ['Starify', 'Hashing', 'Faker'];
-  public obsRulesOptions = ['Left', 'Right', 'Type', 'Date'];
-  public obsRulesNumbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+export class CreateObsfucationComponent implements OnInit {
+  tableData = TABLE_DATA;
+  selectedTable = this.tableData.selectedTable;
+  displayedColumns: string[] = ['columnName', 'obfStrategy', 'obfRules'];
+  dataSource = new MatTableDataSource<ColumnDefinition>([]);
+  // public dataSource: any;
+  // public obsStrategies = ['Starify', 'Hashing', 'Faker'];
+  // public obsRulesOptions = ['Left', 'Right', 'Type', 'Date'];
+  // public obsRulesNumbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
   public selection = new SelectionModel<any>(true, []);
-  public displayedColumns = [
-    'select',
-    'selectColumn',
-    'obsfucationStrategy',
-    'obsfucationRules',
-  ];
-
-  // Table column mappings for different table items
-  private tableColumnMappings: { [key: string]: string[] } = {
-    CI_ORDERS: ['Email Address', 'Date of Birth', 'Credit Card Number'],
-    CI_PER: ['Name', 'SSN_NUMBER'],
-    // Add more mappings as needed
-  };
+  // public displayedColumns = [
+  //   'select',
+  //   'selectColumn',
+  //   'obsfucationStrategy',
+  //   'obsfucationRules',
+  // ];
 
   tableItems = [
     'CI_CUSTOMERS',
@@ -41,32 +42,7 @@ export class CreateObsfucationComponent {
 
   selectedItem: string | null = null;
 
-  constructor(private _obsufactionService: ObsfucationService) {
-    // Initialize dataSource with some sample data
-    this.dataSource = new MatTableDataSource([
-      { selectColumn: 'Email Address' },
-      { selectColumn: 'Date of Birth' },
-      { selectColumn: 'Credit Card Number' },
-      { selectColumn: 'Name' },
-      { selectColumn: 'SSN_NUMBER' },
-    ]);
-  }
-
-  selectItem(item: string) {
-    this.selectedItem = item;
-    this.selection.clear();
-
-    // Get the columns to check for the selected item
-    const columnsToCheck = this.tableColumnMappings[item] || [];
-
-    // Check the rows that match the columns
-    this.dataSource.data.forEach((row: any) => {
-      if (columnsToCheck.includes(row.selectColumn)) {
-        console.log('row', row);
-        this.selection.select(row);
-      }
-    });
-  }
+  constructor(private _obsufactionService: ObsfucationService) {}
 
   /** Whether the number of selected elements matches the total number of rows. */
   isAllSelected() {
@@ -86,18 +62,57 @@ export class CreateObsfucationComponent {
   }
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  foods: any[] = [
-    { value: 'steak-0', viewValue: 'Steak' },
-    { value: 'pizza-1', viewValue: 'Pizza' },
-    { value: 'tacos-2', viewValue: 'Tacos' },
-  ];
 
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
   }
   ngOnInit() {
-    this.dataSource = new MatTableDataSource<any>(
-      this._obsufactionService.getAllObsfucationStrategies()
+    // this.dataSource = new MatTableDataSource<any>(
+    //   this._obsufactionService.getAllObsfucationStrategies()
+    // );
+    this.onTableChange();
+  }
+
+  /**
+   * Handle table selection change from dropdown
+   */
+  onTableChange() {
+    // Update selected item in sidebar to keep UI in sync
+    if (this.selectedTable) {
+      this.selectedItem = this.selectedTable;
+    }
+
+    // Update table data
+    this.updateTableData();
+  }
+
+  selectItem(item: string) {
+    // Update selected item
+    this.selectedItem = item;
+
+    // Update selected table in dropdown
+    this.selectedTable = item;
+
+    // Update table data
+    this.updateTableData();
+  }
+
+  /**
+   * Update the table data based on selection
+   */
+  private updateTableData() {
+    if (!this.selectedTable) return;
+
+    // Find selected table definition
+    const selectedTableData = this.tableData.tables.find(
+      (table) => table.tableName === this.selectedTable
     );
+
+    // Update data source if table found
+    if (selectedTableData) {
+      this.dataSource.data = selectedTableData.columns;
+    } else {
+      this.dataSource.data = [];
+    }
   }
 }

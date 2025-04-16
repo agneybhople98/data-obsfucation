@@ -52,88 +52,71 @@
       <div class="!ms-5">
         <div>Set Obsfucation Strategies</div>
 
-        <div class="jobs-table !mt-4">
-          <table
-            mat-table
-            [dataSource]="this.dataSource"
-            class="mat-elevation-z8 w-full border-collapse"
-          >
-            <!-- Checkbox Column for "Select All" -->
-            <ng-container matColumnDef="select">
-              <th mat-header-cell *matHeaderCellDef class="bg-gray-100 p-4">
-                <div class="flex items-center">
-                  <mat-checkbox
-                    (change)="$event ? masterToggle() : null"
-                    [checked]="selection.hasValue() && isAllSelected()"
-                    [indeterminate]="selection.hasValue() && !isAllSelected()"
-                  >
-                  </mat-checkbox>
-                </div>
-              </th>
-              <td mat-cell *matCellDef="let row" class="p-4">
-                <mat-checkbox
-                  (click)="$event.stopPropagation()"
-                  (change)="$event ? selection.toggle(row) : null"
-                  [checked]="selection.isSelected(row)"
-                >
-                </mat-checkbox>
-              </td>
-            </ng-container>
-
-            <ng-container matColumnDef="selectColumn">
-              <th
-                mat-header-cell
-                *matHeaderCellDef
-                class="bg-gray-100 p-4 font-medium"
+        <div class="table-container">
+          <mat-form-field>
+            <mat-label>Select Table</mat-label>
+            <mat-select
+              [(value)]="selectedTable"
+              (selectionChange)="onTableChange()"
+            >
+              <mat-option
+                *ngFor="let table of tableData.tables"
+                [value]="table.tableName"
               >
-                Select Column
-              </th>
-              <td mat-cell *matCellDef="let element" class="p-4">
-                {{ element.selectColumn }}
+                {{ table.tableName }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+            <!-- Column Name Column -->
+            <ng-container matColumnDef="columnName">
+              <th mat-header-cell *matHeaderCellDef>Column Name</th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.displayName }}
               </td>
             </ng-container>
 
-            <ng-container matColumnDef="obsfucationStrategy">
-              <th
-                mat-header-cell
-                *matHeaderCellDef
-                class="bg-gray-100 p-4 font-medium"
-              >
-                Obfuscation Strategy
-              </th>
-              <td mat-cell *matCellDef="let element" class="p-4">
-                <div class="!mt-2">
-                  <app-dropdown [options]="obsStrategies"></app-dropdown>
-                </div>
+            <!-- Obfuscation Strategy Column -->
+            <ng-container matColumnDef="obfStrategy">
+              <th mat-header-cell *matHeaderCellDef>Obfuscation Strategy</th>
+              <td mat-cell *matCellDef="let element; let i = index">
+                <mat-form-field appearance="fill">
+                  <mat-label>Select an option</mat-label>
+                  <mat-select [(ngModel)]="element.obfStrategy">
+                    <mat-option [value]="element.obfStrategy">{{
+                      element.obfStrategy
+                    }}</mat-option>
+                  </mat-select>
+                </mat-form-field>
               </td>
             </ng-container>
 
-            <ng-container matColumnDef="obsfucationRules">
-              <th
-                mat-header-cell
-                *matHeaderCellDef
-                class="bg-gray-100 p-4 font-medium"
-              >
-                Obfuscation Rules
-              </th>
-              <td mat-cell *matCellDef="let element" class="p-4">
-                <div class="flex gap-4 !mt-2">
-                  <app-dropdown [options]="obsRulesOptions"></app-dropdown>
-                  <app-dropdown [options]="obsRulesNumbers"></app-dropdown>
-                </div>
+            <!-- Obfuscation Rules Column -->
+            <ng-container matColumnDef="obfRules">
+              <th mat-header-cell *matHeaderCellDef>Obfuscation Rules</th>
+              <td mat-cell *matCellDef="let element">
+                <mat-form-field appearance="fill">
+                  <mat-label>Select an option</mat-label>
+                  <mat-select [(ngModel)]="element.obfRules.first">
+                    <mat-option [value]="element.obfRules.first">{{
+                      element.obfRules.first
+                    }}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                  <mat-label>Select an option</mat-label>
+                  <mat-select [(ngModel)]="element.obfRules.second">
+                    <mat-option [value]="element.obfRules.second">{{
+                      element.obfRules.second
+                    }}</mat-option>
+                  </mat-select>
+                </mat-form-field>
               </td>
             </ng-container>
 
-            <tr
-              mat-header-row
-              *matHeaderRowDef="displayedColumns"
-              class="bg-gray-100"
-            ></tr>
-            <tr
-              mat-row
-              *matRowDef="let row; columns: displayedColumns"
-              class="hover:bg-gray-50"
-            ></tr>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
           </table>
 
           <mat-paginator

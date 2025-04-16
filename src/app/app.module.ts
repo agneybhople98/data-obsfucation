@@ -33,6 +33,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
 import { ButtonComponent } from './components/button/button.component';
 import { JobControlComponent } from './pages/job-control/job-control.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -71,6 +72,7 @@ import { JobControlComponent } from './pages/job-control/job-control.component';
     MatMenuModule,
     MatCheckboxModule,
     MatSelectModule,
+    FormsModule,
     HttpClientModule,
   ],
   providers: [],

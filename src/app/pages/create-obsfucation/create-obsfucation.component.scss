@@ -1,29 +1,24 @@
-/* In your component's CSS file or global styles */
 .mat-mdc-table {
-  border-radius: 4px;
-  overflow: hidden;
+  background: white !important;
+  width: 100%;
 }
 
 .mat-mdc-header-row {
-  background-color: #f9fafb;
+  background-color: #f1f1f1 !important;
+  border-bottom: 1px solid #e9ecef !important;
+}
+.mat-mdc-row {
+  background: transparent !important;
+  border-bottom: 1px solid white !important;
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+  }
 }
 
-.mat-mdc-header-cell {
-  font-weight: 500;
-  color: #374151;
-}
-
-.mat-column-select {
-  width: 100px;
-}
-
-/* Fix for checkbox alignment */
-.mat-mdc-checkbox .mdc-checkbox {
-  margin-right: 8px;
-}
-
-/* Ensure app-dropdown components look like the ones in the image */
-app-dropdown {
-  display: block;
-  min-width: 200px;
+.mat-mdc-cell {
+  color: #333;
+  border-bottom: 1px solid #e9ecef;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

@@ -283,7 +283,9 @@
             <ng-container matColumnDef="endTime">
               <th mat-header-cell *matHeaderCellDef>End Time</th>
               <td mat-cell *matCellDef="let element">
-                {{ element.endTime }}
+                <div *ngIf="element.status === 'Completed'">
+                  {{ element.endTime }}
+                </div>
               </td>
             </ng-container>
 

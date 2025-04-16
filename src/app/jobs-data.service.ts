@@ -117,6 +117,38 @@ const ELEMENT_DATA: JobElement[] = [
     progress: 90,
     tasks: [
       {
+        taskId: 'TASK-78901234',
+        taskDescription: 'CopySchemaAndData',
+        status: 'Completed',
+        startTime: '04/01/2025 07:23:12AM',
+        endTime: '04/01/2025 07:23:12AM',
+        message: 'SQL Log: Cloning Schema is Successful',
+      },
+      {
+        taskId: 'TASK-20547689',
+        taskDescription: 'CreateProceduresAndFunctions',
+        status: 'Completed',
+        startTime: '04/02/2025 07:33:22AM',
+        endTime: '04/02/2025 07:33:22AM',
+        message: 'SQL Log: Cloning Schema is Successful',
+      },
+      {
+        taskId: 'TASK-30982345',
+        taskDescription: 'CreateMaskingScript',
+        status: 'Completed',
+        startTime: '04/03/2025 08:11:09AM',
+        endTime: '04/03/2025 08:11:09AM',
+        message: 'SQL Log: Cloning Schema is Successful',
+      },
+      {
+        taskId: 'TASK-55678901',
+        taskDescription: "MaskTable-'CI_PER'",
+        status: 'Completed',
+        startTime: '04/04/2025 08:22:10AM',
+        endTime: '04/04/2025 08:22:10AM',
+        message: 'SQL Log: Cloning Schema is Successful',
+      },
+      {
         taskId: 'TASK-12346',
         taskDescription: 'Encrypting social security numbers',
         status: 'Failed',

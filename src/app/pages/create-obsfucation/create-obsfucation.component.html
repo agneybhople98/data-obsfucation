@@ -114,7 +114,8 @@
               <td mat-cell *matCellDef="let element; let i = index">
                 <mat-form-field appearance="fill" class="!mt-2">
                   <mat-label>Select an option</mat-label>
-                  <mat-select>
+
+                  <mat-select [(ngModel)]="element.obfStrategy">
                     <mat-option [value]="element.obfStrategy">{{
                       element.obfStrategy
                     }}</mat-option>
@@ -129,7 +130,7 @@
               <td mat-cell *matCellDef="let element; let i = index">
                 <mat-form-field appearance="fill" class="!mt-2">
                   <mat-label>Select an option</mat-label>
-                  <mat-select>
+                  <mat-select [(ngModel)]="element.obfRules.first">
                     <mat-option [value]="element.obfRules.first">{{
                       element.obfRules.first
                     }}</mat-option>
@@ -137,7 +138,7 @@
                 </mat-form-field>
                 <mat-form-field appearance="fill" class="!ms-4 !mt-2">
                   <mat-label>Select an option</mat-label>
-                  <mat-select>
+                  <mat-select [(ngModel)]="element.obfRules.second">
                     <mat-option [value]="element.obfRules.second">{{
                       element.obfRules.second
                     }}</mat-option>

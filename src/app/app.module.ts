@@ -34,6 +34,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { ButtonComponent } from './components/button/button.component';
 import { JobControlComponent } from './pages/job-control/job-control.component';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,8 @@ import { FormsModule } from '@angular/forms';
     JobControlComponent,
   ],
   imports: [
+    FormsModule,
+    ReactiveFormsModule,
     BrowserModule,
     BrowserAnimationsModule,
     MatDividerModule,
@@ -72,7 +75,7 @@ import { FormsModule } from '@angular/forms';
     MatMenuModule,
     MatCheckboxModule,
     MatSelectModule,
-    FormsModule,
+
     HttpClientModule,
   ],
   providers: [],

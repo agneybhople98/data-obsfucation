@@ -28,17 +28,11 @@
       </div>
 
       <div class="flex gap-2 !px-4">
-        <app-input
-          class="flex-1"
-          label="Name"
-          formControlName="name"
-          value="Healthcare Service Meta"
-        >
+        <app-input class="flex-1" label="Name" value="Healthcare Service Meta">
         </app-input>
         <app-input
           class="flex-2"
           label="Description"
-          formControlName="description"
           value="Healthcare services UMG schema - A created for masking production"
           [additionalInfo]="'Last connection Date: 09/04/2025 11:50 PM'"
         >
@@ -59,19 +53,10 @@
         <div class="element-diagram border-[0.5px] !px-4 !py-3">
           <div class="flex gap-4">
             <div class="flex-1">
-              <app-input
-                label="Name"
-                formControlName="name"
-                [value]="'Testing'"
-              >
-              </app-input>
+              <app-input label="Name" [value]="'Testing'"> </app-input>
             </div>
             <div class="flex-1">
-              <app-input
-                label="Databse Type"
-                formControlName="databaseType"
-                [value]="'Oracle Database'"
-              >
+              <app-input label="Databse Type" [value]="'Oracle Database'">
               </app-input>
             </div>
           </div>
@@ -79,7 +64,6 @@
             <div class="flex-1">
               <app-input
                 label="URL"
-                formControlName="url"
                 [required]="true"
                 [value]="'https://do.uat.riaproducts.com/'"
               >
@@ -88,7 +72,6 @@
             <div class="flex-1">
               <app-input
                 label="Schema Name"
-                formControlName="password"
                 [required]="true"
                 [value]="'MSKADM'"
               >
@@ -99,7 +82,6 @@
             <div class="flex-2">
               <app-input
                 label="Username"
-                formControlName="username"
                 [required]="true"
                 [value]="'RIA_Advisory'"
                 [additionalInfo]="'Last connection Date: 09/04/2025 11:50 PM'"
@@ -109,7 +91,6 @@
             <div class="flex-1">
               <app-input
                 label="Password"
-                formControlName="password"
                 [required]="true"
                 [value]="'riahealthcare123'"
                 type="password"

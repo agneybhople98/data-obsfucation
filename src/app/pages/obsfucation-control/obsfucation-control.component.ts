@@ -56,4 +56,10 @@ export class ObsfucationControl implements OnInit, AfterViewInit {
       this.obsfucationService.getAllObsfucations()
     );
   }
+
+  openCreateObsfucation(row: any) {
+    this.router.navigate(['/obsfucation-control/create-obsfucation'], {
+      state: { data: row },
+    });
+  }
 }

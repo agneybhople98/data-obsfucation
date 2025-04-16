@@ -194,7 +194,7 @@
                 style="color: #3179e5"
                 mat-cell
                 *matCellDef="let element"
-                routerLink="/obsfucation-control/create-obsfucation"
+                (click)="openCreateObsfucation(element)"
               >
                 {{ element.obsfucationControlId }}
               </td>

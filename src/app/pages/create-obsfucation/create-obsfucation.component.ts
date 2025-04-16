@@ -7,6 +7,7 @@ import {
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { SelectionModel } from '@angular/cdk/collections';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-create-obsfucation',
@@ -29,6 +30,7 @@ export class CreateObsfucationComponent implements OnInit {
   // public obsRulesOptions = ['Left', 'Right', 'Type', 'Date'];
   // public obsRulesNumbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
   public selection = new SelectionModel<any>(true, []);
+  obsControlData: any;
 
   tableItems = [
     'CI_CUSTOMERS',
@@ -41,7 +43,11 @@ export class CreateObsfucationComponent implements OnInit {
 
   selectedItem: string | null = null;
 
-  constructor(private _obsufactionService: ObsfucationService) {}
+  constructor(
+    private _obsufactionService: ObsfucationService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   toggleAllRows() {
     if (this.isAllSelected()) {
@@ -75,6 +81,15 @@ export class CreateObsfucationComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
   }
   ngOnInit() {
+    // Get state data from navigation
+    this.obsControlData =
+      this.router.getCurrentNavigation()?.extras.state?.['data'];
+
+    // If no data in navigation, try to get it from history state
+    if (!this.obsControlData) {
+      this.obsControlData = history.state.data;
+    }
+
     this.onTableChange();
     // Check rows that have all required values
     this.dataSource.data.forEach((row: ColumnDefinition) => {

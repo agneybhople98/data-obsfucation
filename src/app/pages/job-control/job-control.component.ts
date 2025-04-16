@@ -108,4 +108,28 @@ export class JobControlComponent implements OnInit, OnDestroy {
       console.log('Job run response:', res);
     });
   }
+
+  openCreateObsfucation(element: any) {
+    // Get the obfuscation control data from the service
+    const allJobData = this._jobDataService.getAllJobControlData();
+
+    const obsControlData = allJobData.find(
+      (job) => job.obsfucationControlId === element.obsfucationControlId
+    );
+
+    if (obsControlData) {
+      // Use location.href to ensure state is preserved
+      this.router
+        .navigate(['/obsfucation-control/create-obsfucation'], {
+          state: { data: obsControlData },
+          replaceUrl: true,
+        })
+        .then(() => {
+          // Force a reload to ensure state is available
+          window.location.reload();
+        });
+    } else {
+      console.error('No matching obfuscation control data found');
+    }
+  }
 }

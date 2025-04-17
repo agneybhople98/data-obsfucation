@@ -107,14 +107,9 @@ export class JobControlComponent implements OnInit, OnDestroy {
   }
 
   runAPI() {
-    this._jobDataService.runJobByName().subscribe({
-      next: (response) => {
-        this._toasterService.success('Job triggered successfully');
-      },
-      error: (error) => {
-        console.error('Error triggering job:', error);
-        this._toasterService.error('Failed to trigger job');
-      },
+    this._jobDataService.runJobByName().subscribe((res) => {
+      console.log('res', res);
+      this._toasterService.success('Job triggered successfully');
     });
   }
 

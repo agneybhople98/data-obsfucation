@@ -109,15 +109,15 @@
       <span class="toolbar-spacer"></span>
 
       <!-- User Profile Section -->
-      <div class="user-profile">
-        <span class="user-name" *ngIf="isExpanded">{{ userName }}</span>
-        <button
-          mat-icon-button
-          [matMenuTriggerFor]="userMenu"
-          class="user-avatar"
-        >
-          <img src="../../../assets/avatar.png" alt="User Avatar" />
-        </button>
+      <div class="user-profile !px-2">
+        <div class="flex items-center gap-2" [matMenuTriggerFor]="userMenu">
+          <button mat-icon-button class="user-avatar cursor-pointer">
+            <img src="../../../assets/avatar.png" alt="User Avatar" />
+          </button>
+          <span class="user-name cursor-pointer" *ngIf="isExpanded">{{
+            userName
+          }}</span>
+        </div>
         <mat-menu #userMenu="matMenu">
           <button mat-menu-item>
             <mat-icon>person</mat-icon>

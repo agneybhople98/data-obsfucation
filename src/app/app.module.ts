@@ -26,14 +26,16 @@ import { JobDetailsComponent } from './pages/job-details/job-details.component';
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 import { CreateJobComponent } from './components/create-job/create-job.component';
 import { InputComponent } from './components/input/input.component';
-import { CreateObsfucationComponent } from './pages/create-obsfucation/create-obsfucation.component';
+import { ViewObsfucationComponent } from './pages/view-obsfucation/view-obsfucation.component';
 import { DropdownComponent } from './components/dropdown/dropdown.component';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
 import { ButtonComponent } from './components/button/button.component';
 import { JobControlComponent } from './pages/job-control/job-control.component';
+import { CreateObsfucationComponent } from './pages/create-obsfucation/create-obsfucation.component';
 import { FormsModule } from '@angular/forms';
+
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
@@ -50,9 +52,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     CreateJobComponent,
     InputComponent,
     ButtonComponent,
-    CreateObsfucationComponent,
+    ViewObsfucationComponent,
     DropdownComponent,
     JobControlComponent,
+    CreateObsfucationComponent,
   ],
   imports: [
     FormsModule,

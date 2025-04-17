@@ -65,19 +65,19 @@
 
         <div class="table-container !mt-4">
           <!-- <mat-form-field>
-              <mat-label>Select Table</mat-label>
-              <mat-select
-                [(value)]="selectedTable"
-                (selectionChange)="onTableChange()"
+            <mat-label>Select Table</mat-label>
+            <mat-select
+              [(value)]="selectedTable"
+              (selectionChange)="onTableChange()"
+            >
+              <mat-option
+                *ngFor="let table of tableData.tables"
+                [value]="table.tableName"
               >
-                <mat-option
-                  *ngFor="let table of tableData.tables"
-                  [value]="table.tableName"
-                >
-                  {{ table.tableName }}
-                </mat-option>
-              </mat-select>
-            </mat-form-field> -->
+                {{ table.tableName }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field> -->
 
           <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
             <ng-container matColumnDef="select">

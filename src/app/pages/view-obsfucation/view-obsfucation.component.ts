@@ -10,12 +10,12 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-create-obsfucation',
+  selector: 'app-view-obsfucation',
+  templateUrl: './view-obsfucation.component.html',
+  styleUrl: './view-obsfucation.component.scss',
   standalone: false,
-  templateUrl: './create-obsfucation.component.html',
-  styleUrl: './create-obsfucation.component.scss',
 })
-export class CreateObsfucationComponent {
+export class ViewObsfucationComponent implements OnInit {
   tableData = TABLE_DATA;
   selectedTable = this.tableData.selectedTable;
   displayedColumns: string[] = [

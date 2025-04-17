@@ -3,8 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from '../pages/dashboard/dashboard.component';
 import { ObsfucationControl } from '../pages/obsfucation-control/obsfucation-control.component';
 import { JobDetailsComponent } from '../pages/job-details/job-details.component';
-import { CreateObsfucationComponent } from '../pages/create-obsfucation/create-obsfucation.component';
+import { ViewObsfucationComponent } from '../pages/view-obsfucation/view-obsfucation.component';
 import { JobControlComponent } from '../pages/job-control/job-control.component';
+import { CreateObsfucationComponent } from '../pages/create-obsfucation/create-obsfucation.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,7 @@ const routes: Routes = [
     path: 'obsfucation-control',
     component: ObsfucationControl,
     children: [
+      { path: 'view-obsfucation', component: ViewObsfucationComponent },
       { path: 'create-obsfucation', component: CreateObsfucationComponent },
     ],
   },

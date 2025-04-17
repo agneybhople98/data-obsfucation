@@ -4,7 +4,13 @@
 
 <router-outlet></router-outlet>
 
-<div class="bg-white" *ngIf="!router.url.includes('create-obsfucation')">
+<div
+  class="bg-white"
+  *ngIf="
+    !router.url.includes('view-obsfucation') &&
+    !router.url.includes('create-obsfucation')
+  "
+>
   <mat-drawer-container
     class="!min-h-[calc(100vh-64px-60px)]"
     hasBackdrop="false"
@@ -50,7 +56,7 @@
               <app-input label="Name" [value]="'Testing'"> </app-input>
             </div>
             <div class="flex-1">
-              <app-input label="Databse Type" [value]="'Oracle Database'">
+              <app-input label="Database Type" [value]="'Oracle Database'">
               </app-input>
             </div>
           </div>
@@ -237,24 +243,25 @@
                         </div>
                         <div class="flex-1">
                           <app-input
-                            label="Databse Type"
+                            label="Database Type"
                             [value]="element.details.databaseType"
                           >
                           </app-input>
                         </div>
-                        <div class="flex-1">
-                          <app-input
-                            label="URL"
-                            [required]="true"
-                            [value]="element.details.url"
-                          >
-                          </app-input>
-                        </div>
+
                         <div class="flex-1">
                           <app-input
                             label="Schema Name"
                             [required]="true"
                             [value]="element.details.schemaName"
+                          >
+                          </app-input>
+                        </div>
+                        <div class="flex-2">
+                          <app-input
+                            label="URL"
+                            [required]="true"
+                            [value]="element.details.url"
                           >
                           </app-input>
                         </div>

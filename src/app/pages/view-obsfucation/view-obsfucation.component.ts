@@ -41,6 +41,9 @@ export class ViewObsfucationComponent implements OnInit {
     'CI_PER_PHONE',
   ];
 
+  filteredTableItems = [...this.tableItems];
+  searchText = '';
+
   selectedItem: string | null = null;
 
   constructor(
@@ -150,5 +153,13 @@ export class ViewObsfucationComponent implements OnInit {
     } else {
       this.dataSource.data = [];
     }
+  }
+
+  applySearch(event: Event) {
+    const searchValue = (event.target as HTMLInputElement).value;
+    this.searchText = searchValue;
+    this.filteredTableItems = this.tableItems.filter((item) =>
+      item.toLowerCase().includes(searchValue.toLowerCase())
+    );
   }
 }

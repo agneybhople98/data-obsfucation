@@ -2,11 +2,15 @@
   <aside class="flex-1">
     <div class="bg-white !h-screen">
       <div class="!p-3">
-        <app-input [label]="'Search'"></app-input>
+        <app-input
+          [label]="'Search'"
+          (input)="applySearch($event)"
+          [value]="searchText"
+        ></app-input>
       </div>
       <mat-list role="list">
         <mat-list-item
-          *ngFor="let item of tableItems"
+          *ngFor="let item of filteredTableItems"
           role="listitem"
           class="border-b border-gray-200 cursor-pointer"
           [ngClass]="{ 'bg-primary text-primary': selectedItem === item }"

@@ -9,6 +9,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { HttpClientModule } from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
 
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { ObsfucationControl } from './pages/obsfucation-control/obsfucation-control.component';
@@ -80,6 +81,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatSelectModule,
 
     HttpClientModule,
+    ToastrModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -9,6 +9,7 @@ import {
 import { MatDrawer } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-job-control',
@@ -43,7 +44,8 @@ export class JobControlComponent implements OnInit, OnDestroy {
   constructor(
     private _dialog: MatDialog,
     private _jobDataService: JobsDataService,
-    private router: Router
+    private router: Router,
+    private _toasterService: ToastrService
   ) {}
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -103,9 +105,16 @@ export class JobControlComponent implements OnInit, OnDestroy {
       }
     );
   }
+
   runAPI() {
-    this._jobDataService.runJobByName().subscribe((res) => {
-      console.log('Job run response:', res);
+    this._jobDataService.runJobByName().subscribe({
+      next: (response) => {
+        this._toasterService.success('Job triggered successfully');
+      },
+      error: (error) => {
+        console.error('Error triggering job:', error);
+        this._toasterService.error('Failed to trigger job');
+      },
     });
   }
 

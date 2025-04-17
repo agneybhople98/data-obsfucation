@@ -24,6 +24,27 @@ export class ViewObsfucationComponent implements OnInit {
     'obfStrategy',
     'obfRules',
   ];
+  obsRules = [
+    'R',
+    'L',
+    'ALPHA',
+    'EMAIL',
+    'SSN',
+    'ADDRESS',
+    'Delivered',
+    'NAME',
+    'PHONE',
+    'MD5',
+    'SHA1',
+  ];
+  obfStrategies = [
+    'STARIFY',
+    'RANDOMIZE',
+    'FAKER',
+    'REPLACE_WITH_CONSTANT',
+    'HASH',
+  ];
+
   dataSource = new MatTableDataSource<ColumnDefinition>([]);
   // public dataSource: any;
   // public obsStrategies = ['Starify', 'Hashing', 'Faker'];

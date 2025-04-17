@@ -24,6 +24,27 @@ export class CreateObsfucationComponent implements OnInit {
     'obfStrategy',
     'obfRules',
   ];
+  obsRules = [
+    'R',
+    'L',
+    'ALPHA',
+    'EMAIL',
+    'SSN',
+    'ADDRESS',
+    'Delivered',
+    'NAME',
+    'PHONE',
+    'MD5',
+    'SHA1',
+  ];
+  obfStrategies = [
+    'STARIFY',
+    'RANDOMIZE',
+    'FAKER',
+    'REPLACE_WITH_CONSTANT',
+    'HASH',
+  ];
+
   dataSource = new MatTableDataSource<ColumnDefinition>([]);
   public selection = new SelectionModel<any>(true, []);
   obsControlData: any;

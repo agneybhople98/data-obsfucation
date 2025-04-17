@@ -67,7 +67,7 @@ const ELEMENT_DATA: JobElement[] = [
       },
       {
         taskId: 'TASK-55678901',
-        taskDescription: "MaskTable-'CI_PER'",
+        taskDescription: "MaskTable-'CI_CUSTOMERS'",
         status: 'Completed',
         startTime: '04/04/2025 08:22:10AM',
         endTime: '04/04/2025 08:22:10AM',
@@ -75,7 +75,7 @@ const ELEMENT_DATA: JobElement[] = [
       },
       {
         taskId: 'TASK-55678902',
-        taskDescription: "MaskTable-'CI_PER_NAME'",
+        taskDescription: "MaskTable-'CI_ORDERS'",
         status: 'Failed',
         startTime: '04/05/2025 09:30:33AM',
         endTime: '04/05/2025 09:30:33AM',
@@ -83,7 +83,7 @@ const ELEMENT_DATA: JobElement[] = [
       },
       {
         taskId: 'TASK-55678903',
-        taskDescription: "MaskTable-'CI_PER_PHONE'",
+        taskDescription: "MaskTable-'CI_PER'",
         status: 'In Progress',
         startTime: '04/02/2025 07:33:22AM',
         endTime: '04/02/2025 07:33:22AM',
@@ -99,7 +99,15 @@ const ELEMENT_DATA: JobElement[] = [
       },
       {
         taskId: 'TASK-55678905',
-        taskDescription: "MaskTable-'CI_BILL'",
+        taskDescription: "MaskTable-'CI_PER_NAME'",
+        status: 'Pending',
+        startTime: '04/02/2025 07:33:22AM',
+        endTime: '04/02/2025 07:33:22AM',
+        message: 'SQL Log: Cloning Schema is Successful',
+      },
+      {
+        taskId: 'TASK-55678905',
+        taskDescription: "MaskTable-'CI_PER_PHONE'",
         status: 'Pending',
         startTime: '04/02/2025 07:33:22AM',
         endTime: '04/02/2025 07:33:22AM',

@@ -15,9 +15,9 @@ import { Router, ActivatedRoute } from '@angular/router';
   templateUrl: './create-obsfucation.component.html',
   styleUrl: './create-obsfucation.component.scss',
 })
-export class CreateObsfucationComponent {
+export class CreateObsfucationComponent implements OnInit {
   tableData = TABLE_DATA;
-  selectedTable = this.tableData.selectedTable;
+  selectedTable: string | null = null;
   displayedColumns: string[] = [
     'select',
     'columnName',
@@ -25,10 +25,6 @@ export class CreateObsfucationComponent {
     'obfRules',
   ];
   dataSource = new MatTableDataSource<ColumnDefinition>([]);
-  // public dataSource: any;
-  // public obsStrategies = ['Starify', 'Hashing', 'Faker'];
-  // public obsRulesOptions = ['Left', 'Right', 'Type', 'Date'];
-  // public obsRulesNumbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
   public selection = new SelectionModel<any>(true, []);
   obsControlData: any;
 
@@ -41,7 +37,7 @@ export class CreateObsfucationComponent {
     'CI_PER_PHONE',
   ];
 
-  selectedItem: string | null = null;
+  selectedItem: string | null = 'CI_CUSTOMERS';
 
   constructor(
     private _obsufactionService: ObsfucationService,
@@ -80,6 +76,7 @@ export class CreateObsfucationComponent {
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
   }
+
   ngOnInit() {
     // Get state data from navigation
     this.obsControlData =
@@ -90,63 +87,62 @@ export class CreateObsfucationComponent {
       this.obsControlData = history.state.data;
     }
 
-    this.onTableChange();
-    // Check rows that have all required values
-    this.dataSource.data.forEach((row: ColumnDefinition) => {
-      if (row.columnName && row.obfStrategy && row.obfRules?.first) {
-        this.selection.select(row);
-      }
-    });
+    if (this.selectedItem) {
+      this.selectItem(this.selectedItem);
+    } else {
+      this.dataSource.data = [];
+    }
+
+    // Initialize with empty data source
   }
 
   /**
-   * Handle table selection change from dropdown
+   * Select an item from the sidebar
    */
-  onTableChange() {
-    // Update selected item in sidebar to keep UI in sync
-    if (this.selectedTable) {
-      this.selectedItem = this.selectedTable;
-    }
-
-    // Update table data
-    this.updateTableData();
-  }
-
   selectItem(item: string) {
     // Update selected item
     this.selectedItem = item;
 
-    // Update selected table in dropdown
+    // Update selected table
     this.selectedTable = item;
 
-    // Update table data
-    this.updateTableData();
+    // Create empty columns based on the selected table structure
+    this.createEmptyColumns();
 
     // Clear existing selections
     this.selection.clear();
-
-    // Check rows that have all required values
-    this.dataSource.data.forEach((row: ColumnDefinition) => {
-      if (row.columnName && row.obfStrategy && row.obfRules?.first) {
-        this.selection.select(row);
-      }
-    });
   }
 
   /**
-   * Update the table data based on selection
+   * Create empty columns for the selected table
    */
-  private updateTableData() {
-    if (!this.selectedTable) return;
+  private createEmptyColumns() {
+    if (!this.selectedTable) {
+      this.dataSource.data = [];
+      return;
+    }
 
-    // Find selected table definition
+    // Find selected table definition to get column structure
     const selectedTableData = this.tableData.tables.find(
       (table) => table.tableName === this.selectedTable
     );
 
-    // Update data source if table found
+    // Create empty columns based on the structure of the selected table
     if (selectedTableData) {
-      this.dataSource.data = selectedTableData.columns;
+      // Create new empty columns with the same column names but empty values
+      const emptyColumns = selectedTableData.columns.map((column) => {
+        return {
+          columnName: column.columnName,
+          displayName: column.displayName, // Keep display name
+          obfStrategy: '', // Empty strategy
+          obfRules: {
+            first: '', // Empty rules
+            second: '', // Empty rules
+          },
+        } as ColumnDefinition;
+      });
+
+      this.dataSource.data = emptyColumns;
     } else {
       this.dataSource.data = [];
     }

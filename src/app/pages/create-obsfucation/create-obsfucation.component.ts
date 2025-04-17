@@ -44,6 +44,7 @@ export class CreateObsfucationComponent implements OnInit {
     'REPLACE_WITH_CONSTANT',
     'HASH',
   ];
+  obsRulesNumbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
   dataSource = new MatTableDataSource<ColumnDefinition>([]);
   public selection = new SelectionModel<any>(true, []);

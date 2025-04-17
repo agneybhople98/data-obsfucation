@@ -109,8 +109,8 @@ export class JobControlComponent implements OnInit, OnDestroy {
   runAPI() {
     this._jobDataService.runJobByName().subscribe((res) => {
       console.log('res', res);
-      this._toasterService.success('Job triggered successfully');
     });
+    this._toasterService.success('Job triggered successfully');
   }
 
   openCreateObsfucation(element: any) {

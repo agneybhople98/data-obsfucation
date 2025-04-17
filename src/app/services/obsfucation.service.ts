@@ -5,7 +5,7 @@ const ELEMENT_DATA: any[] = [
     obsControlId: 'OC-98765',
     obsControlName: 'Healthcare service - Meta',
     obsControlDescription:
-      'Healthcare Service Schema Meta - Created for Masking Prod Data',
+      'Healthcare Service Provider Schema Meta - Created for Masking Prod Data',
     createdBy: 'Miller Smith',
     details: {
       name: 'Testing',
@@ -20,7 +20,7 @@ const ELEMENT_DATA: any[] = [
     obsControlId: 'OC-32455',
     obsControlName: 'Insurance Claims - Master',
     obsControlDescription:
-      'Healthcare Service Schema Master - Created for Masking Prod Data',
+      'Healthcare Service Provider Schema Master - Created for Masking Prod Data',
     createdBy: 'Smith Wilson',
     details: {
       name: 'Testing',
@@ -35,7 +35,7 @@ const ELEMENT_DATA: any[] = [
     obsControlId: 'OC-23455',
     obsControlName: 'Healthcare Provider - ARCHDEV',
     obsControlDescription:
-      'Healthcare Service Schema ARCHDEV - Created for Masking Prod Data',
+      'Healthcare Service Provider Schema ARCHDEV - Created for Masking Prod Data',
     createdBy: 'Jonny Johnson',
     details: {
       name: 'Testing',
@@ -50,7 +50,7 @@ const ELEMENT_DATA: any[] = [
     obsControlId: 'OC-23445',
     obsControlName: 'RadiologyImages_Metadata',
     obsControlDescription:
-      'Healthcare Service Schema Metadata - Created for Masking Prod Data',
+      'Healthcare Service Provider Schema Metadata - Created for Masking Prod Data',
     createdBy: 'Chris Brown',
     details: {
       name: 'Testing',
@@ -65,7 +65,7 @@ const ELEMENT_DATA: any[] = [
     obsControlId: 'OC-65577',
     obsControlName: 'PatientEHR_US - Master',
     obsControlDescription:
-      'Healthcare Service Schema Master - Created for Masking Prod Data',
+      'Healthcare Service Provider Schema Master - Created for Masking Prod Data',
     createdBy: 'Maria Garcia',
     details: {
       name: 'Testing',
@@ -80,7 +80,7 @@ const ELEMENT_DATA: any[] = [
     obsControlId: 'OC-67890',
     obsControlName: 'Healthcare Service - F',
     obsControlDescription:
-      'Healthcare Service Schema F - Created for Masking Prod Data',
+      'Healthcare Service Provider Schema F - Created for Masking Prod Data',
     createdBy: 'Rodriguez V',
     details: {
       name: 'Testing',
@@ -95,7 +95,7 @@ const ELEMENT_DATA: any[] = [
     obsControlId: 'OC-45456',
     obsControlName: 'Healthcare Service - G',
     obsControlDescription:
-      'Healthcare Service Schema G - Created for Masking Prod Data',
+      'Healthcare Service Provider Schema G - Created for Masking Prod Data',
     createdBy: 'Martinez Sofia',
     details: {
       name: 'Testing',

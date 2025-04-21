@@ -79,11 +79,11 @@ const ELEMENT_DATA: JobElement[] = [
         startTime: '04/04/2025 08:22:10AM',
         endTime: '04/04/2025 08:22:10AM',
         message: [
-          { name: 'STARIFY_COLUMN applied on  FIRST_NAME column.' },
-          { name: 'RANDOMIZE_COLUMN applied on  SSN column.' },
-          { name: 'FAKE_COLUMN applied on  EMAIL column. ' },
-          { name: 'FAKE_COLUMN applied on  SSN column.' },
-          { name: 'FAKE_COLUMN applied on  PHONE_NUMBER column.' },
+          { name: 'STARIFY applied on FIRST_NAME column.' },
+          { name: 'RANDOMIZE applied on SSN column.' },
+          { name: 'FAKER applied on EMAIL column. ' },
+          { name: 'FAKER applied on SSN column.' },
+          { name: 'FAKER applied on PHONE_NUMBER column.' },
         ],
       },
       {
@@ -93,8 +93,8 @@ const ELEMENT_DATA: JobElement[] = [
         startTime: '04/05/2025 09:30:33AM',
         endTime: '04/05/2025 09:30:33AM',
         message: [
-          { name: 'STARIFY_COLUMN applied on  PAYMENT_METHOD column.' },
-          { name: 'FAKE_COLUMN applied on  SHIPPING_ADDRESS column.' },
+          { name: 'STARIFY applied on PAYMENT_METHOD column.' },
+          { name: 'FAKER applied on SHIPPING_ADDRESS column.' },
           { name: 'REPLACE_WITH_CONSTANT applied on STATUS column.' },
         ],
       },
@@ -104,7 +104,7 @@ const ELEMENT_DATA: JobElement[] = [
         status: 'In Progress',
         startTime: '04/02/2025 07:33:22AM',
         endTime: '04/02/2025 07:33:22AM',
-        message: [{ name: 'FAKE_COLUMN applied on  EMAILID column.' }],
+        message: [{ name: 'FAKER applied on  EMAILID column.' }],
       },
       {
         taskId: 'TASK-55678904',
@@ -112,7 +112,7 @@ const ELEMENT_DATA: JobElement[] = [
         status: 'Pending',
         startTime: '04/02/2025 07:33:22AM',
         endTime: '04/02/2025 07:33:22AM',
-        message: [{ name: 'FAKE_COLUMN applied on  ENTITY_NAME column.' }],
+        message: [{ name: 'FAKER applied on  ENTITY_NAME column.' }],
       },
       {
         taskId: 'TASK-55678905',
@@ -120,7 +120,7 @@ const ELEMENT_DATA: JobElement[] = [
         status: 'Pending',
         startTime: '04/02/2025 07:33:22AM',
         endTime: '04/02/2025 07:33:22AM',
-        message: [{ name: 'FAKE_COLUMN applied on  PHONE column.' }],
+        message: [{ name: 'FAKER applied on PHONE column.' }],
       },
       {
         taskId: 'TASK-55678905',
@@ -128,7 +128,7 @@ const ELEMENT_DATA: JobElement[] = [
         status: 'Pending',
         startTime: '04/02/2025 07:33:22AM',
         endTime: '04/02/2025 07:33:22AM',
-        message: [{ name: 'FAKE_COLUMN applied on  ADDRESS1 column.' }],
+        message: [{ name: 'FAKER applied on ADDRESS1 column.' }],
       },
     ],
   },
@@ -171,7 +171,7 @@ const ELEMENT_DATA: JobElement[] = [
         status: 'Completed',
         startTime: '04/04/2025 08:22:10AM',
         endTime: '04/04/2025 08:22:10AM',
-        message: [{ name: 'FAKE_COLUMN applied on  EMAILID column.' }],
+        message: [{ name: 'FAKER applied on EMAILID column.' }],
       },
       {
         taskId: 'TASK-12346',

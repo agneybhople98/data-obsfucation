@@ -48,7 +48,7 @@ const ELEMENT_DATA: JobElement[] = [
         endTime: '04/01/2025 07:23:12AM',
         message: [
           {
-            name: 'CopySchemaAndData is Successful',
+            name: 'Copy Schema And Data is Successful',
           },
         ],
       },
@@ -60,7 +60,7 @@ const ELEMENT_DATA: JobElement[] = [
         endTime: '04/02/2025 07:33:22AM',
         message: [
           {
-            name: 'CreateProceduresAndFunctions is Successful',
+            name: 'Create Procedures And Functions is Successful',
           },
         ],
       },
@@ -70,7 +70,7 @@ const ELEMENT_DATA: JobElement[] = [
         status: 'Completed',
         startTime: '04/03/2025 08:11:09AM',
         endTime: '04/03/2025 08:11:09AM',
-        message: [{ name: 'CreateMaskingScript is Successful' }],
+        message: [{ name: 'Create Masking Script is Successful' }],
       },
       {
         taskId: 'TASK-55678901',
@@ -104,7 +104,7 @@ const ELEMENT_DATA: JobElement[] = [
         status: 'In Progress',
         startTime: '04/02/2025 07:33:22AM',
         endTime: '04/02/2025 07:33:22AM',
-        message: [{ name: 'FAKER applied on  EMAILID column.' }],
+        message: [{ name: 'FAKER applied on EMAILID column.' }],
       },
       {
         taskId: 'TASK-55678904',
@@ -112,7 +112,7 @@ const ELEMENT_DATA: JobElement[] = [
         status: 'Pending',
         startTime: '04/02/2025 07:33:22AM',
         endTime: '04/02/2025 07:33:22AM',
-        message: [{ name: 'FAKER applied on  ENTITY_NAME column.' }],
+        message: [{ name: 'FAKER applied on ENTITY_NAME column.' }],
       },
       {
         taskId: 'TASK-55678905',
@@ -147,7 +147,7 @@ const ELEMENT_DATA: JobElement[] = [
         status: 'Completed',
         startTime: '04/01/2025 07:23:12AM',
         endTime: '04/01/2025 07:23:12AM',
-        message: [{ name: 'CopySchemaAndData is Successful' }],
+        message: [{ name: 'Copy Schema And Data is Successful' }],
       },
       {
         taskId: 'TASK-20547689',
@@ -155,7 +155,7 @@ const ELEMENT_DATA: JobElement[] = [
         status: 'Completed',
         startTime: '04/02/2025 07:33:22AM',
         endTime: '04/02/2025 07:33:22AM',
-        message: [{ name: 'CreateProceduresAndFunctions is Successful' }],
+        message: [{ name: 'Create Procedures And Functions is Successful' }],
       },
       {
         taskId: 'TASK-30982345',
@@ -163,7 +163,7 @@ const ELEMENT_DATA: JobElement[] = [
         status: 'Completed',
         startTime: '04/03/2025 08:11:09AM',
         endTime: '04/03/2025 08:11:09AM',
-        message: [{ name: 'CreateMaskingScript is Successful' }],
+        message: [{ name: 'Create Masking Script is Successful' }],
       },
       {
         taskId: 'TASK-55678901',

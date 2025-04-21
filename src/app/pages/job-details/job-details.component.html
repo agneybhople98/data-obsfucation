@@ -299,17 +299,19 @@
                         <div class="font-medium">
                           {{ element.errorMessage }}
                         </div>
-                        <div class="mt-1">
+                        <div
+                          class="mt-1"
+                          *ngFor="let message of element.message"
+                        >
                           <a
                             *ngIf="
-                              element.message &&
-                              element.message.includes('https://')
+                              message.name && message.name.includes('https://')
                             "
-                            [href]="extractUrl(element.message)"
+                            [href]="extractUrl(message.name)"
                             class="text-blue-600 hover:underline"
-                            >{{ extractUrl(element.message) }}</a
+                            >{{ extractUrl(message.name) }}</a
                           >
-                          {{ extractNonUrlText(element.message) }}
+                          {{ extractNonUrlText(message.name) }}
                         </div>
                       </div>
                       <div
@@ -321,7 +323,12 @@
                           '!text-[#5D87FF]': element.status === 'In Progress'
                         }"
                       >
-                        {{ element.message }}
+                        <div
+                          class="!my-1"
+                          *ngFor="let message of element.message"
+                        >
+                          {{ message.name }}
+                        </div>
                       </div>
                     </div>
                   </div>

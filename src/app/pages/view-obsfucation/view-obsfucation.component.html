@@ -91,6 +91,7 @@
                   [checked]="selection.hasValue() && isAllSelected()"
                   [indeterminate]="selection.hasValue() && !isAllSelected()"
                   [aria-label]="checkboxLabel()"
+                  [disabled]="selection.hasValue()"
                 >
                 </mat-checkbox>
               </th>
@@ -100,6 +101,7 @@
                   (change)="$event ? selection.toggle(row) : null"
                   [checked]="selection.isSelected(row)"
                   [aria-label]="checkboxLabel(row)"
+                  [disabled]="!selection.isSelected(row)"
                 >
                 </mat-checkbox>
               </td>

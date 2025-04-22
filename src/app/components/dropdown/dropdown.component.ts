@@ -10,6 +10,8 @@ import {
   ViewChild,
   Renderer2,
   OnDestroy,
+  NgZone,
+  HostListener,
 } from '@angular/core';
 import { FormControl, NG_VALUE_ACCESSOR, NgControl } from '@angular/forms';
 
@@ -51,6 +53,7 @@ export class DropdownComponent implements OnDestroy {
   private _value: any = '';
 
   @ViewChild('selectElement') selectElement!: ElementRef;
+  @ViewChild('dropdownOptions') dropdownOptions!: ElementRef;
 
   isOpen: boolean = false;
   focused: boolean = false;
@@ -59,13 +62,13 @@ export class DropdownComponent implements OnDestroy {
   onChange: any = () => {};
   onTouched: any = () => {};
 
-  private overlayElement: HTMLElement | null = null;
   private clickOutsideListener: (() => void) | null = null;
 
   constructor(
     @Optional() @Self() public ngControl: NgControl,
     private renderer: Renderer2,
-    private elementRef: ElementRef
+    private elementRef: ElementRef,
+    private ngZone: NgZone
   ) {
     if (this.ngControl) {
       this.ngControl.valueAccessor = this;
@@ -73,10 +76,7 @@ export class DropdownComponent implements OnDestroy {
   }
 
   ngOnDestroy() {
-    this.removeOverlay();
-    if (this.clickOutsideListener) {
-      this.clickOutsideListener();
-    }
+    this.removeClickOutsideListener();
   }
 
   get control(): FormControl {
@@ -141,85 +141,89 @@ export class DropdownComponent implements OnDestroy {
       return;
     }
 
-    // Always remove existing overlay first
-    this.removeOverlay();
-
     this.isOpen = !this.isOpen;
+
     if (this.isOpen) {
-      this.createOverlay();
       this.onFocus();
+      this.setupClickOutsideListener();
+      this.positionDropdown();
     } else {
       this.onBlur();
+      this.removeClickOutsideListener();
     }
   }
 
-  private createOverlay() {
-    // Double check that any existing overlay is removed
-    this.removeOverlay();
+  private positionDropdown(): void {
+    // We need to wait for Angular to update the DOM before positioning
+    setTimeout(() => {
+      if (this.dropdownOptions && this.selectElement) {
+        const selectRect =
+          this.selectElement.nativeElement.getBoundingClientRect();
+        const optionsElement = this.dropdownOptions.nativeElement;
 
-    const selectElement = this.selectElement.nativeElement;
-    const rect = selectElement.getBoundingClientRect();
+        // Position the dropdown in fixed position relative to the viewport
+        this.renderer.setStyle(optionsElement, 'position', 'fixed');
+        this.renderer.setStyle(optionsElement, 'left', `${selectRect.left}px`);
 
-    this.overlayElement = this.renderer.createElement('div');
-    this.renderer.addClass(this.overlayElement, 'dropdown-options');
-    this.renderer.addClass(this.overlayElement, 'open');
+        // Check if there's enough space below
+        const spaceBelow = window.innerHeight - selectRect.bottom;
+        const optionsHeight = Math.min(200, this.options.length * 40); // Approximate height
 
-    // Position the overlay
-    this.renderer.setStyle(this.overlayElement, 'top', `${rect.bottom}px`);
-    this.renderer.setStyle(this.overlayElement, 'left', `${rect.left}px`);
-    this.renderer.setStyle(this.overlayElement, 'width', `${rect.width}px`);
-
-    // Add options to overlay
-    this.options.forEach((option) => {
-      const optionElement = this.renderer.createElement('div');
-      this.renderer.addClass(optionElement, 'dropdown-option');
-
-      // Add selected class if this is the selected option
-      if (this.isOptionSelected(option)) {
-        this.renderer.addClass(optionElement, 'selected');
-      }
-
-      this.renderer.setProperty(
-        optionElement,
-        'textContent',
-        typeof option === 'object' ? option[this.displayField] : option
-      );
-
-      this.renderer.listen(optionElement, 'click', (event) => {
-        event.stopPropagation();
-        this.selectOption(option);
-      });
-
-      this.renderer.appendChild(this.overlayElement, optionElement);
-    });
-
-    this.renderer.appendChild(document.body, this.overlayElement);
-
-    // Remove any existing click outside listener
-    if (this.clickOutsideListener) {
-      this.clickOutsideListener();
-    }
-
-    // Add new click outside listener
-    this.clickOutsideListener = this.renderer.listen(
-      'document',
-      'click',
-      (event) => {
-        if (!this.elementRef.nativeElement.contains(event.target)) {
-          this.isOpen = false;
-          this.removeOverlay();
+        if (spaceBelow < optionsHeight && selectRect.top > optionsHeight) {
+          // Position above if there's more space there
+          this.renderer.setStyle(
+            optionsElement,
+            'top',
+            `${selectRect.top - optionsHeight}px`
+          );
+        } else {
+          // Position below
+          this.renderer.setStyle(
+            optionsElement,
+            'top',
+            `${selectRect.bottom}px`
+          );
         }
+
+        // Set width to match the select element
+        this.renderer.setStyle(
+          optionsElement,
+          'width',
+          `${selectRect.width}px`
+        );
+        this.renderer.setStyle(optionsElement, 'min-width', '200px'); // Ensure min-width
       }
-    );
+    }, 0);
   }
 
-  private removeOverlay() {
-    if (this.overlayElement) {
-      this.renderer.removeChild(document.body, this.overlayElement);
-      this.overlayElement = null;
-    }
+  private setupClickOutsideListener(): void {
+    this.removeClickOutsideListener(); // Clean up any existing listener
 
-    // Also remove click outside listener
+    this.ngZone.runOutsideAngular(() => {
+      this.clickOutsideListener = this.renderer.listen(
+        document,
+        'click',
+        (event) => {
+          // Close dropdown if clicked outside
+          if (
+            !this.elementRef.nativeElement.contains(event.target) &&
+            !(
+              this.dropdownOptions &&
+              this.dropdownOptions.nativeElement.contains(event.target)
+            )
+          ) {
+            this.ngZone.run(() => {
+              this.isOpen = false;
+              this.removeClickOutsideListener();
+              this.onBlur();
+            });
+          }
+        }
+      );
+    });
+  }
+
+  private removeClickOutsideListener(): void {
     if (this.clickOutsideListener) {
       this.clickOutsideListener();
       this.clickOutsideListener = null;
@@ -233,8 +237,8 @@ export class DropdownComponent implements OnDestroy {
     this.valueChange.emit(value);
     this.selectionChange.emit(option);
     this.isOpen = false;
-    this.removeOverlay(); // Ensure overlay is removed after selection
-    this.onBlur(); // Ensure proper state cleanup
+    this.onBlur();
+    this.removeClickOutsideListener();
   }
 
   onBlur(): void {
@@ -251,10 +255,18 @@ export class DropdownComponent implements OnDestroy {
     this.selectElement.nativeElement.focus();
   }
 
-  private isOptionSelected(option: any): boolean {
+  isOptionSelected(option: any): boolean {
     if (typeof option === 'object') {
       return option[this.valueField] === this._value;
     }
     return option === this._value;
+  }
+
+  // Handle window resize events to reposition dropdown
+  @HostListener('window:resize')
+  onResize(): void {
+    if (this.isOpen) {
+      this.positionDropdown();
+    }
   }
 }

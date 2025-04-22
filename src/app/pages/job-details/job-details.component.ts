@@ -37,24 +37,24 @@ import { Subscription } from 'rxjs';
 })
 export class JobDetailsComponent implements OnInit, AfterViewInit, OnDestroy {
   isConnected = false;
-  selectedObsControl = 'OC-98675'; // Default selected value
-  selectedJobIdControl = 'JC-98675'; // Default selected value
+  selectedObsControl = 'Healthcare service - Meta'; // Default selected value
+  selectedJobIdControl = 'Healthcare service US'; // Default selected value
 
   obsControlOptions = [
-    'OC-98675',
-    'OC-98674',
-    'OC-98674',
-    'OC-98673',
-    'OC-98672',
-    'OC-98671',
+    'Healthcare service - Meta',
+    'Insurance Claims - Master',
+    'Healthcare Provider - ARCHDEV',
+    'RadiologyImages_Metadata',
+    'Healthcare Service - F',
+    'Healthcare Service - G',
   ];
   jobControlOptions = [
-    'JC-98675',
-    'JC-98674',
-    'JC-98674',
-    'JC-98673',
-    'JC-98672',
-    'JC-98671',
+    'Healthcare service US',
+    'Insurance Claims Db',
+    'Healthcare service US',
+    'Healthcare Provider',
+    'RadiologyImages_Metadata',
+    'PatientEHR_US',
   ];
   expandedElement: any | null = null;
   public jobId: any;

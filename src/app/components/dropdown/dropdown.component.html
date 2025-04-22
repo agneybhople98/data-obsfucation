@@ -45,11 +45,11 @@
     <div class="dropdown-ripple"></div>
   </div>
 
-  <div class="dropdown-options" [class.open]="isOpen">
+  <div #dropdownOptions class="dropdown-options" [class.open]="isOpen">
     <div
       *ngFor="let option of options"
       class="dropdown-option"
-      [class.selected]="selectedOption === option"
+      [class.selected]="isOptionSelected(option)"
       (click)="selectOption(option); $event.stopPropagation()"
     >
       {{ typeof option === 'object' ? option[displayField] : option }}

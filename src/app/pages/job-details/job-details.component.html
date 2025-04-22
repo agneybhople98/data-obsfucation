@@ -40,16 +40,18 @@
       <div class="flex !px-4 !w-[80%]">
         <div class="flex-1">
           <app-dropdown
-            label="Job ID"
+            label="Job Control"
             [options]="jobControlOptions"
             [(value)]="selectedJobIdControl"
+            [disabled]="true"
           ></app-dropdown>
         </div>
         <div class="flex-1 !ms-5">
           <app-dropdown
-            label="Select Obsfucation Control"
+            label="Obsfucation Control"
             [options]="obsControlOptions"
             [(value)]="selectedObsControl"
+            [disabled]="true"
           ></app-dropdown>
         </div>
       </div>

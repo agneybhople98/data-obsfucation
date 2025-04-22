@@ -21,14 +21,14 @@ export class JobControlComponent implements OnInit, OnDestroy {
   @ViewChild('drawer') drawer!: MatDrawer;
   isConnected = false;
   obsControlOptions = [
-    'OC-98675',
-    'OC-98674',
-    'OC-98674',
-    'OC-98673',
-    'OC-98672',
-    'OC-98671',
+    'Healthcare service - Meta',
+    'Insurance Claims - Master',
+    'Healthcare Provider - ARCHDEV',
+    'RadiologyImages_Metadata',
+    'Healthcare Service - F',
+    'Healthcare Service - G',
   ];
-  selectedObsControl = 'OC-98675'; // Default selected value
+  selectedObsControl = 'Healthcare service - Meta'; // Default selected value
   dataSource!: MatTableDataSource<any>;
   displayedColumns: any[] = [
     'jobControlId',

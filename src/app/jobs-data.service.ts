@@ -366,7 +366,8 @@ const ELEMENT_DATA_JOB_CONTROL: JobDataControlElement[] = [
   providedIn: 'root',
 })
 export class JobsDataService {
-  private apiUrl = 'https://merry-measured-trout.ngrok-free.app/api/job/run';
+  private apiUrl =
+    'https://merry-measured-trout.ngrok-free.app/api/dih/run-job';
   private jobsDataSubject = new BehaviorSubject<JobElement[]>(ELEMENT_DATA);
   private jobsDataControlData = new BehaviorSubject<JobDataControlElement[]>(
     ELEMENT_DATA_JOB_CONTROL

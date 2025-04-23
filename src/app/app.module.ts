@@ -36,8 +36,8 @@ import { ButtonComponent } from './components/button/button.component';
 import { JobControlComponent } from './pages/job-control/job-control.component';
 import { CreateObsfucationComponent } from './pages/create-obsfucation/create-obsfucation.component';
 import { FormsModule } from '@angular/forms';
+
 import { ReactiveFormsModule } from '@angular/forms';
-import { UpdateNotificationComponent } from './components/update-notification/update-notification.component';
 
 @NgModule({
   declarations: [
@@ -82,7 +82,6 @@ import { UpdateNotificationComponent } from './components/update-notification/up
 
     HttpClientModule,
     ToastrModule.forRoot(),
-    UpdateNotificationComponent,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -44,8 +44,20 @@ const ELEMENT_DATA: JobElement[] = [
         taskId: 'TASK-78901234',
         taskDescription: 'CopySchemaAndData',
         status: 'Completed',
-        startTime: '04/01/2025 07:23:12AM',
-        endTime: '04/01/2025 07:23:12AM',
+        // Format the startTime consistently with endTime
+        startTime: (() => {
+          const date = new Date();
+          const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const day = date.getDate().toString().padStart(2, '0');
+          const year = date.getFullYear();
+          const hours = date.getHours() % 12 || 12;
+          const minutes = date.getMinutes().toString().padStart(2, '0');
+          const seconds = date.getSeconds().toString().padStart(2, '0');
+          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+        })(),
+        endTime: null,
         message: [
           {
             name: 'Copy Schema And Data is Successful',
@@ -56,8 +68,19 @@ const ELEMENT_DATA: JobElement[] = [
         taskId: 'TASK-20547689',
         taskDescription: 'CreateProceduresAndFunctions',
         status: 'Completed',
-        startTime: '04/02/2025 07:33:22AM',
-        endTime: '04/02/2025 07:33:22AM',
+        startTime: (() => {
+          const date = new Date();
+          const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const day = date.getDate().toString().padStart(2, '0');
+          const year = date.getFullYear();
+          const hours = date.getHours() % 12 || 12;
+          const minutes = date.getMinutes().toString().padStart(2, '0');
+          const seconds = date.getSeconds().toString().padStart(2, '0');
+          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+        })(),
+        endTime: null,
         message: [
           {
             name: 'Create Procedures And Functions is Successful',
@@ -68,16 +91,38 @@ const ELEMENT_DATA: JobElement[] = [
         taskId: 'TASK-30982345',
         taskDescription: 'CreateMaskingScript',
         status: 'Completed',
-        startTime: '04/03/2025 08:11:09AM',
-        endTime: '04/03/2025 08:11:09AM',
+        startTime: (() => {
+          const date = new Date();
+          const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const day = date.getDate().toString().padStart(2, '0');
+          const year = date.getFullYear();
+          const hours = date.getHours() % 12 || 12;
+          const minutes = date.getMinutes().toString().padStart(2, '0');
+          const seconds = date.getSeconds().toString().padStart(2, '0');
+          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+        })(),
+        endTime: null,
         message: [{ name: 'Create Masking Script is Successful' }],
       },
       {
         taskId: 'TASK-55678901',
         taskDescription: "MaskTable-'CI_CUSTOMERS'",
         status: 'Completed',
-        startTime: '04/04/2025 08:22:10AM',
-        endTime: '04/04/2025 08:22:10AM',
+        startTime: (() => {
+          const date = new Date();
+          const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const day = date.getDate().toString().padStart(2, '0');
+          const year = date.getFullYear();
+          const hours = date.getHours() % 12 || 12;
+          const minutes = date.getMinutes().toString().padStart(2, '0');
+          const seconds = date.getSeconds().toString().padStart(2, '0');
+          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+        })(),
+        endTime: null,
         message: [
           { name: 'STARIFY applied on FIRST_NAME column.' },
           { name: 'RANDOMIZE applied on SSN column.' },
@@ -90,8 +135,19 @@ const ELEMENT_DATA: JobElement[] = [
         taskId: 'TASK-55678902',
         taskDescription: "MaskTable-'CI_ORDERS'",
         status: 'Failed',
-        startTime: '04/05/2025 09:30:33AM',
-        endTime: '04/05/2025 09:30:33AM',
+        startTime: (() => {
+          const date = new Date();
+          const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const day = date.getDate().toString().padStart(2, '0');
+          const year = date.getFullYear();
+          const hours = date.getHours() % 12 || 12;
+          const minutes = date.getMinutes().toString().padStart(2, '0');
+          const seconds = date.getSeconds().toString().padStart(2, '0');
+          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+        })(),
+        endTime: null,
         message: [
           { name: 'STARIFY applied on PAYMENT_METHOD column.' },
           { name: 'FAKER applied on SHIPPING_ADDRESS column.' },
@@ -102,32 +158,76 @@ const ELEMENT_DATA: JobElement[] = [
         taskId: 'TASK-55678903',
         taskDescription: "MaskTable-'CI_PER'",
         status: 'In Progress',
-        startTime: '04/02/2025 07:33:22AM',
-        endTime: '04/02/2025 07:33:22AM',
+        startTime: (() => {
+          const date = new Date();
+          const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const day = date.getDate().toString().padStart(2, '0');
+          const year = date.getFullYear();
+          const hours = date.getHours() % 12 || 12;
+          const minutes = date.getMinutes().toString().padStart(2, '0');
+          const seconds = date.getSeconds().toString().padStart(2, '0');
+          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+        })(),
+        endTime: null,
         message: [{ name: 'FAKER applied on EMAILID column.' }],
       },
       {
         taskId: 'TASK-55678904',
         taskDescription: "MaskTable-'CI_PER_ADDR_SEAS'",
         status: 'Pending',
-        startTime: '04/02/2025 07:33:22AM',
-        endTime: '04/02/2025 07:33:22AM',
+        startTime: (() => {
+          const date = new Date();
+          const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const day = date.getDate().toString().padStart(2, '0');
+          const year = date.getFullYear();
+          const hours = date.getHours() % 12 || 12;
+          const minutes = date.getMinutes().toString().padStart(2, '0');
+          const seconds = date.getSeconds().toString().padStart(2, '0');
+          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+        })(),
+        endTime: null,
         message: [{ name: 'FAKER applied on ENTITY_NAME column.' }],
       },
       {
         taskId: 'TASK-55678905',
         taskDescription: "MaskTable-'CI_PER_NAME'",
         status: 'Pending',
-        startTime: '04/02/2025 07:33:22AM',
-        endTime: '04/02/2025 07:33:22AM',
+        startTime: (() => {
+          const date = new Date();
+          const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const day = date.getDate().toString().padStart(2, '0');
+          const year = date.getFullYear();
+          const hours = date.getHours() % 12 || 12;
+          const minutes = date.getMinutes().toString().padStart(2, '0');
+          const seconds = date.getSeconds().toString().padStart(2, '0');
+          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+        })(),
+        endTime: null,
         message: [{ name: 'FAKER applied on PHONE column.' }],
       },
       {
         taskId: 'TASK-55678905',
         taskDescription: "MaskTable-'CI_PER_PHONE'",
         status: 'Pending',
-        startTime: '04/02/2025 07:33:22AM',
-        endTime: '04/02/2025 07:33:22AM',
+        startTime: (() => {
+          const date = new Date();
+          const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const day = date.getDate().toString().padStart(2, '0');
+          const year = date.getFullYear();
+          const hours = date.getHours() % 12 || 12;
+          const minutes = date.getMinutes().toString().padStart(2, '0');
+          const seconds = date.getSeconds().toString().padStart(2, '0');
+          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+        })(),
+        endTime: null,
         message: [{ name: 'FAKER applied on ADDRESS1 column.' }],
       },
     ],
@@ -145,32 +245,76 @@ const ELEMENT_DATA: JobElement[] = [
         taskId: 'TASK-78901234',
         taskDescription: 'CopySchemaAndData',
         status: 'Completed',
-        startTime: '04/01/2025 07:23:12AM',
-        endTime: '04/01/2025 07:23:12AM',
+        startTime: (() => {
+          const date = new Date();
+          const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const day = date.getDate().toString().padStart(2, '0');
+          const year = date.getFullYear();
+          const hours = date.getHours() % 12 || 12;
+          const minutes = date.getMinutes().toString().padStart(2, '0');
+          const seconds = date.getSeconds().toString().padStart(2, '0');
+          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+        })(),
+        endTime: null,
         message: [{ name: 'Copy Schema And Data is Successful' }],
       },
       {
         taskId: 'TASK-20547689',
         taskDescription: 'CreateProceduresAndFunctions',
         status: 'Completed',
-        startTime: '04/02/2025 07:33:22AM',
-        endTime: '04/02/2025 07:33:22AM',
+        startTime: (() => {
+          const date = new Date();
+          const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const day = date.getDate().toString().padStart(2, '0');
+          const year = date.getFullYear();
+          const hours = date.getHours() % 12 || 12;
+          const minutes = date.getMinutes().toString().padStart(2, '0');
+          const seconds = date.getSeconds().toString().padStart(2, '0');
+          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+        })(),
+        endTime: null,
         message: [{ name: 'Create Procedures And Functions is Successful' }],
       },
       {
         taskId: 'TASK-30982345',
         taskDescription: 'CreateMaskingScript',
         status: 'Completed',
-        startTime: '04/03/2025 08:11:09AM',
-        endTime: '04/03/2025 08:11:09AM',
+        startTime: (() => {
+          const date = new Date();
+          const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const day = date.getDate().toString().padStart(2, '0');
+          const year = date.getFullYear();
+          const hours = date.getHours() % 12 || 12;
+          const minutes = date.getMinutes().toString().padStart(2, '0');
+          const seconds = date.getSeconds().toString().padStart(2, '0');
+          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+        })(),
+        endTime: null,
         message: [{ name: 'Create Masking Script is Successful' }],
       },
       {
         taskId: 'TASK-55678901',
         taskDescription: "MaskTable-'CI_PER'",
         status: 'Completed',
-        startTime: '04/04/2025 08:22:10AM',
-        endTime: '04/04/2025 08:22:10AM',
+        startTime: (() => {
+          const date = new Date();
+          const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const day = date.getDate().toString().padStart(2, '0');
+          const year = date.getFullYear();
+          const hours = date.getHours() % 12 || 12;
+          const minutes = date.getMinutes().toString().padStart(2, '0');
+          const seconds = date.getSeconds().toString().padStart(2, '0');
+          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+        })(),
+        endTime: null,
         message: [{ name: 'FAKER applied on EMAILID column.' }],
       },
       {
@@ -183,8 +327,19 @@ const ELEMENT_DATA: JobElement[] = [
             name: 'SQL Error: ORA-00904: "EMAILID": invalid identifier https://docs.oracle.com/error-help/db/ora-00904/00904. 00000 - "%s: invalid identifier"',
           },
         ],
-        startTime: '2024-04-01 08:45:30',
-        endTime: '2024-04-01 09:00:45',
+        startTime: (() => {
+          const date = new Date();
+          const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const day = date.getDate().toString().padStart(2, '0');
+          const year = date.getFullYear();
+          const hours = date.getHours() % 12 || 12;
+          const minutes = date.getMinutes().toString().padStart(2, '0');
+          const seconds = date.getSeconds().toString().padStart(2, '0');
+          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+        })(),
+        endTime: null,
       },
     ],
   },
@@ -202,8 +357,19 @@ const ELEMENT_DATA: JobElement[] = [
         taskDescription: 'Anonymizing addresses',
         status: 'Failed',
         errorMessage: '`SQL Error: ORA-00904: "EMAILID": invalid identifier`',
-        startTime: '2024-04-01 09:01:10',
-        endTime: '2024-04-01 09:15:22',
+        startTime: (() => {
+          const date = new Date();
+          const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const day = date.getDate().toString().padStart(2, '0');
+          const year = date.getFullYear();
+          const hours = date.getHours() % 12 || 12;
+          const minutes = date.getMinutes().toString().padStart(2, '0');
+          const seconds = date.getSeconds().toString().padStart(2, '0');
+          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+        })(),
+        endTime: null,
         message: [
           {
             name: 'SQL Error: ORA-00904: "EMAILID": invalid identifier https://docs.oracle.com/error-help/db/ora-00904/00904. 00000 - "%s: invalid identifier"',
@@ -228,8 +394,19 @@ const ELEMENT_DATA: JobElement[] = [
         taskDescription: 'Masking phone numbers',
         status: 'Completed',
         errorMessage: null,
-        startTime: '2024-04-01 10:05:12',
-        endTime: '2024-04-01 10:30:45',
+        startTime: (() => {
+          const date = new Date();
+          const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const day = date.getDate().toString().padStart(2, '0');
+          const year = date.getFullYear();
+          const hours = date.getHours() % 12 || 12;
+          const minutes = date.getMinutes().toString().padStart(2, '0');
+          const seconds = date.getSeconds().toString().padStart(2, '0');
+          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+        })(),
+        endTime: null,
         message: [{ name: 'Masking phone numbers is Successful' }],
       },
     ],
@@ -249,8 +426,19 @@ const ELEMENT_DATA: JobElement[] = [
         taskDescription: 'Shuffling demographic data',
         status: 'Completed',
         errorMessage: null,
-        startTime: '2024-04-01 10:35:10',
-        endTime: '2024-04-01 11:15:30',
+        startTime: (() => {
+          const date = new Date();
+          const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const day = date.getDate().toString().padStart(2, '0');
+          const year = date.getFullYear();
+          const hours = date.getHours() % 12 || 12;
+          const minutes = date.getMinutes().toString().padStart(2, '0');
+          const seconds = date.getSeconds().toString().padStart(2, '0');
+          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+        })(),
+        endTime: null,
         message: [{ name: 'Shuffling demographic data is Successful' }],
       },
     ],
@@ -269,8 +457,19 @@ const ELEMENT_DATA: JobElement[] = [
         taskDescription: 'Substituting email addresses',
         status: 'Failed',
         errorMessage: `'SQL Error: ORA-00904: "EMAILID": invalid identifier https://docs.oracle.com/error-help/db/ora-00904/00904. 00000 - "%s: invalid identifier"'`,
-        startTime: '2024-04-01 11:20:00',
-        endTime: '2024-04-01 11:25:18',
+        startTime: (() => {
+          const date = new Date();
+          const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const day = date.getDate().toString().padStart(2, '0');
+          const year = date.getFullYear();
+          const hours = date.getHours() % 12 || 12;
+          const minutes = date.getMinutes().toString().padStart(2, '0');
+          const seconds = date.getSeconds().toString().padStart(2, '0');
+          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+        })(),
+        endTime: null,
         message: [
           {
             name: 'SQL Error: ORA-00904: "EMAILID": invalid identifier https://docs.oracle.com/error-help/db/ora-00904/00904. 00000 - "%s: invalid identifier"',
@@ -293,8 +492,19 @@ const ELEMENT_DATA: JobElement[] = [
         taskDescription: 'Substituting email addresses',
         status: 'Failed',
         errorMessage: `'SQL Error: ORA-00904: "EMAILID": invalid identifier https://docs.oracle.com/error-help/db/ora-00904/00904. 00000 - "%s: invalid identifier"'`,
-        startTime: '2024-04-01 11:20:00',
-        endTime: '2024-04-01 11:25:18',
+        startTime: (() => {
+          const date = new Date();
+          const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const day = date.getDate().toString().padStart(2, '0');
+          const year = date.getFullYear();
+          const hours = date.getHours() % 12 || 12;
+          const minutes = date.getMinutes().toString().padStart(2, '0');
+          const seconds = date.getSeconds().toString().padStart(2, '0');
+          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+        })(),
+        endTime: null,
         message: 'SQL Log: Cloning Schema is Successful',
       },
     ],
@@ -426,12 +636,10 @@ export class JobsDataService {
 
     // Update the task
     task.status = 'Completed';
-    if (!task.endTime) {
-      task.endTime = new Date()
-        .toISOString()
-        .replace('T', ' ')
-        .substring(0, 19);
-    }
+
+    // Always update endTime when a task is marked as Completed
+    task.endTime = this.formatDate(new Date());
+
     tasks[taskIndex] = task;
 
     // Update the job
@@ -484,5 +692,18 @@ export class JobsDataService {
         throw error;
       })
     );
+  }
+
+  formatDate(date: any) {
+    const d = new Date(date);
+    const month = (d.getMonth() + 1).toString().padStart(2, '0');
+    const day = d.getDate().toString().padStart(2, '0');
+    const year = d.getFullYear();
+    const hours = d.getHours() % 12 || 12;
+    const minutes = d.getMinutes().toString().padStart(2, '0');
+    const seconds = d.getSeconds().toString().padStart(2, '0');
+    const ampm = d.getHours() >= 12 ? 'PM' : 'AM';
+
+    return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
   }
 }

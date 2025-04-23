@@ -1,6 +1,5 @@
 <mat-sidenav-container class="sidenav-container">
   <!-- Side Navigation -->
-
   <mat-drawer #drawer class="drawer" mode="side" opened="true">
     <mat-toolbar class="header">
       <div>Logo</div>
@@ -8,9 +7,10 @@
     </mat-toolbar>
     <div class="contents">Drawer</div>
   </mat-drawer>
+
   <mat-sidenav
     #sidenav
-    [mode]="side"
+    mode="side"
     [opened]="isExpanded"
     class="sidenav"
     [class.expanded]="isExpanded"
@@ -29,13 +29,26 @@
               class="nav-item flex items-center justify-center"
               routerLinkActive="active"
             >
-              <a class="nav-link" routerLink="/dashboard">
-                <!-- <mat-icon>dashboard</mat-icon> -->
+              <a
+                class="nav-link"
+                routerLink="/dashboard"
+                routerLinkActive
+                #dashboardLink="routerLinkActive"
+              >
                 <div class="flex flex-col items-center justify-center">
-                  <!-- <img src="../../../assets/home.svg" alt="" /> -->
-                  <mat-icon>
-                    <span class="material-symbols-outlined">home</span>
-                  </mat-icon>
+                  <!-- Regular icon shown when not active -->
+                  <img
+                    [ngClass]="{ hidden: dashboardLink.isActive }"
+                    src="../../../assets/home.svg"
+                    alt="Dashboard"
+                  />
+
+                  <!-- White icon shown only when active -->
+                  <img
+                    [ngClass]="{ hidden: !dashboardLink.isActive }"
+                    src="../../../assets/home-white.svg"
+                    alt="Dashboard"
+                  />
 
                   <div>
                     <span class="text-xs font-semibold">Dashboard</span>
@@ -47,11 +60,23 @@
               class="nav-item flex items-center justify-center"
               routerLinkActive="active"
             >
-              <a class="nav-link" routerLink="/obsfucation-control">
+              <a
+                class="nav-link"
+                routerLink="/obsfucation-control"
+                routerLinkActive
+                #obsfucationLink="routerLinkActive"
+              >
                 <div class="flex flex-col items-center justify-center">
-                  <mat-icon>
-                    <span class="material-symbols-outlined"> settings </span>
-                  </mat-icon>
+                  <img
+                    [ngClass]="{ hidden: obsfucationLink.isActive }"
+                    src="../../../assets/settings.svg"
+                    alt="Obsfucation Control"
+                  />
+                  <img
+                    [ngClass]="{ hidden: !obsfucationLink.isActive }"
+                    src="../../../assets/settings-white.svg"
+                    alt="Obsfucation Control"
+                  />
 
                   <div class="text-center !mt-2">
                     <div class="text-xs font-semibold">Obsfucation control</div>
@@ -63,11 +88,23 @@
               class="nav-item flex items-center justify-center"
               routerLinkActive="active"
             >
-              <a class="nav-link" routerLink="/job-control-list">
+              <a
+                class="nav-link"
+                routerLink="/job-control-list"
+                routerLinkActive
+                #jobControlLink="routerLinkActive"
+              >
                 <div class="flex flex-col items-center justify-center">
-                  <mat-icon>
-                    <span class="material-symbols-outlined"> work </span>
-                  </mat-icon>
+                  <img
+                    [ngClass]="{ hidden: jobControlLink.isActive }"
+                    src="../../../assets/briefcase.svg"
+                    alt="Job Control"
+                  />
+                  <img
+                    [ngClass]="{ hidden: !jobControlLink.isActive }"
+                    src="../../../assets/briefcase-white.svg"
+                    alt="Job Control"
+                  />
 
                   <div>
                     <span class="text-xs font-semibold">Job control</span>
@@ -75,12 +112,22 @@
                 </div>
               </a>
             </li>
-            <li class="nav-item flex items-center justify-center">
-              <a class="nav-link" routerLink="/history">
+            <li
+              class="nav-item flex items-center justify-center"
+              routerLinkActive="active"
+            >
+              <a
+                class="nav-link"
+                routerLink="/history"
+                routerLinkActive
+                #historyLink="routerLinkActive"
+              >
                 <div class="flex flex-col items-center justify-center">
-                  <mat-icon>
-                    <span class="material-symbols-outlined">history</span>
-                  </mat-icon>
+                  <img
+                    src="../../../assets/history-black.svg"
+                    [ngClass]="{ hidden: historyLink.isActive }"
+                    alt=""
+                  />
 
                   <div>
                     <span class="text-xs font-semibold">History</span>
@@ -148,5 +195,6 @@
     </footer>
   </mat-sidenav-content>
 
-  <mat-toolbar class="main footer"> Footer </mat-toolbar>
+  <!-- Remove this redundant footer or place it properly inside mat-sidenav-content -->
+  <!-- <mat-toolbar class="main footer"> Footer </mat-toolbar> -->
 </mat-sidenav-container>

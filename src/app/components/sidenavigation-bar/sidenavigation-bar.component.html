@@ -50,8 +50,16 @@
                     alt="Dashboard"
                   />
 
-                  <div>
-                    <span class="text-xs font-medium">Dashboard</span>
+                  <div class="text-center !mt-2">
+                    <div
+                      [ngClass]="{
+                        '!text-[#0B2046]': !dashboardLink.isActive,
+                        '!text-white': dashboardLink.isActive
+                      }"
+                      class="text-xs font-medium"
+                    >
+                      Dashboard
+                    </div>
                   </div>
                 </div>
               </a>
@@ -79,7 +87,15 @@
                   />
 
                   <div class="text-center !mt-2">
-                    <div class="text-xs font-medium">Obsfucation controls</div>
+                    <div
+                      [ngClass]="{
+                        '!text-[#0B2046]': !obsfucationLink.isActive,
+                        '!text-white': obsfucationLink.isActive
+                      }"
+                      class="text-xs font-medium"
+                    >
+                      Obsfucation controls
+                    </div>
                   </div>
                 </div>
               </a>
@@ -106,8 +122,16 @@
                     alt="Job Control"
                   />
 
-                  <div>
-                    <span class="text-xs font-medium">Job control</span>
+                  <div class="text-center !mt-2">
+                    <div
+                      [ngClass]="{
+                        '!text-[#0B2046]': !jobControlLink.isActive,
+                        '!text-white': jobControlLink.isActive
+                      }"
+                      class="text-xs font-medium"
+                    >
+                      Job control
+                    </div>
                   </div>
                 </div>
               </a>
@@ -129,8 +153,10 @@
                     alt=""
                   />
 
-                  <div>
-                    <span class="text-xs font-medium">History</span>
+                  <div class="text-center !mt-2">
+                    <div class="text-xs font-medium !text-[#0B2046]">
+                      History
+                    </div>
                   </div>
                 </div>
               </a>

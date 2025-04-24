@@ -43,7 +43,7 @@ const ELEMENT_DATA: JobElement[] = [
       {
         taskId: 'TASK-78901234',
         taskDescription: 'CopySchemaAndData',
-        status: 'Completed',
+        status: 'In Progress',
         // Format the startTime consistently with endTime
         startTime: (() => {
           const date = new Date();
@@ -67,7 +67,7 @@ const ELEMENT_DATA: JobElement[] = [
       {
         taskId: 'TASK-20547689',
         taskDescription: 'CreateProceduresAndFunctions',
-        status: 'Completed',
+        status: 'In Progress',
         startTime: (() => {
           const date = new Date();
           const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -90,7 +90,7 @@ const ELEMENT_DATA: JobElement[] = [
       {
         taskId: 'TASK-30982345',
         taskDescription: 'CreateMaskingScript',
-        status: 'Completed',
+        status: 'In Progress',
         startTime: (() => {
           const date = new Date();
           const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -109,7 +109,7 @@ const ELEMENT_DATA: JobElement[] = [
       {
         taskId: 'TASK-55678901',
         taskDescription: "MaskTable-'CI_CUSTOMERS'",
-        status: 'Completed',
+        status: 'In Progress',
         startTime: (() => {
           const date = new Date();
           const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -632,26 +632,46 @@ export class JobsDataService {
     const updatedJobs = [...currentJobs];
     const job = { ...updatedJobs[jobIndex] };
     const tasks = [...job.tasks];
-    const task = { ...tasks[taskIndex] };
 
-    // Update the task
-    task.status = 'Completed';
-
-    // Always update endTime when a task is marked as Completed
-    task.endTime = this.formatDate(new Date());
-
-    tasks[taskIndex] = task;
-
-    // Update the job
-    job.tasks = tasks;
-    const completedTasks = tasks.filter(
-      (t: any) => t.status === 'Completed'
-    ).length;
-    job.progress = Math.round((completedTasks / tasks.length) * 100);
-    if (completedTasks === tasks.length) {
-      job.status = 'success';
+    // Only proceed if previous task is completed or this is the first task
+    if (taskIndex > 0) {
+      const previousTask = tasks[taskIndex - 1];
+      if (previousTask.status !== 'Completed') {
+        return job;
+      }
     }
 
+    const task = { ...tasks[taskIndex] };
+
+    // Set start time for current task with current time
+    const startDate = new Date();
+    task.startTime = this.formatDate(startDate);
+    task.status = 'In Progress';
+
+    // After a delay, mark as completed and set end time
+    setTimeout(() => {
+      task.status = 'Completed';
+      // Add 3 seconds to the start time for the end time
+      const endDate = new Date(startDate.getTime() + 3000);
+      task.endTime = this.formatDate(endDate);
+
+      tasks[taskIndex] = task;
+
+      // Update job progress
+      const completedTasks = tasks.filter(
+        (t: any) => t.status === 'Completed'
+      ).length;
+      job.progress = Math.round((completedTasks / tasks.length) * 100);
+      if (completedTasks === tasks.length) {
+        job.status = 'success';
+      }
+
+      updatedJobs[jobIndex] = job;
+      this.jobsDataSubject.next(updatedJobs);
+    }, 200);
+
+    tasks[taskIndex] = task;
+    job.tasks = tasks;
     updatedJobs[jobIndex] = job;
     this.jobsDataSubject.next(updatedJobs);
 
@@ -667,6 +687,22 @@ export class JobsDataService {
     const job = this.getJobById(jobId);
     if (!job || !job.tasks || job.tasks.length === 0) {
       return of(undefined);
+    }
+
+    // Reset all task times and status
+    const currentJobs = [...this.jobsDataSubject.value];
+    const jobIndex = currentJobs.findIndex((j) => j.jobId === jobId);
+    if (jobIndex !== -1) {
+      const updatedJob = { ...currentJobs[jobIndex] };
+      updatedJob.tasks = updatedJob.tasks.map((task: any) => ({
+        ...task,
+        startTime: undefined,
+        endTime: null,
+      }));
+      updatedJob.status = 'in-progress';
+      updatedJob.progress = 0;
+      currentJobs[jobIndex] = updatedJob;
+      this.jobsDataSubject.next(currentJobs);
     }
 
     // Create an array of observables, each updating one task after a delay

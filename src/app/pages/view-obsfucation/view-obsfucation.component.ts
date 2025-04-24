@@ -32,8 +32,10 @@ export class ViewObsfucationComponent implements OnInit {
     'SSN',
     'ADDRESS',
     'Delivered',
-    'NAME',
+    'FULL_NAME',
+    'ENG',
     'PHONE',
+    'NUMERIC',
     'MD5',
     'SHA1',
   ];
@@ -58,9 +60,10 @@ export class ViewObsfucationComponent implements OnInit {
     'CI_CUSTOMERS',
     'CI_ORDERS',
     'CI_PER',
-    'CI_PER_ADDR_SEAS',
     'CI_PER_NAME',
     'CI_PER_PHONE',
+    'CI_PER_ADDR_SEAS',
+    'CI_PER_ADDR',
   ];
 
   filteredTableItems = [...this.tableItems];

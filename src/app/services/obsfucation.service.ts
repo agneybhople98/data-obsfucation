@@ -273,6 +273,15 @@ export const TABLE_DATA: TableData = {
       tableName: 'CI_PER',
       columns: [
         {
+          columnName: 'EMAILID',
+          displayName: 'Email ID',
+          obfStrategy: 'FAKER',
+          obfRules: {
+            first: 'EMAIL',
+            second: undefined,
+          },
+        },
+        {
           columnName: 'PER_ID',
           displayName: 'Person ID',
           obfStrategy: undefined,
@@ -282,8 +291,27 @@ export const TABLE_DATA: TableData = {
           },
         },
         {
-          columnName: 'LANGUAGE_CD',
-          displayName: 'Language Code',
+          columnName: 'POSTAL',
+          displayName: 'Postal Code',
+          obfStrategy: 'RANDOMIZE',
+          obfRules: {
+            first: 'NUMERIC',
+            second: '6',
+          },
+        },
+        {
+          columnName: 'CITY',
+          displayName: 'City',
+          obfStrategy: 'STARIFY',
+          obfRules: {
+            first: 'L',
+            second: '3',
+          },
+        },
+
+        {
+          columnName: 'PER_OR_BUS_FLG',
+          displayName: 'Person or Business Flag',
           obfStrategy: undefined,
           obfRules: {
             first: undefined,
@@ -291,11 +319,20 @@ export const TABLE_DATA: TableData = {
           },
         },
         {
-          columnName: 'PER_OR_BUS_FLG',
-          displayName: 'Person or Business Flag',
-          obfStrategy: undefined,
+          columnName: 'LANGUAGE_CD',
+          displayName: 'Language Code',
+          obfStrategy: 'REPLACE_WITH_CONSTANT',
           obfRules: {
-            first: undefined,
+            first: 'ENG',
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'ADDRESS1',
+          displayName: 'Address 1',
+          obfStrategy: 'FAKER',
+          obfRules: {
+            first: 'ADDRESS',
             second: undefined,
           },
         },
@@ -317,15 +354,7 @@ export const TABLE_DATA: TableData = {
             second: undefined,
           },
         },
-        {
-          columnName: 'EMAILID',
-          displayName: 'Email ID',
-          obfStrategy: 'FAKER',
-          obfRules: {
-            first: 'EMAIL',
-            second: undefined,
-          },
-        },
+
         {
           columnName: 'OVRD_MAIL_NAME1',
           displayName: 'Override Mail Name 1',
@@ -353,15 +382,7 @@ export const TABLE_DATA: TableData = {
             second: undefined,
           },
         },
-        {
-          columnName: 'ADDRESS1',
-          displayName: 'Address 1',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
-          },
-        },
+
         {
           columnName: 'ADDRESS2',
           displayName: 'Address 2',
@@ -389,15 +410,7 @@ export const TABLE_DATA: TableData = {
             second: undefined,
           },
         },
-        {
-          columnName: 'CITY',
-          displayName: 'City',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
-          },
-        },
+
         {
           columnName: 'NUM1',
           displayName: 'Number 1',
@@ -425,15 +438,7 @@ export const TABLE_DATA: TableData = {
             second: undefined,
           },
         },
-        {
-          columnName: 'POSTAL',
-          displayName: 'Postal Code',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
-          },
-        },
+
         {
           columnName: 'HOUSE_TYPE',
           displayName: 'House Type',
@@ -956,7 +961,7 @@ export const TABLE_DATA: TableData = {
           displayName: 'Entity Name',
           obfStrategy: 'FAKER',
           obfRules: {
-            first: 'NAME',
+            first: 'FULL_NAME',
             second: undefined,
           },
         },
@@ -1050,6 +1055,29 @@ export const TABLE_DATA: TableData = {
           obfRules: {
             first: undefined,
             second: undefined,
+          },
+        },
+      ],
+    },
+    {
+      tableName: 'CI_PER_ADDR',
+      columns: [
+        {
+          columnName: 'ADDRESS_1',
+          displayName: 'Address 1',
+          obfStrategy: 'FAKER',
+          obfRules: {
+            first: 'ADDRESS',
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'POSTAL',
+          displayName: 'Address 1',
+          obfStrategy: 'RANDOMIZE',
+          obfRules: {
+            first: 'NUMERIC',
+            second: '6',
           },
         },
       ],

@@ -32,7 +32,7 @@ export class CreateObsfucationComponent implements OnInit {
     'SSN',
     'ADDRESS',
     'Delivered',
-    'NAME',
+    'FULL_NAME',
     'PHONE',
     'MD5',
     'SHA1',
@@ -54,9 +54,10 @@ export class CreateObsfucationComponent implements OnInit {
     'CI_CUSTOMERS',
     'CI_ORDERS',
     'CI_PER',
-    'CI_PER_ADDR_SEAS',
     'CI_PER_NAME',
     'CI_PER_PHONE',
+    'CI_PER_ADDR_SEAS',
+    'CI_PER_ADDR',
   ];
 
   filteredTableItems = [...this.tableItems];

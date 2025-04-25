@@ -39,7 +39,7 @@ const ELEMENT_DATA: JobElement[] = [
     triggeredOn: '04/01/2025 07:23:12AM',
     status: 'in-progress',
     obsfucationControlName: 'Healthcare service - Meta',
-    progress: 17,
+    progress: 0,
     tasks: [
       {
         taskId: 'TASK-78901234',

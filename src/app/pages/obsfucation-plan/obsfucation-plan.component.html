@@ -22,7 +22,7 @@
       class="!w-[50%] !rounded-none"
     >
       <div class="header bg-secondary flex justify-between items-center !p-4">
-        <div class="font-semibold">Create Obsfucation Control</div>
+        <div class="font-semibold">Create Obsfucation Plan</div>
 
         <div
           (click)="drawer.close()"
@@ -133,10 +133,10 @@
       <div class="bg-white">
         <div class="!px-3 !mx-2">
           <div class="flex justify-between items-center">
-            <div class="font-semibold">Obsfucation Control</div>
+            <div class="font-semibold">Obsfucation Plan</div>
             <app-button
               (clicked)="drawer.toggle()"
-              text="Add Obsfucation Control"
+              text="Add Obsfucation Plan"
               variant="primary"
             ></app-button>
           </div>
@@ -177,11 +177,9 @@
                 </td>
               </ng-container>
 
-              <!-- Obsfucation Control ID Column -->
+              <!-- Obsfucation Plan ID Column -->
               <ng-container matColumnDef="obsControlId">
-                <th mat-header-cell *matHeaderCellDef>
-                  Obsfucation Control ID
-                </th>
+                <th mat-header-cell *matHeaderCellDef>Obsfucation Plan ID</th>
                 <td
                   class="font-medium cursor-pointer"
                   style="color: #3179e5"
@@ -195,7 +193,7 @@
 
               <!-- Obsfucation Name Column -->
               <ng-container matColumnDef="obsControlName">
-                <th mat-header-cell *matHeaderCellDef>Obsfucation Name</th>
+                <th mat-header-cell *matHeaderCellDef>Obsfucation Plan Name</th>
                 <td mat-cell *matCellDef="let element">
                   {{ element.obsControlName }}
                 </td>

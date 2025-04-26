@@ -1,17 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ObsfucationPlan } from './obsfucation-plan.component';
 
-import { ObsfucationControl } from './obsfucation-control.component';
-
-describe('ObsfucationControl', () => {
-  let component: ObsfucationControl;
-  let fixture: ComponentFixture<ObsfucationControl>;
+describe('ObsfucationPlan', () => {
+  let component: ObsfucationPlan;
+  let fixture: ComponentFixture<ObsfucationPlan>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ObsfucationControl],
+      imports: [ObsfucationPlan],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(ObsfucationControl);
+    fixture = TestBed.createComponent(ObsfucationPlan);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

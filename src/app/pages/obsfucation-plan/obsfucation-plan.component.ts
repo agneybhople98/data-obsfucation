@@ -1,4 +1,4 @@
-// Component file: obsfucation-control.component.ts
+// Component file: obsfucation-plan.component.ts
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
@@ -14,9 +14,9 @@ import { MatPaginator } from '@angular/material/paginator';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-obsfucation-control',
-  templateUrl: './obsfucation-control.component.html',
-  styleUrls: ['./obsfucation-control.component.scss'],
+  selector: 'app-obsfucation-plan',
+  templateUrl: './obsfucation-plan.component.html',
+  styleUrls: ['./obsfucation-plan.component.scss'],
   standalone: false,
   animations: [
     trigger('detailExpand', [
@@ -29,7 +29,7 @@ import { Router } from '@angular/router';
     ]),
   ],
 })
-export class ObsfucationControl implements OnInit, AfterViewInit {
+export class ObsfucationPlan implements OnInit, AfterViewInit {
   expandedElement: any | null = null;
   isConnected = false;
   columnsToDisplayWithExpand = [
@@ -58,7 +58,7 @@ export class ObsfucationControl implements OnInit, AfterViewInit {
   }
 
   openCreateObsfucation(row: any) {
-    this.router.navigate(['/obsfucation-control/view-obsfucation'], {
+    this.router.navigate(['/obsfucation-plan/view-obsfucation'], {
       state: { data: row },
     });
   }

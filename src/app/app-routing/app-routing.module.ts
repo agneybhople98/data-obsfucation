@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from '../pages/dashboard/dashboard.component';
-import { ObsfucationControl } from '../pages/obsfucation-control/obsfucation-control.component';
+import { ObsfucationPlan } from '../pages/obsfucation-plan/obsfucation-plan.component';
 import { JobDetailsComponent } from '../pages/job-details/job-details.component';
 import { ViewObsfucationComponent } from '../pages/view-obsfucation/view-obsfucation.component';
 import { JobControlComponent } from '../pages/job-control/job-control.component';
@@ -14,8 +14,8 @@ const routes: Routes = [
     children: [{ path: 'job-details/:id', component: JobDetailsComponent }],
   },
   {
-    path: 'obsfucation-control',
-    component: ObsfucationControl,
+    path: 'obsfucation-plan',
+    component: ObsfucationPlan,
     children: [
       { path: 'view-obsfucation', component: ViewObsfucationComponent },
       { path: 'create-obsfucation', component: CreateObsfucationComponent },

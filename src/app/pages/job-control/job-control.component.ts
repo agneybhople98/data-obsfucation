@@ -124,7 +124,7 @@ export class JobControlComponent implements OnInit, OnDestroy {
     if (obsControlData) {
       // Use location.href to ensure state is preserved
       this.router
-        .navigate(['/obsfucation-control/view-obsfucation'], {
+        .navigate(['/obsfucation-plan/view-obsfucation'], {
           state: { data: obsControlData },
           replaceUrl: true,
         })

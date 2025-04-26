@@ -12,7 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 
 import { AppRoutingModule } from './app-routing/app-routing.module';
-import { ObsfucationControl } from './pages/obsfucation-control/obsfucation-control.component';
+import { ObsfucationPlan } from './pages/obsfucation-plan/obsfucation-plan.component';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -43,7 +43,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   declarations: [
     AppComponent,
     DashboardComponent,
-    ObsfucationControl,
+    ObsfucationPlan,
     NavbarComponent,
     SidebarComponent,
     JobCardComponent,

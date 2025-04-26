@@ -56,7 +56,7 @@ export class DashboardComponent implements AfterViewInit, OnInit {
     },
     {
       name: 'DO Success Rate',
-      count: '85%',
+      count: '94.04%',
       path: '../../../assets/do-success-rate.svg',
     },
     {

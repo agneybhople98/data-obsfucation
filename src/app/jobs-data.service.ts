@@ -651,7 +651,7 @@ const ELEMENT_DATA_JOB_CONTROL: JobDataControlElement[] = [
     jobControlDescription:
       'Obfuscates healthcare service records from EU regions for non-production use.',
     lastTriggeredOn: '04/01/2025 07:23:12AM',
-    obsfucationControlId: 'OC-98765',
+    obsfucationControlId: 'Healthcare service - Meta',
   },
   {
     jobControlId: 'JC-00123',
@@ -659,7 +659,7 @@ const ELEMENT_DATA_JOB_CONTROL: JobDataControlElement[] = [
     jobControlDescription:
       'Masks insurance claims data for safe use in test and development environments.',
     lastTriggeredOn: '04/02/2025 07:33:22AM',
-    obsfucationControlId: 'OC-32455',
+    obsfucationControlId: 'Insurance Claims - Master',
   },
   {
     jobControlId: 'JC-98764',
@@ -667,7 +667,7 @@ const ELEMENT_DATA_JOB_CONTROL: JobDataControlElement[] = [
     jobControlDescription:
       'Anonymizes healthcare provider database for secure pre-production testing.',
     lastTriggeredOn: '04/03/2025 08:11:09AM',
-    obsfucationControlId: 'OC-23455',
+    obsfucationControlId: 'Healthcare Provider - ARCHDEV',
   },
   {
     jobControlId: 'JC-98763',
@@ -675,7 +675,7 @@ const ELEMENT_DATA_JOB_CONTROL: JobDataControlElement[] = [
     jobControlDescription:
       'Obfuscates healthcare service data from Australia for dev/test usage.',
     lastTriggeredOn: '04/04/2025 08:22:10AM',
-    obsfucationControlId: 'OC-23445',
+    obsfucationControlId: 'RadiologyImages_Metadata',
   },
   {
     jobControlId: 'JC-98762',
@@ -683,7 +683,7 @@ const ELEMENT_DATA_JOB_CONTROL: JobDataControlElement[] = [
     jobControlDescription:
       'Masks master patient demographic data for EU compliance and test use.',
     lastTriggeredOn: '04/05/2025 09:30:33AM',
-    obsfucationControlId: 'OC-65577',
+    obsfucationControlId: 'PatientEHR_US - Master',
   },
   {
     jobControlId: 'JC-98762',
@@ -691,7 +691,7 @@ const ELEMENT_DATA_JOB_CONTROL: JobDataControlElement[] = [
     jobControlDescription:
       'Masks customer data in core banking systems for EU compliance testing.',
     lastTriggeredOn: '04/05/2025 09:30:33AM',
-    obsfucationControlId: 'OC-67890',
+    obsfucationControlId: 'Healthcare Service - F',
   },
   {
     jobControlId: 'JC-98762',
@@ -699,7 +699,7 @@ const ELEMENT_DATA_JOB_CONTROL: JobDataControlElement[] = [
     jobControlDescription:
       'Historic credit card transaction anonymization for analytical workloads.',
     lastTriggeredOn: '04/05/2025 09:30:33AM',
-    obsfucationControlId: 'OC-45456',
+    obsfucationControlId: 'Healthcare Service - G',
   },
   {
     jobControlId: 'JC-98762',
@@ -707,7 +707,7 @@ const ELEMENT_DATA_JOB_CONTROL: JobDataControlElement[] = [
     jobControlDescription:
       'Obfuscates insurance policyholder details in U.S. policy DBs.',
     lastTriggeredOn: '04/05/2025 09:30:33AM',
-    obsfucationControlId: 'OC-43234',
+    obsfucationControlId: 'Healthcare Provider - ARCHDEV',
   },
   {
     jobControlId: 'JC-98762',
@@ -715,7 +715,7 @@ const ELEMENT_DATA_JOB_CONTROL: JobDataControlElement[] = [
     jobControlDescription:
       'Obfuscates billing and customer data in Australian utility systems.',
     lastTriggeredOn: '04/05/2025 09:30:33AM',
-    obsfucationControlId: 'OC-43230',
+    obsfucationControlId: 'Insurance Claims - Master',
   },
   {
     jobControlId: 'JC-98762',
@@ -723,7 +723,7 @@ const ELEMENT_DATA_JOB_CONTROL: JobDataControlElement[] = [
     jobControlDescription:
       'Masks support tickets and customer interactions in U.S. utility CRM systems.',
     lastTriggeredOn: '04/05/2025 09:30:33AM',
-    obsfucationControlId: 'OC-43229',
+    obsfucationControlId: 'PatientEHR_US - Master',
   },
   {
     jobControlId: 'JC-98762',
@@ -731,7 +731,7 @@ const ELEMENT_DATA_JOB_CONTROL: JobDataControlElement[] = [
     jobControlDescription:
       'Global anonymization of outage data for analytics, reporting, and compliance.',
     lastTriggeredOn: '04/05/2025 09:30:33AM',
-    obsfucationControlId: 'OC-43227',
+    obsfucationControlId: 'Insurance Claims - Master',
   },
 ];
 

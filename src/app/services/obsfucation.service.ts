@@ -1063,11 +1063,66 @@ export const TABLE_DATA: TableData = {
       tableName: 'CI_PER_ADDR',
       columns: [
         {
-          columnName: 'ADDRESS_1',
+          columnName: 'PER_ID',
+          displayName: 'Person ID',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'ADDR_TYPE_CD',
+          displayName: 'Address Type Code',
+          obfStrategy: 'undefined',
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'ADDRESS1',
           displayName: 'Address 1',
           obfStrategy: 'FAKER',
           obfRules: {
             first: 'ADDRESS',
+            second: undefined,
+          },
+        },
+
+        {
+          columnName: 'ADDRESS2',
+          displayName: 'Address 2',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'POSTAL',
+          displayName: 'Postal Code',
+          obfStrategy: 'RANDOMIZE',
+          obfRules: {
+            first: 'NUMERIC',
+            second: '6',
+          },
+        },
+        {
+          columnName: 'CITY',
+          displayName: 'City',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'COUNTY',
+          displayName: 'County',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
             second: undefined,
           },
         },
@@ -1080,10 +1135,73 @@ export const TABLE_DATA: TableData = {
             second: '6',
           },
         },
+        {
+          columnName: 'HOUSE_TYPE',
+          displayName: 'House Type',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'GEO_CODE',
+          displayName: 'Geo Code',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'IN_CITY_LIMIT',
+          displayName: 'In City Limit',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'STATE',
+          displayName: 'State',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'COUNTRY',
+          displayName: 'Country',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'VERSION',
+          displayName: 'Version',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'PER_ADDR_ID',
+          displayName: 'Person Address ID',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
       ],
     },
   ],
-  selectedTable: 'CI_CUSTOMERS',
+  selectedTable: 'CI_PER',
 };
 
 @Injectable({

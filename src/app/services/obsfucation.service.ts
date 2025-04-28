@@ -1099,15 +1099,7 @@ export const TABLE_DATA: TableData = {
             second: undefined,
           },
         },
-        {
-          columnName: 'POSTAL',
-          displayName: 'Postal Code',
-          obfStrategy: 'RANDOMIZE',
-          obfRules: {
-            first: 'NUMERIC',
-            second: '6',
-          },
-        },
+
         {
           columnName: 'CITY',
           displayName: 'City',

@@ -33,9 +33,9 @@ export interface JobDataControlElement {
 const ELEMENT_DATA: JobElement[] = [
   {
     jobId: 'RUN-98765',
-    jobName: 'HC_SvcData_Obf_EU',
+    jobName: 'Utility Account Obfuscation – Non-Prod',
     jobDescription:
-      'Obfuscates healthcare service records from EU regions for non-production use.',
+      'Obfuscate utility accounts for non-production environments.',
     triggeredOn: '04/01/2025 07:23:12AM',
     status: 'in-progress',
     obsfucationControlName: 'Healthcare service - Meta',
@@ -235,9 +235,9 @@ const ELEMENT_DATA: JobElement[] = [
   },
   {
     jobId: 'RUN-00123',
-    jobName: 'Insurance_Claims_Obf',
+    jobName: 'Financial Data Masking – Utility Systems',
     jobDescription:
-      'Masks insurance claims data for safe use in test and development environments.',
+      'Mask utility financial data for safe use in test and development environments.',
     triggeredOn: '04/02/2025 07:33:22AM',
     status: 'failed',
     obsfucationControlName: 'Healthcare service - Meta',
@@ -347,9 +347,8 @@ const ELEMENT_DATA: JobElement[] = [
   },
   {
     jobId: 'RUN-98763',
-    jobName: 'HC_Provider_TestDB_Obf',
-    jobDescription:
-      'Anonymizes healthcare provider database for secure pre-production testing.',
+    jobName: 'Person Entity Anonymization – Pre-Prod',
+    jobDescription: 'Anonymize persons for secure pre-production and testing.',
     triggeredOn: '04/04/2025 08:22:10AM',
     status: 'failed',
     obsfucationControlName: 'Healthcare service - Meta',
@@ -383,9 +382,8 @@ const ELEMENT_DATA: JobElement[] = [
   },
   {
     jobId: 'RUN-98764',
-    jobName: 'HC_SvcData_Obf_AUS',
-    jobDescription:
-      'Obfuscates healthcare service data from Australia for dev/test usage.',
+    jobName: 'Field Activity Data Obfuscation – Dev/Test',
+    jobDescription: 'Obfuscate field activity data for development/test usage.',
     triggeredOn: '04/03/2025 08:11:09AM',
     status: 'success',
     obsfucationControlName: 'Healthcare service - Meta',
@@ -416,9 +414,8 @@ const ELEMENT_DATA: JobElement[] = [
   },
   {
     jobId: 'RUN-98762',
-    jobName: 'Patient_Demographics_Obf_EU',
-    jobDescription:
-      'Masks master patient demographic data for EU compliance and test use.',
+    jobName: 'Billing & Financial History Obfuscation',
+    jobDescription: 'Obfuscates billing and financial history data.',
     triggeredOn: '04/05/2025 09:30:33AM',
     status: 'success',
     obsfucationControlName: 'Healthcare service - Meta',
@@ -448,9 +445,8 @@ const ELEMENT_DATA: JobElement[] = [
   },
   {
     jobId: 'RUN-98762',
-    jobName: 'CoreBanking_Customer_Obf_EU',
-    jobDescription:
-      'Masks customer data in core banking systems for EU compliance testing.',
+    jobName: 'Support Interaction Data Masking',
+    jobDescription: 'Mask support tickets and customer interactions.',
     triggeredOn: '04/05/2025 09:30:33AM',
     status: 'success',
     obsfucationControlName: 'Healthcare service - Meta',
@@ -484,135 +480,7 @@ const ELEMENT_DATA: JobElement[] = [
   },
   {
     jobId: 'RUN-98762',
-    jobName: 'CreditCardTxn_Archive_Obf',
-    jobDescription:
-      'Historic credit card transaction anonymization for analytical workloads.',
-    triggeredOn: '04/05/2025 09:30:33AM',
-    status: 'success',
-    obsfucationControlName: 'Healthcare service - Meta',
-    progress: 100,
-    tasks: [
-      {
-        taskId: 'TASK-12351',
-        taskDescription: 'Substituting email addresses',
-        status: 'Failed',
-        errorMessage: `'SQL Error: ORA-00904: "EMAILID": invalid identifier https://docs.oracle.com/error-help/db/ora-00904/00904. 00000 - "%s: invalid identifier"'`,
-        startTime: (() => {
-          const date = new Date();
-          const month = (date.getMonth() + 1).toString().padStart(2, '0');
-          const day = date.getDate().toString().padStart(2, '0');
-          const year = date.getFullYear();
-          const hours = date.getHours() % 12 || 12;
-          const minutes = date.getMinutes().toString().padStart(2, '0');
-          const seconds = date.getSeconds().toString().padStart(2, '0');
-          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
-
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
-        })(),
-        endTime: null,
-        message: 'SQL Log: Cloning Schema is Successful',
-      },
-    ],
-  },
-  {
-    jobId: 'RUN-98761',
-    jobName: 'InsurancePolicy_Obf_US',
-    jobDescription:
-      'Obfuscates insurance policyholder details in U.S. policy DBs.',
-    triggeredOn: '04/05/2025 09:30:33AM',
-    status: 'success',
-    obsfucationControlName: 'Healthcare service - Meta',
-    progress: 100,
-    tasks: [
-      {
-        taskId: 'TASK-12351',
-        taskDescription: 'Substituting email addresses',
-        status: 'Failed',
-        errorMessage: `'SQL Error: ORA-00904: "EMAILID": invalid identifier https://docs.oracle.com/error-help/db/ora-00904/00904. 00000 - "%s: invalid identifier"'`,
-        startTime: (() => {
-          const date = new Date();
-          const month = (date.getMonth() + 1).toString().padStart(2, '0');
-          const day = date.getDate().toString().padStart(2, '0');
-          const year = date.getFullYear();
-          const hours = date.getHours() % 12 || 12;
-          const minutes = date.getMinutes().toString().padStart(2, '0');
-          const seconds = date.getSeconds().toString().padStart(2, '0');
-          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
-
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
-        })(),
-        endTime: null,
-        message: 'SQL Log: Cloning Schema is Successful',
-      },
-    ],
-  },
-  {
-    jobId: 'RUN-98760',
-    jobName: 'UtilityBilling_Obf_AUS',
-    jobDescription:
-      'Obfuscates billing and customer data in Australian utility systems.',
-    triggeredOn: '04/05/2025 09:30:33AM',
-    status: 'success',
-    obsfucationControlName: 'Healthcare service - Meta',
-    progress: 100,
-    tasks: [
-      {
-        taskId: 'TASK-12351',
-        taskDescription: 'Substituting email addresses',
-        status: 'Failed',
-        errorMessage: `'SQL Error: ORA-00904: "EMAILID": invalid identifier https://docs.oracle.com/error-help/db/ora-00904/00904. 00000 - "%s: invalid identifier"'`,
-        startTime: (() => {
-          const date = new Date();
-          const month = (date.getMonth() + 1).toString().padStart(2, '0');
-          const day = date.getDate().toString().padStart(2, '0');
-          const year = date.getFullYear();
-          const hours = date.getHours() % 12 || 12;
-          const minutes = date.getMinutes().toString().padStart(2, '0');
-          const seconds = date.getSeconds().toString().padStart(2, '0');
-          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
-
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
-        })(),
-        endTime: null,
-        message: 'SQL Log: Cloning Schema is Successful',
-      },
-    ],
-  },
-  {
-    jobId: 'RUN-98759',
-    jobName: 'CustomerSupport_Utility_Obf_US',
-    jobDescription:
-      'Masks support tickets and customer interactions in U.S. utility CRM systems.',
-    triggeredOn: '04/05/2025 09:30:33AM',
-    status: 'success',
-    obsfucationControlName: 'Healthcare service - Meta',
-    progress: 100,
-    tasks: [
-      {
-        taskId: 'TASK-12351',
-        taskDescription: 'Substituting email addresses',
-        status: 'Failed',
-        errorMessage: `'SQL Error: ORA-00904: "EMAILID": invalid identifier https://docs.oracle.com/error-help/db/ora-00904/00904. 00000 - "%s: invalid identifier"'`,
-        startTime: (() => {
-          const date = new Date();
-          const month = (date.getMonth() + 1).toString().padStart(2, '0');
-          const day = date.getDate().toString().padStart(2, '0');
-          const year = date.getFullYear();
-          const hours = date.getHours() % 12 || 12;
-          const minutes = date.getMinutes().toString().padStart(2, '0');
-          const seconds = date.getSeconds().toString().padStart(2, '0');
-          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
-
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
-        })(),
-        endTime: null,
-        message: 'SQL Log: Cloning Schema is Successful',
-      },
-    ],
-  },
-  {
-    jobId: 'RUN-98758',
-    jobName: 'OutageReports_Obf_Global',
+    jobName: 'Outage Data Anonymization – Global Compliance',
     jobDescription:
       'Global anonymization of outage data for analytics, reporting, and compliance.',
     triggeredOn: '04/05/2025 09:30:33AM',
@@ -647,91 +515,57 @@ const ELEMENT_DATA: JobElement[] = [
 const ELEMENT_DATA_JOB_CONTROL: JobDataControlElement[] = [
   {
     jobControlId: 'JC-98765',
-    jobControlName: 'HC_SvcData_Obf_EU',
+    jobControlName: 'Utility Account Obfuscation – Non-Prod',
     jobControlDescription:
-      'Obfuscates healthcare service records from EU regions for non-production use.',
+      'Obfuscate utility accounts for non-production environments.',
     lastTriggeredOn: '04/01/2025 07:23:12AM',
     obsfucationControlId: 'Healthcare service - Meta',
   },
   {
     jobControlId: 'JC-00123',
-    jobControlName: 'Insurance_Claims_Obf',
+    jobControlName: 'Financial Data Masking – Utility Systems',
     jobControlDescription:
-      'Masks insurance claims data for safe use in test and development environments.',
+      'Mask utility financial data for safe use in test and development environments.',
     lastTriggeredOn: '04/02/2025 07:33:22AM',
     obsfucationControlId: 'Insurance Claims - Master',
   },
   {
     jobControlId: 'JC-98764',
-    jobControlName: 'HC_Provider_TestDB_Obf',
+    jobControlName: 'Person Entity Anonymization – Pre-Prod',
     jobControlDescription:
-      'Anonymizes healthcare provider database for secure pre-production testing.',
+      'Anonymize persons for secure pre-production and testing.',
     lastTriggeredOn: '04/03/2025 08:11:09AM',
     obsfucationControlId: 'Healthcare Provider - ARCHDEV',
   },
   {
     jobControlId: 'JC-98763',
-    jobControlName: 'HC_SvcData_Obf_AUS',
+    jobControlName: 'Field Activity Data Obfuscation – Dev/Test',
     jobControlDescription:
-      'Obfuscates healthcare service data from Australia for dev/test usage.',
+      'Obfuscate field activity data for development/test usage.',
     lastTriggeredOn: '04/04/2025 08:22:10AM',
     obsfucationControlId: 'RadiologyImages_Metadata',
   },
   {
     jobControlId: 'JC-98762',
-    jobControlName: 'Patient_Demographics_Obf_EU',
-    jobControlDescription:
-      'Masks master patient demographic data for EU compliance and test use.',
+    jobControlName: 'Billing & Financial History Obfuscation',
+    jobControlDescription: 'Obfuscates billing and financial history data.',
     lastTriggeredOn: '04/05/2025 09:30:33AM',
     obsfucationControlId: 'PatientEHR_US - Master',
   },
   {
     jobControlId: 'JC-98762',
-    jobControlName: 'CoreBanking_Customer_Obf_EU',
-    jobControlDescription:
-      'Masks customer data in core banking systems for EU compliance testing.',
+    jobControlName: 'Support Interaction Data Masking',
+    jobControlDescription: 'Mask support tickets and customer interactions.',
     lastTriggeredOn: '04/05/2025 09:30:33AM',
     obsfucationControlId: 'Healthcare Service - F',
   },
   {
     jobControlId: 'JC-98762',
-    jobControlName: 'CreditCardTxn_Archive_Obf',
-    jobControlDescription:
-      'Historic credit card transaction anonymization for analytical workloads.',
-    lastTriggeredOn: '04/05/2025 09:30:33AM',
-    obsfucationControlId: 'Healthcare Service - G',
-  },
-  {
-    jobControlId: 'JC-98762',
-    jobControlName: 'InsurancePolicy_Obf_US',
-    jobControlDescription:
-      'Obfuscates insurance policyholder details in U.S. policy DBs.',
-    lastTriggeredOn: '04/05/2025 09:30:33AM',
-    obsfucationControlId: 'Healthcare Provider - ARCHDEV',
-  },
-  {
-    jobControlId: 'JC-98762',
-    jobControlName: 'UtilityBilling_Obf_AUS',
-    jobControlDescription:
-      'Obfuscates billing and customer data in Australian utility systems.',
-    lastTriggeredOn: '04/05/2025 09:30:33AM',
-    obsfucationControlId: 'Insurance Claims - Master',
-  },
-  {
-    jobControlId: 'JC-98762',
-    jobControlName: 'CustomerSupport_Utility_Obf_US',
-    jobControlDescription:
-      'Masks support tickets and customer interactions in U.S. utility CRM systems.',
-    lastTriggeredOn: '04/05/2025 09:30:33AM',
-    obsfucationControlId: 'PatientEHR_US - Master',
-  },
-  {
-    jobControlId: 'JC-98762',
-    jobControlName: 'OutageReports_Obf_Global',
+    jobControlName: 'Outage Data Anonymization – Global Compliance',
     jobControlDescription:
       'Global anonymization of outage data for analytics, reporting, and compliance.',
     lastTriggeredOn: '04/05/2025 09:30:33AM',
-    obsfucationControlId: 'Insurance Claims - Master',
+    obsfucationControlId: 'Healthcare Service - G',
   },
 ];
 

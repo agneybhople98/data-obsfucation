@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from '../pages/dashboard/dashboard.component';
-import { ObsfucationPlan } from '../pages/obsfucation-plan/obsfucation-plan.component';
+import { ObfuscationPlan } from '../pages/obfuscation-plan/obfuscation-plan.component';
 import { JobDetailsComponent } from '../pages/job-details/job-details.component';
-import { ViewObsfucationComponent } from '../pages/view-obsfucation/view-obsfucation.component';
+import { ViewObfuscationPlanComponent } from '../pages/view-obfuscation/view-obfuscation.component';
 import { JobControlComponent } from '../pages/job-control/job-control.component';
-import { CreateObsfucationComponent } from '../pages/create-obsfucation/create-obsfucation.component';
+import { CreateObfuscationPlanComponent } from '../pages/create-obfuscation/create-obfuscation.component';
 
 const routes: Routes = [
   {
@@ -14,11 +14,11 @@ const routes: Routes = [
     children: [{ path: 'job-details/:id', component: JobDetailsComponent }],
   },
   {
-    path: 'obsfucation-plan',
-    component: ObsfucationPlan,
+    path: 'obfuscation-plan',
+    component: ObfuscationPlan,
     children: [
-      { path: 'view-obsfucation', component: ViewObsfucationComponent },
-      { path: 'create-obsfucation', component: CreateObsfucationComponent },
+      { path: 'view-obsfucation', component: ViewObfuscationPlanComponent },
+      { path: 'create-obsfucation', component: CreateObfuscationPlanComponent },
     ],
   },
   { path: 'job-control-list', component: JobControlComponent },

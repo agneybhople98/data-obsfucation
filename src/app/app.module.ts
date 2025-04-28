@@ -12,7 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 
 import { AppRoutingModule } from './app-routing/app-routing.module';
-import { ObsfucationPlan } from './pages/obsfucation-plan/obsfucation-plan.component';
+import { ObfuscationPlan } from './pages/obfuscation-plan/obfuscation-plan.component';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -27,14 +27,14 @@ import { JobDetailsComponent } from './pages/job-details/job-details.component';
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 import { CreateJobComponent } from './components/create-job/create-job.component';
 import { InputComponent } from './components/input/input.component';
-import { ViewObsfucationComponent } from './pages/view-obsfucation/view-obsfucation.component';
+import { ViewObfuscationPlanComponent } from './pages/view-obfuscation/view-obfuscation.component';
 import { DropdownComponent } from './components/dropdown/dropdown.component';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
 import { ButtonComponent } from './components/button/button.component';
 import { JobControlComponent } from './pages/job-control/job-control.component';
-import { CreateObsfucationComponent } from './pages/create-obsfucation/create-obsfucation.component';
+import { CreateObfuscationPlanComponent } from './pages/create-obfuscation/create-obfuscation.component';
 import { FormsModule } from '@angular/forms';
 
 import { ReactiveFormsModule } from '@angular/forms';
@@ -43,7 +43,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   declarations: [
     AppComponent,
     DashboardComponent,
-    ObsfucationPlan,
+    ObfuscationPlan,
     NavbarComponent,
     SidebarComponent,
     JobCardComponent,
@@ -53,10 +53,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     CreateJobComponent,
     InputComponent,
     ButtonComponent,
-    ViewObsfucationComponent,
+    ViewObfuscationPlanComponent,
     DropdownComponent,
     JobControlComponent,
-    CreateObsfucationComponent,
+    CreateObfuscationPlanComponent,
   ],
   imports: [
     FormsModule,

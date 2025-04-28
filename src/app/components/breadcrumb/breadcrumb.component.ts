@@ -62,7 +62,7 @@ export class BreadcrumbComponent implements OnInit {
     switch (segment) {
       case 'dashboard':
         return 'Dashboard';
-      case 'obsfucation-plan':
+      case 'obfuscation-plan':
         return 'Obfuscation Plan';
       case 'view-obsfucation':
         return 'View Obfuscation';

@@ -1,4 +1,4 @@
-// Component file: obsfucation-plan.component.ts
+// Component file: obfuscation-plan.component.ts
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
@@ -14,9 +14,9 @@ import { MatPaginator } from '@angular/material/paginator';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-obsfucation-plan',
-  templateUrl: './obsfucation-plan.component.html',
-  styleUrls: ['./obsfucation-plan.component.scss'],
+  selector: 'app-obfuscation-plan',
+  templateUrl: './obfuscation-plan.component.html',
+  styleUrls: ['./obfuscation-plan.component.scss'],
   standalone: false,
   animations: [
     trigger('detailExpand', [
@@ -29,7 +29,7 @@ import { Router } from '@angular/router';
     ]),
   ],
 })
-export class ObsfucationPlan implements OnInit, AfterViewInit {
+export class ObfuscationPlan implements OnInit, AfterViewInit {
   expandedElement: any | null = null;
   isConnected = false;
   columnsToDisplayWithExpand = [
@@ -58,7 +58,7 @@ export class ObsfucationPlan implements OnInit, AfterViewInit {
   }
 
   openCreateObsfucation(row: any) {
-    this.router.navigate(['/obsfucation-plan/view-obsfucation'], {
+    this.router.navigate(['/obfuscation-plan/view-obsfucation'], {
       state: { data: row },
     });
   }

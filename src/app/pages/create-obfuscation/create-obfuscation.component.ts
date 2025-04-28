@@ -10,12 +10,12 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-create-obsfucation',
+  selector: 'app-create-obfuscation',
   standalone: false,
-  templateUrl: './create-obsfucation.component.html',
-  styleUrl: './create-obsfucation.component.scss',
+  templateUrl: './create-obfuscation.component.html',
+  styleUrl: './create-obfuscation.component.scss',
 })
-export class CreateObsfucationComponent implements OnInit {
+export class CreateObfuscationPlanComponent implements OnInit {
   tableData = TABLE_DATA;
   selectedTable: string | null = null;
   displayedColumns: string[] = [

@@ -126,15 +126,10 @@ export class JobControlComponent implements OnInit, OnDestroy {
 
     if (obsControlData) {
       // Use location.href to ensure state is preserved
-      this.router
-        .navigate(['/obsfucation-plan/view-obsfucation'], {
-          state: { data: obsControlData },
-          replaceUrl: true,
-        })
-        .then(() => {
-          // Force a reload to ensure state is available
-          window.location.reload();
-        });
+      this.router.navigate(['/obfuscation-plan/view-obsfucation'], {
+        state: { data: obsControlData },
+        replaceUrl: true,
+      });
     } else {
       console.error('No matching obfuscation control data found');
     }

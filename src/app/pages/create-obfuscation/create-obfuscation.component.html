@@ -35,17 +35,17 @@
       <div class="flex items-center justify-between !px-2">
         <div class="flex">
           <div class="!p-4 !bg-[#F0F4FF] !m-5">
-            <div class="text-xs">Obsfucation Plan Name</div>
+            <div class="text-xs">Obfuscation Plan Name</div>
             <div class="text-md">
               {{
                 obsControlData?.obsControlName
                   ? obsControlData?.obsControlName
-                  : obsControlData?.jobControlName || "Healthcare service US"
+                  : obsControlData?.jobControlName || "Healthcare Service Meta"
               }}
             </div>
           </div>
           <div class="!p-4 !bg-[#F0F4FF] !m-5">
-            <div class="text-xs">Obsfucation Plan Description</div>
+            <div class="text-xs">Obfuscation Plan Description</div>
             <div class="text-md">
               {{
                 obsControlData?.obsControlDescription
@@ -59,29 +59,29 @@
         <div>
           <app-button
             text="Save"
-            routerLink="/obsfucation-plan"
+            routerLink="/obfuscation-plan"
             variant="success"
           ></app-button>
         </div>
       </div>
       <div class="!ms-5">
-        <div>Set Obsfucation Strategies</div>
+        <div>Set Obfuscation Strategies</div>
 
         <div class="table-container !mt-4">
           <!-- <mat-form-field>
-            <mat-label>Select Table</mat-label>
-            <mat-select
-              [(value)]="selectedTable"
-              (selectionChange)="onTableChange()"
-            >
-              <mat-option
-                *ngFor="let table of tableData.tables"
-                [value]="table.tableName"
+              <mat-label>Select Table</mat-label>
+              <mat-select
+                [(value)]="selectedTable"
+                (selectionChange)="onTableChange()"
               >
-                {{ table.tableName }}
-              </mat-option>
-            </mat-select>
-          </mat-form-field> -->
+                <mat-option
+                  *ngFor="let table of tableData.tables"
+                  [value]="table.tableName"
+                >
+                  {{ table.tableName }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field> -->
 
           <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
             <ng-container matColumnDef="select">
@@ -91,7 +91,6 @@
                   [checked]="selection.hasValue() && isAllSelected()"
                   [indeterminate]="selection.hasValue() && !isAllSelected()"
                   [aria-label]="checkboxLabel()"
-                  [disabled]="selection.hasValue()"
                 >
                 </mat-checkbox>
               </th>
@@ -101,7 +100,6 @@
                   (change)="$event ? selection.toggle(row) : null"
                   [checked]="selection.isSelected(row)"
                   [aria-label]="checkboxLabel(row)"
-                  [disabled]="!selection.isSelected(row)"
                 >
                 </mat-checkbox>
               </td>
@@ -146,7 +144,6 @@
                 </mat-form-field>
                 <mat-form-field appearance="fill" class="!ms-4 !mt-2">
                   <mat-label>Select an option</mat-label>
-
                   <mat-select [(ngModel)]="element.obfRules.second">
                     <mat-option
                       *ngFor="let rule of obsRulesNumbers"

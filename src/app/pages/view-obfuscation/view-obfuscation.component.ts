@@ -11,11 +11,11 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-view-obsfucation',
-  templateUrl: './view-obsfucation.component.html',
-  styleUrl: './view-obsfucation.component.scss',
+  templateUrl: './view-obfuscation.component.html',
+  styleUrl: './view-obfuscation.component.scss',
   standalone: false,
 })
-export class ViewObsfucationComponent implements OnInit {
+export class ViewObfuscationPlanComponent implements OnInit {
   tableData = TABLE_DATA;
   selectedTable = this.tableData.selectedTable;
   displayedColumns: string[] = [

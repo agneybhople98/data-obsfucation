@@ -48,10 +48,13 @@ export class InputComponent {
   onChange: any = () => {};
   onTouched: any = () => {};
 
+  uniqueId: string;
+
   constructor(@Optional() @Self() public ngControl: NgControl) {
     if (this.ngControl) {
       this.ngControl.valueAccessor = this;
     }
+    this.uniqueId = 'input-' + Math.random().toString(36).substr(2, 9);
   }
 
   get control(): FormControl {

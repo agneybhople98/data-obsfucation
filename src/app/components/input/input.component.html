@@ -7,13 +7,13 @@
   [class.invalid]="invalid"
 >
   <div class="input-wrapper">
-    <label [for]="'input-' + label" class="floating-label">
+    <label [for]="uniqueId" class="floating-label">
       {{ label }} <span *ngIf="required" class="required-indicator">*</span>
     </label>
     <div class="input-with-icon">
       <input
         #input
-        [id]="'input-' + label"
+        [id]="uniqueId"
         [type]="showPassword ? 'text' : type"
         [placeholder]="placeholder"
         [value]="value"
@@ -48,7 +48,7 @@
       This field is required
     </div>
     <div *ngIf="control?.errors?.['email']" class="error-message">
-      Please enter a valid email
+      Please enter a valid email address
     </div>
     <div *ngIf="control?.errors?.['minlength']" class="error-message">
       Input is too short

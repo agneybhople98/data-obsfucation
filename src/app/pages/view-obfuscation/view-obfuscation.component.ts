@@ -10,7 +10,7 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-view-obsfucation',
+  selector: 'app-view-obfuscation',
   templateUrl: './view-obfuscation.component.html',
   styleUrl: './view-obfuscation.component.scss',
   standalone: false,

@@ -7,8 +7,8 @@
 <div
   class="bg-white"
   *ngIf="
-    !router.url.includes('view-obsfucation') &&
-    !router.url.includes('create-obsfucation')
+    !router.url.includes('view-obfuscation') &&
+    !router.url.includes('create-obfuscation')
   "
 >
   <mat-drawer-container
@@ -121,7 +121,7 @@
           </app-button>
           <app-button
             [disabled]="!this.isConnected"
-            routerLink="create-obsfucation"
+            routerLink="create-obfuscation"
             text="Create"
             variant="success"
           >

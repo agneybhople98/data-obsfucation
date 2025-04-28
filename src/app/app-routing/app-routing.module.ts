@@ -17,8 +17,8 @@ const routes: Routes = [
     path: 'obfuscation-plan',
     component: ObfuscationPlan,
     children: [
-      { path: 'view-obsfucation', component: ViewObfuscationPlanComponent },
-      { path: 'create-obsfucation', component: CreateObfuscationPlanComponent },
+      { path: 'view-obfuscation', component: ViewObfuscationPlanComponent },
+      { path: 'create-obfuscation', component: CreateObfuscationPlanComponent },
     ],
   },
   { path: 'job-control-list', component: JobControlComponent },

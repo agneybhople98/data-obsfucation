@@ -58,7 +58,7 @@ export class ObfuscationPlan implements OnInit, AfterViewInit {
   }
 
   openCreateObsfucation(row: any) {
-    this.router.navigate(['/obfuscation-plan/view-obsfucation'], {
+    this.router.navigate(['/obfuscation-plan/view-obfuscation'], {
       state: { data: row },
     });
   }

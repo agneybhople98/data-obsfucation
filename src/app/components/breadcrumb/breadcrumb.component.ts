@@ -64,9 +64,9 @@ export class BreadcrumbComponent implements OnInit {
         return 'Dashboard';
       case 'obfuscation-plan':
         return 'Obfuscation Plan';
-      case 'view-obsfucation':
+      case 'view-obfuscation':
         return 'View Obfuscation';
-      case 'create-obsfucation':
+      case 'create-obfuscation':
         return 'Create Obfuscation';
       case 'job-details':
         return 'Job Details';

@@ -109,11 +109,6 @@ export class JobDetailsComponent implements OnInit, AfterViewInit, OnDestroy {
         if (this.jobDetails && this.jobDetails.tasks) {
           this.dataSource.data = this.jobDetails.tasks;
           this.loading = false;
-
-          // Start sequential updates if the job is in progress
-          if (this.jobDetails.status === 'in-progress') {
-            this.startSequentialUpdates(this.jobId);
-          }
         } else {
           this.error = 'Job details not found';
           this.loading = false;
@@ -146,17 +141,6 @@ export class JobDetailsComponent implements OnInit, AfterViewInit, OnDestroy {
 
   isExpansionDetailRow = (i: number, row: any) =>
     row.hasOwnProperty('detailRow');
-
-  startSequentialUpdates(jobId: string) {
-    this.jobService.updateTasksSequentially(jobId).subscribe(
-      (updatedJob) => {
-        if (updatedJob) {
-        }
-      },
-      (error) => console.error('Error updating tasks:', error),
-      () => {}
-    );
-  }
 
   extractUrl(message: string): string {
     if (!message) return '';

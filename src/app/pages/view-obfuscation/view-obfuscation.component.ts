@@ -57,8 +57,6 @@ export class ViewObfuscationPlanComponent implements OnInit {
   obsControlData: any;
 
   tableItems = [
-    'CI_CUSTOMERS',
-    'CI_ORDERS',
     'CI_PER',
     'CI_PER_NAME',
     'CI_PER_PHONE',

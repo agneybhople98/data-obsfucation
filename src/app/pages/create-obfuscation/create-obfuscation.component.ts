@@ -51,8 +51,6 @@ export class CreateObfuscationPlanComponent implements OnInit {
   obsControlData: any;
 
   tableItems = [
-    'CI_CUSTOMERS',
-    'CI_ORDERS',
     'CI_PER',
     'CI_PER_NAME',
     'CI_PER_PHONE',
@@ -63,7 +61,7 @@ export class CreateObfuscationPlanComponent implements OnInit {
   filteredTableItems = [...this.tableItems];
   searchText = '';
 
-  selectedItem: string | null = 'CI_CUSTOMERS';
+  selectedItem: string | null = 'CI_PER';
 
   constructor(
     private _obsufactionService: ObsfucationService,

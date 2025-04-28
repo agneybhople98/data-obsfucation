@@ -27,12 +27,16 @@
       </div>
 
       <div class="flex gap-2 !px-4">
-        <app-input class="flex-1" label="Name" value="Healthcare Service Meta">
+        <app-input
+          class="flex-1"
+          label="Name"
+          [value]="this?.jobDetailsDrawer?.jobName"
+        >
         </app-input>
         <app-input
           class="flex-2"
           label="Description"
-          value="Healthcare services UMG schema - A created for masking production"
+          [value]="this?.jobDetailsDrawer?.jobDescription"
           [additionalInfo]="'Last connection Date: 09/04/2025 11:50 PM'"
         >
         </app-input>
@@ -165,7 +169,7 @@
               <div>
                 <div class="text-sm">Job Control</div>
                 <div
-                  (click)="drawer.toggle()"
+                  (click)="openJobControlDrawer(jobDetails)"
                   class="font-semibold !mt-1 text-sm !text-[#3179e5] cursor-pointer"
                 >
                   {{ jobDetails.jobName }}

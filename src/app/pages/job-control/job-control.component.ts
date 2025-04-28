@@ -19,6 +19,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class JobControlComponent implements OnInit, OnDestroy {
   @ViewChild('drawer') drawer!: MatDrawer;
+  public jobControlDetails: any;
   isConnected = false;
   obsControlOptions = [
     'Healthcare service - Meta',
@@ -83,7 +84,9 @@ export class JobControlComponent implements OnInit, OnDestroy {
 
   createJob() {
     this.drawer.close();
-    this.router.navigate(['/dashboard/job-details/RUN-98765']);
+    // this.router.navigate(['/dashboard/job-details/RUN-98765']);
+    this.router.navigate(['/job-control-list']);
+    this._toasterService.success('Job created successfully');
   }
 
   runJob(jobControlId: string) {
@@ -151,5 +154,10 @@ export class JobControlComponent implements OnInit, OnDestroy {
         data.obsfucationControlId.toLowerCase().includes(filter)
       );
     };
+  }
+
+  openDrawer(element: any) {
+    this.jobControlDetails = element;
+    this.drawer.open();
   }
 }

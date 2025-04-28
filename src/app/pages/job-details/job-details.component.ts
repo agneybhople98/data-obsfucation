@@ -18,6 +18,7 @@ import {
   trigger,
 } from '@angular/animations';
 import { Subscription } from 'rxjs';
+import { MatDrawer } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-job-details',
@@ -36,7 +37,9 @@ import { Subscription } from 'rxjs';
   ],
 })
 export class JobDetailsComponent implements OnInit, AfterViewInit, OnDestroy {
+  @ViewChild('drawer') drawer!: MatDrawer;
   isConnected = false;
+  public jobDetailsDrawer: any;
   selectedObsControl = 'Healthcare service - Meta'; // Default selected value
   selectedJobIdControl = 'Healthcare service US'; // Default selected value
 
@@ -134,6 +137,11 @@ export class JobDetailsComponent implements OnInit, AfterViewInit, OnDestroy {
   toggleRow(element: any): void {
     this.expandedElement = this.expandedElement === element ? null : element;
     this.changeDetectorRef.detectChanges();
+  }
+
+  openJobControlDrawer(jobDetails: any) {
+    this.drawer.open();
+    this.jobDetailsDrawer = jobDetails;
   }
 
   isExpansionDetailRow = (i: number, row: any) =>

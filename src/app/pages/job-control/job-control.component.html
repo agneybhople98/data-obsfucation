@@ -28,12 +28,24 @@
       </div>
 
       <div class="flex gap-2 !px-4">
-        <app-input class="flex-1" label="Name" value="Healthcare Service Meta">
+        <app-input
+          class="flex-1"
+          label="Name"
+          [value]="
+            this.jobControlDetails?.jobControlName
+              ? this.jobControlDetails?.jobControlName
+              : 'HC_SvcData_Obf_EU'
+          "
+        >
         </app-input>
         <app-input
           class="flex-2"
           label="Description"
-          value="Healthcare services UMG schema - A created for masking production"
+          [value]="
+            this.jobControlDetails?.jobControlDescription
+              ? this.jobControlDetails?.jobControlDescription
+              : 'Obfuscates healthcare service records from EU regions for non-production use.'
+          "
           [additionalInfo]="'Last connection Date: 09/04/2025 11:50 PM'"
         >
         </app-input>
@@ -165,7 +177,7 @@
                 style="color: #3179e5"
                 mat-cell
                 *matCellDef="let element"
-                (click)="drawer.toggle()"
+                (click)="openDrawer(element)"
               >
                 {{ element.jobControlId }}
               </td>
@@ -189,7 +201,9 @@
 
             <!-- Job Control Description Column -->
             <ng-container matColumnDef="obsfucationControlId">
-              <th mat-header-cell *matHeaderCellDef>Obfuscation Control Id</th>
+              <th mat-header-cell *matHeaderCellDef>
+                Obfuscation Control Name
+              </th>
               <td
                 class="font-medium cursor-pointer"
                 style="color: #3179e5"

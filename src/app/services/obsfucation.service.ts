@@ -17,7 +17,7 @@ const ELEMENT_DATA: any[] = [
     },
   },
   {
-    obsControlId: 'OC-32455',
+    obsControlId: 'OC-98764',
     obsControlName: 'Insurance Claims - Master',
     obsControlDescription:
       'Healthcare Service Provider Schema Master - Created for Masking Prod Data',
@@ -32,7 +32,7 @@ const ELEMENT_DATA: any[] = [
     },
   },
   {
-    obsControlId: 'OC-23455',
+    obsControlId: 'OC-98763',
     obsControlName: 'Healthcare Provider - ARCHDEV',
     obsControlDescription:
       'Healthcare Service Provider Schema ARCHDEV - Created for Masking Prod Data',
@@ -47,7 +47,7 @@ const ELEMENT_DATA: any[] = [
     },
   },
   {
-    obsControlId: 'OC-23445',
+    obsControlId: 'OC-98762',
     obsControlName: 'RadiologyImages_Metadata',
     obsControlDescription:
       'Healthcare Service Provider Schema Metadata - Created for Masking Prod Data',
@@ -62,7 +62,7 @@ const ELEMENT_DATA: any[] = [
     },
   },
   {
-    obsControlId: 'OC-65577',
+    obsControlId: 'OC-98761',
     obsControlName: 'PatientEHR_US - Master',
     obsControlDescription:
       'Healthcare Service Provider Schema Master - Created for Masking Prod Data',
@@ -77,7 +77,7 @@ const ELEMENT_DATA: any[] = [
     },
   },
   {
-    obsControlId: 'OC-67890',
+    obsControlId: 'OC-98760',
     obsControlName: 'Healthcare Service - F',
     obsControlDescription:
       'Healthcare Service Provider Schema F - Created for Masking Prod Data',
@@ -92,7 +92,7 @@ const ELEMENT_DATA: any[] = [
     },
   },
   {
-    obsControlId: 'OC-45456',
+    obsControlId: 'OC-98759',
     obsControlName: 'Healthcare Service - G',
     obsControlDescription:
       'Healthcare Service Provider Schema G - Created for Masking Prod Data',

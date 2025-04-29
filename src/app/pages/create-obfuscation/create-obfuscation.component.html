@@ -35,12 +35,13 @@
       <div class="flex items-center justify-between !px-2">
         <div class="flex">
           <div class="!p-4 !bg-[#F0F4FF] !m-5">
-            <div class="text-xs">Obfuscation Plan Name</div>
+            <div class="text-xs">Obfuscation Plan</div>
             <div class="text-md">
               {{
                 obsControlData?.obsControlName
                   ? obsControlData?.obsControlName
-                  : obsControlData?.jobControlName || "Healthcare Service Meta"
+                  : obsControlData?.jobControlName ||
+                    "Utility Account Obfuscation"
               }}
             </div>
           </div>
@@ -51,7 +52,7 @@
                 obsControlData?.obsControlDescription
                   ? obsControlData?.obsControlDescription
                   : obsControlData?.jobControlDescription ||
-                    "Healthcare Service Prod data - US"
+                    "Obfuscate utility accounts for non-production environments."
               }}
             </div>
           </div>

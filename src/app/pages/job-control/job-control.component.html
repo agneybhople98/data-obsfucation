@@ -34,7 +34,7 @@
           [value]="
             this.jobControlDetails?.jobControlName
               ? this.jobControlDetails?.jobControlName
-              : 'HC_SvcData_Obf_EU'
+              : 'Utility Account Obfuscation – Non-Prod'
           "
         >
         </app-input>
@@ -44,7 +44,7 @@
           [value]="
             this.jobControlDetails?.jobControlDescription
               ? this.jobControlDetails?.jobControlDescription
-              : 'Obfuscates healthcare service records from EU regions for non-production use.'
+              : 'Obfuscate utility accounts for non-production environments.'
           "
           [additionalInfo]="'Last connection Date: 09/04/2025 11:50 PM'"
         >
@@ -185,7 +185,7 @@
 
             <!-- Job Control Name Column -->
             <ng-container matColumnDef="jobControlName">
-              <th mat-header-cell *matHeaderCellDef>Job Control Name</th>
+              <th mat-header-cell *matHeaderCellDef>Job Control</th>
               <td mat-cell *matCellDef="let element">
                 {{ element.jobControlName }}
               </td>
@@ -201,9 +201,7 @@
 
             <!-- Job Control Description Column -->
             <ng-container matColumnDef="obsfucationControlId">
-              <th mat-header-cell *matHeaderCellDef>
-                Obfuscation Control Name
-              </th>
+              <th mat-header-cell *matHeaderCellDef>Obfuscation Control</th>
               <td
                 class="font-medium cursor-pointer"
                 style="color: #3179e5"

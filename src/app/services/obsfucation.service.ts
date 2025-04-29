@@ -3,9 +3,9 @@ import { Injectable } from '@angular/core';
 const ELEMENT_DATA: any[] = [
   {
     obsControlId: 'OC-98765',
-    obsControlName: 'Healthcare service - Meta',
+    obsControlName: 'Utility Account Obfuscation',
     obsControlDescription:
-      'Healthcare Service Provider Schema Meta - Created for Masking Prod Data',
+      'Obfuscate utility accounts for non-production environments.',
     createdBy: 'Miller Smith',
     details: {
       name: 'Testing',
@@ -18,9 +18,9 @@ const ELEMENT_DATA: any[] = [
   },
   {
     obsControlId: 'OC-98764',
-    obsControlName: 'Insurance Claims - Master',
+    obsControlName: 'Financial Data Masking',
     obsControlDescription:
-      'Healthcare Service Provider Schema Master - Created for Masking Prod Data',
+      'Mask utility financial data for safe use in test and development environments.',
     createdBy: 'Smith Wilson',
     details: {
       name: 'Testing',
@@ -33,9 +33,9 @@ const ELEMENT_DATA: any[] = [
   },
   {
     obsControlId: 'OC-98763',
-    obsControlName: 'Healthcare Provider - ARCHDEV',
+    obsControlName: 'Person Entity Anonymization',
     obsControlDescription:
-      'Healthcare Service Provider Schema ARCHDEV - Created for Masking Prod Data',
+      'Anonymize persons for secure pre-production and testing.',
     createdBy: 'Jonny Johnson',
     details: {
       name: 'Testing',
@@ -48,9 +48,9 @@ const ELEMENT_DATA: any[] = [
   },
   {
     obsControlId: 'OC-98762',
-    obsControlName: 'RadiologyImages_Metadata',
+    obsControlName: 'Field Activity Data Obfuscation',
     obsControlDescription:
-      'Healthcare Service Provider Schema Metadata - Created for Masking Prod Data',
+      'Obfuscate field activity data for development/test usage.',
     createdBy: 'Chris Brown',
     details: {
       name: 'Testing',
@@ -63,9 +63,8 @@ const ELEMENT_DATA: any[] = [
   },
   {
     obsControlId: 'OC-98761',
-    obsControlName: 'PatientEHR_US - Master',
-    obsControlDescription:
-      'Healthcare Service Provider Schema Master - Created for Masking Prod Data',
+    obsControlName: 'Billing & Financial History',
+    obsControlDescription: 'Obfuscates billing and financial history data.',
     createdBy: 'Maria Garcia',
     details: {
       name: 'Testing',
@@ -78,9 +77,8 @@ const ELEMENT_DATA: any[] = [
   },
   {
     obsControlId: 'OC-98760',
-    obsControlName: 'Healthcare Service - F',
-    obsControlDescription:
-      'Healthcare Service Provider Schema F - Created for Masking Prod Data',
+    obsControlName: 'Support Interaction Data Masking',
+    obsControlDescription: 'Mask support tickets and customer interactions.',
     createdBy: 'Rodriguez V',
     details: {
       name: 'Testing',
@@ -93,9 +91,9 @@ const ELEMENT_DATA: any[] = [
   },
   {
     obsControlId: 'OC-98759',
-    obsControlName: 'Healthcare Service - G',
+    obsControlName: 'Outage Data Anonymization',
     obsControlDescription:
-      'Healthcare Service Provider Schema G - Created for Masking Prod Data',
+      'Global anonymization of outage data for analytics, reporting, and compliance.',
     createdBy: 'Martinez Sofia',
     details: {
       name: 'Testing',

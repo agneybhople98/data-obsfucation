@@ -302,9 +302,10 @@
                         *ngIf="element.status === 'Failed'"
                         class="error-message"
                       >
-                        <div class="font-medium">
-                          {{ element.errorMessage }}
-                        </div>
+                        <div
+                          class="font-medium"
+                          [innerHTML]="formatMessage(element.errorMessage)"
+                        ></div>
                         <div
                           class="mt-1"
                           *ngFor="let message of element.message"
@@ -325,7 +326,7 @@
                           class="!my-1"
                           *ngFor="let message of element.message"
                         >
-                          {{ message.name }}
+                          <div [innerHTML]="formatMessage(message.name)"></div>
                         </div>
                       </div>
                     </div>

@@ -157,4 +157,21 @@ export class JobDetailsComponent implements OnInit, AfterViewInit, OnDestroy {
     const urlRegex = /(https?:\/\/[^\s]+)/g;
     return message.replace(urlRegex, '');
   }
+
+  formatMessage(message: string): string {
+    // Split the message into words
+    return message
+      .split(' ')
+      .map((word) => {
+        // Check if the word is all caps (ignoring punctuation)
+        const cleanWord = word.replace(/[^a-zA-Z]/g, '');
+        if (cleanWord === cleanWord.toUpperCase() && cleanWord.length > 1) {
+          // Return the word with HTML bold tags, preserving any punctuation
+          return `<strong>${word}</strong>`;
+        }
+        console.log(word);
+        return word;
+      })
+      .join(' ');
+  }
 }

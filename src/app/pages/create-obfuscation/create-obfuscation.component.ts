@@ -138,6 +138,23 @@ export class CreateObfuscationPlanComponent implements OnInit {
   }
 
   /**
+   *
+   * @param element
+   * @returns Disabled state of the dropdown for unselected row
+   */
+
+  isDropdownDisabled(element: any): boolean {
+    return !this.selection.isSelected(element);
+  }
+
+  isRowDisabledForPerID(row: ColumnDefinition): any {
+    if (row.columnName === 'PER_ID') {
+      return true;
+    }
+    return false;
+  }
+
+  /**
    * Create empty columns for the selected table
    */
   private createEmptyColumns() {

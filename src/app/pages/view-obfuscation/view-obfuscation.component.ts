@@ -127,6 +127,12 @@ export class ViewObfuscationPlanComponent implements OnInit {
     });
   }
 
+  /**
+   *
+   * @param element
+   * @returns Disabled state of the dropdown for unselected row
+   */
+
   isDropdownDisabled(element: any): boolean {
     return !this.selection.isSelected(element);
   }
@@ -163,6 +169,13 @@ export class ViewObfuscationPlanComponent implements OnInit {
         this.selection.select(row);
       }
     });
+  }
+
+  isRowDisabledForPerID(row: ColumnDefinition): any {
+    if (row.columnName === 'PER_ID') {
+      return true;
+    }
+    return false;
   }
 
   /**

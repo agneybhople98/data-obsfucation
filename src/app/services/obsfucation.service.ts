@@ -273,15 +273,6 @@ export const TABLE_DATA: TableData = {
       tableName: 'CI_PER',
       columns: [
         {
-          columnName: 'EMAILID',
-          displayName: 'Email ID',
-          obfStrategy: 'FAKER',
-          obfRules: {
-            first: 'EMAIL',
-            second: undefined,
-          },
-        },
-        {
           columnName: 'PER_ID',
           displayName: 'Person ID',
           obfStrategy: undefined,
@@ -290,6 +281,16 @@ export const TABLE_DATA: TableData = {
             second: undefined,
           },
         },
+        {
+          columnName: 'EMAILID',
+          displayName: 'Email ID',
+          obfStrategy: 'FAKER',
+          obfRules: {
+            first: 'EMAIL',
+            second: undefined,
+          },
+        },
+
         {
           columnName: 'POSTAL',
           displayName: 'Postal Code',

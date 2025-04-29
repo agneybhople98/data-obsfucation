@@ -107,54 +107,7 @@ const ELEMENT_DATA: JobElement[] = [
         endTime: null,
         message: [{ name: 'Create Masking Script is Successful' }],
       },
-      {
-        taskId: 'TASK-55678901',
-        taskDescription: "MaskTable-'CI_CUSTOMERS'",
-        status: 'In Progress',
-        startTime: (() => {
-          const date = new Date();
-          const month = (date.getMonth() + 1).toString().padStart(2, '0');
-          const day = date.getDate().toString().padStart(2, '0');
-          const year = date.getFullYear();
-          const hours = date.getHours() % 12 || 12;
-          const minutes = date.getMinutes().toString().padStart(2, '0');
-          const seconds = date.getSeconds().toString().padStart(2, '0');
-          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
 
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
-        })(),
-        endTime: null,
-        message: [
-          { name: 'STARIFY applied on FIRST_NAME column.' },
-          { name: 'RANDOMIZE applied on SSN column.' },
-          { name: 'FAKER applied on EMAIL column. ' },
-          { name: 'FAKER applied on SSN column.' },
-          { name: 'FAKER applied on PHONE_NUMBER column.' },
-        ],
-      },
-      {
-        taskId: 'TASK-55678902',
-        taskDescription: "MaskTable-'CI_ORDERS'",
-        status: 'Failed',
-        startTime: (() => {
-          const date = new Date();
-          const month = (date.getMonth() + 1).toString().padStart(2, '0');
-          const day = date.getDate().toString().padStart(2, '0');
-          const year = date.getFullYear();
-          const hours = date.getHours() % 12 || 12;
-          const minutes = date.getMinutes().toString().padStart(2, '0');
-          const seconds = date.getSeconds().toString().padStart(2, '0');
-          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
-
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
-        })(),
-        endTime: null,
-        message: [
-          { name: 'STARIFY applied on PAYMENT_METHOD column.' },
-          { name: 'FAKER applied on SHIPPING_ADDRESS column.' },
-          { name: 'REPLACE_WITH_CONSTANT applied on STATUS column.' },
-        ],
-      },
       {
         taskId: 'TASK-55678903',
         taskDescription: "MaskTable-'CI_PER'",

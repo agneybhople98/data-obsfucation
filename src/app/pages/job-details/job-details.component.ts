@@ -40,24 +40,26 @@ export class JobDetailsComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('drawer') drawer!: MatDrawer;
   isConnected = false;
   public jobDetailsDrawer: any;
-  selectedObsControl = 'Healthcare service - Meta'; // Default selected value
-  selectedJobIdControl = 'Healthcare service US'; // Default selected value
+  selectedObsControl = 'Utility Account Obfuscation'; // Default selected value
+  selectedJobIdControl = 'Utility Account Obfuscation – Non-Prod'; // Default selected value
 
   obsControlOptions = [
-    'Healthcare service - Meta',
-    'Insurance Claims - Master',
-    'Healthcare Provider - ARCHDEV',
-    'RadiologyImages_Metadata',
-    'Healthcare Service - F',
-    'Healthcare Service - G',
+    'Utility Account Obfuscation',
+    'Financial Data Masking',
+    'Person Entity Anonymization',
+    'Field Activity Data Obfuscation',
+    'Billing & Financial History',
+    'Support Interaction Data Masking',
+    'Outage Data Anonymization',
   ];
   jobControlOptions = [
-    'Healthcare service US',
-    'Insurance Claims Db',
-    'Healthcare service US',
-    'Healthcare Provider',
-    'RadiologyImages_Metadata',
-    'PatientEHR_US',
+    'Utility Account Obfuscation – Non-Prod',
+    'Financial Data Masking – Utility Systems',
+    'Person Entity Anonymization – Pre-Prod',
+    'Field Activity Data Obfuscation – Dev/Test',
+    'Billing & Financial History Obfuscation',
+    'Support Interaction Data Masking',
+    'Outage Data Anonymization – Global Compliance',
   ];
   expandedElement: any | null = null;
   public jobId: any;

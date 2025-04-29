@@ -78,11 +78,17 @@ export class ViewObfuscationPlanComponent implements OnInit {
 
   toggleAllRows() {
     if (this.isAllSelected()) {
+      // Clear all selections when unchecking
       this.selection.clear();
       return;
     }
 
-    this.selection.select(...this.dataSource.data);
+    // Select all rows except PER_ID when checking
+    this.dataSource.data.forEach((row) => {
+      if (row.columnName !== 'PER_ID') {
+        this.selection.select(row);
+      }
+    });
   }
 
   /** The label for the checkbox on the passed row */
@@ -98,9 +104,14 @@ export class ViewObfuscationPlanComponent implements OnInit {
 
   /** Whether the number of selected elements matches the total number of rows. */
   isAllSelected() {
-    const numSelected = this.selection.selected.length;
-    const numRows = this.dataSource.data.length;
-    return numSelected === numRows;
+    // Count only non-PER_ID rows for total
+    const totalRows = this.dataSource.data.filter(
+      (row) => row.columnName !== 'PER_ID'
+    ).length;
+    const numSelected = this.selection.selected.filter(
+      (row) => row.columnName !== 'PER_ID'
+    ).length;
+    return numSelected === totalRows;
   }
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -134,6 +145,11 @@ export class ViewObfuscationPlanComponent implements OnInit {
    */
 
   isDropdownDisabled(element: any): boolean {
+    // Always disable dropdowns for PER_ID rows, regardless of selection state
+    if (element.columnName === 'PER_ID') {
+      return true;
+    }
+    // For other rows, enable dropdowns only when selected
     return !this.selection.isSelected(element);
   }
 
@@ -175,6 +191,16 @@ export class ViewObfuscationPlanComponent implements OnInit {
     if (row.columnName === 'PER_ID') {
       return true;
     }
+    return false;
+  }
+
+  valueSelection(): boolean {
+    // Prevent selection of PER_ID rows and ensure they're always deselected
+    this.selection.selected.forEach((row) => {
+      if (row.columnName === 'PER_ID') {
+        this.selection.deselect(row);
+      }
+    });
     return false;
   }
 

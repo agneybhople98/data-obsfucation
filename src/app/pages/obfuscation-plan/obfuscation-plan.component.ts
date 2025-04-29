@@ -12,6 +12,7 @@ import {
 } from '@angular/animations';
 import { MatPaginator } from '@angular/material/paginator';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-obfuscation-plan',
@@ -44,7 +45,8 @@ export class ObfuscationPlan implements OnInit, AfterViewInit {
   constructor(
     private _dialog: MatDialog,
     private obsfucationService: ObsfucationService,
-    public router: Router
+    public router: Router,
+    private _toaster: ToastrService
   ) {}
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -61,5 +63,10 @@ export class ObfuscationPlan implements OnInit, AfterViewInit {
     this.router.navigate(['/obfuscation-plan/view-obfuscation'], {
       state: { data: row },
     });
+  }
+
+  createObfuscation() {
+    this._toaster.success('Obfuscation Plan created successfully!');
+    this.router.navigate(['/obfuscation-plan/create-obfuscation']);
   }
 }

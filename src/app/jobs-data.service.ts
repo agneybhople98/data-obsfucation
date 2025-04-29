@@ -53,7 +53,7 @@ const ELEMENT_DATA: JobElement[] = [
     progress: 0,
     tasks: [
       {
-        taskId: 'TASK-78901234',
+        taskId: 'TASK-55678900',
         taskDescription: 'CopySchemaAndData',
         status: 'In Progress',
         // Format the startTime consistently with endTime
@@ -77,7 +77,7 @@ const ELEMENT_DATA: JobElement[] = [
         ],
       },
       {
-        taskId: 'TASK-20547689',
+        taskId: 'TASK-55678901',
         taskDescription: 'CreateProceduresAndFunctions',
         status: 'In Progress',
         startTime: (() => {
@@ -100,7 +100,7 @@ const ELEMENT_DATA: JobElement[] = [
         ],
       },
       {
-        taskId: 'TASK-30982345',
+        taskId: 'TASK-55678902',
         taskDescription: 'CreateMaskingScript',
         status: 'In Progress',
         startTime: (() => {
@@ -229,7 +229,7 @@ const ELEMENT_DATA: JobElement[] = [
     ],
   },
   {
-    jobId: 'RUN-00123',
+    jobId: 'RUN-98764',
     jobName: 'Financial Data Masking – Utility Systems',
     jobDescription:
       'Mask utility financial data for safe use in test and development environments.',
@@ -341,7 +341,7 @@ const ELEMENT_DATA: JobElement[] = [
     ],
   },
   {
-    jobId: 'RUN-98764',
+    jobId: 'RUN-98763',
     jobName: 'Person Entity Anonymization – Pre-Prod',
     jobDescription: 'Anonymize persons for secure pre-production and testing.',
     triggeredOn: '25/04/2025 08:22:10AM',
@@ -376,7 +376,7 @@ const ELEMENT_DATA: JobElement[] = [
     ],
   },
   {
-    jobId: 'RUN-98763',
+    jobId: 'RUN-98762',
     jobName: 'Field Activity Data Obfuscation – Dev/Test',
     jobDescription: 'Obfuscate field activity data for development/test usage.',
     triggeredOn: '20/04/2025 08:11:09AM',
@@ -408,7 +408,7 @@ const ELEMENT_DATA: JobElement[] = [
     ],
   },
   {
-    jobId: 'RUN-98762',
+    jobId: 'RUN-98761',
     jobName: 'Billing & Financial History Obfuscation',
     jobDescription: 'Obfuscates billing and financial history data.',
     triggeredOn: '15/04/2025 09:30:33AM',
@@ -439,7 +439,7 @@ const ELEMENT_DATA: JobElement[] = [
     ],
   },
   {
-    jobId: 'RUN-98761',
+    jobId: 'RUN-98760',
     jobName: 'Support Interaction Data Masking',
     jobDescription: 'Mask support tickets and customer interactions.',
     triggeredOn: '10/04/2025 09:30:33AM',
@@ -474,7 +474,7 @@ const ELEMENT_DATA: JobElement[] = [
     ],
   },
   {
-    jobId: 'RUN-98760',
+    jobId: 'RUN-98759',
     jobName: 'Outage Data Anonymization – Global Compliance',
     jobDescription:
       'Global anonymization of outage data for analytics, reporting, and compliance.',
@@ -517,7 +517,7 @@ const ELEMENT_DATA_JOB_CONTROL: JobDataControlElement[] = [
     obsfucationControlId: 'Healthcare service - Meta',
   },
   {
-    jobControlId: 'JC-00123',
+    jobControlId: 'JC-98764',
     jobControlName: 'Financial Data Masking – Utility Systems',
     jobControlDescription:
       'Mask utility financial data for safe use in test and development environments.',
@@ -525,7 +525,7 @@ const ELEMENT_DATA_JOB_CONTROL: JobDataControlElement[] = [
     obsfucationControlId: 'Insurance Claims - Master',
   },
   {
-    jobControlId: 'JC-98764',
+    jobControlId: 'JC-98763',
     jobControlName: 'Person Entity Anonymization – Pre-Prod',
     jobControlDescription:
       'Anonymize persons for secure pre-production and testing.',
@@ -533,7 +533,7 @@ const ELEMENT_DATA_JOB_CONTROL: JobDataControlElement[] = [
     obsfucationControlId: 'Healthcare Provider - ARCHDEV',
   },
   {
-    jobControlId: 'JC-98763',
+    jobControlId: 'JC-98762',
     jobControlName: 'Field Activity Data Obfuscation – Dev/Test',
     jobControlDescription:
       'Obfuscate field activity data for development/test usage.',
@@ -541,21 +541,21 @@ const ELEMENT_DATA_JOB_CONTROL: JobDataControlElement[] = [
     obsfucationControlId: 'RadiologyImages_Metadata',
   },
   {
-    jobControlId: 'JC-98762',
+    jobControlId: 'JC-98761',
     jobControlName: 'Billing & Financial History Obfuscation',
     jobControlDescription: 'Obfuscates billing and financial history data.',
     lastTriggeredOn: '15/04/2025 09:30:33AM',
     obsfucationControlId: 'PatientEHR_US - Master',
   },
   {
-    jobControlId: 'JC-98761',
+    jobControlId: 'JC-98760',
     jobControlName: 'Support Interaction Data Masking',
     jobControlDescription: 'Mask support tickets and customer interactions.',
     lastTriggeredOn: '10/04/2025 09:30:33AM',
     obsfucationControlId: 'Healthcare Service - F',
   },
   {
-    jobControlId: 'JC-98760',
+    jobControlId: 'JC-98759',
     jobControlName: 'Outage Data Anonymization – Global Compliance',
     jobControlDescription:
       'Global anonymization of outage data for analytics, reporting, and compliance.',

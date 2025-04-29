@@ -121,7 +121,7 @@
           </app-button>
           <app-button
             [disabled]="!this.isConnected"
-            routerLink="create-obfuscation"
+            (clicked)="createObfuscation()"
             text="Create"
             variant="success"
           >

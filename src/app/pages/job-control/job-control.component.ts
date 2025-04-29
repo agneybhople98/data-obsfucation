@@ -86,7 +86,7 @@ export class JobControlComponent implements OnInit, OnDestroy {
     this.drawer.close();
     // this.router.navigate(['/dashboard/job-details/RUN-98765']);
     this.router.navigate(['/job-control-list']);
-    this._toasterService.success('Job created successfully');
+    this._toasterService.success('Job Control created successfully!');
   }
 
   runJob(jobControlId: string) {

@@ -28,6 +28,7 @@ export interface JobDataControlElement {
   jobControlDescription: string;
   lastTriggeredOn: string;
   obsfucationControlId: string;
+  obsfucationControlDescription: string;
 }
 
 const ELEMENT_DATA: JobElement[] = [
@@ -515,6 +516,8 @@ const ELEMENT_DATA_JOB_CONTROL: JobDataControlElement[] = [
       'Obfuscate utility accounts for non-production environments.',
     lastTriggeredOn: '29/04/2025 07:23:12AM',
     obsfucationControlId: 'Utility Account Obfuscation',
+    obsfucationControlDescription:
+      'Obfuscate utility accounts for non-production environments.',
   },
   {
     jobControlId: 'JC-98764',
@@ -523,6 +526,8 @@ const ELEMENT_DATA_JOB_CONTROL: JobDataControlElement[] = [
       'Mask utility financial data for safe use in test and development environments.',
     lastTriggeredOn: '28/04/2025 07:33:22AM',
     obsfucationControlId: 'Financial Data Masking',
+    obsfucationControlDescription:
+      'Mask utility financial data for safe use in test and development environments.',
   },
   {
     jobControlId: 'JC-98763',
@@ -531,6 +536,8 @@ const ELEMENT_DATA_JOB_CONTROL: JobDataControlElement[] = [
       'Anonymize persons for secure pre-production and testing.',
     lastTriggeredOn: '25/04/2025 08:11:09AM',
     obsfucationControlId: 'Person Entity Anonymization',
+    obsfucationControlDescription:
+      'Anonymize persons for secure pre-production and testing.',
   },
   {
     jobControlId: 'JC-98762',
@@ -539,6 +546,8 @@ const ELEMENT_DATA_JOB_CONTROL: JobDataControlElement[] = [
       'Obfuscate field activity data for development/test usage.',
     lastTriggeredOn: '20/04/2025 08:22:10AM',
     obsfucationControlId: 'Field Activity Data Obfuscation',
+    obsfucationControlDescription:
+      'Obfuscate field activity data for development/test usage.',
   },
   {
     jobControlId: 'JC-98761',
@@ -546,6 +555,8 @@ const ELEMENT_DATA_JOB_CONTROL: JobDataControlElement[] = [
     jobControlDescription: 'Obfuscates billing and financial history data.',
     lastTriggeredOn: '15/04/2025 09:30:33AM',
     obsfucationControlId: 'Billing & Financial History',
+    obsfucationControlDescription:
+      'Obfuscates billing and financial history data.',
   },
   {
     jobControlId: 'JC-98760',
@@ -553,6 +564,8 @@ const ELEMENT_DATA_JOB_CONTROL: JobDataControlElement[] = [
     jobControlDescription: 'Mask support tickets and customer interactions.',
     lastTriggeredOn: '10/04/2025 09:30:33AM',
     obsfucationControlId: 'Support Interaction Data Masking',
+    obsfucationControlDescription:
+      'Mask support tickets and customer interactions.',
   },
   {
     jobControlId: 'JC-98759',
@@ -561,6 +574,8 @@ const ELEMENT_DATA_JOB_CONTROL: JobDataControlElement[] = [
       'Global anonymization of outage data for analytics, reporting, and compliance.',
     lastTriggeredOn: '05/04/2025 09:30:33AM',
     obsfucationControlId: 'Outage Data Anonymization',
+    obsfucationControlDescription:
+      'Global anonymization of outage data for analytics, reporting, and compliance.',
   },
 ];
 

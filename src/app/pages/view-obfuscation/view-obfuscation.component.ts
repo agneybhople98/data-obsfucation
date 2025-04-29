@@ -128,6 +128,7 @@ export class ViewObfuscationPlanComponent implements OnInit {
     if (!this.obsControlData) {
       this.obsControlData = history.state.data;
     }
+    console.log('obsControlData', this.obsControlData);
 
     this.onTableChange();
     // Check rows that have all required values

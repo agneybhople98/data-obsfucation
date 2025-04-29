@@ -38,9 +38,10 @@
             <div class="text-xs">Obfuscation Plan</div>
             <div class="text-md">
               {{
-                obsControlData?.obsControlName
-                  ? obsControlData?.obsControlName
-                  : obsControlData?.jobControlName || "Healthcare service US"
+                obsControlData?.obsfucationControlId
+                  ? obsControlData?.obsfucationControlId
+                  : obsControlData?.obsfucationControlId ||
+                    "Utility Account Obfuscation"
               }}
             </div>
           </div>
@@ -48,10 +49,10 @@
             <div class="text-xs">Obfuscation Plan Description</div>
             <div class="text-md">
               {{
-                obsControlData?.obsControlDescription
-                  ? obsControlData?.obsControlDescription
-                  : obsControlData?.jobControlDescription ||
-                    "Healthcare Service Prod data - US"
+                obsControlData?.obsfucationControlDescription
+                  ? obsControlData?.obsfucationControlDescription
+                  : obsControlData?.obsfucationControlDescription ||
+                    "Obfuscate utility accounts for non-production environments."
               }}
             </div>
           </div>

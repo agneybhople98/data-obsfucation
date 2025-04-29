@@ -317,9 +317,10 @@ const ELEMENT_DATA: JobElement[] = [
       },
       {
         taskId: 'TASK-12346',
-        taskDescription: 'Encrypting social security numbers',
+        taskDescription: "MaskTable-'CI_PER_Name'",
         status: 'Failed',
-        errorMessage: '`SQL Error: ORA-00904: "EMAILID": invalid identifier`',
+        errorMessage:
+          'Financial Data Masking – Utility Systems `SQL Error: ORA-00904: "EMAILID": invalid identifier`',
         message: [
           {
             name: 'SQL Error: ORA-00904: "EMAILID": invalid identifier https://docs.oracle.com/error-help/db/ora-00904/00904. 00000 - "%s: invalid identifier"',
@@ -354,7 +355,8 @@ const ELEMENT_DATA: JobElement[] = [
         taskId: 'TASK-12347',
         taskDescription: 'Anonymizing addresses',
         status: 'Failed',
-        errorMessage: '`SQL Error: ORA-00904: "EMAILID": invalid identifier`',
+        errorMessage:
+          'Person Entity Anonymization – Pre-Prod `SQL Error: ORA-00904: "EMAILID": invalid identifier`',
         startTime: (() => {
           const date = new Date();
           const month = (date.getMonth() + 1).toString().padStart(2, '0');

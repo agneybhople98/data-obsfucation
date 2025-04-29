@@ -36,7 +36,7 @@ import { ButtonComponent } from './components/button/button.component';
 import { JobControlComponent } from './pages/job-control/job-control.component';
 import { CreateObfuscationPlanComponent } from './pages/create-obfuscation/create-obfuscation.component';
 import { FormsModule } from '@angular/forms';
-
+import { RestoreComponent } from './pages/restore/restore.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
@@ -57,6 +57,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     DropdownComponent,
     JobControlComponent,
     CreateObfuscationPlanComponent,
+    RestoreComponent,
   ],
   imports: [
     FormsModule,

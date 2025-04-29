@@ -729,9 +729,11 @@ export class JobsDataService {
   }
 
   // Move this method to job service where you will have all the REST API
-  runJobByName(
-    jobName: string = 'OBF_EXECUTE_MAIN_JOB_ARCHDEV'
-  ): Observable<any> {
+  runJobByName(jobName: string): Observable<any> {
+    console.log(
+      'just look which end point is hit',
+      `${this.apiUrl}?jobName=${jobName}`
+    );
     return this.http.post(`${this.apiUrl}?jobName=${jobName}`, {}).pipe(
       tap((response) => console.log('Job run response:', response)),
       catchError((error) => {

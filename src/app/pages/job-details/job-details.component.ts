@@ -171,7 +171,7 @@ export class JobDetailsComponent implements OnInit, AfterViewInit, OnDestroy {
           // Return the word with HTML bold tags, preserving any punctuation
           return `<strong>${word}</strong>`;
         }
-        console.log(word);
+
         return word;
       })
       .join(' ');

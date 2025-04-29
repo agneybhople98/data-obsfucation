@@ -6,12 +6,17 @@ import { JobDetailsComponent } from '../pages/job-details/job-details.component'
 import { ViewObfuscationPlanComponent } from '../pages/view-obfuscation/view-obfuscation.component';
 import { JobControlComponent } from '../pages/job-control/job-control.component';
 import { CreateObfuscationPlanComponent } from '../pages/create-obfuscation/create-obfuscation.component';
+import { RestoreComponent } from '../pages/restore/restore.component';
 
 const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
     children: [{ path: 'job-details/:id', component: JobDetailsComponent }],
+  },
+  {
+    path: 'restore',
+    component: RestoreComponent,
   },
   {
     path: 'obfuscation-plan',

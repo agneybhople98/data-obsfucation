@@ -112,9 +112,11 @@ export class JobControlComponent implements OnInit, OnDestroy {
   }
 
   runAPI() {
-    this._jobDataService.runJobByName().subscribe((res) => {
-      console.log('res', res);
-    });
+    this._jobDataService
+      .runJobByName('OBF_EXECUTE_MAIN_JOB_ARCHDEV')
+      .subscribe((res) => {
+        console.log('res', res);
+      });
     this._toasterService.success('Job Control created successfully!');
   }
 

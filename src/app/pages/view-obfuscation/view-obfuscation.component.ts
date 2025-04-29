@@ -90,6 +90,7 @@ export class ViewObfuscationPlanComponent implements OnInit {
     if (!row) {
       return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
     }
+
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${
       row.columnName + 1
     }`;
@@ -126,11 +127,8 @@ export class ViewObfuscationPlanComponent implements OnInit {
     });
   }
 
-  isDropdownDisabled(element: any): any {
-    if (!element.obfRules.first && !element.obfRules.second) {
-      return true;
-    }
-    return false;
+  isDropdownDisabled(element: any): boolean {
+    return !this.selection.isSelected(element);
   }
 
   /**

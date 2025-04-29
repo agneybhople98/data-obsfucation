@@ -18,6 +18,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class ViewObfuscationPlanComponent implements OnInit {
   tableData = TABLE_DATA;
   selectedTable = this.tableData.selectedTable;
+
   displayedColumns: string[] = [
     'select',
     'columnName',
@@ -123,6 +124,13 @@ export class ViewObfuscationPlanComponent implements OnInit {
         this.selection.select(row);
       }
     });
+  }
+
+  isDropdownDisabled(element: any): any {
+    if (!element.obfRules.first && !element.obfRules.second) {
+      return true;
+    }
+    return false;
   }
 
   /**

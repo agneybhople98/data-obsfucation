@@ -20,16 +20,18 @@ import { ToastrService } from 'ngx-toastr';
 export class JobControlComponent implements OnInit, OnDestroy {
   @ViewChild('drawer') drawer!: MatDrawer;
   public jobControlDetails: any;
+  public isHidden: boolean = true;
   isConnected = false;
   obsControlOptions = [
-    'Healthcare service - Meta',
-    'Insurance Claims - Master',
-    'Healthcare Provider - ARCHDEV',
-    'RadiologyImages_Metadata',
-    'Healthcare Service - F',
-    'Healthcare Service - G',
+    'Utility Account Obfuscation',
+    'Financial Data Masking',
+    'Person Entity Anonymization',
+    'Field Activity Data Obfuscation',
+    'Billing & Financial History',
+    'Support Interaction Data Masking',
+    'Outage Data Anonymization',
   ];
-  selectedObsControl = 'Healthcare service - Meta'; // Default selected value
+  selectedObsControl = 'Utility Account Obfuscation'; // Default selected value
   dataSource!: MatTableDataSource<any>;
   displayedColumns: any[] = [
     'jobControlId',
@@ -151,8 +153,14 @@ export class JobControlComponent implements OnInit, OnDestroy {
     };
   }
 
-  openDrawer(element: any) {
+  openDrawer(element: any, isHidden?: boolean) {
+    this.isHidden = false;
     this.jobControlDetails = element;
     this.drawer.open();
+  }
+
+  openJobControlDrawer() {
+    this.drawer.open();
+    this.isHidden = true;
   }
 }

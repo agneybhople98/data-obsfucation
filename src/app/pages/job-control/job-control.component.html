@@ -126,6 +126,7 @@
         </div>
       </div>
       <div
+        *ngIf="this.isHidden"
         class="footer border-t-1 border-gray-200 !w-[100%] absolute bottom-0"
       >
         <div class="flex justify-end items-center !m-2 !p-2 !gap-3">
@@ -154,7 +155,7 @@
                 (input)="applyFilter($event)"
               ></app-input>
               <app-button
-                (clicked)="drawer.toggle()"
+                (clicked)="openJobControlDrawer()"
                 text="Create Job Control"
                 variant="success"
               ></app-button>
@@ -177,7 +178,7 @@
                 style="color: #3179e5"
                 mat-cell
                 *matCellDef="let element"
-                (click)="openDrawer(element)"
+                (click)="openDrawer(element, isHidden)"
               >
                 {{ element.jobControlId }}
               </td>

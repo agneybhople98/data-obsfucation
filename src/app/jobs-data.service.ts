@@ -436,7 +436,7 @@ const ELEMENT_DATA: JobElement[] = [
     jobName: 'Outage Data Anonymization – Global Compliance',
     jobDescription:
       'Global anonymization of outage data for analytics, reporting, and compliance.',
-    triggeredOn: '04/05/2025 09:30:33AM',
+    triggeredOn: '05/04/2025 09:30:33AM',
     status: 'success',
     obsfucationControlName: 'Healthcare service - Meta',
     progress: 100,
@@ -517,7 +517,7 @@ const ELEMENT_DATA_JOB_CONTROL: JobDataControlElement[] = [
     jobControlName: 'Outage Data Anonymization – Global Compliance',
     jobControlDescription:
       'Global anonymization of outage data for analytics, reporting, and compliance.',
-    lastTriggeredOn: '04/05/2025 09:30:33AM',
+    lastTriggeredOn: '05/04/2025 09:30:33AM',
     obsfucationControlId: 'Healthcare Service - G',
   },
 ];

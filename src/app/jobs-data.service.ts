@@ -36,7 +36,18 @@ const ELEMENT_DATA: JobElement[] = [
     jobName: 'Utility Account Obfuscation – Non-Prod',
     jobDescription:
       'Obfuscate utility accounts for non-production environments.',
-    triggeredOn: '29/04/2025 07:23:12AM',
+    triggeredOn: (() => {
+      const date = new Date();
+      const month = (date.getMonth() + 1).toString().padStart(2, '0');
+      const day = date.getDate().toString().padStart(2, '0');
+      const year = date.getFullYear();
+      const hours = date.getHours() % 12 || 12;
+      const minutes = date.getMinutes().toString().padStart(2, '0');
+      const seconds = date.getSeconds().toString().padStart(2, '0');
+      const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+      return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+    })(),
     status: 'in-progress',
     obsfucationControlName: 'Healthcare service - Meta',
     progress: 0,
@@ -125,8 +136,15 @@ const ELEMENT_DATA: JobElement[] = [
           return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
-        message: [{ name: 'FAKER applied on EMAILID column.' }],
+        message: [
+          { name: 'FAKER applied on EMAILID column.' },
+          { name: 'STARIFY applied on CITY column.' },
+          { name: 'FAKER applied on ADDRESS column.' },
+          { name: 'REPLACE_WITH_CONSTANT applied on LANGUAGE_CD column.' },
+          { name: 'RANDOMIZE applied on POSTAL column.' },
+        ],
       },
+
       {
         taskId: 'TASK-55678904',
         taskDescription: "MaskTable-'CI_PER_ADDR_SEAS'",
@@ -144,10 +162,34 @@ const ELEMENT_DATA: JobElement[] = [
           return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
-        message: [{ name: 'FAKER applied on ENTITY_NAME column.' }],
+        message: [{ name: 'FAKER applied on  ADDRESS1 column.' }],
       },
       {
         taskId: 'TASK-55678905',
+        taskDescription: "MaskTable-'CI_PER_ADDR'",
+        status: 'Pending',
+        startTime: (() => {
+          const date = new Date();
+          const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const day = date.getDate().toString().padStart(2, '0');
+          const year = date.getFullYear();
+          const hours = date.getHours() % 12 || 12;
+          const minutes = date.getMinutes().toString().padStart(2, '0');
+          const seconds = date.getSeconds().toString().padStart(2, '0');
+          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+        })(),
+        endTime: null,
+        message: [
+          { name: 'FAKER applied on ADDRESS1 column.' },
+          {
+            name: 'RANDOMIZE applied on POSTAL column.',
+          },
+        ],
+      },
+      {
+        taskId: 'TASK-55678906',
         taskDescription: "MaskTable-'CI_PER_NAME'",
         status: 'Pending',
         startTime: (() => {
@@ -163,10 +205,10 @@ const ELEMENT_DATA: JobElement[] = [
           return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
-        message: [{ name: 'FAKER applied on PHONE column.' }],
+        message: [{ name: 'FAKER applied on  FULLNAME column.' }],
       },
       {
-        taskId: 'TASK-55678905',
+        taskId: 'TASK-55678906',
         taskDescription: "MaskTable-'CI_PER_PHONE'",
         status: 'Pending',
         startTime: (() => {
@@ -182,7 +224,7 @@ const ELEMENT_DATA: JobElement[] = [
           return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
-        message: [{ name: 'FAKER applied on ADDRESS1 column.' }],
+        message: [{ name: 'FAKER applied on  PHONE column.' }],
       },
     ],
   },

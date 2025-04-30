@@ -1,9 +1,30 @@
-<div class="flex flex-col justify-center items-center h-screen">
-  <div class="font-semibold text-[24px]">Restore</div>
-  <div class="mt-2">
-    <p class="text-sm text-gray-500">
-      This will restore the data to its previous state. This action cannot be
-      undone.
-    </p>
+<app-breadcrumb></app-breadcrumb>
+<div class="flex flex-col justify-center items-center h-[70vh]">
+  <div class="mt-8">
+    <div class="flex flex-col items-center">
+      <div class="text-green-500 mb-2">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-8 w-8"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M5 13l4 4L19 7"
+          />
+        </svg>
+      </div>
+      <p class="text-center text-[18px] !mt-2">
+        Restore completed successfully!
+      </p>
+      <p class="text-center mt-3">
+        Redirecting to dashboard in
+        <span class="font-bold">{{ countdown }}</span> seconds...
+      </p>
+    </div>
   </div>
 </div>

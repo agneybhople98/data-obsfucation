@@ -117,7 +117,7 @@ export class JobControlComponent implements OnInit, OnDestroy {
       .subscribe((res) => {
         console.log('res', res);
       });
-    this._toasterService.success('Job Control created successfully!');
+    this._toasterService.success('Job created successfully!');
   }
 
   openCreateObsfucation(element: any) {

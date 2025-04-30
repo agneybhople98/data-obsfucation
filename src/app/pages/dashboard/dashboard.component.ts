@@ -40,7 +40,7 @@ export class DashboardComponent implements AfterViewInit, OnInit {
   ];
   jobs = [
     {
-      name: 'Total jobs',
+      name: 'Total Jobs',
       count: 234,
       path: '../../../assets/total-jobs.svg',
     },

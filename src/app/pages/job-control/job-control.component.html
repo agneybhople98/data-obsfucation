@@ -68,7 +68,7 @@
               <app-input label="Name" [value]="'Testing'"> </app-input>
             </div>
             <div class="flex-1">
-              <app-input label="Databse Type" [value]="'Oracle Database'">
+              <app-input label="Database Type" [value]="'Oracle Database'">
               </app-input>
             </div>
           </div>
@@ -150,7 +150,7 @@
             <div class="flex items-center gap-4">
               <app-input
                 style="width: 300px"
-                label="Search Job Control"
+                label="Search Job Run"
                 class="search-input"
                 (input)="applyFilter($event)"
               ></app-input>
@@ -202,7 +202,7 @@
 
             <!-- Job Control Description Column -->
             <ng-container matColumnDef="obsfucationControlId">
-              <th mat-header-cell *matHeaderCellDef>Obfuscation Control</th>
+              <th mat-header-cell *matHeaderCellDef>Obfuscation Plan</th>
               <td
                 class="font-medium cursor-pointer"
                 style="color: #3179e5"

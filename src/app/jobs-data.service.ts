@@ -316,7 +316,7 @@ const ELEMENT_DATA: JobElement[] = [
         message: [{ name: 'FAKER applied on EMAILID column.' }],
       },
       {
-        taskId: 'TASK-12346',
+        taskId: 'TASK-55678900',
         taskDescription: "MaskTable-'CI_PER_Name'",
         status: 'Failed',
         errorMessage:
@@ -352,7 +352,7 @@ const ELEMENT_DATA: JobElement[] = [
     progress: 50,
     tasks: [
       {
-        taskId: 'TASK-12347',
+        taskId: 'TASK-55678190',
         taskDescription: 'Anonymizing addresses',
         status: 'Failed',
         errorMessage:
@@ -389,7 +389,7 @@ const ELEMENT_DATA: JobElement[] = [
     progress: 100,
     tasks: [
       {
-        taskId: 'TASK-12349',
+        taskId: 'TASK-55678291',
         taskDescription: 'Masking phone numbers',
         status: 'Completed',
         errorMessage: null,
@@ -420,7 +420,7 @@ const ELEMENT_DATA: JobElement[] = [
     progress: 100,
     tasks: [
       {
-        taskId: 'TASK-12350',
+        taskId: 'TASK-55678292',
         taskDescription: 'Shuffling demographic data',
         status: 'Completed',
         errorMessage: null,
@@ -451,7 +451,7 @@ const ELEMENT_DATA: JobElement[] = [
     progress: 100,
     tasks: [
       {
-        taskId: 'TASK-12351',
+        taskId: 'TASK-55675291',
         taskDescription: 'Substituting email addresses',
         status: 'Failed',
         errorMessage: `'SQL Error: ORA-00904: "EMAILID": invalid identifier https://docs.oracle.com/error-help/db/ora-00904/00904. 00000 - "%s: invalid identifier"'`,
@@ -487,7 +487,7 @@ const ELEMENT_DATA: JobElement[] = [
     progress: 100,
     tasks: [
       {
-        taskId: 'TASK-12351',
+        taskId: 'TASK-55678091',
         taskDescription: 'Substituting email addresses',
         status: 'Failed',
         errorMessage: `'SQL Error: ORA-00904: "EMAILID": invalid identifier https://docs.oracle.com/error-help/db/ora-00904/00904. 00000 - "%s: invalid identifier"'`,

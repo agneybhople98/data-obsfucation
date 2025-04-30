@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 const ELEMENT_DATA: any[] = [
   {
-    obsControlId: 'OC-98765',
+    obsControlId: 'OP-98765',
     obsControlName: 'Utility Account Obfuscation',
     obsControlDescription:
       'Obfuscate utility accounts for non-production environments.',
@@ -17,7 +17,7 @@ const ELEMENT_DATA: any[] = [
     },
   },
   {
-    obsControlId: 'OC-98764',
+    obsControlId: 'OP-98764',
     obsControlName: 'Financial Data Masking',
     obsControlDescription:
       'Mask utility financial data for safe use in test and development environments.',
@@ -32,7 +32,7 @@ const ELEMENT_DATA: any[] = [
     },
   },
   {
-    obsControlId: 'OC-98763',
+    obsControlId: 'OP-98763',
     obsControlName: 'Person Entity Anonymization',
     obsControlDescription:
       'Anonymize persons for secure pre-production and testing.',
@@ -47,7 +47,7 @@ const ELEMENT_DATA: any[] = [
     },
   },
   {
-    obsControlId: 'OC-98762',
+    obsControlId: 'OP-98762',
     obsControlName: 'Field Activity Data Obfuscation',
     obsControlDescription:
       'Obfuscate field activity data for development/test usage.',
@@ -62,7 +62,7 @@ const ELEMENT_DATA: any[] = [
     },
   },
   {
-    obsControlId: 'OC-98761',
+    obsControlId: 'OP-98761',
     obsControlName: 'Billing & Financial History',
     obsControlDescription: 'Obfuscates billing and financial history data.',
     createdBy: 'Maria Garcia',
@@ -76,7 +76,7 @@ const ELEMENT_DATA: any[] = [
     },
   },
   {
-    obsControlId: 'OC-98760',
+    obsControlId: 'OP-98760',
     obsControlName: 'Support Interaction Data Masking',
     obsControlDescription: 'Mask support tickets and customer interactions.',
     createdBy: 'Rodriguez V',
@@ -90,7 +90,7 @@ const ELEMENT_DATA: any[] = [
     },
   },
   {
-    obsControlId: 'OC-98759',
+    obsControlId: 'OP-98759',
     obsControlName: 'Outage Data Anonymization',
     obsControlDescription:
       'Global anonymization of outage data for analytics, reporting, and compliance.',

@@ -270,7 +270,9 @@
             <ng-container matColumnDef="startTime">
               <th mat-header-cell *matHeaderCellDef>Start Time</th>
               <td mat-cell *matCellDef="let element">
-                {{ element.startTime }}
+                <div *ngIf="element.status === 'Completed'">
+                  {{ element.startTime }}
+                </div>
               </td>
             </ng-container>
 

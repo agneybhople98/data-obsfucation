@@ -661,7 +661,7 @@ export class JobsDataService {
     setTimeout(() => {
       task.status = 'Completed';
       // Add 3 seconds to the start time for the end time
-      const endDate = new Date(startDate.getTime() + 4000);
+      const endDate = new Date(startDate.getTime() + 3000);
       task.endTime = this.formatDate(endDate);
 
       tasks[taskIndex] = task;
@@ -677,7 +677,7 @@ export class JobsDataService {
 
       updatedJobs[jobIndex] = job;
       this.jobsDataSubject.next(updatedJobs);
-    }, 300);
+    }, 200);
 
     tasks[taskIndex] = task;
     job.tasks = tasks;
@@ -719,7 +719,7 @@ export class JobsDataService {
     const updateObservables: Observable<JobElement | undefined>[] = [];
 
     for (let i = 0; i < taskCount; i++) {
-      const updateObservable = timer(400 * (i + 1)).pipe(
+      const updateObservable = timer(300 * (i + 1)).pipe(
         map(() => this.updateSingleTaskStatus(jobId, i))
       );
       updateObservables.push(updateObservable);

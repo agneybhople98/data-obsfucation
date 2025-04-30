@@ -320,7 +320,7 @@ const ELEMENT_DATA: JobElement[] = [
         taskDescription: "MaskTable-'CI_PER_Name'",
         status: 'Failed',
         errorMessage:
-          'Financial Data Masking – Utility Systems `SQL Error: ORA-00904: "EMAILID": invalid identifier`',
+          'RUN-98764 `CI_PER_Name SQL Error: ORA-00904: "EMAILID": invalid identifier`',
         message: [
           {
             name: 'SQL Error: ORA-00904: "EMAILID": invalid identifier https://docs.oracle.com/error-help/db/ora-00904/00904. 00000 - "%s: invalid identifier"',
@@ -356,7 +356,7 @@ const ELEMENT_DATA: JobElement[] = [
         taskDescription: 'Anonymizing addresses',
         status: 'Failed',
         errorMessage:
-          'Person Entity Anonymization – Pre-Prod `SQL Error: ORA-00904: "EMAILID": invalid identifier`',
+          'RUN-98763 `SQL Error: ORA-00904: "EMAILID": invalid identifier`',
         startTime: (() => {
           const date = new Date();
           const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -454,7 +454,7 @@ const ELEMENT_DATA: JobElement[] = [
         taskId: 'TASK-55675291',
         taskDescription: 'Substituting email addresses',
         status: 'Failed',
-        errorMessage: `'SQL Error: ORA-00904: "EMAILID": invalid identifier https://docs.oracle.com/error-help/db/ora-00904/00904. 00000 - "%s: invalid identifier"'`,
+        errorMessage: `RUN-98760 'SQL Error: ORA-00904: "EMAILID": invalid identifier https://docs.oracle.com/error-help/db/ora-00904/00904. 00000 - "%s: invalid identifier"'`,
         startTime: (() => {
           const date = new Date();
           const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -490,7 +490,7 @@ const ELEMENT_DATA: JobElement[] = [
         taskId: 'TASK-55678091',
         taskDescription: 'Substituting email addresses',
         status: 'Failed',
-        errorMessage: `'SQL Error: ORA-00904: "EMAILID": invalid identifier https://docs.oracle.com/error-help/db/ora-00904/00904. 00000 - "%s: invalid identifier"'`,
+        errorMessage: `RUN-98759 'SQL Error: ORA-00904: "EMAILID": invalid identifier https://docs.oracle.com/error-help/db/ora-00904/00904. 00000 - "%s: invalid identifier"'`,
         startTime: (() => {
           const date = new Date();
           const month = (date.getMonth() + 1).toString().padStart(2, '0');

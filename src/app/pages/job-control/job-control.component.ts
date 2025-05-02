@@ -193,7 +193,7 @@ export class JobControlComponent implements OnInit, OnDestroy {
       .subscribe((res) => {
         console.log('res', res);
       });
-    this._toasterService.success('Job run successfully!');
+    this._toasterService.success('Job submitted succesfully!');
   }
   openCreateObsfucation(element: any) {
     // Get the obfuscation control data from the service

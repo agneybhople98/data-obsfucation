@@ -56,7 +56,7 @@ const ELEMENT_DATA: JobElement[] = [
     })(),
     status: 'in-progress',
     obsfucationControlName: 'Utility Account Obfuscation',
-    progress: 13,
+    progress: 0,
     tasks: [
       {
         taskId: 'TASK-55678900',
@@ -625,7 +625,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
     })(),
     status: 'in-progress',
     obsfucationControlName: 'HC SvcData Obfuscation - EU',
-    progress: 13,
+    progress: 0,
     tasks: [
       {
         taskId: 'TASK-55678900',

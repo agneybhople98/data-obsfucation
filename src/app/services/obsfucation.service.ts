@@ -198,9 +198,9 @@ const ELEMENT_DATA_HEALTHCARE: any[] = [
   },
   {
     obsControlId: 'OP-98759',
-    obsControlName: 'Outage Data Anonymization',
+    obsControlName: 'Patient Master Prod Obfuscation - EU',
     obsControlDescription:
-      'Global anonymization of outage data for analytics, reporting, and compliance.',
+      'Patient Master system - Production environment for the EU region.',
     createdBy: 'Martinez Sofia',
     details: {
       name: 'Testing',

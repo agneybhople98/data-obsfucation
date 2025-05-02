@@ -63,7 +63,9 @@
               [ngClass]="element.status"
               [style.width.%]="element.progress"
             >
-              <span class="progress-text">{{ element.progress }}%</span>
+              <span *ngIf="element.progress > 0" class="progress-text"
+                >{{ element.progress }}%</span
+              >
             </div>
           </div>
         </td>

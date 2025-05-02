@@ -255,9 +255,23 @@ export class JobDetailsComponent implements OnInit, AfterViewInit, OnDestroy {
       .join(' ');
   }
 
-  navigateToObfuscationPlan() {
-    this.router.navigate([
-      `${this.currentDomain}/obfuscation-plan/view-obfuscation`,
-    ]);
+  navigateToObfuscationPlan(element: any) {
+    const allJobData = this.jobService.getAllJobControlData();
+
+    const obsControlData = allJobData.find(
+      (job) => job.obsfucationControlId === element
+    );
+
+    if (obsControlData) {
+      this.router.navigate(
+        [`/${this.currentDomain}/obfuscation-plan/view-obfuscation`],
+        {
+          state: { data: obsControlData },
+          replaceUrl: true,
+        }
+      );
+    } else {
+      console.error('No matching obfuscation control data found');
+    }
   }
 }

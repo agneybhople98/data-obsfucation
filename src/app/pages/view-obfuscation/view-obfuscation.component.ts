@@ -8,7 +8,8 @@ import {
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { SelectionModel } from '@angular/cdk/collections';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-view-obfuscation',
@@ -19,6 +20,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class ViewObfuscationPlanComponent implements OnInit {
   tableData = TABLE_DATA;
   selectedTable = this.tableData.selectedTable;
+  currentDomain: string = 'utility';
 
   displayedColumns: string[] = [
     'select',
@@ -121,6 +123,24 @@ export class ViewObfuscationPlanComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
   }
   ngOnInit() {
+    this.route.params.subscribe((params) => {
+      if (params['domain']) {
+        this.currentDomain = params['domain'];
+      }
+    });
+
+    // Also listen to parent route parameters (for nested routes)
+    this.route.parent?.params.subscribe((params) => {
+      if (params['domain']) {
+        this.currentDomain = params['domain'];
+      }
+    });
+
+    this.router.events
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe(() => {
+        this.detectDomainFromUrl();
+      });
     // Get state data from navigation
     this.obsControlData =
       this.router.getCurrentNavigation()?.extras.state?.['data'];
@@ -137,6 +157,19 @@ export class ViewObfuscationPlanComponent implements OnInit {
         this.selection.select(row);
       }
     });
+  }
+
+  // Extract domain from URL
+  private detectDomainFromUrl(): void {
+    const urlPath = this.router.url;
+    const segments = urlPath.split('/').filter((segment) => segment);
+
+    if (segments.length > 0) {
+      const potentialDomain = segments[0];
+      if (['healthcare', 'utility'].includes(potentialDomain)) {
+        this.currentDomain = potentialDomain;
+      }
+    }
   }
 
   /**

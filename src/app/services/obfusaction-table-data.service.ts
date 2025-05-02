@@ -955,17 +955,8 @@ export const TABLE_DATA: TableData = {
       tableName: 'C1_ADDRESS',
       columns: [
         {
-          columnName: 'PER_ID',
-          displayName: 'Person ID',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
-          },
-        },
-        {
-          columnName: 'ADDR_TYPE_CD',
-          displayName: 'Address Type Code',
+          columnName: 'ADDRESS_ID',
+          displayName: 'Address Id',
           obfStrategy: 'undefined',
           obfRules: {
             first: undefined,
@@ -978,6 +969,15 @@ export const TABLE_DATA: TableData = {
           obfStrategy: 'FAKER',
           obfRules: {
             first: 'ADDRESS',
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'ADDRESS1_UPR',
+          displayName: 'Address Upper',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
             second: undefined,
           },
         },
@@ -998,6 +998,15 @@ export const TABLE_DATA: TableData = {
           obfStrategy: 'REPLACE_WITH_CONSTANT',
           obfRules: {
             first: 'California',
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'CITY_UPR',
+          displayName: 'City Upper',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
             second: undefined,
           },
         },

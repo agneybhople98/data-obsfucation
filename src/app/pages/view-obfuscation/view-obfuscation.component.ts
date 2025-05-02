@@ -264,4 +264,7 @@ export class ViewObfuscationPlanComponent implements OnInit {
       item.toLowerCase().includes(searchValue.toLowerCase())
     );
   }
+  navigateTo() {
+    this.router.navigate([`${this.currentDomain}/obfuscation-plan`]);
+  }
 }

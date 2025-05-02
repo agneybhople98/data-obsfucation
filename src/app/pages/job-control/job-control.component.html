@@ -14,7 +14,12 @@
       class="!w-[50%] !rounded-none"
     >
       <div class="header bg-secondary flex justify-between items-center !p-4">
-        <div class="font-semibold">Create Job Control</div>
+        <div *ngIf="!isHidden; else showTemplate">
+          <div class="font-semibold">Preview Job Control</div>
+        </div>
+        <ng-template #showTemplate>
+          <div class="font-semibold">Create Job Control</div>
+        </ng-template>
 
         <div
           (click)="drawer.close()"

@@ -256,4 +256,8 @@ export class CreateObfuscationPlanComponent implements OnInit {
     });
     return false;
   }
+
+  navigateTo() {
+    this.router.navigate([`${this.currentDomain}/obfuscation-plan`]);
+  }
 }

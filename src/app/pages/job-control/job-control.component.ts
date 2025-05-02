@@ -7,9 +7,10 @@ import {
   JobsDataService,
 } from '../../jobs-data.service';
 import { MatDrawer } from '@angular/material/sidenav';
-import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { filter, Subscription } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-job-control',
@@ -22,6 +23,7 @@ export class JobControlComponent implements OnInit, OnDestroy {
   public jobControlDetails: any;
   public isHidden: boolean = true;
   isConnected = false;
+  currentDomain: string = 'utility';
   obsControlOptions = [
     'Utility Account Obfuscation',
     'Financial Data Masking',
@@ -31,7 +33,18 @@ export class JobControlComponent implements OnInit, OnDestroy {
     'Support Interaction Data Masking',
     'Outage Data Anonymization',
   ];
+  // healthcare options
+  obsControlOptionsHealthcare = [
+    'HC SvcData Obfuscation - EU',
+    'Insurance Claims Obfuscation',
+    'HC Provider TestDB Obfuscation',
+    'HC SvcData Obfuscation - AUS',
+    'Insurance Policy Obfuscation - US',
+    'Outage Reports Obfuscation - Global',
+    'Patient Master Prod Obfuscation - EU',
+  ];
   selectedObsControl = 'Utility Account Obfuscation'; // Default selected value
+  selectedObsControlHealthcare = 'HC SvcData Obfuscation - EU';
   dataSource!: MatTableDataSource<any>;
   displayedColumns: any[] = [
     'jobControlId',
@@ -48,7 +61,9 @@ export class JobControlComponent implements OnInit, OnDestroy {
     private _dialog: MatDialog,
     private _jobDataService: JobsDataService,
     private router: Router,
-    private _toasterService: ToastrService
+    private _toasterService: ToastrService,
+    private route: ActivatedRoute,
+    private changeDetectorRef: ChangeDetectorRef
   ) {}
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -58,6 +73,25 @@ export class JobControlComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    // Extract domain from route parameters
+    this.route.params.subscribe((params) => {
+      if (params['domain']) {
+        this.currentDomain = params['domain'];
+      }
+    });
+
+    // Also listen to parent route parameters (for nested routes)
+    this.route.parent?.params.subscribe((params) => {
+      if (params['domain']) {
+        this.currentDomain = params['domain'];
+      }
+    });
+
+    this.router.events
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe(() => {
+        this.detectDomainFromUrl();
+      });
     // Reset job data to original state
     this._jobDataService.resetJobData();
 
@@ -73,10 +107,20 @@ export class JobControlComponent implements OnInit, OnDestroy {
         }
       })
     );
-
+    this.setDropdownOptions();
     this.dataSource = new MatTableDataSource<any>(
       this._jobDataService.getAllJobControlData()
     );
+  }
+
+  // New method to set dropdown options based on currentDomain
+  setDropdownOptions(): void {
+    if (this.router.url.includes('utility')) {
+      this.selectedObsControl = 'Utility Account Obfuscation';
+    } else if (this.router.url.includes('healthcare')) {
+      this.selectedObsControlHealthcare = 'HC SvcData Obfuscation - EU';
+    }
+    this.changeDetectorRef.detectChanges();
   }
 
   ngOnDestroy() {
@@ -84,18 +128,50 @@ export class JobControlComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
+  // Extract domain from URL
+  private detectDomainFromUrl(): void {
+    const urlPath = this.router.url;
+    const segments = urlPath.split('/').filter((segment) => segment);
+
+    if (segments.length > 0) {
+      const potentialDomain = segments[0];
+      if (['healthcare', 'utility'].includes(potentialDomain)) {
+        this.currentDomain = potentialDomain;
+      }
+    }
+  }
+
   createJob() {
     this.drawer.close();
-    // this.router.navigate(['/dashboard/job-details/RUN-98765']);
-    this.router.navigate(['/job-control-list']);
     this._toasterService.success('Job Control created successfully!');
   }
 
+  isActive(route: string): boolean {
+    const currentUrl = this.router.url;
+    const domainRoute = `/${this.currentDomain}${route}`;
+    return currentUrl === domainRoute || currentUrl.startsWith(domainRoute);
+  }
   runJob(jobControlId: string) {
+    // Remove alert or keep for debugging if needed
+    // alert(jobControlId);
+
+    // Generate job ID from job control ID if needed
     const jobId = jobControlId.startsWith('JC-')
       ? 'RUN-' + jobControlId.substring(3)
       : jobControlId;
-    this.router.navigate(['/dashboard/job-details', jobId]);
+
+    // Fix the navigation to use the correct route structure
+    // Based on the updated routing configuration, job-details is now a child of dashboard
+    this.router.navigate([
+      `/${this.currentDomain}/dashboard/job-details/${jobId}`,
+    ]);
+
+    // Alternative approach using string URL if the above doesn't work
+    /*
+    this.router.navigateByUrl(
+      `/${this.currentDomain}/dashboard/job-details/${jobId}`
+    );
+    */
 
     // Start the sequential update process
     this._jobDataService.updateTasksSequentially(jobId).subscribe(
@@ -119,7 +195,6 @@ export class JobControlComponent implements OnInit, OnDestroy {
       });
     this._toasterService.success('Job run successfully!');
   }
-
   openCreateObsfucation(element: any) {
     // Get the obfuscation control data from the service
     const allJobData = this._jobDataService.getAllJobControlData();
@@ -129,11 +204,13 @@ export class JobControlComponent implements OnInit, OnDestroy {
     );
 
     if (obsControlData) {
-      // Use location.href to ensure state is preserved
-      this.router.navigate(['/obfuscation-plan/view-obfuscation'], {
-        state: { data: obsControlData },
-        replaceUrl: true,
-      });
+      this.router.navigate(
+        [`/${this.currentDomain}/obfuscation-plan/view-obfuscation`],
+        {
+          state: { data: obsControlData },
+          replaceUrl: true,
+        }
+      );
     } else {
       console.error('No matching obfuscation control data found');
     }

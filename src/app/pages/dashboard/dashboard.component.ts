@@ -1,9 +1,16 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  OnInit,
+  ViewChild,
+  OnDestroy,
+} from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { JobElement, JobsDataService } from '../../jobs-data.service';
 import { ChangeDetectorRef } from '@angular/core';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,26 +18,57 @@ import { ChangeDetectorRef } from '@angular/core';
   styleUrl: './dashboard.component.scss',
   standalone: false,
 })
-export class DashboardComponent implements AfterViewInit, OnInit {
-  public dataSource: any;
+export class DashboardComponent implements AfterViewInit, OnInit, OnDestroy {
+  public dataSource: MatTableDataSource<JobElement>;
+  public domain: string = '';
+  private subscription = new Subscription();
+  currentDomain: string = 'utility';
+
   constructor(
     private _router: Router,
     public jobService: JobsDataService,
-    private changeDetectorRef: ChangeDetectorRef
-  ) {}
-  ngOnInit(): void {
-    this.jobService.jobsData$.subscribe((jobs) => {
-      this.dataSource = new MatTableDataSource<JobElement>(
-        this.jobService.getAllJobs()
-      );
-    });
-    this.jobService.resetJobData();
+    private changeDetectorRef: ChangeDetectorRef,
+    private route: ActivatedRoute
+  ) {
+    this.dataSource = new MatTableDataSource<JobElement>([]);
   }
+
+  ngOnInit(): void {
+    // Subscribe to route params
+
+    this.route.params.subscribe((params) => {
+      this.currentDomain = params['domain'] || 'utility';
+    });
+
+    if (this.currentDomain === 'utility') {
+      this.jobService.initializeUtilityData();
+    }
+    if (this.currentDomain === 'healthcare') {
+      this.jobService.initializeHealthcareData();
+    }
+
+    // Subscribe to job data changes
+    this.subscription.add(
+      this.jobService.jobsData$.subscribe((jobs) => {
+        this.dataSource.data = jobs;
+        if (this.paginator) {
+          this.dataSource.paginator = this.paginator;
+        }
+        this.changeDetectorRef.detectChanges();
+      })
+    );
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
+
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
-    // this.startSequentialUpdates(this.dataSource.data[0].jobId);
   }
+
   displayedColumns: string[] = [
     'position',
     'name',
@@ -84,7 +122,10 @@ export class DashboardComponent implements AfterViewInit, OnInit {
   }
 
   openJobDetails(jobId: string) {
-    this._router.navigate(['/dashboard/job-details', jobId]);
+    this._router.navigate([
+      `/${this.currentDomain}/dashboard/job-details`,
+      jobId,
+    ]);
   }
 
   isJobDetailsRoute(): boolean {

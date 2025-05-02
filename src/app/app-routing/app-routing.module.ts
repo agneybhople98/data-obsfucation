@@ -7,28 +7,51 @@ import { ViewObfuscationPlanComponent } from '../pages/view-obfuscation/view-obf
 import { JobControlComponent } from '../pages/job-control/job-control.component';
 import { CreateObfuscationPlanComponent } from '../pages/create-obfuscation/create-obfuscation.component';
 import { RestoreComponent } from '../pages/restore/restore.component';
+import { RouteResolverService } from '../services/route-resolver.service';
 
 const routes: Routes = [
+  // Domain as the first segment to ensure it's captured for all routes
   {
-    path: 'dashboard',
-    component: DashboardComponent,
-    children: [{ path: 'job-details/:id', component: JobDetailsComponent }],
-  },
-  {
-    path: 'restore',
-    component: RestoreComponent,
-  },
-  {
-    path: 'obfuscation-plan',
-    component: ObfuscationPlan,
+    path: ':domain',
+    resolve: { data: RouteResolverService },
     children: [
-      { path: 'view-obfuscation', component: ViewObfuscationPlanComponent },
-      { path: 'create-obfuscation', component: CreateObfuscationPlanComponent },
+      {
+        path: 'dashboard',
+        component: DashboardComponent,
+        runGuardsAndResolvers: 'always',
+        children: [{ path: 'job-details/:id', component: JobDetailsComponent }],
+      },
+      {
+        path: 'restore',
+        component: RestoreComponent,
+        runGuardsAndResolvers: 'always',
+      },
+      {
+        path: 'job-control-list',
+        component: JobControlComponent,
+        runGuardsAndResolvers: 'always',
+      },
+      {
+        path: 'obfuscation-plan',
+        component: ObfuscationPlan,
+        runGuardsAndResolvers: 'always',
+        children: [
+          { path: 'view-obfuscation', component: ViewObfuscationPlanComponent },
+          {
+            path: 'create-obfuscation',
+            component: CreateObfuscationPlanComponent,
+          },
+        ],
+      },
+
+      // Default route redirects to dashboard within the current domain
+      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
     ],
   },
-  { path: 'job-control-list', component: JobControlComponent },
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
-  { path: '**', redirectTo: '/dashboard' }, // Redirect to home for unknown routes
+  // Root redirects to utility domain
+  { path: '', redirectTo: '/utility/dashboard', pathMatch: 'full' },
+  // Unknown paths redirect to utility dashboard
+  { path: '**', redirectTo: '/utility/dashboard' },
 ];
 
 @NgModule({

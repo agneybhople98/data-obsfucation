@@ -44,17 +44,33 @@
       <div class="flex !px-4 !w-[80%]">
         <div class="flex-1">
           <app-dropdown
+            *ngIf="currentDomain === 'utility'"
             label="Job Control"
-            [options]="jobControlOptions"
+            [options]="jobControlOptionsUtility"
             [(value)]="selectedJobIdControl"
+            [disabled]="true"
+          ></app-dropdown>
+          <app-dropdown
+            *ngIf="currentDomain === 'healthcare'"
+            label="Job Control"
+            [options]="jobControlOptionsHealthcare"
+            [(value)]="selectedJobIdControlHealthcare"
             [disabled]="true"
           ></app-dropdown>
         </div>
         <div class="flex-1 !ms-5">
           <app-dropdown
+            *ngIf="currentDomain === 'utility'"
             label="Obsfucation Plan"
-            [options]="obsControlOptions"
+            [options]="obsControlOptionsUtility"
             [(value)]="selectedObsControl"
+            [disabled]="true"
+          ></app-dropdown>
+          <app-dropdown
+            *ngIf="currentDomain === 'healthcare'"
+            label="Obsfucation Plan"
+            [options]="obsControlOptionsHealthcare"
+            [(value)]="selectedObsControlHealthcare"
             [disabled]="true"
           ></app-dropdown>
         </div>
@@ -151,19 +167,19 @@
               <div>
                 <div class="text-sm">Job Run Id</div>
                 <div class="font-medium !mt-1 text-sm">
-                  {{ jobDetails.jobId }}
+                  {{ jobDetails?.jobId }}
                 </div>
               </div>
               <div>
                 <div class="text-sm">Job Run</div>
                 <div class="font-medium !mt-1 text-sm">
-                  {{ jobDetails.jobName }}
+                  {{ jobDetails?.jobName }}
                 </div>
               </div>
               <div>
                 <div class="text-sm">Job Run Description</div>
                 <div class="font-medium !mt-1 text-sm">
-                  {{ jobDetails.jobDescription }}
+                  {{ jobDetails?.jobDescription }}
                 </div>
               </div>
               <div>
@@ -172,22 +188,22 @@
                   (click)="openJobControlDrawer(jobDetails)"
                   class="font-semibold !mt-1 text-sm !text-[#3179e5] cursor-pointer"
                 >
-                  {{ jobDetails.jobName }}
+                  {{ jobDetails?.jobName }}
                 </div>
               </div>
               <div>
                 <div class="text-sm">Obsfucation Plan</div>
                 <div
-                  routerLink="/obfuscation-plan/view-obfuscation"
+                  (click)="navigateToObfuscationPlan()"
                   class="font-semibold !mt-1 text-sm !text-[#3179e5] cursor-pointer"
                 >
-                  {{ jobDetails.obsfucationControlName }}
+                  {{ jobDetails?.obsfucationControlName }}
                 </div>
               </div>
               <div>
                 <div class="text-sm">Triggered On</div>
                 <div class="font-medium !mt-1 text-sm">
-                  {{ jobDetails.triggeredOn }}
+                  {{ jobDetails?.triggeredOn }}
                 </div>
               </div>
             </div>
@@ -197,11 +213,11 @@
                 <div class="progress-bar-container !mt-1">
                   <div
                     class="progress-bar text-sm"
-                    [ngClass]="jobDetails.status"
-                    [style.width.%]="jobDetails.progress"
+                    [ngClass]="jobDetails?.status"
+                    [style.width.%]="jobDetails?.progress"
                   >
                     <span class="progress-text"
-                      >{{ jobDetails.progress }}%</span
+                      >{{ jobDetails?.progress }}%</span
                     >
                   </div>
                 </div>

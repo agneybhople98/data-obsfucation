@@ -39,14 +39,22 @@
         <app-input
           class="flex-1"
           label="Name"
-          value="Utility Account Obfuscation"
+          [value]="
+            this.currentDomain === 'healthcare'
+              ? 'HC SvcData Obfuscation - EU'
+              : 'Utility Account Obfuscation'
+          "
         >
         </app-input>
         <app-input
           class="flex-1"
           label="Description"
           [required]="true"
-          value="Obfuscate utility accounts for non-production environments."
+          [value]="
+            this.currentDomain === 'healthcare'
+              ? 'Obfuscates healthcare service records from EU regions for non-production environments.'
+              : 'Obfuscate utility accounts for non-production environments.'
+          "
           [additionalInfo]="'Last connection Date: 09/04/2025 11:50 PM'"
         >
         </app-input>

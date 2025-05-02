@@ -27,7 +27,7 @@
       <ng-container matColumnDef="position">
         <th mat-header-cell *matHeaderCellDef>Job Run ID</th>
         <td
-          [routerLink]="['/dashboard/job-details', element.jobId]"
+          (click)="openJobDetails(element.jobId)"
           class="cursor-pointer !text-sm !font-medium"
           style="color: #3179e5"
           mat-cell

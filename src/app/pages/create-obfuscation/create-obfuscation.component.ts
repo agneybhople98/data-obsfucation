@@ -1,13 +1,14 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { ObsfucationService } from '../../services/obsfucation.service';
 import {
-  ColumnDefinition,
-  ObsfucationService,
   TABLE_DATA,
-} from '../../services/obsfucation.service';
+  ColumnDefinition,
+} from '../../services/obfusaction-table-data.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { SelectionModel } from '@angular/cdk/collections';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-create-obfuscation',
@@ -18,6 +19,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class CreateObfuscationPlanComponent implements OnInit {
   tableData = TABLE_DATA;
   selectedTable: string | null = null;
+  currentDomain: string = 'utility';
   displayedColumns: string[] = [
     'select',
     'columnName',
@@ -113,6 +115,25 @@ export class CreateObfuscationPlanComponent implements OnInit {
   }
 
   ngOnInit() {
+    // Extract domain from route parameters
+    this.route.params.subscribe((params) => {
+      if (params['domain']) {
+        this.currentDomain = params['domain'];
+      }
+    });
+
+    // Also listen to parent route parameters (for nested routes)
+    this.route.parent?.params.subscribe((params) => {
+      if (params['domain']) {
+        this.currentDomain = params['domain'];
+      }
+    });
+    this.router.events
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe(() => {
+        this.detectDomainFromUrl();
+      });
+
     // Get state data from navigation
     this.obsControlData =
       this.router.getCurrentNavigation()?.extras.state?.['data'];
@@ -129,6 +150,19 @@ export class CreateObfuscationPlanComponent implements OnInit {
     }
 
     // Initialize with empty data source
+  }
+
+  // Extract domain from URL
+  private detectDomainFromUrl(): void {
+    const urlPath = this.router.url;
+    const segments = urlPath.split('/').filter((segment) => segment);
+
+    if (segments.length > 0) {
+      const potentialDomain = segments[0];
+      if (['healthcare', 'utility'].includes(potentialDomain)) {
+        this.currentDomain = potentialDomain;
+      }
+    }
   }
 
   /**

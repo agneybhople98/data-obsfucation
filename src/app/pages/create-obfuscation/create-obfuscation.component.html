@@ -36,7 +36,7 @@
         <div class="flex">
           <div class="!p-4 !bg-[#F0F4FF] !m-5">
             <div class="text-xs">Obfuscation Plan</div>
-            <div class="text-md">
+            <div *ngIf="this.currentDomain === 'utility'" class="text-md">
               {{
                 obsControlData?.obsControlName
                   ? obsControlData?.obsControlName
@@ -44,15 +44,31 @@
                     "Utility Account Obfuscation"
               }}
             </div>
+            <div *ngIf="this.currentDomain === 'healthcare'" class="text-md">
+              {{
+                obsControlData?.obsControlName
+                  ? obsControlData?.obsControlName
+                  : obsControlData?.jobControlName ||
+                    "HC SvcData Obfuscation - EU"
+              }}
+            </div>
           </div>
           <div class="!p-4 !bg-[#F0F4FF] !m-5">
             <div class="text-xs">Obfuscation Plan Description</div>
-            <div class="text-md">
+            <div class="text-md" *ngIf="this.currentDomain === 'utility'">
               {{
                 obsControlData?.obsControlDescription
                   ? obsControlData?.obsControlDescription
                   : obsControlData?.jobControlDescription ||
                     "Obfuscate utility accounts for non-production environments."
+              }}
+            </div>
+            <div class="text-md" *ngIf="this.currentDomain === 'healthcare'">
+              {{
+                obsControlData?.obsControlDescription
+                  ? obsControlData?.obsControlDescription
+                  : obsControlData?.jobControlDescription ||
+                    "Obfuscates healthcare service records from EU regions for non-production environments."
               }}
             </div>
           </div>

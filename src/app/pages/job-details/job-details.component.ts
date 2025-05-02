@@ -5,7 +5,7 @@ import {
   AfterViewInit,
   OnDestroy,
 } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { JobsDataService } from '../../jobs-data.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
@@ -17,7 +17,7 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
-import { Subscription } from 'rxjs';
+import { filter, Subscription } from 'rxjs';
 import { MatDrawer } from '@angular/material/sidenav';
 
 @Component({
@@ -40,10 +40,15 @@ export class JobDetailsComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('drawer') drawer!: MatDrawer;
   isConnected = false;
   public jobDetailsDrawer: any;
-  selectedObsControl = 'Utility Account Obfuscation'; // Default selected value
-  selectedJobIdControl = 'Utility Account Obfuscation – Non-Prod'; // Default selected value
+  selectedObsControl = '';
+  selectedJobIdControl = '';
 
-  obsControlOptions = [
+  selectedObsControlHealthcare = '';
+  selectedJobIdControlHealthcare = '';
+  currentDomain: string = 'utility';
+
+  // utility options
+  obsControlOptionsUtility = [
     'Utility Account Obfuscation',
     'Financial Data Masking',
     'Person Entity Anonymization',
@@ -52,7 +57,7 @@ export class JobDetailsComponent implements OnInit, AfterViewInit, OnDestroy {
     'Support Interaction Data Masking',
     'Outage Data Anonymization',
   ];
-  jobControlOptions = [
+  jobControlOptionsUtility = [
     'Utility Account Obfuscation – Non-Prod',
     'Financial Data Masking – Utility Systems',
     'Person Entity Anonymization – Pre-Prod',
@@ -60,6 +65,26 @@ export class JobDetailsComponent implements OnInit, AfterViewInit, OnDestroy {
     'Billing & Financial History Obfuscation',
     'Support Interaction Data Masking',
     'Outage Data Anonymization – Global Compliance',
+  ];
+
+  // healthcare options
+  obsControlOptionsHealthcare = [
+    'HC SvcData Obfuscation - EU',
+    'Insurance Claims Obfuscation',
+    'HC Provider TestDB Obfuscation',
+    'HC SvcData Obfuscation - AUS',
+    'Insurance Policy Obfuscation - US',
+    'Outage Reports Obfuscation - Global',
+    'Patient Master Prod Obfuscation - EU',
+  ];
+  jobControlOptionsHealthcare = [
+    'HC SvcData Obfuscation EU',
+    'Insurance Claims Obfuscation',
+    'HC Provider TestDB',
+    'HC SvcData Obfuscation AUS',
+    'InsurancePolicy Obf US',
+    'OutageReports Global Data',
+    'Patient Master Prod EU',
   ];
   expandedElement: any | null = null;
   public jobId: any;
@@ -81,17 +106,45 @@ export class JobDetailsComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(
+    private router: Router,
     private route: ActivatedRoute,
     private jobService: JobsDataService,
     private changeDetectorRef: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
+    // Extract domain from route parameters
+    this.route.params.subscribe((params) => {
+      if (params['domain']) {
+        this.currentDomain = params['domain'];
+      }
+    });
+
+    // Also listen to parent route parameters (for nested routes)
+    this.route.parent?.params.subscribe((params) => {
+      if (params['domain']) {
+        this.currentDomain = params['domain'];
+      }
+    });
+
+    this.router.events
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe(() => {
+        this.detectDomainFromUrl();
+      });
+
     // Get the jobId from route parameters
     this.route.paramMap.subscribe((params) => {
       this.jobId = params.get('id');
+
       if (this.jobId) {
-        // Subscribe to job data changes
+        this.setDropdownOptions();
+        if (this.router.url.includes('healthcare')) {
+          this.jobService.initializeHealthcareData();
+        } else {
+          this.jobService.initializeUtilityData(); // fallback/default
+        }
+
         this.subscription.add(
           this.jobService.jobsData$.subscribe((jobs) => {
             this.jobDetails = this.jobService.getJobById(this.jobId);
@@ -120,6 +173,31 @@ export class JobDetailsComponent implements OnInit, AfterViewInit, OnDestroy {
         this.loading = false;
       }
     });
+  }
+
+  // Extract domain from URL
+  private detectDomainFromUrl(): void {
+    const urlPath = this.router.url;
+    const segments = urlPath.split('/').filter((segment) => segment);
+
+    if (segments.length > 0) {
+      const potentialDomain = segments[0];
+      if (['healthcare', 'utility'].includes(potentialDomain)) {
+        this.currentDomain = potentialDomain;
+      }
+    }
+  }
+
+  // New method to set dropdown options based on currentDomain
+  setDropdownOptions(): void {
+    if (this.router.url.includes('utility')) {
+      this.selectedJobIdControl = 'Utility Account Obfuscation – Non-Prod';
+      this.selectedObsControl = 'Utility Account Obfuscation';
+    } else if (this.router.url.includes('healthcare')) {
+      this.selectedJobIdControlHealthcare = 'HC SvcData Obfuscation EU';
+      this.selectedObsControlHealthcare = 'HC SvcData Obfuscation - EU';
+    }
+    this.changeDetectorRef.detectChanges();
   }
 
   ngAfterViewInit(): void {
@@ -175,5 +253,11 @@ export class JobDetailsComponent implements OnInit, AfterViewInit, OnDestroy {
         return word;
       })
       .join(' ');
+  }
+
+  navigateToObfuscationPlan() {
+    this.router.navigate([
+      `${this.currentDomain}/obfuscation-plan/view-obfuscation`,
+    ]);
   }
 }

@@ -31,7 +31,7 @@
             >
               <a
                 class="nav-link"
-                routerLink="/dashboard"
+                [routerLink]="`${this.currentDomain}/dashboard`"
                 routerLinkActive
                 #dashboardLink="routerLinkActive"
               >
@@ -70,7 +70,7 @@
             >
               <a
                 class="nav-link"
-                routerLink="/obfuscation-plan"
+                [routerLink]="`${this.currentDomain}/obfuscation-plan`"
                 routerLinkActive
                 #obsfucationLink="routerLinkActive"
               >
@@ -106,7 +106,7 @@
             >
               <a
                 class="nav-link"
-                routerLink="/job-control-list"
+                [routerLink]="`${this.currentDomain}/job-control-list`"
                 routerLinkActive
                 #jobControlLink="routerLinkActive"
               >
@@ -142,7 +142,6 @@
             >
               <a
                 class="nav-link"
-                routerLink="/history"
                 routerLinkActive
                 #historyLink="routerLinkActive"
               >
@@ -220,7 +219,4 @@
       </div>
     </footer>
   </mat-sidenav-content>
-
-  <!-- Remove this redundant footer or place it properly inside mat-sidenav-content -->
-  <!-- <mat-toolbar class="main footer"> Footer </mat-toolbar> -->
 </mat-sidenav-container>

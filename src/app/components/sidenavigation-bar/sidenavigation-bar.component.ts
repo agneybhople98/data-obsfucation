@@ -1,12 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDrawerMode, MatSidenav } from '@angular/material/sidenav';
-import { Router } from '@angular/router';
-
-interface NavItem {
-  icon: string;
-  label: string;
-  route: string;
-}
+import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-sidenavigation-bar',
@@ -20,18 +15,48 @@ export class SidenavigationBarComponent implements OnInit {
   userRole = 'Admin';
   side: MatDrawerMode = 'side';
   @ViewChild('sidenav') sidenav!: MatSidenav;
+  currentDomain: string = 'utility';
 
-  navItems: NavItem[] = [
-    { icon: 'dashboard', label: 'Dashboard', route: '/dashboard' },
-    { icon: 'settings', label: 'Configuration', route: '/configuration' },
-    { icon: 'rotate_right', label: 'Process', route: '/process' },
-    { icon: 'schedule', label: 'Tracking', route: '/tracking' },
-    { icon: 'history', label: 'History', route: '/history' },
-  ];
+  constructor(private router: Router, private route: ActivatedRoute) {}
 
-  constructor(private router: Router) {}
+  ngOnInit(): void {
+    // Extract domain from route parameters
+    this.route.params.subscribe((params) => {
+      if (params['domain']) {
+        this.currentDomain = params['domain'];
+      }
+    });
 
-  ngOnInit(): void {}
+    // Also listen to parent route parameters (for nested routes)
+    this.route.parent?.params.subscribe((params) => {
+      if (params['domain']) {
+        this.currentDomain = params['domain'];
+      }
+    });
+
+    // For cases where parameters aren't available, extract from URL
+    this.detectDomainFromUrl();
+
+    // Update domain on navigation changes
+    this.router.events
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe(() => {
+        this.detectDomainFromUrl();
+      });
+  }
+
+  // Extract domain from URL
+  private detectDomainFromUrl(): void {
+    const urlPath = this.router.url;
+    const segments = urlPath.split('/').filter((segment) => segment);
+
+    if (segments.length > 0) {
+      const potentialDomain = segments[0];
+      if (['healthcare', 'utility'].includes(potentialDomain)) {
+        this.currentDomain = potentialDomain;
+      }
+    }
+  }
 
   toggleSidebar() {
     this.isExpanded = !this.isExpanded;
@@ -39,6 +64,8 @@ export class SidenavigationBarComponent implements OnInit {
   }
 
   isActive(route: string): boolean {
-    return this.router.url === route;
+    const routePath = route.startsWith('/') ? route.substring(1) : route;
+    const fullPath = `/${this.currentDomain}/${routePath}`;
+    return this.router.url === fullPath || this.router.url.startsWith(fullPath);
   }
 }

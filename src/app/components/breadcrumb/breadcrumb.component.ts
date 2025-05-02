@@ -35,10 +35,10 @@ export class BreadcrumbComponent implements OnInit {
     this.breadcrumbs = [];
 
     // Always add Dashboard as first item
-    this.breadcrumbs.push({
-      label: 'Dashboard',
-      url: '/dashboard',
-    });
+    // this.breadcrumbs.push({
+    //   label: 'Dashboard',
+    //   url: '/dashboard',
+    // });
 
     if (urlSegments.length > 0) {
       let currentPath = '';

@@ -1,9 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { ObsfucationService } from '../../services/obsfucation.service';
 import {
+  ObfusactionTableDataService,
   ColumnDefinition,
-  ObsfucationService,
   TABLE_DATA,
-} from '../../services/obsfucation.service';
+} from '../../services/obfusaction-table-data.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { SelectionModel } from '@angular/cdk/collections';

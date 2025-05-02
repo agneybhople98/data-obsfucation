@@ -29,6 +29,7 @@
 
       <div class="flex gap-2 !px-4">
         <app-input
+          *ngIf="currentDomain === 'utility'"
           class="flex-1"
           label="Name"
           [value]="
@@ -39,6 +40,18 @@
         >
         </app-input>
         <app-input
+          *ngIf="currentDomain === 'healthcare'"
+          class="flex-1"
+          label="Name"
+          [value]="
+            this.jobControlDetails?.jobControlName
+              ? this.jobControlDetails?.jobControlName
+              : 'HC SvcData Obfuscation EU'
+          "
+        >
+        </app-input>
+        <app-input
+          *ngIf="currentDomain === 'utility'"
           class="flex-2"
           label="Description"
           [value]="
@@ -49,13 +62,32 @@
           [additionalInfo]="'Last connection Date: 09/04/2025 11:50 PM'"
         >
         </app-input>
+        <app-input
+          *ngIf="currentDomain === 'healthcare'"
+          class="flex-2"
+          label="Description"
+          [value]="
+            this.jobControlDetails?.jobControlDescription
+              ? this.jobControlDetails?.jobControlDescription
+              : 'Obfuscates healthcare service records from EU regions for non-production environments.'
+          "
+          [additionalInfo]="'Last connection Date: 09/04/2025 11:50 PM'"
+        >
+        </app-input>
       </div>
       <div class="flex gap-2 !px-4 w-[40%]">
         <div class="flex-1">
           <app-dropdown
+            *ngIf="currentDomain === 'utility'"
             label="Select Obfuscation Plan"
             [options]="obsControlOptions"
             [(value)]="selectedObsControl"
+          ></app-dropdown>
+          <app-dropdown
+            *ngIf="currentDomain === 'healthcare'"
+            label="Select Obfuscation Plan"
+            [options]="obsControlOptionsHealthcare"
+            [(value)]="selectedObsControlHealthcare"
           ></app-dropdown>
         </div>
       </div>

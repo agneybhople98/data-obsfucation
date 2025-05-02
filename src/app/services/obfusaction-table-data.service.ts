@@ -952,7 +952,7 @@ export const TABLE_DATA: TableData = {
       ],
     },
     {
-      tableName: 'CI_PER_ADDR',
+      tableName: 'C1_ADDRESS',
       columns: [
         {
           columnName: 'PER_ID',
@@ -995,9 +995,9 @@ export const TABLE_DATA: TableData = {
         {
           columnName: 'CITY',
           displayName: 'City',
-          obfStrategy: undefined,
+          obfStrategy: 'REPLACE_WITH_CONSTANT',
           obfRules: {
-            first: undefined,
+            first: 'California',
             second: undefined,
           },
         },
@@ -1049,9 +1049,9 @@ export const TABLE_DATA: TableData = {
         {
           columnName: 'STATE',
           displayName: 'State',
-          obfStrategy: undefined,
+          obfStrategy: 'REPLACE_WITH_CONSTANT',
           obfRules: {
-            first: undefined,
+            first: 'CA',
             second: undefined,
           },
         },

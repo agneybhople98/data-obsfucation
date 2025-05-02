@@ -172,7 +172,7 @@ const ELEMENT_DATA: JobElement[] = [
       },
       {
         taskId: 'TASK-55678905',
-        taskDescription: "MaskTable-'CI_PER_ADDR'",
+        taskDescription: "MaskTable-'C1_ADDRESS'",
         status: 'Pending',
         startTime: (() => {
           const date = new Date();
@@ -191,6 +191,12 @@ const ELEMENT_DATA: JobElement[] = [
           { name: 'FAKER applied on ADDRESS1 column.' },
           {
             name: 'RANDOMIZE applied on POSTAL column.',
+          },
+          {
+            name: 'REPLACE_WITH_CONSTANT applied on CITY column.',
+          },
+          {
+            name: 'REPLACE_WITH_CONSTANT applied on STATE column.',
           },
         ],
       },
@@ -735,7 +741,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
       },
       {
         taskId: 'TASK-55678905',
-        taskDescription: "MaskTable-'CI_PER_ADDR'",
+        taskDescription: "MaskTable-'C1_ADDRESS'",
         status: 'Pending',
         startTime: (() => {
           const date = new Date();
@@ -754,6 +760,12 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
           { name: 'FAKER applied on ADDRESS1 column.' },
           {
             name: 'RANDOMIZE applied on POSTAL column.',
+          },
+          {
+            name: 'REPLACE_WITH_CONSTANT applied on CITY column.',
+          },
+          {
+            name: 'REPLACE_WITH_CONSTANT applied on STATE column.',
           },
         ],
       },

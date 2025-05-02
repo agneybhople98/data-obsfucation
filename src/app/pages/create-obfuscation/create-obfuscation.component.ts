@@ -37,7 +37,11 @@ export class CreateObfuscationPlanComponent implements OnInit {
     'FULL_NAME',
     'PHONE',
     'MD5',
+    'ENG',
     'SHA1',
+    'NUMERIC',
+    'California',
+    'CA',
   ];
   obfStrategies = [
     'STARIFY',
@@ -57,7 +61,7 @@ export class CreateObfuscationPlanComponent implements OnInit {
     'CI_PER_NAME',
     'CI_PER_PHONE',
     'CI_PER_ADDR_SEAS',
-    'CI_PER_ADDR',
+    'C1_ADDRESS',
   ];
 
   filteredTableItems = [...this.tableItems];

@@ -37,11 +37,13 @@ export class ViewObfuscationPlanComponent implements OnInit {
     'ADDRESS',
     'Delivered',
     'FULL_NAME',
-    'ENG',
     'PHONE',
-    'NUMERIC',
     'MD5',
     'SHA1',
+    'ENG',
+    'NUMERIC',
+    'California',
+    'CA',
   ];
   obsRulesNumbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
   obfStrategies = [
@@ -65,7 +67,7 @@ export class ViewObfuscationPlanComponent implements OnInit {
     'CI_PER_NAME',
     'CI_PER_PHONE',
     'CI_PER_ADDR_SEAS',
-    'CI_PER_ADDR',
+    'C1_ADDRESS',
   ];
 
   filteredTableItems = [...this.tableItems];

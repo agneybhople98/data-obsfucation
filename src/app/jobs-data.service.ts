@@ -968,7 +968,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
     progress: 50,
     additionalRunIdDetails: [
       {
-        jobId: 'RUN-98763',
+        jobId: 'RUN-98710',
         jobName: 'Billing Info Data - US region',
         jobDescription:
           'Secures billing transactions and payment records for performance testing enviroment',

@@ -321,6 +321,16 @@
                   <div class="element-diagram">
                     <div class="p-4 !px-[96px]">
                       <div
+                        *ngIf="
+                          element.recordsProcessed &&
+                          element.status === 'Completed'
+                        "
+                        class="!pb-2 font-semibold"
+                      >
+                        Records Processed: {{ element.recordsProcessed }}
+                      </div>
+
+                      <div
                         *ngIf="element.status === 'Failed'"
                         class="error-message"
                       >

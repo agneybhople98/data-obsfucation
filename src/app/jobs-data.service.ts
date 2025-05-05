@@ -23,6 +23,7 @@ export interface JobElement {
   status: 'success' | 'in-progress' | 'failed';
   obsfucationControlName: string;
   tasks: any;
+  additionalRunIdDetails?: any;
 }
 
 export interface JobDataControlElement {
@@ -76,6 +77,7 @@ const ELEMENT_DATA: JobElement[] = [
           return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
+        recordsProcessed: 10,
         message: [
           {
             name: 'Copy Schema And Data is Successful',
@@ -99,6 +101,7 @@ const ELEMENT_DATA: JobElement[] = [
           return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
+        recordsProcessed: 20,
         message: [
           {
             name: 'Create Procedures And Functions is Successful',
@@ -122,6 +125,7 @@ const ELEMENT_DATA: JobElement[] = [
           return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
+        recordsProcessed: 30,
         message: [{ name: 'Create Masking Script is Successful' }],
       },
 
@@ -142,8 +146,11 @@ const ELEMENT_DATA: JobElement[] = [
           return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
+        recordsProcessed: 2000,
         message: [
-          { name: 'FAKER applied on EMAILID column.' },
+          {
+            name: 'FAKER applied on EMAILID column. ',
+          },
           { name: 'STARIFY applied on CITY column.' },
           { name: 'FAKER applied on ADDRESS column.' },
           { name: 'REPLACE_WITH_CONSTANT applied on LANGUAGE_CD column.' },
@@ -168,6 +175,7 @@ const ELEMENT_DATA: JobElement[] = [
           return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
+        recordsProcessed: 100,
         message: [{ name: 'FAKER applied on  ADDRESS1 column.' }],
       },
       {
@@ -187,6 +195,7 @@ const ELEMENT_DATA: JobElement[] = [
           return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
+        recordsProcessed: 1500,
         message: [
           { name: 'FAKER applied on ADDRESS1 column.' },
           {
@@ -217,6 +226,7 @@ const ELEMENT_DATA: JobElement[] = [
           return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
+        recordsProcessed: 1200,
         message: [{ name: 'FAKER applied on  FULLNAME column.' }],
       },
       {
@@ -236,6 +246,7 @@ const ELEMENT_DATA: JobElement[] = [
           return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
+        recordsProcessed: 900,
         message: [{ name: 'FAKER applied on  PHONE column.' }],
       },
     ],
@@ -267,6 +278,7 @@ const ELEMENT_DATA: JobElement[] = [
           return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
+        recordsProcessed: 10,
         message: [{ name: 'Copy Schema And Data is Successful' }],
       },
       {
@@ -286,6 +298,7 @@ const ELEMENT_DATA: JobElement[] = [
           return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
+        recordsProcessed: 5,
         message: [{ name: 'Create Procedures And Functions is Successful' }],
       },
       {
@@ -305,6 +318,7 @@ const ELEMENT_DATA: JobElement[] = [
           return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
+        recordsProcessed: 15,
         message: [{ name: 'Create Masking Script is Successful' }],
       },
       {
@@ -324,6 +338,7 @@ const ELEMENT_DATA: JobElement[] = [
           return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
+        recordsProcessed: 20,
         message: [{ name: 'FAKER applied on EMAILID column.' }],
       },
       {
@@ -332,6 +347,7 @@ const ELEMENT_DATA: JobElement[] = [
         status: 'Failed',
         errorMessage:
           'RUN-98764, Table : CI_PER_Name, Column : EmailID,  SQL Error: ORA-00904: "EMAILID": invalid identifier`',
+        recordsProcessed: 25,
         message: [
           {
             name: 'SQL Error: ORA-00904: "EMAILID": invalid identifier https://docs.oracle.com/error-help/db/ora-00904/00904. 00000 - "%s: invalid identifier"',
@@ -361,6 +377,18 @@ const ELEMENT_DATA: JobElement[] = [
     status: 'failed',
     obsfucationControlName: 'Person Entity Anonymization',
     progress: 50,
+    additionalRunIdDetails: [
+      {
+        jobId: 'RUN-98763',
+        jobName: 'Person Entity Anonymization – Pre-Prod',
+        jobDescription:
+          'Anonymize persons for secure pre-production and testing.',
+        triggeredOn: '25/04/2025 08:22:10AM',
+        status: 'failed',
+        obsfucationControlName: 'Person Entity Anonymization',
+        progress: 50,
+      },
+    ],
     tasks: [
       {
         taskId: 'TASK-55678190',
@@ -417,6 +445,7 @@ const ELEMENT_DATA: JobElement[] = [
           return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
+        recordsProcessed: 10,
         message: [{ name: 'Masking phone numbers is Successful' }],
       },
     ],
@@ -448,6 +477,7 @@ const ELEMENT_DATA: JobElement[] = [
           return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
+        recordsProcessed: 8,
         message: [{ name: 'Shuffling demographic data is Successful' }],
       },
     ],
@@ -515,6 +545,7 @@ const ELEMENT_DATA: JobElement[] = [
           return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
+        recordsProcessed: 5,
         message: 'SQL Log: Cloning Schema is Successful',
       },
     ],
@@ -645,6 +676,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
           return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
+        recordsProcessed: 5,
         message: [
           {
             name: 'Copy Schema And Data is Successful',
@@ -668,6 +700,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
           return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
+        recordsProcessed: 10,
         message: [
           {
             name: 'Create Procedures And Functions is Successful',
@@ -691,6 +724,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
           return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
+        recordsProcessed: 100,
         message: [{ name: 'Create Masking Script is Successful' }],
       },
 
@@ -711,6 +745,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
           return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
+        recordsProcessed: 500,
         message: [
           { name: 'FAKER applied on EMAILID column.' },
           { name: 'STARIFY applied on CITY column.' },
@@ -737,6 +772,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
           return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
+        recordsProcessed: 5,
         message: [{ name: 'FAKER applied on  ADDRESS1 column.' }],
       },
       {
@@ -756,6 +792,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
           return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
+        recordsProcessed: 1400,
         message: [
           { name: 'FAKER applied on ADDRESS1 column.' },
           {
@@ -786,6 +823,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
           return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
+        recordsProcessed: 20,
         message: [{ name: 'FAKER applied on  FULLNAME column.' }],
       },
       {
@@ -805,6 +843,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
           return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
+        recordsProcessed: 30,
         message: [{ name: 'FAKER applied on  PHONE column.' }],
       },
     ],
@@ -836,6 +875,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
           return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
+        recordsProcessed: 5,
         message: [{ name: 'Copy Schema And Data is Successful' }],
       },
       {
@@ -855,6 +895,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
           return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
+        recordsProcessed: 9,
         message: [{ name: 'Create Procedures And Functions is Successful' }],
       },
       {
@@ -874,6 +915,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
           return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
+        recordsProcessed: 10,
         message: [{ name: 'Create Masking Script is Successful' }],
       },
       {
@@ -893,6 +935,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
           return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
+        recordsProcessed: 18,
         message: [{ name: 'FAKER applied on EMAILID column.' }],
       },
       {
@@ -931,6 +974,18 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
     status: 'failed',
     obsfucationControlName: 'HC Provider TestDB Obfuscation',
     progress: 50,
+    additionalRunIdDetails: [
+      {
+        jobId: 'RUN-98763',
+        jobName: 'HC Provider TestDB',
+        jobDescription:
+          'Anonymizes healthcare provider database for secure pre-production and testing.',
+        triggeredOn: '25/04/2025 08:22:10AM',
+        status: 'failed',
+        obsfucationControlName: 'HC Provider TestDB Obfuscation',
+        progress: 50,
+      },
+    ],
     tasks: [
       {
         taskId: 'TASK-55678190',
@@ -988,6 +1043,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
           return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
+        recordsProcessed: 17,
         message: [{ name: 'Masking phone numbers is Successful' }],
       },
     ],
@@ -1020,6 +1076,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
           return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
+        recordsProcessed: 10,
         message: [{ name: 'Shuffling demographic data is Successful' }],
       },
     ],
@@ -1088,6 +1145,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
           return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
+        recordsProcessed: 25,
         message: 'SQL Log: Cloning Schema is Successful',
       },
     ],

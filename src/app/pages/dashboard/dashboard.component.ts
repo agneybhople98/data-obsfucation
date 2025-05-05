@@ -11,14 +11,32 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { JobElement, JobsDataService } from '../../jobs-data.service';
 import { ChangeDetectorRef } from '@angular/core';
 import { Subscription } from 'rxjs';
+import {
+  animate,
+  state,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
   standalone: false,
+  animations: [
+    trigger('detailExpand', [
+      state('collapsed', style({ height: '0px', minHeight: '0' })),
+      state('expanded', style({ height: '*' })),
+      transition(
+        'expanded <=> collapsed',
+        animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')
+      ),
+    ]),
+  ],
 })
 export class DashboardComponent implements AfterViewInit, OnInit, OnDestroy {
+  expandedElement: any | null = null;
   public dataSource: MatTableDataSource<JobElement>;
   public domain: string = '';
   private subscription = new Subscription();
@@ -69,7 +87,17 @@ export class DashboardComponent implements AfterViewInit, OnInit, OnDestroy {
     this.dataSource.paginator = this.paginator;
   }
 
-  displayedColumns: string[] = [
+  columnsToDisplayWithExpand: string[] = [
+    'expand',
+    'position',
+    'name',
+    'weight',
+    'progress',
+    'symbol',
+  ];
+
+  // Columns for the inner table in the expanded row
+  innerDisplayColumns: string[] = [
     'position',
     'name',
     'weight',

@@ -19,9 +19,45 @@
   </div>
 
   <div class="jobs-table mt-4">
-    <table mat-table [dataSource]="this.dataSource" class="mat-elevation-z8">
+    <table
+      mat-table
+      [dataSource]="this.dataSource"
+      multiTemplateDataRows
+      class="mat-elevation-z8"
+    >
       <!--- Note that these columns can be defined in any order.
             The actual rendered columns are set as a property on the row definition" -->
+
+      <!-- Expand Column -->
+      <ng-container matColumnDef="expand">
+        <th mat-header-cell *matHeaderCellDef aria-label="row actions">
+          &nbsp;
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <button
+            class="bg-primary text-white rounded-xs !h-[24px] !w-[24px] !cursor-pointer"
+            aria-label="expand row"
+            [disabled]="!element.additionalRunIdDetails"
+            (click)="
+              expandedElement = expandedElement === element ? null : element;
+              $event.stopPropagation()
+            "
+          >
+            <mat-icon
+              [ngClass]="{
+              'bg-disabled-color': !element.additionalRunIdDetails,
+            }"
+              *ngIf="expandedElement !== element"
+              class="!p-[0.5px]"
+            >
+              add
+            </mat-icon>
+            <mat-icon *ngIf="expandedElement === element" class="!p-[0.5px]"
+              >remove</mat-icon
+            >
+          </button>
+        </td>
+      </ng-container>
 
       <!-- Position Column -->
       <ng-container matColumnDef="position">
@@ -79,8 +115,117 @@
         </td>
       </ng-container>
 
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      <tr mat-header-row *matHeaderRowDef="columnsToDisplayWithExpand"></tr>
+
+      <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+      <ng-container matColumnDef="expandedDetail">
+        <td
+          mat-cell
+          *matCellDef="let element"
+          [attr.colspan]="columnsToDisplayWithExpand.length"
+        >
+          <div
+            class="element-detail"
+            [@detailExpand]="
+              element == expandedElement ? 'expanded' : 'collapsed'
+            "
+          >
+            <table
+              mat-table
+              [dataSource]="element.additionalRunIdDetails"
+              class="mat-elevation-z0 w-full"
+            >
+              <!-- Position Column -->
+              <ng-container matColumnDef="position">
+                <th mat-header-cell *matHeaderCellDef>Job Run ID</th>
+                <td
+                  class="cursor-pointer !text-sm !font-medium"
+                  style="color: #3179e5; padding-left: 58px"
+                  mat-cell
+                  *matCellDef="let detail"
+                >
+                  {{ detail.jobId }}
+                </td>
+              </ng-container>
+
+              <!-- Name Column -->
+              <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef>Job Run</th>
+                <td
+                  class="!text-sm !font-normal"
+                  mat-cell
+                  *matCellDef="let detail"
+                >
+                  {{ detail.jobName }}
+                </td>
+              </ng-container>
+
+              <!-- Weight Column -->
+              <ng-container matColumnDef="weight">
+                <th mat-header-cell *matHeaderCellDef>Job Run Description</th>
+                <td mat-cell *matCellDef="let detail">
+                  {{ detail.jobDescription }}
+                </td>
+              </ng-container>
+
+              <!-- Progress Column -->
+              <ng-container matColumnDef="progress">
+                <th mat-header-cell *matHeaderCellDef>Status</th>
+                <td mat-cell *matCellDef="let detail">
+                  <div class="progress-bar-container">
+                    <div
+                      class="progress-bar"
+                      [ngClass]="detail.status"
+                      [style.width.%]="detail.progress"
+                    >
+                      <span *ngIf="detail.progress > 0" class="progress-text"
+                        >{{ detail.progress }}%</span
+                      >
+                    </div>
+                  </div>
+                </td>
+              </ng-container>
+
+              <!-- Symbol Column -->
+              <ng-container matColumnDef="symbol">
+                <th mat-header-cell *matHeaderCellDef>Triggered on</th>
+                <td mat-cell *matCellDef="let detail">
+                  {{ detail.triggeredOn }}
+                </td>
+              </ng-container>
+
+              <!-- Header Row -->
+              <!-- <tr mat-header-row *matHeaderRowDef="innerDisplayColumns"></tr> -->
+              <!-- Row shown when there is no matching data. -->
+              <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell" colspan="5">
+                  No additional details available
+                </td>
+              </tr>
+              <!-- Data Row -->
+              <tr
+                mat-row
+                *matRowDef="let row; columns: innerDisplayColumns"
+              ></tr>
+            </table>
+          </div>
+        </td>
+      </ng-container>
+
+      <!-- Data Row -->
+      <tr
+        mat-row
+        *matRowDef="let element; columns: columnsToDisplayWithExpand"
+        class="element-row"
+        [class.expanded-row]="expandedElement === element"
+      ></tr>
+
+      <!-- Expanded Detail Row -->
+      <tr
+        mat-row
+        *matRowDef="let row; columns: ['expandedDetail']"
+        class="detail-row"
+      ></tr>
     </table>
 
     <mat-paginator

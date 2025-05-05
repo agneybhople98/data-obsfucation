@@ -77,7 +77,7 @@ const ELEMENT_DATA: JobElement[] = [
           return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
-        recordsProcessed: 10,
+
         message: [
           {
             name: 'Copy Schema And Data is Successful',
@@ -101,7 +101,7 @@ const ELEMENT_DATA: JobElement[] = [
           return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
-        recordsProcessed: 20,
+
         message: [
           {
             name: 'Create Procedures And Functions is Successful',
@@ -125,13 +125,13 @@ const ELEMENT_DATA: JobElement[] = [
           return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
-        recordsProcessed: 30,
+
         message: [{ name: 'Create Masking Script is Successful' }],
       },
 
       {
         taskId: 'TASK-55678903',
-        taskDescription: "MaskTable-'CI_PER'",
+        taskDescription: "ObfuscateTable-'CI_PER'",
         status: 'In Progress',
         startTime: (() => {
           const date = new Date();
@@ -160,7 +160,7 @@ const ELEMENT_DATA: JobElement[] = [
 
       {
         taskId: 'TASK-55678904',
-        taskDescription: "MaskTable-'CI_PER_ADDR_SEAS'",
+        taskDescription: "ObfuscateTable-'CI_PER_ADDR_SEAS'",
         status: 'Pending',
         startTime: (() => {
           const date = new Date();
@@ -180,7 +180,7 @@ const ELEMENT_DATA: JobElement[] = [
       },
       {
         taskId: 'TASK-55678905',
-        taskDescription: "MaskTable-'C1_ADDRESS'",
+        taskDescription: "ObfuscateTable-'C1_ADDRESS'",
         status: 'Pending',
         startTime: (() => {
           const date = new Date();
@@ -211,7 +211,7 @@ const ELEMENT_DATA: JobElement[] = [
       },
       {
         taskId: 'TASK-55678906',
-        taskDescription: "MaskTable-'CI_PER_NAME'",
+        taskDescription: "ObfuscateTable-'CI_PER_NAME'",
         status: 'Pending',
         startTime: (() => {
           const date = new Date();
@@ -231,7 +231,7 @@ const ELEMENT_DATA: JobElement[] = [
       },
       {
         taskId: 'TASK-55678907',
-        taskDescription: "MaskTable-'CI_PER_PHONE'",
+        taskDescription: "ObfuscateTable-'CI_PER_PHONE'",
         status: 'Pending',
         startTime: (() => {
           const date = new Date();
@@ -278,7 +278,7 @@ const ELEMENT_DATA: JobElement[] = [
           return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
-        recordsProcessed: 10,
+
         message: [{ name: 'Copy Schema And Data is Successful' }],
       },
       {
@@ -298,7 +298,7 @@ const ELEMENT_DATA: JobElement[] = [
           return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
-        recordsProcessed: 5,
+
         message: [{ name: 'Create Procedures And Functions is Successful' }],
       },
       {
@@ -318,12 +318,12 @@ const ELEMENT_DATA: JobElement[] = [
           return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
-        recordsProcessed: 15,
+
         message: [{ name: 'Create Masking Script is Successful' }],
       },
       {
         taskId: 'TASK-55678901',
-        taskDescription: "MaskTable-'CI_PER'",
+        taskDescription: "ObfuscateTable-'CI_PER'",
         status: 'Completed',
         startTime: (() => {
           const date = new Date();
@@ -343,7 +343,7 @@ const ELEMENT_DATA: JobElement[] = [
       },
       {
         taskId: 'TASK-55678900',
-        taskDescription: "MaskTable-'CI_PER_Name'",
+        taskDescription: "ObfuscateTable-'CI_PER_Name'",
         status: 'Failed',
         errorMessage:
           'RUN-98764, Table : CI_PER_Name, Column : EmailID,  SQL Error: ORA-00904: "EMAILID": invalid identifier`',
@@ -379,7 +379,7 @@ const ELEMENT_DATA: JobElement[] = [
     progress: 50,
     additionalRunIdDetails: [
       {
-        jobId: 'RUN-98763',
+        jobId: 'RUN-98019',
         jobName: 'Person Entity Anonymization – Pre-Prod',
         jobDescription:
           'Anonymize persons for secure pre-production and testing.',
@@ -445,8 +445,7 @@ const ELEMENT_DATA: JobElement[] = [
           return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
-        recordsProcessed: 10,
-        message: [{ name: 'Masking phone numbers is Successful' }],
+        message: [{ name: 'Obfuscating phone numbers successfull' }],
       },
     ],
   },
@@ -477,7 +476,6 @@ const ELEMENT_DATA: JobElement[] = [
           return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
-        recordsProcessed: 8,
         message: [{ name: 'Shuffling demographic data is Successful' }],
       },
     ],
@@ -545,7 +543,6 @@ const ELEMENT_DATA: JobElement[] = [
           return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
-        recordsProcessed: 5,
         message: 'SQL Log: Cloning Schema is Successful',
       },
     ],
@@ -676,7 +673,6 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
           return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
-        recordsProcessed: 5,
         message: [
           {
             name: 'Copy Schema And Data is Successful',
@@ -700,7 +696,6 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
           return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
-        recordsProcessed: 10,
         message: [
           {
             name: 'Create Procedures And Functions is Successful',
@@ -724,13 +719,13 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
           return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
-        recordsProcessed: 100,
+
         message: [{ name: 'Create Masking Script is Successful' }],
       },
 
       {
         taskId: 'TASK-55678903',
-        taskDescription: "MaskTable-'CI_PER'",
+        taskDescription: "ObfuscateTable-'CI_PER'",
         status: 'In Progress',
         startTime: (() => {
           const date = new Date();
@@ -757,7 +752,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
 
       {
         taskId: 'TASK-55678904',
-        taskDescription: "MaskTable-'CI_PER_ADDR_SEAS'",
+        taskDescription: "ObfuscateTable-'CI_PER_ADDR_SEAS'",
         status: 'Pending',
         startTime: (() => {
           const date = new Date();
@@ -777,7 +772,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
       },
       {
         taskId: 'TASK-55678905',
-        taskDescription: "MaskTable-'C1_ADDRESS'",
+        taskDescription: "ObfuscateTable-'C1_ADDRESS'",
         status: 'Pending',
         startTime: (() => {
           const date = new Date();
@@ -808,7 +803,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
       },
       {
         taskId: 'TASK-55678906',
-        taskDescription: "MaskTable-'CI_PER_NAME'",
+        taskDescription: "ObfuscateTable-'CI_PER_NAME'",
         status: 'Pending',
         startTime: (() => {
           const date = new Date();
@@ -828,7 +823,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
       },
       {
         taskId: 'TASK-55678907',
-        taskDescription: "MaskTable-'CI_PER_PHONE'",
+        taskDescription: "ObfuscateTable-'CI_PER_PHONE'",
         status: 'Pending',
         startTime: (() => {
           const date = new Date();
@@ -875,7 +870,6 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
           return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
-        recordsProcessed: 5,
         message: [{ name: 'Copy Schema And Data is Successful' }],
       },
       {
@@ -895,7 +889,6 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
           return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
-        recordsProcessed: 9,
         message: [{ name: 'Create Procedures And Functions is Successful' }],
       },
       {
@@ -915,12 +908,11 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
           return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
-        recordsProcessed: 10,
         message: [{ name: 'Create Masking Script is Successful' }],
       },
       {
         taskId: 'TASK-55678901',
-        taskDescription: "MaskTable-'CI_PER'",
+        taskDescription: "ObfuscateTable-'CI_PER'",
         status: 'Completed',
         startTime: (() => {
           const date = new Date();
@@ -1043,7 +1035,6 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
           return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
-        recordsProcessed: 17,
         message: [{ name: 'Masking phone numbers is Successful' }],
       },
     ],
@@ -1075,7 +1066,6 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
           return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
-        recordsProcessed: 10,
         message: [{ name: 'Shuffling demographic data is Successful' }],
       },
     ],
@@ -1144,7 +1134,6 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
           return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
-        recordsProcessed: 25,
         message: 'SQL Log: Cloning Schema is Successful',
       },
     ],
@@ -1176,7 +1165,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
           return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
-        recordsProcessed: 25,
+
         message: 'SQL Log: Cloning Schema is Successful',
       },
     ],

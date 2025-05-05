@@ -972,7 +972,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
         jobName: 'Billing Transactions - US Region',
         jobDescription:
           'Secures billing, adjustments, and payment data for performance testing.',
-        triggeredOn: '25/04/2025 08:22:10AM',
+        triggeredOn: '03/04/2025 11:22:10AM',
         status: 'failed',
         obsfucationControlName: 'Billing Transactions - US Region',
         progress: 50,

@@ -35,17 +35,16 @@ export class JobControlComponent implements OnInit, OnDestroy {
   ];
   // healthcare options
   obsControlOptionsHealthcare = [
-    'Healthcare Policy data',
-    'Healthcare Accounts Data',
-    'Billing Info Data',
-    'Medical History records obfuscation',
-    'Insurance Coverage obfuscation',
-    'Service Provider Directory obfuscation',
-    'Pharmacy Claims obfuscation',
-    'Claims Processing DB',
+    'Membership & Policy Data Obfuscation',
+    'Customer & Account Obfuscation',
+    'Billing Transactions - US Region',
+    'Membership Plan Enrollments Obfuscation',
+    'Coverage & Benefits Obfuscation - Prod',
+    'Claim Details Obfuscation - EU',
+    'Claims Payments & Payouts - AUS',
   ];
   selectedObsControl = 'Utility Account Obfuscation'; // Default selected value
-  selectedObsControlHealthcare = 'Healthcare Policy data';
+  selectedObsControlHealthcare = 'Membership & Policy Data Obfuscation';
   dataSource!: MatTableDataSource<any>;
   displayedColumns: any[] = [
     'jobControlId',
@@ -119,7 +118,8 @@ export class JobControlComponent implements OnInit, OnDestroy {
     if (this.router.url.includes('utility')) {
       this.selectedObsControl = 'Utility Account Obfuscation';
     } else if (this.router.url.includes('healthcare')) {
-      this.selectedObsControlHealthcare = 'Healthcare Policy data';
+      this.selectedObsControlHealthcare =
+        'Membership & Policy Data Obfuscation';
     }
     this.changeDetectorRef.detectChanges();
   }

@@ -69,24 +69,22 @@ export class JobDetailsComponent implements OnInit, AfterViewInit, OnDestroy {
 
   // healthcare options
   obsControlOptionsHealthcare = [
-    'Healthcare Policy data',
-    'Healthcare Accounts Data',
-    'Billing Info Data',
-    'Medical History records obfuscation',
-    'Insurance Coverage obfuscation',
-    'Service Provider Directory obfuscation',
-    'Pharmacy Claims obfuscation',
-    'Claims Processing DB',
+    'Membership & Policy Data Obfuscation',
+    'Customer & Account Obfuscation',
+    'Billing Transactions - US Region',
+    'Membership Plan Enrollments Obfuscation',
+    'Coverage & Benefits Obfuscation - Prod',
+    'Claim Details Obfuscation - EU',
+    'Claims Payments & Payouts - AUS',
   ];
   jobControlOptionsHealthcare = [
-    'Healthcare Policy data',
-    'Healthcare Accounts Data',
-    'Billing Info Data - US region',
-    'Medical History records obfuscation',
-    'Insurance Coverage obfuscation - Prod',
-    'Service Provider Directory obfuscation - NA',
-    'Pharmacy Claims obfuscation - EU ',
-    'Claims Processing DB - AUS',
+    'Membership & Policy Data Obfuscation',
+    'Customer & Account Obfuscation',
+    'Billing Transactions - US Region',
+    'Membership Plan Enrollments Obfuscation',
+    'Coverage & Benefits Obfuscation - Prod',
+    'Claim Details Obfuscation - EU',
+    'Claims Payments & Payouts - AUS ',
   ];
   expandedElement: any | null = null;
   public jobId: any;
@@ -196,8 +194,10 @@ export class JobDetailsComponent implements OnInit, AfterViewInit, OnDestroy {
       this.selectedJobIdControl = 'Utility Account Obfuscation – Non-Prod';
       this.selectedObsControl = 'Utility Account Obfuscation';
     } else if (this.router.url.includes('healthcare')) {
-      this.selectedJobIdControlHealthcare = 'Healthcare Policy data';
-      this.selectedObsControlHealthcare = 'Healthcare Policy data';
+      this.selectedJobIdControlHealthcare =
+        'Membership & Policy Data Obfuscation';
+      this.selectedObsControlHealthcare =
+        'Membership & Policy Data Obfuscation';
     }
     this.changeDetectorRef.detectChanges();
   }

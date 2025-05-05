@@ -93,7 +93,7 @@ const ELEMENT_DATA: any[] = [
     obsControlId: 'OP-98759',
     obsControlName: 'Outage Data Anonymization',
     obsControlDescription:
-      'Anonymizes healthcare provider profiles and contact information for NA region',
+      'Obfuscates claim headers and line items, including statuses and adjudication outcomes.',
     createdBy: 'Martinez Sofia',
     details: {
       name: 'Testing',
@@ -108,9 +108,9 @@ const ELEMENT_DATA: any[] = [
 const ELEMENT_DATA_HEALTHCARE: any[] = [
   {
     obsControlId: 'OP-98765',
-    obsControlName: 'Healthcare Policy data',
+    obsControlName: 'Membership & Policy Data Obfuscation',
     obsControlDescription:
-      'Masking sensitive details in healthcare policy records for testing on stage enviroment',
+      'Masks sensitive details in customer memberships, policies, and eligibility for staging.',
     createdBy: 'Miller Smith',
     details: {
       name: 'Testing',
@@ -123,9 +123,9 @@ const ELEMENT_DATA_HEALTHCARE: any[] = [
   },
   {
     obsControlId: 'OP-98764',
-    obsControlName: 'Healthcare Accounts Data',
+    obsControlName: 'Customer & Account Obfuscation',
     obsControlDescription:
-      'Obfuscates financial and user account information from production data',
+      'Obfuscates personally identifiable information (PII) in customer and account entities.',
     createdBy: 'Smith Wilson',
     details: {
       name: 'Testing',
@@ -138,9 +138,9 @@ const ELEMENT_DATA_HEALTHCARE: any[] = [
   },
   {
     obsControlId: 'OP-98763',
-    obsControlName: 'Billing Info Data',
+    obsControlName: 'Billing Transactions - US Region',
     obsControlDescription:
-      'Secures billing transactions and payment records for performance testing enviroment',
+      'Secures billing, adjustments, and payment data for performance testing.',
     createdBy: 'Jonny Johnson',
     details: {
       name: 'Testing',
@@ -153,9 +153,9 @@ const ELEMENT_DATA_HEALTHCARE: any[] = [
   },
   {
     obsControlId: 'OP-98762',
-    obsControlName: 'Medical History records obfuscation',
+    obsControlName: 'Membership Plan Enrollments Obfuscation',
     obsControlDescription:
-      'Anonymizes sensitive medical records and treatment histories',
+      'Anonymizes enrollment details, plan types, and coverage start/end dates.',
     createdBy: 'Chris Brown',
     details: {
       name: 'Testing',
@@ -168,9 +168,9 @@ const ELEMENT_DATA_HEALTHCARE: any[] = [
   },
   {
     obsControlId: 'OP-98761',
-    obsControlName: 'Insurance Coverage obfuscation',
+    obsControlName: 'Coverage & Benefits Obfuscation - Prod',
     obsControlDescription:
-      'Masks member coverage plans and insurance provider data.',
+      'Masks insurance coverage data, benefits, and associated financial limits.',
     createdBy: 'Maria Garcia',
     details: {
       name: 'Testing',
@@ -183,9 +183,9 @@ const ELEMENT_DATA_HEALTHCARE: any[] = [
   },
   {
     obsControlId: 'OP-98760',
-    obsControlName: 'Service Provider Directory obfuscation',
+    obsControlName: 'Claim Details Obfuscation - EU',
     obsControlDescription:
-      'Anonymizes healthcare provider profiles and contact information for NA region',
+      'Obfuscates claim headers and line items, including statuses and adjudication outcomes.',
     createdBy: 'Rodriguez V',
     details: {
       name: 'Testing',
@@ -198,9 +198,9 @@ const ELEMENT_DATA_HEALTHCARE: any[] = [
   },
   {
     obsControlId: 'OP-98759',
-    obsControlName: 'Pharmacy Claims obfuscation',
+    obsControlName: 'Claims Payments & Payouts - AUS',
     obsControlDescription:
-      'Secures prescription claim data including drug codes and patient info',
+      'Anonymizes financial disbursements, payment references, and claim resolution info.',
     createdBy: 'Martinez Sofia',
     details: {
       name: 'Testing',

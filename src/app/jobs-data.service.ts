@@ -521,7 +521,7 @@ const ELEMENT_DATA: JobElement[] = [
     jobId: 'RUN-98759',
     jobName: 'Outage Data Anonymization – Global Compliance',
     jobDescription:
-      'Global anonymization of outage data for analytics, reporting, and compliance.',
+      'Anonymizes healthcare provider profiles and contact information for NA region',
     triggeredOn: '05/04/2025 09:30:33AM',
     status: 'success',
     obsfucationControlName: 'Outage Data Anonymization',
@@ -626,11 +626,11 @@ const ELEMENT_DATA_JOB_CONTROL: JobDataControlElement[] = [
     jobControlId: 'JC-98759',
     jobControlName: 'Outage Data Anonymization – Global Compliance',
     jobControlDescription:
-      'Global anonymization of outage data for analytics, reporting, and compliance.',
+      'Anonymizes healthcare provider profiles and contact information for NA region',
     lastTriggeredOn: '05/04/2025 09:30:33AM',
     obsfucationControlId: 'Outage Data Anonymization',
     obsfucationControlDescription:
-      'Global anonymization of outage data for analytics, reporting, and compliance.',
+      'Anonymizes healthcare provider profiles and contact information for NA region',
   },
 ];
 
@@ -639,9 +639,9 @@ const ELEMENT_DATA_JOB_CONTROL: JobDataControlElement[] = [
 const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
   {
     jobId: 'RUN-98765',
-    jobName: 'HC SvcData Obfuscation EU',
+    jobName: 'Healthcare Policy data',
     jobDescription:
-      'Obfuscates healthcare service records from EU regions for non-production environments.',
+      'Masking sensitive details in healthcare policy records for testing on stage enviroment',
     triggeredOn: (() => {
       const date = new Date();
       const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -655,7 +655,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
       return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
     })(),
     status: 'in-progress',
-    obsfucationControlName: 'HC SvcData Obfuscation - EU',
+    obsfucationControlName: 'Healthcare Policy data',
     progress: 0,
     tasks: [
       {
@@ -850,12 +850,12 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
   },
   {
     jobId: 'RUN-98764',
-    jobName: 'Insurance Claims Obfuscation',
+    jobName: 'Healthcare Accounts Data',
     jobDescription:
-      'Masks insurance claims data for safe use in test and development environements.',
+      'Obfuscates financial and user account information from production data',
     triggeredOn: '28/04/2025 07:33:22AM',
     status: 'failed',
-    obsfucationControlName: 'Insurance Claims Obfuscation',
+    obsfucationControlName: 'Healthcare Accounts Data',
     progress: 90,
     tasks: [
       {
@@ -967,22 +967,22 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
   },
   {
     jobId: 'RUN-98763',
-    jobName: 'HC Provider TestDB',
+    jobName: 'Billing Info Data - US region',
     jobDescription:
-      'Anonymizes healthcare provider database for secure pre-production and testing.',
+      'Secures billing transactions and payment records for performance testing enviroment',
     triggeredOn: '25/04/2025 08:22:10AM',
     status: 'failed',
-    obsfucationControlName: 'HC Provider TestDB Obfuscation',
+    obsfucationControlName: 'Billing Info Data',
     progress: 50,
     additionalRunIdDetails: [
       {
         jobId: 'RUN-98763',
-        jobName: 'HC Provider TestDB',
+        jobName: 'Billing Info Data - US region',
         jobDescription:
-          'Anonymizes healthcare provider database for secure pre-production and testing.',
+          'Secures billing transactions and payment records for performance testing enviroment',
         triggeredOn: '25/04/2025 08:22:10AM',
         status: 'failed',
-        obsfucationControlName: 'HC Provider TestDB Obfuscation',
+        obsfucationControlName: 'Billing Info Data',
         progress: 50,
       },
     ],
@@ -1016,12 +1016,12 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
   },
   {
     jobId: 'RUN-98762',
-    jobName: 'HC SvcData Obfuscation AUS',
+    jobName: 'Medical History records obfuscation',
     jobDescription:
-      'Obfuscates healthcare service data from Australia for dev/test usage.',
+      'Anonymizes sensitive medical records and treatment histories',
     triggeredOn: '20/04/2025 08:11:09AM',
     status: 'success',
-    obsfucationControlName: 'HC SvcData Obfuscation - AUS',
+    obsfucationControlName: 'Medical History records obfuscation',
 
     progress: 100,
     tasks: [
@@ -1050,12 +1050,11 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
   },
   {
     jobId: 'RUN-98761',
-    jobName: 'InsurancePolicy Obf US',
-    jobDescription:
-      'Obfuscates insurance policyholder details in U.S. policy DBs.',
+    jobName: 'Insurance Coverage obfuscation - Prod',
+    jobDescription: 'Masks member coverage plans and insurance provider data.',
     triggeredOn: '15/04/2025 09:30:33AM',
     status: 'success',
-    obsfucationControlName: 'Insurance Policy Obfuscation - US',
+    obsfucationControlName: 'Insurance Coverage obfuscation',
     progress: 100,
     tasks: [
       {
@@ -1083,12 +1082,12 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
   },
   {
     jobId: 'RUN-98760',
-    jobName: 'OutageReports Global Data',
+    jobName: 'Service Provider Directory obfuscation - NA',
     jobDescription:
-      'Global anonymization of outage data for analytics, reporting, and compliance.',
+      'Anonymizes healthcare provider profiles and contact information for NA region',
     triggeredOn: '10/04/2025 09:30:33AM',
     status: 'success',
-    obsfucationControlName: 'Outage Reports Obfuscation - Global',
+    obsfucationControlName: 'Service Provider Directory obfuscation',
     progress: 100,
     tasks: [
       {
@@ -1119,12 +1118,44 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
   },
   {
     jobId: 'RUN-98759',
-    jobName: 'Patient Master Prod EU',
+    jobName: 'Pharmacy Claims obfuscation - EU ',
     jobDescription:
-      'Patient Master system - Production environment for the EU region',
+      'Secures prescription claim data including drug codes and patient info',
     triggeredOn: '05/04/2025 09:30:33AM',
     status: 'success',
-    obsfucationControlName: 'Patient Master Prod Obfuscation - EU',
+    obsfucationControlName: 'Pharmacy Claims obfuscation',
+    progress: 100,
+    tasks: [
+      {
+        taskId: 'TASK-55678091',
+        taskDescription: 'Substituting email addresses',
+        status: 'Failed',
+        errorMessage: `RUN-98759 'SQL Error: ORA-00904: "EMAILID": invalid identifier https://docs.oracle.com/error-help/db/ora-00904/00904. 00000 - "%s: invalid identifier"'`,
+        startTime: (() => {
+          const date = new Date();
+          const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const day = date.getDate().toString().padStart(2, '0');
+          const year = date.getFullYear();
+          const hours = date.getHours() % 12 || 12;
+          const minutes = date.getMinutes().toString().padStart(2, '0');
+          const seconds = date.getSeconds().toString().padStart(2, '0');
+          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+        })(),
+        endTime: null,
+        recordsProcessed: 25,
+        message: 'SQL Log: Cloning Schema is Successful',
+      },
+    ],
+  },
+  {
+    jobId: 'RUN-98758',
+    jobName: 'Claims Processing DB - AUS',
+    jobDescription: 'Anonymizes insurance claims, statuses, and payouts.',
+    triggeredOn: '05/04/2025 09:30:33AM',
+    status: 'success',
+    obsfucationControlName: 'Claims Processing DB',
     progress: 100,
     tasks: [
       {
@@ -1155,9 +1186,9 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
 const ELEMENT_DATA_JOB_CONTROL_HEALTHCARE: JobDataControlElement[] = [
   {
     jobControlId: 'JC-98765',
-    jobControlName: 'HC SvcData Obfuscation EU',
+    jobControlName: 'Healthcare Policy data',
     jobControlDescription:
-      'Obfuscates healthcare service records from EU regions for non-production environments.',
+      'Masking sensitive details in healthcare policy records for testing on stage enviroment',
     lastTriggeredOn: (() => {
       const date = new Date();
       const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -1170,69 +1201,80 @@ const ELEMENT_DATA_JOB_CONTROL_HEALTHCARE: JobDataControlElement[] = [
 
       return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
     })(),
-    obsfucationControlId: 'HC SvcData Obfuscation - EU',
+    obsfucationControlId: 'Healthcare Policy data',
     obsfucationControlDescription:
-      'Obfuscates healthcare service records from EU regions for non-production environments.',
+      'Masking sensitive details in healthcare policy records for testing on stage enviroment',
   },
   {
     jobControlId: 'JC-98764',
-    jobControlName: 'Insurance Claims Obfuscation',
+    jobControlName: 'Healthcare Accounts Data',
     jobControlDescription:
-      'Masks insurance claims data for safe use in test and development environements.',
+      'Obfuscates financial and user account information from production data',
     lastTriggeredOn: '28/04/2025 07:33:22AM',
-    obsfucationControlId: 'Insurance Claims Obfuscation',
+    obsfucationControlId: 'Healthcare Accounts Data',
     obsfucationControlDescription:
-      'Masks insurance claims data for safe use in test and development environements.',
+      'Obfuscates financial and user account information from production data',
   },
   {
     jobControlId: 'JC-98763',
-    jobControlName: 'HC Provider TestDB',
+    jobControlName: 'Billing Info Data - US region',
     jobControlDescription:
-      'Anonymizes healthcare provider database for secure pre-production and testing.',
+      'Secures billing transactions and payment records for performance testing enviroment',
     lastTriggeredOn: '25/04/2025 08:11:09AM',
-    obsfucationControlId: 'HC Provider TestDB Obfuscation',
+    obsfucationControlId: 'Billing Info Data',
     obsfucationControlDescription:
-      'Anonymizes healthcare provider database for secure pre-production and testing.',
+      'Secures billing transactions and payment records for performance testing enviroment',
   },
   {
     jobControlId: 'JC-98762',
-    jobControlName: 'HC SvcData Obfuscation AUS',
+    jobControlName: 'Medical History records obfuscation',
     jobControlDescription:
-      'Obfuscates healthcare service data from Australia for dev/test usage.',
+      'Anonymizes sensitive medical records and treatment histories',
     lastTriggeredOn: '20/04/2025 08:22:10AM',
-    obsfucationControlId: 'HC SvcData Obfuscation - AUS',
+    obsfucationControlId: 'Medical History records obfuscation',
     obsfucationControlDescription:
-      'Obfuscates healthcare service data from Australia for dev/test usage.',
+      'Anonymizes sensitive medical records and treatment histories',
   },
   {
     jobControlId: 'JC-98761',
-    jobControlName: 'InsurancePolicy Obf US',
+    jobControlName: 'Insurance Coverage obfuscation - Prod',
     jobControlDescription:
-      'Obfuscates insurance policyholder details in U.S. policy DBs.',
+      'Masks member coverage plans and insurance provider data.',
     lastTriggeredOn: '15/04/2025 09:30:33AM',
-    obsfucationControlId: 'Insurance Policy Obfuscation - US',
+    obsfucationControlId: 'Insurance Coverage obfuscation',
     obsfucationControlDescription:
-      'Obfuscates insurance policyholder details in U.S. policy DBs.',
+      'Masks member coverage plans and insurance provider data.',
   },
   {
     jobControlId: 'JC-98760',
-    jobControlName: 'OutageReports Global Data',
+    jobControlName: 'Service Provider Directory obfuscation - NA',
     jobControlDescription:
-      'Global anonymization of outage data for analytics, reporting, and compliance.',
+      'Anonymizes healthcare provider profiles and contact information for NA region',
     lastTriggeredOn: '10/04/2025 09:30:33AM',
-    obsfucationControlId: 'Outage Reports Obfuscation - Global',
+    obsfucationControlId: 'Service Provider Directory obfuscation',
     obsfucationControlDescription:
-      'Global anonymization of outage data for analytics, reporting, and compliance.',
+      'Anonymizes healthcare provider profiles and contact information for NA region',
   },
   {
     jobControlId: 'JC-98759',
-    jobControlName: 'Patient Master Prod EU',
+    jobControlName: 'Pharmacy Claims obfuscation - EU',
     jobControlDescription:
-      'Patient Master system - Production environment for the EU region',
+      'Secures prescription claim data including drug codes and patient info',
     lastTriggeredOn: '05/04/2025 09:30:33AM',
-    obsfucationControlId: 'Patient Master Prod Obfuscation - EU',
+    obsfucationControlId: 'Pharmacy Claims obfuscation',
     obsfucationControlDescription:
-      'Patient Master system - Production environment for the EU region.',
+      'Secures prescription claim data including drug codes and patient info',
+  },
+
+  {
+    jobControlId: 'JC-98758',
+    jobControlName: 'Claims Processing DB - AUS',
+    jobControlDescription:
+      'Anonymizes insurance claims, statuses, and payouts.',
+    lastTriggeredOn: '05/04/2025 09:30:33AM',
+    obsfucationControlId: 'Claims Processing DB',
+    obsfucationControlDescription:
+      'Anonymizes insurance claims, statuses, and payouts.',
   },
 ];
 

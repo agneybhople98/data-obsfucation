@@ -41,7 +41,7 @@
           label="Name"
           [value]="
             this.currentDomain === 'healthcare'
-              ? 'HC SvcData Obfuscation - EU'
+              ? 'Healthcare Policy data'
               : 'Utility Account Obfuscation'
           "
         >
@@ -52,7 +52,7 @@
           [required]="true"
           [value]="
             this.currentDomain === 'healthcare'
-              ? 'Obfuscates healthcare service records from EU regions for non-production environments.'
+              ? 'Masking sensitive details in healthcare policy records for testing on stage enviroment'
               : 'Obfuscate utility accounts for non-production environments.'
           "
           [additionalInfo]="'Last connection Date: 09/04/2025 11:50 PM'"

@@ -48,8 +48,7 @@
               {{
                 obsControlData?.obsControlName
                   ? obsControlData?.obsControlName
-                  : obsControlData?.jobControlName ||
-                    "HC SvcData Obfuscation - EU"
+                  : obsControlData?.jobControlName || "Healthcare Policy data"
               }}
             </div>
           </div>
@@ -68,7 +67,7 @@
                 obsControlData?.obsControlDescription
                   ? obsControlData?.obsControlDescription
                   : obsControlData?.jobControlDescription ||
-                    "Obfuscates healthcare service records from EU regions for non-production environments."
+                    "Masking sensitive details in healthcare policy records for testing on stage enviroment"
               }}
             </div>
           </div>

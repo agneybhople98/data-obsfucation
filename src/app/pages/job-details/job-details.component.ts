@@ -69,22 +69,24 @@ export class JobDetailsComponent implements OnInit, AfterViewInit, OnDestroy {
 
   // healthcare options
   obsControlOptionsHealthcare = [
-    'HC SvcData Obfuscation - EU',
-    'Insurance Claims Obfuscation',
-    'HC Provider TestDB Obfuscation',
-    'HC SvcData Obfuscation - AUS',
-    'Insurance Policy Obfuscation - US',
-    'Outage Reports Obfuscation - Global',
-    'Patient Master Prod Obfuscation - EU',
+    'Healthcare Policy data',
+    'Healthcare Accounts Data',
+    'Billing Info Data',
+    'Medical History records obfuscation',
+    'Insurance Coverage obfuscation',
+    'Service Provider Directory obfuscation',
+    'Pharmacy Claims obfuscation',
+    'Claims Processing DB',
   ];
   jobControlOptionsHealthcare = [
-    'HC SvcData Obfuscation EU',
-    'Insurance Claims Obfuscation',
-    'HC Provider TestDB',
-    'HC SvcData Obfuscation AUS',
-    'InsurancePolicy Obf US',
-    'OutageReports Global Data',
-    'Patient Master Prod EU',
+    'Healthcare Policy data',
+    'Healthcare Accounts Data',
+    'Billing Info Data - US region',
+    'Medical History records obfuscation',
+    'Insurance Coverage obfuscation - Prod',
+    'Service Provider Directory obfuscation - NA',
+    'Pharmacy Claims obfuscation - EU ',
+    'Claims Processing DB - AUS',
   ];
   expandedElement: any | null = null;
   public jobId: any;
@@ -194,8 +196,8 @@ export class JobDetailsComponent implements OnInit, AfterViewInit, OnDestroy {
       this.selectedJobIdControl = 'Utility Account Obfuscation – Non-Prod';
       this.selectedObsControl = 'Utility Account Obfuscation';
     } else if (this.router.url.includes('healthcare')) {
-      this.selectedJobIdControlHealthcare = 'HC SvcData Obfuscation EU';
-      this.selectedObsControlHealthcare = 'HC SvcData Obfuscation - EU';
+      this.selectedJobIdControlHealthcare = 'Healthcare Policy data';
+      this.selectedObsControlHealthcare = 'Healthcare Policy data';
     }
     this.changeDetectorRef.detectChanges();
   }

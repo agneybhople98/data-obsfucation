@@ -93,7 +93,7 @@ const ELEMENT_DATA: any[] = [
     obsControlId: 'OP-98759',
     obsControlName: 'Outage Data Anonymization',
     obsControlDescription:
-      'Global anonymization of outage data for analytics, reporting, and compliance.',
+      'Anonymizes healthcare provider profiles and contact information for NA region',
     createdBy: 'Martinez Sofia',
     details: {
       name: 'Testing',
@@ -108,9 +108,9 @@ const ELEMENT_DATA: any[] = [
 const ELEMENT_DATA_HEALTHCARE: any[] = [
   {
     obsControlId: 'OP-98765',
-    obsControlName: 'HC SvcData Obfuscation - EU',
+    obsControlName: 'Healthcare Policy data',
     obsControlDescription:
-      'Obfuscates healthcare service records from EU regions for non-production environments.',
+      'Masking sensitive details in healthcare policy records for testing on stage enviroment',
     createdBy: 'Miller Smith',
     details: {
       name: 'Testing',
@@ -123,9 +123,9 @@ const ELEMENT_DATA_HEALTHCARE: any[] = [
   },
   {
     obsControlId: 'OP-98764',
-    obsControlName: 'Insurance Claims Obfuscation',
+    obsControlName: 'Healthcare Accounts Data',
     obsControlDescription:
-      'Masks insurance claims data for safe use in test and development environements.',
+      'Obfuscates financial and user account information from production data',
     createdBy: 'Smith Wilson',
     details: {
       name: 'Testing',
@@ -138,9 +138,9 @@ const ELEMENT_DATA_HEALTHCARE: any[] = [
   },
   {
     obsControlId: 'OP-98763',
-    obsControlName: 'HC Provider TestDB Obfuscation',
+    obsControlName: 'Billing Info Data',
     obsControlDescription:
-      'Anonymizes healthcare provider database for secure pre-production and testing.',
+      'Secures billing transactions and payment records for performance testing enviroment',
     createdBy: 'Jonny Johnson',
     details: {
       name: 'Testing',
@@ -153,9 +153,9 @@ const ELEMENT_DATA_HEALTHCARE: any[] = [
   },
   {
     obsControlId: 'OP-98762',
-    obsControlName: 'HC SvcData Obfuscation - AUS',
+    obsControlName: 'Medical History records obfuscation',
     obsControlDescription:
-      'Obfuscates healthcare service data from Australia for dev/test usage.',
+      'Anonymizes sensitive medical records and treatment histories',
     createdBy: 'Chris Brown',
     details: {
       name: 'Testing',
@@ -168,9 +168,9 @@ const ELEMENT_DATA_HEALTHCARE: any[] = [
   },
   {
     obsControlId: 'OP-98761',
-    obsControlName: 'Insurance Policy Obfuscation - US',
+    obsControlName: 'Insurance Coverage obfuscation',
     obsControlDescription:
-      'Obfuscates insurance policyholder details in U.S. policy DBs.',
+      'Masks member coverage plans and insurance provider data.',
     createdBy: 'Maria Garcia',
     details: {
       name: 'Testing',
@@ -183,9 +183,9 @@ const ELEMENT_DATA_HEALTHCARE: any[] = [
   },
   {
     obsControlId: 'OP-98760',
-    obsControlName: 'Outage Reports Obfuscation - Global',
+    obsControlName: 'Service Provider Directory obfuscation',
     obsControlDescription:
-      'Global anonymization of outage data for analytics, reporting, and compliance.',
+      'Anonymizes healthcare provider profiles and contact information for NA region',
     createdBy: 'Rodriguez V',
     details: {
       name: 'Testing',
@@ -198,9 +198,9 @@ const ELEMENT_DATA_HEALTHCARE: any[] = [
   },
   {
     obsControlId: 'OP-98759',
-    obsControlName: 'Patient Master Prod Obfuscation - EU',
+    obsControlName: 'Pharmacy Claims obfuscation',
     obsControlDescription:
-      'Patient Master system - Production environment for the EU region.',
+      'Secures prescription claim data including drug codes and patient info',
     createdBy: 'Martinez Sofia',
     details: {
       name: 'Testing',

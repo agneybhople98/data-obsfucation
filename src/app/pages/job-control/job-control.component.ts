@@ -190,7 +190,7 @@ export class JobControlComponent implements OnInit, OnDestroy {
 
   runAPI() {
     this._jobDataService
-      .runJobByName('OBF_EXECUTE_MAIN_JOB_ARCHDEV')
+      .runJobByName('OBF_EXECUTE_MAIN_JOB_CISADM')
       .subscribe((res) => {
         console.log('res', res);
       });

@@ -20,6 +20,7 @@ export interface ColumnDefinition {
   selectedValue?: any;
   selectedObfStrategy?: any;
   selectedObfRule?: any;
+  inputValue?: any;
 }
 
 // Table definition with columns and obfuscation details
@@ -1203,6 +1204,7 @@ export const TABLE_DATA: TableData = {
           selectedValue: 'CM-GENDR',
           selectedObfStrategy: 'STARIFY',
           selectedObfRule: 'R',
+          inputValue: '3',
         },
 
         {

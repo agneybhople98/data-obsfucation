@@ -898,37 +898,25 @@ export const TABLE_DATA_HEATLHCARE: TableData = {
           columnName: 'PER_ID',
           displayName: 'Person ID',
           obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
-          },
+          obfRules: {},
         },
         {
           columnName: 'SEQ_NUM',
           displayName: 'Sequence Number',
           obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
-          },
+          obfRules: {},
         },
         {
           columnName: 'PHONE_TYPE_CD',
           displayName: 'Phone Type Code',
           obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
-          },
+          obfRules: {},
         },
         {
           columnName: 'COUNTRY_CODE',
           displayName: 'Country Code',
           obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
-          },
+          obfRules: {},
         },
         {
           columnName: 'PHONE',
@@ -943,19 +931,13 @@ export const TABLE_DATA_HEATLHCARE: TableData = {
           columnName: 'EXTENSION',
           displayName: 'Extension',
           obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
-          },
+          obfRules: {},
         },
         {
           columnName: 'VERSION',
           displayName: 'Version',
           obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
-          },
+          obfRules: {},
         },
       ],
     },
@@ -966,10 +948,7 @@ export const TABLE_DATA_HEATLHCARE: TableData = {
           columnName: 'ADDRESS_ID',
           displayName: 'Address Id',
           obfStrategy: 'undefined',
-          obfRules: {
-            first: undefined,
-            second: undefined,
-          },
+          obfRules: {},
         },
         {
           columnName: 'ADDRESS1',
@@ -984,20 +963,14 @@ export const TABLE_DATA_HEATLHCARE: TableData = {
           columnName: 'ADDRESS1_UPR',
           displayName: 'Address Upper',
           obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
-          },
+          obfRules: {},
         },
 
         {
           columnName: 'ADDRESS2',
           displayName: 'Address 2',
           obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
-          },
+          obfRules: {},
         },
 
         {
@@ -1013,19 +986,13 @@ export const TABLE_DATA_HEATLHCARE: TableData = {
           columnName: 'CITY_UPR',
           displayName: 'City Upper',
           obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
-          },
+          obfRules: {},
         },
         {
           columnName: 'COUNTY',
           displayName: 'County',
           obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
-          },
+          obfRules: {},
         },
         {
           columnName: 'POSTAL',
@@ -1040,28 +1007,19 @@ export const TABLE_DATA_HEATLHCARE: TableData = {
           columnName: 'HOUSE_TYPE',
           displayName: 'House Type',
           obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
-          },
+          obfRules: {},
         },
         {
           columnName: 'GEO_CODE',
           displayName: 'Geo Code',
           obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
-          },
+          obfRules: {},
         },
         {
           columnName: 'IN_CITY_LIMIT',
           displayName: 'In City Limit',
           obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
-          },
+          obfRules: {},
         },
         {
           columnName: 'STATE',
@@ -1076,28 +1034,19 @@ export const TABLE_DATA_HEATLHCARE: TableData = {
           columnName: 'COUNTRY',
           displayName: 'Country',
           obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
-          },
+          obfRules: {},
         },
         {
           columnName: 'VERSION',
           displayName: 'Version',
           obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
-          },
+          obfRules: {},
         },
         {
           columnName: 'PER_ADDR_ID',
           displayName: 'Person Address ID',
           obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
-          },
+          obfRules: {},
         },
       ],
     },
@@ -1109,46 +1058,31 @@ export const TABLE_DATA_HEATLHCARE: TableData = {
           columnName: 'PER_ID',
           displayName: 'Per Id',
           obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
-          },
+          obfRules: {},
         },
         {
           columnName: 'ID_TYPE_CD',
           displayName: 'ID Type CD',
           obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
-          },
+          obfRules: {},
         },
         {
           columnName: 'PER_ID_NBR',
           displayName: 'Per Id NBR',
           obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
-          },
+          obfRules: {},
         },
         {
           columnName: 'PRIM_SW',
           displayName: 'Prime SW',
           obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
-          },
+          obfRules: {},
         },
         {
           columnName: 'VERSION',
           displayName: 'Version',
           obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
-          },
+          obfRules: {},
         },
       ],
     },
@@ -1945,6 +1879,118 @@ export const TABLE_DATA_UTILITY: TableData = {
         {
           columnName: 'VERSION',
           displayName: 'VERSION',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+      ],
+    },
+    {
+      tableName: 'CI_PER_CHAR',
+      columns: [
+        {
+          columnName: 'PER_ID',
+          displayName: 'Per Id',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'CHAR_TYPE_CD',
+          displayName: 'Char Type CD',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'CHAR_VAL',
+          displayName: 'Char Val',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'EFFDT',
+          displayName: 'Effdt',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'ADHOC_CHAR_VAL',
+          displayName: 'Adhoc Char Val',
+          isExpandable: true,
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+          selectedOnCondition: 'CHAR_TYPE_CD',
+          selectedOperator: '<',
+          selectedValue: 'CM-GENDR',
+          selectedObfStrategy: 'STARIFY',
+          selectedObfRule: 'R',
+          inputValue: '3',
+        },
+
+        {
+          columnName: 'VERSION',
+          displayName: 'Version',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'CHAR_VAL_FK1',
+          displayName: 'Character Value FK 2',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'CHAR_VAL_FK2',
+          displayName: 'Character Value FK 2',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'CHAR_VAL_FK3',
+          displayName: 'Character Value FK 3',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'CHAR_VAL_FK4',
+          displayName: 'Character Value FK 4',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'CHAR_VAL_FK5',
+          displayName: 'Character Value FK 5',
           obfStrategy: undefined,
           obfRules: {
             first: undefined,

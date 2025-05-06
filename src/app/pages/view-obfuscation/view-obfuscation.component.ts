@@ -174,12 +174,14 @@ export class ViewObfuscationPlanComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.loadTableDataBasedOnDomain();
+    // First detect the domain from URL
+    this.detectDomainFromUrl();
 
     // Extract domain from route parameters
     this.route.params.subscribe((params) => {
       if (params['domain']) {
         this.currentDomain = params['domain'];
+        this.loadTableDataBasedOnDomain();
       }
     });
 
@@ -187,6 +189,7 @@ export class ViewObfuscationPlanComponent implements OnInit {
     this.route.parent?.params.subscribe((params) => {
       if (params['domain']) {
         this.currentDomain = params['domain'];
+        this.loadTableDataBasedOnDomain();
       }
     });
 

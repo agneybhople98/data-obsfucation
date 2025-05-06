@@ -62,6 +62,8 @@ export class CreateObfuscationPlanComponent implements OnInit {
     'CI_PER_PHONE',
     'CI_PER_ADDR_SEAS',
     'C1_ADDRESS',
+    'CI_PER_ID',
+    'CI_PER_CHAR',
   ];
 
   filteredTableItems = [...this.tableItems];

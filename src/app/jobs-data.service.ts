@@ -960,7 +960,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
       },
       {
         taskId: 'TASK-55678900',
-        taskDescription: "MaskTable-'CI_PER_Name'",
+        taskDescription: "ObfuscateTable-'CI_PER_Name'",
         status: 'Failed',
         errorMessage:
           'RUN-98764, Table : CI_PER_Name, Column : EmailID,  SQL Error: ORA-00904: "EMAILID": invalid identifier`',

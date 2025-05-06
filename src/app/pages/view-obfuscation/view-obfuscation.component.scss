@@ -22,3 +22,32 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+// Inner expandable section
+
+tr.detail-row {
+  height: 0;
+}
+
+.bg-disabled-color {
+  background-color: grey !important;
+}
+
+.element-row td {
+  border-bottom-width: 0;
+}
+
+.element-detail {
+  overflow: hidden;
+  display: flex;
+  margin-bottom: 16px;
+  margin-left: 64px;
+  flex-direction: column;
+}
+
+.element-diagram {
+  min-width: 80px;
+  padding: 12px;
+  margin: 8px 0px;
+  border: 0.5px solid #2b2c2d !important;
+}

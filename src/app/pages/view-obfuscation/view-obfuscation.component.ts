@@ -10,19 +10,38 @@ import { MatPaginator } from '@angular/material/paginator';
 import { SelectionModel } from '@angular/cdk/collections';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs';
+import {
+  animate,
+  state,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
 
 @Component({
   selector: 'app-view-obfuscation',
   templateUrl: './view-obfuscation.component.html',
   styleUrl: './view-obfuscation.component.scss',
   standalone: false,
+  animations: [
+    trigger('detailExpand', [
+      state('collapsed', style({ height: '0px', minHeight: '0' })),
+      state('expanded', style({ height: '*' })),
+      transition(
+        'expanded <=> collapsed',
+        animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')
+      ),
+    ]),
+  ],
 })
 export class ViewObfuscationPlanComponent implements OnInit {
   tableData = TABLE_DATA;
+  expandedElement: any | null = null;
   selectedTable = this.tableData.selectedTable;
   currentDomain: string = 'utility';
 
   displayedColumns: string[] = [
+    'expand',
     'select',
     'columnName',
     'obfStrategy',
@@ -53,12 +72,25 @@ export class ViewObfuscationPlanComponent implements OnInit {
     'REPLACE_WITH_CONSTANT',
     'HASH',
   ];
+  operators = ['=', '<', '>', '=>', '<='];
+
+  obfValues = [
+    'CM-GENDR',
+    'CMFNAME ',
+    'CMMGRIND',
+    'CMNMPFX ',
+    'CMMNAME ',
+    'CMMRCODT',
+    'C1TOBCC ',
+    'CMNMSFX ',
+    'CMPYRLLC',
+    'CMLECLSS',
+    'CMLNAME ',
+  ];
+
+  conditions = ['CHAR_TYPE_CD'];
 
   dataSource = new MatTableDataSource<ColumnDefinition>([]);
-  // public dataSource: any;
-  // public obsStrategies = ['Starify', 'Hashing', 'Faker'];
-  // public obsRulesOptions = ['Left', 'Right', 'Type', 'Date'];
-  // public obsRulesNumbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
   public selection = new SelectionModel<any>(true, []);
   obsControlData: any;
 
@@ -68,6 +100,8 @@ export class ViewObfuscationPlanComponent implements OnInit {
     'CI_PER_PHONE',
     'CI_PER_ADDR_SEAS',
     'C1_ADDRESS',
+    'CI_PER_ID',
+    'CI_PER_CHAR',
   ];
 
   filteredTableItems = [...this.tableItems];

@@ -14,6 +14,12 @@ export interface ColumnDefinition {
   displayName: string;
   obfStrategy?: string;
   obfRules?: any;
+  isExpandable?: boolean;
+  selectedOnCondition?: any;
+  selectedOperator?: any;
+  selectedValue?: any;
+  selectedObfStrategy?: any;
+  selectedObfRule?: any;
 }
 
 // Table definition with columns and obfuscation details
@@ -1085,6 +1091,168 @@ export const TABLE_DATA: TableData = {
         {
           columnName: 'PER_ADDR_ID',
           displayName: 'Person Address ID',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+      ],
+    },
+
+    {
+      tableName: 'CI_PER_ID',
+      columns: [
+        {
+          columnName: 'PER_ID',
+          displayName: 'Per Id',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'ID_TYPE_CD',
+          displayName: 'ID Type CD',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'PER_ID_NBR',
+          displayName: 'Per Id NBR',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'PRIM_SW',
+          displayName: 'Prime SW',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'VERSION',
+          displayName: 'Version',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+      ],
+    },
+    {
+      tableName: 'CI_PER_CHAR',
+      columns: [
+        {
+          columnName: 'PER_ID',
+          displayName: 'Per Id',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'CHAR_TYPE_CD',
+          displayName: 'Char Type CD',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'CHAR_VAL',
+          displayName: 'Char Val',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'EFFDT',
+          displayName: 'Effdt',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'ADHOC_CHAR_VAL',
+          displayName: 'Adhoc Char Val',
+          isExpandable: true,
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+          selectedOnCondition: 'CHAR_TYPE_CD',
+          selectedOperator: '<',
+          selectedValue: 'CM-GENDR',
+          selectedObfStrategy: 'STARIFY',
+          selectedObfRule: 'R',
+        },
+
+        {
+          columnName: 'VERSION',
+          displayName: 'Version',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'CHAR_VAL_FK1',
+          displayName: 'Character Value FK 2',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'CHAR_VAL_FK2',
+          displayName: 'Character Value FK 2',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'CHAR_VAL_FK3',
+          displayName: 'Character Value FK 3',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'CHAR_VAL_FK4',
+          displayName: 'Character Value FK 4',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'CHAR_VAL_FK5',
+          displayName: 'Character Value FK 5',
           obfStrategy: undefined,
           obfRules: {
             first: undefined,

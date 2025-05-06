@@ -43,12 +43,23 @@ export class RestoreComponent implements OnInit {
       .subscribe(() => {
         this.detectDomainFromUrl();
       });
-    this._jobService
-      .runJobByName('OBF_REVERT_CHANGES_ARCHDEV_JOB')
-      .subscribe((res) => {
-        console.log(res);
-        this.isRestoring = false;
-      });
+
+    if (this.currentDomain === 'utility') {
+      this._jobService
+        .runJobByName('OBF_REVERT_CHANGES_JOB_CISADM')
+        .subscribe((res) => {
+          console.log(res);
+          this.isRestoring = false;
+        });
+    } else {
+      this._jobService
+        .runJobByName('OBF_REVERT_CHANGES_ARCHDEV_JOB')
+        .subscribe((res) => {
+          console.log(res);
+          this.isRestoring = false;
+        });
+    }
+
     this.startCountdown();
   }
 

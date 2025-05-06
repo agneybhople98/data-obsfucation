@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ObsfucationService } from '../../services/obsfucation.service';
 import {
-  TABLE_DATA,
+  TABLE_DATA_HEATLHCARE,
   ColumnDefinition,
+  TABLE_DATA_UTILITY,
 } from '../../services/obfusaction-table-data.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
@@ -17,7 +18,7 @@ import { filter } from 'rxjs';
   styleUrl: './create-obfuscation.component.scss',
 })
 export class CreateObfuscationPlanComponent implements OnInit {
-  tableData = TABLE_DATA;
+  tableData: any;
   selectedTable: string | null = null;
   currentDomain: string = 'utility';
   displayedColumns: string[] = [
@@ -56,7 +57,7 @@ export class CreateObfuscationPlanComponent implements OnInit {
   public selection = new SelectionModel<any>(true, []);
   obsControlData: any;
 
-  tableItems = [
+  tableItemsHealthcare = [
     'CI_PER',
     'CI_PER_NAME',
     'CI_PER_PHONE',
@@ -65,11 +66,24 @@ export class CreateObfuscationPlanComponent implements OnInit {
     'CI_PER_ID',
     'CI_PER_CHAR',
   ];
+  tableItemsUtility = [
+    'CI_PER',
+    'CI_PER_NAME',
+    'CI_PER_ADDR_SEAS',
+    'CI_PER_CONTDET',
+    'CI_PER_ID',
+    'CI_PER_CHAR',
+  ];
 
-  filteredTableItems = [...this.tableItems];
+  get tableItems() {
+    return this.currentDomain === 'healthcare'
+      ? this.tableItemsHealthcare
+      : this.tableItemsUtility;
+  }
+
+  filteredTableItems: string[] = [];
   searchText = '';
-
-  selectedItem: string | null = 'CI_PER';
+  selectedItem: string | null = null;
 
   constructor(
     private _obsufactionService: ObsfucationService,
@@ -121,10 +135,14 @@ export class CreateObfuscationPlanComponent implements OnInit {
   }
 
   ngOnInit() {
+    // First detect the domain from URL
+    this.detectDomainFromUrl();
+
     // Extract domain from route parameters
     this.route.params.subscribe((params) => {
       if (params['domain']) {
         this.currentDomain = params['domain'];
+        this.loadTableDataBasedOnDomain();
       }
     });
 
@@ -132,12 +150,21 @@ export class CreateObfuscationPlanComponent implements OnInit {
     this.route.parent?.params.subscribe((params) => {
       if (params['domain']) {
         this.currentDomain = params['domain'];
+        this.loadTableDataBasedOnDomain();
       }
     });
+
+    // Listen to navigation events to detect domain changes
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe(() => {
+        const prevDomain = this.currentDomain;
         this.detectDomainFromUrl();
+
+        // Only reload if domain actually changed
+        if (prevDomain !== this.currentDomain) {
+          this.loadTableDataBasedOnDomain();
+        }
       });
 
     // Get state data from navigation
@@ -149,13 +176,15 @@ export class CreateObfuscationPlanComponent implements OnInit {
       this.obsControlData = history.state.data;
     }
 
+    // Load table data based on current domain
+    this.loadTableDataBasedOnDomain();
+
+    // Initialize table data if we have a selected item
     if (this.selectedItem) {
       this.selectItem(this.selectedItem);
     } else {
       this.dataSource.data = [];
     }
-
-    // Initialize with empty data source
   }
 
   // Extract domain from URL
@@ -171,6 +200,52 @@ export class CreateObfuscationPlanComponent implements OnInit {
     }
   }
 
+  // Load the correct table data based on current domain
+  private loadTableDataBasedOnDomain(): void {
+    if (this.currentDomain === 'utility') {
+      this.tableData = TABLE_DATA_UTILITY;
+    } else if (this.currentDomain === 'healthcare') {
+      this.tableData = TABLE_DATA_HEATLHCARE;
+    } else {
+      // If domain is not recognized, default to utility
+      this.currentDomain = 'utility';
+      this.tableData = TABLE_DATA_UTILITY;
+    }
+
+    // Set the default selected table if available
+    if (this.tableData && this.tableData.selectedTable) {
+      this.selectedTable = this.tableData.selectedTable;
+      this.selectedItem = this.tableData.selectedTable;
+    }
+
+    // Update filtered items based on current domain
+    this.filteredTableItems = [...this.tableItems];
+
+    // Update table data if a table is already selected
+    if (this.selectedTable) {
+      this.updateTableData();
+    }
+  }
+
+  /**
+   * Update the table data based on selection
+   */
+  private updateTableData() {
+    if (!this.selectedTable) return;
+
+    // Find selected table definition
+    const selectedTableData = this.tableData?.tables.find(
+      (table: any) => table.tableName === this.selectedTable
+    );
+
+    // Update data source if table found
+    if (selectedTableData) {
+      this.dataSource.data = selectedTableData.columns;
+    } else {
+      this.dataSource.data = [];
+    }
+  }
+
   /**
    * Select an item from the sidebar
    */
@@ -180,6 +255,9 @@ export class CreateObfuscationPlanComponent implements OnInit {
 
     // Update selected table
     this.selectedTable = item;
+
+    // Update table data
+    this.updateTableData();
 
     // Create empty columns based on the selected table structure
     this.createEmptyColumns();
@@ -214,20 +292,20 @@ export class CreateObfuscationPlanComponent implements OnInit {
    * Create empty columns for the selected table
    */
   private createEmptyColumns() {
-    if (!this.selectedTable) {
+    if (!this.selectedTable || !this.tableData) {
       this.dataSource.data = [];
       return;
     }
 
     // Find selected table definition to get column structure
     const selectedTableData = this.tableData.tables.find(
-      (table) => table.tableName === this.selectedTable
+      (table: any) => table.tableName === this.selectedTable
     );
 
     // Create empty columns based on the structure of the selected table
     if (selectedTableData) {
       // Create new empty columns with the same column names but empty values
-      const emptyColumns = selectedTableData.columns.map((column) => {
+      const emptyColumns = selectedTableData.columns.map((column: any) => {
         return {
           columnName: column.columnName,
           displayName: column.displayName, // Keep display name

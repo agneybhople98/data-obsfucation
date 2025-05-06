@@ -29,7 +29,8 @@ export interface TableDefinition {
   columns: ColumnDefinition[];
 }
 
-export const TABLE_DATA: TableData = {
+// Utility Table Data
+export const TABLE_DATA_HEATLHCARE: TableData = {
   tables: [
     {
       tableName: 'CI_CUSTOMERS',
@@ -1255,6 +1256,695 @@ export const TABLE_DATA: TableData = {
         {
           columnName: 'CHAR_VAL_FK5',
           displayName: 'Character Value FK 5',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+      ],
+    },
+  ],
+  selectedTable: 'CI_PER',
+};
+// Healthcare Table Data
+export const TABLE_DATA_UTILITY: TableData = {
+  tables: [
+    {
+      tableName: 'CI_PER',
+      columns: [
+        {
+          columnName: 'PER_ID',
+          displayName: 'Person ID',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'LANGUAGE_CD',
+          displayName: 'Language Code',
+          obfStrategy: 'REPLACE_WITH_CONSTANT',
+          obfRules: {
+            first: 'ENG',
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'PER_OR_BUS_FLG',
+          displayName: 'Person or Business Flag',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'LS_SL_FLG',
+          displayName: 'LS SL Flag',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'LS_SL_DESCR',
+          displayName: 'LS SL Description',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'EMAILID',
+          displayName: 'Email ID',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'OVRD_MAIL_NAME1',
+          displayName: 'Override Mail Name 1',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'OVRD_MAIL_NAME2',
+          displayName: 'Override Mail Name 2',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'OVRD_MAIL_NAME3',
+          displayName: 'Override Mail Name 3',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'ADDRESS1',
+          displayName: 'Address 1',
+          obfStrategy: 'FAKER',
+          obfRules: {
+            first: 'ADDRESS',
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'ADDRESS2',
+          displayName: 'Address 2',
+          obfStrategy: 'FAKER',
+          obfRules: {
+            first: 'ADDRESS',
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'ADDRESS3',
+          displayName: 'Address 3',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'ADDRESS4',
+          displayName: 'Address 4',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'CITY',
+          displayName: 'City',
+          obfStrategy: 'STARIFY',
+          obfRules: {
+            first: 'L',
+            second: '3',
+          },
+        },
+        {
+          columnName: 'NUM1',
+          displayName: 'Number 1',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'NUM2',
+          displayName: 'Number 2',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'COUNTY',
+          displayName: 'County',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'POSTAL',
+          displayName: 'Postal Code',
+          obfStrategy: 'RANDOMIZE',
+          obfRules: {
+            first: 'NUMERIC',
+            second: '5',
+          },
+        },
+        {
+          columnName: 'HOUSE_TYPE',
+          displayName: 'House Type',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'GEO_CODE',
+          displayName: 'Geo Code',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'IN_CITY_LIMIT',
+          displayName: 'In City Limit',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'STATE',
+          displayName: 'State',
+          obfStrategy: 'REPLACE_WITH_CONSTANT',
+          obfRules: {
+            first: 'CA',
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'COUNTRY',
+          displayName: 'Country',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'VERSION',
+          displayName: 'Version',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'RECV_MKTG_INFO_FLG',
+          displayName: 'Recv Mktg Info Flag',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'WEB_PASSWD',
+          displayName: 'Web Password ',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'WEB_PWD_HINT_FLG',
+          displayName: 'Web Pwd Hint Flg ',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'WEB_PASSWD_ANS',
+          displayName: 'Web Passwd Ans',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'PER_DATA_AREA',
+          displayName: 'Per Data Area',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+      ],
+    },
+    {
+      tableName: 'CI_PER_NAME',
+      columns: [
+        {
+          columnName: 'PER_ID',
+          displayName: 'Person ID',
+          obfStrategy: undefined,
+          obfRules: {},
+        },
+        {
+          columnName: 'SEQ_NUM',
+          displayName: 'Sequence Number',
+          obfStrategy: undefined,
+          obfRules: {},
+        },
+        {
+          columnName: 'ENTITY_NAME',
+          displayName: 'Entity Name',
+          obfStrategy: 'FAKER',
+          obfRules: {
+            first: 'FULL_NAME',
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'NAME_TYPE_FLG',
+          displayName: 'Name Type Flag',
+          obfStrategy: undefined,
+          obfRules: {},
+        },
+        {
+          columnName: 'VERSION',
+          displayName: 'Version',
+          obfStrategy: undefined,
+          obfRules: {},
+        },
+        {
+          columnName: 'PRIM_NAME_SW',
+          displayName: 'Primary Name Switch',
+          obfStrategy: undefined,
+          obfRules: {},
+        },
+        {
+          columnName: 'ENTITY_NAME_UPR',
+          displayName: 'Entity Name Upper',
+          obfStrategy: undefined,
+          obfRules: {},
+        },
+      ],
+    },
+
+    {
+      tableName: 'CI_PER_ADDR_SEAS',
+      columns: [
+        {
+          columnName: 'PER_ID',
+          displayName: 'Person ID',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'SEQ_NUM',
+          displayName: 'Sequence Number',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'ADDRESS1',
+          displayName: 'Address 1',
+          obfStrategy: 'FAKER',
+          obfRules: {
+            first: 'ADDRESS',
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'ADDRESS2',
+          displayName: 'Address 2',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'ADDRESS3',
+          displayName: 'Address 3',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'ADDRESS4',
+          displayName: 'Address 4',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'CITY',
+          displayName: 'City',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'NUM1',
+          displayName: 'Number 1',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'NUM2',
+          displayName: 'Number 2',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'COUNTY',
+          displayName: 'County',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'POSTAL',
+          displayName: 'Postal Code',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'HOUSE_TYPE',
+          displayName: 'House Type',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'GEO_CODE',
+          displayName: 'Geo Code',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'IN_CITY_LIMIT',
+          displayName: 'In City Limit',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'STATE',
+          displayName: 'State',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'COUNTRY',
+          displayName: 'Country',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'VERSION',
+          displayName: 'Version',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'SEASON_START_MMDD',
+          displayName: 'Season Start MMDD',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'SEASON_END_MMDD',
+          displayName: 'Season End MMDD',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'EFF_STATUS',
+          displayName: 'Effective Status',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+      ],
+    },
+    {
+      tableName: 'CI_PER_ID',
+      columns: [
+        {
+          columnName: 'PER_ID',
+          displayName: 'Per Id',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'ID_TYPE_CD',
+          displayName: 'ID Type CD',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'PER_ID_NBR',
+          displayName: 'Per Id NBR',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'PRIM_SW',
+          displayName: 'Prime SW',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'VERSION',
+          displayName: 'Version',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'ENCR_PER_ID_NBR',
+          displayName: 'Character Value FK 5',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'HASH_PER_ID_NBR',
+          displayName: 'Character Value FK 5',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+      ],
+    },
+    {
+      tableName: 'CI_PER_CONTDET',
+      columns: [
+        {
+          columnName: 'C1_CONTACT_ID',
+          displayName: 'C1_CONTACT_ID',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'PER_ID',
+          displayName: 'PER_ID',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'COMM_RTE_TYPE_CD',
+          displayName: 'COMM_RTE_TYPE_CD',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'CONTACT_VALUE',
+          displayName: 'CONTACT_VALUE',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'CND_PRIMARY_FLAG',
+          displayName: 'CND_PRIMARY_FLAG',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'CONTACT_VALUE_EXT',
+          displayName: 'CONTACT_VALUE_EXT',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'DND_START_TM',
+          displayName: 'DND_START_TM',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'DND_END_TM',
+          displayName: 'DND_END_TM',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'CND_VERIFY_STATUS_FLAG',
+          displayName: 'CND_VERIFY_STATUS_FLAG',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'CND_ACTINACT_FLG',
+          displayName: 'CND_ACTINACT_FLG',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'CONTACT_NAME',
+          displayName: 'CONTACT_NAME',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'VERSION',
+          displayName: 'VERSION',
           obfStrategy: undefined,
           obfRules: {
             first: undefined,

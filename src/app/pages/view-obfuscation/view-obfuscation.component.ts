@@ -3,7 +3,8 @@ import { ObsfucationService } from '../../services/obsfucation.service';
 import {
   ObfusactionTableDataService,
   ColumnDefinition,
-  TABLE_DATA,
+  TABLE_DATA_UTILITY,
+  TABLE_DATA_HEATLHCARE,
 } from '../../services/obfusaction-table-data.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
@@ -35,9 +36,9 @@ import {
   ],
 })
 export class ViewObfuscationPlanComponent implements OnInit {
-  tableData = TABLE_DATA;
+  tableData: any;
   expandedElement: any | null = null;
-  selectedTable = this.tableData.selectedTable;
+  selectedTable: string = '';
   currentDomain: string = 'utility';
 
   displayedColumns: string[] = [
@@ -94,7 +95,7 @@ export class ViewObfuscationPlanComponent implements OnInit {
   public selection = new SelectionModel<any>(true, []);
   obsControlData: any;
 
-  tableItems = [
+  tableItemsHealthcare = [
     'CI_PER',
     'CI_PER_NAME',
     'CI_PER_PHONE',
@@ -103,10 +104,23 @@ export class ViewObfuscationPlanComponent implements OnInit {
     'CI_PER_ID',
     'CI_PER_CHAR',
   ];
+  tableItemsUtility = [
+    'CI_PER',
+    'CI_PER_NAME',
+    'CI_PER_ADDR_SEAS',
+    'CI_PER_CONTDET',
+    'CI_PER_ID',
+    'CI_PER_CHAR',
+  ];
 
-  filteredTableItems = [...this.tableItems];
+  get tableItems() {
+    return this.currentDomain === 'healthcare'
+      ? this.tableItemsHealthcare
+      : this.tableItemsUtility;
+  }
+
+  filteredTableItems: string[] = [];
   searchText = '';
-
   selectedItem: string | null = null;
 
   constructor(
@@ -158,7 +172,11 @@ export class ViewObfuscationPlanComponent implements OnInit {
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
   }
+
   ngOnInit() {
+    this.loadTableDataBasedOnDomain();
+
+    // Extract domain from route parameters
     this.route.params.subscribe((params) => {
       if (params['domain']) {
         this.currentDomain = params['domain'];
@@ -177,6 +195,7 @@ export class ViewObfuscationPlanComponent implements OnInit {
       .subscribe(() => {
         this.detectDomainFromUrl();
       });
+
     // Get state data from navigation
     this.obsControlData =
       this.router.getCurrentNavigation()?.extras.state?.['data'];
@@ -186,13 +205,39 @@ export class ViewObfuscationPlanComponent implements OnInit {
       this.obsControlData = history.state.data;
     }
 
+    this.filteredTableItems = [...this.tableItems];
+
+    // Initial table setup
     this.onTableChange();
+
     // Check rows that have all required values
     this.dataSource.data.forEach((row: ColumnDefinition) => {
       if (row.columnName && row.obfStrategy && row.obfRules?.first) {
         this.selection.select(row);
       }
     });
+  }
+
+  // Load the correct table data based on current domain
+  private loadTableDataBasedOnDomain(): void {
+    if (this.currentDomain === 'utility') {
+      this.tableData = TABLE_DATA_UTILITY;
+    } else if (this.currentDomain === 'healthcare') {
+      this.tableData = TABLE_DATA_HEATLHCARE;
+    }
+
+    // Set the default selected table if available
+    if (this.tableData && this.tableData.selectedTable) {
+      this.selectedTable = this.tableData.selectedTable;
+    }
+
+    // Update filtered items based on current domain
+    this.filteredTableItems = [...this.tableItems];
+
+    // Update table data if a table is already selected
+    if (this.selectedTable) {
+      this.updateTableData();
+    }
   }
 
   // Extract domain from URL
@@ -203,7 +248,9 @@ export class ViewObfuscationPlanComponent implements OnInit {
     if (segments.length > 0) {
       const potentialDomain = segments[0];
       if (['healthcare', 'utility'].includes(potentialDomain)) {
-        this.currentDomain = potentialDomain;
+        if (this.currentDomain !== potentialDomain) {
+          this.currentDomain = potentialDomain;
+        }
       }
     }
   }
@@ -213,7 +260,6 @@ export class ViewObfuscationPlanComponent implements OnInit {
    * @param element
    * @returns Disabled state of the dropdown for unselected row
    */
-
   isDropdownDisabled(element: any): boolean {
     // Always disable dropdowns for PER_ID rows, regardless of selection state
     if (element.columnName === 'PER_ID') {
@@ -282,7 +328,7 @@ export class ViewObfuscationPlanComponent implements OnInit {
 
     // Find selected table definition
     const selectedTableData = this.tableData.tables.find(
-      (table) => table.tableName === this.selectedTable
+      (table: any) => table.tableName === this.selectedTable
     );
 
     // Update data source if table found
@@ -300,6 +346,7 @@ export class ViewObfuscationPlanComponent implements OnInit {
       item.toLowerCase().includes(searchValue.toLowerCase())
     );
   }
+
   navigateTo() {
     this.router.navigate([`${this.currentDomain}/obfuscation-plan`]);
   }

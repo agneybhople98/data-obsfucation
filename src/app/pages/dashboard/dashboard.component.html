@@ -143,6 +143,7 @@
                   style="color: #3179e5; padding-left: 58px"
                   mat-cell
                   *matCellDef="let detail"
+                  (click)="openJobDetails(detail.jobId)"
                 >
                   {{ detail.jobId }}
                 </td>

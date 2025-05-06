@@ -147,25 +147,89 @@ export class JobDetailsComponent implements OnInit, AfterViewInit, OnDestroy {
 
         this.subscription.add(
           this.jobService.jobsData$.subscribe((jobs) => {
+            // First try to find the job directly by ID
             this.jobDetails = this.jobService.getJobById(this.jobId);
-            if (this.jobDetails && this.jobDetails.tasks) {
+
+            if (this.jobDetails === undefined) {
+              // If not found, try to find it in additionalRunIdDetails
+              const parentJob = this.jobService.getJobByAdditionalRunIdDetails(
+                this.jobId
+              );
+
+              if (parentJob) {
+                // Find the specific additionalRunIdDetails that matches the jobId
+                const matchingDetail = parentJob.additionalRunIdDetails.find(
+                  (detail: any) => detail.jobId === this.jobId
+                );
+
+                if (matchingDetail) {
+                  // Use the details from the matching additionalRunIdDetails
+                  this.jobDetails = matchingDetail;
+
+                  if (matchingDetail.tasks) {
+                    this.dataSource.data = matchingDetail.tasks;
+                    this.loading = false;
+                  } else {
+                    this.error = 'No tasks found for this job';
+                    this.loading = false;
+                  }
+                } else {
+                  this.error =
+                    'Job details not found in additionalRunIdDetails';
+                  this.loading = false;
+                }
+              } else {
+                this.error = 'Job not found';
+                this.loading = false;
+              }
+            } else if (this.jobDetails && this.jobDetails.tasks) {
+              // If job was found directly by ID, use its tasks
               this.dataSource.data = this.jobDetails.tasks;
               this.loading = false;
               this.changeDetectorRef.detectChanges();
             } else {
-              this.error = 'Job details not found';
+              this.error = 'No tasks found for this job';
               this.loading = false;
             }
           })
         );
 
-        // Get initial job details
+        // Similar logic for initial job details fetch (outside subscription)
         this.jobDetails = this.jobService.getJobById(this.jobId);
-        if (this.jobDetails && this.jobDetails.tasks) {
+
+        if (this.jobDetails === undefined) {
+          const parentJob = this.jobService.getJobByAdditionalRunIdDetails(
+            this.jobId
+          );
+
+          if (parentJob) {
+            const matchingDetail = parentJob.additionalRunIdDetails.find(
+              (detail: any) => detail.jobId === this.jobId
+            );
+
+            if (matchingDetail) {
+              this.jobDetails = matchingDetail;
+
+              if (matchingDetail.tasks) {
+                this.dataSource.data = matchingDetail.tasks;
+                this.loading = false;
+              } else {
+                this.error = 'No tasks found for this job';
+                this.loading = false;
+              }
+            } else {
+              this.error = 'Job details not found in additionalRunIdDetails';
+              this.loading = false;
+            }
+          } else {
+            this.error = 'Job not found';
+            this.loading = false;
+          }
+        } else if (this.jobDetails && this.jobDetails.tasks) {
           this.dataSource.data = this.jobDetails.tasks;
           this.loading = false;
         } else {
-          this.error = 'Job details not found';
+          this.error = 'No tasks found for this job';
           this.loading = false;
         }
       } else {

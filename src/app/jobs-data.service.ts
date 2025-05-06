@@ -383,10 +383,38 @@ const ELEMENT_DATA: JobElement[] = [
         jobName: 'Person Entity Anonymization – Pre-Prod',
         jobDescription:
           'Anonymize persons for secure pre-production and testing.',
-        triggeredOn: '25/04/2025 08:22:10AM',
+        triggeredOn: '03/04/2025 09:22:10AM',
         status: 'failed',
         obsfucationControlName: 'Person Entity Anonymization',
         progress: 50,
+
+        tasks: [
+          {
+            taskId: 'TASK-55678190',
+            taskDescription: 'Anonymizing addresses',
+            status: 'Failed',
+            errorMessage:
+              'RUN-98763 `SQL Error: ORA-00904: "EMAILID": invalid identifier`',
+            startTime: (() => {
+              const date = new Date();
+              const month = (date.getMonth() + 1).toString().padStart(2, '0');
+              const day = date.getDate().toString().padStart(2, '0');
+              const year = date.getFullYear();
+              const hours = date.getHours() % 12 || 12;
+              const minutes = date.getMinutes().toString().padStart(2, '0');
+              const seconds = date.getSeconds().toString().padStart(2, '0');
+              const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+              return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+            })(),
+            endTime: null,
+            message: [
+              {
+                name: 'SQL Error: ORA-00904: "EMAILID": invalid identifier https://docs.oracle.com/error-help/db/ora-00904/00904. 00000 - "%s: invalid identifier"',
+              },
+            ],
+          },
+        ],
       },
     ],
     tasks: [
@@ -976,6 +1004,34 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
         status: 'failed',
         obsfucationControlName: 'Billing Transactions - US Region',
         progress: 50,
+
+        tasks: [
+          {
+            taskId: 'TASK-55678190',
+            taskDescription: 'Anonymizing addresses',
+            status: 'Failed',
+            errorMessage:
+              'RUN-98763 `SQL Error: ORA-00904: "EMAILID": invalid identifier`',
+            startTime: (() => {
+              const date = new Date();
+              const month = (date.getMonth() + 1).toString().padStart(2, '0');
+              const day = date.getDate().toString().padStart(2, '0');
+              const year = date.getFullYear();
+              const hours = date.getHours() % 12 || 12;
+              const minutes = date.getMinutes().toString().padStart(2, '0');
+              const seconds = date.getSeconds().toString().padStart(2, '0');
+              const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+              return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+            })(),
+            endTime: null,
+            message: [
+              {
+                name: 'SQL Error: ORA-00904: "EMAILID": invalid identifier https://docs.oracle.com/error-help/db/ora-00904/00904. 00000 - "%s: invalid identifier"',
+              },
+            ],
+          },
+        ],
       },
     ],
     tasks: [
@@ -1258,7 +1314,19 @@ export class JobsDataService {
 
   getJobById(jobId: string): any {
     const jobs = this.jobsDataSubject.value;
+
     return jobs.find((job) => job.jobId === jobId);
+  }
+
+  getJobByAdditionalRunIdDetails(jobId: string): any {
+    const jobs = this.jobsDataSubject.value;
+    return jobs.find(
+      (job) =>
+        job.additionalRunIdDetails &&
+        job.additionalRunIdDetails.some(
+          (runDetail: any) => runDetail.jobId === jobId
+        )
+    );
   }
 
   getAllJobs(): JobElement[] {

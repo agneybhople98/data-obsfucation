@@ -180,7 +180,7 @@ const ELEMENT_DATA: JobElement[] = [
       },
       {
         taskId: 'TASK-55678905',
-        taskDescription: "ObfuscateTable-'C1_ADDRESS'",
+        taskDescription: "ObfuscateTable-'CI_PER_CONTDET'",
         status: 'Pending',
         startTime: (() => {
           const date = new Date();
@@ -197,15 +197,8 @@ const ELEMENT_DATA: JobElement[] = [
         endTime: null,
         recordsProcessed: 1500,
         message: [
-          { name: 'FAKER applied on ADDRESS1 column.' },
           {
-            name: 'RANDOMIZE applied on POSTAL column.',
-          },
-          {
-            name: 'REPLACE_WITH_CONSTANT applied on CITY column.',
-          },
-          {
-            name: 'REPLACE_WITH_CONSTANT applied on STATE column.',
+            name: 'FAKER applied on  PHONE column.',
           },
         ],
       },
@@ -227,28 +220,28 @@ const ELEMENT_DATA: JobElement[] = [
         })(),
         endTime: null,
         recordsProcessed: 1200,
-        message: [{ name: 'FAKER applied on  FULLNAME column.' }],
+        message: [{ name: 'FAKER applied on  ENTITY_NAME column.' }],
       },
-      {
-        taskId: 'TASK-55678907',
-        taskDescription: "ObfuscateTable-'CI_PER_PHONE'",
-        status: 'Pending',
-        startTime: (() => {
-          const date = new Date();
-          const month = (date.getMonth() + 1).toString().padStart(2, '0');
-          const day = date.getDate().toString().padStart(2, '0');
-          const year = date.getFullYear();
-          const hours = date.getHours() % 12 || 12;
-          const minutes = date.getMinutes().toString().padStart(2, '0');
-          const seconds = date.getSeconds().toString().padStart(2, '0');
-          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+      // {
+      //   taskId: 'TASK-55678907',
+      //   taskDescription: "ObfuscateTable-'CI_PER_PHONE'",
+      //   status: 'Pending',
+      //   startTime: (() => {
+      //     const date = new Date();
+      //     const month = (date.getMonth() + 1).toString().padStart(2, '0');
+      //     const day = date.getDate().toString().padStart(2, '0');
+      //     const year = date.getFullYear();
+      //     const hours = date.getHours() % 12 || 12;
+      //     const minutes = date.getMinutes().toString().padStart(2, '0');
+      //     const seconds = date.getSeconds().toString().padStart(2, '0');
+      //     const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
 
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
-        })(),
-        endTime: null,
-        recordsProcessed: 900,
-        message: [{ name: 'FAKER applied on  PHONE column.' }],
-      },
+      //     return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+      //   })(),
+      //   endTime: null,
+      //   recordsProcessed: 900,
+      //   message: [{ name: 'FAKER applied on  PHONE column.' }],
+      // },
     ],
   },
   {

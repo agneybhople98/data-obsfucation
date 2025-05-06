@@ -1997,6 +1997,15 @@ export const TABLE_DATA_UTILITY: TableData = {
             second: undefined,
           },
         },
+        {
+          columnName: 'SRCH_CHAR_VAL',
+          displayName: 'Srch Char Val',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
       ],
     },
   ],

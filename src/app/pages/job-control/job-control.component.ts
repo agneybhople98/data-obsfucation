@@ -189,12 +189,21 @@ export class JobControlComponent implements OnInit, OnDestroy {
   }
 
   runAPI() {
-    this._jobDataService
-      .runJobByName('OBF_EXECUTE_MAIN_JOB_CISADM')
-      .subscribe((res) => {
-        console.log('res', res);
-      });
-    this._toasterService.success('Job submitted succesfully!');
+    if (this.currentDomain === 'utility') {
+      this._jobDataService
+        .runJobByName('OBF_EXECUTE_MAIN_JOB_CISADM')
+        .subscribe((res) => {
+          console.log('res', res);
+        });
+      this._toasterService.success('Job submitted succesfully!');
+    } else {
+      this._jobDataService
+        .runJobByName('OBF_EXECUTE_MAIN_JOB_ARCHDEV')
+        .subscribe((res) => {
+          console.log('res', res);
+        });
+      this._toasterService.success('Job submitted succesfully!');
+    }
   }
   openCreateObsfucation(element: any) {
     // Get the obfuscation control data from the service

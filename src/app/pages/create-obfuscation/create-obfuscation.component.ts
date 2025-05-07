@@ -110,19 +110,7 @@ export class CreateObfuscationPlanComponent implements OnInit {
     'CI_PER_CHAR',
   ];
 
-  obfValues = [
-    'CM-GENDR',
-    'CMFNAME',
-    'CMMGRIND',
-    'CMNMPFX',
-    'CMMNAME',
-    'CMMRCODT',
-    'C1TOBCC',
-    'CMNMSFX',
-    'CMPYRLLC',
-    'CMLECLSS',
-    'CMLNAME',
-  ];
+  obfValues = ['CM-GENDR', 'CMFNAME', 'CMMNAME', 'CMLNAME'];
 
   get tableItems() {
     return this.currentDomain === 'healthcare'

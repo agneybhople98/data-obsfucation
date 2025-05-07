@@ -10,18 +10,37 @@ import { MatPaginator } from '@angular/material/paginator';
 import { SelectionModel } from '@angular/cdk/collections';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs';
+import {
+  animate,
+  state,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
 
 @Component({
   selector: 'app-create-obfuscation',
   standalone: false,
   templateUrl: './create-obfuscation.component.html',
+  animations: [
+    trigger('detailExpand', [
+      state('collapsed', style({ height: '0px', minHeight: '0' })),
+      state('expanded', style({ height: '*' })),
+      transition(
+        'expanded <=> collapsed',
+        animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')
+      ),
+    ]),
+  ],
   styleUrl: './create-obfuscation.component.scss',
 })
 export class CreateObfuscationPlanComponent implements OnInit {
   tableData: any;
+  expandedElement: any | null = null;
   selectedTable: string | null = null;
   currentDomain: string = 'utility';
   displayedColumns: string[] = [
+    'expand',
     'select',
     'columnName',
     'obfStrategy',
@@ -53,6 +72,10 @@ export class CreateObfuscationPlanComponent implements OnInit {
   ];
   obsRulesNumbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
+  conditions = ['CHAR_TYPE_CD'];
+
+  operators = ['=', '<', '>', '=>', '<='];
+
   dataSource = new MatTableDataSource<ColumnDefinition>([]);
   public selection = new SelectionModel<any>(true, []);
   obsControlData: any;
@@ -73,6 +96,20 @@ export class CreateObfuscationPlanComponent implements OnInit {
     'CI_PER_CONTDET',
     'CI_PER_ID',
     'CI_PER_CHAR',
+  ];
+
+  obfValues = [
+    'CM-GENDR',
+    'CMFNAME ',
+    'CMMGRIND',
+    'CMNMPFX ',
+    'CMMNAME ',
+    'CMMRCODT',
+    'C1TOBCC ',
+    'CMNMSFX ',
+    'CMPYRLLC',
+    'CMLECLSS',
+    'CMLNAME ',
   ];
 
   get tableItems() {
@@ -100,6 +137,7 @@ export class CreateObfuscationPlanComponent implements OnInit {
 
     // Select all rows except PER_ID when checking
     this.dataSource.data.forEach((row) => {
+      console.log('rw', row);
       if (row.columnName !== 'PER_ID') {
         this.selection.select(row);
       }
@@ -175,9 +213,6 @@ export class CreateObfuscationPlanComponent implements OnInit {
     if (!this.obsControlData) {
       this.obsControlData = history.state.data;
     }
-
-    // Load table data based on current domain
-    this.loadTableDataBasedOnDomain();
 
     // Initialize table data if we have a selected item
     if (this.selectedItem) {
@@ -305,17 +340,23 @@ export class CreateObfuscationPlanComponent implements OnInit {
     // Create empty columns based on the structure of the selected table
     if (selectedTableData) {
       // Create new empty columns with the same column names but empty values
-      const emptyColumns = selectedTableData.columns.map((column: any) => {
-        return {
-          columnName: column.columnName,
-          displayName: column.displayName, // Keep display name
-          obfStrategy: '', // Empty strategy
-          obfRules: {
-            first: '', // Empty rules
-            second: '', // Empty rules
-          },
-        } as ColumnDefinition;
-      });
+      const emptyColumns = selectedTableData.columns.map(
+        (column: any): ColumnDefinition => {
+          const cleanDisplayName = column.displayName?.replace(/\s/g, '');
+          return {
+            columnName: column.columnName,
+            displayName: column.displayName,
+            obfStrategy: '',
+            obfRules: {
+              first: '',
+              second: '',
+            },
+            isExpandable: cleanDisplayName === 'ADHOC_CHAR_VAL',
+            options: [],
+            inputValue: '',
+          };
+        }
+      );
 
       this.dataSource.data = emptyColumns;
     } else {

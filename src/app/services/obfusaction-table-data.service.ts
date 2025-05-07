@@ -15,11 +15,7 @@ export interface ColumnDefinition {
   obfStrategy?: string;
   obfRules?: any;
   isExpandable?: boolean;
-  selectedOnCondition?: any;
-  selectedOperator?: any;
-  selectedValue?: any;
-  selectedObfStrategy?: any;
-  selectedObfRule?: any;
+  options?: any;
   inputValue?: any;
 }
 
@@ -1134,12 +1130,32 @@ export const TABLE_DATA_HEATLHCARE: TableData = {
             first: undefined,
             second: undefined,
           },
-          selectedOnCondition: 'CHAR_TYPE_CD',
-          selectedOperator: '<',
-          selectedValue: 'CM-GENDR',
-          selectedObfStrategy: 'STARIFY',
-          selectedObfRule: 'R',
-          inputValue: '3',
+          options: [
+            {
+              selectedOnCondition: 'CHAR_TYPE_CD',
+              selectedOperator: '<',
+              selectedValue: 'CM-GENDR',
+              selectedObfStrategy: 'STARIFY',
+              selectedObfRule: 'R',
+              inputValue: '3',
+            },
+            {
+              selectedOnCondition: 'CHAR_TYPE_CD',
+              selectedOperator: '<',
+              selectedValue: 'CM-GENDR',
+              selectedObfStrategy: 'STARIFY',
+              selectedObfRule: 'R',
+              inputValue: '3',
+            },
+            {
+              selectedOnCondition: 'CHAR_TYPE_CD',
+              selectedOperator: '<',
+              selectedValue: 'CM-GENDR',
+              selectedObfStrategy: 'STARIFY',
+              selectedObfRule: 'R',
+              inputValue: '3',
+            },
+          ],
         },
 
         {
@@ -1935,12 +1951,32 @@ export const TABLE_DATA_UTILITY: TableData = {
             first: undefined,
             second: undefined,
           },
-          selectedOnCondition: 'CHAR_TYPE_CD',
-          selectedOperator: '<',
-          selectedValue: 'CM-GENDR',
-          selectedObfStrategy: 'STARIFY',
-          selectedObfRule: 'R',
-          inputValue: '3',
+          options: [
+            {
+              selectedOnCondition: 'CHAR_TYPE_CD',
+              selectedOperator: '<',
+              selectedValue: 'CM-GENDR',
+              selectedObfStrategy: 'STARIFY',
+              selectedObfRule: 'R',
+              inputValue: '3',
+            },
+            {
+              selectedOnCondition: 'CHAR_TYPE_CD',
+              selectedOperator: '<',
+              selectedValue: 'CM-GENDR',
+              selectedObfStrategy: 'STARIFY',
+              selectedObfRule: 'R',
+              inputValue: '3',
+            },
+            {
+              selectedOnCondition: 'CHAR_TYPE_CD',
+              selectedOperator: '<',
+              selectedValue: 'CM-GENDR',
+              selectedObfStrategy: 'STARIFY',
+              selectedObfRule: 'R',
+              inputValue: '3',
+            },
+          ],
         },
 
         {

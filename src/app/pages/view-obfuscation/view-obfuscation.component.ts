@@ -138,6 +138,7 @@ export class ViewObfuscationPlanComponent implements OnInit {
 
     // Select all rows except PER_ID when checking
     this.dataSource.data.forEach((row) => {
+      console.log('rw', row);
       if (row.columnName !== 'PER_ID') {
         this.selection.select(row);
       }
@@ -352,5 +353,26 @@ export class ViewObfuscationPlanComponent implements OnInit {
 
   navigateTo() {
     this.router.navigate([`${this.currentDomain}/obfuscation-plan`]);
+  }
+
+  // Methods for handling options (add/remove)
+  addOption(element: any) {
+    // Add a new empty option
+    const newOption: any = {
+      selectedOnCondition: '',
+      selectedOperator: '',
+      selectedValue: '',
+      selectedObfStrategy: '',
+      selectedObfRule: '',
+      inputValue: '',
+    };
+
+    element.options.push(newOption);
+  }
+  removeOption(element: any, index: number) {
+    // Remove an option at the specified index
+    if (index >= 0 && index < element.options.length) {
+      element.options.splice(index, 1);
+    }
   }
 }

@@ -254,10 +254,7 @@
                       </div>
 
                       <!-- condition on -->
-                      <mat-form-field
-                        style="width: 180px !important"
-                        appearance="fill"
-                      >
+                      <mat-form-field appearance="fill">
                         <mat-label>Condition on</mat-label>
                         <mat-select [(ngModel)]="option.selectedOnCondition">
                           <mat-option *ngFor="let c of conditions" [value]="c">

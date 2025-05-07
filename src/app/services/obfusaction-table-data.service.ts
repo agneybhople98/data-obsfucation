@@ -1954,16 +1954,16 @@ export const TABLE_DATA_UTILITY: TableData = {
           options: [
             {
               selectedOnCondition: 'CHAR_TYPE_CD',
-              selectedOperator: '<',
-              selectedValue: 'CMMNAME',
+              selectedOperator: '=',
+              selectedValue: 'CMFNAME',
               selectedObfStrategy: 'STARIFY',
               selectedObfRule: 'R',
               inputValue: '3',
             },
             {
               selectedOnCondition: 'CHAR_TYPE_CD',
-              selectedOperator: '<',
-              selectedValue: 'CMMGRIND',
+              selectedOperator: '=',
+              selectedValue: 'CMLNAME',
               selectedObfStrategy: 'FAKER',
               selectedObfRule: 'LASTNAME',
               inputValue: '',

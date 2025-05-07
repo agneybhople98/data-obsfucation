@@ -77,16 +77,16 @@ export class ViewObfuscationPlanComponent implements OnInit {
 
   obfValues = [
     'CM-GENDR',
-    'CMFNAME ',
+    'CMFNAME',
     'CMMGRIND',
-    'CMNMPFX ',
-    'CMMNAME ',
+    'CMNMPFX',
+    'CMMNAME',
     'CMMRCODT',
-    'C1TOBCC ',
-    'CMNMSFX ',
+    'C1TOBCC',
+    'CMNMSFX',
     'CMPYRLLC',
     'CMLECLSS',
-    'CMLNAME ',
+    'CMLNAME',
   ];
 
   conditions = ['CHAR_TYPE_CD'];

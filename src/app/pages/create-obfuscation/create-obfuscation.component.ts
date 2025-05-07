@@ -398,6 +398,11 @@ export class CreateObfuscationPlanComponent implements OnInit {
 
   // Methods for handling options (add/remove)
   addOption(element: any) {
+    // If this is the first option being added, initialize the options array if needed
+    if (!element.options) {
+      element.options = [];
+    }
+
     // Add a new empty option
     const newOption: any = {
       selectedOnCondition: 'CHAR_TYPE_CD',
@@ -406,9 +411,26 @@ export class CreateObfuscationPlanComponent implements OnInit {
       selectedObfStrategy: 'FAKER',
       selectedObfRule: 'LASTNAME',
       inputValue: '',
+      isEditing: false, // New property to track edit state
     };
 
     element.options.push(newOption);
-    // this.hideButton = false;
+
+    // Make the previous options non-editable by default
+    if (element.options.length > 1) {
+      // Set the previous option to be in non-editing mode
+      element.options[element.options.length - 2].isEditing = false;
+    }
+  }
+
+  // Remove an option at the specified index
+  removeOption(element: any, index: number) {
+    if (element.options && index >= 0 && index < element.options.length) {
+      element.options.splice(index, 1);
+    }
+  }
+  // Toggle edit mode for an option
+  toggleEditOption(option: any) {
+    option.isEditing = !option.isEditing;
   }
 }

@@ -1931,10 +1931,10 @@ export const TABLE_DATA_UTILITY: TableData = {
           options: [
             {
               selectedOnCondition: 'CHAR_TYPE_CD',
-              selectedOperator: '<',
-              selectedValue: 'CM-GENDR',
+              selectedOperator: '=',
+              selectedValue: 'C2M_SNR',
               selectedObfStrategy: 'REPLACE_WITH_CONSTANT',
-              selectedObfRule: 'M',
+              selectedObfRule: 'Y',
               inputValue: '',
             },
           ],
@@ -1960,11 +1960,11 @@ export const TABLE_DATA_UTILITY: TableData = {
           options: [
             {
               selectedOnCondition: 'CHAR_TYPE_CD',
-              selectedOperator: '<',
-              selectedValue: 'CMFNAME',
-              selectedObfStrategy: 'STARIFY',
-              selectedObfRule: 'R',
-              inputValue: '3',
+              selectedOperator: '=',
+              selectedValue: 'C2MBTHDT',
+              selectedObfStrategy: 'FAKER',
+              selectedObfRule: 'DATE',
+              inputValue: '',
             },
           ],
         },

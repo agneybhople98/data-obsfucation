@@ -51,6 +51,7 @@ export class ViewObfuscationPlanComponent implements OnInit {
   obsRules = [
     'R',
     'L',
+    'Y',
     'ALPHA',
     'EMAIL',
     'SSN',
@@ -63,6 +64,7 @@ export class ViewObfuscationPlanComponent implements OnInit {
     'ENG',
     'NUMERIC',
     'California',
+    'DATE',
     'CA',
   ];
   obsRulesNumbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
@@ -75,7 +77,7 @@ export class ViewObfuscationPlanComponent implements OnInit {
   ];
   operators = ['=', '<', '>', '=>', '<='];
 
-  obfValues = ['CM-GENDR', 'CMFNAME', 'CMMNAME', 'CMLNAME'];
+  obfValues = ['CM-GENDR', 'CMFNAME', 'CMMNAME', 'CMLNAME', 'C2MBTHDT'];
 
   conditions = [
     'CHAR_TYPE_CD',
@@ -358,6 +360,11 @@ export class ViewObfuscationPlanComponent implements OnInit {
 
   // Methods for handling options (add/remove)
   addOption(element: any) {
+    // If this is the first option being added, initialize the options array if needed
+    if (!element.options) {
+      element.options = [];
+    }
+
     // Add a new empty option
     const newOption: any = {
       selectedOnCondition: 'CHAR_TYPE_CD',
@@ -366,15 +373,37 @@ export class ViewObfuscationPlanComponent implements OnInit {
       selectedObfStrategy: 'FAKER',
       selectedObfRule: 'LASTNAME',
       inputValue: '',
+      isEditing: false, // New property to track edit state
     };
 
     element.options.push(newOption);
-    // this.hideButton = false;
+
+    // Make the previous options non-editable by default
+    if (element.options.length > 1) {
+      // Set the previous option to be in non-editing mode
+      element.options[element.options.length - 2].isEditing = false;
+    }
   }
+
+  // Remove an option at the specified index
   removeOption(element: any, index: number) {
-    // Remove an option at the specified index
-    if (index >= 0 && index < element.options.length) {
+    if (element.options && index >= 0 && index < element.options.length) {
       element.options.splice(index, 1);
     }
+  }
+
+  // Toggle edit mode for an option
+  toggleEditOption(option: any) {
+    option.isEditing = !option.isEditing;
+  }
+
+  // Check if an option is the last one in the list (for showing add button)
+  isLastOption(element: any, index: number): boolean {
+    return element.options && index === element.options.length - 1;
+  }
+
+  // Check if fields should be disabled based on editing state
+  isFieldDisabled(option: any): boolean {
+    return !option.isEditing;
   }
 }

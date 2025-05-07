@@ -212,24 +212,18 @@
                     class="mb-2"
                   >
                     <div
-                      class="flex justify-evenly gap-2 !border !border-gray-400 !px-4 !pt-5 !pb-1"
+                      class="flex justify-between !border-[0.5px] !border-gray-400 !px-4 !pt-5 !pb-1"
                     >
-                      <!-- Row indicator and actions delete button might bring back later -->
-                      <div class="flex items-center mr-2" style="width: 60px">
-                        <button
-                          mat-icon-button
-                          color="warn"
-                          (click)="addOption(element)"
-                          class="!mb-3"
-                        >
-                          <mat-icon>add</mat-icon>
-                        </button>
-                      </div>
-
                       <!-- condition on -->
-                      <mat-form-field appearance="fill">
+                      <mat-form-field appearance="fill" class="!w-[15%]">
                         <mat-label>Condition on</mat-label>
-                        <mat-select [(ngModel)]="option.selectedOnCondition">
+                        <mat-select
+                          [(ngModel)]="option.selectedOnCondition"
+                          [disabled]="
+                            !option.isEditing &&
+                            optionIndex < element.options.length - 1
+                          "
+                        >
                           <mat-option *ngFor="let c of conditions" [value]="c">
                             {{ c }}
                           </mat-option>
@@ -237,12 +231,15 @@
                       </mat-form-field>
 
                       <!-- condition -->
-                      <mat-form-field
-                        style="width: 90px !important"
-                        appearance="fill"
-                      >
+                      <mat-form-field appearance="fill" class="!w-[10%]">
                         <mat-label>Condition</mat-label>
-                        <mat-select [(ngModel)]="option.selectedOperator">
+                        <mat-select
+                          [(ngModel)]="option.selectedOperator"
+                          [disabled]="
+                            !option.isEditing &&
+                            optionIndex < element.options.length - 1
+                          "
+                        >
                           <mat-option *ngFor="let op of operators" [value]="op">
                             {{ op }}
                           </mat-option>
@@ -250,12 +247,15 @@
                       </mat-form-field>
 
                       <!--obfuscation strategy -->
-                      <mat-form-field
-                        style="width: 150px !important"
-                        appearance="fill"
-                      >
+                      <mat-form-field appearance="fill" class="!w-[15%]">
                         <mat-label>Value</mat-label>
-                        <mat-select [(ngModel)]="option.selectedValue">
+                        <mat-select
+                          [(ngModel)]="option.selectedValue"
+                          [disabled]="
+                            !option.isEditing &&
+                            optionIndex < element.options.length - 1
+                          "
+                        >
                           <mat-option
                             *ngFor="let val of obfValues"
                             [value]="val"
@@ -266,9 +266,15 @@
                       </mat-form-field>
 
                       <!-- obfuscation strategy -->
-                      <mat-form-field style="width: 200px" appearance="fill">
+                      <mat-form-field appearance="fill" class="!w-[20%]">
                         <mat-label>Obfuscation Strategy</mat-label>
-                        <mat-select [(ngModel)]="option.selectedObfStrategy">
+                        <mat-select
+                          [(ngModel)]="option.selectedObfStrategy"
+                          [disabled]="
+                            !option.isEditing &&
+                            optionIndex < element.options.length - 1
+                          "
+                        >
                           <mat-option
                             *ngFor="let strategy of obfStrategies"
                             [value]="strategy"
@@ -279,12 +285,15 @@
                       </mat-form-field>
 
                       <!-- obfuscation rules -->
-                      <mat-form-field
-                        style="width: 80px !important"
-                        appearance="fill"
-                      >
+                      <mat-form-field appearance="fill" class="!w-[9%]">
                         <mat-label>Rules</mat-label>
-                        <mat-select [(ngModel)]="option.selectedObfRule">
+                        <mat-select
+                          [(ngModel)]="option.selectedObfRule"
+                          [disabled]="
+                            !option.isEditing &&
+                            optionIndex < element.options.length - 1
+                          "
+                        >
                           <mat-option
                             *ngFor="let rule of obsRules"
                             [value]="rule"
@@ -295,26 +304,60 @@
                       </mat-form-field>
 
                       <!-- input value -->
-                      <mat-form-field
-                        style="width: 80px !important"
-                        appearance="fill"
-                      >
+                      <mat-form-field appearance="fill" class="!w-[5%]">
                         <mat-label>Input</mat-label>
-                        <input matInput [(ngModel)]="option.inputValue" />
+                        <input
+                          matInput
+                          [(ngModel)]="option.inputValue"
+                          [disabled]="
+                            !option.isEditing &&
+                            optionIndex < element.options.length - 1
+                          "
+                        />
                       </mat-form-field>
+
+                      <!-- Action buttons -->
+                      <div class="flex items-center">
+                        <!-- Show edit button for existing rows -->
+                        <button
+                          *ngIf="optionIndex < element.options.length - 1"
+                          (click)="toggleEditOption(option)"
+                          class="add-btn !me-4 !mb-3"
+                        >
+                          <img
+                            [src]="
+                              !option.isEditing
+                                ? '../../../assets/edit (16) 1.svg'
+                                : '../../../assets/device-floppy (4) 1.svg'
+                            "
+                            alt=""
+                          />
+                          <!-- <img src="" alt="" />
+                          <mat-icon>{{
+                            option.isEditing ? "save" : "edit"
+                          }}</mat-icon> -->
+                        </button>
+
+                        <!-- Show add button only for the last row -->
+                        <button
+                          *ngIf="optionIndex === element.options.length - 1"
+                          (click)="addOption(element)"
+                          class="add-btn !mb-3 !me-4"
+                        >
+                          <img src="../../../assets/plus (15) 1.svg" alt="" />
+                        </button>
+                        <!-- Delete button -->
+                        <div class="flex items-center">
+                          <button
+                            (click)="removeOption(element, optionIndex)"
+                            class="delete-btn !mb-3 !me-[70px]"
+                          >
+                            <img src="../../../assets/trash (2) 3.svg" alt="" />
+                          </button>
+                        </div>
+                      </div>
                     </div>
                   </div>
-
-                  <!-- Add new option button -->
-                  <!-- <div class="flex justify-end !mt-4 !mb-3 mr-4">
-                    <button
-                      mat-raised-button
-                      color="primary"
-                      (click)="addOption(element)"
-                    >
-                      <mat-icon>add</mat-icon> Add Row
-                    </button>
-                  </div> -->
                 </div>
               </td>
             </ng-container>

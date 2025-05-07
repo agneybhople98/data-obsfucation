@@ -1071,7 +1071,7 @@ export const TABLE_DATA_HEATLHCARE: TableData = {
           options: [
             {
               selectedOnCondition: 'ID_TYPE_CD',
-              selectedOperator: '<',
+              selectedOperator: '=',
               selectedValue: 'SSN',
               selectedObfStrategy: 'FAKER',
               selectedObfRule: 'SSN',

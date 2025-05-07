@@ -1134,7 +1134,7 @@ export const TABLE_DATA_HEATLHCARE: TableData = {
             {
               selectedOnCondition: 'CHAR_TYPE_CD',
               selectedOperator: '<',
-              selectedValue: 'CM-GENDR',
+              selectedValue: 'CMFNAME',
               selectedObfStrategy: 'STARIFY',
               selectedObfRule: 'R',
               inputValue: '3',
@@ -1142,10 +1142,10 @@ export const TABLE_DATA_HEATLHCARE: TableData = {
             {
               selectedOnCondition: 'CHAR_TYPE_CD',
               selectedOperator: '<',
-              selectedValue: 'CM-GENDR',
-              selectedObfStrategy: 'STARIFY',
-              selectedObfRule: 'R',
-              inputValue: '3',
+              selectedValue: 'CMLNAME',
+              selectedObfStrategy: 'FAKER',
+              selectedObfRule: 'LASTNAME',
+              inputValue: '',
             },
             {
               selectedOnCondition: 'CHAR_TYPE_CD',
@@ -1955,7 +1955,7 @@ export const TABLE_DATA_UTILITY: TableData = {
             {
               selectedOnCondition: 'CHAR_TYPE_CD',
               selectedOperator: '<',
-              selectedValue: 'CM-GENDR',
+              selectedValue: 'CMMNAME',
               selectedObfStrategy: 'STARIFY',
               selectedObfRule: 'R',
               inputValue: '3',
@@ -1963,15 +1963,15 @@ export const TABLE_DATA_UTILITY: TableData = {
             {
               selectedOnCondition: 'CHAR_TYPE_CD',
               selectedOperator: '<',
-              selectedValue: 'CM-GENDR',
-              selectedObfStrategy: 'STARIFY',
-              selectedObfRule: 'R',
-              inputValue: '3',
+              selectedValue: 'CMMGRIND',
+              selectedObfStrategy: 'FAKER',
+              selectedObfRule: 'LASTNAME',
+              inputValue: '',
             },
             {
               selectedOnCondition: 'CHAR_TYPE_CD',
               selectedOperator: '<',
-              selectedValue: 'CM-GENDR',
+              selectedValue: 'CMNMSFX',
               selectedObfStrategy: 'STARIFY',
               selectedObfRule: 'R',
               inputValue: '3',

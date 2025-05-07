@@ -342,7 +342,6 @@ export class CreateObfuscationPlanComponent implements OnInit {
       // Create new empty columns with the same column names but empty values
       const emptyColumns = selectedTableData.columns.map(
         (column: any): ColumnDefinition => {
-          const cleanDisplayName = column.displayName?.replace(/\s/g, '');
           return {
             columnName: column.columnName,
             displayName: column.displayName,
@@ -351,8 +350,33 @@ export class CreateObfuscationPlanComponent implements OnInit {
               first: '',
               second: '',
             },
-            isExpandable: cleanDisplayName === 'ADHOC_CHAR_VAL',
-            options: [],
+            isExpandable: column.columnName === 'ADHOC_CHAR_VAL',
+            options: [
+              {
+                selectedOnCondition: 'CHAR_TYPE_CD',
+                selectedOperator: '<',
+                selectedValue: 'CMFNAME',
+                selectedObfStrategy: 'STARIFY',
+                selectedObfRule: 'R',
+                inputValue: '3',
+              },
+              {
+                selectedOnCondition: 'CHAR_TYPE_CD',
+                selectedOperator: '<',
+                selectedValue: 'CMLNAME',
+                selectedObfStrategy: 'FAKER',
+                selectedObfRule: 'LASTNAME',
+                inputValue: '',
+              },
+              {
+                selectedOnCondition: 'CHAR_TYPE_CD',
+                selectedOperator: '<',
+                selectedValue: 'CM-GENDR',
+                selectedObfStrategy: 'STARIFY',
+                selectedObfRule: 'R',
+                inputValue: '3',
+              },
+            ],
             inputValue: '',
           };
         }

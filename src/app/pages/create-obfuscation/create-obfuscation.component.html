@@ -112,6 +112,7 @@
               </th>
               <td mat-cell *matCellDef="let element">
                 <button
+                  *ngIf="element.isExpandable"
                   class="bg-primary text-white rounded-xs !h-[24px] !w-[24px] !cursor-pointer"
                   aria-label="expand row"
                   (click)="
@@ -216,7 +217,7 @@
               </td>
             </ng-container>
 
-            <!-- Expanded Content Column -->
+            <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
             <ng-container matColumnDef="expandedDetail">
               <td
                 mat-cell
@@ -229,90 +230,125 @@
                     element == expandedElement ? 'expanded' : 'collapsed'
                   "
                 >
+                  <!-- Loop through each option in the options array -->
                   <div
-                    class="flex justify-between gap-2 !border !border-gray-400 !px-4 !pt-5 !pb-1"
+                    *ngFor="
+                      let option of element.options;
+                      let optionIndex = index
+                    "
+                    class="mb-2"
                   >
-                    <!-- condition on -->
-                    <mat-form-field
-                      style="width: 180px !important"
-                      appearance="fill"
+                    <div
+                      class="flex justify-evenly gap-2 !border !border-gray-400 !px-4 !pt-5 !pb-1"
                     >
-                      <mat-label>Condition on</mat-label>
-                      <mat-select [(ngModel)]="element.selectedOnCondition">
-                        <mat-option *ngFor="let c of conditions" [value]="c">
-                          {{ c }}
-                        </mat-option>
-                      </mat-select>
-                    </mat-form-field>
-
-                    <!-- condition -->
-                    <mat-form-field
-                      style="width: 90px !important"
-                      appearance="fill"
+                      <!-- Row indicator and actions delete button might bring back later -->
+                      <!-- <div class="flex items-center mr-2" style="width: 60px">
+                    <button
+                      *ngIf="optionIndex > 0"
+                      mat-icon-button
+                      color="warn"
+                      (click)="removeOption(element, optionIndex)"
+                      class="ml-1"
                     >
-                      <mat-label>Condition</mat-label>
-                      <mat-select [(ngModel)]="element.selectedOperator">
-                        <mat-option *ngFor="let op of operators" [value]="op">
-                          {{ op }}
-                        </mat-option>
-                      </mat-select>
-                    </mat-form-field>
+                      <mat-icon>delete</mat-icon>
+                    </button>
+                  </div> -->
 
-                    <!-- obfuscation strategy value -->
-                    <mat-form-field
-                      style="width: 150px !important"
-                      appearance="fill"
-                    >
-                      <mat-label>Value</mat-label>
-                      <mat-select [(ngModel)]="element.selectedValue">
-                        <mat-option *ngFor="let val of obfValues" [value]="val">
-                          {{ val }}
-                        </mat-option>
-                      </mat-select>
-                    </mat-form-field>
+                      <!-- condition on -->
+                      <mat-form-field
+                        style="width: 180px !important"
+                        appearance="fill"
+                      >
+                        <mat-label>Condition on</mat-label>
+                        <mat-select [(ngModel)]="option.selectedOnCondition">
+                          <mat-option *ngFor="let c of conditions" [value]="c">
+                            {{ c }}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
 
-                    <!-- obfuscation strategy -->
-                    <mat-form-field style="width: 200px" appearance="fill">
-                      <mat-label>Obfuscation Strategy</mat-label>
-                      <mat-select [(ngModel)]="element.selectedObfStrategy">
-                        <mat-option
-                          *ngFor="let strategy of obfStrategies"
-                          [value]="strategy"
-                        >
-                          {{ strategy }}
-                        </mat-option>
-                      </mat-select>
-                    </mat-form-field>
+                      <!-- condition -->
+                      <mat-form-field
+                        style="width: 90px !important"
+                        appearance="fill"
+                      >
+                        <mat-label>Condition</mat-label>
+                        <mat-select [(ngModel)]="option.selectedOperator">
+                          <mat-option *ngFor="let op of operators" [value]="op">
+                            {{ op }}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
 
-                    <!-- obfuscation rules -->
-                    <mat-form-field
-                      style="width: 80px !important"
-                      appearance="fill"
-                    >
-                      <mat-label>Rules</mat-label>
-                      <mat-select [(ngModel)]="element.selectedObfRule">
-                        <mat-option
-                          *ngFor="let rule of obsRules"
-                          [value]="rule"
-                        >
-                          {{ rule }}
-                        </mat-option>
-                      </mat-select>
-                    </mat-form-field>
+                      <!--obfuscation strategy -->
+                      <mat-form-field
+                        style="width: 150px !important"
+                        appearance="fill"
+                      >
+                        <mat-label>Value</mat-label>
+                        <mat-select [(ngModel)]="option.selectedValue">
+                          <mat-option
+                            *ngFor="let val of obfValues"
+                            [value]="val"
+                          >
+                            {{ val }}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
 
-                    <!-- number -->
-                    <mat-form-field
-                      style="width: 80px !important"
-                      appearance="fill"
-                    >
-                      <mat-label>Input</mat-label>
-                      <input matInput [(ngModel)]="element.inputValue" />
-                    </mat-form-field>
+                      <!-- obfuscation strategy -->
+                      <mat-form-field style="width: 200px" appearance="fill">
+                        <mat-label>Obfuscation Strategy</mat-label>
+                        <mat-select [(ngModel)]="option.selectedObfStrategy">
+                          <mat-option
+                            *ngFor="let strategy of obfStrategies"
+                            [value]="strategy"
+                          >
+                            {{ strategy }}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+
+                      <!-- obfuscation rules -->
+                      <mat-form-field
+                        style="width: 80px !important"
+                        appearance="fill"
+                      >
+                        <mat-label>Rules</mat-label>
+                        <mat-select [(ngModel)]="option.selectedObfRule">
+                          <mat-option
+                            *ngFor="let rule of obsRules"
+                            [value]="rule"
+                          >
+                            {{ rule }}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+
+                      <!-- input value -->
+                      <mat-form-field
+                        style="width: 80px !important"
+                        appearance="fill"
+                      >
+                        <mat-label>Input</mat-label>
+                        <input matInput [(ngModel)]="option.inputValue" />
+                      </mat-form-field>
+                    </div>
                   </div>
+
+                  <!-- Add new option button -->
+                  <!-- <div class="flex justify-end !mt-4 !mb-3 mr-4">
+                <button
+                  mat-raised-button
+                  color="primary"
+                  (click)="addOption(element)"
+                >
+                  <mat-icon>add</mat-icon> Add Row
+                </button>
+              </div> -->
                 </div>
               </td>
             </ng-container>
-
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
 
             <!-- Data Row -->

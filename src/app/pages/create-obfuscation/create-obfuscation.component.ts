@@ -4,7 +4,8 @@ import {
   TABLE_DATA_HEATLHCARE,
   ColumnDefinition,
   TABLE_DATA_UTILITY,
-} from '../../services/obfusaction-table-data.service';
+} from '../../services/create-data-table.service';
+
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { SelectionModel } from '@angular/cdk/collections';
@@ -37,8 +38,9 @@ import {
 export class CreateObfuscationPlanComponent implements OnInit {
   tableData: any;
   expandedElement: any | null = null;
-  selectedTable: string | null = null;
+  selectedTable: string = '';
   currentDomain: string = 'utility';
+
   displayedColumns: string[] = [
     'expand',
     'select',
@@ -49,6 +51,7 @@ export class CreateObfuscationPlanComponent implements OnInit {
   obsRules = [
     'R',
     'L',
+    'Y',
     'ALPHA',
     'EMAIL',
     'SSN',
@@ -57,12 +60,14 @@ export class CreateObfuscationPlanComponent implements OnInit {
     'FULL_NAME',
     'PHONE',
     'MD5',
-    'ENG',
     'SHA1',
+    'ENG',
     'NUMERIC',
     'California',
+    'DATE',
     'CA',
   ];
+  obsRulesNumbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
   obfStrategies = [
     'STARIFY',
     'RANDOMIZE',
@@ -70,7 +75,9 @@ export class CreateObfuscationPlanComponent implements OnInit {
     'REPLACE_WITH_CONSTANT',
     'HASH',
   ];
-  obsRulesNumbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+  operators = ['=', '<', '>', '=>', '<='];
+
+  obfValues = ['CM-GENDR', 'CMFNAME', 'CMMNAME', 'CMLNAME', 'C2MBTHDT'];
 
   conditions = [
     'CHAR_TYPE_CD',
@@ -85,8 +92,6 @@ export class CreateObfuscationPlanComponent implements OnInit {
     'CHAR_VAL_FK5',
     'SRCH_CHAR_VAL',
   ];
-
-  operators = ['=', '<', '>', '=>', '<='];
 
   dataSource = new MatTableDataSource<ColumnDefinition>([]);
   public selection = new SelectionModel<any>(true, []);
@@ -110,8 +115,6 @@ export class CreateObfuscationPlanComponent implements OnInit {
     'CI_PER_CHAR',
   ];
 
-  obfValues = ['CM-GENDR', 'CMFNAME', 'CMMNAME', 'CMLNAME'];
-
   get tableItems() {
     return this.currentDomain === 'healthcare'
       ? this.tableItemsHealthcare
@@ -121,6 +124,7 @@ export class CreateObfuscationPlanComponent implements OnInit {
   filteredTableItems: string[] = [];
   searchText = '';
   selectedItem: string | null = null;
+  hideButton = true;
 
   constructor(
     private _obsufactionService: ObsfucationService,
@@ -149,6 +153,7 @@ export class CreateObfuscationPlanComponent implements OnInit {
     if (!row) {
       return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
     }
+
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${
       row.columnName + 1
     }`;
@@ -192,17 +197,10 @@ export class CreateObfuscationPlanComponent implements OnInit {
       }
     });
 
-    // Listen to navigation events to detect domain changes
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe(() => {
-        const prevDomain = this.currentDomain;
         this.detectDomainFromUrl();
-
-        // Only reload if domain actually changed
-        if (prevDomain !== this.currentDomain) {
-          this.loadTableDataBasedOnDomain();
-        }
       });
 
     // Get state data from navigation
@@ -214,25 +212,17 @@ export class CreateObfuscationPlanComponent implements OnInit {
       this.obsControlData = history.state.data;
     }
 
-    // Initialize table data if we have a selected item
-    if (this.selectedItem) {
-      this.selectItem(this.selectedItem);
-    } else {
-      this.dataSource.data = [];
-    }
-  }
+    this.filteredTableItems = [...this.tableItems];
 
-  // Extract domain from URL
-  private detectDomainFromUrl(): void {
-    const urlPath = this.router.url;
-    const segments = urlPath.split('/').filter((segment) => segment);
+    // Initial table setup
+    this.onTableChange();
 
-    if (segments.length > 0) {
-      const potentialDomain = segments[0];
-      if (['healthcare', 'utility'].includes(potentialDomain)) {
-        this.currentDomain = potentialDomain;
+    // Check rows that have all required values
+    this.dataSource.data.forEach((row: ColumnDefinition) => {
+      if (row.columnName && row.obfStrategy && row.obfRules?.first) {
+        this.selection.select(row);
       }
-    }
+    });
   }
 
   // Load the correct table data based on current domain
@@ -241,16 +231,11 @@ export class CreateObfuscationPlanComponent implements OnInit {
       this.tableData = TABLE_DATA_UTILITY;
     } else if (this.currentDomain === 'healthcare') {
       this.tableData = TABLE_DATA_HEATLHCARE;
-    } else {
-      // If domain is not recognized, default to utility
-      this.currentDomain = 'utility';
-      this.tableData = TABLE_DATA_UTILITY;
     }
 
     // Set the default selected table if available
     if (this.tableData && this.tableData.selectedTable) {
       this.selectedTable = this.tableData.selectedTable;
-      this.selectedItem = this.tableData.selectedTable;
     }
 
     // Update filtered items based on current domain
@@ -262,6 +247,86 @@ export class CreateObfuscationPlanComponent implements OnInit {
     }
   }
 
+  // Extract domain from URL
+  private detectDomainFromUrl(): void {
+    const urlPath = this.router.url;
+    const segments = urlPath.split('/').filter((segment) => segment);
+
+    if (segments.length > 0) {
+      const potentialDomain = segments[0];
+      if (['healthcare', 'utility'].includes(potentialDomain)) {
+        if (this.currentDomain !== potentialDomain) {
+          this.currentDomain = potentialDomain;
+        }
+      }
+    }
+  }
+
+  /**
+   *
+   * @param element
+   * @returns Disabled state of the dropdown for unselected row
+   */
+  isDropdownDisabled(element: any): boolean {
+    // Always disable dropdowns for PER_ID rows, regardless of selection state
+    if (element.columnName === 'PER_ID') {
+      return true;
+    }
+    // For other rows, enable dropdowns only when selected
+    return !this.selection.isSelected(element);
+  }
+
+  /**
+   * Handle table selection change from dropdown
+   */
+  onTableChange() {
+    // Update selected item in sidebar to keep UI in sync
+    if (this.selectedTable) {
+      this.selectedItem = this.selectedTable;
+    }
+
+    // Update table data
+    this.updateTableData();
+  }
+
+  selectItem(item: string) {
+    // Update selected item
+    this.selectedItem = item;
+
+    // Update selected table in dropdown
+    this.selectedTable = item;
+
+    // Update table data
+    this.updateTableData();
+
+    // Clear existing selections
+    this.selection.clear();
+
+    // Check rows that have all required values
+    this.dataSource.data.forEach((row: ColumnDefinition) => {
+      if (row.columnName && row.obfStrategy && row.obfRules?.first) {
+        this.selection.select(row);
+      }
+    });
+  }
+
+  isRowDisabledForPerID(row: ColumnDefinition): any {
+    if (row.columnName === 'PER_ID') {
+      return true;
+    }
+    return false;
+  }
+
+  valueSelection(): boolean {
+    // Prevent selection of PER_ID rows and ensure they're always deselected
+    this.selection.selected.forEach((row) => {
+      if (row.columnName === 'PER_ID') {
+        this.selection.deselect(row);
+      }
+    });
+    return false;
+  }
+
   /**
    * Update the table data based on selection
    */
@@ -269,7 +334,7 @@ export class CreateObfuscationPlanComponent implements OnInit {
     if (!this.selectedTable) return;
 
     // Find selected table definition
-    const selectedTableData = this.tableData?.tables.find(
+    const selectedTableData = this.tableData.tables.find(
       (table: any) => table.tableName === this.selectedTable
     );
 
@@ -281,115 +346,12 @@ export class CreateObfuscationPlanComponent implements OnInit {
     }
   }
 
-  /**
-   * Select an item from the sidebar
-   */
-  selectItem(item: string) {
-    // Update selected item
-    this.selectedItem = item;
-
-    // Update selected table
-    this.selectedTable = item;
-
-    // Update table data
-    this.updateTableData();
-
-    // Create empty columns based on the selected table structure
-    this.createEmptyColumns();
-
-    // Clear existing selections
-    this.selection.clear();
-  }
-
-  /**
-   *
-   * @param element
-   * @returns Disabled state of the dropdown for unselected row
-   */
-
-  isDropdownDisabled(element: any): boolean {
-    // Always disable dropdowns for PER_ID rows, regardless of selection state
-    if (element.columnName === 'PER_ID') {
-      return true;
-    }
-    // For other rows, enable dropdowns only when selected
-    return !this.selection.isSelected(element);
-  }
-
-  isRowDisabledForPerID(row: ColumnDefinition): any {
-    if (row.columnName === 'PER_ID') {
-      return true;
-    }
-    return false;
-  }
-
-  /**
-   * Create empty columns for the selected table
-   */
-  private createEmptyColumns() {
-    if (!this.selectedTable || !this.tableData) {
-      this.dataSource.data = [];
-      return;
-    }
-
-    // Find selected table definition to get column structure
-    const selectedTableData = this.tableData.tables.find(
-      (table: any) => table.tableName === this.selectedTable
-    );
-
-    // Create empty columns based on the structure of the selected table
-    if (selectedTableData) {
-      // Create new empty columns with the same column names but empty values
-      const emptyColumns = selectedTableData.columns.map(
-        (column: any): ColumnDefinition => {
-          return {
-            columnName: column.columnName,
-            displayName: column.displayName,
-            obfStrategy: '',
-            obfRules: {
-              first: '',
-              second: '',
-            },
-            isExpandable:
-              column.columnName === 'ADHOC_CHAR_VAL' ||
-              column.columnName === 'CHAR_VAL',
-            options: [
-              {
-                selectedOnCondition: 'CHAR_TYPE_CD',
-                selectedOperator: '<',
-                selectedValue: 'CMFNAME',
-                selectedObfStrategy: 'STARIFY',
-                selectedObfRule: 'R',
-                inputValue: '3',
-              },
-            ],
-            inputValue: '',
-          };
-        }
-      );
-
-      this.dataSource.data = emptyColumns;
-    } else {
-      this.dataSource.data = [];
-    }
-  }
-
   applySearch(event: Event) {
     const searchValue = (event.target as HTMLInputElement).value;
     this.searchText = searchValue;
     this.filteredTableItems = this.tableItems.filter((item) =>
       item.toLowerCase().includes(searchValue.toLowerCase())
     );
-  }
-
-  valueSelection(): boolean {
-    // Prevent selection of PER_ID rows and ensure they're always deselected
-    this.selection.selected.forEach((row) => {
-      if (row.columnName === 'PER_ID') {
-        this.selection.deselect(row);
-      }
-    });
-    return false;
   }
 
   navigateTo() {
@@ -429,8 +391,19 @@ export class CreateObfuscationPlanComponent implements OnInit {
       element.options.splice(index, 1);
     }
   }
+
   // Toggle edit mode for an option
   toggleEditOption(option: any) {
     option.isEditing = !option.isEditing;
+  }
+
+  // Check if an option is the last one in the list (for showing add button)
+  isLastOption(element: any, index: number): boolean {
+    return element.options && index === element.options.length - 1;
+  }
+
+  // Check if fields should be disabled based on editing state
+  isFieldDisabled(option: any): boolean {
+    return !option.isEditing;
   }
 }

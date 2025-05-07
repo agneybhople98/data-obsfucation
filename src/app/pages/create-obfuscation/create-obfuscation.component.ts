@@ -362,7 +362,9 @@ export class CreateObfuscationPlanComponent implements OnInit {
               first: '',
               second: '',
             },
-            isExpandable: column.columnName === 'ADHOC_CHAR_VAL',
+            isExpandable:
+              column.columnName === 'ADHOC_CHAR_VAL' ||
+              column.columnName === 'CHAR_VAL',
             options: [
               {
                 selectedOnCondition: 'CHAR_TYPE_CD',

@@ -62,6 +62,7 @@ export class CreateObfuscationPlanComponent implements OnInit {
     'MD5',
     'SHA1',
     'ENG',
+    'SSN',
     'NUMERIC',
     'California',
     'DATE',
@@ -73,19 +74,29 @@ export class CreateObfuscationPlanComponent implements OnInit {
     'RANDOMIZE',
     'FAKER',
     'REPLACE_WITH_CONSTANT',
+    'SSN',
     'HASH',
   ];
   operators = ['=', '<', '>', '=>', '<='];
 
-  obfValues = ['CM-GENDR', 'CMFNAME', 'CMMNAME', 'CMLNAME', 'C2MBTHDT'];
+  obfValues = [
+    'CM-GENDR',
+    'CMFNAME',
+    'CMMNAME',
+    'CMLNAME',
+    'C2MBTHDT',
+    'C2M_SNR',
+  ];
 
   conditions = [
     'CHAR_TYPE_CD',
     'CI_PER_CHAR',
+    'ID_TYPE_CD',
     'CHAR_VAL',
     'EFFDT',
     'ADHOC_CHAR_VAL',
     'VERSION',
+    'SSN',
     'CHAR_VAL_FK1',
     'CHAR_VAL_FK2',
     'CHAR_VAL_FK3',
@@ -369,7 +380,7 @@ export class CreateObfuscationPlanComponent implements OnInit {
     const newOption: any = {
       selectedOnCondition: 'CHAR_TYPE_CD',
       selectedOperator: '<',
-      selectedValue: 'CMLNAME',
+      selectedValue: 'CMFNAME',
       selectedObfStrategy: 'FAKER',
       selectedObfRule: 'LASTNAME',
       inputValue: '',

@@ -1067,6 +1067,17 @@ export const TABLE_DATA_HEATLHCARE: TableData = {
           displayName: 'Per Id NBR',
           obfStrategy: undefined,
           obfRules: {},
+          isExpandable: true,
+          options: [
+            {
+              selectedOnCondition: 'ID_TYPE_CD',
+              selectedOperator: '<',
+              selectedValue: 'SSN',
+              selectedObfStrategy: 'FAKER',
+              selectedObfRule: 'SSN',
+              inputValue: '',
+            },
+          ],
         },
         {
           columnName: 'PRIM_SW',
@@ -1112,13 +1123,14 @@ export const TABLE_DATA_HEATLHCARE: TableData = {
             first: undefined,
             second: undefined,
           },
+
           options: [
             {
               selectedOnCondition: 'CHAR_TYPE_CD',
               selectedOperator: '<',
               selectedValue: 'CM-GENDR',
               selectedObfStrategy: 'REPLACE_WITH_CONSTANT',
-              selectedObfRule: 'M',
+              selectedObfRule: 'F',
               inputValue: '',
             },
           ],
@@ -1145,14 +1157,13 @@ export const TABLE_DATA_HEATLHCARE: TableData = {
             {
               selectedOnCondition: 'CHAR_TYPE_CD',
               selectedOperator: '<',
-              selectedValue: 'CMFNAME',
+              selectedValue: 'CMLNAME',
               selectedObfStrategy: 'STARIFY',
               selectedObfRule: 'R',
               inputValue: '3',
             },
           ],
         },
-
         {
           columnName: 'VERSION',
           displayName: 'Version',
@@ -1961,10 +1972,10 @@ export const TABLE_DATA_UTILITY: TableData = {
             {
               selectedOnCondition: 'CHAR_TYPE_CD',
               selectedOperator: '=',
-              selectedValue: 'C2MBTHDT',
-              selectedObfStrategy: 'FAKER',
-              selectedObfRule: 'DATE',
-              inputValue: '',
+              selectedValue: 'CMLNAME',
+              selectedObfStrategy: 'STARIFY',
+              selectedObfRule: 'L',
+              inputValue: '3',
             },
           ],
         },

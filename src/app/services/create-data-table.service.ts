@@ -1070,6 +1070,17 @@ export const TABLE_DATA_HEATLHCARE: TableData = {
           displayName: 'Per Id NBR',
           obfStrategy: undefined,
           obfRules: {},
+          isExpandable: true,
+          options: [
+            {
+              selectedOnCondition: 'ID_TYPE_CD',
+              selectedOperator: '<',
+              selectedValue: 'SSN',
+              selectedObfStrategy: 'FAKER',
+              selectedObfRule: 'SSN',
+              inputValue: '',
+            },
+          ],
         },
         {
           columnName: 'PRIM_SW',
@@ -1121,7 +1132,7 @@ export const TABLE_DATA_HEATLHCARE: TableData = {
               selectedOperator: '<',
               selectedValue: 'CM-GENDR',
               selectedObfStrategy: 'REPLACE_WITH_CONSTANT',
-              selectedObfRule: 'M',
+              selectedObfRule: 'F',
               inputValue: '',
             },
           ],
@@ -1148,9 +1159,9 @@ export const TABLE_DATA_HEATLHCARE: TableData = {
             {
               selectedOnCondition: 'CHAR_TYPE_CD',
               selectedOperator: '<',
-              selectedValue: 'CMFNAME',
+              selectedValue: 'CMLNAME',
               selectedObfStrategy: 'STARIFY',
-              selectedObfRule: 'R',
+              selectedObfRule: 'L',
               inputValue: '3',
             },
           ],
@@ -1745,10 +1756,22 @@ export const TABLE_DATA_UTILITY: TableData = {
           columnName: 'PER_ID_NBR',
           displayName: 'Per Id NBR',
           obfStrategy: undefined,
+          isExpandable: true,
+
           obfRules: {
             first: undefined,
             second: undefined,
           },
+          options: [
+            {
+              selectedOnCondition: 'ID_TYPE_CD',
+              selectedOperator: '=',
+              selectedValue: 'SSN',
+              selectedObfStrategy: 'FAKER',
+              selectedObfRule: 'SSN',
+              inputValue: '',
+            },
+          ],
         },
         {
           columnName: 'PRIM_SW',
@@ -1935,7 +1958,7 @@ export const TABLE_DATA_UTILITY: TableData = {
             {
               selectedOnCondition: 'CHAR_TYPE_CD',
               selectedOperator: '=',
-              selectedValue: 'C2M_SNR',
+              selectedValue: '',
               selectedObfStrategy: 'REPLACE_WITH_CONSTANT',
               selectedObfRule: 'Y',
               inputValue: '',

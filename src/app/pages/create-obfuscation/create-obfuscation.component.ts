@@ -372,14 +372,6 @@ export class CreateObfuscationPlanComponent implements OnInit {
                 selectedObfRule: 'R',
                 inputValue: '3',
               },
-              {
-                selectedOnCondition: 'CHAR_TYPE_CD',
-                selectedOperator: '<',
-                selectedValue: 'CMLNAME',
-                selectedObfStrategy: 'FAKER',
-                selectedObfRule: 'LASTNAME',
-                inputValue: '',
-              },
             ],
             inputValue: '',
           };
@@ -412,5 +404,21 @@ export class CreateObfuscationPlanComponent implements OnInit {
 
   navigateTo() {
     this.router.navigate([`${this.currentDomain}/obfuscation-plan`]);
+  }
+
+  // Methods for handling options (add/remove)
+  addOption(element: any) {
+    // Add a new empty option
+    const newOption: any = {
+      selectedOnCondition: 'CHAR_TYPE_CD',
+      selectedOperator: '<',
+      selectedValue: 'CMLNAME',
+      selectedObfStrategy: 'FAKER',
+      selectedObfRule: 'LASTNAME',
+      inputValue: '',
+    };
+
+    element.options.push(newOption);
+    // this.hideButton = false;
   }
 }

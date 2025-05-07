@@ -215,17 +215,17 @@
                       class="flex justify-evenly gap-2 !border !border-gray-400 !px-4 !pt-5 !pb-1"
                     >
                       <!-- Row indicator and actions delete button might bring back later -->
-                      <!-- <div class="flex items-center mr-2" style="width: 60px">
+                      <div class="flex items-center mr-2" style="width: 60px">
                         <button
-                          *ngIf="optionIndex > 0"
+                          *ngIf="hideButton"
                           mat-icon-button
                           color="warn"
-                          (click)="removeOption(element, optionIndex)"
-                          class="ml-1"
+                          (click)="addOption(element)"
+                          class="!mb-3"
                         >
-                          <mat-icon>delete</mat-icon>
+                          <mat-icon>add</mat-icon>
                         </button>
-                      </div> -->
+                      </div>
 
                       <!-- condition on -->
                       <mat-form-field

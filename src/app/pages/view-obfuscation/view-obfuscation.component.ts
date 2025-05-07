@@ -134,6 +134,7 @@ export class ViewObfuscationPlanComponent implements OnInit {
   filteredTableItems: string[] = [];
   searchText = '';
   selectedItem: string | null = null;
+  hideButton = true;
 
   constructor(
     private _obsufactionService: ObsfucationService,
@@ -371,15 +372,16 @@ export class ViewObfuscationPlanComponent implements OnInit {
   addOption(element: any) {
     // Add a new empty option
     const newOption: any = {
-      selectedOnCondition: '',
-      selectedOperator: '',
-      selectedValue: '',
-      selectedObfStrategy: '',
-      selectedObfRule: '',
+      selectedOnCondition: 'CHAR_TYPE_CD',
+      selectedOperator: '<',
+      selectedValue: 'CMLNAME',
+      selectedObfStrategy: 'FAKER',
+      selectedObfRule: 'LASTNAME',
       inputValue: '',
     };
 
     element.options.push(newOption);
+    // this.hideButton = false;
   }
   removeOption(element: any, index: number) {
     // Remove an option at the specified index

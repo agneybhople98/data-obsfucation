@@ -72,7 +72,19 @@ export class CreateObfuscationPlanComponent implements OnInit {
   ];
   obsRulesNumbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
-  conditions = ['CHAR_TYPE_CD'];
+  conditions = [
+    'CHAR_TYPE_CD',
+    'CI_PER_CHAR',
+    'CHAR_VAL',
+    'EFFDT',
+    'ADHOC_CHAR_VAL',
+    'VERSION',
+    'CHAR_VAL_FK1',
+    'CHAR_VAL_FK2',
+    'CHAR_VAL_FK3',
+    'CHAR_VAL_FK5',
+    'SRCH_CHAR_VAL',
+  ];
 
   operators = ['=', '<', '>', '=>', '<='];
 
@@ -100,16 +112,16 @@ export class CreateObfuscationPlanComponent implements OnInit {
 
   obfValues = [
     'CM-GENDR',
-    'CMFNAME ',
+    'CMFNAME',
     'CMMGRIND',
-    'CMNMPFX ',
-    'CMMNAME ',
+    'CMNMPFX',
+    'CMMNAME',
     'CMMRCODT',
-    'C1TOBCC ',
-    'CMNMSFX ',
+    'C1TOBCC',
+    'CMNMSFX',
     'CMPYRLLC',
     'CMLECLSS',
-    'CMLNAME ',
+    'CMLNAME',
   ];
 
   get tableItems() {
@@ -367,14 +379,6 @@ export class CreateObfuscationPlanComponent implements OnInit {
                 selectedObfStrategy: 'FAKER',
                 selectedObfRule: 'LASTNAME',
                 inputValue: '',
-              },
-              {
-                selectedOnCondition: 'CHAR_TYPE_CD',
-                selectedOperator: '<',
-                selectedValue: 'CM-GENDR',
-                selectedObfStrategy: 'STARIFY',
-                selectedObfRule: 'R',
-                inputValue: '3',
               },
             ],
             inputValue: '',

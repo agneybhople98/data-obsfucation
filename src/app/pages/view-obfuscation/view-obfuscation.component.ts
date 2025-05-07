@@ -89,7 +89,19 @@ export class ViewObfuscationPlanComponent implements OnInit {
     'CMLNAME',
   ];
 
-  conditions = ['CHAR_TYPE_CD'];
+  conditions = [
+    'CHAR_TYPE_CD',
+    'CI_PER_CHAR',
+    'CHAR_VAL',
+    'EFFDT',
+    'ADHOC_CHAR_VAL',
+    'VERSION',
+    'CHAR_VAL_FK1',
+    'CHAR_VAL_FK2',
+    'CHAR_VAL_FK3',
+    'CHAR_VAL_FK5',
+    'SRCH_CHAR_VAL',
+  ];
 
   dataSource = new MatTableDataSource<ColumnDefinition>([]);
   public selection = new SelectionModel<any>(true, []);

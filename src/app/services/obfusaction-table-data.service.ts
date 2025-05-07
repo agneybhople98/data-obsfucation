@@ -1147,14 +1147,6 @@ export const TABLE_DATA_HEATLHCARE: TableData = {
               selectedObfRule: 'LASTNAME',
               inputValue: '',
             },
-            {
-              selectedOnCondition: 'CHAR_TYPE_CD',
-              selectedOperator: '<',
-              selectedValue: 'CM-GENDR',
-              selectedObfStrategy: 'STARIFY',
-              selectedObfRule: 'R',
-              inputValue: '3',
-            },
           ],
         },
 
@@ -1954,7 +1946,7 @@ export const TABLE_DATA_UTILITY: TableData = {
           options: [
             {
               selectedOnCondition: 'CHAR_TYPE_CD',
-              selectedOperator: '=',
+              selectedOperator: '<',
               selectedValue: 'CMFNAME',
               selectedObfStrategy: 'STARIFY',
               selectedObfRule: 'R',
@@ -1962,19 +1954,11 @@ export const TABLE_DATA_UTILITY: TableData = {
             },
             {
               selectedOnCondition: 'CHAR_TYPE_CD',
-              selectedOperator: '=',
+              selectedOperator: '<',
               selectedValue: 'CMLNAME',
               selectedObfStrategy: 'FAKER',
               selectedObfRule: 'LASTNAME',
               inputValue: '',
-            },
-            {
-              selectedOnCondition: 'CHAR_TYPE_CD',
-              selectedOperator: '<',
-              selectedValue: 'CMNMSFX',
-              selectedObfStrategy: 'STARIFY',
-              selectedObfRule: 'R',
-              inputValue: '3',
             },
           ],
         },

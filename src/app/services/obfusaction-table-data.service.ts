@@ -1107,10 +1107,21 @@ export const TABLE_DATA_HEATLHCARE: TableData = {
           columnName: 'CHAR_VAL',
           displayName: 'Char Val',
           obfStrategy: undefined,
+          isExpandable: true,
           obfRules: {
             first: undefined,
             second: undefined,
           },
+          options: [
+            {
+              selectedOnCondition: 'CHAR_TYPE_CD',
+              selectedOperator: '<',
+              selectedValue: 'CM-GENDR',
+              selectedObfStrategy: 'REPLACE_WITH_CONSTANT',
+              selectedObfRule: 'M',
+              inputValue: '',
+            },
+          ],
         },
         {
           columnName: 'EFFDT',
@@ -1912,10 +1923,21 @@ export const TABLE_DATA_UTILITY: TableData = {
           columnName: 'CHAR_VAL',
           displayName: 'Char Val',
           obfStrategy: undefined,
+          isExpandable: true,
           obfRules: {
             first: undefined,
             second: undefined,
           },
+          options: [
+            {
+              selectedOnCondition: 'CHAR_TYPE_CD',
+              selectedOperator: '<',
+              selectedValue: 'CM-GENDR',
+              selectedObfStrategy: 'REPLACE_WITH_CONSTANT',
+              selectedObfRule: 'M',
+              inputValue: '',
+            },
+          ],
         },
         {
           columnName: 'EFFDT',

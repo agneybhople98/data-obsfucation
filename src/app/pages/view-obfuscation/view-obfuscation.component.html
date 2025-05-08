@@ -230,14 +230,16 @@
                             [matTooltip]="c"
                             matTooltipPosition="above"
                           >
-                            {{ c }}
+                            <div class="!text-[14px]">
+                              {{ c }}
+                            </div>
                           </mat-option>
                         </mat-select>
                       </mat-form-field>
 
                       <!-- condition -->
-                      <mat-form-field appearance="fill" class="!w-[90px]">
-                        <mat-label class="text-[10px]">Condition</mat-label>
+                      <mat-form-field appearance="fill" class="!w-[120px]">
+                        <mat-label class="text-[14px]">Condition</mat-label>
                         <mat-select
                           [(ngModel)]="option.selectedOperator"
                           [disabled]="
@@ -251,7 +253,9 @@
                             [matTooltip]="op"
                             matTooltipPosition="above"
                           >
-                            {{ op }}
+                            <div class="!text-[14px]">
+                              {{ op }}
+                            </div>
                           </mat-option>
                         </mat-select>
                       </mat-form-field>
@@ -284,7 +288,7 @@
 
                       <!-- obfuscation strategy -->
                       <mat-form-field appearance="fill" class="!w-[180px]">
-                        <mat-label class="text-[8px]"
+                        <mat-label class="text-[14px]"
                           >Obfuscation Strategy</mat-label
                         >
                         <mat-select
@@ -300,7 +304,9 @@
                             [matTooltip]="strategy"
                             matTooltipPosition="above"
                           >
-                            {{ strategy }}
+                            <div class="!text-[10px]">
+                              {{ strategy }}
+                            </div>
                           </mat-option>
                         </mat-select>
                       </mat-form-field>
@@ -379,7 +385,6 @@
                 </div>
               </td>
             </ng-container>
-
             <!-- Data Row -->
             <tr
               mat-row

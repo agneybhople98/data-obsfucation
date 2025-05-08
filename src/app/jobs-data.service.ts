@@ -222,6 +222,51 @@ const ELEMENT_DATA: JobElement[] = [
         recordsProcessed: 1200,
         message: [{ name: 'FAKER applied on  ENTITY_NAME column.' }],
       },
+      {
+        taskId: 'TASK-55678905',
+        taskDescription: "ObfuscateTable-'CI_PER_ID'",
+        status: 'Pending',
+        startTime: (() => {
+          const date = new Date();
+          const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const day = date.getDate().toString().padStart(2, '0');
+          const year = date.getFullYear();
+          const hours = date.getHours() % 12 || 12;
+          const minutes = date.getMinutes().toString().padStart(2, '0');
+          const seconds = date.getSeconds().toString().padStart(2, '0');
+          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+        })(),
+        endTime: null,
+        recordsProcessed: 20,
+        message: [{ name: 'FAKER applied on CI_PER_ID column.' }],
+      },
+      {
+        taskId: 'TASK-55678904',
+        taskDescription: "ObfuscateTable-'CI_PER_CHAR'",
+        status: 'Pending',
+        startTime: (() => {
+          const date = new Date();
+          const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const day = date.getDate().toString().padStart(2, '0');
+          const year = date.getFullYear();
+          const hours = date.getHours() % 12 || 12;
+          const minutes = date.getMinutes().toString().padStart(2, '0');
+          const seconds = date.getSeconds().toString().padStart(2, '0');
+          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+        })(),
+        endTime: null,
+        recordsProcessed: 20,
+        message: [
+          { name: 'REPLACE_WITH_CONSTANT applied on CHAR_VAL column.' },
+          {
+            name: 'STARIFY, FAKER applied on ADHOC_CHAR_VAL column',
+          },
+        ],
+      },
       // {
       //   taskId: 'TASK-55678907',
       //   taskDescription: "ObfuscateTable-'CI_PER_PHONE'",
@@ -861,6 +906,51 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
         endTime: null,
         recordsProcessed: 30,
         message: [{ name: 'FAKER applied on  PHONE column.' }],
+      },
+      {
+        taskId: 'TASK-55678900',
+        taskDescription: "ObfuscateTable-'CI_PER_ID'",
+        status: 'Pending',
+        startTime: (() => {
+          const date = new Date();
+          const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const day = date.getDate().toString().padStart(2, '0');
+          const year = date.getFullYear();
+          const hours = date.getHours() % 12 || 12;
+          const minutes = date.getMinutes().toString().padStart(2, '0');
+          const seconds = date.getSeconds().toString().padStart(2, '0');
+          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+        })(),
+        endTime: null,
+        recordsProcessed: 20,
+        message: [{ name: 'FAKER applied on PER_ID_NBR column.' }],
+      },
+      {
+        taskId: 'TASK-55678899',
+        taskDescription: "ObfuscateTable-'CI_PER_CHAR'",
+        status: 'Pending',
+        startTime: (() => {
+          const date = new Date();
+          const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const day = date.getDate().toString().padStart(2, '0');
+          const year = date.getFullYear();
+          const hours = date.getHours() % 12 || 12;
+          const minutes = date.getMinutes().toString().padStart(2, '0');
+          const seconds = date.getSeconds().toString().padStart(2, '0');
+          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+        })(),
+        endTime: null,
+        recordsProcessed: 20,
+        message: [
+          { name: 'REPLACE_WITH_CONSTANT applied on CHAR_VAL column.' },
+          {
+            name: 'STARIFY, FAKER applied on ADHOC_CHAR_VAL column',
+          },
+        ],
       },
     ],
   },

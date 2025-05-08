@@ -40,12 +40,13 @@ tr.detail-row {
 .element-detail {
   overflow: hidden;
   display: flex;
-  // margin-left: 88px !important;
+  // margin-left: 80px;
   flex-direction: column;
 }
 
 .element-diagram {
   min-width: 80px;
+
   padding: 12px;
   margin: 8px 0px;
   border: 0.1px solid #2b2c2d !important;

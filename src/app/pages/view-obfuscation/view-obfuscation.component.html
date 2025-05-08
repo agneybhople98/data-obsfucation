@@ -198,7 +198,7 @@
                 [attr.colspan]="displayedColumns.length"
               >
                 <div
-                  class="element-detail flex items-end"
+                  class="element-detail"
                   [@detailExpand]="
                     element == expandedElement ? 'expanded' : 'collapsed'
                   "
@@ -283,7 +283,7 @@
                       </mat-form-field>
 
                       <!-- obfuscation strategy -->
-                      <mat-form-field appearance="fill">
+                      <mat-form-field appearance="fill" class="!w-[120px]">
                         <mat-label>Obfuscation Strategy</mat-label>
                         <mat-select
                           [(ngModel)]="option.selectedObfStrategy"
@@ -293,10 +293,10 @@
                           "
                         >
                           <mat-option
-                            [matTooltip]="strategy"
-                            matTooltipPosition="above"
                             *ngFor="let strategy of obfStrategies"
                             [value]="strategy"
+                            [matTooltip]="strategy"
+                            matTooltipPosition="above"
                           >
                             {{ strategy }}
                           </mat-option>
@@ -353,10 +353,6 @@
                             "
                             alt=""
                           />
-                          <!-- <img src="" alt="" />
-                          <mat-icon>{{
-                            option.isEditing ? "save" : "edit"
-                          }}</mat-icon> -->
                         </button>
 
                         <!-- Show add button only for the last row -->

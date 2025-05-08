@@ -40,7 +40,6 @@ tr.detail-row {
 .element-detail {
   overflow: hidden;
   display: flex;
-  margin-bottom: 30px !important;
   margin-left: 88px !important;
   flex-direction: column;
 }
@@ -65,3 +64,7 @@ tr.detail-row {
   padding: 8px;
   cursor: pointer;
 }
+
+// .mat-mdc-cell.mdc-data-table__cell.cdk-cell.cdk-column-expandedDetail.mat-column-expandedDetail {
+//   display: none !important;
+// }

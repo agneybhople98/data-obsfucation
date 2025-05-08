@@ -40,15 +40,15 @@ tr.detail-row {
 .element-detail {
   overflow: hidden;
   display: flex;
-  margin: 16px 0 !important;
-  margin-left: 48px !important;
+  margin-left: 88px !important;
   flex-direction: column;
 }
 
 .element-diagram {
   min-width: 80px;
-  padding: 8px;
-  border: 1px solid #e9ecef !important;
+  padding: 12px;
+  margin: 8px 0px;
+  border: 0.1px solid #2b2c2d !important;
 }
 
 .add-btn {
@@ -64,3 +64,7 @@ tr.detail-row {
   padding: 8px;
   cursor: pointer;
 }
+
+// .mat-mdc-cell.mdc-data-table__cell.cdk-cell.cdk-column-expandedDetail.mat-column-expandedDetail {
+//   display: none !important;
+// }

@@ -436,7 +436,7 @@ export class ViewObfuscationPlanComponent implements OnInit {
 
   // Remove an option at the specified index
   removeOption(element: any, index: number) {
-    if (element.options && index >= 0 && index < element.options.length) {
+    if (element.options && index >= 1 && index < element.options.length) {
       element.options.splice(index, 1);
     }
   }

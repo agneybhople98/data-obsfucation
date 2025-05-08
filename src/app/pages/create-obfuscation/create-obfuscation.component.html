@@ -245,7 +245,6 @@
                       <mat-form-field appearance="fill" class="!w-[200px]">
                         <mat-label class="text-[14px]">Condition on</mat-label>
                         <mat-select
-                          class="!text-[10px]"
                           [(ngModel)]="option.selectedOnCondition"
                           [disabled]="
                             !option.isEditing &&
@@ -258,9 +257,7 @@
                             [matTooltip]="c"
                             matTooltipPosition="above"
                           >
-                            <div class="!text-[12px]">
-                              {{ c }}
-                            </div>
+                            {{ c }}
                           </mat-option>
                         </mat-select>
                       </mat-form-field>
@@ -269,7 +266,6 @@
                       <mat-form-field appearance="fill" class="!w-[120px]">
                         <mat-label class="text-[14px]">Condition</mat-label>
                         <mat-select
-                          class="!text-[10px]"
                           [(ngModel)]="option.selectedOperator"
                           [disabled]="
                             !option.isEditing &&
@@ -282,9 +278,7 @@
                             [matTooltip]="op"
                             matTooltipPosition="above"
                           >
-                            <div class="!text-[14px]">
-                              {{ op }}
-                            </div>
+                            {{ op }}
                           </mat-option>
                         </mat-select>
                       </mat-form-field>
@@ -293,7 +287,6 @@
                       <mat-form-field appearance="fill" class="!w-[120px]">
                         <mat-label class="text-[14px]">Value</mat-label>
                         <mat-select
-                          class="!text-[10px]"
                           [(ngModel)]="option.selectedValue"
                           [disabled]="
                             !option.isEditing &&
@@ -311,9 +304,7 @@
                             [matTooltip]="val"
                             matTooltipPosition="above"
                           >
-                            <div class="!text-[10px]">
-                              {{ val }}
-                            </div>
+                            {{ val }}
                           </mat-option>
                         </mat-select>
                       </mat-form-field>
@@ -324,7 +315,6 @@
                           >Obfuscation Strategy</mat-label
                         >
                         <mat-select
-                          class="!text-[9px]"
                           [(ngModel)]="option.selectedObfStrategy"
                           [disabled]="
                             !option.isEditing &&
@@ -337,9 +327,7 @@
                             [matTooltip]="strategy"
                             matTooltipPosition="above"
                           >
-                            <div class="!text-[10px]">
-                              {{ strategy }}
-                            </div>
+                            {{ strategy }}
                           </mat-option>
                         </mat-select>
                       </mat-form-field>
@@ -348,7 +336,6 @@
                       <mat-form-field appearance="fill" class="!w-[160px]">
                         <mat-label class="text-[14px]">Rules</mat-label>
                         <mat-select
-                          class="!text-[10px]"
                           [(ngModel)]="option.selectedObfRule"
                           [disabled]="
                             !option.isEditing &&
@@ -361,9 +348,7 @@
                             *ngFor="let rule of obsRules"
                             [value]="rule"
                           >
-                            <div class="!text-[10px]">
-                              {{ rule }}
-                            </div>
+                            {{ rule }}
                           </mat-option>
                         </mat-select>
                       </mat-form-field>
@@ -373,7 +358,6 @@
                         <mat-label class="!text-[14px]">Input</mat-label>
 
                         <input
-                          class="!text-[10px]"
                           matInput
                           [(ngModel)]="option.inputValue"
                           [disabled]="

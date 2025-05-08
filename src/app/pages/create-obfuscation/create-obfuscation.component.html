@@ -284,7 +284,12 @@
                           "
                         >
                           <mat-option
-                            *ngFor="let val of obfValues"
+                            *ngFor="
+                              let val of getDropdownOptions(
+                                selectedTable,
+                                element.columnName
+                              )
+                            "
                             [value]="val"
                           >
                             {{ val }}

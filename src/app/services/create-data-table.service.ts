@@ -1074,7 +1074,7 @@ export const TABLE_DATA_HEATLHCARE: TableData = {
           options: [
             {
               selectedOnCondition: 'ID_TYPE_CD',
-              selectedOperator: '<',
+              selectedOperator: '=',
               selectedValue: 'SSN',
               selectedObfStrategy: 'FAKER',
               selectedObfRule: 'SSN',
@@ -1129,7 +1129,7 @@ export const TABLE_DATA_HEATLHCARE: TableData = {
           options: [
             {
               selectedOnCondition: 'CHAR_TYPE_CD',
-              selectedOperator: '<',
+              selectedOperator: '=',
               selectedValue: 'CM-GENDR',
               selectedObfStrategy: 'REPLACE_WITH_CONSTANT',
               selectedObfRule: 'F',
@@ -1158,7 +1158,7 @@ export const TABLE_DATA_HEATLHCARE: TableData = {
           options: [
             {
               selectedOnCondition: 'CHAR_TYPE_CD',
-              selectedOperator: '<',
+              selectedOperator: '=',
               selectedValue: 'CMLNAME',
               selectedObfStrategy: 'STARIFY',
               selectedObfRule: 'L',
@@ -1958,7 +1958,7 @@ export const TABLE_DATA_UTILITY: TableData = {
             {
               selectedOnCondition: 'CHAR_TYPE_CD',
               selectedOperator: '=',
-              selectedValue: '',
+              selectedValue: 'C2M_SNR',
               selectedObfStrategy: 'REPLACE_WITH_CONSTANT',
               selectedObfRule: 'Y',
               inputValue: '',

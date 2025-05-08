@@ -1156,11 +1156,21 @@ export const TABLE_DATA_HEATLHCARE: TableData = {
           options: [
             {
               selectedOnCondition: 'CHAR_TYPE_CD',
-              selectedOperator: '<',
+              selectedOperator: '=',
               selectedValue: 'CMLNAME',
               selectedObfStrategy: 'STARIFY',
-              selectedObfRule: 'R',
+              selectedObfRule: 'L',
               inputValue: '3',
+            },
+            // show second option when clicked
+
+            {
+              selectedOnCondition: 'CHAR_TYPE_CD',
+              selectedOperator: '=',
+              selectedValue: 'CMFNAME',
+              selectedObfStrategy: 'FAKER',
+              selectedObfRule: 'FIRSTNAME',
+              inputValue: '',
             },
           ],
         },
@@ -1757,6 +1767,17 @@ export const TABLE_DATA_UTILITY: TableData = {
             first: undefined,
             second: undefined,
           },
+          isExpandable: true,
+          options: [
+            {
+              selectedOnCondition: 'ID_TYPE_CD',
+              selectedOperator: '=',
+              selectedValue: 'SSN',
+              selectedObfStrategy: 'FAKER',
+              selectedObfRule: 'SSN',
+              inputValue: '',
+            },
+          ],
         },
         {
           columnName: 'PRIM_SW',
@@ -1972,10 +1993,10 @@ export const TABLE_DATA_UTILITY: TableData = {
             {
               selectedOnCondition: 'CHAR_TYPE_CD',
               selectedOperator: '=',
-              selectedValue: 'CMLNAME',
-              selectedObfStrategy: 'STARIFY',
-              selectedObfRule: 'L',
-              inputValue: '3',
+              selectedValue: 'C2MBTHDT',
+              selectedObfStrategy: 'FAKER',
+              selectedObfRule: 'DATE',
+              inputValue: '',
             },
           ],
         },

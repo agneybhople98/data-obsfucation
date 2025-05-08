@@ -52,6 +52,7 @@ export class CreateObfuscationPlanComponent implements OnInit {
     'R',
     'L',
     'Y',
+    'FIRSTNAME',
     'ALPHA',
     'EMAIL',
     'SSN',
@@ -62,11 +63,11 @@ export class CreateObfuscationPlanComponent implements OnInit {
     'MD5',
     'SHA1',
     'ENG',
-    'SSN',
     'NUMERIC',
     'California',
     'DATE',
     'CA',
+    'F',
   ];
   obsRulesNumbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
   obfStrategies = [
@@ -74,29 +75,66 @@ export class CreateObfuscationPlanComponent implements OnInit {
     'RANDOMIZE',
     'FAKER',
     'REPLACE_WITH_CONSTANT',
-    'SSN',
     'HASH',
   ];
   operators = ['=', '<', '>', '=>', '<='];
 
-  obfValues = [
+  obfValues_GENERAL = [
     'CM-GENDR',
     'CMFNAME',
     'CMMNAME',
     'CMLNAME',
     'C2MBTHDT',
-    'C2M_SNR',
+    'SSN',
+  ];
+
+  // dropdown for utility if CI_PER_ID is for this PER_ID_NBR
+
+  obfValues_UTILITY_CI_PER_ID_FOR_PER_ID_NBR = [
+    'CIF',
+    'DL',
+    'PIN',
+    'SSN',
+    'DNI',
+    'EIN',
+  ];
+
+  // dropdown for utility if CI_PER_CHAR for CHAR_VAL
+
+  obfValues_UTILITY_CI_PER_CHAR_CHAR_VAL = ['C2M_SNR', 'C2M_SVRT'];
+
+  // dropdown for utility if CI_PER_CHAR for ADHOC_CHAR_VAL
+
+  obfValues_UTILITY_CI_PER_CHAR_ADHOC_CHAR_VAL = ['C2MBTHDT'];
+
+  // dropdown for healthcare if CI_PER_CHAR for CHAR_VAL
+
+  obfValues_HEALTHCARE_CI_PER_CHAR_CHAR_VAL = [
+    'CM-GENDR',
+    'CMNMPFX ',
+    'CMMRCODT',
+    'C1TOBCC ',
+    'CMNMSFX ',
+    'CMPYRLLC',
+    'CMLECLSS',
+  ];
+
+  // dropdown for healthcare if CI_PER_CHAR for ADHOC_CHAR_VAL
+
+  obfValues_HEALTHCARE_CI_PER_CHAR_ADHOC_CHAR_VAL = [
+    'CMFNAME',
+    'CMLNAME',
+    'CMMNAME',
   ];
 
   conditions = [
     'CHAR_TYPE_CD',
     'CI_PER_CHAR',
-    'ID_TYPE_CD',
     'CHAR_VAL',
     'EFFDT',
     'ADHOC_CHAR_VAL',
     'VERSION',
-    'SSN',
+    'ID_TYPE_CD',
     'CHAR_VAL_FK1',
     'CHAR_VAL_FK2',
     'CHAR_VAL_FK3',
@@ -382,7 +420,7 @@ export class CreateObfuscationPlanComponent implements OnInit {
       selectedOperator: '<',
       selectedValue: 'CMFNAME',
       selectedObfStrategy: 'FAKER',
-      selectedObfRule: 'LASTNAME',
+      selectedObfRule: 'FIRSTNAME',
       inputValue: '',
       isEditing: false, // New property to track edit state
     };
@@ -416,5 +454,39 @@ export class CreateObfuscationPlanComponent implements OnInit {
   // Check if fields should be disabled based on editing state
   isFieldDisabled(option: any): boolean {
     return !option.isEditing;
+  }
+
+  // Add this function to your component class
+  getDropdownOptions(tableName: string, columnName: string): string[] {
+    let options = this.obfValues_GENERAL;
+
+    // For healthcare domain
+    if (this.currentDomain === 'healthcare') {
+      if (tableName === 'CI_PER_CHAR') {
+        if (columnName === 'CHAR_VAL') {
+          options = this.obfValues_HEALTHCARE_CI_PER_CHAR_CHAR_VAL;
+        } else if (columnName === 'ADHOC_CHAR_VAL') {
+          options = this.obfValues_HEALTHCARE_CI_PER_CHAR_ADHOC_CHAR_VAL;
+        }
+      }
+      if (tableName === 'CI_PER_ID' && columnName === 'PER_ID_NBR') {
+        options = this.obfValues_UTILITY_CI_PER_ID_FOR_PER_ID_NBR;
+      }
+    }
+
+    // For utility domain
+    else if (this.currentDomain === 'utility') {
+      if (tableName === 'CI_PER_ID' && columnName === 'PER_ID_NBR') {
+        options = this.obfValues_UTILITY_CI_PER_ID_FOR_PER_ID_NBR;
+      } else if (tableName === 'CI_PER_CHAR') {
+        if (columnName === 'CHAR_VAL') {
+          options = this.obfValues_UTILITY_CI_PER_CHAR_CHAR_VAL;
+        } else if (columnName === 'ADHOC_CHAR_VAL') {
+          options = this.obfValues_UTILITY_CI_PER_CHAR_ADHOC_CHAR_VAL;
+        }
+      }
+    }
+
+    return options;
   }
 }

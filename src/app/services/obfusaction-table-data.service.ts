@@ -1127,7 +1127,7 @@ export const TABLE_DATA_HEATLHCARE: TableData = {
           options: [
             {
               selectedOnCondition: 'CHAR_TYPE_CD',
-              selectedOperator: '<',
+              selectedOperator: '=',
               selectedValue: 'CM-GENDR',
               selectedObfStrategy: 'REPLACE_WITH_CONSTANT',
               selectedObfRule: 'F',

@@ -365,12 +365,12 @@
                       </mat-form-field>
 
                       <!-- Action buttons -->
-                      <div class="flex items-center">
+                      <div class="flex items-center gap-3 !mb-3">
                         <!-- Show edit button for existing rows -->
                         <button
                           *ngIf="optionIndex < element.options.length - 1"
                           (click)="toggleEditOption(option)"
-                          class="add-btn !me-4 !mb-3"
+                          class="add-btn"
                         >
                           <img
                             [src]="
@@ -380,29 +380,24 @@
                             "
                             alt=""
                           />
-                          <!-- <img src="" alt="" />
-                          <mat-icon>{{
-                            option.isEditing ? "save" : "edit"
-                          }}</mat-icon> -->
                         </button>
 
                         <!-- Show add button only for the last row -->
                         <button
                           *ngIf="optionIndex === element.options.length - 1"
                           (click)="addOption(element)"
-                          class="add-btn !mb-3 !me-4"
+                          class="add-btn"
                         >
                           <img src="../../../assets/plus (15) 1.svg" alt="" />
                         </button>
                         <!-- Delete button -->
-                        <div class="flex items-center">
-                          <button
-                            (click)="removeOption(element, optionIndex)"
-                            class="delete-btn !mb-3 !me-[70px]"
-                          >
-                            <img src="../../../assets/trash (2) 3.svg" alt="" />
-                          </button>
-                        </div>
+
+                        <button
+                          (click)="removeOption(element, optionIndex)"
+                          class="delete-btn"
+                        >
+                          <img src="../../../assets/trash (2) 3.svg" alt="" />
+                        </button>
                       </div>
                     </div>
                   </div>

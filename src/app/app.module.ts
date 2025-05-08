@@ -38,6 +38,7 @@ import { CreateObfuscationPlanComponent } from './pages/create-obfuscation/creat
 import { FormsModule } from '@angular/forms';
 import { RestoreComponent } from './pages/restore/restore.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -80,6 +81,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatMenuModule,
     MatCheckboxModule,
     MatSelectModule,
+    MatTooltipModule,
 
     HttpClientModule,
     ToastrModule.forRoot(),

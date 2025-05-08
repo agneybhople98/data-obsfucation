@@ -215,7 +215,7 @@
                       class="flex justify-between !border-[0.5px] !border-gray-400 !px-4 !pt-5 !pb-1"
                     >
                       <!-- condition on -->
-                      <mat-form-field appearance="fill" class="!w-[15%]">
+                      <mat-form-field appearance="fill" class="!w-[120px]">
                         <mat-label>Condition on</mat-label>
                         <mat-select
                           [(ngModel)]="option.selectedOnCondition"
@@ -224,14 +224,19 @@
                             optionIndex < element.options.length - 1
                           "
                         >
-                          <mat-option *ngFor="let c of conditions" [value]="c">
+                          <mat-option
+                            *ngFor="let c of conditions"
+                            [value]="c"
+                            [matTooltip]="c"
+                            matTooltipPosition="above"
+                          >
                             {{ c }}
                           </mat-option>
                         </mat-select>
                       </mat-form-field>
 
                       <!-- condition -->
-                      <mat-form-field appearance="fill" class="!w-[10%]">
+                      <mat-form-field appearance="fill" class="!w-[80px]">
                         <mat-label>Condition</mat-label>
                         <mat-select
                           [(ngModel)]="option.selectedOperator"
@@ -240,14 +245,19 @@
                             optionIndex < element.options.length - 1
                           "
                         >
-                          <mat-option *ngFor="let op of operators" [value]="op">
+                          <mat-option
+                            *ngFor="let op of operators"
+                            [value]="op"
+                            [matTooltip]="op"
+                            matTooltipPosition="above"
+                          >
                             {{ op }}
                           </mat-option>
                         </mat-select>
                       </mat-form-field>
 
                       <!--obfuscation strategy -->
-                      <mat-form-field appearance="fill" class="!w-[15%]">
+                      <mat-form-field appearance="fill" class="!w-[100px]">
                         <mat-label>Value</mat-label>
                         <mat-select
                           [(ngModel)]="option.selectedValue"
@@ -264,7 +274,8 @@
                               )
                             "
                             [value]="val"
-                            [value]="val"
+                            [matTooltip]="val"
+                            matTooltipPosition="above"
                           >
                             {{ val }}
                           </mat-option>
@@ -282,6 +293,8 @@
                           "
                         >
                           <mat-option
+                            [matTooltip]="strategy"
+                            matTooltipPosition="above"
                             *ngFor="let strategy of obfStrategies"
                             [value]="strategy"
                           >
@@ -301,6 +314,8 @@
                           "
                         >
                           <mat-option
+                            [matTooltip]="rule"
+                            matTooltipPosition="above"
                             *ngFor="let rule of obsRules"
                             [value]="rule"
                           >
@@ -310,7 +325,7 @@
                       </mat-form-field>
 
                       <!-- input value -->
-                      <mat-form-field appearance="fill" class="!w-[5%]">
+                      <mat-form-field appearance="fill" class="!w-[100px]">
                         <mat-label>Input</mat-label>
                         <input
                           matInput

@@ -49,7 +49,7 @@ tr.detail-row {
 
   padding: 12px;
   margin: 8px 0px;
-  border: 0.1px solid #2b2c2d !important;
+  // border: 0.1px solid #2b2c2d !important;
 }
 
 .add-btn {
@@ -61,6 +61,13 @@ tr.detail-row {
 
 .delete-btn {
   background-color: #ffd8cd;
+  border-radius: 50%;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.edit-btn {
+  background-color: #d4dfff;
   border-radius: 50%;
   padding: 8px;
   cursor: pointer;

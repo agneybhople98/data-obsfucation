@@ -203,178 +203,162 @@
                     element == expandedElement ? 'expanded' : 'collapsed'
                   "
                 >
-                  <!-- Loop through each option in the options array -->
-                  <div
-                    *ngFor="
-                      let option of element.options;
-                      let optionIndex = index
-                    "
-                    class="!mb-5"
-                  >
+                  <div class="!border-[0.5px] !border-gray-400">
+                    <!-- Loop through each option in the options array -->
                     <div
-                      class="flex justify-between !gap-3 !border-[0.5px] !border-gray-400 !px-4 !pt-5 !pb-1"
+                      *ngFor="
+                        let option of element.options;
+                        let optionIndex = index
+                      "
                     >
-                      <!-- condition on -->
-                      <mat-form-field appearance="fill" class="!w-[200px]">
-                        <mat-label class="text-[14px]">Condition on</mat-label>
-                        <mat-select
-                          [(ngModel)]="option.selectedOnCondition"
-                          [disabled]="
-                            !option.isEditing &&
-                            optionIndex < element.options.length - 1
-                          "
-                        >
-                          <mat-option
-                            *ngFor="let c of conditions"
-                            [value]="c"
-                            [matTooltip]="c"
-                            matTooltipPosition="above"
+                      <div
+                        class="flex justify-between !gap-3 !px-4 !pt-5 !pb-1"
+                      >
+                        <!-- condition on -->
+                        <mat-form-field appearance="fill" class="!w-[200px]">
+                          <mat-label class="text-[14px]"
+                            >Condition on</mat-label
                           >
-                            {{ c }}
-                          </mat-option>
-                        </mat-select>
-                      </mat-form-field>
-
-                      <!-- condition -->
-                      <mat-form-field appearance="fill" class="!w-[120px]">
-                        <mat-label class="text-[14px]">Condition</mat-label>
-                        <mat-select
-                          [(ngModel)]="option.selectedOperator"
-                          [disabled]="
-                            !option.isEditing &&
-                            optionIndex < element.options.length - 1
-                          "
-                        >
-                          <mat-option
-                            *ngFor="let op of operators"
-                            [value]="op"
-                            [matTooltip]="op"
-                            matTooltipPosition="above"
+                          <mat-select
+                            [(ngModel)]="option.selectedOnCondition"
+                            [disabled]="!option.isEditing"
                           >
-                            {{ op }}
-                          </mat-option>
-                        </mat-select>
-                      </mat-form-field>
+                            <mat-option
+                              *ngFor="let c of conditions"
+                              [value]="c"
+                              [matTooltip]="c"
+                              matTooltipPosition="above"
+                            >
+                              {{ c }}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
 
-                      <!--obfuscation strategy -->
-                      <mat-form-field appearance="fill" class="!w-[120px]">
-                        <mat-label class="text-[14px]">Value</mat-label>
-                        <mat-select
-                          [(ngModel)]="option.selectedValue"
-                          [disabled]="
-                            !option.isEditing &&
-                            optionIndex < element.options.length - 1
-                          "
-                        >
-                          <mat-option
-                            *ngFor="
-                              let val of getDropdownOptions(
-                                selectedTable,
-                                element.columnName
-                              )
-                            "
-                            [value]="val"
-                            [matTooltip]="val"
-                            matTooltipPosition="above"
+                        <!-- condition -->
+                        <mat-form-field appearance="fill" class="!w-[120px]">
+                          <mat-label class="text-[14px]">Condition</mat-label>
+                          <mat-select
+                            [(ngModel)]="option.selectedOperator"
+                            [disabled]="!option.isEditing"
                           >
-                            {{ val }}
-                          </mat-option>
-                        </mat-select>
-                      </mat-form-field>
+                            <mat-option
+                              *ngFor="let op of operators"
+                              [value]="op"
+                              [matTooltip]="op"
+                              matTooltipPosition="above"
+                            >
+                              {{ op }}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
 
-                      <!-- obfuscation strategy -->
-                      <mat-form-field appearance="fill" class="!w-[180px]">
-                        <mat-label class="text-[14px]"
-                          >Obfuscation Strategy</mat-label
-                        >
-                        <mat-select
-                          [(ngModel)]="option.selectedObfStrategy"
-                          [disabled]="
-                            !option.isEditing &&
-                            optionIndex < element.options.length - 1
-                          "
-                        >
-                          <mat-option
-                            *ngFor="let strategy of obfStrategies"
-                            [value]="strategy"
-                            [matTooltip]="strategy"
-                            matTooltipPosition="above"
+                        <!--obfuscation strategy -->
+                        <mat-form-field appearance="fill" class="!w-[120px]">
+                          <mat-label class="text-[14px]">Value</mat-label>
+                          <mat-select
+                            [(ngModel)]="option.selectedValue"
+                            [disabled]="!option.isEditing"
                           >
-                            {{ strategy }}
-                          </mat-option>
-                        </mat-select>
-                      </mat-form-field>
+                            <mat-option
+                              *ngFor="
+                                let val of getDropdownOptions(
+                                  selectedTable,
+                                  element.columnName
+                                )
+                              "
+                              [value]="val"
+                              [matTooltip]="val"
+                              matTooltipPosition="above"
+                            >
+                              {{ val }}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
 
-                      <!-- obfuscation rules -->
-                      <mat-form-field appearance="fill" class="!w-[160px]">
-                        <mat-label class="text-[14px]">Rules</mat-label>
-                        <mat-select
-                          [(ngModel)]="option.selectedObfRule"
-                          [disabled]="
-                            !option.isEditing &&
-                            optionIndex < element.options.length - 1
-                          "
-                        >
-                          <mat-option
-                            [matTooltip]="rule"
-                            matTooltipPosition="above"
-                            *ngFor="let rule of obsRules"
-                            [value]="rule"
+                        <!-- obfuscation strategy -->
+                        <mat-form-field appearance="fill" class="!w-[180px]">
+                          <mat-label class="text-[14px]"
+                            >Obfuscation Strategy</mat-label
                           >
-                            {{ rule }}
-                          </mat-option>
-                        </mat-select>
-                      </mat-form-field>
+                          <mat-select
+                            [(ngModel)]="option.selectedObfStrategy"
+                            [disabled]="!option.isEditing"
+                          >
+                            <mat-option
+                              *ngFor="let strategy of obfStrategies"
+                              [value]="strategy"
+                              [matTooltip]="strategy"
+                              matTooltipPosition="above"
+                            >
+                              {{ strategy }}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
 
-                      <!-- input value -->
-                      <mat-form-field appearance="fill" class="!w-[80px]">
-                        <mat-label class="!text-[14px]">Input</mat-label>
+                        <!-- obfuscation rules -->
+                        <mat-form-field appearance="fill" class="!w-[160px]">
+                          <mat-label class="text-[14px]">Rules</mat-label>
+                          <mat-select
+                            [(ngModel)]="option.selectedObfRule"
+                            [disabled]="!option.isEditing"
+                          >
+                            <mat-option
+                              [matTooltip]="rule"
+                              matTooltipPosition="above"
+                              *ngFor="let rule of obsRules"
+                              [value]="rule"
+                            >
+                              {{ rule }}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
 
-                        <input
-                          matInput
-                          [(ngModel)]="option.inputValue"
-                          [disabled]="
-                            !option.isEditing &&
-                            optionIndex < element.options.length - 1
-                          "
-                        />
-                      </mat-form-field>
+                        <!-- input value -->
+                        <mat-form-field appearance="fill" class="!w-[80px]">
+                          <mat-label class="!text-[14px]">Input</mat-label>
 
-                      <!-- Action buttons -->
-                      <div class="flex items-center gap-3 !mb-3">
-                        <!-- Show edit button for existing rows -->
-                        <button
-                          *ngIf="optionIndex < element.options.length - 1"
-                          (click)="toggleEditOption(option)"
-                          class="add-btn"
-                        >
-                          <img
-                            [src]="
-                              !option.isEditing
-                                ? '../../../assets/edit (16) 1.svg'
-                                : '../../../assets/device-floppy (4) 1.svg'
-                            "
-                            alt=""
+                          <input
+                            matInput
+                            [(ngModel)]="option.inputValue"
+                            [disabled]="!option.isEditing"
                           />
-                        </button>
+                        </mat-form-field>
 
-                        <!-- Show add button only for the last row -->
-                        <button
-                          *ngIf="optionIndex === element.options.length - 1"
-                          (click)="addOption(element)"
-                          class="add-btn"
-                        >
-                          <img src="../../../assets/plus (15) 1.svg" alt="" />
-                        </button>
-                        <!-- Delete button -->
+                        <!-- Action buttons -->
+                        <div class="flex items-center gap-3 !mb-3">
+                          <!-- Delete button -->
+                          <button
+                            (click)="toggleEditOption(option)"
+                            [ngClass]="{
+                              'edit-btn': !option.isEditing,
+                              'add-btn': option.isEditing
+                            }"
+                          >
+                            <img
+                              [src]="
+                                !option.isEditing
+                                  ? '../../../assets/edit-pencil.svg'
+                                  : '../../../assets/device-floppy (4) 1.svg'
+                              "
+                              alt=""
+                            />
+                          </button>
 
-                        <button
-                          (click)="removeOption(element, optionIndex)"
-                          class="delete-btn"
-                        >
-                          <img src="../../../assets/trash (2) 3.svg" alt="" />
-                        </button>
+                          <button
+                            (click)="removeOption(element, optionIndex)"
+                            class="delete-btn"
+                          >
+                            <img src="../../../assets/trash (2) 3.svg" alt="" />
+                          </button>
+                        </div>
                       </div>
+                    </div>
+                    <div class="flex items-center !ps-4 !pb-4">
+                      <app-button
+                        (clicked)="addOption(element)"
+                        text="Add Condition"
+                        variant="primary"
+                      ></app-button>
                     </div>
                   </div>
                 </div>

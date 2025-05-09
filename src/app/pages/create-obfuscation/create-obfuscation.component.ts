@@ -406,7 +406,6 @@ export class CreateObfuscationPlanComponent implements OnInit {
   navigateTo() {
     this.router.navigate([`${this.currentDomain}/obfuscation-plan`]);
   }
-
   // Methods for handling options (add/remove)
   addOption(element: any) {
     // If this is the first option being added, initialize the options array if needed
@@ -417,8 +416,8 @@ export class CreateObfuscationPlanComponent implements OnInit {
     // Add a new empty option
     const newOption: any = {
       selectedOnCondition: 'CHAR_TYPE_CD',
-      selectedOperator: '<',
-      selectedValue: 'CMFNAME',
+      selectedOperator: '=',
+      selectedValue: 'CMLNAME',
       selectedObfStrategy: 'FAKER',
       selectedObfRule: 'FIRSTNAME',
       inputValue: '',
@@ -428,9 +427,9 @@ export class CreateObfuscationPlanComponent implements OnInit {
     element.options.push(newOption);
 
     // Make the previous options non-editable by default
-    if (element.options.length > 1) {
+    if (element.options.length > 0) {
       // Set the previous option to be in non-editing mode
-      element.options[element.options.length - 2].isEditing = false;
+      element.options[element.options.length - 1].isEditing = true;
     }
   }
 

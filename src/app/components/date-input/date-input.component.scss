@@ -1,0 +1,150 @@
+/* date-input.component.scss */
+:host {
+  display: block;
+  margin-bottom: 20px;
+}
+
+.input-container {
+  position: relative;
+  font-family: sans-serif;
+  padding-top: 16px; // Space for the floating label
+}
+
+.input-wrapper {
+  position: relative;
+}
+
+.input-with-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.calendar-wrapper {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.required-indicator {
+  color: #f44336; // Red asterisk for required fields
+  margin-left: 2px;
+}
+
+.floating-label {
+  position: absolute;
+  top: 8px;
+  left: 0;
+  font-size: 16px;
+  color: #757575;
+  pointer-events: none;
+  transition: 0.2s ease all;
+}
+
+.floating-input {
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 6px 0;
+  font-size: 16px;
+  color: #333;
+  background-color: transparent;
+  margin-bottom: 4px;
+  margin-top: 4px;
+  padding-right: 28px; // Space for calendar icon
+  font-weight: normal;
+
+  &::placeholder {
+    color: transparent; // Hide placeholder when label is showing
+    transition: color 0.2s ease;
+  }
+}
+
+/* When input is focused or has value */
+.focused .floating-label,
+.has-value .floating-label {
+  top: -12px;
+  font-size: 12px;
+  color: #3f51b5;
+}
+
+/* Show placeholder only when label is floated */
+.focused .floating-input::placeholder,
+.has-value .floating-input::placeholder {
+  color: #ccc;
+}
+
+.input-underline {
+  height: 1px;
+  width: 100%;
+  background-color: #ddd;
+  position: relative;
+
+  .input-ripple {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #3f51b5;
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+.focused {
+  .input-ripple {
+    width: 100%;
+  }
+
+  /* Keep the asterisk red even when focused */
+  .required-indicator {
+    color: #f44336;
+  }
+}
+
+.disabled {
+  opacity: 0.6;
+
+  .floating-input {
+    cursor: not-allowed;
+  }
+
+  .floating-label {
+    color: #9e9e9e;
+  }
+}
+
+.invalid {
+  .floating-label {
+    color: #f44336;
+  }
+
+  .input-underline {
+    background-color: #f44336;
+
+    .input-ripple {
+      background-color: #f44336;
+    }
+  }
+}
+
+.error-messages {
+  font-size: 12px;
+  color: #f44336;
+  margin-top: 4px;
+}
+
+.error-message {
+  margin-bottom: 2px;
+}
+
+.additional-info {
+  font-size: 12px;
+  color: #333;
+  margin-top: 4px;
+}
+
+.info-text {
+  margin-bottom: 2px;
+}

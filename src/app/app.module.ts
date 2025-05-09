@@ -35,10 +35,14 @@ import { MatSelectModule } from '@angular/material/select';
 import { ButtonComponent } from './components/button/button.component';
 import { JobControlComponent } from './pages/job-control/job-control.component';
 import { CreateObfuscationPlanComponent } from './pages/create-obfuscation/create-obfuscation.component';
+import { SubsetPlanComponent } from './pages/subset-plan/subset-plan.component';
 import { FormsModule } from '@angular/forms';
 import { RestoreComponent } from './pages/restore/restore.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { provideNativeDateAdapter } from '@angular/material/core';
+import { MatDatepicker } from '@angular/material/datepicker';
 
 @NgModule({
   declarations: [
@@ -59,6 +63,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     JobControlComponent,
     CreateObfuscationPlanComponent,
     RestoreComponent,
+    SubsetPlanComponent,
   ],
   imports: [
     FormsModule,
@@ -82,11 +87,13 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatCheckboxModule,
     MatSelectModule,
     MatTooltipModule,
+    MatDatepickerModule,
+    MatDatepicker,
 
     HttpClientModule,
     ToastrModule.forRoot(),
   ],
-  providers: [],
+  providers: [provideNativeDateAdapter()],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

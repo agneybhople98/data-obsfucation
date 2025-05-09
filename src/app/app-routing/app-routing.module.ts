@@ -7,6 +7,7 @@ import { ViewObfuscationPlanComponent } from '../pages/view-obfuscation/view-obf
 import { JobControlComponent } from '../pages/job-control/job-control.component';
 import { CreateObfuscationPlanComponent } from '../pages/create-obfuscation/create-obfuscation.component';
 import { RestoreComponent } from '../pages/restore/restore.component';
+import { SubsetPlanComponent } from '../pages/subset-plan/subset-plan.component';
 import { RouteResolverService } from '../services/route-resolver.service';
 
 const routes: Routes = [
@@ -42,6 +43,11 @@ const routes: Routes = [
             component: CreateObfuscationPlanComponent,
           },
         ],
+      },
+      {
+        path: 'subset-plan',
+        component: SubsetPlanComponent,
+        runGuardsAndResolvers: 'always',
       },
 
       // Default route redirects to dashboard within the current domain

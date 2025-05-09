@@ -100,6 +100,44 @@
                 </div>
               </a>
             </li>
+
+            <li
+              class="nav-item flex items-center justify-center"
+              routerLinkActive="active"
+            >
+              <a
+                class="nav-link"
+                [routerLink]="`${this.currentDomain}/subset-plan`"
+                routerLinkActive
+                #subsetLink="routerLinkActive"
+              >
+                <div class="flex flex-col items-center justify-center">
+                  <img
+                    [ngClass]="{ hidden: subsetLink.isActive }"
+                    src="../../../assets/subset-plan.svg"
+                    alt="Subset Plan"
+                  />
+                  <img
+                    class="subset-plan"
+                    [ngClass]="{ hidden: !subsetLink.isActive }"
+                    src="../../../assets/subset-plan.svg"
+                    alt="Subset Plan"
+                  />
+
+                  <div class="text-center !mt-2">
+                    <div
+                      [ngClass]="{
+                        '!text-[#0B2046]': !subsetLink.isActive,
+                        '!text-white': subsetLink.isActive
+                      }"
+                      class="text-xs font-medium"
+                    >
+                      Subset Plan
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </li>
             <li
               class="nav-item flex items-center justify-center"
               routerLinkActive="active"

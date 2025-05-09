@@ -176,7 +176,7 @@
         <mat-form-field class="!w-full">
           <mat-label>Choose a date</mat-label>
           <input matInput [matDatepicker]="picker" [value]="defaultDateFirst" />
-          <mat-hint>MM/DD/YYYY</mat-hint>
+
           <mat-datepicker-toggle
             matIconSuffix
             [for]="picker"
@@ -187,15 +187,15 @@
           <mat-label>Choose a date</mat-label>
           <input
             matInput
-            [matDatepicker]="picker"
+            [matDatepicker]="pickerTwo"
             [value]="defaultDateSecond"
           />
-          <mat-hint>MM/DD/YYYY</mat-hint>
+
           <mat-datepicker-toggle
             matIconSuffix
-            [for]="picker"
+            [for]="pickerTwo"
           ></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
+          <mat-datepicker #pickerTwo></mat-datepicker>
         </mat-form-field>
       </div>
 

@@ -9,6 +9,7 @@ import { CreateObfuscationPlanComponent } from '../pages/create-obfuscation/crea
 import { RestoreComponent } from '../pages/restore/restore.component';
 import { SubsetPlanComponent } from '../pages/subset-plan/subset-plan.component';
 import { RouteResolverService } from '../services/route-resolver.service';
+import { CreateSubsetComponent } from '../pages/create-subset/create-subset.component';
 
 const routes: Routes = [
   // Domain as the first segment to ensure it's captured for all routes
@@ -47,6 +48,13 @@ const routes: Routes = [
       {
         path: 'subset-plan',
         component: SubsetPlanComponent,
+        runGuardsAndResolvers: 'always',
+        children: [{ path: 'create-subset', component: CreateSubsetComponent }],
+      },
+
+      {
+        path: 'create-subset',
+        component: CreateSubsetComponent,
         runGuardsAndResolvers: 'always',
       },
 

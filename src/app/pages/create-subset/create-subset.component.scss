@@ -1,0 +1,78 @@
+.mat-mdc-table {
+  background: white !important;
+  width: 100%;
+}
+
+.mat-mdc-header-row {
+  background-color: #f1f1f1 !important;
+  border-bottom: 1px solid #e9ecef !important;
+}
+.mat-mdc-row {
+  background: transparent !important;
+  border-bottom: 1px solid white !important;
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+  }
+}
+
+.mat-mdc-cell {
+  color: #333;
+  border-bottom: 1px solid #e9ecef;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// Inner expandable section
+
+tr.detail-row {
+  height: 0;
+}
+
+.bg-disabled-color {
+  background-color: grey !important;
+}
+
+.element-row td {
+  border-bottom-width: 0;
+}
+
+.element-detail {
+  overflow: hidden;
+  display: flex;
+  // margin-left: 80px;
+  flex-direction: column;
+}
+
+.element-diagram {
+  min-width: 80px;
+
+  padding: 12px;
+  margin: 8px 0px;
+  // border: 0.1px solid #2b2c2d !important;
+}
+
+.add-btn {
+  background-color: #d1fcd1;
+  border-radius: 50%;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.delete-btn {
+  background-color: #ffd8cd;
+  border-radius: 50%;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.edit-btn {
+  background-color: #d4dfff;
+  border-radius: 50%;
+  padding: 8px;
+  cursor: pointer;
+}
+
+// .mat-mdc-cell.mdc-data-table__cell.cdk-cell.cdk-column-expandedDetail.mat-column-expandedDetail {
+//   display: none !important;
+// }

@@ -32,9 +32,9 @@ import {
 })
 export class SubsetPlanComponent {
   expandedElement: any | null = null;
-  selectedSubSetStrategy = 'Conditions'; // Default selected value
+  selectedSubSetStrategy = 'Condition'; // Default selected value
 
-  subsetStrategies = ['Conditions', 'Percentage of rows', 'Date ranges'];
+  subsetStrategies = ['Condition', 'Percentage of rows', 'Date ranges'];
   percentageStrategies = ['Number of rows with limit 25%'];
   selectedPercentStrategy = 'Number of rows with limit 25%';
   isConnected = false;
@@ -110,8 +110,6 @@ export class SubsetPlanComponent {
 
   createObfuscation() {
     this._toaster.success('Obfuscation Plan created successfully!');
-    this.router.navigate([
-      `${this.currentDomain}/obfuscation-plan/create-obfuscation`,
-    ]);
+    this.router.navigate([`${this.currentDomain}/subset-plan/create-subset`]);
   }
 }

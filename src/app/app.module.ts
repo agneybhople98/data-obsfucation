@@ -43,6 +43,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { MatDatepicker } from '@angular/material/datepicker';
+import { CreateSubsetComponent } from './pages/create-subset/create-subset.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +65,7 @@ import { MatDatepicker } from '@angular/material/datepicker';
     CreateObfuscationPlanComponent,
     RestoreComponent,
     SubsetPlanComponent,
+    CreateSubsetComponent,
   ],
   imports: [
     FormsModule,

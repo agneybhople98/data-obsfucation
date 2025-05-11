@@ -44,6 +44,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { MatDatepicker } from '@angular/material/datepicker';
 import { CreateSubsetComponent } from './pages/create-subset/create-subset.component';
+import { MatSliderModule } from '@angular/material/slider';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
 
 @NgModule({
   declarations: [
@@ -91,6 +93,8 @@ import { CreateSubsetComponent } from './pages/create-subset/create-subset.compo
     MatTooltipModule,
     MatDatepickerModule,
     MatDatepicker,
+    MatSliderModule,
+    MatMomentDateModule,
 
     HttpClientModule,
     ToastrModule.forRoot(),

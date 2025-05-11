@@ -18,10 +18,35 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { MatPaginator } from '@angular/material/paginator';
 import { filter } from 'rxjs';
 import { FormControl, FormGroup } from '@angular/forms';
+import {
+  MAT_DATE_FORMATS,
+  DateAdapter,
+  MAT_DATE_LOCALE,
+} from '@angular/material/core';
+import {
+  MomentDateAdapter,
+  MAT_MOMENT_DATE_ADAPTER_OPTIONS,
+} from '@angular/material-moment-adapter';
+import moment from 'moment';
+// tslint:disable-next-line:no-duplicate-imports
+import { default as _rollupMoment } from 'moment';
 
 const today = new Date();
 const month = today.getMonth();
 const year = today.getFullYear();
+
+// Define custom date formats (assuming you want MM/DD/YYYY format)
+export const MY_FORMATS = {
+  parse: {
+    dateInput: 'DD/MM/YYYY',
+  },
+  display: {
+    dateInput: 'DD/MM/YYYY',
+    monthYearLabel: 'MMM YYYY',
+    dateA11yLabel: 'LL',
+    monthYearA11yLabel: 'MMMM YYYY',
+  },
+};
 
 @Component({
   selector: 'app-create-subset',
@@ -38,21 +63,29 @@ const year = today.getFullYear();
   ],
   styleUrl: './create-subset.component.scss',
   standalone: false,
+  providers: [
+    {
+      provide: DateAdapter,
+      useClass: MomentDateAdapter,
+      deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS],
+    },
+    { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
+  ],
 })
 export class CreateSubsetComponent {
   readonly campaignOne = new FormGroup({
-    start: new FormControl(new Date(year, month, 13)),
-    end: new FormControl(new Date(year, month, 16)),
+    start: new FormControl(moment([year, month, 13])),
+    end: new FormControl(moment([year, month, 16])),
   });
   readonly campaignTwo = new FormGroup({
-    start: new FormControl(new Date(year, month, 15)),
-    end: new FormControl(new Date(year, month, 19)),
+    start: new FormControl(moment([year, month, 15])),
+    end: new FormControl(moment([year, month, 19])),
   });
   tableData: any;
   expandedElement: any | null = null;
   selectedTable: string = '';
   currentDomain: string = 'utility';
-  selectedObfStrategy = 'Condition';
+  selectedSubsetStrategy = 'Condition';
 
   displayedColumns: string[] = [
     'expand',
@@ -61,7 +94,7 @@ export class CreateSubsetComponent {
     'obfStrategy',
     'obfRules',
   ];
-  obsRules = [
+  subsetRules = [
     'R',
     'L',
     'Y',
@@ -82,11 +115,11 @@ export class CreateSubsetComponent {
     'CA',
     'F',
   ];
-  obsRulesNumbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-  obfStrategies = ['Condition', 'Percentage of rows', 'Date Ranges'];
+  subsetRulesNumbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+  subsetStrategies = ['Condition', 'Percentage of rows', 'Date Ranges'];
   operators = ['=', '<', '>', '=>', '<='];
 
-  obfValues_GENERAL = [
+  subsetValues_GENERAL = [
     'CM-GENDR',
     'CMFNAME',
     'CMMNAME',
@@ -97,7 +130,7 @@ export class CreateSubsetComponent {
 
   // dropdown for utility if CI_PER_ID is for this PER_ID_NBR
 
-  obfValues_UTILITY_CI_PER_ID_FOR_PER_ID_NBR = [
+  subsetValues_UTILITY_CI_PER_ID_FOR_PER_ID_NBR = [
     'CIF',
     'DL',
     'PIN',
@@ -108,15 +141,15 @@ export class CreateSubsetComponent {
 
   // dropdown for utility if CI_PER_CHAR for CHAR_VAL
 
-  obfValues_UTILITY_CI_PER_CHAR_CHAR_VAL = ['C2M_SNR', 'C2M_SVRT'];
+  subsetValues_UTILITY_CI_PER_CHAR_CHAR_VAL = ['C2M_SNR', 'C2M_SVRT'];
 
   // dropdown for utility if CI_PER_CHAR for ADHOC_CHAR_VAL
 
-  obfValues_UTILITY_CI_PER_CHAR_ADHOC_CHAR_VAL = ['C2MBTHDT'];
+  subsetValues_UTILITY_CI_PER_CHAR_ADHOC_CHAR_VAL = ['C2MBTHDT'];
 
   // dropdown for healthcare if CI_PER_CHAR for CHAR_VAL
 
-  obfValues_HEALTHCARE_CI_PER_CHAR_CHAR_VAL = [
+  subsetValues_HEALTHCARE_CI_PER_CHAR_CHAR_VAL = [
     'CM-GENDR',
     'CMNMPFX ',
     'CMMRCODT',
@@ -128,7 +161,7 @@ export class CreateSubsetComponent {
 
   // dropdown for healthcare if CI_PER_CHAR for ADHOC_CHAR_VAL
 
-  obfValues_HEALTHCARE_CI_PER_CHAR_ADHOC_CHAR_VAL = [
+  subsetValues_HEALTHCARE_CI_PER_CHAR_ADHOC_CHAR_VAL = [
     'CMFNAME',
     'CMLNAME',
     'CMMNAME',
@@ -275,7 +308,7 @@ export class CreateSubsetComponent {
 
     // Check rows that have all required values
     this.dataSource.data.forEach((row: ColumnDefinition) => {
-      if (row.columnName && row.obfStrategy && row.obfRules?.first) {
+      if (row.columnName && row.subsetStrategy && row.subsetRules?.min) {
         this.selection.select(row);
       }
     });
@@ -360,7 +393,7 @@ export class CreateSubsetComponent {
 
     // Check rows that have all required values
     this.dataSource.data.forEach((row: ColumnDefinition) => {
-      if (row.columnName && row.obfStrategy && row.obfRules?.first) {
+      if (row.columnName && row.subsetStrategy && row.subsetRules?.first) {
         this.selection.select(row);
       }
     });
@@ -422,11 +455,11 @@ export class CreateSubsetComponent {
 
     // Add a new empty option
     const newOption: any = {
-      selectedOnCondition: 'CHAR_TYPE_CD',
-      selectedOperator: '=',
-      selectedValue: 'CMLNAME',
-      selectedObfStrategy: 'FAKER',
-      selectedObfRule: 'FIRSTNAME',
+      selectedOnCondition: '',
+      selectedOperator: '',
+      selectedValue: '',
+      selectedObfStrategy: '',
+      selectedObfRule: '',
       inputValue: '',
       isEditing: false, // New property to track edit state
     };
@@ -464,31 +497,31 @@ export class CreateSubsetComponent {
 
   // Add this function to your component class
   getDropdownOptions(tableName: string, columnName: string): string[] {
-    let options = this.obfValues_GENERAL;
+    let options = this.subsetValues_GENERAL;
 
     // For healthcare domain
     if (this.currentDomain === 'healthcare') {
       if (tableName === 'CI_PER_CHAR') {
         if (columnName === 'CHAR_VAL') {
-          options = this.obfValues_HEALTHCARE_CI_PER_CHAR_CHAR_VAL;
+          options = this.subsetValues_HEALTHCARE_CI_PER_CHAR_CHAR_VAL;
         } else if (columnName === 'ADHOC_CHAR_VAL') {
-          options = this.obfValues_HEALTHCARE_CI_PER_CHAR_ADHOC_CHAR_VAL;
+          options = this.subsetValues_HEALTHCARE_CI_PER_CHAR_ADHOC_CHAR_VAL;
         }
       }
       if (tableName === 'CI_PER_ID' && columnName === 'PER_ID_NBR') {
-        options = this.obfValues_UTILITY_CI_PER_ID_FOR_PER_ID_NBR;
+        options = this.subsetValues_UTILITY_CI_PER_ID_FOR_PER_ID_NBR;
       }
     }
 
     // For utility domain
     else if (this.currentDomain === 'utility') {
       if (tableName === 'CI_PER_ID' && columnName === 'PER_ID_NBR') {
-        options = this.obfValues_UTILITY_CI_PER_ID_FOR_PER_ID_NBR;
+        options = this.subsetValues_UTILITY_CI_PER_ID_FOR_PER_ID_NBR;
       } else if (tableName === 'CI_PER_CHAR') {
         if (columnName === 'CHAR_VAL') {
-          options = this.obfValues_UTILITY_CI_PER_CHAR_CHAR_VAL;
+          options = this.subsetValues_UTILITY_CI_PER_CHAR_CHAR_VAL;
         } else if (columnName === 'ADHOC_CHAR_VAL') {
-          options = this.obfValues_UTILITY_CI_PER_CHAR_ADHOC_CHAR_VAL;
+          options = this.subsetValues_UTILITY_CI_PER_CHAR_ADHOC_CHAR_VAL;
         }
       }
     }

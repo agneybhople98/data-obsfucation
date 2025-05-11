@@ -12,8 +12,9 @@ export interface TableData {
 export interface ColumnDefinition {
   columnName: string;
   displayName: string;
-  obfStrategy?: string;
-  obfRules?: any;
+  subsetStrategy?: string;
+  subsetRules?: any;
+  conditionValues?: any;
   isExpandable?: boolean;
   options?: any;
   inputValue?: any;
@@ -34,64 +35,78 @@ export const TABLE_DATA_HEATLHCARE: TableData = {
         {
           columnName: 'CUSTOMER_ID',
           displayName: 'Customer ID',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'FIRST_NAME',
           displayName: 'First Name',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'LAST_NAME',
           displayName: 'Last Name',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'EMAIL',
           displayName: 'Email Address',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'SSN',
           displayName: 'SSN Number',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'DOB',
           displayName: 'Date of Birth',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'PHONE_NUMBER',
           displayName: 'Phone Number',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
       ],
@@ -102,64 +117,76 @@ export const TABLE_DATA_HEATLHCARE: TableData = {
         {
           columnName: 'ORDER_ID',
           displayName: 'Order ID',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'CUSTOMER_ID',
           displayName: 'Customer ID',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'ORDER_AMOUNT',
           displayName: 'Order Amount',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'ORDER_DATE',
           displayName: 'Order Date',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'PAYMENT_METHOD',
           displayName: 'Payment Method',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'SHIPPING_ADDRESS',
           displayName: 'Shipping Address',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'STATUS',
           displayName: 'Status',
-          obfStrategy: 'REPLACE_WITH_CONSTANT',
-          obfRules: {
-            first: 'Delivered',
-            second: undefined,
+          subsetStrategy: 'REPLACE_WITH_CONSTANT',
+          subsetRules: {
+            min: 'Delivered',
+            max: undefined,
           },
         },
       ],
@@ -170,484 +197,590 @@ export const TABLE_DATA_HEATLHCARE: TableData = {
         {
           columnName: 'PER_ID',
           displayName: 'Person ID',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'EMAILID',
           displayName: 'Email ID',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
 
         {
           columnName: 'POSTAL',
           displayName: 'Postal Code',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'CITY',
           displayName: 'City',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
 
         {
           columnName: 'PER_OR_BUS_FLG',
           displayName: 'Person or Business Flag',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'LANGUAGE_CD',
           displayName: 'Language Code',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: 'Condition',
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'ADDRESS1',
           displayName: 'Address 1',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'LS_SL_FLG',
           displayName: 'LS SL Flag',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'LS_SL_DESCR',
           displayName: 'LS SL Description',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
 
         {
           columnName: 'OVRD_MAIL_NAME1',
           displayName: 'Override Mail Name 1',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'OVRD_MAIL_NAME2',
           displayName: 'Override Mail Name 2',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'OVRD_MAIL_NAME3',
           displayName: 'Override Mail Name 3',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
 
         {
           columnName: 'ADDRESS2',
           displayName: 'Address 2',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'ADDRESS3',
           displayName: 'Address 3',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'ADDRESS4',
           displayName: 'Address 4',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
 
         {
           columnName: 'NUM1',
           displayName: 'Number 1',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'NUM2',
           displayName: 'Number 2',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'COUNTY',
           displayName: 'County',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
 
         {
           columnName: 'HOUSE_TYPE',
           displayName: 'House Type',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'GEO_CODE',
           displayName: 'Geo Code',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'IN_CITY_LIMIT',
           displayName: 'In City Limit',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'STATE',
           displayName: 'State',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'COUNTRY',
           displayName: 'Country',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'VERSION',
           displayName: 'Version',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'RECV_MKTG_INFO_FLG',
           displayName: 'Receive Marketing Info Flag',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'WEB_PASSWD',
           displayName: 'Web Password',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'WEB_PWD_HINT_FLG',
           displayName: 'Web Password Hint Flag',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'WEB_PASSWD_ANS',
           displayName: 'Web Password Answer',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'PER_DATA_AREA',
           displayName: 'Person Data Area',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'CIS_DIVISION',
           displayName: 'CIS Division',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'ACCESS_GRP_CD',
           displayName: 'Access Group Code',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'BIRTH_DT',
           displayName: 'Birth Date',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'SINCE_DT',
           displayName: 'Since Date',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'CRE_BY',
           displayName: 'Created By',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'LAST_UPD_BY',
           displayName: 'Last Updated By',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'CRE_DTTM',
           displayName: 'Creation Date Time',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'LAST_UPD_DTTM',
           displayName: 'Last Update Date Time',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'BO_STATUS_CD',
           displayName: 'BO Status Code',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'STATUS_UPD_DTTM',
           displayName: 'Status Update Date Time',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'BUS_OBJ_CD',
           displayName: 'Business Object Code',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'BO_DATA_AREA',
           displayName: 'BO Data Area',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'CUST_SEG_FLG',
           displayName: 'Customer Segment Flag',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'CUST_TIER_FLG',
           displayName: 'Customer Tier Flag',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'SRC_SYSTEM_CD',
           displayName: 'Source System Code',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'REL_MGR',
           displayName: 'Relationship Manager',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'IM_REFUND_SW',
           displayName: 'IM Refund Switch',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'ADV_DEP_LVL_FLG',
           displayName: 'Advanced Deposit Level Flag',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'ADV_DEP_AMT',
           displayName: 'Advanced Deposit Amount',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'ADV_DEP_GRACE_DAYS',
           displayName: 'Advanced Deposit Grace Days',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'DRAG_DAYS',
           displayName: 'Drag Days',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'COLL_CL_CD',
           displayName: 'Collection Class Code',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'CR_REVIEW_DT',
           displayName: 'Credit Review Date',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'POSTPONE_CR_RVW_DT',
           displayName: 'Postpone Credit Review Date',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
       ],
@@ -658,181 +791,221 @@ export const TABLE_DATA_HEATLHCARE: TableData = {
         {
           columnName: 'PER_ID',
           displayName: 'Person ID',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'SEQ_NUM',
           displayName: 'Sequence Number',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'ADDRESS1',
           displayName: 'Address 1',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'ADDRESS2',
           displayName: 'Address 2',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'ADDRESS3',
           displayName: 'Address 3',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'ADDRESS4',
           displayName: 'Address 4',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'CITY',
           displayName: 'City',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'NUM1',
           displayName: 'Number 1',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'NUM2',
           displayName: 'Number 2',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'COUNTY',
           displayName: 'County',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'POSTAL',
           displayName: 'Postal Code',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'HOUSE_TYPE',
           displayName: 'House Type',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'GEO_CODE',
           displayName: 'Geo Code',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'IN_CITY_LIMIT',
           displayName: 'In City Limit',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'STATE',
           displayName: 'State',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'COUNTRY',
           displayName: 'Country',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'VERSION',
           displayName: 'Version',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'SEASON_START_MMDD',
           displayName: 'Season Start MMDD',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'SEASON_END_MMDD',
           displayName: 'Season End MMDD',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'EFF_STATUS',
           displayName: 'Effective Status',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
       ],
@@ -843,50 +1016,55 @@ export const TABLE_DATA_HEATLHCARE: TableData = {
         {
           columnName: 'PER_ID',
           displayName: 'Person ID',
-          obfStrategy: undefined,
-          obfRules: {},
+          subsetStrategy: undefined,
+          subsetRules: {},
         },
         {
           columnName: 'SEQ_NUM',
           displayName: 'Sequence Number',
-          obfStrategy: undefined,
-          obfRules: {},
+          subsetStrategy: undefined,
+          subsetRules: {},
         },
         {
           columnName: 'ENTITY_NAME',
           displayName: 'Entity Name',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: '10',
+            max: '1000',
           },
         },
         {
           columnName: 'NAME_TYPE_FLG',
           displayName: 'Name Type Flag',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'VERSION',
           displayName: 'Version',
-          obfStrategy: undefined,
-          obfRules: {},
+          subsetStrategy: undefined,
+          subsetRules: {},
         },
         {
           columnName: 'PRIM_NAME_SW',
           displayName: 'Primary Name Switch',
-          obfStrategy: undefined,
-          obfRules: {},
+          subsetStrategy: undefined,
+          subsetRules: {},
         },
         {
           columnName: 'ENTITY_NAME_UPR',
           displayName: 'Entity Name Upper',
-          obfStrategy: undefined,
-          obfRules: {},
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: '10',
+            max: '200',
+          },
         },
       ],
     },
@@ -896,47 +1074,49 @@ export const TABLE_DATA_HEATLHCARE: TableData = {
         {
           columnName: 'PER_ID',
           displayName: 'Person ID',
-          obfStrategy: undefined,
-          obfRules: {},
+          subsetStrategy: undefined,
+          subsetRules: {},
         },
         {
           columnName: 'SEQ_NUM',
           displayName: 'Sequence Number',
-          obfStrategy: undefined,
-          obfRules: {},
+          subsetStrategy: undefined,
+          subsetRules: {},
         },
         {
           columnName: 'PHONE_TYPE_CD',
           displayName: 'Phone Type Code',
-          obfStrategy: undefined,
-          obfRules: {},
+          subsetStrategy: undefined,
+          subsetRules: {},
         },
         {
           columnName: 'COUNTRY_CODE',
           displayName: 'Country Code',
-          obfStrategy: undefined,
-          obfRules: {},
+          subsetStrategy: undefined,
+          subsetRules: {},
         },
         {
           columnName: 'PHONE',
           displayName: 'Phone',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'EXTENSION',
           displayName: 'Extension',
-          obfStrategy: undefined,
-          obfRules: {},
+          subsetStrategy: undefined,
+          subsetRules: {},
         },
         {
           columnName: 'VERSION',
           displayName: 'Version',
-          obfStrategy: undefined,
-          obfRules: {},
+          subsetStrategy: undefined,
+          subsetRules: {},
         },
       ],
     },
@@ -946,106 +1126,114 @@ export const TABLE_DATA_HEATLHCARE: TableData = {
         {
           columnName: 'ADDRESS_ID',
           displayName: 'Address Id',
-          obfStrategy: 'undefined',
-          obfRules: {},
+          subsetStrategy: 'undefined',
+          subsetRules: {},
         },
         {
           columnName: 'ADDRESS1',
           displayName: 'Address 1',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'ADDRESS1_UPR',
           displayName: 'Address Upper',
-          obfStrategy: undefined,
-          obfRules: {},
+          subsetStrategy: undefined,
+          subsetRules: {},
         },
 
         {
           columnName: 'ADDRESS2',
           displayName: 'Address 2',
-          obfStrategy: undefined,
-          obfRules: {},
+          subsetStrategy: undefined,
+          subsetRules: {},
         },
 
         {
           columnName: 'CITY',
           displayName: 'City',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'CITY_UPR',
           displayName: 'City Upper',
-          obfStrategy: undefined,
-          obfRules: {},
+          subsetStrategy: undefined,
+          subsetRules: {},
         },
         {
           columnName: 'COUNTY',
           displayName: 'County',
-          obfStrategy: undefined,
-          obfRules: {},
+          subsetStrategy: undefined,
+          subsetRules: {},
         },
         {
           columnName: 'POSTAL',
           displayName: 'Address 1',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'HOUSE_TYPE',
           displayName: 'House Type',
-          obfStrategy: undefined,
-          obfRules: {},
+          subsetStrategy: undefined,
+          subsetRules: {},
         },
         {
           columnName: 'GEO_CODE',
           displayName: 'Geo Code',
-          obfStrategy: undefined,
-          obfRules: {},
+          subsetStrategy: undefined,
+          subsetRules: {},
         },
         {
           columnName: 'IN_CITY_LIMIT',
           displayName: 'In City Limit',
-          obfStrategy: undefined,
-          obfRules: {},
+          subsetStrategy: undefined,
+          subsetRules: {},
         },
         {
           columnName: 'STATE',
           displayName: 'State',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'COUNTRY',
           displayName: 'Country',
-          obfStrategy: undefined,
-          obfRules: {},
+          subsetStrategy: undefined,
+          subsetRules: {},
         },
         {
           columnName: 'VERSION',
           displayName: 'Version',
-          obfStrategy: undefined,
-          obfRules: {},
+          subsetStrategy: undefined,
+          subsetRules: {},
         },
         {
           columnName: 'PER_ADDR_ID',
           displayName: 'Person Address ID',
-          obfStrategy: undefined,
-          obfRules: {},
+          subsetStrategy: undefined,
+          subsetRules: {},
         },
       ],
     },
@@ -1056,20 +1244,21 @@ export const TABLE_DATA_HEATLHCARE: TableData = {
         {
           columnName: 'PER_ID',
           displayName: 'Per Id',
-          obfStrategy: undefined,
-          obfRules: {},
+          subsetStrategy: undefined,
+          subsetRules: {},
         },
         {
           columnName: 'ID_TYPE_CD',
           displayName: 'ID Type CD',
-          obfStrategy: undefined,
-          obfRules: {},
+          subsetStrategy: undefined,
+          subsetRules: {},
         },
         {
           columnName: 'PER_ID_NBR',
           displayName: 'Per Id NBR',
-          obfStrategy: undefined,
-          obfRules: {},
+          subsetStrategy: undefined,
+          subsetRules: {},
+
           isExpandable: true,
           options: [
             {
@@ -1085,14 +1274,14 @@ export const TABLE_DATA_HEATLHCARE: TableData = {
         {
           columnName: 'PRIM_SW',
           displayName: 'Prime SW',
-          obfStrategy: undefined,
-          obfRules: {},
+          subsetStrategy: undefined,
+          subsetRules: {},
         },
         {
           columnName: 'VERSION',
           displayName: 'Version',
-          obfStrategy: undefined,
-          obfRules: {},
+          subsetStrategy: undefined,
+          subsetRules: {},
         },
       ],
     },
@@ -1102,30 +1291,37 @@ export const TABLE_DATA_HEATLHCARE: TableData = {
         {
           columnName: 'PER_ID',
           displayName: 'Per Id',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'CHAR_TYPE_CD',
           displayName: 'Char Type CD',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'CHAR_VAL',
           displayName: 'Char Val',
-          obfStrategy: undefined,
+          subsetStrategy: undefined,
           isExpandable: true,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
+
           options: [
             {
               selectedOnCondition: 'CHAR_TYPE_CD',
@@ -1140,21 +1336,26 @@ export const TABLE_DATA_HEATLHCARE: TableData = {
         {
           columnName: 'EFFDT',
           displayName: 'Effdt',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'ADHOC_CHAR_VAL',
           displayName: 'Adhoc Char Val',
           isExpandable: true,
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
+
           options: [
             {
               selectedOnCondition: 'CHAR_TYPE_CD',
@@ -1170,55 +1371,67 @@ export const TABLE_DATA_HEATLHCARE: TableData = {
         {
           columnName: 'VERSION',
           displayName: 'Version',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'CHAR_VAL_FK1',
           displayName: 'Character Value FK 2',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'CHAR_VAL_FK2',
           displayName: 'Character Value FK 2',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'CHAR_VAL_FK3',
           displayName: 'Character Value FK 3',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'CHAR_VAL_FK4',
           displayName: 'Character Value FK 4',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'CHAR_VAL_FK5',
           displayName: 'Character Value FK 5',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
       ],
@@ -1235,262 +1448,320 @@ export const TABLE_DATA_UTILITY: TableData = {
         {
           columnName: 'PER_ID',
           displayName: 'Person ID',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: 'Condition',
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'LANGUAGE_CD',
           displayName: 'Language Code',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: 'Condition',
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'PER_OR_BUS_FLG',
           displayName: 'Person or Business Flag',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'LS_SL_FLG',
           displayName: 'LS SL Flag',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'LS_SL_DESCR',
           displayName: 'LS SL Description',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'EMAILID',
           displayName: 'Email ID',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'OVRD_MAIL_NAME1',
           displayName: 'Override Mail Name 1',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'OVRD_MAIL_NAME2',
           displayName: 'Override Mail Name 2',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'OVRD_MAIL_NAME3',
           displayName: 'Override Mail Name 3',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'ADDRESS1',
           displayName: 'Address 1',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'ADDRESS2',
           displayName: 'Address 2',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'ADDRESS3',
           displayName: 'Address 3',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'ADDRESS4',
           displayName: 'Address 4',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'CITY',
           displayName: 'City',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'NUM1',
           displayName: 'Number 1',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'NUM2',
           displayName: 'Number 2',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'COUNTY',
           displayName: 'County',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'POSTAL',
           displayName: 'Postal Code',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'HOUSE_TYPE',
           displayName: 'House Type',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'GEO_CODE',
           displayName: 'Geo Code',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'IN_CITY_LIMIT',
           displayName: 'In City Limit',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'STATE',
           displayName: 'State',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'COUNTRY',
           displayName: 'Country',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'VERSION',
           displayName: 'Version',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'RECV_MKTG_INFO_FLG',
           displayName: 'Recv Mktg Info Flag',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'WEB_PASSWD',
           displayName: 'Web Password ',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'WEB_PWD_HINT_FLG',
           displayName: 'Web Pwd Hint Flg ',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'WEB_PASSWD_ANS',
           displayName: 'Web Passwd Ans',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'PER_DATA_AREA',
           displayName: 'Per Data Area',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
       ],
@@ -1501,47 +1772,47 @@ export const TABLE_DATA_UTILITY: TableData = {
         {
           columnName: 'PER_ID',
           displayName: 'Person ID',
-          obfStrategy: undefined,
-          obfRules: {},
+          subsetStrategy: 'Condition',
+          subsetRules: {},
         },
         {
           columnName: 'SEQ_NUM',
           displayName: 'Sequence Number',
-          obfStrategy: undefined,
-          obfRules: {},
+          subsetStrategy: undefined,
+          subsetRules: {},
         },
         {
           columnName: 'ENTITY_NAME',
           displayName: 'Entity Name',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: '200',
+            max: '4000',
           },
         },
         {
           columnName: 'NAME_TYPE_FLG',
           displayName: 'Name Type Flag',
-          obfStrategy: undefined,
-          obfRules: {},
+          subsetStrategy: undefined,
+          subsetRules: {},
         },
         {
           columnName: 'VERSION',
           displayName: 'Version',
-          obfStrategy: undefined,
-          obfRules: {},
+          subsetStrategy: undefined,
+          subsetRules: {},
         },
         {
           columnName: 'PRIM_NAME_SW',
           displayName: 'Primary Name Switch',
-          obfStrategy: undefined,
-          obfRules: {},
+          subsetStrategy: undefined,
+          subsetRules: {},
         },
         {
           columnName: 'ENTITY_NAME_UPR',
           displayName: 'Entity Name Upper',
-          obfStrategy: undefined,
-          obfRules: {},
+          subsetStrategy: undefined,
+          subsetRules: {},
         },
       ],
     },
@@ -1552,181 +1823,221 @@ export const TABLE_DATA_UTILITY: TableData = {
         {
           columnName: 'PER_ID',
           displayName: 'Person ID',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'SEQ_NUM',
           displayName: 'Sequence Number',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'ADDRESS1',
           displayName: 'Address 1',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'ADDRESS2',
           displayName: 'Address 2',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'ADDRESS3',
           displayName: 'Address 3',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'ADDRESS4',
           displayName: 'Address 4',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'CITY',
           displayName: 'City',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'NUM1',
           displayName: 'Number 1',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'NUM2',
           displayName: 'Number 2',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'COUNTY',
           displayName: 'County',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'POSTAL',
           displayName: 'Postal Code',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'HOUSE_TYPE',
           displayName: 'House Type',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'GEO_CODE',
           displayName: 'Geo Code',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'IN_CITY_LIMIT',
           displayName: 'In City Limit',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'STATE',
           displayName: 'State',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'COUNTRY',
           displayName: 'Country',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'VERSION',
           displayName: 'Version',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'SEASON_START_MMDD',
           displayName: 'Season Start MMDD',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'SEASON_END_MMDD',
           displayName: 'Season End MMDD',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'EFF_STATUS',
           displayName: 'Effective Status',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
       ],
@@ -1737,31 +2048,38 @@ export const TABLE_DATA_UTILITY: TableData = {
         {
           columnName: 'PER_ID',
           displayName: 'Per Id',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'ID_TYPE_CD',
           displayName: 'ID Type CD',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'PER_ID_NBR',
           displayName: 'Per Id NBR',
-          obfStrategy: undefined,
+          subsetStrategy: undefined,
           isExpandable: true,
 
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
+
           options: [
             {
               selectedOnCondition: 'ID_TYPE_CD',
@@ -1776,37 +2094,45 @@ export const TABLE_DATA_UTILITY: TableData = {
         {
           columnName: 'PRIM_SW',
           displayName: 'Prime SW',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'VERSION',
           displayName: 'Version',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'ENCR_PER_ID_NBR',
           displayName: 'Character Value FK 5',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'HASH_PER_ID_NBR',
           displayName: 'Character Value FK 5',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
       ],
@@ -1817,109 +2143,133 @@ export const TABLE_DATA_UTILITY: TableData = {
         {
           columnName: 'C1_CONTACT_ID',
           displayName: 'C1_CONTACT_ID',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'PER_ID',
           displayName: 'PER_ID',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'COMM_RTE_TYPE_CD',
           displayName: 'COMM_RTE_TYPE_CD',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'CONTACT_VALUE',
           displayName: 'CONTACT_VALUE',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'CND_PRIMARY_FLAG',
           displayName: 'CND_PRIMARY_FLAG',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'CONTACT_VALUE_EXT',
           displayName: 'CONTACT_VALUE_EXT',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'DND_START_TM',
           displayName: 'DND_START_TM',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'DND_END_TM',
           displayName: 'DND_END_TM',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'CND_VERIFY_STATUS_FLAG',
           displayName: 'CND_VERIFY_STATUS_FLAG',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'CND_ACTINACT_FLG',
           displayName: 'CND_ACTINACT_FLG',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'CONTACT_NAME',
           displayName: 'CONTACT_NAME',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'VERSION',
           displayName: 'VERSION',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
       ],
@@ -1930,30 +2280,37 @@ export const TABLE_DATA_UTILITY: TableData = {
         {
           columnName: 'PER_ID',
           displayName: 'Per Id',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'CHAR_TYPE_CD',
           displayName: 'Char Type CD',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'CHAR_VAL',
           displayName: 'Char Val',
-          obfStrategy: undefined,
+          subsetStrategy: undefined,
           isExpandable: true,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
+
           options: [
             {
               selectedOnCondition: 'CHAR_TYPE_CD',
@@ -1968,20 +2325,24 @@ export const TABLE_DATA_UTILITY: TableData = {
         {
           columnName: 'EFFDT',
           displayName: 'Effdt',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'ADHOC_CHAR_VAL',
           displayName: 'Adhoc Char Val',
           isExpandable: true,
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
           options: [
             {
@@ -1998,64 +2359,78 @@ export const TABLE_DATA_UTILITY: TableData = {
         {
           columnName: 'VERSION',
           displayName: 'Version',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'CHAR_VAL_FK1',
           displayName: 'Character Value FK 2',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'CHAR_VAL_FK2',
           displayName: 'Character Value FK 2',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'CHAR_VAL_FK3',
           displayName: 'Character Value FK 3',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'CHAR_VAL_FK4',
           displayName: 'Character Value FK 4',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'CHAR_VAL_FK5',
           displayName: 'Character Value FK 5',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
         {
           columnName: 'SRCH_CHAR_VAL',
           displayName: 'Srch Char Val',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
+          subsetStrategy: undefined,
+          subsetRules: {
+            min: undefined,
+            max: undefined,
+            minPercent: 0,
+            maxPercent: 100,
           },
         },
       ],

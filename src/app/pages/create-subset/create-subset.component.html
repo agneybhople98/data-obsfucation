@@ -173,10 +173,9 @@
                   <mat-select
                     [(ngModel)]="element.obfStrategy"
                     [disabled]="isDropdownDisabled(element)"
-                    [(value)]="selectedObfStrategy"
                   >
                     <mat-option
-                      *ngFor="let strategy of obfStrategies"
+                      *ngFor="let strategy of subsetStrategies"
                       [value]="strategy"
                     >
                       {{ strategy }}
@@ -210,7 +209,7 @@
                         formControlName="end"
                       />
                     </mat-date-range-input>
-                    <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+                    <mat-hint>DD/MM/YYYY – DD/MM/YYYY</mat-hint>
                     <mat-datepicker-toggle
                       matIconSuffix
                       [for]="campaignOnePicker"
@@ -222,35 +221,38 @@
                 </div>
 
                 <div *ngIf="element.obfStrategy === 'Percentage of rows'">
-                  <mat-form-field appearance="fill" class="!mt-2">
-                    <mat-label>Select an option</mat-label>
-                    <mat-select
-                      [(ngModel)]="element.obfRules.first"
-                      [disabled]="isDropdownDisabled(element)"
-                    >
-                      <mat-option *ngFor="let rule of obsRules" [value]="rule">
-                        {{ rule }}
-                      </mat-option>
-                    </mat-select>
-                  </mat-form-field>
-                  <mat-form-field appearance="fill" class="!ms-4 !mt-2">
-                    <mat-label>Select an option</mat-label>
-                    <mat-select
-                      [(ngModel)]="element.obfRules.second"
-                      [disabled]="isDropdownDisabled(element)"
-                    >
-                      <mat-option
-                        *ngFor="let rule of obsRulesNumbers"
-                        [value]="rule"
-                      >
-                        {{ rule }}
-                      </mat-option>
-                    </mat-select>
-                  </mat-form-field>
+                  <mat-slider
+                    [min]="element.subsetRules.minPercent"
+                    [max]="element.subsetRules.maxPercent"
+                    step="1"
+                    showTickMarks
+                    discrete
+                  >
+                    <input matSliderThumb />
+                  </mat-slider>
                 </div>
 
                 <div *ngIf="element.obfStrategy === 'Condition'">
-                  <div>Helllo</div>
+                  <div class="flex items-center gap-5 mt-[50px]">
+                    <mat-form-field class="w-50">
+                      <mat-label>Minimum Value</mat-label>
+                      <input
+                        type="text"
+                        matInput
+                        [(ngModel)]="element.subsetRules.min"
+                      />
+                    </mat-form-field>
+
+                    <span>to </span>
+                    <mat-form-field class="w-50">
+                      <mat-label>Maximum Value</mat-label>
+                      <input
+                        type="text"
+                        matInput
+                        [(ngModel)]="element.subsetRules.max"
+                      />
+                    </mat-form-field>
+                  </div>
                 </div>
               </td>
             </ng-container>
@@ -346,11 +348,12 @@
                             >Subset Strategy</mat-label
                           >
                           <mat-select
-                            [(ngModel)]="option.selectedObfStrategy"
+                            [(ngModel)]="option.subsetStrategy"
                             [disabled]="!option.isEditing"
+                            [value]="selectedSubsetStrategy"
                           >
                             <mat-option
-                              *ngFor="let strategy of obfStrategies"
+                              *ngFor="let strategy of subsetStrategies"
                               [value]="strategy"
                               [matTooltip]="strategy"
                               matTooltipPosition="above"
@@ -370,7 +373,7 @@
                             <mat-option
                               [matTooltip]="rule"
                               matTooltipPosition="above"
-                              *ngFor="let rule of obsRules"
+                              *ngFor="let rule of subsetRules"
                               [value]="rule"
                             >
                               {{ rule }}

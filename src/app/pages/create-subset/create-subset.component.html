@@ -1,5 +1,7 @@
+<!-- Fix for the table row binding issue -->
 <div class="flex">
-  <aside class="flex-1">
+  <!-- Sidebar - Uncomment if needed -->
+  <!-- <aside class="flex-1">
     <div class="bg-white !h-screen">
       <div class="!p-3">
         <app-input
@@ -28,7 +30,7 @@
         </mat-list-item>
       </mat-list>
     </div>
-  </aside>
+  </aside> -->
 
   <main class="flex-3">
     <div class="bg-white !m-4">
@@ -76,7 +78,7 @@
         <div>
           <app-button
             text="Save"
-            (click)="navigateTo()"
+            (click)="(null)"
             variant="success"
           ></app-button>
         </div>
@@ -85,112 +87,73 @@
         <div>Set Subset Strategies</div>
 
         <div class="table-container !mt-4">
-          <!-- <mat-form-field>
-                <mat-label>Select Table</mat-label>
-                <mat-select
-                  [(value)]="selectedTable"
-                  (selectionChange)="onTableChange()"
-                >
-                  <mat-option
-                    *ngFor="let table of tableData.tables"
-                    [value]="table.tableName"
-                  >
-                    {{ table.tableName }}
-                  </mat-option>
-                </mat-select>
-              </mat-form-field> -->
-
-          <table
-            mat-table
-            [dataSource]="dataSource"
-            class="mat-elevation-z8"
-            multiTemplateDataRows
-          >
-            <ng-container matColumnDef="expand">
-              <th mat-header-cell *matHeaderCellDef aria-label="row actions">
-                &nbsp;
-              </th>
-              <td mat-cell *matCellDef="let element">
-                <button
-                  *ngIf="element.isExpandable"
-                  class="bg-primary text-white rounded-xs !h-[24px] !w-[24px] !cursor-pointer"
-                  aria-label="expand row"
-                  (click)="
-                    expandedElement =
-                      expandedElement === element ? null : element;
-                    $event.stopPropagation()
-                  "
-                >
-                  <mat-icon
-                    *ngIf="expandedElement !== element"
-                    class="!p-[0.5px]"
-                    >add</mat-icon
-                  >
-                  <mat-icon
-                    *ngIf="expandedElement === element"
-                    class="!p-[0.5px]"
-                    >remove</mat-icon
-                  >
-                </button>
+          <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+            <!-- Table name Column -->
+            <ng-container matColumnDef="tableName">
+              <th mat-header-cell *matHeaderCellDef>Table Name</th>
+              <td
+                class="cursor-pointer !text-sm !font-medium"
+                style="color: #3179e5"
+                mat-cell
+                *matCellDef="let element"
+              >
+                {{ element.tableName }}
               </td>
             </ng-container>
 
-            <ng-container matColumnDef="select">
-              <th mat-header-cell *matHeaderCellDef>
-                <mat-checkbox
-                  (change)="$event ? toggleAllRows() : null"
-                  [checked]="selection.hasValue() && isAllSelected()"
-                  [indeterminate]="selection.hasValue() && !isAllSelected()"
-                  [aria-label]="checkboxLabel()"
-                  [disabled]="valueSelection()"
-                ></mat-checkbox>
-              </th>
-              <td mat-cell *matCellDef="let row">
-                <mat-checkbox
-                  (click)="$event.stopPropagation()"
-                  (change)="$event ? selection.toggle(row) : null"
-                  [checked]="selection.isSelected(row)"
-                  [aria-label]="checkboxLabel(row)"
-                  [disabled]="isRowDisabledForPerID(row)"
-                ></mat-checkbox>
-              </td>
-            </ng-container>
-
-            <!-- Column Name Column -->
+            <!-- Column Name -->
             <ng-container matColumnDef="columnName">
               <th mat-header-cell *matHeaderCellDef>Column Name</th>
-              <td mat-cell *matCellDef="let element">
-                {{ element.columnName }}
-              </td>
-            </ng-container>
-
-            <!-- Obfuscation Strategy Column -->
-            <ng-container matColumnDef="obfStrategy">
-              <th mat-header-cell *matHeaderCellDef>Subset Strategy</th>
-              <td mat-cell *matCellDef="let element; let i = index">
-                <mat-form-field appearance="fill" class="!mt-2">
-                  <mat-label>Select an option</mat-label>
-                  <mat-select
-                    [(ngModel)]="element.obfStrategy"
-                    [disabled]="isDropdownDisabled(element)"
-                  >
-                    <mat-option
-                      *ngFor="let strategy of subsetStrategies"
-                      [value]="strategy"
-                    >
-                      {{ strategy }}
-                    </mat-option>
+              <td
+                class="!text-sm !font-normal"
+                mat-cell
+                *matCellDef="let element"
+              >
+                <!-- {{ element.columnName }} -->
+                <mat-form-field>
+                  <mat-label>Column Name</mat-label>
+                  <mat-select [(ngModel)]="selectedColumnName" name="ele">
+                    @for (ele of element.columnName; track ele) {
+                    <mat-option [value]="ele">{{ ele }}</mat-option>
+                    }
                   </mat-select>
                 </mat-form-field>
               </td>
             </ng-container>
 
+            <!-- Subset Strategy -->
+            <ng-container matColumnDef="subsetStrategiesColumn">
+              <th mat-header-cell *matHeaderCellDef>Subset Strategy</th>
+              <td mat-cell *matCellDef="let element">
+                <div *ngIf="selectedColumnName === 'DATE'">
+                  <mat-form-field>
+                    <mat-label>Subset Strategy</mat-label>
+                    <mat-select [(ngModel)]="selectedValue">
+                      @for (subset of subsetStrategiesDate; track subset) {
+                      <mat-option [value]="subset">{{ subset }}</mat-option>
+                      }
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div *ngIf="selectedColumnName !== 'DATE'">
+                  <mat-form-field>
+                    <mat-label>Subset Strategy</mat-label>
+                    <mat-select [(ngModel)]="selectedValue">
+                      @for (subset of subsetStrategies; track subset) {
+                      <mat-option [value]="subset">{{ subset }}</mat-option>
+                      }
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </td>
+            </ng-container>
+
             <!-- Obfuscation Rules Column -->
-            <ng-container matColumnDef="obfRules">
+            <ng-container matColumnDef="subsetRules">
               <th mat-header-cell *matHeaderCellDef>Subset Rules</th>
               <td mat-cell *matCellDef="let element; let i = index">
-                <div *ngIf="element.obfStrategy === 'Date Ranges'">
-                  <mat-form-field class="example-form-field">
+                <div *ngIf="selectedValue === 'Date of Ranges'">
+                  <mat-form-field>
                     <mat-label>From-to date</mat-label>
                     <mat-date-range-input
                       [formGroup]="campaignOne"
@@ -220,19 +183,14 @@
                   </mat-form-field>
                 </div>
 
-                <div *ngIf="element.obfStrategy === 'Percentage of rows'">
-                  <mat-slider
-                    [min]="element.subsetRules.minPercent"
-                    [max]="element.subsetRules.maxPercent"
-                    step="1"
-                    showTickMarks
-                    discrete
-                  >
-                    <input matSliderThumb />
+                <div *ngIf="selectedValue === 'Percentage of Rows'">
+                  <mat-slider min="0" max="100" discrete>
+                    <input value="0" matSliderStartThumb />
+                    <input value="100" matSliderEndThumb />
                   </mat-slider>
                 </div>
 
-                <div *ngIf="element.obfStrategy === 'Condition'">
+                <div *ngIf="selectedValue === 'Condition'">
                   <div class="flex items-center gap-5 mt-[50px]">
                     <mat-form-field class="w-50">
                       <mat-label>Minimum Value</mat-label>
@@ -257,208 +215,16 @@
               </td>
             </ng-container>
 
-            <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
-            <ng-container matColumnDef="expandedDetail">
-              <td
-                mat-cell
-                *matCellDef="let element"
-                [attr.colspan]="displayedColumns.length"
-              >
-                <div
-                  class="element-detail"
-                  [@detailExpand]="
-                    element == expandedElement ? 'expanded' : 'collapsed'
-                  "
-                >
-                  <div class="!border-[0.5px] !border-gray-400">
-                    <!-- Loop through each option in the options array -->
-                    <div
-                      *ngFor="
-                        let option of element.options;
-                        let optionIndex = index
-                      "
-                    >
-                      <div
-                        class="flex justify-between !gap-3 !px-4 !pt-5 !pb-1"
-                      >
-                        <!-- condition on -->
-                        <mat-form-field appearance="fill" class="!w-[200px]">
-                          <mat-label class="text-[14px]"
-                            >Condition on</mat-label
-                          >
-                          <mat-select
-                            [(ngModel)]="option.selectedOnCondition"
-                            [disabled]="!option.isEditing"
-                          >
-                            <mat-option
-                              *ngFor="let c of conditions"
-                              [value]="c"
-                              [matTooltip]="c"
-                              matTooltipPosition="above"
-                            >
-                              {{ c }}
-                            </mat-option>
-                          </mat-select>
-                        </mat-form-field>
-
-                        <!-- condition -->
-                        <mat-form-field appearance="fill" class="!w-[120px]">
-                          <mat-label class="text-[14px]">Condition</mat-label>
-                          <mat-select
-                            [(ngModel)]="option.selectedOperator"
-                            [disabled]="!option.isEditing"
-                          >
-                            <mat-option
-                              *ngFor="let op of operators"
-                              [value]="op"
-                              [matTooltip]="op"
-                              matTooltipPosition="above"
-                            >
-                              {{ op }}
-                            </mat-option>
-                          </mat-select>
-                        </mat-form-field>
-
-                        <!--obfuscation strategy -->
-                        <mat-form-field appearance="fill" class="!w-[120px]">
-                          <mat-label class="text-[14px]">Value</mat-label>
-                          <mat-select
-                            [(ngModel)]="option.selectedValue"
-                            [disabled]="!option.isEditing"
-                          >
-                            <mat-option
-                              *ngFor="
-                                let val of getDropdownOptions(
-                                  selectedTable,
-                                  element.columnName
-                                )
-                              "
-                              [value]="val"
-                              [matTooltip]="val"
-                              matTooltipPosition="above"
-                            >
-                              {{ val }}
-                            </mat-option>
-                          </mat-select>
-                        </mat-form-field>
-
-                        <!-- obfuscation strategy -->
-                        <mat-form-field appearance="fill" class="!w-[180px]">
-                          <mat-label class="text-[14px]"
-                            >Subset Strategy</mat-label
-                          >
-                          <mat-select
-                            [(ngModel)]="option.subsetStrategy"
-                            [disabled]="!option.isEditing"
-                            [value]="selectedSubsetStrategy"
-                          >
-                            <mat-option
-                              *ngFor="let strategy of subsetStrategies"
-                              [value]="strategy"
-                              [matTooltip]="strategy"
-                              matTooltipPosition="above"
-                            >
-                              {{ strategy }}
-                            </mat-option>
-                          </mat-select>
-                        </mat-form-field>
-
-                        <!-- obfuscation rules -->
-                        <mat-form-field appearance="fill" class="!w-[160px]">
-                          <mat-label class="text-[14px]">Rules</mat-label>
-                          <mat-select
-                            [(ngModel)]="option.selectedObfRule"
-                            [disabled]="!option.isEditing"
-                          >
-                            <mat-option
-                              [matTooltip]="rule"
-                              matTooltipPosition="above"
-                              *ngFor="let rule of subsetRules"
-                              [value]="rule"
-                            >
-                              {{ rule }}
-                            </mat-option>
-                          </mat-select>
-                        </mat-form-field>
-
-                        <!-- input value -->
-                        <mat-form-field appearance="fill" class="!w-[80px]">
-                          <mat-label class="!text-[14px]">Input</mat-label>
-
-                          <input
-                            matInput
-                            [(ngModel)]="option.inputValue"
-                            [disabled]="!option.isEditing"
-                          />
-                        </mat-form-field>
-
-                        <!-- Action buttons -->
-                        <div class="flex items-center gap-3 !mb-3">
-                          <!-- Delete button -->
-                          <button
-                            (click)="toggleEditOption(option)"
-                            [ngClass]="{
-                              'edit-btn': !option.isEditing,
-                              'add-btn': option.isEditing
-                            }"
-                          >
-                            <img
-                              [src]="
-                                !option.isEditing
-                                  ? '../../../assets/edit-pencil.svg'
-                                  : '../../../assets/device-floppy (4) 1.svg'
-                              "
-                              alt=""
-                            />
-                          </button>
-
-                          <button
-                            (click)="removeOption(element, optionIndex)"
-                            class="delete-btn"
-                          >
-                            <img src="../../../assets/trash (2) 3.svg" alt="" />
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="flex items-center !ps-4 !pb-4">
-                      <app-button
-                        (clicked)="addOption(element)"
-                        text="Add Condition"
-                        variant="primary"
-                      ></app-button>
-                    </div>
-                  </div>
-                </div>
-              </td>
-            </ng-container>
+            <!-- Header row definition -->
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-
-            <!-- Data Row -->
-            <tr
-              mat-row
-              *matRowDef="let element; columns: displayedColumns"
-              class="element-row"
-              [class.expanded-row]="expandedElement === element"
-              (click)="
-                element.isExpandable &&
-                  (expandedElement =
-                    expandedElement === element ? null : element)
-              "
-            ></tr>
-
-            <!-- Expanded Detail Row -->
-            <tr
-              mat-row
-              *matRowDef="let row; columns: ['expandedDetail']"
-              class="detail-row"
-            ></tr>
+            <!-- Row definition - THIS WAS MISSING -->
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
           </table>
 
           <mat-paginator
             [pageSizeOptions]="[10, 15, 20]"
             showFirstLastButtons
-            aria-label="Select page of periodic elements"
+            aria-label="Select page of subset elements"
           >
           </mat-paginator>
         </div>

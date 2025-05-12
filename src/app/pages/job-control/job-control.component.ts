@@ -70,6 +70,8 @@ export class JobControlComponent implements OnInit, OnDestroy {
 
   selectedObsControl = 'Utility Account Obfuscation'; // Default selected value
   selectedObsControlHealthcare = 'Membership & Policy Data Obfuscation';
+
+  selectedSubsetStrategy = 'No selection';
   dataSource!: MatTableDataSource<any>;
   displayedColumns: any[] = [
     'jobControlId',
@@ -142,6 +144,7 @@ export class JobControlComponent implements OnInit, OnDestroy {
   setDropdownOptions(): void {
     if (this.router.url.includes('utility')) {
       this.selectedObsControl = 'Utility Account Obfuscation';
+      this.selectedSubsetStrategy = 'No selection';
     } else if (this.router.url.includes('healthcare')) {
       this.selectedObsControlHealthcare =
         'Membership & Policy Data Obfuscation';

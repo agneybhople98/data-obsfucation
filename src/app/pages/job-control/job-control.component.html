@@ -37,6 +37,7 @@
           *ngIf="currentDomain === 'utility'"
           class="flex-1"
           label="Name"
+          [required]="true"
           [value]="
             this.jobControlDetails?.jobControlName
               ? this.jobControlDetails?.jobControlName
@@ -48,6 +49,7 @@
           *ngIf="currentDomain === 'healthcare'"
           class="flex-1"
           label="Name"
+          [required]="true"
           [value]="
             this.jobControlDetails?.jobControlName
               ? this.jobControlDetails?.jobControlName
@@ -59,6 +61,7 @@
           *ngIf="currentDomain === 'utility'"
           class="flex-2"
           label="Description"
+          [required]="true"
           [value]="
             this.jobControlDetails?.jobControlDescription
               ? this.jobControlDetails?.jobControlDescription
@@ -71,6 +74,7 @@
           *ngIf="currentDomain === 'healthcare'"
           class="flex-2"
           label="Description"
+          [required]="true"
           [value]="
             this.jobControlDetails?.jobControlDescription
               ? this.jobControlDetails?.jobControlDescription
@@ -88,11 +92,13 @@
               *ngIf="currentDomain === 'utility'"
               label="Select Subset Strategy Plan"
               [options]="subsetControlOptions"
+              [(value)]="selectedSubsetStrategy"
             ></app-dropdown>
             <app-dropdown
               *ngIf="currentDomain === 'healthcare'"
               label="Select Subset Strategy Plan"
               [options]="subsetControlOptionsHealthcare"
+              [(value)]="selectedSubsetStrategy"
             ></app-dropdown>
           </div>
         </div>
@@ -103,11 +109,13 @@
               *ngIf="currentDomain === 'utility'"
               label="Select Obfuscation Plan"
               [options]="obsControlOptions"
+              [required]="true"
               [(value)]="selectedObsControl"
             ></app-dropdown>
             <app-dropdown
               *ngIf="currentDomain === 'healthcare'"
               label="Select Obfuscation Plan"
+              [required]="true"
               [options]="obsControlOptionsHealthcare"
               [(value)]="selectedObsControlHealthcare"
             ></app-dropdown>

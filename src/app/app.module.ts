@@ -25,7 +25,6 @@ import { MatInputModule } from '@angular/material/input';
 import { SidenavigationBarComponent } from './components/sidenavigation-bar/sidenavigation-bar.component';
 import { JobDetailsComponent } from './pages/job-details/job-details.component';
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
-import { CreateJobComponent } from './components/create-job/create-job.component';
 import { InputComponent } from './components/input/input.component';
 import { ViewObfuscationPlanComponent } from './pages/view-obfuscation/view-obfuscation.component';
 import { DropdownComponent } from './components/dropdown/dropdown.component';
@@ -58,7 +57,6 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter';
     SidenavigationBarComponent,
     JobDetailsComponent,
     BreadcrumbComponent,
-    CreateJobComponent,
     InputComponent,
     ButtonComponent,
     ViewObfuscationPlanComponent,

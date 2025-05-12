@@ -80,20 +80,38 @@
         >
         </app-input>
       </div>
-      <div class="flex gap-2 !px-4 w-[40%]">
-        <div class="flex-1">
-          <app-dropdown
-            *ngIf="currentDomain === 'utility'"
-            label="Select Obfuscation Plan"
-            [options]="obsControlOptions"
-            [(value)]="selectedObsControl"
-          ></app-dropdown>
-          <app-dropdown
-            *ngIf="currentDomain === 'healthcare'"
-            label="Select Obfuscation Plan"
-            [options]="obsControlOptionsHealthcare"
-            [(value)]="selectedObsControlHealthcare"
-          ></app-dropdown>
+      <div class="flex gap-2">
+        <!-- Subset Strategy Dropdown -->
+        <div class="flex gap-2 !px-4 w-[40%]">
+          <div class="flex-1">
+            <app-dropdown
+              *ngIf="currentDomain === 'utility'"
+              label="Select Subset Strategy Plan"
+              [options]="subsetControlOptions"
+            ></app-dropdown>
+            <app-dropdown
+              *ngIf="currentDomain === 'healthcare'"
+              label="Select Subset Strategy Plan"
+              [options]="subsetControlOptionsHealthcare"
+            ></app-dropdown>
+          </div>
+        </div>
+        <!-- Obfuscation Control Dropdown -->
+        <div class="flex gap-2 !px-4 w-[40%]">
+          <div class="flex-1">
+            <app-dropdown
+              *ngIf="currentDomain === 'utility'"
+              label="Select Obfuscation Plan"
+              [options]="obsControlOptions"
+              [(value)]="selectedObsControl"
+            ></app-dropdown>
+            <app-dropdown
+              *ngIf="currentDomain === 'healthcare'"
+              label="Select Obfuscation Plan"
+              [options]="obsControlOptionsHealthcare"
+              [(value)]="selectedObsControlHealthcare"
+            ></app-dropdown>
+          </div>
         </div>
       </div>
 

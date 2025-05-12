@@ -5,7 +5,8 @@ import { JobsDataService } from '../../jobs-data.service';
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatPaginator } from '@angular/material/paginator';
-import { ObsfucationService } from '../../services/obsfucation.service';
+// import { Subse } from '../../services/obsfucation.service';
+import { SubsetService } from '../../services/subset.service';
 import {
   animate,
   state,
@@ -62,7 +63,7 @@ export class SubsetPlanComponent {
 
   constructor(
     private _dialog: MatDialog,
-    private obsfucationService: ObsfucationService,
+    private subsetService: SubsetService,
     public router: Router,
     private _jobDataService: JobsDataService,
     private _toaster: ToastrService,
@@ -79,11 +80,11 @@ export class SubsetPlanComponent {
     });
     if (this.currentDomain === 'healthcare') {
       this.dataSource = new MatTableDataSource<any>(
-        this.obsfucationService.getAllHealthcareObfuscation()
+        this.subsetService.getAllHealthcareObfuscation()
       );
     } else {
       this.dataSource = new MatTableDataSource<any>(
-        this.obsfucationService.getAllObsfucations()
+        this.subsetService.getAllObsfucations()
       );
     }
   }

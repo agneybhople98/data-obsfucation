@@ -43,6 +43,31 @@ export class JobControlComponent implements OnInit, OnDestroy {
     'Claim Details Obfuscation - EU',
     'Claims Payments & Payouts - AUS',
   ];
+
+  // subset strategy
+
+  subsetControlOptions = [
+    'No selection',
+    'Utility Account Obfuscation',
+    'Financial Data Masking',
+    'Person Entity Anonymization',
+    'Field Activity Data Obfuscation',
+    'Billing & Financial History',
+    'Support Interaction Data Masking',
+    'Outage Data Anonymization',
+  ];
+  // healthcare options
+  subsetControlOptionsHealthcare = [
+    'No selection',
+    'Membership & Policy Data Obfuscation',
+    'Customer & Account Obfuscation',
+    'Billing Transactions - US Region',
+    'Membership Plan Enrollments Obfuscation',
+    'Coverage & Benefits Obfuscation - Prod',
+    'Claim Details Obfuscation - EU',
+    'Claims Payments & Payouts - AUS',
+  ];
+
   selectedObsControl = 'Utility Account Obfuscation'; // Default selected value
   selectedObsControlHealthcare = 'Membership & Policy Data Obfuscation';
   dataSource!: MatTableDataSource<any>;

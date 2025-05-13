@@ -1,0 +1,317 @@
+<div class="!mb-5 !p-3">
+  <form #f="ngForm">
+    <query-builder
+      [(ngModel)]="query"
+      name="queryBuilder"
+      [config]="currentConfig"
+      [allowRuleset]="allowRuleset"
+      [allowCollapse]="allowCollapse"
+      [persistValueOnFieldChange]="persistValueOnFieldChange"
+    >
+      <ng-container
+        *queryButtonGroup="
+          let ruleset;
+          let addRule = addRule;
+          let addRuleSet = addRuleSet;
+          let removeRuleSet = removeRuleSet;
+          let getDisabledState = getDisabledState
+        "
+      >
+        <button
+          type="button"
+          mat-button
+          (click)="addRule()"
+          [disabled]="getDisabledState()"
+        >
+          + Rule
+        </button>
+        <button
+          type="button"
+          mat-button
+          (click)="addRuleSet()"
+          [disabled]="getDisabledState()"
+        >
+          + Ruleset
+        </button>
+        <button
+          type="button"
+          mat-button
+          *ngIf="removeRuleSet"
+          (click)="removeRuleSet()"
+        >
+          - Ruleset
+        </button>
+      </ng-container>
+      <ng-container *queryRemoveButton="let rule; let removeRule = removeRule">
+        <button
+          type="button"
+          mat-icon-button
+          color="warn"
+          (click)="removeRule(rule)"
+        >
+          <mat-icon class="!text-red-500">delete</mat-icon>
+        </button>
+      </ng-container>
+      <ng-container *querySwitchGroup="let ruleset; let onChange = onChange">
+        <div class="!mt-2">
+          <mat-radio-group
+            *ngIf="ruleset"
+            [(ngModel)]="ruleset.condition"
+            [ngModelOptions]="{ standalone: true }"
+            (ngModelChange)="onChange($event)"
+          >
+            <mat-radio-button [style.padding.px]="10" value="and"
+              >And</mat-radio-button
+            >
+            <mat-radio-button [style.padding.px]="10" value="or"
+              >Or</mat-radio-button
+            >
+          </mat-radio-group>
+        </div>
+      </ng-container>
+      <ng-container
+        *queryEntity="
+          let rule;
+          let entities = entities;
+          let onChange = onChange
+        "
+      >
+        <mat-form-field>
+          <mat-select
+            [(ngModel)]="rule.entity"
+            (ngModelChange)="onChange($event, rule)"
+            [ngModelOptions]="{ standalone: true }"
+          >
+            <mat-option *ngFor="let entity of entities" [value]="entity.value">
+              {{ entity.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </ng-container>
+      <ng-container
+        *queryField="
+          let rule;
+          let fields = fields;
+          let onChange = onChange;
+          let getFields = getFields
+        "
+      >
+        <mat-form-field>
+          <mat-select
+            [(ngModel)]="rule.field"
+            (ngModelChange)="onChange($event, rule)"
+            [ngModelOptions]="{ standalone: true }"
+          >
+            <mat-option
+              *ngFor="let field of getFields(rule.entity)"
+              [value]="field.value"
+            >
+              {{ field.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </ng-container>
+
+      <!-- Operators -->
+      <ng-container
+        *queryOperator="
+          let rule;
+          let operators = operators;
+          let onChange = onChange
+        "
+      >
+        <mat-form-field *ngIf="rule.operator" [style.width.px]="150">
+          <mat-select
+            [(ngModel)]="rule.operator"
+            (ngModelChange)="onChange(rule)"
+            [ngModelOptions]="{ standalone: true }"
+          >
+            <mat-option *ngFor="let value of operators" [value]="value">
+              {{ value }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </ng-container>
+      <ng-container
+        *queryInput="let rule; type: 'boolean'; let onChange = onChange"
+      >
+        <mat-checkbox
+          [(ngModel)]="rule.value"
+          (ngModelChange)="onChange()"
+        ></mat-checkbox>
+      </ng-container>
+
+      <ng-container
+        *queryInput="
+          let rule;
+          let field = field;
+          let options = options;
+          type: 'category';
+          let onChange = onChange
+        "
+      >
+        <mat-form-field>
+          <mat-select
+            [(ngModel)]="rule.value"
+            (ngModelChange)="onChange()"
+            [ngModelOptions]="{ standalone: true }"
+          >
+            <mat-option *ngFor="let opt of options" [value]="opt.value">
+              {{ opt.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </ng-container>
+      <ng-container
+        *queryInput="
+          let rule;
+          let field = field;
+          let options = options;
+          type: 'slider';
+          let onChange = onChange
+        "
+      >
+        <mat-form-field>
+          <mat-label>Subset Strategy</mat-label>
+          <mat-select
+            [(ngModel)]="rule.value.strategy"
+            (selectionChange)="onChange()"
+            [ngModelOptions]="{ standalone: true }"
+          >
+            @for (opt of options; track opt) {
+            <mat-option [value]="opt.value">{{ opt.name }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+
+        <span
+          *ngIf="rule.value && rule.value.strategy === 'PERCENTAGE_OF_ROWS'"
+        >
+          <mat-slider min="0" max="100" step="10" discrete>
+            <input
+              matSliderThumb
+              [(ngModel)]="rule.value.percentage"
+              (ngModelChange)="onChange()"
+              [ngModelOptions]="{ standalone: true }"
+            />
+          </mat-slider>
+          <span>{{ rule.value.percentage }}%</span>
+        </span>
+
+        <span *ngIf="rule.value && rule.value.strategy === 'CONDITION'">
+          <mat-form-field [style.width.px]="100">
+            <mat-label class="!text-xs">Min Value</mat-label>
+            <input type="text" matInput />
+          </mat-form-field>
+
+          <span>to </span>
+          <mat-form-field [style.width.px]="100">
+            <mat-label class="!text-xs">Max Value</mat-label>
+            <input type="text" matInput />
+          </mat-form-field>
+        </span>
+      </ng-container>
+      <ng-container
+        *queryInput="let rule; type: 'date'; let onChange = onChange"
+      >
+        <mat-form-field class="example-form-field">
+          <mat-date-range-input
+            [formGroup]="campaignOne"
+            [rangePicker]="campaignOnePicker"
+            [comparisonStart]="campaignOne.value.start"
+            [comparisonEnd]="campaignOne.value.end"
+          >
+            <input
+              matStartDate
+              placeholder="Start date"
+              formControlName="start"
+            />
+            <input matEndDate placeholder="End date" formControlName="end" />
+          </mat-date-range-input>
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="campaignOnePicker"
+          ></mat-datepicker-toggle>
+          <mat-date-range-picker #campaignOnePicker></mat-date-range-picker>
+        </mat-form-field>
+      </ng-container>
+      <ng-container
+        *queryInput="
+          let rule;
+          let options = options;
+          type: 'multiselect';
+          let onChange = onChange
+        "
+      >
+        <mat-form-field [style.width.px]="300">
+          <mat-select
+            [(ngModel)]="rule.value"
+            multiple
+            (ngModelChange)="onChange()"
+            [ngModelOptions]="{ standalone: true }"
+          >
+            <mat-option *ngFor="let opt of options" [value]="opt.value">
+              {{ opt.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </ng-container>
+      <ng-container
+        *queryInput="
+          let rule;
+          let field = field;
+          type: 'number';
+          let onChange = onChange
+        "
+      >
+        <mat-form-field [style.width.px]="50">
+          <input
+            matInput
+            [(ngModel)]="rule.value"
+            type="number"
+            (ngModelChange)="onChange()"
+            [name]="getUniqueName('number', rule)"
+            required
+          />
+        </mat-form-field>
+      </ng-container>
+      <ng-container
+        *queryInput="
+          let rule;
+          let field = field;
+          type: 'string';
+          let onChange = onChange
+        "
+      >
+        <mat-form-field>
+          <input
+            matInput
+            [(ngModel)]="rule.value"
+            (ngModelChange)="onChange()"
+            [ngModelOptions]="{ standalone: true }"
+          />
+        </mat-form-field>
+      </ng-container>
+      <ng-container
+        *queryInput="
+          let rule;
+          let field = field;
+          type: 'textarea';
+          let onChange = onChange
+        "
+      >
+        <mat-form-field>
+          <textarea
+            matInput
+            [(ngModel)]="rule.value"
+            (ngModelChange)="onChange()"
+            [ngModelOptions]="{ standalone: true }"
+          >
+          </textarea>
+        </mat-form-field>
+      </ng-container>
+    </query-builder>
+  </form>
+  <!-- <p>Form value: {{ f.value | json }}</p>
+  <p>Form valid: {{ f.valid }}</p> -->
+</div>

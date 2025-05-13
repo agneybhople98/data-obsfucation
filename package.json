@@ -24,6 +24,7 @@
     "@tailwindcss/postcss": "^4.1.3",
     "material-icons": "^1.13.14",
     "moment": "^2.30.1",
+    "ngx-angular-query-builder": "^18.0.0",
     "ngx-toastr": "^19.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",

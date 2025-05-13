@@ -1,7 +1,7 @@
 <!-- Fix for the table row binding issue -->
 <div class="flex">
   <!-- Sidebar - Uncomment if needed -->
-  <!-- <aside class="flex-1">
+  <aside class="flex-1">
     <div class="bg-white !h-screen">
       <div class="!p-3">
         <app-input
@@ -30,205 +30,18 @@
         </mat-list-item>
       </mat-list>
     </div>
-  </aside> -->
+  </aside>
 
   <main class="flex-3">
     <div class="bg-white !m-4">
-      <div class="flex items-center justify-between !px-2">
-        <div class="flex">
-          <div class="!p-4 !bg-[#F0F4FF] !m-5">
-            <div class="text-xs">Subset Plan</div>
-            <div *ngIf="this.currentDomain === 'utility'" class="text-md">
-              {{
-                obsControlData?.obsControlName
-                  ? obsControlData?.obsControlName
-                  : obsControlData?.jobControlName ||
-                    "Utility Account Obfuscation"
-              }}
-            </div>
-            <div *ngIf="this.currentDomain === 'healthcare'" class="text-md">
-              {{
-                obsControlData?.obsControlName
-                  ? obsControlData?.obsControlName
-                  : obsControlData?.jobControlName ||
-                    "Membership & Policy Data Obfuscation"
-              }}
-            </div>
-          </div>
-          <div class="!p-4 !bg-[#F0F4FF] !m-5">
-            <div class="text-xs">Subset Plan Description</div>
-            <div class="text-md" *ngIf="this.currentDomain === 'utility'">
-              {{
-                obsControlData?.obsControlDescription
-                  ? obsControlData?.obsControlDescription
-                  : obsControlData?.jobControlDescription ||
-                    "Obfuscate utility accounts for non-production environments."
-              }}
-            </div>
-            <div class="text-md" *ngIf="this.currentDomain === 'healthcare'">
-              {{
-                obsControlData?.obsControlDescription
-                  ? obsControlData?.obsControlDescription
-                  : obsControlData?.jobControlDescription ||
-                    "Masks sensitive details in customer memberships, policies, and eligibility for staging."
-              }}
-            </div>
-          </div>
-        </div>
-        <div>
-          <app-button
-            text="Save"
-            (click)="(null)"
-            variant="success"
-          ></app-button>
-        </div>
+      <div class="!pt-4 !pb-2 !ps-6">
+        Selected Table:
+
+        <span class="font-semibold">
+          {{ selectedItem }}
+        </span>
       </div>
-      <div class="!ms-5">
-        <div>Set Subset Strategies</div>
-
-        <div class="table-container !mt-4">
-          <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-            <!-- Table name Column -->
-            <ng-container matColumnDef="tableName">
-              <th mat-header-cell *matHeaderCellDef>Table Name</th>
-              <td
-                class="cursor-pointer !text-sm !font-medium"
-                style="color: #3179e5"
-                mat-cell
-                *matCellDef="let element"
-              >
-                {{ element.tableName }}
-              </td>
-            </ng-container>
-
-            <!-- Column Name -->
-            <ng-container matColumnDef="columnName">
-              <th mat-header-cell *matHeaderCellDef>Column Name</th>
-              <td
-                class="!text-sm !font-normal"
-                mat-cell
-                *matCellDef="let element"
-              >
-                <!-- {{ element.columnName }} -->
-                <mat-form-field>
-                  <mat-label>Column Name</mat-label>
-                  <mat-select [(ngModel)]="selectedColumnName" name="ele">
-                    @for (ele of element.columnName; track ele) {
-                    <mat-option [value]="ele">{{ ele }}</mat-option>
-                    }
-                  </mat-select>
-                </mat-form-field>
-              </td>
-            </ng-container>
-
-            <!-- Subset Strategy -->
-            <ng-container matColumnDef="subsetStrategiesColumn">
-              <th mat-header-cell *matHeaderCellDef>Subset Strategy</th>
-              <td mat-cell *matCellDef="let element">
-                <div *ngIf="selectedColumnName === 'DATE'">
-                  <mat-form-field>
-                    <mat-label>Subset Strategy</mat-label>
-                    <mat-select [(ngModel)]="selectedValue">
-                      @for (subset of subsetStrategiesDate; track subset) {
-                      <mat-option [value]="subset">{{ subset }}</mat-option>
-                      }
-                    </mat-select>
-                  </mat-form-field>
-                </div>
-                <div *ngIf="selectedColumnName !== 'DATE'">
-                  <mat-form-field>
-                    <mat-label>Subset Strategy</mat-label>
-                    <mat-select [(ngModel)]="selectedValue">
-                      @for (subset of subsetStrategies; track subset) {
-                      <mat-option [value]="subset">{{ subset }}</mat-option>
-                      }
-                    </mat-select>
-                  </mat-form-field>
-                </div>
-              </td>
-            </ng-container>
-
-            <!-- Obfuscation Rules Column -->
-            <ng-container matColumnDef="subsetRules">
-              <th mat-header-cell *matHeaderCellDef>Subset Rules</th>
-              <td mat-cell *matCellDef="let element; let i = index">
-                <div *ngIf="selectedValue === 'Date of Ranges'">
-                  <mat-form-field>
-                    <mat-label>From-to date</mat-label>
-                    <mat-date-range-input
-                      [formGroup]="campaignOne"
-                      [rangePicker]="campaignOnePicker"
-                      [comparisonStart]="campaignTwo.value.start"
-                      [comparisonEnd]="campaignTwo.value.end"
-                    >
-                      <input
-                        matStartDate
-                        placeholder="Start date"
-                        formControlName="start"
-                      />
-                      <input
-                        matEndDate
-                        placeholder="End date"
-                        formControlName="end"
-                      />
-                    </mat-date-range-input>
-                    <mat-hint>DD/MM/YYYY – DD/MM/YYYY</mat-hint>
-                    <mat-datepicker-toggle
-                      matIconSuffix
-                      [for]="campaignOnePicker"
-                    ></mat-datepicker-toggle>
-                    <mat-date-range-picker
-                      #campaignOnePicker
-                    ></mat-date-range-picker>
-                  </mat-form-field>
-                </div>
-
-                <div *ngIf="selectedValue === 'Percentage of Rows'">
-                  <mat-slider min="0" max="100" discrete>
-                    <input value="0" matSliderStartThumb />
-                    <input value="100" matSliderEndThumb />
-                  </mat-slider>
-                </div>
-
-                <div *ngIf="selectedValue === 'Condition'">
-                  <div class="flex items-center gap-5 mt-[50px]">
-                    <mat-form-field class="w-50">
-                      <mat-label>Minimum Value</mat-label>
-                      <input
-                        type="text"
-                        matInput
-                        [(ngModel)]="element.subsetRules.min"
-                      />
-                    </mat-form-field>
-
-                    <span>to </span>
-                    <mat-form-field class="w-50">
-                      <mat-label>Maximum Value</mat-label>
-                      <input
-                        type="text"
-                        matInput
-                        [(ngModel)]="element.subsetRules.max"
-                      />
-                    </mat-form-field>
-                  </div>
-                </div>
-              </td>
-            </ng-container>
-
-            <!-- Header row definition -->
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <!-- Row definition - THIS WAS MISSING -->
-            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-          </table>
-
-          <mat-paginator
-            [pageSizeOptions]="[10, 15, 20]"
-            showFirstLastButtons
-            aria-label="Select page of subset elements"
-          >
-          </mat-paginator>
-        </div>
-      </div>
+      <app-query-builder [selectedItem]="selectedItem"></app-query-builder>
     </div>
   </main>
 </div>

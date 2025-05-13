@@ -1,12 +1,4 @@
-import {
-  animate,
-  state,
-  style,
-  transition,
-  trigger,
-} from '@angular/animations';
-import { Component, ViewChild } from '@angular/core';
-import { ObsfucationService } from '../../services/obsfucation.service';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { MatTableDataSource } from '@angular/material/table';
 import { SelectionModel } from '@angular/cdk/collections';
@@ -62,10 +54,12 @@ export const MY_FORMATS = {
     { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
   ],
 })
-export class CreateSubsetComponent {
+export class CreateSubsetComponent implements OnInit {
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
   selectedValue = 'Date';
   selectedColumnName = 'PER_ID';
   public dataSource: MatTableDataSource<SubsetElement>;
+  filteredTableItems: string[] = [];
   readonly campaignOne = new FormGroup({
     start: new FormControl(moment([year, month, 13])),
     end: new FormControl(moment([year, month, 16])),
@@ -87,17 +81,146 @@ export class CreateSubsetComponent {
     'subsetRules',
   ];
 
+  tableItemsHealthcare = [
+    'CI_PER',
+    'CI_PER_NAME',
+    'CI_PER_PHONE',
+    'CI_PER_ADDR_SEAS',
+    'C1_ADDRESS',
+    'CI_PER_ID',
+    'CI_PER_CHAR',
+  ];
+  tableItemsUtility = [
+    'CI_PER',
+    'CI_PER_NAME',
+    'CI_PER_ADDR_SEAS',
+    'CI_PER_CONTDET',
+    'CI_PER_ID',
+    'CI_PER_CHAR',
+  ];
+
+  searchText = '';
+  selectedItem: string = 'CI_PER';
+
+  get tableItems() {
+    return this.currentDomain === 'healthcare'
+      ? this.tableItemsHealthcare
+      : this.tableItemsUtility;
+  }
+
   subsetStrategies = ['Condition', 'Percentage of Rows'];
   subsetStrategiesDate = ['Date of Ranges'];
 
   public selection = new SelectionModel<any>(true, []);
   obsControlData: any;
 
-  constructor(public subsetDataService: CreateSubsetService) {
+  constructor(
+    public subsetDataService: CreateSubsetService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {
     this.dataSource = new MatTableDataSource<SubsetElement>(
       this.subsetDataService.getAllSubsetData()
     );
     console.log('ths datasource', this.dataSource);
   }
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
+
+  ngOnInit() {
+    // First detect the domain from URL
+    this.detectDomainFromUrl();
+
+    // Extract domain from route parameters
+    this.route.params.subscribe((params) => {
+      if (params['domain']) {
+        this.currentDomain = params['domain'];
+        this.loadTableDataBasedOnDomain();
+      }
+    });
+
+    // Also listen to parent route parameters (for nested routes)
+    this.route.parent?.params.subscribe((params) => {
+      if (params['domain']) {
+        this.currentDomain = params['domain'];
+        this.loadTableDataBasedOnDomain();
+      }
+    });
+
+    this.router.events
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe(() => {
+        this.detectDomainFromUrl();
+      });
+
+    // Get state data from navigation
+    this.obsControlData =
+      this.router.getCurrentNavigation()?.extras.state?.['data'];
+
+    // If no data in navigation, try to get it from history state
+    if (!this.obsControlData) {
+      this.obsControlData = history.state.data;
+    }
+
+    this.filteredTableItems = [...this.tableItems];
+
+    // Initial table setup
+    this.onTableChange();
+
+    // // Check rows that have all required values
+    // this.dataSource.data.forEach((row: ColumnDefinition) => {
+    //   if (row.columnName && row.obfStrategy && row.obfRules?.first) {
+    //     this.selection.select(row);
+    //   }
+    // });
+  }
+
+  // Extract domain from URL
+  private detectDomainFromUrl(): void {
+    const urlPath = this.router.url;
+    const segments = urlPath.split('/').filter((segment) => segment);
+
+    if (segments.length > 0) {
+      const potentialDomain = segments[0];
+      if (['healthcare', 'utility'].includes(potentialDomain)) {
+        if (this.currentDomain !== potentialDomain) {
+          this.currentDomain = potentialDomain;
+        }
+      }
+    }
+  }
+
+  selectItem(item: string) {
+    // Update selected item
+    this.selectedItem = item;
+
+    // Update selected table in dropdown
+    this.selectedTable = item;
+
+    // Clear existing selections
+    this.selection.clear();
+  }
+
+  // Load the correct table data based on current domain
+  private loadTableDataBasedOnDomain(): void {
+    // Set the default selected table if available
+    if (this.tableData && this.tableData.selectedTable) {
+      this.selectedTable = this.tableData.selectedTable;
+    }
+
+    this.filteredTableItems = [...this.tableItems];
+  }
+
+  onTableChange() {
+    // Update selected item in sidebar to keep UI in sync
+    if (this.selectedTable) {
+      this.selectedItem = this.selectedTable;
+    }
+  }
+
+  applySearch(event: Event) {
+    const searchValue = (event.target as HTMLInputElement).value;
+    this.searchText = searchValue;
+    this.filteredTableItems = this.tableItems.filter((item) =>
+      item.toLowerCase().includes(searchValue.toLowerCase())
+    );
+  }
 }

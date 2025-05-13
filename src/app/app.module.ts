@@ -45,6 +45,10 @@ import { MatDatepicker } from '@angular/material/datepicker';
 import { CreateSubsetComponent } from './pages/create-subset/create-subset.component';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
+import { QueryBuilderComponent } from './components/query-builder/query-builder.component';
+import { NgxAngularQueryBuilderModule } from 'ngx-angular-query-builder';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -66,10 +70,12 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter';
     RestoreComponent,
     SubsetPlanComponent,
     CreateSubsetComponent,
+    QueryBuilderComponent,
   ],
   imports: [
     FormsModule,
     ReactiveFormsModule,
+    NgxAngularQueryBuilderModule,
     BrowserModule,
     BrowserAnimationsModule,
     MatDividerModule,
@@ -82,6 +88,7 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter';
     AppRoutingModule,
     MatTableModule,
     MatPaginatorModule,
+    MatCardModule,
     MatTableModule,
     MatFormFieldModule,
     MatInputModule,
@@ -93,7 +100,7 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter';
     MatDatepicker,
     MatSliderModule,
     MatMomentDateModule,
-
+    MatRadioModule,
     HttpClientModule,
     ToastrModule.forRoot(),
   ],

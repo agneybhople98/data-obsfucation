@@ -1,4 +1,6 @@
-<div class="!mb-5 !p-3">
+<div
+  class="!mb-5 !p-3 !bg-[#f5f4f3] border-[1px] border-[#e0e0e0] rounded-b-md"
+>
   <form #f="ngForm">
     <query-builder
       [(ngModel)]="query"
@@ -171,9 +173,7 @@
           let onChange = onChange
         "
       >
-        <span
-          *ngIf="rule.value && rule.value.strategy === 'PERCENTAGE_OF_ROWS'"
-        >
+        <span *ngIf="false">
           <mat-slider min="0" max="100" step="10" discrete>
             <input
               matSliderThumb
@@ -185,7 +185,7 @@
           <span>{{ rule.value.percentage }}%</span>
         </span>
 
-        <span *ngIf="rule.value && rule.operators.includes('BETWEEN')">
+        <span *ngIf="rule.operator === 'BETWEEN'">
           <mat-form-field [style.width.px]="100">
             <mat-label class="!text-xs">Min Value</mat-label>
             <input type="text" matInput />
@@ -194,6 +194,12 @@
           <span>to </span>
           <mat-form-field [style.width.px]="100">
             <mat-label class="!text-xs">Max Value</mat-label>
+            <input type="text" matInput />
+          </mat-form-field>
+        </span>
+        <span *ngIf="rule.operator !== 'BETWEEN'">
+          <mat-form-field [style.width.px]="100">
+            <mat-label class="!text-xs">Value</mat-label>
             <input type="text" matInput />
           </mat-form-field>
         </span>

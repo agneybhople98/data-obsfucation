@@ -175,21 +175,20 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
           },
         ],
 
-        // operators: [
-        //   '=',
-        //   '!=',
-        //   '<',
-        //   '>',
-        //   '<=',
-        //   '>=',
-        //   'between',
-        //   'NOT LIKE',
-        //   'LIKE',
-        //   'IN',
-        //   'IS_NULL',
-        //   'IS_NOT_NULL',
-        // ],
-        defaultValue: () => ({ strategy: 'CONDITION', percentage: 50 }), // Default value structure for slider
+        operators: [
+          '=',
+          '!=',
+          '<',
+          '>',
+          '<=',
+          '>=',
+          'between',
+          'NOT LIKE',
+          'LIKE',
+          'IN',
+          'IS_NULL',
+          'IS_NOT_NULL',
+        ],
       },
 
       DATE: {

@@ -171,19 +171,6 @@
           let onChange = onChange
         "
       >
-        <mat-form-field>
-          <mat-label>Subset Strategy</mat-label>
-          <mat-select
-            [(ngModel)]="rule.value.strategy"
-            (selectionChange)="onChange()"
-            [ngModelOptions]="{ standalone: true }"
-          >
-            @for (opt of options; track opt) {
-            <mat-option [value]="opt.value">{{ opt.name }}</mat-option>
-            }
-          </mat-select>
-        </mat-form-field>
-
         <span
           *ngIf="rule.value && rule.value.strategy === 'PERCENTAGE_OF_ROWS'"
         >
@@ -198,7 +185,7 @@
           <span>{{ rule.value.percentage }}%</span>
         </span>
 
-        <span *ngIf="rule.value && rule.value.strategy === 'CONDITION'">
+        <span *ngIf="rule.value && rule.operators.includes('BETWEEN')">
           <mat-form-field [style.width.px]="100">
             <mat-label class="!text-xs">Min Value</mat-label>
             <input type="text" matInput />

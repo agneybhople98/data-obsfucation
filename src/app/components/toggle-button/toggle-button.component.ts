@@ -57,19 +57,19 @@ import {
       }
 
       .left {
-        background-color: #2a5885;
+        background-color: #1e3a8a;
       }
 
       .right {
-        background-color: #3a75b0;
+        background-color: #1e3a8a;
       }
 
       .active.left {
-        background-color: #1e3f66;
+        background-color: rgb(53, 95, 234);
       }
 
       .active.right {
-        background-color: #1e3f66;
+        background-color: rgb(53, 95, 234);
       }
     `,
   ],

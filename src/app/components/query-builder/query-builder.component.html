@@ -19,30 +19,34 @@
           let getDisabledState = getDisabledState
         "
       >
-        <button
-          type="button"
-          mat-button
-          (click)="addRule()"
-          [disabled]="getDisabledState()"
-        >
-          + Rule
-        </button>
-        <button
-          type="button"
-          mat-button
-          (click)="addRuleSet()"
-          [disabled]="getDisabledState()"
-        >
-          + Ruleset
-        </button>
-        <button
-          type="button"
-          mat-button
-          *ngIf="removeRuleSet"
-          (click)="removeRuleSet()"
-        >
-          - Ruleset
-        </button>
+        <div class="flex gap-2 !my-3">
+          <app-button
+            text="+ Rule"
+            type="button"
+            variant="primary"
+            (click)="addRule()"
+            [disabled]="getDisabledState()"
+          >
+          </app-button>
+          <app-button
+            type="button"
+            text="+ Group"
+            variant="primary"
+            mat-button
+            (click)="addRuleSet()"
+            [disabled]="getDisabledState()"
+          >
+          </app-button>
+          <app-button
+            type="button"
+            text="- Group"
+            variant="warn"
+            mat-button
+            *ngIf="removeRuleSet"
+            (click)="removeRuleSet()"
+          >
+          </app-button>
+        </div>
       </ng-container>
       <ng-container *queryRemoveButton="let rule; let removeRule = removeRule">
         <button

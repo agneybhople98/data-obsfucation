@@ -45,13 +45,13 @@ import {
       }
 
       .toggle-button {
-        padding: 4px 8px;
+        padding: 5px 10px;
         border: none;
-        font-size: 14px;
+        font-size: 16px;
         font-weight: bold;
         cursor: pointer;
         transition: background-color 0.3s ease;
-        min-width: 40px;
+        min-width: 60px;
         color: white;
         text-align: center;
       }

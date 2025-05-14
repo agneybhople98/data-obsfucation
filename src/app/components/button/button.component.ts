@@ -8,7 +8,8 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 })
 export class ButtonComponent {
   @Input() text: string = '';
-  @Input() variant: 'primary' | 'success' | 'default' | 'link' = 'default';
+  @Input() variant: 'primary' | 'success' | 'default' | 'warn' | 'link' =
+    'default';
   @Input() disabled: boolean = false;
   @Input() type: 'button' | 'submit' | 'reset' = 'button';
   @Input() path: string = '';

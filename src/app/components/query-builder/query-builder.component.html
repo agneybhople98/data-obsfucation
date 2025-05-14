@@ -204,19 +204,26 @@
 
         <span *ngIf="rule.operator === 'BETWEEN'">
           <mat-form-field [style.width.px]="100">
-            <mat-label class="!text-xs">Min Value</mat-label>
+            <mat-label>Min Value</mat-label>
             <input type="text" matInput />
           </mat-form-field>
 
           <span>to </span>
           <mat-form-field [style.width.px]="100">
-            <mat-label class="!text-xs">Max Value</mat-label>
+            <mat-label>Max Value</mat-label>
             <input type="text" matInput />
           </mat-form-field>
         </span>
-        <span *ngIf="rule.operator !== 'BETWEEN'">
-          <mat-form-field [style.width.px]="100">
-            <mat-label class="!text-xs">Value</mat-label>
+        <span>
+          <mat-form-field
+            *ngIf="
+              rule.operator !== 'BETWEEN' &&
+              rule.operator !== 'IS_NOT_NULL' &&
+              rule.operator !== 'IS_NULL'
+            "
+            [style.width.px]="100"
+          >
+            <mat-label>Value</mat-label>
             <input type="text" matInput />
           </mat-form-field>
         </span>

@@ -28,6 +28,8 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
     start: new FormControl(moment()), // Use moment() instead of new Date()
     end: new FormControl(moment().add(7, 'days')), // Add 7 days as an example
   });
+  emptyRulesetMessage =
+    'Please add condition, condition group cannot be left empty ';
   @ViewChild('f', { static: true })
   queryBuilderFormGroup!: NgForm;
   public selectedValue: any;

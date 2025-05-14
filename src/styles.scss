@@ -41,6 +41,26 @@ body {
 .text-primary {
   color: #ffffff !important;
 }
+// .q-row.q-connector {
+//   padding: 100px !important;
+// }
+.q-row.q-connector.q-transition {
+  margin-left: 60px !important;
+}
+.q-connecter::before {
+  border-color: red !important;
+}
+
+.q-connector[_ngcontent-ng-c3462814152]:before,
+[_nghost-ng-c3462814152] .q-connector[_ngcontent-ng-c3462814152]:after {
+  content: "";
+  left: -12px;
+  border-color: rgb(127, 127, 127) !important;
+  border-style: solid;
+  width: 9px;
+  height: calc(50% + 6px);
+  position: absolute;
+}
 .mdc-text-field--filled {
   background-color: transparent !important;
   &:hover {

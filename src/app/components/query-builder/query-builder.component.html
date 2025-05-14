@@ -17,41 +17,51 @@
           let getDisabledState = getDisabledState
         "
       >
-        <div class="flex gap-2 !my-3">
-          <app-button
-            text="+ Rule"
-            type="button"
-            variant="primary"
+        <div class="flex items-center gap-2 !my-2">
+          <button
             (click)="addRule()"
             [disabled]="getDisabledState()"
+            mat-icon-button
+            matTooltip="Add condition"
+            aria-label="Icon to add condition"
           >
-          </app-button>
-          <app-button
-            type="button"
-            text="+ Group"
-            variant="primary"
-            mat-button
+            <mat-icon>
+              <span class="material-symbols-outlined"> add_box </span>
+            </mat-icon>
+          </button>
+          <button
+            mat-icon-button
             (click)="addRuleSet()"
             [disabled]="getDisabledState()"
+            matTooltip="Add condition group"
+            aria-label="Icon to add condition group"
           >
-          </app-button>
-          <app-button
-            type="button"
-            text="- Group"
-            variant="warn"
-            mat-button
+            <mat-icon>
+              <span class="material-symbols-outlined"> library_add </span>
+            </mat-icon>
+          </button>
+
+          <button
+            mat-icon-button
+            matTooltip="Remove condition group"
+            aria-label="Icon to remove condition group"
             *ngIf="removeRuleSet"
             (click)="removeRuleSet()"
           >
-          </app-button>
+            <mat-icon>
+              <span class="material-symbols-outlined text-red-500">
+                delete
+              </span>
+            </mat-icon>
+          </button>
         </div>
       </ng-container>
       <ng-container *queryRemoveButton="let rule; let removeRule = removeRule">
         <button
           type="button"
           mat-icon-button
-          color="warn"
           (click)="removeRule(rule)"
+          matTooltip="Remove condition"
         >
           <mat-icon class="!text-red-500">delete</mat-icon>
         </button>

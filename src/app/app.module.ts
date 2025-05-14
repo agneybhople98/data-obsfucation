@@ -49,6 +49,8 @@ import { QueryBuilderComponent } from './components/query-builder/query-builder.
 import { NgxAngularQueryBuilderModule } from 'ngx-angular-query-builder';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { ToggleButtonComponent } from './components/toggle-button/toggle-button.component';
 
 @NgModule({
   declarations: [
@@ -71,6 +73,7 @@ import { MatCardModule } from '@angular/material/card';
     SubsetPlanComponent,
     CreateSubsetComponent,
     QueryBuilderComponent,
+    ToggleButtonComponent,
   ],
   imports: [
     FormsModule,
@@ -86,6 +89,7 @@ import { MatCardModule } from '@angular/material/card';
     MatSidenavModule,
     MatListModule,
     AppRoutingModule,
+    MatButtonToggleModule,
     MatTableModule,
     MatPaginatorModule,
     MatCardModule,

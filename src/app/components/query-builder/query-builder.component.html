@@ -56,19 +56,23 @@
       </ng-container>
       <ng-container *querySwitchGroup="let ruleset; let onChange = onChange">
         <div class="!mt-2">
-          <mat-radio-group
-            *ngIf="ruleset"
+          <app-toggle-button
             [(ngModel)]="ruleset.condition"
             [ngModelOptions]="{ standalone: true }"
             (ngModelChange)="onChange($event)"
           >
-            <mat-radio-button [style.padding.px]="10" value="and"
-              >And</mat-radio-button
-            >
-            <mat-radio-button [style.padding.px]="10" value="or"
-              >Or</mat-radio-button
-            >
-          </mat-radio-group>
+          </app-toggle-button>
+          <!-- <mat-button-toggle-group
+            *ngIf="ruleset"
+            [(ngModel)]="ruleset.condition"
+            [ngModelOptions]="{ standalone: true }"
+            (ngModelChange)="onChange($event)"
+            name="fontStyle"
+            aria-label="Font Style"
+          >
+            <mat-button-toggle value="and">AND</mat-button-toggle>
+            <mat-button-toggle value="or">OR</mat-button-toggle>
+          </mat-button-toggle-group> -->
         </div>
       </ng-container>
       <ng-container

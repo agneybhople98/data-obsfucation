@@ -33,6 +33,20 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
   public selectedValue: any;
   @Input() public selectedItem: any;
 
+  // Toggle Button options
+  customValue: string = 'yes';
+  directValue: string = 'include';
+
+  onChange(value: string) {
+    console.log('Ruleset condition changed:', value);
+    // Add any additional logic here
+  }
+
+  onDirectValueChange(value: string) {
+    console.log('Direct value changed:', value);
+    // Add any additional logic here
+  }
+
   public queryCtrl: FormControl;
 
   public bootstrapClassNames: QueryBuilderClassNames = {
@@ -1881,9 +1895,6 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
         break;
       case 'boolean':
         defaultValue = false;
-        break;
-      case 'date':
-        defaultValue = moment();
         break;
       case 'category':
         defaultValue =

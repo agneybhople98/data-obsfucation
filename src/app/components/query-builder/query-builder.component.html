@@ -307,6 +307,7 @@
     <app-button
       variant="success"
       text="Save"
+      [disabled]="!queryBuilderFormGroup.valid"
       (clicked)="execute()"
     ></app-button>
   </div>

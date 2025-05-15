@@ -131,7 +131,7 @@
           let rule;
           let field = field;
           let options = options;
-          type: 'number';
+          type: 'string';
           let onChange = onChange
         "
       >
@@ -146,9 +146,9 @@
           <input
             matInput
             [(ngModel)]="rule.value"
-            type="number"
+            type="text"
             (ngModelChange)="onChange()"
-            [name]="getUniqueName('number', rule)"
+            [name]="getUniqueName('string', rule)"
             required
           />
         </mat-form-field>
@@ -157,12 +157,12 @@
           <!-- Initialize min/max values when this operator is selected -->
 
           <mat-form-field [style.width.px]="150">
-            <input type="number" matInput placeholder="Min Value" />
+            <input type="text" matInput placeholder="Min Value" />
           </mat-form-field>
 
           <span>to </span>
           <mat-form-field [style.width.px]="150">
-            <input type="number" matInput placeholder="Max Value" />
+            <input type="text" matInput placeholder="Max Value" />
           </mat-form-field>
         </span>
       </ng-container>

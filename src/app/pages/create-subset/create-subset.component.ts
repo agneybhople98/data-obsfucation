@@ -81,25 +81,21 @@ export class CreateSubsetComponent implements OnInit {
     'subsetRules',
   ];
 
-  tableItemsHealthcare = [
-    'CI_PER',
-    'CI_ACCOUNTS',
-    'CI_PER_NAME',
-    'CI_PER_PHONE',
-    'CI_PER_ADDR_SEAS',
-    'C1_ADDRESS',
-    'CI_PER_ID',
-    'CI_PER_CHAR',
-  ];
-  tableItemsUtility = [
-    'CI_PER',
-    'CI_ACCOUNTS',
-    'CI_PER_NAME',
-    'CI_PER_ADDR_SEAS',
-    'CI_PER_CONTDET',
-    'CI_PER_ID',
-    'CI_PER_CHAR',
-  ];
+  tableItemsHealthcare = ['CI_PER', 'CI_ACCOUNTS'];
+
+  // 'CI_PER_NAME',
+  // 'CI_PER_PHONE',
+  // 'CI_PER_ADDR_SEAS',
+  // 'C1_ADDRESS',
+  // 'CI_PER_ID',
+  // 'CI_PER_CHAR',
+  tableItemsUtility = ['CI_PER', 'CI_ACCOUNTS'];
+
+  // 'CI_PER_NAME',
+  //   'CI_PER_ADDR_SEAS',
+  //   'CI_PER_CONTDET',
+  //   'CI_PER_ID',
+  //   'CI_PER_CHAR',
 
   searchText = '';
   selectedItem: string = 'CI_PER';

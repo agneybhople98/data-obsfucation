@@ -36,6 +36,7 @@ export class JobControlComponent implements OnInit, OnDestroy {
   ];
   // healthcare options
   obsControlOptionsHealthcare = [
+    'No selection',
     'Membership & Policy Data Obfuscation',
     'Customer & Account Obfuscation',
     'Billing Transactions - US Region',

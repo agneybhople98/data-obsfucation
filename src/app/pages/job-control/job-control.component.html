@@ -90,13 +90,13 @@
           <div class="flex-1">
             <app-dropdown
               *ngIf="currentDomain === 'utility'"
-              label="Select Subset Strategy Plan"
+              label="Select Subset Plan"
               [options]="subsetControlOptions"
               [(value)]="selectedSubsetStrategy"
             ></app-dropdown>
             <app-dropdown
               *ngIf="currentDomain === 'healthcare'"
-              label="Select Subset Strategy Plan"
+              label="Select Subset Plan"
               [options]="subsetControlOptionsHealthcare"
               [(value)]="selectedSubsetStrategy"
             ></app-dropdown>

@@ -1733,9 +1733,12 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
   };
   // CI_PER configuration
   public ciAccountsConfig: QueryBuilderConfig = {
+    // ACCT_ID, BILL_CYC_CD, SETUP_DT, CURRENCY_CD, ACCT_MGMT_GRP_CD, ALERT_INFO, BILL_AFTER_DT, PROTECT_CYC_SW, CIS_DIVISION, MAILING_PERM_ID, PROTECT_PREM_SW, COLL_CL_CD,
+    // CR_REVIEW_DT, POSTPONE_CR_RVW_DT, INT_CR_REVIEW_SW, CUST_CL_CD, BILL_PRT_INTERCEPT, NO_DEP_RVW_SW, BUD_PLAN_CD, VERSION, PROTECT_DIV_SW, ACCESS_GRP_CD, ACCT_DATA_AREA, BILL_LEAD_DAYS,
+    //  ACCT_USAGE_FLG, TRIAL_BILL_SW, REPRICING_SW, CRE_BY, LAST_UPD_BY, CRE_DTTM, LAST_UPD_DTTM, PRODUCT_CD, EXCL_ACCR_SW, BUS_OBJ_CD
     fields: {
-      PER_ID: {
-        name: 'PER_ID',
+      ACCT_ID: {
+        name: 'ACCT_ID',
         type: 'string',
         operators: [
           '=',
@@ -1754,8 +1757,8 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
         ],
       },
 
-      DATE: {
-        name: 'DATE',
+      BILL_CYC_CD: {
+        name: 'BILL_CYC_CD',
         type: 'date',
         operators: [
           '=',
@@ -1779,8 +1782,8 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
           },
         ],
       },
-      LANGUAGE_CD: {
-        name: 'LANGUAGE_CD',
+      SETUP_DT: {
+        name: 'SETUP_DT',
         type: 'string',
         operators: [
           '=',
@@ -1799,8 +1802,8 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
         ],
         options: [],
       },
-      PER_OR_BUS_FLG: {
-        name: 'PER_OR_BUS_FLG',
+      CURRENCY_CD: {
+        name: 'CURRENCY_CD',
         type: 'category',
         options: [
           { name: 'Person', value: 'P' },
@@ -1822,8 +1825,8 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
           'IS_NOT_NULL',
         ],
       },
-      LS_SL_FLG: {
-        name: 'LS_SL_FLG',
+      ACCT_MGMT_GRP_CD: {
+        name: 'ACCT_MGMT_GRP_CD',
         type: 'string',
         operators: [
           '=',
@@ -1841,8 +1844,8 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
           'IS_NOT_NULL',
         ],
       },
-      LS_SL_DESCR: {
-        name: 'LS_SL_DESCR',
+      ALERT_INFO: {
+        name: 'ALERT_INFO',
         type: 'string',
         operators: [
           '=',
@@ -1860,8 +1863,8 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
           'IS_NOT_NULL',
         ],
       },
-      EMAILID: {
-        name: 'EMAILID',
+      BILL_AFTER_DT: {
+        name: 'BILL_AFTER_DT',
         type: 'string',
         operators: [
           '=',
@@ -1879,8 +1882,8 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
           'IS_NOT_NULL',
         ],
       },
-      OVRD_MAIL_NAME1: {
-        name: 'OVRD_MAIL_NAME1',
+      PROTECT_CYC_SW: {
+        name: 'PROTECT_CYC_SW',
         type: 'string',
         operators: [
           '=',
@@ -1898,8 +1901,8 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
           'IS_NOT_NULL',
         ],
       },
-      OVRD_MAIL_NAME2: {
-        name: 'OVRD_MAIL_NAME2',
+      CIS_DIVISION: {
+        name: 'CIS_DIVISION',
         type: 'string',
         operators: [
           '=',
@@ -1917,8 +1920,8 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
           'IS_NOT_NULL',
         ],
       },
-      OVRD_MAIL_NAME3: {
-        name: 'OVRD_MAIL_NAME3',
+      MAILING_PERM_ID: {
+        name: 'MAILING_PERM_ID',
         type: 'string',
         operators: [
           '=',
@@ -1936,8 +1939,8 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
           'IS_NOT_NULL',
         ],
       },
-      ADDRESS1: {
-        name: 'ADDRESS1',
+      PROTECT_PREM_SW: {
+        name: 'PROTECT_PREM_SW',
         type: 'string',
         operators: [
           '=',
@@ -1955,8 +1958,8 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
           'IS_NOT_NULL',
         ],
       },
-      ADDRESS2: {
-        name: 'ADDRESS2',
+      COLL_CL_CD: {
+        name: 'COLL_CL_CD',
         type: 'string',
         operators: [
           '=',
@@ -1974,8 +1977,8 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
           'IS_NOT_NULL',
         ],
       },
-      ADDRESS3: {
-        name: 'ADDRESS3',
+      CR_REVIEW_DT: {
+        name: 'CR_REVIEW_DT',
         type: 'string',
         operators: [
           '=',
@@ -1993,8 +1996,8 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
           'IS_NOT_NULL',
         ],
       },
-      ADDRESS4: {
-        name: 'ADDRESS4',
+      POSTPONE_CR_RVW_DT: {
+        name: 'POSTPONE_CR_RVW_DT',
         type: 'string',
         operators: [
           '=',
@@ -2012,8 +2015,8 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
           'IS_NOT_NULL',
         ],
       },
-      CITY: {
-        name: 'CITY',
+      INT_CR_REVIEW_SW: {
+        name: 'INT_CR_REVIEW_SW',
         type: 'string',
         operators: [
           '=',
@@ -2031,8 +2034,8 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
           'IS_NOT_NULL',
         ],
       },
-      NUM1: {
-        name: 'NUM1',
+      CUST_CL_CD: {
+        name: 'CUST_CL_CD',
         type: 'string',
         operators: [
           '=',
@@ -2050,8 +2053,8 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
           'IS_NOT_NULL',
         ],
       },
-      NUM2: {
-        name: 'NUM2',
+      BILL_PRT_INTERCEPT: {
+        name: 'BILL_PRT_INTERCEPT',
         type: 'string',
         operators: [
           '=',
@@ -2069,8 +2072,8 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
           'IS_NOT_NULL',
         ],
       },
-      COUNTY: {
-        name: 'COUNTY',
+      NO_DEP_RVW_SW: {
+        name: 'NO_DEP_RVW_SW',
         type: 'string',
         operators: [
           '=',
@@ -2088,8 +2091,8 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
           'IS_NOT_NULL',
         ],
       },
-      POSTAL: {
-        name: 'POSTAL',
+      BUD_PLAN_CD: {
+        name: 'BUD_PLAN_CD',
         type: 'string',
         operators: [
           '=',
@@ -2107,83 +2110,6 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
           'IS_NOT_NULL',
         ],
       },
-      HOUSE_TYPE: {
-        name: 'HOUSE_TYPE',
-        type: 'string',
-        operators: [
-          '=',
-          '!=',
-          '<',
-          '>',
-          '<=',
-          '>=',
-          'BETWEEN',
-          'NOT LIKE',
-          'LIKE',
-          'NOT IN',
-          'IN',
-          'IS_NULL',
-          'IS_NOT_NULL',
-        ],
-      },
-      GEO_CODE: {
-        name: 'GEO_CODE',
-        type: 'string',
-        operators: [
-          '=',
-          '!=',
-          '<',
-          '>',
-          '<=',
-          '>=',
-          'BETWEEN',
-          'NOT LIKE',
-          'LIKE',
-          'NOT IN',
-          'IN',
-          'IS_NULL',
-          'IS_NOT_NULL',
-        ],
-      },
-      IN_CITY_LIMIT: {
-        name: 'IN_CITY_LIMIT',
-        type: 'boolean',
-        operators: [
-          '=',
-          '!=',
-          '<',
-          '>',
-          '<=',
-          '>=',
-          'BETWEEN',
-          'NOT LIKE',
-          'LIKE',
-          'NOT IN',
-          'IN',
-          'IS_NULL',
-          'IS_NOT_NULL',
-        ],
-      },
-      STATE: {
-        name: 'STATE',
-        type: 'string',
-        operators: [
-          '=',
-          '!=',
-          '<',
-          '>',
-          '<=',
-          '>=',
-          'BETWEEN',
-          'NOT LIKE',
-          'LIKE',
-          'NOT IN',
-          'IN',
-          'IS_NULL',
-          'IS_NOT_NULL',
-        ],
-      },
-      COUNTRY: { name: 'COUNTRY', type: 'string' },
       VERSION: {
         name: 'VERSION',
         type: 'string',
@@ -2203,29 +2129,8 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
           'IS_NOT_NULL',
         ],
       },
-      RECV_MKTG_INFO_FLG: {
-        name: 'RECV_MKTG_INFO_FLG',
-        type: 'boolean',
-        operators: [
-          '=',
-          '!=',
-          '<',
-          '>',
-          '<=',
-          '>=',
-          'BETWEEN',
-          'NOT LIKE',
-          'LIKE',
-          'NOT IN',
-          'IN',
-          'IS_NULL',
-          'IS_NOT_NULL',
-        ],
-      },
-      WEB_PASSWD: { name: 'WEB_PASSWD', type: 'string' },
-      WEB_PWD_HINT_FLG: { name: 'WEB_PWD_HINT_FLG', type: 'string' },
-      WEB_PASSWD_ANS: {
-        name: 'WEB_PASSWD_ANS',
+      PROTECT_DIV_SW: {
+        name: 'PROTECT_DIV_SW',
         type: 'string',
         operators: [
           '=',
@@ -2243,8 +2148,202 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
           'IS_NOT_NULL',
         ],
       },
-      PER_DATA_AREA: {
-        name: 'PER_DATA_AREA',
+      ACCESS_GRP_CD: {
+        name: 'ACCESS_GRP_CD',
+        type: 'boolean',
+        operators: [
+          '=',
+          '!=',
+          '<',
+          '>',
+          '<=',
+          '>=',
+          'BETWEEN',
+          'NOT LIKE',
+          'LIKE',
+          'NOT IN',
+          'IN',
+          'IS_NULL',
+          'IS_NOT_NULL',
+        ],
+      },
+      ACCT_DATA_AREA: {
+        name: 'ACCT_DATA_AREA',
+        type: 'string',
+        operators: [
+          '=',
+          '!=',
+          '<',
+          '>',
+          '<=',
+          '>=',
+          'BETWEEN',
+          'NOT LIKE',
+          'LIKE',
+          'NOT IN',
+          'IN',
+          'IS_NULL',
+          'IS_NOT_NULL',
+        ],
+      },
+
+      BILL_LEAD_DAYS: {
+        name: 'BILL_LEAD_DAYS',
+        type: 'boolean',
+        operators: [
+          '=',
+          '!=',
+          '<',
+          '>',
+          '<=',
+          '>=',
+          'BETWEEN',
+          'NOT LIKE',
+          'LIKE',
+          'NOT IN',
+          'IN',
+          'IS_NULL',
+          'IS_NOT_NULL',
+        ],
+      },
+      ACCT_USAGE_FLG: { name: 'ACCT_USAGE_FLG', type: 'string' },
+      TRIAL_BILL_SW: { name: 'TRIAL_BILL_SW', type: 'string' },
+      REPRICING_SW: {
+        name: 'REPRICING_SW',
+        type: 'string',
+        operators: [
+          '=',
+          '!=',
+          '<',
+          '>',
+          '<=',
+          '>=',
+          'BETWEEN',
+          'NOT LIKE',
+          'LIKE',
+          'NOT IN',
+          'IN',
+          'IS_NULL',
+          'IS_NOT_NULL',
+        ],
+      },
+      CRE_BY: {
+        name: 'CRE_BY',
+        type: 'string',
+        operators: [
+          '=',
+          '!=',
+          '<',
+          '>',
+          '<=',
+          '>=',
+          'BETWEEN',
+          'NOT LIKE',
+          'LIKE',
+          'NOT IN',
+          'IN',
+          'IS_NULL',
+          'IS_NOT_NULL',
+        ],
+      },
+      LAST_UPD_BY: {
+        name: 'LAST_UPD_BY',
+        type: 'string',
+        operators: [
+          '=',
+          '!=',
+          '<',
+          '>',
+          '<=',
+          '>=',
+          'BETWEEN',
+          'NOT LIKE',
+          'LIKE',
+          'NOT IN',
+          'IN',
+          'IS_NULL',
+          'IS_NOT_NULL',
+        ],
+      },
+
+      CRE_DTTM: {
+        name: 'CRE_DTTM',
+        type: 'string',
+        operators: [
+          '=',
+          '!=',
+          '<',
+          '>',
+          '<=',
+          '>=',
+          'BETWEEN',
+          'NOT LIKE',
+          'LIKE',
+          'NOT IN',
+          'IN',
+          'IS_NULL',
+          'IS_NOT_NULL',
+        ],
+      },
+      LAST_UPD_DTTM: {
+        name: 'LAST_UPD_DTTM',
+        type: 'string',
+        operators: [
+          '=',
+          '!=',
+          '<',
+          '>',
+          '<=',
+          '>=',
+          'BETWEEN',
+          'NOT LIKE',
+          'LIKE',
+          'NOT IN',
+          'IN',
+          'IS_NULL',
+          'IS_NOT_NULL',
+        ],
+      },
+      PRODUCT_CD: {
+        name: 'PRODUCT_CD',
+        type: 'string',
+        operators: [
+          '=',
+          '!=',
+          '<',
+          '>',
+          '<=',
+          '>=',
+          'BETWEEN',
+          'NOT LIKE',
+          'LIKE',
+          'NOT IN',
+          'IN',
+          'IS_NULL',
+          'IS_NOT_NULL',
+        ],
+      },
+      EXCL_ACCR_SW: {
+        name: 'EXCL_ACCR_SW',
+        type: 'string',
+        operators: [
+          '=',
+          '!=',
+          '<',
+          '>',
+          '<=',
+          '>=',
+          'BETWEEN',
+          'NOT LIKE',
+          'LIKE',
+          'NOT IN',
+          'IN',
+          'IS_NULL',
+          'IS_NOT_NULL',
+        ],
+      },
+      BUS_OBJ_CD: {
+        name: 'BUS_OBJ_CD',
         type: 'string',
         operators: [
           '=',

@@ -120,7 +120,6 @@ export class CreateSubsetComponent implements OnInit {
     this.dataSource = new MatTableDataSource<SubsetElement>(
       this.subsetDataService.getAllSubsetData()
     );
-    console.log('ths datasource', this.dataSource);
   }
 
   ngOnInit() {

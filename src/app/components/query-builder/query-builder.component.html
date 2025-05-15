@@ -75,38 +75,10 @@
             (ngModelChange)="onChange($event)"
           >
           </app-toggle-button>
-          <!-- <mat-button-toggle-group
-            *ngIf="ruleset"
-            [(ngModel)]="ruleset.condition"
-            [ngModelOptions]="{ standalone: true }"
-            (ngModelChange)="onChange($event)"
-            name="fontStyle"
-            aria-label="Font Style"
-          >
-            <mat-button-toggle value="and">AND</mat-button-toggle>
-            <mat-button-toggle value="or">OR</mat-button-toggle>
-          </mat-button-toggle-group> -->
         </div>
       </ng-container>
-      <ng-container
-        *queryEntity="
-          let rule;
-          let entities = entities;
-          let onChange = onChange
-        "
-      >
-        <mat-form-field>
-          <mat-select
-            [(ngModel)]="rule.entity"
-            (ngModelChange)="onChange($event, rule)"
-            [ngModelOptions]="{ standalone: true }"
-          >
-            <mat-option *ngFor="let entity of entities" [value]="entity.value">
-              {{ entity.name }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </ng-container>
+
+      <!-- Field name -->
       <ng-container
         *queryField="
           let rule;
@@ -151,6 +123,51 @@
           </mat-select>
         </mat-form-field>
       </ng-container>
+
+      <!-- Value -->
+
+      <ng-container
+        *queryInput="
+          let rule;
+          let field = field;
+          let options = options;
+          type: 'number';
+          let onChange = onChange
+        "
+      >
+        <mat-form-field
+          *ngIf="
+            rule.operator !== 'BETWEEN' &&
+            rule.operator !== 'IS_NOT_NULL' &&
+            rule.operator !== 'IS_NULL'
+          "
+          [style.width.px]="200"
+        >
+          <input
+            matInput
+            [(ngModel)]="rule.value"
+            type="number"
+            (ngModelChange)="onChange()"
+            [name]="getUniqueName('number', rule)"
+            required
+          />
+        </mat-form-field>
+
+        <span class="!m-0" *ngIf="rule.operator === 'BETWEEN'">
+          <!-- Initialize min/max values when this operator is selected -->
+
+          <mat-form-field [style.width.px]="150">
+            <input type="number" matInput placeholder="Min Value" />
+          </mat-form-field>
+
+          <span>to </span>
+          <mat-form-field [style.width.px]="150">
+            <input type="number" matInput placeholder="Max Value" />
+          </mat-form-field>
+        </span>
+      </ng-container>
+
+      <!-- Boolean -->
       <ng-container
         *queryInput="let rule; type: 'boolean'; let onChange = onChange"
       >
@@ -169,6 +186,8 @@
           let onChange = onChange
         "
       >
+        <div>{{ rule.value }}</div>
+
         <mat-form-field>
           <mat-select
             [(ngModel)]="rule.value"
@@ -181,53 +200,7 @@
           </mat-select>
         </mat-form-field>
       </ng-container>
-      <ng-container
-        *queryInput="
-          let rule;
-          let field = field;
-          let options = options;
-          type: 'slider';
-          let onChange = onChange
-        "
-      >
-        <span *ngIf="false">
-          <mat-slider min="0" max="100" step="10" discrete>
-            <input
-              matSliderThumb
-              [(ngModel)]="rule.value.percentage"
-              (ngModelChange)="onChange()"
-              [ngModelOptions]="{ standalone: true }"
-            />
-          </mat-slider>
-          <span>{{ rule.value.percentage }}%</span>
-        </span>
 
-        <span *ngIf="rule.operator === 'BETWEEN'">
-          <mat-form-field [style.width.px]="100">
-            <mat-label>Min Value</mat-label>
-            <input type="text" matInput />
-          </mat-form-field>
-
-          <span>to </span>
-          <mat-form-field [style.width.px]="100">
-            <mat-label>Max Value</mat-label>
-            <input type="text" matInput />
-          </mat-form-field>
-        </span>
-        <span>
-          <mat-form-field
-            *ngIf="
-              rule.operator !== 'BETWEEN' &&
-              rule.operator !== 'IS_NOT_NULL' &&
-              rule.operator !== 'IS_NULL'
-            "
-            [style.width.px]="100"
-          >
-            <mat-label>Value</mat-label>
-            <input type="text" matInput />
-          </mat-form-field>
-        </span>
-      </ng-container>
       <ng-container
         *queryInput="let rule; type: 'date'; let onChange = onChange"
       >
@@ -329,6 +302,14 @@
       </ng-container>
     </query-builder>
   </form>
+
+  <div class="flex justify-end !mt-3">
+    <app-button
+      variant="primary"
+      text="Execute"
+      (clicked)="execute()"
+    ></app-button>
+  </div>
   <!-- <p>Form value: {{ f.value | json }}</p>
   <p>Form valid: {{ f.valid }}</p> -->
 </div>

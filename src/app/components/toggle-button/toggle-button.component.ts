@@ -42,13 +42,14 @@ import {
         overflow: hidden;
         width: fit-content;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        border: 0.1px solid #ccc;
       }
 
       .toggle-button {
         padding: 5px 10px;
         border: none;
         font-size: 16px;
-        font-weight: bold;
+        font-weight: normal;
         cursor: pointer;
         transition: background-color 0.3s ease;
         min-width: 60px;
@@ -57,19 +58,23 @@ import {
       }
 
       .left {
-        background-color: #1e3a8a;
+        background-color: white;
+        color: black;
       }
 
       .right {
-        background-color: #1e3a8a;
+        background-color: white;
+        color: black;
       }
 
       .active.left {
-        background-color: rgb(53, 95, 234);
+        background-color: #018903;
+        color: white;
       }
 
       .active.right {
-        background-color: rgb(53, 95, 234);
+        background-color: #1e3a8a;
+        color: white;
       }
     `,
   ],

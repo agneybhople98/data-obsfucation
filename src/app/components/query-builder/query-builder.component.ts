@@ -7,7 +7,7 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, NgForm } from '@angular/forms';
-import moment from 'moment';
+import moment, { max } from 'moment';
 import {
   QueryBuilderClassNames,
   QueryBuilderConfig,
@@ -90,114 +90,12 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
     ],
   };
 
-  // // Default entity config
-  // public entityConfig: QueryBuilderConfig = {
-  //   entities: {
-  //     physical: { name: 'Physical Attributes' },
-  //     nonphysical: { name: 'Nonphysical Attributes' },
-  //   },
-  //   fields: {
-  //     age: { name: 'Age', type: 'number', entity: 'physical' },
-  //     gender: {
-  //       name: 'Gender',
-  //       entity: 'physical',
-  //       type: 'category',
-  //       options: [
-  //         { name: 'Male', value: 'm' },
-  //         { name: 'Female', value: 'f' },
-  //       ],
-  //     },
-  //     name: { name: 'Name', type: 'string', entity: 'nonphysical' },
-  //     notes: {
-  //       name: 'Notes',
-  //       type: 'textarea',
-  //       operators: ['=', '!='],
-  //       entity: 'nonphysical',
-  //     },
-  //     educated: {
-  //       name: 'College Degree?',
-  //       type: 'boolean',
-  //       entity: 'nonphysical',
-  //     },
-  //     birthday: {
-  //       name: 'Birthday',
-  //       type: 'date',
-  //       operators: ['=', '<=', '>'],
-  //       defaultValue: () => new Date(),
-  //       entity: 'nonphysical',
-  //     },
-  //     school: {
-  //       name: 'School',
-  //       type: 'string',
-  //       nullable: true,
-  //       entity: 'nonphysical',
-  //     },
-  //     occupation: {
-  //       name: 'Occupation',
-  //       entity: 'nonphysical',
-  //       type: 'category',
-  //       options: [
-  //         { name: 'Student', value: 'student' },
-  //         { name: 'Teacher', value: 'teacher' },
-  //         { name: 'Unemployed', value: 'unemployed' },
-  //         { name: 'Scientist', value: 'scientist' },
-  //       ],
-  //     },
-  //   },
-  // };
-
-  // // Default basic config
-  // public config: QueryBuilderConfig = {
-  //   fields: {
-  //     age: { name: 'Age', type: 'number' },
-  //     gender: {
-  //       name: 'Gender',
-  //       type: 'category',
-  //       options: [
-  //         { name: 'Male', value: 'm' },
-  //         { name: 'Female', value: 'f' },
-  //       ],
-  //     },
-  //     name: { name: 'Name', type: 'string' },
-  //     notes: { name: 'Notes', type: 'textarea', operators: ['=', '!='] },
-  //     educated: { name: 'College Degree?', type: 'boolean' },
-  //     birthday: {
-  //       name: 'Birthday',
-  //       type: 'date',
-  //       operators: ['=', '<=', '>'],
-  //       defaultValue: () => new Date(),
-  //     },
-  //     school: { name: 'School', type: 'string', nullable: true },
-  //     occupation: {
-  //       name: 'Occupation',
-  //       type: 'category',
-  //       options: [
-  //         { name: 'Student', value: 'student' },
-  //         { name: 'Teacher', value: 'teacher' },
-  //         { name: 'Unemployed', value: 'unemployed' },
-  //         { name: 'Scientist', value: 'scientist' },
-  //       ],
-  //     },
-  //   },
-  // };
-
   // CI_PER configuration
   public ciPerConfig: QueryBuilderConfig = {
     fields: {
       PER_ID: {
         name: 'PER_ID',
-        type: 'slider',
-        options: [
-          {
-            name: 'Condition',
-            value: 'CONDITION',
-          },
-          {
-            name: 'Percentage of Rows',
-            value: 'PERCENTAGE_OF_ROWS',
-          },
-        ],
-
+        type: 'number',
         operators: [
           '=',
           '!=',
@@ -242,7 +140,7 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
       },
       LANGUAGE_CD: {
         name: 'LANGUAGE_CD',
-        type: 'string',
+        type: 'number',
         operators: [
           '=',
           '!=',
@@ -285,7 +183,7 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
       },
       LS_SL_FLG: {
         name: 'LS_SL_FLG',
-        type: 'string',
+        type: 'number',
         operators: [
           '=',
           '!=',
@@ -304,7 +202,7 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
       },
       LS_SL_DESCR: {
         name: 'LS_SL_DESCR',
-        type: 'string',
+        type: 'number',
         operators: [
           '=',
           '!=',
@@ -323,7 +221,7 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
       },
       EMAILID: {
         name: 'EMAILID',
-        type: 'string',
+        type: 'number',
         operators: [
           '=',
           '!=',
@@ -342,7 +240,7 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
       },
       OVRD_MAIL_NAME1: {
         name: 'OVRD_MAIL_NAME1',
-        type: 'string',
+        type: 'number',
         operators: [
           '=',
           '!=',
@@ -361,7 +259,7 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
       },
       OVRD_MAIL_NAME2: {
         name: 'OVRD_MAIL_NAME2',
-        type: 'string',
+        type: 'number',
         operators: [
           '=',
           '!=',
@@ -380,7 +278,7 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
       },
       OVRD_MAIL_NAME3: {
         name: 'OVRD_MAIL_NAME3',
-        type: 'string',
+        type: 'number',
         operators: [
           '=',
           '!=',
@@ -399,7 +297,7 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
       },
       ADDRESS1: {
         name: 'ADDRESS1',
-        type: 'string',
+        type: 'number',
         operators: [
           '=',
           '!=',
@@ -418,7 +316,7 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
       },
       ADDRESS2: {
         name: 'ADDRESS2',
-        type: 'string',
+        type: 'number',
         operators: [
           '=',
           '!=',
@@ -437,7 +335,7 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
       },
       ADDRESS3: {
         name: 'ADDRESS3',
-        type: 'string',
+        type: 'number',
         operators: [
           '=',
           '!=',
@@ -456,7 +354,7 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
       },
       ADDRESS4: {
         name: 'ADDRESS4',
-        type: 'string',
+        type: 'number',
         operators: [
           '=',
           '!=',
@@ -475,7 +373,7 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
       },
       CITY: {
         name: 'CITY',
-        type: 'string',
+        type: 'number',
         operators: [
           '=',
           '!=',
@@ -532,7 +430,7 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
       },
       COUNTY: {
         name: 'COUNTY',
-        type: 'string',
+        type: 'number',
         operators: [
           '=',
           '!=',
@@ -551,7 +449,7 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
       },
       POSTAL: {
         name: 'POSTAL',
-        type: 'string',
+        type: 'number',
         operators: [
           '=',
           '!=',
@@ -570,7 +468,7 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
       },
       HOUSE_TYPE: {
         name: 'HOUSE_TYPE',
-        type: 'string',
+        type: 'number',
         operators: [
           '=',
           '!=',
@@ -589,7 +487,7 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
       },
       GEO_CODE: {
         name: 'GEO_CODE',
-        type: 'string',
+        type: 'number',
         operators: [
           '=',
           '!=',
@@ -627,7 +525,7 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
       },
       STATE: {
         name: 'STATE',
-        type: 'string',
+        type: 'number',
         operators: [
           '=',
           '!=',
@@ -687,7 +585,7 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
       WEB_PWD_HINT_FLG: { name: 'WEB_PWD_HINT_FLG', type: 'string' },
       WEB_PASSWD_ANS: {
         name: 'WEB_PASSWD_ANS',
-        type: 'string',
+        type: 'number',
         operators: [
           '=',
           '!=',
@@ -706,7 +604,7 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
       },
       PER_DATA_AREA: {
         name: 'PER_DATA_AREA',
-        type: 'string',
+        type: 'number',
         operators: [
           '=',
           '!=',
@@ -730,7 +628,7 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
     fields: {
       PER_ID: {
         name: 'PER_ID',
-        type: 'string',
+        type: 'number',
         operators: [
           '=',
           '!=',
@@ -749,7 +647,7 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
       },
       SEQ_NUM: {
         name: 'SEQ_NUM',
-        type: 'string',
+        type: 'number',
         operators: [
           '=',
           '!=',
@@ -768,7 +666,7 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
       },
       ENTITY_NAME: {
         name: 'ENTITY_NAME',
-        type: 'string',
+        type: 'number',
         operators: [
           '=',
           '!=',
@@ -787,7 +685,7 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
       },
       VERSION: {
         name: 'VERSION',
-        type: 'string',
+        type: 'number',
         operators: [
           '=',
           '!=',
@@ -806,7 +704,7 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
       },
       PRIM_NAME_SW: {
         name: 'PRIM_NAME_SW',
-        type: 'string',
+        type: 'number',
         nullable: true,
         operators: [
           '=',
@@ -826,7 +724,7 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
       },
       ENTITY_NAME_UPR: {
         name: 'ENTITY_NAME_UPR',
-        type: 'string',
+        type: 'number',
         operators: [
           '=',
           '!=',
@@ -850,7 +748,7 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
     fields: {
       PER_ID: {
         name: 'PER_ID',
-        type: 'string',
+        type: 'number',
         operators: [
           '=',
           '!=',
@@ -869,7 +767,7 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
       },
       SEQ_NUM: {
         name: 'SEQ_NUM',
-        type: 'string',
+        type: 'number',
         operators: [
           '=',
           '!=',
@@ -888,7 +786,7 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
       },
       ADDRESS1: {
         name: 'ADDRESS 1',
-        type: 'string',
+        type: 'number',
         operators: [
           '=',
           '!=',
@@ -907,7 +805,7 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
       },
       ADDRESS2: {
         name: 'ADDRESS 2',
-        type: 'string',
+        type: 'number',
         operators: [
           '=',
           '!=',
@@ -926,7 +824,7 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
       },
       ADDRESS3: {
         name: 'ADDRESS 3',
-        type: 'string',
+        type: 'number',
         operators: [
           '=',
           '!=',
@@ -945,7 +843,7 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
       },
       ADDRESS4: {
         name: 'ADDRESS 4',
-        type: 'string',
+        type: 'number',
         operators: [
           '=',
           '!=',
@@ -964,7 +862,7 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
       },
       CITY: {
         name: 'CITY',
-        type: 'string',
+        type: 'number',
         operators: [
           '=',
           '!=',
@@ -1021,7 +919,7 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
       },
       COUNTY: {
         name: 'COUNTY',
-        type: 'string',
+        type: 'number',
         operators: [
           '=',
           '!=',
@@ -1040,7 +938,7 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
       },
       POSTAL: {
         name: 'POSTAL',
-        type: 'string',
+        type: 'number',
         operators: [
           '=',
           '!=',
@@ -1059,7 +957,7 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
       },
       HOUSE_TYPE: {
         name: 'HOUSE_TYPE',
-        type: 'string',
+        type: 'number',
         operators: [
           '=',
           '!=',
@@ -1078,7 +976,7 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
       },
       GEO_CODE: {
         name: 'GEO_CODE',
-        type: 'string',
+        type: 'number',
         operators: [
           '=',
           '!=',
@@ -1116,7 +1014,7 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
       },
       STATE: {
         name: 'STATE',
-        type: 'string',
+        type: 'number',
         operators: [
           '=',
           '!=',
@@ -1135,7 +1033,7 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
       },
       COUNTRY: {
         name: 'COUNTRY',
-        type: 'string',
+        type: 'number',
         operators: [
           '=',
           '!=',
@@ -1173,7 +1071,7 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
       },
       SEASON_START_MMDD: {
         name: 'SEASON_START_MMDD',
-        type: 'string',
+        type: 'number',
         operators: [
           '=',
           '!=',
@@ -1192,7 +1090,7 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
       },
       SEASON_END_MMDD: {
         name: 'SEASON_END_MMDD',
-        type: 'string',
+        type: 'number',
         operators: [
           '=',
           '!=',
@@ -1211,7 +1109,7 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
       },
       EFF_STATUS: {
         name: 'EFF_STATUS',
-        type: 'string',
+        type: 'number',
         operators: [
           '=',
           '!=',
@@ -1235,7 +1133,7 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
     fields: {
       C1_CONTACT_ID: {
         name: 'C1_CONTACT_ID',
-        type: 'string',
+        type: 'number',
         operators: [
           '=',
           '!=',
@@ -1254,7 +1152,7 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
       },
       PER_ID: {
         name: 'PER_ID',
-        type: 'string',
+        type: 'number',
         operators: [
           '=',
           '!=',
@@ -1273,7 +1171,7 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
       },
       COMM_RTE_TYPE_CD: {
         name: 'COMM_RTE_TYPE_CD',
-        type: 'string',
+        type: 'number',
         operators: [
           '=',
           '!=',
@@ -1292,7 +1190,7 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
       },
       CONTACT_VALUE: {
         name: 'CONTACT_VALUE',
-        type: 'string',
+        type: 'number',
         operators: [
           '=',
           '!=',
@@ -1311,7 +1209,7 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
       },
       CND_PRIMARY_FLAG: {
         name: 'CND_PRIMARY_FLAG',
-        type: 'string',
+        type: 'number',
         operators: [
           '=',
           '!=',
@@ -1330,7 +1228,7 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
       },
       CONTACT_VALUE_EXT: {
         name: 'CONTACT_VALUE_EXT',
-        type: 'string',
+        type: 'number',
         operators: [
           '=',
           '!=',
@@ -1349,7 +1247,7 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
       },
       DND_START_TM: {
         name: 'DND_START_TM',
-        type: 'string',
+        type: 'number',
         operators: [
           '=',
           '!=',
@@ -1368,7 +1266,7 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
       },
       DND_END_TM: {
         name: 'DND_END_TM',
-        type: 'string',
+        type: 'number',
         operators: [
           '=',
           '!=',
@@ -1425,7 +1323,7 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
       },
       CONTACT_NAME: {
         name: 'CONTACT_NAME',
-        type: 'string',
+        type: 'number',
         operators: [
           '=',
           '!=',
@@ -1468,7 +1366,7 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
     fields: {
       PER_ID: {
         name: 'PER_ID',
-        type: 'string',
+        type: 'number',
         operators: [
           '=',
           '!=',
@@ -1487,7 +1385,7 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
       },
       CHAR_TYPE_CD: {
         name: 'CHAR_TYPE_CD',
-        type: 'string',
+        type: 'number',
         operators: [
           '=',
           '!=',
@@ -1506,7 +1404,7 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
       },
       CHAR_VAL: {
         name: 'CHAR_VAL',
-        type: 'string',
+        type: 'number',
         operators: [
           '=',
           '!=',
@@ -1525,7 +1423,7 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
       },
       EFFDT: {
         name: 'EFFDT',
-        type: 'string',
+        type: 'number',
         operators: [
           '=',
           '!=',
@@ -1544,7 +1442,7 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
       },
       ADHOC_CHAR_VAL: {
         name: 'ADHOC_CHAR_VAL',
-        type: 'string',
+        type: 'number',
         operators: [
           '=',
           '!=',
@@ -1563,7 +1461,7 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
       },
       VERSION: {
         name: 'VERSION',
-        type: 'string',
+        type: 'number',
         operators: [
           '=',
           '!=',
@@ -1700,7 +1598,7 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
     fields: {
       PER_ID: {
         name: 'PER_ID',
-        type: 'string',
+        type: 'number',
         operators: [
           '=',
           '!=',
@@ -1719,7 +1617,7 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
       },
       ID_TYPE_CD: {
         name: 'ID_TYPE_CD',
-        type: 'string',
+        type: 'number',
         operators: [
           '=',
           '!=',
@@ -1738,7 +1636,7 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
       },
       PER_ID_NBR: {
         name: 'PER_ID_NBR',
-        type: 'string',
+        type: 'number',
         operators: [
           '=',
           '!=',
@@ -1757,7 +1655,7 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
       },
       PRIM_SW: {
         name: 'PRIM_SW',
-        type: 'string',
+        type: 'number',
         operators: [
           '=',
           '!=',
@@ -1776,7 +1674,7 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
       },
       VERSION: {
         name: 'VERSION',
-        type: 'string',
+        type: 'number',
         operators: [
           '=',
           '!=',
@@ -1795,7 +1693,7 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
       },
       ENCR_PER_ID_NBR: {
         name: 'ENCR_PER_ID_NBR',
-        type: 'string',
+        type: 'number',
         operators: [
           '=',
           '!=',
@@ -1814,7 +1712,7 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
       },
       HASH_PER_ID_NBR: {
         name: 'HASH_PER_ID_NBR',
-        type: 'string',
+        type: 'number',
         operators: [
           '=',
           '!=',
@@ -1962,5 +1860,9 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
     }
 
     return this.formRuleWeakMap.get(rule);
+  }
+
+  execute() {
+    console.log('query builder form group', this.queryCtrl.value);
   }
 }

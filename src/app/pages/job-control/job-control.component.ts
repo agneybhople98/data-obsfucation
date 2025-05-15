@@ -25,6 +25,7 @@ export class JobControlComponent implements OnInit, OnDestroy {
   isConnected = false;
   currentDomain: string = 'utility';
   obsControlOptions = [
+    'No selection',
     'Utility Account Obfuscation',
     'Financial Data Masking',
     'Person Entity Anonymization',
@@ -68,8 +69,8 @@ export class JobControlComponent implements OnInit, OnDestroy {
     'Claims Payments & Payouts - AUS',
   ];
 
-  selectedObsControl = 'Utility Account Obfuscation'; // Default selected value
-  selectedObsControlHealthcare = 'Membership & Policy Data Obfuscation';
+  selectedObsControl = 'No selection'; // Default selected value
+  selectedObsControlHealthcare = 'No selection';
 
   selectedSubsetStrategy = 'No selection';
   dataSource!: MatTableDataSource<any>;
@@ -143,11 +144,10 @@ export class JobControlComponent implements OnInit, OnDestroy {
   // New method to set dropdown options based on currentDomain
   setDropdownOptions(): void {
     if (this.router.url.includes('utility')) {
-      this.selectedObsControl = 'Utility Account Obfuscation';
+      this.selectedObsControl = 'No selection';
       this.selectedSubsetStrategy = 'No selection';
     } else if (this.router.url.includes('healthcare')) {
-      this.selectedObsControlHealthcare =
-        'Membership & Policy Data Obfuscation';
+      this.selectedObsControlHealthcare = 'No selection';
     }
     this.changeDetectorRef.detectChanges();
   }

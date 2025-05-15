@@ -110,7 +110,6 @@ export class SubsetPlanComponent {
   }
 
   createObfuscation() {
-    this._toaster.success('Obfuscation Plan created successfully!');
     this.router.navigate([`${this.currentDomain}/subset-plan/create-subset`]);
   }
 }

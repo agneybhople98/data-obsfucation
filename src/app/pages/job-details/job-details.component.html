@@ -13,7 +13,7 @@
       class="!w-[50%] !rounded-none"
     >
       <div class="header bg-secondary flex justify-between items-center !p-4">
-        <div class="font-semibold">View Job Control</div>
+        <div class="font-semibold">{{ headerTitle }}</div>
 
         <div
           (click)="drawer.close()"
@@ -187,13 +187,7 @@
                   {{ jobDetails?.jobDescription }}
                 </div>
               </div>
-              <!-- Subset plan details -->
-              <div *ngIf="jobDetails?.subsetStrategyPlanDescription">
-                <div class="text-sm">Subset Plan Details</div>
-                <div class="font-medium !mt-1 text-sm">
-                  {{ jobDetails?.subsetStrategyPlanDescription }}
-                </div>
-              </div>
+
               <!-- Job control -->
               <div>
                 <div class="text-sm">Job Control</div>
@@ -202,6 +196,16 @@
                   class="font-semibold !mt-1 text-sm !text-[#3179e5] cursor-pointer"
                 >
                   {{ jobDetails?.jobName }}
+                </div>
+              </div>
+              <!-- Subset plan details -->
+              <div *ngIf="jobDetails?.subsetStrategyPlanName">
+                <div class="text-sm">Subset Plan</div>
+                <div
+                  (click)="openSubsetPlanDrawer(jobDetails)"
+                  class="font-semibold !mt-1 text-sm !text-[#3179e5] cursor-pointer"
+                >
+                  {{ jobDetails?.subsetStrategyPlanName }}
                 </div>
               </div>
 

@@ -42,6 +42,7 @@ export class JobDetailsComponent implements OnInit, AfterViewInit, OnDestroy {
   public jobDetailsDrawer: any;
   selectedObsControl = '';
   selectedJobIdControl = '';
+  headerTitle: string = 'View Job Control';
 
   selectedObsControlHealthcare = '';
   selectedJobIdControlHealthcare = '';
@@ -283,6 +284,13 @@ export class JobDetailsComponent implements OnInit, AfterViewInit, OnDestroy {
   openJobControlDrawer(jobDetails: any) {
     this.drawer.open();
     this.jobDetailsDrawer = jobDetails;
+    this.headerTitle = 'View Job Control';
+  }
+  openSubsetPlanDrawer(jobDetails: any) {
+    // this.drawer.open();
+    // this.jobDetailsDrawer = jobDetails;
+    // this.headerTitle = 'View Subset Plan';
+    this.router.navigate([`${this.currentDomain}/subset-plan/create-subset`]);
   }
 
   isExpansionDetailRow = (i: number, row: any) =>

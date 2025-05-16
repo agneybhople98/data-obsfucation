@@ -17,7 +17,7 @@ import { HttpClient } from '@angular/common/http';
 export interface JobElement {
   jobId: string;
   jobName: any;
-  subsetStrategyPlanDescription?: string;
+  subsetStrategyPlanName?: string;
   jobDescription: string;
   triggeredOn: string;
   progress: number;
@@ -44,8 +44,7 @@ const ELEMENT_DATA: JobElement[] = [
     jobName: 'Utility Account Obfuscation – Non-Prod',
     jobDescription:
       'Obfuscate utility accounts for non-production environments.',
-    subsetStrategyPlanDescription:
-      'Condition based subset strategy for utility account obfuscation.',
+    subsetStrategyPlanName: 'Utility Account Subset',
     triggeredOn: (() => {
       const date = new Date();
       const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -706,6 +705,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
   {
     jobId: 'RUN-98765',
     jobName: 'Membership & Policy Data Obfuscation',
+    subsetStrategyPlanName: 'Memebership & Policy Data Subset Strategy Plan',
     jobDescription:
       'Masks sensitive details in customer memberships, policies, and eligibility for staging.',
     triggeredOn: (() => {

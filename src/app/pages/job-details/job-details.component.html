@@ -163,25 +163,38 @@
         </div>
         <div>
           <div class="!bg-[#F2F7FF] !pb-4">
-            <div class="flex items-center justify-between !p-4 !mx-2">
+            <div class="flex items-center justify-between !gap-3 !p-4 !mx-2">
+              <!-- Job run id -->
               <div>
                 <div class="text-sm">Job Run Id</div>
                 <div class="font-medium !mt-1 text-sm">
                   {{ jobDetails?.jobId }}
                 </div>
               </div>
+              <!-- Job run  -->
               <div>
                 <div class="text-sm">Job Run</div>
                 <div class="font-medium !mt-1 text-sm">
                   {{ jobDetails?.jobName }}
                 </div>
               </div>
+
+              <!-- Job run description -->
+
               <div>
                 <div class="text-sm">Job Run Description</div>
                 <div class="font-medium !mt-1 text-sm">
                   {{ jobDetails?.jobDescription }}
                 </div>
               </div>
+              <!-- Subset plan details -->
+              <div *ngIf="jobDetails?.subsetStrategyPlanDescription">
+                <div class="text-sm">Subset Plan Details</div>
+                <div class="font-medium !mt-1 text-sm">
+                  {{ jobDetails?.subsetStrategyPlanDescription }}
+                </div>
+              </div>
+              <!-- Job control -->
               <div>
                 <div class="text-sm">Job Control</div>
                 <div
@@ -191,6 +204,8 @@
                   {{ jobDetails?.jobName }}
                 </div>
               </div>
+
+              <!-- Obfuscation plan -->
               <div>
                 <div class="text-sm">Obfuscation Plan</div>
                 <div
@@ -204,6 +219,7 @@
                   {{ jobDetails?.obsfucationControlName }}
                 </div>
               </div>
+              <!-- Triggered by -->
               <div>
                 <div class="text-sm">Triggered On</div>
                 <div class="font-medium !mt-1 text-sm">

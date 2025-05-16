@@ -2499,6 +2499,27 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
   }
 
   execute() {
-    console.log('query builder form group', this.queryCtrl.value);
+    const formValue = this.queryCtrl.value;
+
+    // Process each rule to handle BETWEEN operator
+    const processedRules = formValue.rules.map((rule: any) => {
+      if (rule.operator === 'BETWEEN' && rule.value) {
+        return {
+          ...rule,
+          value: {
+            min: rule.value.min || null,
+            max: rule.value.max || null,
+          },
+        };
+      }
+      return rule;
+    });
+
+    const result = {
+      ...formValue,
+      rules: processedRules,
+    };
+
+    console.log('query builder form group', result);
   }
 }

@@ -96,16 +96,17 @@ export class SubsetPlanComponent {
       (job) => job.obsfucationControlId === element.obsControlName
     );
 
+    // pass any data if required
     if (obsControlData) {
       this.router.navigate(
-        [`/${this.currentDomain}/obfuscation-plan/view-obfuscation`],
+        [`/${this.currentDomain}/subset-plan/create-subset`],
         {
-          state: { data: obsControlData },
+          state: { data: null },
           replaceUrl: true,
         }
       );
     } else {
-      console.error('No matching obfuscation control data found');
+      console.error('No matching for subset strategy data found');
     }
   }
 

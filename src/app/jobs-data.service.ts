@@ -1294,7 +1294,7 @@ const ELEMENT_DATA_JOB_CONTROL_HEALTHCARE: JobDataControlElement[] = [
     jobControlName: 'Membership & Policy Data Obfuscation',
     jobControlDescription:
       'Masks sensitive details in customer memberships, policies, and eligibility for staging.',
-    subsetPlanStrategyName: 'Utility Account Subset',
+    subsetPlanStrategyName: 'Membership & Policy Subset',
     lastTriggeredOn: (() => {
       const date = new Date();
       const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -1327,7 +1327,7 @@ const ELEMENT_DATA_JOB_CONTROL_HEALTHCARE: JobDataControlElement[] = [
     jobControlName: 'Billing Transactions - US Region',
     jobControlDescription:
       'Secures billing, adjustments, and payment data for performance testing.',
-    subsetPlanStrategyName: 'Billing Transaction Subset',
+    subsetPlanStrategyName: 'Billing Transactions - US Region',
     lastTriggeredOn: '25/04/2025 08:11:09AM',
     obsfucationControlId: 'Billing Transactions - US Region',
     obsfucationControlDescription:
@@ -1338,6 +1338,7 @@ const ELEMENT_DATA_JOB_CONTROL_HEALTHCARE: JobDataControlElement[] = [
     jobControlName: 'Membership Plan Enrollments Obfuscation',
     jobControlDescription:
       'Anonymizes enrollment details, plan types, and coverage start/end dates.',
+    subsetPlanStrategyName: 'Membership Plan Enrollments Obfuscation',
     lastTriggeredOn: '20/04/2025 08:22:10AM',
     obsfucationControlId: 'Membership Plan Enrollments Obfuscation',
     obsfucationControlDescription:

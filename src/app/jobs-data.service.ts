@@ -648,7 +648,7 @@ const ELEMENT_DATA_JOB_CONTROL: JobDataControlElement[] = [
     jobControlDescription:
       'Mask utility financial data for safe use in test and development environments.',
     lastTriggeredOn: '28/04/2025 07:33:22AM',
-    subsetPlanStrategyName: 'Utility Account Subset',
+    subsetPlanStrategyName: 'Financial Data Masking Subset',
     obsfucationControlId: 'Financial Data Masking',
     obsfucationControlDescription:
       'Mask utility financial data for safe use in test and development environments.',
@@ -659,7 +659,7 @@ const ELEMENT_DATA_JOB_CONTROL: JobDataControlElement[] = [
     jobControlDescription:
       'Anonymize persons for secure pre-production and testing.',
     lastTriggeredOn: '25/04/2025 08:11:09AM',
-    subsetPlanStrategyName: 'Utility Account Subset',
+    subsetPlanStrategyName: 'Person Entity Anonymization Subset',
     obsfucationControlId: 'Person Entity Anonymization',
     obsfucationControlDescription:
       'Anonymize persons for secure pre-production and testing.',
@@ -1316,7 +1316,7 @@ const ELEMENT_DATA_JOB_CONTROL_HEALTHCARE: JobDataControlElement[] = [
     jobControlName: 'Customer & Account Obfuscation',
     jobControlDescription:
       'Obfuscates personally identifiable information (PII) in customer and account entities.',
-    subsetPlanStrategyName: 'Utility Account Subset',
+    subsetPlanStrategyName: 'Customer & Account Subset',
     lastTriggeredOn: '28/04/2025 07:33:22AM',
     obsfucationControlId: 'Customer & Account Obfuscation',
     obsfucationControlDescription:
@@ -1327,7 +1327,7 @@ const ELEMENT_DATA_JOB_CONTROL_HEALTHCARE: JobDataControlElement[] = [
     jobControlName: 'Billing Transactions - US Region',
     jobControlDescription:
       'Secures billing, adjustments, and payment data for performance testing.',
-    subsetPlanStrategyName: 'Utility Account Subset',
+    subsetPlanStrategyName: 'Billing Transaction Subset',
     lastTriggeredOn: '25/04/2025 08:11:09AM',
     obsfucationControlId: 'Billing Transactions - US Region',
     obsfucationControlDescription:

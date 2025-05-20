@@ -255,6 +255,13 @@ export class JobControlComponent implements OnInit, OnDestroy {
     }
   }
 
+  openSubsetStrategy(element: any) {
+    if (element.subsetPlanStrategyName) {
+      this.router.navigate([`${this.currentDomain}/subset-plan/create-subset`]);
+    }
+    return;
+  }
+
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();

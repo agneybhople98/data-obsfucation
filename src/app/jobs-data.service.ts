@@ -34,7 +34,7 @@ export interface JobDataControlElement {
   jobControlDescription: string;
   subsetPlanStrategyName?: string;
   lastTriggeredOn: string;
-  obsfucationControlId: string;
+  obsfucationControlId?: string;
   obsfucationControlDescription: string;
 }
 
@@ -652,7 +652,7 @@ const ELEMENT_DATA_JOB_CONTROL: JobDataControlElement[] = [
       'Mask utility financial data for safe use in test and development environments.',
     lastTriggeredOn: '28/04/2025 07:33:22AM',
     subsetPlanStrategyName: 'Financial Data Masking Subset',
-    obsfucationControlId: 'Financial Data Masking',
+    // obsfucationControlId: 'Financial Data Masking',
     obsfucationControlDescription:
       'Mask utility financial data for safe use in test and development environments.',
   },
@@ -663,7 +663,7 @@ const ELEMENT_DATA_JOB_CONTROL: JobDataControlElement[] = [
     jobControlDescription:
       'Anonymize persons for secure pre-production and testing.',
     lastTriggeredOn: '25/04/2025 08:11:09AM',
-    subsetPlanStrategyName: 'Person Entity Anonymization Subset',
+    // subsetPlanStrategyName: 'Person Entity Anonymization Subset',
     obsfucationControlId: 'Person Entity Anonymization',
     obsfucationControlDescription:
       'Anonymize persons for secure pre-production and testing.',
@@ -1328,7 +1328,7 @@ const ELEMENT_DATA_JOB_CONTROL_HEALTHCARE: JobDataControlElement[] = [
       'Obfuscates personally identifiable information (PII) in customer and account entities.',
     subsetPlanStrategyName: 'Customer & Account Subset',
     lastTriggeredOn: '28/04/2025 07:33:22AM',
-    obsfucationControlId: 'Customer & Account Obfuscation',
+    // obsfucationControlId: 'Customer & Account Obfuscation',
     obsfucationControlDescription:
       'Obfuscates personally identifiable information (PII) in customer and account entities.',
   },
@@ -1338,7 +1338,7 @@ const ELEMENT_DATA_JOB_CONTROL_HEALTHCARE: JobDataControlElement[] = [
     API_NAME: 'DO_EXEC_ARCHDEV_3_OBF_JOB',
     jobControlDescription:
       'Secures billing, adjustments, and payment data for performance testing.',
-    subsetPlanStrategyName: 'Billing Transactions - US Region',
+    // subsetPlanStrategyName: 'Billing Transactions - US Region',
     lastTriggeredOn: '25/04/2025 08:11:09AM',
     obsfucationControlId: 'Billing Transactions - US Region',
     obsfucationControlDescription:

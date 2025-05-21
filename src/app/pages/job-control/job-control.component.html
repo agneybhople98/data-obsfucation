@@ -263,7 +263,7 @@
 
             <!-- Job Control Description Column -->
             <ng-container matColumnDef="obsfucationControlId">
-              <th mat-header-cell *matHeaderCellDef>Obfuscation Plan</th>
+              <th mat-header-cell *matHeaderCellDef>Subset/Obfuscation Plan</th>
 
               <td
                 class="font-medium cursor-pointer"
@@ -273,17 +273,19 @@
               >
                 <div class="flex gap-3 justify-center" style="cursor: pointer">
                   <img
-                    (click)="openCreateObsfucation(element)"
-                    [matTooltip]="element.obsfucationControlId"
-                    src="../../../assets/database-cog.svg"
+                    *ngIf="element.subsetPlanStrategyName"
+                    (click)="openSubsetStrategy(element)"
+                    [matTooltip]="element?.subsetPlanStrategyName"
                     class="cursor-pointer"
+                    src="../../../assets/chart-pie-off.svg"
                     alt=""
                   />
                   <img
-                    (click)="openSubsetStrategy(element)"
-                    [matTooltip]="element.subsetPlanStrategyName"
+                    *ngIf="element.obsfucationControlId"
+                    (click)="openCreateObsfucation(element)"
+                    [matTooltip]="element?.obsfucationControlId"
+                    src="../../../assets/database-cog.svg"
                     class="cursor-pointer"
-                    src="../../../assets/chart-pie-off.svg"
                     alt=""
                   />
                 </div>

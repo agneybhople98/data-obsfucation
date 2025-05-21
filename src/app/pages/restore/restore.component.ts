@@ -46,14 +46,14 @@ export class RestoreComponent implements OnInit {
 
     if (this.currentDomain === 'utility') {
       this._jobService
-        .runJobByName('OBF_REVERT_CHANGES_JOB_CISADM')
+        .runJobByName('DO_RESTORE_SCHEMA_JOB_ARCHDEV')
         .subscribe((res) => {
           console.log(res);
           this.isRestoring = false;
         });
     } else {
       this._jobService
-        .runJobByName('OBF_REVERT_CHANGES_ARCHDEV_JOB')
+        .runJobByName('DO_RESTORE_SCHEMA_JOB_ARCHDEV')
         .subscribe((res) => {
           console.log(res);
           this.isRestoring = false;

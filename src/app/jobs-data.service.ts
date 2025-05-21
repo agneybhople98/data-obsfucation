@@ -674,6 +674,7 @@ const ELEMENT_DATA_JOB_CONTROL: JobDataControlElement[] = [
     jobControlName: 'Field Activity Data Obfuscation – Dev/Test',
     jobControlDescription:
       'Obfuscate field activity data for development/test usage.',
+    subsetPlanStrategyName: 'Field Activity Data Obfuscation Subset',
     lastTriggeredOn: '20/04/2025 08:22:10AM',
     obsfucationControlId: 'Field Activity Data Obfuscation',
     obsfucationControlDescription:

@@ -325,8 +325,68 @@ const ELEMENT_DATA: JobElement[] = [
       'Financial Data Masking – Utility Systems Subset Plan',
     status: 'failed',
     // obsfucationControlName: 'Financial Data Masking',
-    progress: 90,
+    progress: 10,
     tasks: [
+      {
+        taskId: 'TASK-78901234',
+        taskDescription: 'CopySchemaAndData',
+        status: 'Completed',
+        startTime: (() => {
+          const date = new Date();
+          const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const day = date.getDate().toString().padStart(2, '0');
+          const year = date.getFullYear();
+          const hours = date.getHours() % 12 || 12;
+          const minutes = date.getMinutes().toString().padStart(2, '0');
+          const seconds = date.getSeconds().toString().padStart(2, '0');
+          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+        })(),
+        endTime: null,
+
+        message: [{ name: 'Copy Schema And Data is Successful' }],
+      },
+      {
+        taskId: 'TASK-20547689',
+        taskDescription: 'CreateProceduresAndFunctions',
+        status: 'Completed',
+        startTime: (() => {
+          const date = new Date();
+          const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const day = date.getDate().toString().padStart(2, '0');
+          const year = date.getFullYear();
+          const hours = date.getHours() % 12 || 12;
+          const minutes = date.getMinutes().toString().padStart(2, '0');
+          const seconds = date.getSeconds().toString().padStart(2, '0');
+          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+        })(),
+        endTime: null,
+
+        message: [{ name: 'Create Procedures And Functions is Successful' }],
+      },
+      {
+        taskId: 'TASK-30982345',
+        taskDescription: 'CreateMaskingScript',
+        status: 'Completed',
+        startTime: (() => {
+          const date = new Date();
+          const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const day = date.getDate().toString().padStart(2, '0');
+          const year = date.getFullYear();
+          const hours = date.getHours() % 12 || 12;
+          const minutes = date.getMinutes().toString().padStart(2, '0');
+          const seconds = date.getSeconds().toString().padStart(2, '0');
+          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+        })(),
+        endTime: null,
+
+        message: [{ name: 'Create Masking Script is Successful' }],
+      },
       {
         taskId: 'TASK-55678903',
         taskDescription: 'CI_ACCT-Based Data Subsetting',
@@ -398,6 +458,66 @@ const ELEMENT_DATA: JobElement[] = [
       },
     ],
     tasks: [
+      {
+        taskId: 'TASK-78901234',
+        taskDescription: 'CopySchemaAndData',
+        status: 'Completed',
+        startTime: (() => {
+          const date = new Date();
+          const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const day = date.getDate().toString().padStart(2, '0');
+          const year = date.getFullYear();
+          const hours = date.getHours() % 12 || 12;
+          const minutes = date.getMinutes().toString().padStart(2, '0');
+          const seconds = date.getSeconds().toString().padStart(2, '0');
+          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+        })(),
+        endTime: null,
+
+        message: [{ name: 'Copy Schema And Data is Successful' }],
+      },
+      {
+        taskId: 'TASK-20547689',
+        taskDescription: 'CreateProceduresAndFunctions',
+        status: 'Completed',
+        startTime: (() => {
+          const date = new Date();
+          const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const day = date.getDate().toString().padStart(2, '0');
+          const year = date.getFullYear();
+          const hours = date.getHours() % 12 || 12;
+          const minutes = date.getMinutes().toString().padStart(2, '0');
+          const seconds = date.getSeconds().toString().padStart(2, '0');
+          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+        })(),
+        endTime: null,
+
+        message: [{ name: 'Create Procedures And Functions is Successful' }],
+      },
+      {
+        taskId: 'TASK-30982345',
+        taskDescription: 'CreateMaskingScript',
+        status: 'Completed',
+        startTime: (() => {
+          const date = new Date();
+          const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const day = date.getDate().toString().padStart(2, '0');
+          const year = date.getFullYear();
+          const hours = date.getHours() % 12 || 12;
+          const minutes = date.getMinutes().toString().padStart(2, '0');
+          const seconds = date.getSeconds().toString().padStart(2, '0');
+          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+        })(),
+        endTime: null,
+
+        message: [{ name: 'Create Masking Script is Successful' }],
+      },
       {
         taskId: 'TASK-55678190',
         taskDescription: 'Anonymizing addresses',
@@ -938,8 +1058,68 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
     triggeredOn: '28/04/2025 07:33:22AM',
     status: 'failed',
     // obsfucationControlName: 'Customer & Account Obfuscation',
-    progress: 90,
+    progress: 10,
     tasks: [
+      {
+        taskId: 'TASK-78901234',
+        taskDescription: 'CopySchemaAndData',
+        status: 'In Progress',
+        startTime: (() => {
+          const date = new Date();
+          const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const day = date.getDate().toString().padStart(2, '0');
+          const year = date.getFullYear();
+          const hours = date.getHours() % 12 || 12;
+          const minutes = date.getMinutes().toString().padStart(2, '0');
+          const seconds = date.getSeconds().toString().padStart(2, '0');
+          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+        })(),
+        endTime: null,
+
+        message: [{ name: 'Copy Schema And Data is Successful' }],
+      },
+      {
+        taskId: 'TASK-20547689',
+        taskDescription: 'CreateProceduresAndFunctions',
+        status: 'In Progress',
+        startTime: (() => {
+          const date = new Date();
+          const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const day = date.getDate().toString().padStart(2, '0');
+          const year = date.getFullYear();
+          const hours = date.getHours() % 12 || 12;
+          const minutes = date.getMinutes().toString().padStart(2, '0');
+          const seconds = date.getSeconds().toString().padStart(2, '0');
+          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+        })(),
+        endTime: null,
+
+        message: [{ name: 'Create Procedures And Functions is Successful' }],
+      },
+      {
+        taskId: 'TASK-30982345',
+        taskDescription: 'CreateMaskingScript',
+        status: 'Completed',
+        startTime: (() => {
+          const date = new Date();
+          const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const day = date.getDate().toString().padStart(2, '0');
+          const year = date.getFullYear();
+          const hours = date.getHours() % 12 || 12;
+          const minutes = date.getMinutes().toString().padStart(2, '0');
+          const seconds = date.getSeconds().toString().padStart(2, '0');
+          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+        })(),
+        endTime: null,
+
+        message: [{ name: 'Create Masking Script is Successful' }],
+      },
       {
         taskId: 'TASK-55678903',
         taskDescription: 'CI_ACCT-Based Data Subsetting',
@@ -1012,6 +1192,66 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
       },
     ],
     tasks: [
+      {
+        taskId: 'TASK-78901234',
+        taskDescription: 'CopySchemaAndData',
+        status: 'Completed',
+        startTime: (() => {
+          const date = new Date();
+          const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const day = date.getDate().toString().padStart(2, '0');
+          const year = date.getFullYear();
+          const hours = date.getHours() % 12 || 12;
+          const minutes = date.getMinutes().toString().padStart(2, '0');
+          const seconds = date.getSeconds().toString().padStart(2, '0');
+          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+        })(),
+        endTime: null,
+
+        message: [{ name: 'Copy Schema And Data is Successful' }],
+      },
+      {
+        taskId: 'TASK-20547689',
+        taskDescription: 'CreateProceduresAndFunctions',
+        status: 'Completed',
+        startTime: (() => {
+          const date = new Date();
+          const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const day = date.getDate().toString().padStart(2, '0');
+          const year = date.getFullYear();
+          const hours = date.getHours() % 12 || 12;
+          const minutes = date.getMinutes().toString().padStart(2, '0');
+          const seconds = date.getSeconds().toString().padStart(2, '0');
+          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+        })(),
+        endTime: null,
+
+        message: [{ name: 'Create Procedures And Functions is Successful' }],
+      },
+      {
+        taskId: 'TASK-30982345',
+        taskDescription: 'CreateMaskingScript',
+        status: 'Completed',
+        startTime: (() => {
+          const date = new Date();
+          const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const day = date.getDate().toString().padStart(2, '0');
+          const year = date.getFullYear();
+          const hours = date.getHours() % 12 || 12;
+          const minutes = date.getMinutes().toString().padStart(2, '0');
+          const seconds = date.getSeconds().toString().padStart(2, '0');
+          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+        })(),
+        endTime: null,
+
+        message: [{ name: 'Create Masking Script is Successful' }],
+      },
       {
         taskId: 'TASK-55678190',
         taskDescription: 'Anonymizing addresses',

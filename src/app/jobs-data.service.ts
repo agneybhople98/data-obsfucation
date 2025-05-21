@@ -22,7 +22,7 @@ export interface JobElement {
   triggeredOn: string;
   progress: number;
   status: 'success' | 'in-progress' | 'failed';
-  obsfucationControlName: string;
+  obsfucationControlName?: string;
   tasks: any;
   additionalRunIdDetails?: any;
 }
@@ -135,6 +135,27 @@ const ELEMENT_DATA: JobElement[] = [
 
       {
         taskId: 'TASK-55678903',
+        taskDescription: 'CI_ACCT-Based Data Subsetting',
+        status: 'In Progress',
+        startTime: (() => {
+          const date = new Date();
+          const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const day = date.getDate().toString().padStart(2, '0');
+          const year = date.getFullYear();
+          const hours = date.getHours() % 12 || 12;
+          const minutes = date.getMinutes().toString().padStart(2, '0');
+          const seconds = date.getSeconds().toString().padStart(2, '0');
+          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+        })(),
+        endTime: null,
+
+        message: [{ name: "Subsetting completed using 'CI_ACCT' root table'" }],
+      },
+
+      {
+        taskId: 'TASK-55678904',
         taskDescription: "ObfuscateTable-'CI_PER'",
         status: 'In Progress',
         startTime: (() => {
@@ -163,7 +184,7 @@ const ELEMENT_DATA: JobElement[] = [
       },
 
       {
-        taskId: 'TASK-55678904',
+        taskId: 'TASK-55678905',
         taskDescription: "ObfuscateTable-'CI_PER_ADDR_SEAS'",
         status: 'Pending',
         startTime: (() => {
@@ -182,8 +203,9 @@ const ELEMENT_DATA: JobElement[] = [
         recordsProcessed: 100,
         message: [{ name: 'FAKER applied on  ADDRESS1 column.' }],
       },
+
       {
-        taskId: 'TASK-55678905',
+        taskId: 'TASK-55678906',
         taskDescription: "ObfuscateTable-'CI_PER_CONTDET'",
         status: 'Pending',
         startTime: (() => {
@@ -207,7 +229,7 @@ const ELEMENT_DATA: JobElement[] = [
         ],
       },
       {
-        taskId: 'TASK-55678906',
+        taskId: 'TASK-55678907',
         taskDescription: "ObfuscateTable-'CI_PER_NAME'",
         status: 'Pending',
         startTime: (() => {
@@ -227,7 +249,7 @@ const ELEMENT_DATA: JobElement[] = [
         message: [{ name: 'FAKER applied on  ENTITY_NAME column.' }],
       },
       {
-        taskId: 'TASK-55678905',
+        taskId: 'TASK-55678908',
         taskDescription: "ObfuscateTable-'CI_PER_ID'",
         status: 'Pending',
         startTime: (() => {
@@ -247,7 +269,7 @@ const ELEMENT_DATA: JobElement[] = [
         message: [{ name: 'FAKER applied on CI_PER_ID column.' }],
       },
       {
-        taskId: 'TASK-55678904',
+        taskId: 'TASK-55678909',
         taskDescription: "ObfuscateTable-'CI_PER_CHAR'",
         status: 'Pending',
         startTime: (() => {
@@ -299,14 +321,16 @@ const ELEMENT_DATA: JobElement[] = [
     jobDescription:
       'Mask utility financial data for safe use in test and development environments.',
     triggeredOn: '28/04/2025 07:33:22AM',
+    subsetStrategyPlanName:
+      'Financial Data Masking – Utility Systems Subset Plan',
     status: 'failed',
-    obsfucationControlName: 'Financial Data Masking',
+    // obsfucationControlName: 'Financial Data Masking',
     progress: 90,
     tasks: [
       {
-        taskId: 'TASK-78901234',
-        taskDescription: 'CopySchemaAndData',
-        status: 'Completed',
+        taskId: 'TASK-55678903',
+        taskDescription: 'CI_ACCT-Based Data Subsetting',
+        status: 'In Progress',
         startTime: (() => {
           const date = new Date();
           const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -321,93 +345,7 @@ const ELEMENT_DATA: JobElement[] = [
         })(),
         endTime: null,
 
-        message: [{ name: 'Copy Schema And Data is Successful' }],
-      },
-      {
-        taskId: 'TASK-20547689',
-        taskDescription: 'CreateProceduresAndFunctions',
-        status: 'Completed',
-        startTime: (() => {
-          const date = new Date();
-          const month = (date.getMonth() + 1).toString().padStart(2, '0');
-          const day = date.getDate().toString().padStart(2, '0');
-          const year = date.getFullYear();
-          const hours = date.getHours() % 12 || 12;
-          const minutes = date.getMinutes().toString().padStart(2, '0');
-          const seconds = date.getSeconds().toString().padStart(2, '0');
-          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
-
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
-        })(),
-        endTime: null,
-
-        message: [{ name: 'Create Procedures And Functions is Successful' }],
-      },
-      {
-        taskId: 'TASK-30982345',
-        taskDescription: 'CreateMaskingScript',
-        status: 'Completed',
-        startTime: (() => {
-          const date = new Date();
-          const month = (date.getMonth() + 1).toString().padStart(2, '0');
-          const day = date.getDate().toString().padStart(2, '0');
-          const year = date.getFullYear();
-          const hours = date.getHours() % 12 || 12;
-          const minutes = date.getMinutes().toString().padStart(2, '0');
-          const seconds = date.getSeconds().toString().padStart(2, '0');
-          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
-
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
-        })(),
-        endTime: null,
-
-        message: [{ name: 'Create Masking Script is Successful' }],
-      },
-      {
-        taskId: 'TASK-55678901',
-        taskDescription: "ObfuscateTable-'CI_PER'",
-        status: 'Completed',
-        startTime: (() => {
-          const date = new Date();
-          const month = (date.getMonth() + 1).toString().padStart(2, '0');
-          const day = date.getDate().toString().padStart(2, '0');
-          const year = date.getFullYear();
-          const hours = date.getHours() % 12 || 12;
-          const minutes = date.getMinutes().toString().padStart(2, '0');
-          const seconds = date.getSeconds().toString().padStart(2, '0');
-          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
-
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
-        })(),
-        endTime: null,
-        recordsProcessed: 20,
-        message: [{ name: 'FAKER applied on EMAILID column.' }],
-      },
-      {
-        taskId: 'TASK-55678900',
-        taskDescription: "ObfuscateTable-'CI_PER_Name'",
-        status: 'Failed',
-        errorMessage:
-          'RUN-98764, Table : CI_PER_Name, Column : EmailID,  SQL Error: ORA-00904: "EMAILID": invalid identifier`',
-        recordsProcessed: 25,
-        message: [
-          {
-            name: 'SQL Error: ORA-00904: "EMAILID": invalid identifier https://docs.oracle.com/error-help/db/ora-00904/00904. 00000 - "%s: invalid identifier"',
-          },
-        ],
-        startTime: (() => {
-          const date = new Date();
-          const month = (date.getMonth() + 1).toString().padStart(2, '0');
-          const day = date.getDate().toString().padStart(2, '0');
-          const year = date.getFullYear();
-          const hours = date.getHours() % 12 || 12;
-          const minutes = date.getMinutes().toString().padStart(2, '0');
-          const seconds = date.getSeconds().toString().padStart(2, '0');
-          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
-
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
-        })(),
-        endTime: null,
+        message: [{ name: "Subsetting completed using 'CI_ACCT' root table'" }],
       },
     ],
   },
@@ -805,9 +743,29 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
 
         message: [{ name: 'Create Masking Script is Successful' }],
       },
-
       {
         taskId: 'TASK-55678903',
+        taskDescription: 'CI_ACCT-Based Data Subsetting',
+        status: 'In Progress',
+        startTime: (() => {
+          const date = new Date();
+          const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const day = date.getDate().toString().padStart(2, '0');
+          const year = date.getFullYear();
+          const hours = date.getHours() % 12 || 12;
+          const minutes = date.getMinutes().toString().padStart(2, '0');
+          const seconds = date.getSeconds().toString().padStart(2, '0');
+          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+        })(),
+        endTime: null,
+
+        message: [{ name: "Subsetting completed using 'CI_ACCT' root table'" }],
+      },
+
+      {
+        taskId: 'TASK-55678904',
         taskDescription: "ObfuscateTable-'CI_PER'",
         status: 'In Progress',
         startTime: (() => {
@@ -834,7 +792,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
       },
 
       {
-        taskId: 'TASK-55678904',
+        taskId: 'TASK-55678905',
         taskDescription: "ObfuscateTable-'CI_PER_ADDR_SEAS'",
         status: 'Pending',
         startTime: (() => {
@@ -854,7 +812,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
         message: [{ name: 'FAKER applied on  ADDRESS1 column.' }],
       },
       {
-        taskId: 'TASK-55678905',
+        taskId: 'TASK-55678906',
         taskDescription: "ObfuscateTable-'C1_ADDRESS'",
         status: 'Pending',
         startTime: (() => {
@@ -885,7 +843,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
         ],
       },
       {
-        taskId: 'TASK-55678906',
+        taskId: 'TASK-55678907',
         taskDescription: "ObfuscateTable-'CI_PER_NAME'",
         status: 'Pending',
         startTime: (() => {
@@ -905,7 +863,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
         message: [{ name: 'FAKER applied on  FULLNAME column.' }],
       },
       {
-        taskId: 'TASK-55678907',
+        taskId: 'TASK-55678908',
         taskDescription: "ObfuscateTable-'CI_PER_PHONE'",
         status: 'Pending',
         startTime: (() => {
@@ -925,7 +883,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
         message: [{ name: 'FAKER applied on  PHONE column.' }],
       },
       {
-        taskId: 'TASK-55678900',
+        taskId: 'TASK-55678909',
         taskDescription: "ObfuscateTable-'CI_PER_ID'",
         status: 'Pending',
         startTime: (() => {
@@ -945,7 +903,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
         message: [{ name: 'FAKER applied on PER_ID_NBR column.' }],
       },
       {
-        taskId: 'TASK-55678899',
+        taskId: 'TASK-55678910',
         taskDescription: "ObfuscateTable-'CI_PER_CHAR'",
         status: 'Pending',
         startTime: (() => {
@@ -974,17 +932,18 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
   {
     jobId: 'RUN-98764',
     jobName: 'Customer & Account Obfuscation',
+    subsetStrategyPlanName: 'Customer & Account Data Subset Plan',
     jobDescription:
       'Obfuscates personally identifiable information (PII) in customer and account entities.',
     triggeredOn: '28/04/2025 07:33:22AM',
     status: 'failed',
-    obsfucationControlName: 'Customer & Account Obfuscation',
+    // obsfucationControlName: 'Customer & Account Obfuscation',
     progress: 90,
     tasks: [
       {
-        taskId: 'TASK-78901234',
-        taskDescription: 'CopySchemaAndData',
-        status: 'Completed',
+        taskId: 'TASK-55678903',
+        taskDescription: 'CI_ACCT-Based Data Subsetting',
+        status: 'In Progress',
         startTime: (() => {
           const date = new Date();
           const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -998,90 +957,8 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
           return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
-        message: [{ name: 'Copy Schema And Data is Successful' }],
-      },
-      {
-        taskId: 'TASK-20547689',
-        taskDescription: 'CreateProceduresAndFunctions',
-        status: 'Completed',
-        startTime: (() => {
-          const date = new Date();
-          const month = (date.getMonth() + 1).toString().padStart(2, '0');
-          const day = date.getDate().toString().padStart(2, '0');
-          const year = date.getFullYear();
-          const hours = date.getHours() % 12 || 12;
-          const minutes = date.getMinutes().toString().padStart(2, '0');
-          const seconds = date.getSeconds().toString().padStart(2, '0');
-          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
 
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
-        })(),
-        endTime: null,
-        message: [{ name: 'Create Procedures And Functions is Successful' }],
-      },
-      {
-        taskId: 'TASK-30982345',
-        taskDescription: 'CreateMaskingScript',
-        status: 'Completed',
-        startTime: (() => {
-          const date = new Date();
-          const month = (date.getMonth() + 1).toString().padStart(2, '0');
-          const day = date.getDate().toString().padStart(2, '0');
-          const year = date.getFullYear();
-          const hours = date.getHours() % 12 || 12;
-          const minutes = date.getMinutes().toString().padStart(2, '0');
-          const seconds = date.getSeconds().toString().padStart(2, '0');
-          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
-
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
-        })(),
-        endTime: null,
-        message: [{ name: 'Create Masking Script is Successful' }],
-      },
-      {
-        taskId: 'TASK-55678901',
-        taskDescription: "ObfuscateTable-'CI_PER'",
-        status: 'Completed',
-        startTime: (() => {
-          const date = new Date();
-          const month = (date.getMonth() + 1).toString().padStart(2, '0');
-          const day = date.getDate().toString().padStart(2, '0');
-          const year = date.getFullYear();
-          const hours = date.getHours() % 12 || 12;
-          const minutes = date.getMinutes().toString().padStart(2, '0');
-          const seconds = date.getSeconds().toString().padStart(2, '0');
-          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
-
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
-        })(),
-        endTime: null,
-        recordsProcessed: 18,
-        message: [{ name: 'FAKER applied on EMAILID column.' }],
-      },
-      {
-        taskId: 'TASK-55678900',
-        taskDescription: "ObfuscateTable-'CI_PER_Name'",
-        status: 'Failed',
-        errorMessage:
-          'RUN-98764, Table : CI_PER_Name, Column : EmailID,  SQL Error: ORA-00904: "EMAILID": invalid identifier`',
-        message: [
-          {
-            name: 'SQL Error: ORA-00904: "EMAILID": invalid identifier https://docs.oracle.com/error-help/db/ora-00904/00904. 00000 - "%s: invalid identifier"',
-          },
-        ],
-        startTime: (() => {
-          const date = new Date();
-          const month = (date.getMonth() + 1).toString().padStart(2, '0');
-          const day = date.getDate().toString().padStart(2, '0');
-          const year = date.getFullYear();
-          const hours = date.getHours() % 12 || 12;
-          const minutes = date.getMinutes().toString().padStart(2, '0');
-          const seconds = date.getSeconds().toString().padStart(2, '0');
-          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
-
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
-        })(),
-        endTime: null,
+        message: [{ name: "Subsetting completed using 'CI_ACCT' root table'" }],
       },
     ],
   },

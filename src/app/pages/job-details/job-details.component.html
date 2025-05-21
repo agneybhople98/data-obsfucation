@@ -210,7 +210,7 @@
               </div>
 
               <!-- Obfuscation plan -->
-              <div>
+              <div *ngIf="jobDetails?.obsfucationControlName">
                 <div class="text-sm">Obfuscation Plan</div>
                 <div
                   (click)="

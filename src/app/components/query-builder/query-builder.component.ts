@@ -2389,7 +2389,7 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
       case 'CI_PER':
         this.currentConfig = this.ciPerConfig;
         break;
-      case 'CI_ACCOUNTS':
+      case 'CI_ACCTS':
         this.currentConfig = this.ciAccountsConfig;
         break;
       case 'CI_PER_NAME':

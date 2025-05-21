@@ -30,6 +30,7 @@ export interface JobElement {
 export interface JobDataControlElement {
   jobControlId: string;
   jobControlName: any;
+  API_NAME?: string;
   jobControlDescription: string;
   subsetPlanStrategyName?: string;
   lastTriggeredOn: string;
@@ -621,6 +622,7 @@ const ELEMENT_DATA: JobElement[] = [
 const ELEMENT_DATA_JOB_CONTROL: JobDataControlElement[] = [
   {
     jobControlId: 'JC-98765',
+    API_NAME: 'OBF_EXECUTE_MAIN_JOB_CISADM',
     jobControlName: 'Utility Account Obfuscation – Non-Prod',
     jobControlDescription:
       'Obfuscate utility accounts for non-production environments.',
@@ -644,6 +646,7 @@ const ELEMENT_DATA_JOB_CONTROL: JobDataControlElement[] = [
   },
   {
     jobControlId: 'JC-98764',
+    API_NAME: 'OBF_EXECUTE_MAIN_JOB_CISADM',
     jobControlName: 'Financial Data Masking – Utility Systems',
     jobControlDescription:
       'Mask utility financial data for safe use in test and development environments.',
@@ -655,6 +658,7 @@ const ELEMENT_DATA_JOB_CONTROL: JobDataControlElement[] = [
   },
   {
     jobControlId: 'JC-98763',
+    API_NAME: 'OBF_EXECUTE_MAIN_JOB_CISADM',
     jobControlName: 'Person Entity Anonymization – Pre-Prod',
     jobControlDescription:
       'Anonymize persons for secure pre-production and testing.',
@@ -666,6 +670,7 @@ const ELEMENT_DATA_JOB_CONTROL: JobDataControlElement[] = [
   },
   {
     jobControlId: 'JC-98762',
+    API_NAME: 'OBF_EXECUTE_MAIN_JOB_CISADM',
     jobControlName: 'Field Activity Data Obfuscation – Dev/Test',
     jobControlDescription:
       'Obfuscate field activity data for development/test usage.',
@@ -676,6 +681,7 @@ const ELEMENT_DATA_JOB_CONTROL: JobDataControlElement[] = [
   },
   {
     jobControlId: 'JC-98761',
+    API_NAME: 'OBF_EXECUTE_MAIN_JOB_CISADM',
     jobControlName: 'Billing & Financial History Obfuscation',
     jobControlDescription: 'Obfuscates billing and financial history data.',
     lastTriggeredOn: '15/04/2025 09:30:33AM',
@@ -685,6 +691,7 @@ const ELEMENT_DATA_JOB_CONTROL: JobDataControlElement[] = [
   },
   {
     jobControlId: 'JC-98760',
+    API_NAME: 'OBF_EXECUTE_MAIN_JOB_CISADM',
     jobControlName: 'Support Interaction Data Masking',
     jobControlDescription: 'Mask support tickets and customer interactions.',
     lastTriggeredOn: '10/04/2025 09:30:33AM',
@@ -694,6 +701,7 @@ const ELEMENT_DATA_JOB_CONTROL: JobDataControlElement[] = [
   },
   {
     jobControlId: 'JC-98759',
+    API_NAME: 'OBF_EXECUTE_MAIN_JOB_CISADM',
     jobControlName: 'Outage Data Anonymization – Global Compliance',
     jobControlDescription:
       'Obfuscates claim headers and line items, including statuses and adjudication outcomes.',
@@ -1292,6 +1300,7 @@ const ELEMENT_DATA_JOB_CONTROL_HEALTHCARE: JobDataControlElement[] = [
   {
     jobControlId: 'JC-98765',
     jobControlName: 'Membership & Policy Data Obfuscation',
+    API_NAME: 'DO_EXEC_ARCHDEV_1_SS_OBF_JOB',
     jobControlDescription:
       'Masks sensitive details in customer memberships, policies, and eligibility for staging.',
     subsetPlanStrategyName: 'Membership & Policy Subset',
@@ -1314,6 +1323,7 @@ const ELEMENT_DATA_JOB_CONTROL_HEALTHCARE: JobDataControlElement[] = [
   {
     jobControlId: 'JC-98764',
     jobControlName: 'Customer & Account Obfuscation',
+    API_NAME: 'DO_EXEC_ARCHDEV_2_SS_JOB',
     jobControlDescription:
       'Obfuscates personally identifiable information (PII) in customer and account entities.',
     subsetPlanStrategyName: 'Customer & Account Subset',
@@ -1325,6 +1335,7 @@ const ELEMENT_DATA_JOB_CONTROL_HEALTHCARE: JobDataControlElement[] = [
   {
     jobControlId: 'JC-98763',
     jobControlName: 'Billing Transactions - US Region',
+    API_NAME: 'DO_EXEC_ARCHDEV_3_OBF_JOB',
     jobControlDescription:
       'Secures billing, adjustments, and payment data for performance testing.',
     subsetPlanStrategyName: 'Billing Transactions - US Region',

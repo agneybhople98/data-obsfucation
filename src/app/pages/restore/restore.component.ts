@@ -53,7 +53,7 @@ export class RestoreComponent implements OnInit {
         });
     } else {
       this._jobService
-        .runJobByName('DO_RESTORE_SCHEMA_JOB_ARCHDEV')
+        .runJobByName('OBF_REVERT_CHANGES_ARCHDEV_JOB')
         .subscribe((res) => {
           console.log(res);
           this.isRestoring = false;

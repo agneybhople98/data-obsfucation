@@ -78,7 +78,7 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
     inputControlSize: 'col-auto',
   };
 
-  public query = {
+  public query: any = {
     condition: 'and',
     rules: [
       {
@@ -2389,7 +2389,7 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
       case 'CI_PER':
         this.currentConfig = this.ciPerConfig;
         break;
-      case 'CI_ACCTS':
+      case 'CI_ACCT':
         this.currentConfig = this.ciAccountsConfig;
         break;
       case 'CI_PER_NAME':
@@ -2412,63 +2412,69 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
         this.currentConfig = this.ciPerConfig; // Use default config if no match
         break;
     }
+    if (this.selectedItem === 'CI_PER') {
+      // Reset query to null/empty state
+      this.query = null;
 
-    // Create a default rule with the first field from the current configuration
-    const firstField = Object.keys(this.currentConfig.fields)[0];
-    const fieldConfig = this.currentConfig.fields[firstField];
-    const defaultOperator = fieldConfig.operators
-      ? fieldConfig.operators[0]
-      : '=';
-
-    // Initialize with a default value appropriate for the field type
-    let defaultValue;
-    switch (fieldConfig.type) {
-      case 'string':
-        defaultValue = '';
-        break;
-      case 'number':
-        defaultValue = 0;
-        break;
-      case 'boolean':
-        defaultValue = false;
-        break;
-      case 'category':
-        defaultValue =
-          fieldConfig.options && fieldConfig.options.length > 0
-            ? fieldConfig.options[0].value
-            : null;
-        break;
-      case 'multiselect':
-        defaultValue = [];
-        break;
-      case 'date':
-        if (
-          fieldConfig.options &&
-          fieldConfig.options.some((opt) => opt.value === 'PERCENTAGE_OF_ROWS')
-        ) {
-          defaultValue = { strategy: 'PERCENTAGE_OF_ROWS', percentage: 50 };
-        } else {
-          defaultValue = null;
-        }
-        break;
-      default:
-        defaultValue = null;
+      // Update form control with null query
+      this.queryCtrl = this.formBuilder.control(null);
     }
 
-    // Reset query with the new default rule
-    this.query = {
-      condition: 'and',
-      rules: [
-        {
-          field: firstField,
-          operator: defaultOperator,
-          value: defaultValue,
-        },
-      ],
-    };
+    if (this.selectedItem === 'CI_ACCT') {
+      // Create a default rule with the first field from the current configuration
+      const firstField = Object.keys(this.currentConfig.fields)[2];
+      const secondField = Object.keys(this.currentConfig.fields)[15];
 
-    // Update form control with new query
-    this.queryCtrl = this.formBuilder.control(this.query);
+      const fieldConfig = this.currentConfig.fields[firstField];
+      const defaultOperator = fieldConfig.operators
+        ? fieldConfig.operators[0]
+        : '=';
+
+      // Initialize with a default value appropriate for the field type
+      let defaultValue;
+      switch (fieldConfig.type) {
+        case 'string':
+          defaultValue = '01-10-2024';
+          break;
+        case 'number':
+          defaultValue = 0;
+          break;
+        case 'boolean':
+          defaultValue = false;
+          break;
+        case 'category':
+          defaultValue =
+            fieldConfig.options && fieldConfig.options.length > 0
+              ? fieldConfig.options[0].value
+              : null;
+          break;
+        case 'multiselect':
+          defaultValue = [];
+          break;
+        case 'date':
+          defaultValue = '01-10-2024'; // Example date format
+      }
+
+      // Reset query with the new default rule
+      this.query = {
+        condition: 'and',
+        rules: [
+          {
+            field: firstField,
+            operator: '>=',
+            value: defaultValue,
+          },
+          {
+            field: secondField,
+            operator: defaultOperator,
+            value: 'INDV',
+          },
+        ],
+      };
+
+      // Update form control with new query
+      this.queryCtrl = this.formBuilder.control(this.query);
+    }
   }
 
   ngAfterViewInit() {

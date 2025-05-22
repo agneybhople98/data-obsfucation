@@ -81,7 +81,7 @@ export class CreateSubsetComponent implements OnInit {
     'subsetRules',
   ];
 
-  tableItemsHealthcare = ['CI_PER', 'CI_ACCTS'];
+  tableItemsHealthcare = ['CI_PER', 'CI_ACCT'];
 
   // 'CI_PER_NAME',
   // 'CI_PER_PHONE',
@@ -89,7 +89,7 @@ export class CreateSubsetComponent implements OnInit {
   // 'C1_ADDRESS',
   // 'CI_PER_ID',
   // 'CI_PER_CHAR',
-  tableItemsUtility = ['CI_PER', 'CI_ACCTS'];
+  tableItemsUtility = ['CI_PER', 'CI_ACCT'];
 
   // 'CI_PER_NAME',
   //   'CI_PER_ADDR_SEAS',

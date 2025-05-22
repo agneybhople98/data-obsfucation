@@ -1804,7 +1804,11 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
       },
       CURRENCY_CD: {
         name: 'CURRENCY_CD',
-        type: 'string',
+        type: 'category',
+        options: [
+          { name: 'INR', value: 'INR' },
+          { name: 'USD', value: 'USD' },
+        ],
         operators: [
           '=',
           '!=',
@@ -2438,7 +2442,7 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
               },
               {
                 field: firstField, // SETUP_DT
-                operator: '>=',
+                operator: '=',
                 value: 'USD',
               },
             ],

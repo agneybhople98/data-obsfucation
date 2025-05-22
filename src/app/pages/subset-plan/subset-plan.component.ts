@@ -90,24 +90,10 @@ export class SubsetPlanComponent {
   }
 
   openCreateObsfucation(element: any) {
-    const allJobData = this._jobDataService.getAllJobControlData();
-
-    const obsControlData = allJobData.find(
-      (job) => job.obsfucationControlId === element.obsControlName
-    );
-
-    // pass any data if required
-    if (obsControlData) {
-      this.router.navigate(
-        [`/${this.currentDomain}/subset-plan/create-subset`],
-        {
-          state: { data: null },
-          replaceUrl: true,
-        }
-      );
-    } else {
-      console.error('No matching for subset strategy data found');
-    }
+    this.router.navigate([`/${this.currentDomain}/subset-plan/create-subset`], {
+      state: { data: null },
+      replaceUrl: true,
+    });
   }
 
   createObfuscation() {

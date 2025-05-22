@@ -81,7 +81,7 @@ export class CreateSubsetComponent implements OnInit {
     'subsetRules',
   ];
 
-  tableItemsHealthcare = ['CI_PER', 'CI_ACCT'];
+  tableItemsHealthcare = ['CI_ACCT', 'CI_PER'];
 
   // 'CI_PER_NAME',
   // 'CI_PER_PHONE',
@@ -89,7 +89,7 @@ export class CreateSubsetComponent implements OnInit {
   // 'C1_ADDRESS',
   // 'CI_PER_ID',
   // 'CI_PER_CHAR',
-  tableItemsUtility = ['CI_PER', 'CI_ACCT'];
+  tableItemsUtility = ['CI_ACCT', 'CI_PER'];
 
   // 'CI_PER_NAME',
   //   'CI_PER_ADDR_SEAS',
@@ -98,7 +98,7 @@ export class CreateSubsetComponent implements OnInit {
   //   'CI_PER_CHAR',
 
   searchText = '';
-  selectedItem: string = 'CI_PER';
+  selectedItem: string = 'CI_ACCT';
 
   get tableItems() {
     return this.currentDomain === 'healthcare'

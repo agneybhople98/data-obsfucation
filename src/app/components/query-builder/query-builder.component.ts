@@ -1804,11 +1804,7 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
       },
       CURRENCY_CD: {
         name: 'CURRENCY_CD',
-        type: 'category',
-        options: [
-          { name: 'Person', value: 'P' },
-          { name: 'Business', value: 'B' },
-        ],
+        type: 'string',
         operators: [
           '=',
           '!=',
@@ -2421,53 +2417,47 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
     }
 
     if (this.selectedItem === 'CI_ACCT') {
-      // Create a default rule with the first field from the current configuration
-      const firstField = Object.keys(this.currentConfig.fields)[2];
-      const secondField = Object.keys(this.currentConfig.fields)[15];
+      // Create a complex query structure matching the UI
+      const firstField = Object.keys(this.currentConfig.fields)[3]; // Currency CD
+      const secondField = Object.keys(this.currentConfig.fields)[15]; // CUST_CL_CD
+      const thirdField = Object.keys(this.currentConfig.fields)[2]; // SETUP_DT (for nested condition)
+      const fourthField = Object.keys(this.currentConfig.fields)[8]; // CIS_DIVISION
 
-      const fieldConfig = this.currentConfig.fields[firstField];
-      const defaultOperator = fieldConfig.operators
-        ? fieldConfig.operators[0]
-        : '=';
-
-      // Initialize with a default value appropriate for the field type
-      let defaultValue;
-      switch (fieldConfig.type) {
-        case 'string':
-          defaultValue = '01-10-2024';
-          break;
-        case 'number':
-          defaultValue = 0;
-          break;
-        case 'boolean':
-          defaultValue = false;
-          break;
-        case 'category':
-          defaultValue =
-            fieldConfig.options && fieldConfig.options.length > 0
-              ? fieldConfig.options[0].value
-              : null;
-          break;
-        case 'multiselect':
-          defaultValue = [];
-          break;
-        case 'date':
-          defaultValue = '01-10-2024'; // Example date format
-      }
-
-      // Reset query with the new default rule
+      // Reset query with the complex nested structure
       this.query = {
-        condition: 'and',
+        condition: 'and', // Main OR condition
         rules: [
+          // First AND group
           {
-            field: firstField,
-            operator: '>=',
-            value: defaultValue,
+            condition: 'or',
+            rules: [
+              {
+                field: secondField, // CUST_CL_CD
+                operator: '=',
+                value: 'INDV',
+              },
+              {
+                field: firstField, // SETUP_DT
+                operator: '>=',
+                value: 'USD',
+              },
+            ],
           },
+          // Second AND group (nested)
           {
-            field: secondField,
-            operator: defaultOperator,
-            value: 'INDV',
+            condition: 'and',
+            rules: [
+              {
+                field: thirdField, // SETUP_DT
+                operator: '>=',
+                value: '01-10-2024',
+              },
+              {
+                field: fourthField, // CIS_DIVISION
+                operator: '=',
+                value: 'CNS',
+              },
+            ],
           },
         ],
       };

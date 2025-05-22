@@ -24,7 +24,7 @@ const routes: Routes = [
         children: [{ path: 'job-details/:id', component: JobDetailsComponent }],
       },
       {
-        path: 'restore',
+        path: 'clear-target',
         component: RestoreComponent,
         runGuardsAndResolvers: 'always',
       },

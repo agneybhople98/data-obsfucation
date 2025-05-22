@@ -43,280 +43,6 @@ export interface JobDataControlElement {
 const ELEMENT_DATA: JobElement[] = [
   {
     jobId: 'RUN-98765',
-    jobName: 'Utility Account Obfuscation – Non-Prod',
-    jobDescription:
-      'Obfuscate utility accounts for non-production environments.',
-    subsetStrategyPlanName: 'Utility Account Subset',
-    triggeredOn: (() => {
-      const date = new Date();
-      const month = (date.getMonth() + 1).toString().padStart(2, '0');
-      const day = date.getDate().toString().padStart(2, '0');
-      const year = date.getFullYear();
-      const hours = date.getHours() % 12 || 12;
-      const minutes = date.getMinutes().toString().padStart(2, '0');
-      const seconds = date.getSeconds().toString().padStart(2, '0');
-      const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
-
-      return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
-    })(),
-    status: 'in-progress',
-    obsfucationControlName: 'Utility Account Obfuscation',
-    progress: 0,
-    tasks: [
-      {
-        taskId: 'TASK-55678900',
-        taskDescription: 'CopySchemaAndData',
-        status: 'In Progress',
-        // Format the startTime consistently with endTime
-        startTime: (() => {
-          const date = new Date();
-          const month = (date.getMonth() + 1).toString().padStart(2, '0');
-          const day = date.getDate().toString().padStart(2, '0');
-          const year = date.getFullYear();
-          const hours = date.getHours() % 12 || 12;
-          const minutes = date.getMinutes().toString().padStart(2, '0');
-          const seconds = date.getSeconds().toString().padStart(2, '0');
-          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
-
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
-        })(),
-        endTime: null,
-
-        message: [
-          {
-            name: 'Copy Schema And Data is Successful',
-          },
-        ],
-      },
-      {
-        taskId: 'TASK-55678901',
-        taskDescription: 'CreateProceduresAndFunctions',
-        status: 'In Progress',
-        startTime: (() => {
-          const date = new Date();
-          const month = (date.getMonth() + 1).toString().padStart(2, '0');
-          const day = date.getDate().toString().padStart(2, '0');
-          const year = date.getFullYear();
-          const hours = date.getHours() % 12 || 12;
-          const minutes = date.getMinutes().toString().padStart(2, '0');
-          const seconds = date.getSeconds().toString().padStart(2, '0');
-          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
-
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
-        })(),
-        endTime: null,
-
-        message: [
-          {
-            name: 'Create Procedures And Functions is Successful',
-          },
-        ],
-      },
-      {
-        taskId: 'TASK-55678902',
-        taskDescription: 'CreateSubsetScript',
-        status: 'In Progress',
-        startTime: (() => {
-          const date = new Date();
-          const month = (date.getMonth() + 1).toString().padStart(2, '0');
-          const day = date.getDate().toString().padStart(2, '0');
-          const year = date.getFullYear();
-          const hours = date.getHours() % 12 || 12;
-          const minutes = date.getMinutes().toString().padStart(2, '0');
-          const seconds = date.getSeconds().toString().padStart(2, '0');
-          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
-
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
-        })(),
-        endTime: null,
-
-        message: [{ name: 'Create Masking Script is Successful' }],
-      },
-
-      {
-        taskId: 'TASK-55678903',
-        taskDescription: 'CI_ACCT-Based Data Subsetting',
-        status: 'In Progress',
-        startTime: (() => {
-          const date = new Date();
-          const month = (date.getMonth() + 1).toString().padStart(2, '0');
-          const day = date.getDate().toString().padStart(2, '0');
-          const year = date.getFullYear();
-          const hours = date.getHours() % 12 || 12;
-          const minutes = date.getMinutes().toString().padStart(2, '0');
-          const seconds = date.getSeconds().toString().padStart(2, '0');
-          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
-
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
-        })(),
-        endTime: null,
-
-        message: [{ name: "Subsetting completed using 'CI_ACCT' root table'" }],
-      },
-
-      {
-        taskId: 'TASK-55678904',
-        taskDescription: "ObfuscateTable-'CI_PER'",
-        status: 'In Progress',
-        startTime: (() => {
-          const date = new Date();
-          const month = (date.getMonth() + 1).toString().padStart(2, '0');
-          const day = date.getDate().toString().padStart(2, '0');
-          const year = date.getFullYear();
-          const hours = date.getHours() % 12 || 12;
-          const minutes = date.getMinutes().toString().padStart(2, '0');
-          const seconds = date.getSeconds().toString().padStart(2, '0');
-          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
-
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
-        })(),
-        endTime: null,
-        recordsProcessed: 2000,
-        message: [
-          {
-            name: 'FAKER applied on EMAILID column. ',
-          },
-          { name: 'STARIFY applied on CITY column.' },
-          { name: 'FAKER applied on ADDRESS column.' },
-          { name: 'REPLACE_WITH_CONSTANT applied on LANGUAGE_CD column.' },
-          { name: 'RANDOMIZE applied on POSTAL column.' },
-        ],
-      },
-
-      {
-        taskId: 'TASK-55678905',
-        taskDescription: "ObfuscateTable-'CI_PER_ADDR_SEAS'",
-        status: 'Pending',
-        startTime: (() => {
-          const date = new Date();
-          const month = (date.getMonth() + 1).toString().padStart(2, '0');
-          const day = date.getDate().toString().padStart(2, '0');
-          const year = date.getFullYear();
-          const hours = date.getHours() % 12 || 12;
-          const minutes = date.getMinutes().toString().padStart(2, '0');
-          const seconds = date.getSeconds().toString().padStart(2, '0');
-          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
-
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
-        })(),
-        endTime: null,
-        recordsProcessed: 100,
-        message: [{ name: 'FAKER applied on  ADDRESS1 column.' }],
-      },
-
-      {
-        taskId: 'TASK-55678906',
-        taskDescription: "ObfuscateTable-'CI_PER_CONTDET'",
-        status: 'Pending',
-        startTime: (() => {
-          const date = new Date();
-          const month = (date.getMonth() + 1).toString().padStart(2, '0');
-          const day = date.getDate().toString().padStart(2, '0');
-          const year = date.getFullYear();
-          const hours = date.getHours() % 12 || 12;
-          const minutes = date.getMinutes().toString().padStart(2, '0');
-          const seconds = date.getSeconds().toString().padStart(2, '0');
-          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
-
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
-        })(),
-        endTime: null,
-        recordsProcessed: 1500,
-        message: [
-          {
-            name: 'FAKER applied on  PHONE column.',
-          },
-        ],
-      },
-      {
-        taskId: 'TASK-55678907',
-        taskDescription: "ObfuscateTable-'CI_PER_NAME'",
-        status: 'Pending',
-        startTime: (() => {
-          const date = new Date();
-          const month = (date.getMonth() + 1).toString().padStart(2, '0');
-          const day = date.getDate().toString().padStart(2, '0');
-          const year = date.getFullYear();
-          const hours = date.getHours() % 12 || 12;
-          const minutes = date.getMinutes().toString().padStart(2, '0');
-          const seconds = date.getSeconds().toString().padStart(2, '0');
-          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
-
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
-        })(),
-        endTime: null,
-        recordsProcessed: 1200,
-        message: [{ name: 'FAKER applied on  ENTITY_NAME column.' }],
-      },
-      {
-        taskId: 'TASK-55678908',
-        taskDescription: "ObfuscateTable-'CI_PER_ID'",
-        status: 'Pending',
-        startTime: (() => {
-          const date = new Date();
-          const month = (date.getMonth() + 1).toString().padStart(2, '0');
-          const day = date.getDate().toString().padStart(2, '0');
-          const year = date.getFullYear();
-          const hours = date.getHours() % 12 || 12;
-          const minutes = date.getMinutes().toString().padStart(2, '0');
-          const seconds = date.getSeconds().toString().padStart(2, '0');
-          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
-
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
-        })(),
-        endTime: null,
-        recordsProcessed: 20,
-        message: [{ name: 'FAKER applied on CI_PER_ID column.' }],
-      },
-      {
-        taskId: 'TASK-55678909',
-        taskDescription: "ObfuscateTable-'CI_PER_CHAR'",
-        status: 'Pending',
-        startTime: (() => {
-          const date = new Date();
-          const month = (date.getMonth() + 1).toString().padStart(2, '0');
-          const day = date.getDate().toString().padStart(2, '0');
-          const year = date.getFullYear();
-          const hours = date.getHours() % 12 || 12;
-          const minutes = date.getMinutes().toString().padStart(2, '0');
-          const seconds = date.getSeconds().toString().padStart(2, '0');
-          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
-
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
-        })(),
-        endTime: null,
-        recordsProcessed: 20,
-        message: [
-          { name: 'REPLACE_WITH_CONSTANT applied on CHAR_VAL column.' },
-          {
-            name: 'STARIFY, FAKER applied on ADHOC_CHAR_VAL column',
-          },
-        ],
-      },
-      // {
-      //   taskId: 'TASK-55678907',
-      //   taskDescription: "ObfuscateTable-'CI_PER_PHONE'",
-      //   status: 'Pending',
-      //   startTime: (() => {
-      //     const date = new Date();
-      //     const month = (date.getMonth() + 1).toString().padStart(2, '0');
-      //     const day = date.getDate().toString().padStart(2, '0');
-      //     const year = date.getFullYear();
-      //     const hours = date.getHours() % 12 || 12;
-      //     const minutes = date.getMinutes().toString().padStart(2, '0');
-      //     const seconds = date.getSeconds().toString().padStart(2, '0');
-      //     const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
-
-      //     return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
-      //   })(),
-      //   endTime: null,
-      //   recordsProcessed: 900,
-      //   message: [{ name: 'FAKER applied on  PHONE column.' }],
-      // },
-    ],
-  },
-  {
-    jobId: 'RUN-98764',
     jobName: 'Financial Data Masking – Utility Systems',
     jobDescription:
       'Mask utility financial data for safe use in test and development environments.',
@@ -410,7 +136,7 @@ const ELEMENT_DATA: JobElement[] = [
     ],
   },
   {
-    jobId: 'RUN-98763',
+    jobId: 'RUN-98764',
     jobName: 'Person Entity Anonymization – Pre-Prod',
     jobDescription: 'Anonymize persons for secure pre-production and testing.',
     triggeredOn: '25/04/2025 08:22:10AM',
@@ -824,6 +550,280 @@ const ELEMENT_DATA: JobElement[] = [
     ],
   },
   {
+    jobId: 'RUN-98763',
+    jobName: 'Utility Account Obfuscation – Non-Prod',
+    jobDescription:
+      'Obfuscate utility accounts for non-production environments.',
+    subsetStrategyPlanName: 'Utility Account Subset',
+    triggeredOn: (() => {
+      const date = new Date();
+      const month = (date.getMonth() + 1).toString().padStart(2, '0');
+      const day = date.getDate().toString().padStart(2, '0');
+      const year = date.getFullYear();
+      const hours = date.getHours() % 12 || 12;
+      const minutes = date.getMinutes().toString().padStart(2, '0');
+      const seconds = date.getSeconds().toString().padStart(2, '0');
+      const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+      return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+    })(),
+    status: 'in-progress',
+    obsfucationControlName: 'Utility Account Obfuscation',
+    progress: 0,
+    tasks: [
+      {
+        taskId: 'TASK-55678900',
+        taskDescription: 'CopySchemaAndData',
+        status: 'In Progress',
+        // Format the startTime consistently with endTime
+        startTime: (() => {
+          const date = new Date();
+          const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const day = date.getDate().toString().padStart(2, '0');
+          const year = date.getFullYear();
+          const hours = date.getHours() % 12 || 12;
+          const minutes = date.getMinutes().toString().padStart(2, '0');
+          const seconds = date.getSeconds().toString().padStart(2, '0');
+          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+        })(),
+        endTime: null,
+
+        message: [
+          {
+            name: 'Copy Schema And Data is Successful',
+          },
+        ],
+      },
+      {
+        taskId: 'TASK-55678901',
+        taskDescription: 'CreateProceduresAndFunctions',
+        status: 'In Progress',
+        startTime: (() => {
+          const date = new Date();
+          const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const day = date.getDate().toString().padStart(2, '0');
+          const year = date.getFullYear();
+          const hours = date.getHours() % 12 || 12;
+          const minutes = date.getMinutes().toString().padStart(2, '0');
+          const seconds = date.getSeconds().toString().padStart(2, '0');
+          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+        })(),
+        endTime: null,
+
+        message: [
+          {
+            name: 'Create Procedures And Functions is Successful',
+          },
+        ],
+      },
+      {
+        taskId: 'TASK-55678902',
+        taskDescription: 'CreateSubsetScript',
+        status: 'In Progress',
+        startTime: (() => {
+          const date = new Date();
+          const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const day = date.getDate().toString().padStart(2, '0');
+          const year = date.getFullYear();
+          const hours = date.getHours() % 12 || 12;
+          const minutes = date.getMinutes().toString().padStart(2, '0');
+          const seconds = date.getSeconds().toString().padStart(2, '0');
+          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+        })(),
+        endTime: null,
+
+        message: [{ name: 'Create Masking Script is Successful' }],
+      },
+
+      {
+        taskId: 'TASK-55678903',
+        taskDescription: 'CI_ACCT-Based Data Subsetting',
+        status: 'In Progress',
+        startTime: (() => {
+          const date = new Date();
+          const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const day = date.getDate().toString().padStart(2, '0');
+          const year = date.getFullYear();
+          const hours = date.getHours() % 12 || 12;
+          const minutes = date.getMinutes().toString().padStart(2, '0');
+          const seconds = date.getSeconds().toString().padStart(2, '0');
+          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+        })(),
+        endTime: null,
+
+        message: [{ name: "Subsetting completed using 'CI_ACCT' root table'" }],
+      },
+
+      {
+        taskId: 'TASK-55678904',
+        taskDescription: "ObfuscateTable-'CI_PER'",
+        status: 'In Progress',
+        startTime: (() => {
+          const date = new Date();
+          const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const day = date.getDate().toString().padStart(2, '0');
+          const year = date.getFullYear();
+          const hours = date.getHours() % 12 || 12;
+          const minutes = date.getMinutes().toString().padStart(2, '0');
+          const seconds = date.getSeconds().toString().padStart(2, '0');
+          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+        })(),
+        endTime: null,
+        recordsProcessed: 2000,
+        message: [
+          {
+            name: 'FAKER applied on EMAILID column. ',
+          },
+          { name: 'STARIFY applied on CITY column.' },
+          { name: 'FAKER applied on ADDRESS column.' },
+          { name: 'REPLACE_WITH_CONSTANT applied on LANGUAGE_CD column.' },
+          { name: 'RANDOMIZE applied on POSTAL column.' },
+        ],
+      },
+
+      {
+        taskId: 'TASK-55678905',
+        taskDescription: "ObfuscateTable-'CI_PER_ADDR_SEAS'",
+        status: 'Pending',
+        startTime: (() => {
+          const date = new Date();
+          const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const day = date.getDate().toString().padStart(2, '0');
+          const year = date.getFullYear();
+          const hours = date.getHours() % 12 || 12;
+          const minutes = date.getMinutes().toString().padStart(2, '0');
+          const seconds = date.getSeconds().toString().padStart(2, '0');
+          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+        })(),
+        endTime: null,
+        recordsProcessed: 100,
+        message: [{ name: 'FAKER applied on  ADDRESS1 column.' }],
+      },
+
+      {
+        taskId: 'TASK-55678906',
+        taskDescription: "ObfuscateTable-'CI_PER_CONTDET'",
+        status: 'Pending',
+        startTime: (() => {
+          const date = new Date();
+          const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const day = date.getDate().toString().padStart(2, '0');
+          const year = date.getFullYear();
+          const hours = date.getHours() % 12 || 12;
+          const minutes = date.getMinutes().toString().padStart(2, '0');
+          const seconds = date.getSeconds().toString().padStart(2, '0');
+          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+        })(),
+        endTime: null,
+        recordsProcessed: 1500,
+        message: [
+          {
+            name: 'FAKER applied on  PHONE column.',
+          },
+        ],
+      },
+      {
+        taskId: 'TASK-55678907',
+        taskDescription: "ObfuscateTable-'CI_PER_NAME'",
+        status: 'Pending',
+        startTime: (() => {
+          const date = new Date();
+          const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const day = date.getDate().toString().padStart(2, '0');
+          const year = date.getFullYear();
+          const hours = date.getHours() % 12 || 12;
+          const minutes = date.getMinutes().toString().padStart(2, '0');
+          const seconds = date.getSeconds().toString().padStart(2, '0');
+          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+        })(),
+        endTime: null,
+        recordsProcessed: 1200,
+        message: [{ name: 'FAKER applied on  ENTITY_NAME column.' }],
+      },
+      {
+        taskId: 'TASK-55678908',
+        taskDescription: "ObfuscateTable-'CI_PER_ID'",
+        status: 'Pending',
+        startTime: (() => {
+          const date = new Date();
+          const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const day = date.getDate().toString().padStart(2, '0');
+          const year = date.getFullYear();
+          const hours = date.getHours() % 12 || 12;
+          const minutes = date.getMinutes().toString().padStart(2, '0');
+          const seconds = date.getSeconds().toString().padStart(2, '0');
+          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+        })(),
+        endTime: null,
+        recordsProcessed: 20,
+        message: [{ name: 'FAKER applied on CI_PER_ID column.' }],
+      },
+      {
+        taskId: 'TASK-55678909',
+        taskDescription: "ObfuscateTable-'CI_PER_CHAR'",
+        status: 'Pending',
+        startTime: (() => {
+          const date = new Date();
+          const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const day = date.getDate().toString().padStart(2, '0');
+          const year = date.getFullYear();
+          const hours = date.getHours() % 12 || 12;
+          const minutes = date.getMinutes().toString().padStart(2, '0');
+          const seconds = date.getSeconds().toString().padStart(2, '0');
+          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+        })(),
+        endTime: null,
+        recordsProcessed: 20,
+        message: [
+          { name: 'REPLACE_WITH_CONSTANT applied on CHAR_VAL column.' },
+          {
+            name: 'STARIFY, FAKER applied on ADHOC_CHAR_VAL column',
+          },
+        ],
+      },
+      // {
+      //   taskId: 'TASK-55678907',
+      //   taskDescription: "ObfuscateTable-'CI_PER_PHONE'",
+      //   status: 'Pending',
+      //   startTime: (() => {
+      //     const date = new Date();
+      //     const month = (date.getMonth() + 1).toString().padStart(2, '0');
+      //     const day = date.getDate().toString().padStart(2, '0');
+      //     const year = date.getFullYear();
+      //     const hours = date.getHours() % 12 || 12;
+      //     const minutes = date.getMinutes().toString().padStart(2, '0');
+      //     const seconds = date.getSeconds().toString().padStart(2, '0');
+      //     const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+      //     return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+      //   })(),
+      //   endTime: null,
+      //   recordsProcessed: 900,
+      //   message: [{ name: 'FAKER applied on  PHONE column.' }],
+      // },
+    ],
+  },
+  {
     jobId: 'RUN-98762',
     jobName: 'Field Activity Data Obfuscation – Dev/Test',
     jobDescription: 'Obfuscate field activity data for development/test usage.',
@@ -959,6 +959,30 @@ const ELEMENT_DATA_JOB_CONTROL: JobDataControlElement[] = [
   {
     jobControlId: 'JC-98765',
     API_NAME: 'OBF_EXECUTE_MAIN_JOB_CISADM',
+    jobControlName: 'Financial Data Masking – Utility Systems',
+    jobControlDescription:
+      'Mask utility financial data for safe use in test and development environments.',
+    lastTriggeredOn: '28/04/2025 07:33:22AM',
+    subsetPlanStrategyName: 'Financial Data Masking Subset',
+    // obsfucationControlId: 'Financial Data Masking',
+    obsfucationControlDescription:
+      'Mask utility financial data for safe use in test and development environments.',
+  },
+  {
+    jobControlId: 'JC-98764',
+    API_NAME: 'OBF_EXECUTE_MAIN_JOB_CISADM',
+    jobControlName: 'Person Entity Anonymization – Pre-Prod',
+    jobControlDescription:
+      'Anonymize persons for secure pre-production and testing.',
+    lastTriggeredOn: '25/04/2025 08:11:09AM',
+    // subsetPlanStrategyName: 'Person Entity Anonymization Subset',
+    obsfucationControlId: 'Person Entity Anonymization',
+    obsfucationControlDescription:
+      'Anonymize persons for secure pre-production and testing.',
+  },
+  {
+    jobControlId: 'JC-98763',
+    API_NAME: 'OBF_EXECUTE_MAIN_JOB_CISADM',
     jobControlName: 'Utility Account Obfuscation – Non-Prod',
     jobControlDescription:
       'Obfuscate utility accounts for non-production environments.',
@@ -979,30 +1003,6 @@ const ELEMENT_DATA_JOB_CONTROL: JobDataControlElement[] = [
     obsfucationControlId: 'Utility Account Obfuscation',
     obsfucationControlDescription:
       'Obfuscate utility accounts for non-production environments.',
-  },
-  {
-    jobControlId: 'JC-98764',
-    API_NAME: 'OBF_EXECUTE_MAIN_JOB_CISADM',
-    jobControlName: 'Financial Data Masking – Utility Systems',
-    jobControlDescription:
-      'Mask utility financial data for safe use in test and development environments.',
-    lastTriggeredOn: '28/04/2025 07:33:22AM',
-    subsetPlanStrategyName: 'Financial Data Masking Subset',
-    // obsfucationControlId: 'Financial Data Masking',
-    obsfucationControlDescription:
-      'Mask utility financial data for safe use in test and development environments.',
-  },
-  {
-    jobControlId: 'JC-98763',
-    API_NAME: 'OBF_EXECUTE_MAIN_JOB_CISADM',
-    jobControlName: 'Person Entity Anonymization – Pre-Prod',
-    jobControlDescription:
-      'Anonymize persons for secure pre-production and testing.',
-    lastTriggeredOn: '25/04/2025 08:11:09AM',
-    // subsetPlanStrategyName: 'Person Entity Anonymization Subset',
-    obsfucationControlId: 'Person Entity Anonymization',
-    obsfucationControlDescription:
-      'Anonymize persons for secure pre-production and testing.',
   },
   {
     jobControlId: 'JC-98762',
@@ -1054,281 +1054,6 @@ const ELEMENT_DATA_JOB_CONTROL: JobDataControlElement[] = [
 const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
   {
     jobId: 'RUN-98765',
-    jobName: 'Membership & Policy Data Obfuscation',
-    subsetStrategyPlanName: 'Memebership & Policy Data Subset Strategy Plan',
-    jobDescription:
-      'Masks sensitive details in customer memberships, policies, and eligibility for staging.',
-    triggeredOn: (() => {
-      const date = new Date();
-      const month = (date.getMonth() + 1).toString().padStart(2, '0');
-      const day = date.getDate().toString().padStart(2, '0');
-      const year = date.getFullYear();
-      const hours = date.getHours() % 12 || 12;
-      const minutes = date.getMinutes().toString().padStart(2, '0');
-      const seconds = date.getSeconds().toString().padStart(2, '0');
-      const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
-
-      return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
-    })(),
-    status: 'in-progress',
-    obsfucationControlName: 'Membership & Policy Data Obfuscation',
-    progress: 0,
-    tasks: [
-      {
-        taskId: 'TASK-55678900',
-        taskDescription: 'CopySchemaAndData',
-        status: 'In Progress',
-        // Format the startTime consistently with endTime
-        startTime: (() => {
-          const date = new Date();
-          const month = (date.getMonth() + 1).toString().padStart(2, '0');
-          const day = date.getDate().toString().padStart(2, '0');
-          const year = date.getFullYear();
-          const hours = date.getHours() % 12 || 12;
-          const minutes = date.getMinutes().toString().padStart(2, '0');
-          const seconds = date.getSeconds().toString().padStart(2, '0');
-          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
-
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
-        })(),
-        endTime: null,
-        message: [
-          {
-            name: 'Copy Schema And Data is Successful',
-          },
-        ],
-      },
-      {
-        taskId: 'TASK-55678901',
-        taskDescription: 'CreateProceduresAndFunctions',
-        status: 'In Progress',
-        startTime: (() => {
-          const date = new Date();
-          const month = (date.getMonth() + 1).toString().padStart(2, '0');
-          const day = date.getDate().toString().padStart(2, '0');
-          const year = date.getFullYear();
-          const hours = date.getHours() % 12 || 12;
-          const minutes = date.getMinutes().toString().padStart(2, '0');
-          const seconds = date.getSeconds().toString().padStart(2, '0');
-          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
-
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
-        })(),
-        endTime: null,
-        message: [
-          {
-            name: 'Create Procedures And Functions is Successful',
-          },
-        ],
-      },
-      {
-        taskId: 'TASK-55678902',
-        taskDescription: 'CreateSubsetScript',
-        status: 'In Progress',
-        startTime: (() => {
-          const date = new Date();
-          const month = (date.getMonth() + 1).toString().padStart(2, '0');
-          const day = date.getDate().toString().padStart(2, '0');
-          const year = date.getFullYear();
-          const hours = date.getHours() % 12 || 12;
-          const minutes = date.getMinutes().toString().padStart(2, '0');
-          const seconds = date.getSeconds().toString().padStart(2, '0');
-          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
-
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
-        })(),
-        endTime: null,
-
-        message: [{ name: 'Create Masking Script is Successful' }],
-      },
-      {
-        taskId: 'TASK-55678903',
-        taskDescription: 'CI_ACCT-Based Data Subsetting',
-        status: 'In Progress',
-        startTime: (() => {
-          const date = new Date();
-          const month = (date.getMonth() + 1).toString().padStart(2, '0');
-          const day = date.getDate().toString().padStart(2, '0');
-          const year = date.getFullYear();
-          const hours = date.getHours() % 12 || 12;
-          const minutes = date.getMinutes().toString().padStart(2, '0');
-          const seconds = date.getSeconds().toString().padStart(2, '0');
-          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
-
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
-        })(),
-        endTime: null,
-
-        message: [{ name: "Subsetting completed using 'CI_ACCT' root table'" }],
-      },
-
-      {
-        taskId: 'TASK-55678904',
-        taskDescription: "ObfuscateTable-'CI_PER'",
-        status: 'In Progress',
-        startTime: (() => {
-          const date = new Date();
-          const month = (date.getMonth() + 1).toString().padStart(2, '0');
-          const day = date.getDate().toString().padStart(2, '0');
-          const year = date.getFullYear();
-          const hours = date.getHours() % 12 || 12;
-          const minutes = date.getMinutes().toString().padStart(2, '0');
-          const seconds = date.getSeconds().toString().padStart(2, '0');
-          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
-
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
-        })(),
-        endTime: null,
-        recordsProcessed: 500,
-        message: [
-          { name: 'FAKER applied on EMAILID column.' },
-          { name: 'STARIFY applied on CITY column.' },
-          { name: 'FAKER applied on ADDRESS column.' },
-          { name: 'REPLACE_WITH_CONSTANT applied on LANGUAGE_CD column.' },
-          { name: 'RANDOMIZE applied on POSTAL column.' },
-        ],
-      },
-
-      {
-        taskId: 'TASK-55678905',
-        taskDescription: "ObfuscateTable-'CI_PER_ADDR_SEAS'",
-        status: 'Pending',
-        startTime: (() => {
-          const date = new Date();
-          const month = (date.getMonth() + 1).toString().padStart(2, '0');
-          const day = date.getDate().toString().padStart(2, '0');
-          const year = date.getFullYear();
-          const hours = date.getHours() % 12 || 12;
-          const minutes = date.getMinutes().toString().padStart(2, '0');
-          const seconds = date.getSeconds().toString().padStart(2, '0');
-          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
-
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
-        })(),
-        endTime: null,
-        recordsProcessed: 5,
-        message: [{ name: 'FAKER applied on  ADDRESS1 column.' }],
-      },
-      {
-        taskId: 'TASK-55678906',
-        taskDescription: "ObfuscateTable-'C1_ADDRESS'",
-        status: 'Pending',
-        startTime: (() => {
-          const date = new Date();
-          const month = (date.getMonth() + 1).toString().padStart(2, '0');
-          const day = date.getDate().toString().padStart(2, '0');
-          const year = date.getFullYear();
-          const hours = date.getHours() % 12 || 12;
-          const minutes = date.getMinutes().toString().padStart(2, '0');
-          const seconds = date.getSeconds().toString().padStart(2, '0');
-          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
-
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
-        })(),
-        endTime: null,
-        recordsProcessed: 1400,
-        message: [
-          { name: 'FAKER applied on ADDRESS1 column.' },
-          {
-            name: 'RANDOMIZE applied on POSTAL column.',
-          },
-          {
-            name: 'REPLACE_WITH_CONSTANT applied on CITY column.',
-          },
-          {
-            name: 'REPLACE_WITH_CONSTANT applied on STATE column.',
-          },
-        ],
-      },
-      {
-        taskId: 'TASK-55678907',
-        taskDescription: "ObfuscateTable-'CI_PER_NAME'",
-        status: 'Pending',
-        startTime: (() => {
-          const date = new Date();
-          const month = (date.getMonth() + 1).toString().padStart(2, '0');
-          const day = date.getDate().toString().padStart(2, '0');
-          const year = date.getFullYear();
-          const hours = date.getHours() % 12 || 12;
-          const minutes = date.getMinutes().toString().padStart(2, '0');
-          const seconds = date.getSeconds().toString().padStart(2, '0');
-          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
-
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
-        })(),
-        endTime: null,
-        recordsProcessed: 20,
-        message: [{ name: 'FAKER applied on  FULLNAME column.' }],
-      },
-      {
-        taskId: 'TASK-55678908',
-        taskDescription: "ObfuscateTable-'CI_PER_PHONE'",
-        status: 'Pending',
-        startTime: (() => {
-          const date = new Date();
-          const month = (date.getMonth() + 1).toString().padStart(2, '0');
-          const day = date.getDate().toString().padStart(2, '0');
-          const year = date.getFullYear();
-          const hours = date.getHours() % 12 || 12;
-          const minutes = date.getMinutes().toString().padStart(2, '0');
-          const seconds = date.getSeconds().toString().padStart(2, '0');
-          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
-
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
-        })(),
-        endTime: null,
-        recordsProcessed: 30,
-        message: [{ name: 'FAKER applied on  PHONE column.' }],
-      },
-      {
-        taskId: 'TASK-55678909',
-        taskDescription: "ObfuscateTable-'CI_PER_ID'",
-        status: 'Pending',
-        startTime: (() => {
-          const date = new Date();
-          const month = (date.getMonth() + 1).toString().padStart(2, '0');
-          const day = date.getDate().toString().padStart(2, '0');
-          const year = date.getFullYear();
-          const hours = date.getHours() % 12 || 12;
-          const minutes = date.getMinutes().toString().padStart(2, '0');
-          const seconds = date.getSeconds().toString().padStart(2, '0');
-          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
-
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
-        })(),
-        endTime: null,
-        recordsProcessed: 20,
-        message: [{ name: 'FAKER applied on PER_ID_NBR column.' }],
-      },
-      {
-        taskId: 'TASK-55678910',
-        taskDescription: "ObfuscateTable-'CI_PER_CHAR'",
-        status: 'Pending',
-        startTime: (() => {
-          const date = new Date();
-          const month = (date.getMonth() + 1).toString().padStart(2, '0');
-          const day = date.getDate().toString().padStart(2, '0');
-          const year = date.getFullYear();
-          const hours = date.getHours() % 12 || 12;
-          const minutes = date.getMinutes().toString().padStart(2, '0');
-          const seconds = date.getSeconds().toString().padStart(2, '0');
-          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
-
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
-        })(),
-        endTime: null,
-        recordsProcessed: 20,
-        message: [
-          { name: 'REPLACE_WITH_CONSTANT applied on CHAR_VAL column.' },
-          {
-            name: 'STARIFY, FAKER applied on ADHOC_CHAR_VAL column',
-          },
-        ],
-      },
-    ],
-  },
-  {
-    jobId: 'RUN-98764',
     jobName: 'Customer & Account Obfuscation',
     subsetStrategyPlanName: 'Customer & Account Data Subset Plan',
     jobDescription:
@@ -1421,7 +1146,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
     ],
   },
   {
-    jobId: 'RUN-98763',
+    jobId: 'RUN-98764',
     jobName: 'Billing Transactions - US Region',
     jobDescription:
       'Secures billing, adjustments, and payment data for performance testing.',
@@ -1697,6 +1422,281 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
     ],
   },
   {
+    jobId: 'RUN-98763',
+    jobName: 'Membership & Policy Data Obfuscation',
+    subsetStrategyPlanName: 'Memebership & Policy Data Subset Strategy Plan',
+    jobDescription:
+      'Masks sensitive details in customer memberships, policies, and eligibility for staging.',
+    triggeredOn: (() => {
+      const date = new Date();
+      const month = (date.getMonth() + 1).toString().padStart(2, '0');
+      const day = date.getDate().toString().padStart(2, '0');
+      const year = date.getFullYear();
+      const hours = date.getHours() % 12 || 12;
+      const minutes = date.getMinutes().toString().padStart(2, '0');
+      const seconds = date.getSeconds().toString().padStart(2, '0');
+      const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+      return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+    })(),
+    status: 'in-progress',
+    obsfucationControlName: 'Membership & Policy Data Obfuscation',
+    progress: 0,
+    tasks: [
+      {
+        taskId: 'TASK-55678900',
+        taskDescription: 'CopySchemaAndData',
+        status: 'In Progress',
+        // Format the startTime consistently with endTime
+        startTime: (() => {
+          const date = new Date();
+          const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const day = date.getDate().toString().padStart(2, '0');
+          const year = date.getFullYear();
+          const hours = date.getHours() % 12 || 12;
+          const minutes = date.getMinutes().toString().padStart(2, '0');
+          const seconds = date.getSeconds().toString().padStart(2, '0');
+          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+        })(),
+        endTime: null,
+        message: [
+          {
+            name: 'Copy Schema And Data is Successful',
+          },
+        ],
+      },
+      {
+        taskId: 'TASK-55678901',
+        taskDescription: 'CreateProceduresAndFunctions',
+        status: 'In Progress',
+        startTime: (() => {
+          const date = new Date();
+          const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const day = date.getDate().toString().padStart(2, '0');
+          const year = date.getFullYear();
+          const hours = date.getHours() % 12 || 12;
+          const minutes = date.getMinutes().toString().padStart(2, '0');
+          const seconds = date.getSeconds().toString().padStart(2, '0');
+          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+        })(),
+        endTime: null,
+        message: [
+          {
+            name: 'Create Procedures And Functions is Successful',
+          },
+        ],
+      },
+      {
+        taskId: 'TASK-55678902',
+        taskDescription: 'CreateSubsetScript',
+        status: 'In Progress',
+        startTime: (() => {
+          const date = new Date();
+          const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const day = date.getDate().toString().padStart(2, '0');
+          const year = date.getFullYear();
+          const hours = date.getHours() % 12 || 12;
+          const minutes = date.getMinutes().toString().padStart(2, '0');
+          const seconds = date.getSeconds().toString().padStart(2, '0');
+          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+        })(),
+        endTime: null,
+
+        message: [{ name: 'Create Masking Script is Successful' }],
+      },
+      {
+        taskId: 'TASK-55678903',
+        taskDescription: 'CI_ACCT-Based Data Subsetting',
+        status: 'In Progress',
+        startTime: (() => {
+          const date = new Date();
+          const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const day = date.getDate().toString().padStart(2, '0');
+          const year = date.getFullYear();
+          const hours = date.getHours() % 12 || 12;
+          const minutes = date.getMinutes().toString().padStart(2, '0');
+          const seconds = date.getSeconds().toString().padStart(2, '0');
+          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+        })(),
+        endTime: null,
+
+        message: [{ name: "Subsetting completed using 'CI_ACCT' root table'" }],
+      },
+
+      {
+        taskId: 'TASK-55678904',
+        taskDescription: "ObfuscateTable-'CI_PER'",
+        status: 'In Progress',
+        startTime: (() => {
+          const date = new Date();
+          const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const day = date.getDate().toString().padStart(2, '0');
+          const year = date.getFullYear();
+          const hours = date.getHours() % 12 || 12;
+          const minutes = date.getMinutes().toString().padStart(2, '0');
+          const seconds = date.getSeconds().toString().padStart(2, '0');
+          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+        })(),
+        endTime: null,
+        recordsProcessed: 500,
+        message: [
+          { name: 'FAKER applied on EMAILID column.' },
+          { name: 'STARIFY applied on CITY column.' },
+          { name: 'FAKER applied on ADDRESS column.' },
+          { name: 'REPLACE_WITH_CONSTANT applied on LANGUAGE_CD column.' },
+          { name: 'RANDOMIZE applied on POSTAL column.' },
+        ],
+      },
+
+      {
+        taskId: 'TASK-55678905',
+        taskDescription: "ObfuscateTable-'CI_PER_ADDR_SEAS'",
+        status: 'Pending',
+        startTime: (() => {
+          const date = new Date();
+          const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const day = date.getDate().toString().padStart(2, '0');
+          const year = date.getFullYear();
+          const hours = date.getHours() % 12 || 12;
+          const minutes = date.getMinutes().toString().padStart(2, '0');
+          const seconds = date.getSeconds().toString().padStart(2, '0');
+          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+        })(),
+        endTime: null,
+        recordsProcessed: 5,
+        message: [{ name: 'FAKER applied on  ADDRESS1 column.' }],
+      },
+      {
+        taskId: 'TASK-55678906',
+        taskDescription: "ObfuscateTable-'C1_ADDRESS'",
+        status: 'Pending',
+        startTime: (() => {
+          const date = new Date();
+          const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const day = date.getDate().toString().padStart(2, '0');
+          const year = date.getFullYear();
+          const hours = date.getHours() % 12 || 12;
+          const minutes = date.getMinutes().toString().padStart(2, '0');
+          const seconds = date.getSeconds().toString().padStart(2, '0');
+          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+        })(),
+        endTime: null,
+        recordsProcessed: 1400,
+        message: [
+          { name: 'FAKER applied on ADDRESS1 column.' },
+          {
+            name: 'RANDOMIZE applied on POSTAL column.',
+          },
+          {
+            name: 'REPLACE_WITH_CONSTANT applied on CITY column.',
+          },
+          {
+            name: 'REPLACE_WITH_CONSTANT applied on STATE column.',
+          },
+        ],
+      },
+      {
+        taskId: 'TASK-55678907',
+        taskDescription: "ObfuscateTable-'CI_PER_NAME'",
+        status: 'Pending',
+        startTime: (() => {
+          const date = new Date();
+          const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const day = date.getDate().toString().padStart(2, '0');
+          const year = date.getFullYear();
+          const hours = date.getHours() % 12 || 12;
+          const minutes = date.getMinutes().toString().padStart(2, '0');
+          const seconds = date.getSeconds().toString().padStart(2, '0');
+          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+        })(),
+        endTime: null,
+        recordsProcessed: 20,
+        message: [{ name: 'FAKER applied on  FULLNAME column.' }],
+      },
+      {
+        taskId: 'TASK-55678908',
+        taskDescription: "ObfuscateTable-'CI_PER_PHONE'",
+        status: 'Pending',
+        startTime: (() => {
+          const date = new Date();
+          const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const day = date.getDate().toString().padStart(2, '0');
+          const year = date.getFullYear();
+          const hours = date.getHours() % 12 || 12;
+          const minutes = date.getMinutes().toString().padStart(2, '0');
+          const seconds = date.getSeconds().toString().padStart(2, '0');
+          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+        })(),
+        endTime: null,
+        recordsProcessed: 30,
+        message: [{ name: 'FAKER applied on  PHONE column.' }],
+      },
+      {
+        taskId: 'TASK-55678909',
+        taskDescription: "ObfuscateTable-'CI_PER_ID'",
+        status: 'Pending',
+        startTime: (() => {
+          const date = new Date();
+          const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const day = date.getDate().toString().padStart(2, '0');
+          const year = date.getFullYear();
+          const hours = date.getHours() % 12 || 12;
+          const minutes = date.getMinutes().toString().padStart(2, '0');
+          const seconds = date.getSeconds().toString().padStart(2, '0');
+          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+        })(),
+        endTime: null,
+        recordsProcessed: 20,
+        message: [{ name: 'FAKER applied on PER_ID_NBR column.' }],
+      },
+      {
+        taskId: 'TASK-55678910',
+        taskDescription: "ObfuscateTable-'CI_PER_CHAR'",
+        status: 'Pending',
+        startTime: (() => {
+          const date = new Date();
+          const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const day = date.getDate().toString().padStart(2, '0');
+          const year = date.getFullYear();
+          const hours = date.getHours() % 12 || 12;
+          const minutes = date.getMinutes().toString().padStart(2, '0');
+          const seconds = date.getSeconds().toString().padStart(2, '0');
+          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+        })(),
+        endTime: null,
+        recordsProcessed: 20,
+        message: [
+          { name: 'REPLACE_WITH_CONSTANT applied on CHAR_VAL column.' },
+          {
+            name: 'STARIFY, FAKER applied on ADHOC_CHAR_VAL column',
+          },
+        ],
+      },
+    ],
+  },
+  {
     jobId: 'RUN-98762',
     jobName: 'Membership Plan Enrollments Obfuscation',
     jobDescription:
@@ -1834,6 +1834,30 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
 const ELEMENT_DATA_JOB_CONTROL_HEALTHCARE: JobDataControlElement[] = [
   {
     jobControlId: 'JC-98765',
+    jobControlName: 'Customer & Account Obfuscation',
+    API_NAME: 'DO_EXEC_ARCHDEV_2_SS_JOB',
+    jobControlDescription:
+      'Obfuscates personally identifiable information (PII) in customer and account entities.',
+    subsetPlanStrategyName: 'Customer & Account Subset',
+    lastTriggeredOn: '28/04/2025 07:33:22AM',
+    // obsfucationControlId: 'Customer & Account Obfuscation',
+    obsfucationControlDescription:
+      'Obfuscates personally identifiable information (PII) in customer and account entities.',
+  },
+  {
+    jobControlId: 'JC-98764',
+    jobControlName: 'Billing Transactions - US Region',
+    API_NAME: 'DO_EXEC_ARCHDEV_3_OBF_JOB',
+    jobControlDescription:
+      'Secures billing, adjustments, and payment data for performance testing.',
+    // subsetPlanStrategyName: 'Billing Transactions - US Region',
+    lastTriggeredOn: '25/04/2025 08:11:09AM',
+    obsfucationControlId: 'Billing Transactions - US Region',
+    obsfucationControlDescription:
+      'Secures billing, adjustments, and payment data for performance testing.',
+  },
+  {
+    jobControlId: 'JC-98763',
     jobControlName: 'Membership & Policy Data Obfuscation',
     API_NAME: 'DO_EXEC_ARCHDEV_1_SS_OBF_JOB',
     jobControlDescription:
@@ -1854,30 +1878,6 @@ const ELEMENT_DATA_JOB_CONTROL_HEALTHCARE: JobDataControlElement[] = [
     obsfucationControlId: 'Membership & Policy Data Obfuscation',
     obsfucationControlDescription:
       'Masks sensitive details in customer memberships, policies, and eligibility for staging.',
-  },
-  {
-    jobControlId: 'JC-98764',
-    jobControlName: 'Customer & Account Obfuscation',
-    API_NAME: 'DO_EXEC_ARCHDEV_2_SS_JOB',
-    jobControlDescription:
-      'Obfuscates personally identifiable information (PII) in customer and account entities.',
-    subsetPlanStrategyName: 'Customer & Account Subset',
-    lastTriggeredOn: '28/04/2025 07:33:22AM',
-    // obsfucationControlId: 'Customer & Account Obfuscation',
-    obsfucationControlDescription:
-      'Obfuscates personally identifiable information (PII) in customer and account entities.',
-  },
-  {
-    jobControlId: 'JC-98763',
-    jobControlName: 'Billing Transactions - US Region',
-    API_NAME: 'DO_EXEC_ARCHDEV_3_OBF_JOB',
-    jobControlDescription:
-      'Secures billing, adjustments, and payment data for performance testing.',
-    // subsetPlanStrategyName: 'Billing Transactions - US Region',
-    lastTriggeredOn: '25/04/2025 08:11:09AM',
-    obsfucationControlId: 'Billing Transactions - US Region',
-    obsfucationControlDescription:
-      'Secures billing, adjustments, and payment data for performance testing.',
   },
   {
     jobControlId: 'JC-98762',

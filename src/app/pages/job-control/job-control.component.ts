@@ -57,17 +57,19 @@ export class JobControlComponent implements OnInit, OnDestroy {
     'Billing & Financial History',
     'Support Interaction Data Masking',
     'Outage Data Anonymization',
+    'Membership & Policy Subset',
   ];
   // healthcare options
   subsetControlOptionsHealthcare = [
     'No selection',
     'Membership & Policy Data Obfuscation',
-    'Customer & Account Obfuscation',
+    'Customer & Account Subset',
     'Billing Transactions - US Region',
     'Membership Plan Enrollments Obfuscation',
     'Coverage & Benefits Obfuscation - Prod',
     'Claim Details Obfuscation - EU',
     'Claims Payments & Payouts - AUS',
+    'Membership & Policy Subset',
   ];
 
   selectedObsControl = 'No selection'; // Default selected value
@@ -102,6 +104,13 @@ export class JobControlComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    // set dropdown options
+
+    // if (
+    //   this.jobControlDetails.jobControlName === 'Utility Account Obfuscation'
+    // ) {
+    //   // alert('Utility Account Obfuscation');
+    // }
     // Extract domain from route parameters
     this.route.params.subscribe((params) => {
       if (params['domain']) {
@@ -283,7 +292,12 @@ export class JobControlComponent implements OnInit, OnDestroy {
   }
 
   openDrawer(element: any, isHidden?: boolean) {
+    console.log('element', element);
+
     this.isHidden = false;
+    this.selectedSubsetStrategy = element.subsetPlanStrategyName;
+    this.selectedObsControl = element.obsfucationControlId;
+    this.selectedObsControlHealthcare = element.obsfucationControlId;
     this.jobControlDetails = element;
     this.drawer.open();
   }

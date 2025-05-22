@@ -294,31 +294,6 @@ const ELEMENT_DATA: JobElement[] = [
               },
             ],
           },
-          {
-            taskId: 'TASK-55678190',
-            taskDescription: 'Anonymizing addresses',
-            status: 'Failed',
-            errorMessage:
-              'RUN-98763 `SQL Error: ORA-00904: "EMAILID": invalid identifier`',
-            startTime: (() => {
-              const date = new Date();
-              const month = (date.getMonth() + 1).toString().padStart(2, '0');
-              const day = date.getDate().toString().padStart(2, '0');
-              const year = date.getFullYear();
-              const hours = date.getHours() % 12 || 12;
-              const minutes = date.getMinutes().toString().padStart(2, '0');
-              const seconds = date.getSeconds().toString().padStart(2, '0');
-              const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
-
-              return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
-            })(),
-            endTime: null,
-            message: [
-              {
-                name: 'SQL Error: ORA-00904: "EMAILID": invalid identifier https://docs.oracle.com/error-help/db/ora-00904/00904. 00000 - "%s: invalid identifier"',
-              },
-            ],
-          },
         ],
       },
     ],

@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 const ELEMENT_DATA: any[] = [
   {
     obsControlId: 'SP-98765',
-    obsControlName: 'Utility Account Obfuscation',
+    obsControlName: 'Utility Account Subset Plan',
     obsControlDescription:
       'Obfuscate utility accounts for non-production environments.',
     createdBy: 'Miller Smith',
@@ -48,7 +48,7 @@ const ELEMENT_DATA: any[] = [
   },
   {
     obsControlId: 'SP-98762',
-    obsControlName: 'Field Activity Data Obfuscation',
+    obsControlName: 'Field Activity Data Subset Plan',
     obsControlDescription:
       'Obfuscate field activity data for development/test usage.',
     createdBy: 'Chris Brown',
@@ -108,7 +108,7 @@ const ELEMENT_DATA: any[] = [
 const ELEMENT_DATA_HEALTHCARE: any[] = [
   {
     obsControlId: 'SP-98765',
-    obsControlName: 'Membership & Policy Data Obfuscation',
+    obsControlName: 'Membership & Policy Data Subset Plan',
     obsControlDescription:
       'Masks sensitive details in customer memberships, policies, and eligibility for staging.',
     createdBy: 'Miller Smith',
@@ -123,9 +123,9 @@ const ELEMENT_DATA_HEALTHCARE: any[] = [
   },
   {
     obsControlId: 'SP-98764',
-    obsControlName: 'Customer & Account Obfuscation',
+    obsControlName: 'Customer & Account Subset Plan',
     obsControlDescription:
-      'Obfuscates personally identifiable information (PII) in customer and account entities.',
+      'Extracts personally identifiable information (PII) in customer and account entities.',
     createdBy: 'Smith Wilson',
     details: {
       name: 'Testing',
@@ -153,9 +153,9 @@ const ELEMENT_DATA_HEALTHCARE: any[] = [
   },
   {
     obsControlId: 'SP-98762',
-    obsControlName: 'Membership Plan Enrollments Obfuscation',
+    obsControlName: 'Membership Plan Enrollments Subset Plan',
     obsControlDescription:
-      'Anonymizes enrollment details, plan types, and coverage start/end dates.',
+      'Extracts enrollment data , plan types, and coverage start/end dates.',
     createdBy: 'Chris Brown',
     details: {
       name: 'Testing',
@@ -168,9 +168,9 @@ const ELEMENT_DATA_HEALTHCARE: any[] = [
   },
   {
     obsControlId: 'SP-98761',
-    obsControlName: 'Coverage & Benefits Obfuscation - Prod',
+    obsControlName: 'Coverage & Benefits Subset Plan - Prod',
     obsControlDescription:
-      'Masks insurance coverage data, benefits, and associated financial limits.',
+      'Extract subset insurance coverage data, benefits, and associated financial limits.',
     createdBy: 'Maria Garcia',
     details: {
       name: 'Testing',
@@ -183,9 +183,9 @@ const ELEMENT_DATA_HEALTHCARE: any[] = [
   },
   {
     obsControlId: 'SP-98760',
-    obsControlName: 'Claim Details Obfuscation - EU',
+    obsControlName: 'Claim Details Subset Plan - EU',
     obsControlDescription:
-      'Obfuscates claim headers and line items, including statuses and adjudication outcomes.',
+      'Extracts claim headers and line items, including statuses and adjudication outcomes.',
     createdBy: 'Rodriguez V',
     details: {
       name: 'Testing',
@@ -200,7 +200,7 @@ const ELEMENT_DATA_HEALTHCARE: any[] = [
     obsControlId: 'SP-98759',
     obsControlName: 'Claims Payments & Payouts - AUS',
     obsControlDescription:
-      'Anonymizes financial disbursements, payment references, and claim resolution info.',
+      'Extracts financial disbursements data, payment references, and claim resolution info.',
     createdBy: 'Martinez Sofia',
     details: {
       name: 'Testing',

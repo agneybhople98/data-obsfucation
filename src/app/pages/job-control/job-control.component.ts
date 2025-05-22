@@ -50,26 +50,26 @@ export class JobControlComponent implements OnInit, OnDestroy {
 
   subsetControlOptions = [
     'No selection',
-    'Utility Account Obfuscation',
-    'Financial Data Masking',
+    'Utility Account Subset Plan',
+    'Financial Data Extraction',
     'Person Entity Anonymization',
-    'Field Activity Data Obfuscation',
+    'Field Activity Data Subse',
     'Billing & Financial History',
-    'Support Interaction Data Masking',
+    'Support Interaction Data Extraction',
     'Outage Data Anonymization',
-    'Membership & Policy Subset',
+    'Membership & Policy Subset Plan',
   ];
   // healthcare options
   subsetControlOptionsHealthcare = [
     'No selection',
-    'Membership & Policy Data Obfuscation',
+    'Membership & Policy Data Subset Plan',
     'Customer & Account Subset',
     'Billing Transactions - US Region',
-    'Membership Plan Enrollments Obfuscation',
+    'Membership Plan Enrollments Subset Plan',
     'Coverage & Benefits Obfuscation - Prod',
-    'Claim Details Obfuscation - EU',
+    'Claim Details Subset Plan - EU',
     'Claims Payments & Payouts - AUS',
-    'Membership & Policy Subset',
+    'Membership & Policy Subset Plan',
   ];
 
   selectedObsControl = 'No selection'; // Default selected value

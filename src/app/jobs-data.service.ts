@@ -962,7 +962,7 @@ const ELEMENT_DATA_JOB_CONTROL: JobDataControlElement[] = [
     jobControlDescription:
       'Obfuscate utility accounts for non-production environments.',
 
-    subsetPlanStrategyName: 'Utility Account Subset',
+    subsetPlanStrategyName: 'Utility Account Subset Plan',
     lastTriggeredOn: (() => {
       const date = new Date();
       const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -985,7 +985,7 @@ const ELEMENT_DATA_JOB_CONTROL: JobDataControlElement[] = [
     jobControlName: 'Field Activity Data Obfuscation – Dev/Test',
     jobControlDescription:
       'Obfuscate field activity data for development/test usage.',
-    subsetPlanStrategyName: 'Field Activity Data Obfuscation Subset',
+    subsetPlanStrategyName: 'Field Activity Data Obfuscation Subset Plan',
     lastTriggeredOn: '20/04/2025 08:22:10AM',
     obsfucationControlId: 'Field Activity Data Obfuscation',
     obsfucationControlDescription:
@@ -1837,7 +1837,7 @@ const ELEMENT_DATA_JOB_CONTROL_HEALTHCARE: JobDataControlElement[] = [
     API_NAME: 'DO_EXEC_ARCHDEV_1_SS_OBF_JOB',
     jobControlDescription:
       'Masks sensitive details in customer memberships, policies, and eligibility for staging.',
-    subsetPlanStrategyName: 'Membership & Policy Subset',
+    subsetPlanStrategyName: 'Membership & Policy Subset Plan',
     lastTriggeredOn: (() => {
       const date = new Date();
       const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -1859,7 +1859,7 @@ const ELEMENT_DATA_JOB_CONTROL_HEALTHCARE: JobDataControlElement[] = [
     jobControlName: 'Membership Plan Enrollments Obfuscation',
     jobControlDescription:
       'Anonymizes enrollment details, plan types, and coverage start/end dates.',
-    subsetPlanStrategyName: 'Membership Plan Enrollments Obfuscation',
+    subsetPlanStrategyName: 'Membership Plan Enrollments Subset Plan',
     lastTriggeredOn: '20/04/2025 08:22:10AM',
     obsfucationControlId: 'Membership Plan Enrollments Obfuscation',
     obsfucationControlDescription:

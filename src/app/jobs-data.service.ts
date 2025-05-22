@@ -2040,8 +2040,11 @@ export class JobsDataService {
         const taskCount = job.tasks.length;
         const updateObservables: Observable<JobElement | undefined>[] = [];
 
+        // Special timing for RUN-98764 to complete in 20 seconds
+        const delayPerTask = jobId === 'RUN-98765' ? 1800 : 400; // ~1818ms per task for 20 second total
+
         for (let i = 0; i < taskCount; i++) {
-          const updateObservable = timer(400 * (i + 1)).pipe(
+          const updateObservable = timer(delayPerTask * (i + 1)).pipe(
             map(() => this.updateSingleTaskStatus(jobId, i))
           );
           updateObservables.push(updateObservable);

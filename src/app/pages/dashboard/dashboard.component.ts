@@ -53,7 +53,6 @@ export class DashboardComponent implements AfterViewInit, OnInit, OnDestroy {
 
   ngOnInit(): void {
     // Subscribe to route params
-
     this.route.params.subscribe((params) => {
       this.currentDomain = params['domain'] || 'utility';
     });
@@ -68,7 +67,9 @@ export class DashboardComponent implements AfterViewInit, OnInit, OnDestroy {
     // Subscribe to job data changes
     this.subscription.add(
       this.jobService.jobsData$.subscribe((jobs) => {
-        this.dataSource.data = jobs;
+        // Sort the jobs data before assigning to dataSource
+        const sortedJobs = this.sortJobsByProgress(jobs);
+        this.dataSource.data = sortedJobs;
         if (this.paginator) {
           this.dataSource.paginator = this.paginator;
         }
@@ -79,6 +80,38 @@ export class DashboardComponent implements AfterViewInit, OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
+  }
+
+  /**
+   * Sort jobs by progress: 100% first, then in-progress, then others
+   */
+  private sortJobsByProgress(jobs: JobElement[]): JobElement[] {
+    return jobs.sort((a, b) => {
+      // Priority order: 100% progress first, then in-progress, then others
+      const getPriority = (job: JobElement): number => {
+        if (job.progress === 100) return 1; // Highest priority
+        if (job.status === 'in-progress') return 2; // Second priority
+        return 3; // Lowest priority for failed, pending, etc.
+      };
+
+      const priorityA = getPriority(a);
+      const priorityB = getPriority(b);
+
+      // If priorities are different, sort by priority
+      if (priorityA !== priorityB) {
+        return priorityA - priorityB;
+      }
+
+      // If same priority, sort by progress percentage (descending)
+      if (a.progress !== b.progress) {
+        return b.progress - a.progress;
+      }
+
+      // If same progress, sort by triggered date (most recent first)
+      return (
+        new Date(b.triggeredOn).getTime() - new Date(a.triggeredOn).getTime()
+      );
+    });
   }
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -104,6 +137,7 @@ export class DashboardComponent implements AfterViewInit, OnInit, OnDestroy {
     'progress',
     'symbol',
   ];
+
   jobs = [
     {
       name: 'Total Jobs',
@@ -147,6 +181,13 @@ export class DashboardComponent implements AfterViewInit, OnInit, OnDestroy {
         data.jobDescription.toLowerCase().includes(filter)
       );
     };
+
+    // Re-sort the filtered data
+    if (this.dataSource.filteredData) {
+      this.dataSource.filteredData = this.sortJobsByProgress(
+        this.dataSource.filteredData
+      );
+    }
   }
 
   openJobDetails(jobId: string) {

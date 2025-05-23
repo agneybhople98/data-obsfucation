@@ -51,6 +51,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { ToggleButtonComponent } from './components/toggle-button/toggle-button.component';
+import { MaintenancePageComponent } from './pages/maintenance-page/maintenance-page.component';
 
 @NgModule({
   declarations: [
@@ -74,6 +75,7 @@ import { ToggleButtonComponent } from './components/toggle-button/toggle-button.
     CreateSubsetComponent,
     QueryBuilderComponent,
     ToggleButtonComponent,
+    MaintenancePageComponent,
   ],
   imports: [
     FormsModule,

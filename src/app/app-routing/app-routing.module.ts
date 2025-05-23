@@ -10,12 +10,22 @@ import { RestoreComponent } from '../pages/restore/restore.component';
 import { SubsetPlanComponent } from '../pages/subset-plan/subset-plan.component';
 import { RouteResolverService } from '../services/route-resolver.service';
 import { CreateSubsetComponent } from '../pages/create-subset/create-subset.component';
+import { MaintenancePageComponent } from '../pages/maintenance-page/maintenance-page.component';
 
-const routes: Routes = [
+// Set this to true to enable maintenance mode
+const MAINTENANCE_MODE = true;
+
+const maintenanceRoutes: Routes = [
+  { path: 'maintenance', component: MaintenancePageComponent },
+  { path: '**', redirectTo: '/maintenance' },
+];
+
+const normalRoutes: Routes = [
   // Domain as the first segment to ensure it's captured for all routes
   {
     path: ':domain',
     resolve: { data: RouteResolverService },
+
     children: [
       {
         path: 'dashboard',
@@ -67,6 +77,8 @@ const routes: Routes = [
   // Unknown paths redirect to utility dashboard
   { path: '**', redirectTo: '/utility/dashboard' },
 ];
+
+const routes: Routes = MAINTENANCE_MODE ? maintenanceRoutes : normalRoutes;
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

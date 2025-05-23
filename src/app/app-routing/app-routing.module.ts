@@ -13,7 +13,7 @@ import { CreateSubsetComponent } from '../pages/create-subset/create-subset.comp
 import { MaintenancePageComponent } from '../pages/maintenance-page/maintenance-page.component';
 
 // Set this to true to enable maintenance mode
-const MAINTENANCE_MODE = true;
+const MAINTENANCE_MODE = false;
 
 const maintenanceRoutes: Routes = [
   { path: 'maintenance', component: MaintenancePageComponent },

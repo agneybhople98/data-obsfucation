@@ -1847,15 +1847,7 @@ export const TABLE_DATA_UTILITY: TableData = {
               selectedObfRule: '',
               inputValue: '',
             },
-          ],
-        },
-        {
-          columnName: 'CONTACT_VALUE',
-          displayName: 'CONTACT_VALUE',
-          obfStrategy: '',
-          obfRules: {},
-          isExpandable: true,
-          options: [
+
             {
               selectedOnCondition: 'COMM_RTE_TYPE_CD',
               selectedOperator: '=',
@@ -1874,6 +1866,7 @@ export const TABLE_DATA_UTILITY: TableData = {
             },
           ],
         },
+
         {
           columnName: 'PER_ID',
           displayName: 'PER_ID',

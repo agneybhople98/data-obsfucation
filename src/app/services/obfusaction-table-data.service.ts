@@ -1907,9 +1907,9 @@ export const TABLE_DATA_UTILITY: TableData = {
         {
           columnName: 'PER_ID_NBR',
           displayName: 'Per Id NBR',
-          obfStrategy: 'FAKER',
+          obfStrategy: undefined,
           obfRules: {
-            first: 'SSN',
+            first: undefined,
             second: undefined,
           },
           isExpandable: true,
@@ -1977,9 +1977,9 @@ export const TABLE_DATA_UTILITY: TableData = {
         {
           columnName: 'CONTACT_VALUE',
           displayName: 'CONTACT_VALUE',
-          obfStrategy: 'FAKER',
+          obfStrategy: undefined,
           obfRules: {
-            first: 'PHONE',
+            first: undefined,
             second: undefined,
           },
           isExpandable: true,
@@ -2000,18 +2000,7 @@ export const TABLE_DATA_UTILITY: TableData = {
               selectedObfRule: '',
               inputValue: '',
             },
-          ],
-        },
-        {
-          columnName: 'CONTACT_VALUE',
-          displayName: 'CONTACT_VALUE',
-          obfStrategy: 'FAKER',
-          obfRules: {
-            first: 'EMAIL',
-            second: undefined,
-          },
-          isExpandable: true,
-          options: [
+
             {
               selectedOnCondition: 'COMM_RTE_TYPE_CD',
               selectedOperator: '=',
@@ -2030,6 +2019,7 @@ export const TABLE_DATA_UTILITY: TableData = {
             },
           ],
         },
+
         {
           columnName: 'PER_ID',
           displayName: 'PER_ID',
@@ -2155,10 +2145,10 @@ export const TABLE_DATA_UTILITY: TableData = {
         {
           columnName: 'CHAR_VAL',
           displayName: 'Char Val',
-          obfStrategy: 'REPLACE_WITH_CONSTANT',
+          obfStrategy: undefined,
           isExpandable: true,
           obfRules: {
-            first: 'N',
+            first: undefined,
             second: undefined,
           },
           options: [
@@ -2185,9 +2175,9 @@ export const TABLE_DATA_UTILITY: TableData = {
           columnName: 'ADHOC_CHAR_VAL',
           displayName: 'Adhoc Char Val',
           isExpandable: true,
-          obfStrategy: 'FAKER',
+          obfStrategy: '',
           obfRules: {
-            first: 'DATE',
+            first: '',
             second: undefined,
           },
           options: [

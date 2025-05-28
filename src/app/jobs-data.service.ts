@@ -934,7 +934,7 @@ const ELEMENT_DATA: JobElement[] = [
 const ELEMENT_DATA_JOB_CONTROL: JobDataControlElement[] = [
   {
     jobControlId: 'JC-98765',
-    API_NAME: 'OBF_EXECUTE_MAIN_JOB_CISADM',
+    API_NAME: 'DO_EXEC_UTILITY_2_SS_JOB',
     jobControlName: 'Financial Data Masking – Utility Systems',
     jobControlDescription:
       'Mask utility financial data for safe use in test and development environments.',
@@ -946,7 +946,7 @@ const ELEMENT_DATA_JOB_CONTROL: JobDataControlElement[] = [
   },
   {
     jobControlId: 'JC-98764',
-    API_NAME: 'OBF_EXECUTE_MAIN_JOB_CISADM',
+    API_NAME: 'DO_EXEC_UTILITY_3_OBF_JOB',
     jobControlName: 'Person Entity Anonymization – Pre-Prod',
     jobControlDescription:
       'Anonymize persons for secure pre-production and testing.',
@@ -958,7 +958,7 @@ const ELEMENT_DATA_JOB_CONTROL: JobDataControlElement[] = [
   },
   {
     jobControlId: 'JC-98763',
-    API_NAME: 'OBF_EXECUTE_MAIN_JOB_CISADM',
+    API_NAME: 'DO_EXEC_UTILITY_1_SS_OBF_JOB',
     jobControlName: 'Utility Account Obfuscation – Non-Prod',
     jobControlDescription:
       'Obfuscate utility accounts for non-production environments.',

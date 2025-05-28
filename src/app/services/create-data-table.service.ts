@@ -1836,7 +1836,7 @@ export const TABLE_DATA_UTILITY: TableData = {
               selectedOperator: '=',
               selectedValue: 'HOMEPHONE',
               selectedObfStrategy: 'FAKER',
-              selectedObfRule: '',
+              selectedObfRule: 'PHONE',
               inputValue: '',
             },
             {
@@ -1844,7 +1844,7 @@ export const TABLE_DATA_UTILITY: TableData = {
               selectedOperator: '=',
               selectedValue: 'CELLPHONE',
               selectedObfStrategy: 'FAKER',
-              selectedObfRule: '',
+              selectedObfRule: 'PHONE',
               inputValue: '',
             },
 
@@ -1853,7 +1853,7 @@ export const TABLE_DATA_UTILITY: TableData = {
               selectedOperator: '=',
               selectedValue: 'PRIMARYEMAIL',
               selectedObfStrategy: 'FAKER',
-              selectedObfRule: '',
+              selectedObfRule: 'EMAIL',
               inputValue: '',
             },
             {
@@ -1861,7 +1861,7 @@ export const TABLE_DATA_UTILITY: TableData = {
               selectedOperator: '=',
               selectedValue: 'SECONDARYEMAIL',
               selectedObfStrategy: 'FAKER',
-              selectedObfRule: '',
+              selectedObfRule: 'EMAIL',
               inputValue: '',
             },
           ],

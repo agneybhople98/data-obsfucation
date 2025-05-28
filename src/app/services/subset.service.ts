@@ -4,8 +4,7 @@ const ELEMENT_DATA: any[] = [
   {
     obsControlId: 'SP-98765',
     obsControlName: 'Utility Account Subset Plan',
-    obsControlDescription:
-      'Masking utility accounts for non-production environments.',
+    obsControlDescription: 'Utility accounts for non-production environments.',
     createdBy: 'Miller Smith',
     details: {
       name: 'Testing',
@@ -18,9 +17,9 @@ const ELEMENT_DATA: any[] = [
   },
   {
     obsControlId: 'SP-98764',
-    obsControlName: 'Financial Data Masking',
+    obsControlName: 'Financial Data',
     obsControlDescription:
-      'Mask utility financial data for safe use in test and development environments.',
+      'Utility financial data for safe use in test and development environments.',
     createdBy: 'Smith Wilson',
     details: {
       name: 'Testing',
@@ -33,9 +32,9 @@ const ELEMENT_DATA: any[] = [
   },
   {
     obsControlId: 'SP-98763',
-    obsControlName: 'Person Entity Anonymization',
+    obsControlName: 'Person Entity',
     obsControlDescription:
-      'Anonymize persons for secure pre-production and testing.',
+      'Person Entity for secure pre-production and testing.',
     createdBy: 'Jonny Johnson',
     details: {
       name: 'Testing',
@@ -49,8 +48,7 @@ const ELEMENT_DATA: any[] = [
   {
     obsControlId: 'SP-98762',
     obsControlName: 'Field Activity Data Subset Plan',
-    obsControlDescription:
-      'Mask field activity data for development/test usage.',
+    obsControlDescription: 'Field activity data for development/test usage.',
     createdBy: 'Chris Brown',
     details: {
       name: 'Testing',
@@ -77,8 +75,8 @@ const ELEMENT_DATA: any[] = [
   },
   {
     obsControlId: 'SP-98760',
-    obsControlName: 'Support Interaction Data Masking',
-    obsControlDescription: 'Mask support tickets and customer interactions.',
+    obsControlName: 'Support Interaction Data',
+    obsControlDescription: 'Support tickets and customer interactions.',
     createdBy: 'Rodriguez V',
     details: {
       name: 'Testing',
@@ -91,7 +89,7 @@ const ELEMENT_DATA: any[] = [
   },
   {
     obsControlId: 'SP-98759',
-    obsControlName: 'Outage Data Anonymization',
+    obsControlName: 'Outage Data',
     obsControlDescription:
       'Extract claim headers and line items, including statuses and adjudication outcomes.',
     createdBy: 'Martinez Sofia',

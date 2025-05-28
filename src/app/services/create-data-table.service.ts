@@ -890,56 +890,7 @@ export const TABLE_DATA_HEATLHCARE: TableData = {
         },
       ],
     },
-    {
-      tableName: 'CI_PER_PHONE',
-      columns: [
-        {
-          columnName: 'PER_ID',
-          displayName: 'Person ID',
-          obfStrategy: undefined,
-          obfRules: {},
-        },
-        {
-          columnName: 'SEQ_NUM',
-          displayName: 'Sequence Number',
-          obfStrategy: undefined,
-          obfRules: {},
-        },
-        {
-          columnName: 'PHONE_TYPE_CD',
-          displayName: 'Phone Type Code',
-          obfStrategy: undefined,
-          obfRules: {},
-        },
-        {
-          columnName: 'COUNTRY_CODE',
-          displayName: 'Country Code',
-          obfStrategy: undefined,
-          obfRules: {},
-        },
-        {
-          columnName: 'PHONE',
-          displayName: 'Phone',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
-          },
-        },
-        {
-          columnName: 'EXTENSION',
-          displayName: 'Extension',
-          obfStrategy: undefined,
-          obfRules: {},
-        },
-        {
-          columnName: 'VERSION',
-          displayName: 'Version',
-          obfStrategy: undefined,
-          obfRules: {},
-        },
-      ],
-    },
+
     {
       tableName: 'C1_ADDRESS',
       columns: [
@@ -1545,6 +1496,56 @@ export const TABLE_DATA_UTILITY: TableData = {
         },
       ],
     },
+    {
+      tableName: 'CI_PER_PHONE',
+      columns: [
+        {
+          columnName: 'PER_ID',
+          displayName: 'Person ID',
+          obfStrategy: undefined,
+          obfRules: {},
+        },
+        {
+          columnName: 'SEQ_NUM',
+          displayName: 'Sequence Number',
+          obfStrategy: undefined,
+          obfRules: {},
+        },
+        {
+          columnName: 'PHONE_TYPE_CD',
+          displayName: 'Phone Type Code',
+          obfStrategy: undefined,
+          obfRules: {},
+        },
+        {
+          columnName: 'COUNTRY_CODE',
+          displayName: 'Country Code',
+          obfStrategy: undefined,
+          obfRules: {},
+        },
+        {
+          columnName: 'PHONE',
+          displayName: 'Phone',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'EXTENSION',
+          displayName: 'Extension',
+          obfStrategy: undefined,
+          obfRules: {},
+        },
+        {
+          columnName: 'VERSION',
+          displayName: 'Version',
+          obfStrategy: undefined,
+          obfRules: {},
+        },
+      ],
+    },
 
     {
       tableName: 'CI_PER_ADDR_SEAS',
@@ -1822,6 +1823,56 @@ export const TABLE_DATA_UTILITY: TableData = {
             first: undefined,
             second: undefined,
           },
+        },
+        {
+          columnName: 'CONTACT_VALUE',
+          displayName: 'CONTACT_VALUE',
+          obfStrategy: '',
+          obfRules: {},
+          isExpandable: true,
+          options: [
+            {
+              selectedOnCondition: 'COMM_RTE_TYPE_CD',
+              selectedOperator: '=',
+              selectedValue: 'HOMEPHONE',
+              selectedObfStrategy: 'FAKER',
+              selectedObfRule: '',
+              inputValue: '',
+            },
+            {
+              selectedOnCondition: 'COMM_RTE_TYPE_CD',
+              selectedOperator: '=',
+              selectedValue: 'CELLPHONE',
+              selectedObfStrategy: 'FAKER',
+              selectedObfRule: '',
+              inputValue: '',
+            },
+          ],
+        },
+        {
+          columnName: 'CONTACT_VALUE',
+          displayName: 'CONTACT_VALUE',
+          obfStrategy: '',
+          obfRules: {},
+          isExpandable: true,
+          options: [
+            {
+              selectedOnCondition: 'COMM_RTE_TYPE_CD',
+              selectedOperator: '=',
+              selectedValue: 'PRIMARYEMAIL',
+              selectedObfStrategy: 'FAKER',
+              selectedObfRule: '',
+              inputValue: '',
+            },
+            {
+              selectedOnCondition: 'COMM_RTE_TYPE_CD',
+              selectedOperator: '=',
+              selectedValue: 'SECONDARYEMAIL',
+              selectedObfStrategy: 'FAKER',
+              selectedObfRule: '',
+              inputValue: '',
+            },
+          ],
         },
         {
           columnName: 'PER_ID',

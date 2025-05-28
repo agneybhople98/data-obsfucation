@@ -107,6 +107,15 @@ export class ViewObfuscationPlanComponent implements OnInit {
 
   obfValues_UTILITY_CI_PER_CHAR_ADHOC_CHAR_VAL = ['C2MBTHDT'];
 
+  // dropdown for utility if CI_PER_CONTDET for ADHOC_CHAR_VAL
+
+  obfValues_UTILITY_CI_PER_CONTDET = [
+    'HOMEPHONE',
+    'CELLPHONE',
+    'PRIMARYEMAIL',
+    'SECONDARYEMAIL',
+  ];
+
   // dropdown for healthcare if CI_PER_CHAR for CHAR_VAL
 
   obfValues_HEALTHCARE_CI_PER_CHAR_CHAR_VAL = [
@@ -128,6 +137,7 @@ export class ViewObfuscationPlanComponent implements OnInit {
   ];
 
   conditions = [
+    'COMM_RTE_TYPE_CD',
     'CHAR_TYPE_CD',
     'CI_PER_CHAR',
     'CHAR_VAL',
@@ -158,6 +168,7 @@ export class ViewObfuscationPlanComponent implements OnInit {
   tableItemsUtility = [
     'CI_PER',
     'CI_PER_NAME',
+    'CI_PER_PHONE',
     'CI_PER_ADDR_SEAS',
     'CI_PER_CONTDET',
     'CI_PER_ID',
@@ -479,6 +490,9 @@ export class ViewObfuscationPlanComponent implements OnInit {
     else if (this.currentDomain === 'utility') {
       if (tableName === 'CI_PER_ID' && columnName === 'PER_ID_NBR') {
         options = this.obfValues_UTILITY_CI_PER_ID_FOR_PER_ID_NBR;
+      }
+      if (tableName === 'CI_PER_CONTDET' && columnName === 'CONTACT_VALUE') {
+        options = this.obfValues_UTILITY_CI_PER_CONTDET;
       } else if (tableName === 'CI_PER_CHAR') {
         if (columnName === 'CHAR_VAL') {
           options = this.obfValues_UTILITY_CI_PER_CHAR_CHAR_VAL;

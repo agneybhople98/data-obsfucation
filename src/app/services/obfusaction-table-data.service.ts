@@ -1329,33 +1329,33 @@ export const TABLE_DATA_UTILITY: TableData = {
             second: undefined,
           },
         },
-        {
-          columnName: 'ADDRESS2',
-          displayName: 'Address 2',
-          obfStrategy: 'FAKER',
-          obfRules: {
-            first: 'ADDRESS',
-            second: undefined,
-          },
-        },
-        {
-          columnName: 'ADDRESS3',
-          displayName: 'Address 3',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
-          },
-        },
-        {
-          columnName: 'ADDRESS4',
-          displayName: 'Address 4',
-          obfStrategy: undefined,
-          obfRules: {
-            first: undefined,
-            second: undefined,
-          },
-        },
+        // {
+        //   columnName: 'ADDRESS2',
+        //   displayName: 'Address 2',
+        //   obfStrategy: 'FAKER',
+        //   obfRules: {
+        //     first: 'ADDRESS',
+        //     second: undefined,
+        //   },
+        // },
+        // {
+        //   columnName: 'ADDRESS3',
+        //   displayName: 'Address 3',
+        //   obfStrategy: undefined,
+        //   obfRules: {
+        //     first: undefined,
+        //     second: undefined,
+        //   },
+        // },
+        // {
+        //   columnName: 'ADDRESS4',
+        //   displayName: 'Address 4',
+        //   obfStrategy: undefined,
+        //   obfRules: {
+        //     first: undefined,
+        //     second: undefined,
+        //   },
+        // },
         {
           columnName: 'CITY',
           displayName: 'City',
@@ -1549,6 +1549,151 @@ export const TABLE_DATA_UTILITY: TableData = {
           displayName: 'Entity Name Upper',
           obfStrategy: undefined,
           obfRules: {},
+        },
+      ],
+    },
+    {
+      tableName: 'CI_PER_PHONE',
+      columns: [
+        {
+          columnName: 'PER_ID',
+          displayName: 'Per Id',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'CHAR_TYPE_CD',
+          displayName: 'Char Type CD',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'ENTITY_NAME',
+          displayName: 'Entity Name',
+          obfStrategy: 'FAKER',
+          obfRules: {
+            first: 'FULL_NAME',
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'CHAR_VAL',
+          displayName: 'Char Val',
+          obfStrategy: undefined,
+          isExpandable: true,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+          options: [
+            {
+              selectedOnCondition: 'CHAR_TYPE_CD',
+              selectedOperator: '=',
+              selectedValue: 'C2M_SNR',
+              selectedObfStrategy: 'REPLACE_WITH_CONSTANT',
+              selectedObfRule: 'Y',
+              inputValue: '',
+            },
+          ],
+        },
+        {
+          columnName: 'EFFDT',
+          displayName: 'Effdt',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'ADHOC_CHAR_VAL',
+          displayName: 'Adhoc Char Val',
+          isExpandable: true,
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+          options: [
+            {
+              selectedOnCondition: 'CHAR_TYPE_CD',
+              selectedOperator: '=',
+              selectedValue: 'C2MBTHDT',
+              selectedObfStrategy: 'FAKER',
+              selectedObfRule: 'DATE',
+              inputValue: '',
+            },
+          ],
+        },
+
+        {
+          columnName: 'VERSION',
+          displayName: 'Version',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'CHAR_VAL_FK1',
+          displayName: 'Character Value FK 2',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'CHAR_VAL_FK2',
+          displayName: 'Character Value FK 2',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'CHAR_VAL_FK3',
+          displayName: 'Character Value FK 3',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'CHAR_VAL_FK4',
+          displayName: 'Character Value FK 4',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'CHAR_VAL_FK5',
+          displayName: 'Character Value FK 5',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'SRCH_CHAR_VAL',
+          displayName: 'Srch Char Val',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
         },
       ],
     },
@@ -1762,9 +1907,9 @@ export const TABLE_DATA_UTILITY: TableData = {
         {
           columnName: 'PER_ID_NBR',
           displayName: 'Per Id NBR',
-          obfStrategy: undefined,
+          obfStrategy: 'FAKER',
           obfRules: {
-            first: undefined,
+            first: 'SSN',
             second: undefined,
           },
           isExpandable: true,
@@ -1828,6 +1973,62 @@ export const TABLE_DATA_UTILITY: TableData = {
             first: undefined,
             second: undefined,
           },
+        },
+        {
+          columnName: 'CONTACT_VALUE',
+          displayName: 'CONTACT_VALUE',
+          obfStrategy: 'FAKER',
+          obfRules: {
+            first: 'PHONE',
+            second: undefined,
+          },
+          isExpandable: true,
+          options: [
+            {
+              selectedOnCondition: 'COMM_RTE_TYPE_CD',
+              selectedOperator: '=',
+              selectedValue: 'HOMEPHONE',
+              selectedObfStrategy: 'FAKER',
+              selectedObfRule: '',
+              inputValue: '',
+            },
+            {
+              selectedOnCondition: 'COMM_RTE_TYPE_CD',
+              selectedOperator: '=',
+              selectedValue: 'CELLPHONE',
+              selectedObfStrategy: 'FAKER',
+              selectedObfRule: '',
+              inputValue: '',
+            },
+          ],
+        },
+        {
+          columnName: 'CONTACT_VALUE',
+          displayName: 'CONTACT_VALUE',
+          obfStrategy: 'FAKER',
+          obfRules: {
+            first: 'EMAIL',
+            second: undefined,
+          },
+          isExpandable: true,
+          options: [
+            {
+              selectedOnCondition: 'COMM_RTE_TYPE_CD',
+              selectedOperator: '=',
+              selectedValue: 'PRIMARYEMAIL',
+              selectedObfStrategy: 'FAKER',
+              selectedObfRule: '',
+              inputValue: '',
+            },
+            {
+              selectedOnCondition: 'COMM_RTE_TYPE_CD',
+              selectedOperator: '=',
+              selectedValue: 'SECONDARYEMAIL',
+              selectedObfStrategy: 'FAKER',
+              selectedObfRule: '',
+              inputValue: '',
+            },
+          ],
         },
         {
           columnName: 'PER_ID',
@@ -1954,10 +2155,10 @@ export const TABLE_DATA_UTILITY: TableData = {
         {
           columnName: 'CHAR_VAL',
           displayName: 'Char Val',
-          obfStrategy: undefined,
+          obfStrategy: 'REPLACE_WITH_CONSTANT',
           isExpandable: true,
           obfRules: {
-            first: undefined,
+            first: 'N',
             second: undefined,
           },
           options: [
@@ -1984,9 +2185,9 @@ export const TABLE_DATA_UTILITY: TableData = {
           columnName: 'ADHOC_CHAR_VAL',
           displayName: 'Adhoc Char Val',
           isExpandable: true,
-          obfStrategy: undefined,
+          obfStrategy: 'FAKER',
           obfRules: {
-            first: undefined,
+            first: 'DATE',
             second: undefined,
           },
           options: [

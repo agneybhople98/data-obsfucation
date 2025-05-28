@@ -5,7 +5,7 @@ const ELEMENT_DATA: any[] = [
     obsControlId: 'SP-98765',
     obsControlName: 'Utility Account Subset Plan',
     obsControlDescription:
-      'Obfuscate utility accounts for non-production environments.',
+      'Masking utility accounts for non-production environments.',
     createdBy: 'Miller Smith',
     details: {
       name: 'Testing',
@@ -50,7 +50,7 @@ const ELEMENT_DATA: any[] = [
     obsControlId: 'SP-98762',
     obsControlName: 'Field Activity Data Subset Plan',
     obsControlDescription:
-      'Obfuscate field activity data for development/test usage.',
+      'Mask field activity data for development/test usage.',
     createdBy: 'Chris Brown',
     details: {
       name: 'Testing',
@@ -64,7 +64,7 @@ const ELEMENT_DATA: any[] = [
   {
     obsControlId: 'SP-98761',
     obsControlName: 'Billing & Financial History',
-    obsControlDescription: 'Obfuscates billing and financial history data.',
+    obsControlDescription: 'Extract billing and financial history data.',
     createdBy: 'Maria Garcia',
     details: {
       name: 'Testing',
@@ -93,7 +93,7 @@ const ELEMENT_DATA: any[] = [
     obsControlId: 'SP-98759',
     obsControlName: 'Outage Data Anonymization',
     obsControlDescription:
-      'Obfuscates claim headers and line items, including statuses and adjudication outcomes.',
+      'Extract claim headers and line items, including statuses and adjudication outcomes.',
     createdBy: 'Martinez Sofia',
     details: {
       name: 'Testing',

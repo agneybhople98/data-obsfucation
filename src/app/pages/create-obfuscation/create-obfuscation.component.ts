@@ -158,6 +158,7 @@ export class CreateObfuscationPlanComponent implements OnInit {
   tableItemsUtility = [
     'CI_PER',
     'CI_PER_NAME',
+    'CI_PER_PHONE',
     'CI_PER_ADDR_SEAS',
     'CI_PER_CONTDET',
     'CI_PER_ID',

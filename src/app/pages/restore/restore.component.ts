@@ -46,7 +46,7 @@ export class RestoreComponent implements OnInit {
 
     if (this.currentDomain === 'utility') {
       this._jobService
-        .runJobByName('OBF_REVERT_CHANGES_JOB_CISADM')
+        .runJobByName('DO_TRUNCATE_UTILITY_JOB')
         .subscribe((res) => {
           console.log(res);
           this.isRestoring = false;

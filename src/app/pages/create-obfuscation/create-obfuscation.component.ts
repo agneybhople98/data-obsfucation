@@ -127,7 +127,17 @@ export class CreateObfuscationPlanComponent implements OnInit {
     'CMMNAME',
   ];
 
+  // dropdown for utility if CI_PER_CONTDET for ADHOC_CHAR_VAL
+
+  obfValues_UTILITY_CI_PER_CONTDET = [
+    'HOMEPHONE',
+    'CELLPHONE',
+    'PRIMARYEMAIL',
+    'SECONDARYEMAIL',
+  ];
+
   conditions = [
+    'COMM_RTE_TYPE_CD',
     'CHAR_TYPE_CD',
     'CI_PER_CHAR',
     'CHAR_VAL',
@@ -478,6 +488,9 @@ export class CreateObfuscationPlanComponent implements OnInit {
     else if (this.currentDomain === 'utility') {
       if (tableName === 'CI_PER_ID' && columnName === 'PER_ID_NBR') {
         options = this.obfValues_UTILITY_CI_PER_ID_FOR_PER_ID_NBR;
+      }
+      if (tableName === 'CI_PER_CONTDET' && columnName === 'CONTACT_VALUE') {
+        options = this.obfValues_UTILITY_CI_PER_CONTDET;
       } else if (tableName === 'CI_PER_CHAR') {
         if (columnName === 'CHAR_VAL') {
           options = this.obfValues_UTILITY_CI_PER_CHAR_CHAR_VAL;

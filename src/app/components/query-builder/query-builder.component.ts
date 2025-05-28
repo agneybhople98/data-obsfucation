@@ -7,11 +7,13 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, NgForm } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import moment, { max } from 'moment';
 import {
   QueryBuilderClassNames,
   QueryBuilderConfig,
 } from 'ngx-angular-query-builder';
+import { JobsDataService } from '../../jobs-data.service';
 
 const today = new Date();
 const month = today.getMonth();
@@ -34,6 +36,9 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
   queryBuilderFormGroup!: NgForm;
   public selectedValue: any;
   @Input() public selectedItem: any;
+
+  // domain
+  currentDomain: string = 'utility';
 
   // Toggle Button options
   customValue: string = 'yes';
@@ -2368,12 +2373,28 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
   public allowCollapse: boolean = true;
   public persistValueOnFieldChange: boolean = false;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(
+    private formBuilder: FormBuilder,
+    public jobService: JobsDataService,
+    private _router: Router,
+    private route: ActivatedRoute
+  ) {
     this.queryCtrl = this.formBuilder.control(this.query);
     this.currentConfig = this.ciPerConfig;
   }
 
   ngOnInit(): void {
+    // Subscribe to route params
+    this.route.params.subscribe((params) => {
+      this.currentDomain = params['domain'] || 'utility';
+    });
+
+    if (this.currentDomain === 'utility') {
+      this.jobService.initializeUtilityData();
+    }
+    if (this.currentDomain === 'healthcare') {
+      this.jobService.initializeHealthcareData();
+    }
     this.updateConfigBasedOnSelectedItem();
   }
 
@@ -2420,7 +2441,10 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
       this.queryCtrl = this.formBuilder.control(null);
     }
 
-    if (this.selectedItem === 'CI_ACCT') {
+    if (
+      this.selectedItem === 'CI_ACCT' &&
+      this._router.url.includes('/healthcare')
+    ) {
       // Create a complex query structure matching the UI
       const firstField = Object.keys(this.currentConfig.fields)[3]; // Currency CD
       const secondField = Object.keys(this.currentConfig.fields)[15]; // CUST_CL_CD
@@ -2460,6 +2484,58 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
                 field: fourthField, // CIS_DIVISION
                 operator: '=',
                 value: 'CNS',
+              },
+            ],
+          },
+        ],
+      };
+
+      // Update form control with new query
+      this.queryCtrl = this.formBuilder.control(this.query);
+    }
+
+    if (
+      this.selectedItem === 'CI_ACCT' &&
+      this._router.url.includes('/utility')
+    ) {
+      const firstField = Object.keys(this.currentConfig.fields)[3]; // Currency CD
+      const secondField = Object.keys(this.currentConfig.fields)[15]; // CUST_CL_CD
+      const thirdField = Object.keys(this.currentConfig.fields)[2]; // SETUP_DT (for nested condition)
+      const fourthField = Object.keys(this.currentConfig.fields)[8]; // CIS_DIVISION
+
+      // Reset query with the complex nested structure
+      this.query = {
+        condition: 'and', // Main OR condition
+        rules: [
+          // First AND group
+          {
+            condition: 'or',
+            rules: [
+              {
+                field: secondField, // CUST_CL_CD
+                operator: '=',
+                value: 'R',
+              },
+              {
+                field: firstField, // SETUP_DT
+                operator: '=',
+                value: 'USD',
+              },
+            ],
+          },
+          // Second AND group (nested)
+          {
+            condition: 'and',
+            rules: [
+              {
+                field: thirdField, // SETUP_DT
+                operator: '>=',
+                value: '01-10-2024',
+              },
+              {
+                field: fourthField, // CIS_DIVISION
+                operator: '=',
+                value: 'CA',
               },
             ],
           },

@@ -50,6 +50,7 @@ export class JobControlComponent implements OnInit, OnDestroy {
 
   subsetControlOptions = [
     'No selection',
+    'Financial Data Masking Subset',
     'Utility Account Subset Plan',
     'Financial Data Extraction',
     'Person Entity Anonymization',
@@ -63,6 +64,7 @@ export class JobControlComponent implements OnInit, OnDestroy {
   subsetControlOptionsHealthcare = [
     'No selection',
     'Membership & Policy Data Subset Plan',
+    'Financial Data Masking Subset',
     'Customer & Account Subset',
     'Billing Transactions - US Region',
     'Membership Plan Enrollments Subset Plan',

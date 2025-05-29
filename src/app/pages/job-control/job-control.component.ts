@@ -110,13 +110,6 @@ export class JobControlComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    // set dropdown options
-
-    // if (
-    //   this.jobControlDetails.jobControlName === 'Utility Account Obfuscation'
-    // ) {
-    //   // alert('Utility Account Obfuscation');
-    // }
     // Extract domain from route parameters
     this.route.params.subscribe((params) => {
       if (params['domain']) {
@@ -124,12 +117,12 @@ export class JobControlComponent implements OnInit, OnDestroy {
       }
     });
 
-    // Also listen to parent route parameters (for nested routes)
-    this.route.parent?.params.subscribe((params) => {
-      if (params['domain']) {
-        this.currentDomain = params['domain'];
-      }
-    });
+    if (this.currentDomain === 'utility') {
+      this._jobDataService.initializeUtilityData();
+    }
+    if (this.currentDomain === 'healthcare') {
+      this._jobDataService.initializeHealthcareData();
+    }
 
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
@@ -237,21 +230,6 @@ export class JobControlComponent implements OnInit, OnDestroy {
       console.log('res', res);
     });
     this._toasterService.success('Job submitted successfully!');
-    // if (this.currentDomain === 'utility') {
-    //   this._jobDataService
-    //     .runJobByName('OBF_EXECUTE_MAIN_JOB_CISADM')
-    //     .subscribe((res) => {
-    //       console.log('res', res);
-    //     });
-    //   this._toasterService.success('Job submitted succesfully!');
-    // } else {
-    //   this._jobDataService
-    //     .runJobByName('OBF_EXECUTE_MAIN_JOB_ARCHDEV')
-    //     .subscribe((res) => {
-    //       console.log('res', res);
-    //     });
-    //   this._toasterService.success('Job submitted succesfully!');
-    // }
   }
   openCreateObsfucation(element: any) {
     // Get the obfuscation control data from the service

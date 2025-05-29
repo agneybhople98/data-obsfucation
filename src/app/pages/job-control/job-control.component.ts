@@ -256,15 +256,15 @@ export class JobControlComponent implements OnInit, OnDestroy {
 
   openSubsetStrategy(element: any) {
     // Generate job ID from job control ID if needed
-    const jobId = element.jobControlId.startsWith('JC-')
-      ? 'SP-' + element.jobControlId.substring(3)
-      : element.jobControlId;
+    // const jobId = element.jobControlId.startsWith('JC-')
+    //   ? 'SP-' + element.jobControlId.substring(3)
+    //   : element.jobControlId;
 
     console.log(element);
     if (element.subsetPlanStrategyName) {
       this.router.navigate([
         `${this.currentDomain}/subset-plan/create-subset`,
-        jobId,
+        element.subsetControlId,
       ]);
     }
     return;

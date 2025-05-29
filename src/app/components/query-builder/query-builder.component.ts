@@ -2628,43 +2628,37 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
 
       // Create comprehensive query with all three healthcare conditions
       this.query = {
-        condition: 'and', // Main OR condition to include all three subset plans
+        condition: 'and',
         rules: [
-          // Original healthcare condition
+          // First AND group
+          {
+            condition: 'or',
+            rules: [
+              {
+                field: secondField, // CUST_CL_CD
+                operator: '=',
+                value: 'INDV',
+              },
+              {
+                field: firstField, // CURRENCY_CD
+                operator: '=',
+                value: 'USD',
+              },
+            ],
+          },
+          // Second AND group (nested)
           {
             condition: 'and',
             rules: [
-              // First AND group
               {
-                condition: 'or',
-                rules: [
-                  {
-                    field: secondField, // CUST_CL_CD
-                    operator: '=',
-                    value: 'INDV',
-                  },
-                  {
-                    field: firstField, // CURRENCY_CD
-                    operator: '=',
-                    value: 'USD',
-                  },
-                ],
+                field: thirdField, // SETUP_DT
+                operator: '>=',
+                value: '01-10-2024',
               },
-              // Second AND group (nested)
               {
-                condition: 'and',
-                rules: [
-                  {
-                    field: thirdField, // SETUP_DT
-                    operator: '>=',
-                    value: '01-10-2024',
-                  },
-                  {
-                    field: fourthField, // CIS_DIVISION
-                    operator: '=',
-                    value: 'CNS',
-                  },
-                ],
+                field: fourthField, // CIS_DIVISION
+                operator: '=',
+                value: 'CNS',
               },
             ],
           },

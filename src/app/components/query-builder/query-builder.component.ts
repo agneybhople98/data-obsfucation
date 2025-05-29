@@ -1764,7 +1764,7 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
 
       BILL_CYC_CD: {
         name: 'BILL_CYC_CD',
-        type: 'date',
+        type: 'string',
         operators: [
           '=',
           '!=',

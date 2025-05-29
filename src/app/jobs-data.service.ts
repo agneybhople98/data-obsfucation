@@ -1860,9 +1860,10 @@ const ELEMENT_DATA_JOB_CONTROL_HEALTHCARE: JobDataControlElement[] = [
     jobControlName: 'Membership Plan Enrollments Obfuscation',
     jobControlDescription:
       'Anonymizes enrollment details, plan types, and coverage start/end dates.',
+    API_NAME: 'DO_EXEC_ARCHDEV_21_SS_JOB',
     subsetPlanStrategyName: 'Membership Plan Enrollments Subset Plan',
     lastTriggeredOn: '20/04/2025 08:22:10AM',
-    obsfucationControlId: 'Membership Plan Enrollments Obfuscation',
+    // obsfucationControlId: 'Membership Plan Enrollments Obfuscation',
     obsfucationControlDescription:
       'Anonymizes enrollment details, plan types, and coverage start/end dates.',
   },
@@ -1871,8 +1872,10 @@ const ELEMENT_DATA_JOB_CONTROL_HEALTHCARE: JobDataControlElement[] = [
     jobControlName: 'Coverage & Benefits Obfuscation - Prod',
     jobControlDescription:
       'Masks insurance coverage data, benefits, and associated financial limits.',
+    API_NAME: 'DO_EXEC_ARCHDEV_22_SS_JOB',
     lastTriggeredOn: '15/04/2025 09:30:33AM',
-    obsfucationControlId: 'Coverage & Benefits Obfuscation - Prod',
+    subsetPlanStrategyName: 'Coverage & Benefits Obfuscation - Prod',
+    // obsfucationControlId: 'Coverage & Benefits Obfuscation - Prod',
     obsfucationControlDescription:
       'Masks insurance coverage data, benefits, and associated financial limits.',
   },

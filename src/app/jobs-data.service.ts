@@ -1104,13 +1104,12 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
     triggeredOn: '15/04/2025 09:30:33AM',
     status: 'success',
     obsfucationControlName: 'Coverage & Benefits Obfuscation - Prod',
-    progress: 100,
+    progress: 10,
     tasks: [
       {
-        taskId: 'TASK-55678292',
-        taskDescription: 'Shuffling demographic data',
-        status: 'Completed',
-        errorMessage: null,
+        taskId: 'TASK-78901234',
+        taskDescription: 'CopySchemaAndData',
+        status: 'In Progress',
         startTime: (() => {
           const date = new Date();
           const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -1124,7 +1123,68 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
           return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
-        message: [{ name: 'Shuffling demographic data is Successful' }],
+
+        message: [{ name: 'Copy Schema And Data is Successful' }],
+      },
+      {
+        taskId: 'TASK-20547689',
+        taskDescription: 'CreateProceduresAndFunctions',
+        status: 'In Progress',
+        startTime: (() => {
+          const date = new Date();
+          const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const day = date.getDate().toString().padStart(2, '0');
+          const year = date.getFullYear();
+          const hours = date.getHours() % 12 || 12;
+          const minutes = date.getMinutes().toString().padStart(2, '0');
+          const seconds = date.getSeconds().toString().padStart(2, '0');
+          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+        })(),
+        endTime: null,
+
+        message: [{ name: 'Create Procedures And Functions is Successful' }],
+      },
+      {
+        taskId: 'TASK-30982345',
+        taskDescription: 'CreateSubsetScript',
+        status: 'Completed',
+        startTime: (() => {
+          const date = new Date();
+          const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const day = date.getDate().toString().padStart(2, '0');
+          const year = date.getFullYear();
+          const hours = date.getHours() % 12 || 12;
+          const minutes = date.getMinutes().toString().padStart(2, '0');
+          const seconds = date.getSeconds().toString().padStart(2, '0');
+          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+        })(),
+        endTime: null,
+
+        message: [{ name: 'Create Subset Script is Successful' }],
+      },
+      {
+        taskId: 'TASK-55678903',
+        taskDescription: 'CI_ACCT-Based Data Subsetting',
+        status: 'In Progress',
+        startTime: (() => {
+          const date = new Date();
+          const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const day = date.getDate().toString().padStart(2, '0');
+          const year = date.getFullYear();
+          const hours = date.getHours() % 12 || 12;
+          const minutes = date.getMinutes().toString().padStart(2, '0');
+          const seconds = date.getSeconds().toString().padStart(2, '0');
+          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+        })(),
+        endTime: null,
+
+        message: [{ name: "Subsetting completed using 'CI_ACCT' root table'" }],
       },
     ],
   },
@@ -1137,13 +1197,12 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
     status: 'success',
     obsfucationControlName: 'Membership Plan Enrollments Obfuscation',
 
-    progress: 100,
+    progress: 10,
     tasks: [
       {
-        taskId: 'TASK-55678291',
-        taskDescription: 'Masking phone numbers',
-        status: 'Completed',
-        errorMessage: null,
+        taskId: 'TASK-78901234',
+        taskDescription: 'CopySchemaAndData',
+        status: 'In Progress',
         startTime: (() => {
           const date = new Date();
           const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -1157,7 +1216,68 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
           return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
-        message: [{ name: 'Masking phone numbers is Successful' }],
+
+        message: [{ name: 'Copy Schema And Data is Successful' }],
+      },
+      {
+        taskId: 'TASK-20547689',
+        taskDescription: 'CreateProceduresAndFunctions',
+        status: 'In Progress',
+        startTime: (() => {
+          const date = new Date();
+          const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const day = date.getDate().toString().padStart(2, '0');
+          const year = date.getFullYear();
+          const hours = date.getHours() % 12 || 12;
+          const minutes = date.getMinutes().toString().padStart(2, '0');
+          const seconds = date.getSeconds().toString().padStart(2, '0');
+          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+        })(),
+        endTime: null,
+
+        message: [{ name: 'Create Procedures And Functions is Successful' }],
+      },
+      {
+        taskId: 'TASK-30982345',
+        taskDescription: 'CreateSubsetScript',
+        status: 'Completed',
+        startTime: (() => {
+          const date = new Date();
+          const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const day = date.getDate().toString().padStart(2, '0');
+          const year = date.getFullYear();
+          const hours = date.getHours() % 12 || 12;
+          const minutes = date.getMinutes().toString().padStart(2, '0');
+          const seconds = date.getSeconds().toString().padStart(2, '0');
+          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+        })(),
+        endTime: null,
+
+        message: [{ name: 'Create Subset Script is Successful' }],
+      },
+      {
+        taskId: 'TASK-55678903',
+        taskDescription: 'CI_ACCT-Based Data Subsetting',
+        status: 'In Progress',
+        startTime: (() => {
+          const date = new Date();
+          const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const day = date.getDate().toString().padStart(2, '0');
+          const year = date.getFullYear();
+          const hours = date.getHours() % 12 || 12;
+          const minutes = date.getMinutes().toString().padStart(2, '0');
+          const seconds = date.getSeconds().toString().padStart(2, '0');
+          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+        })(),
+        endTime: null,
+
+        message: [{ name: "Subsetting completed using 'CI_ACCT' root table'" }],
       },
     ],
   },

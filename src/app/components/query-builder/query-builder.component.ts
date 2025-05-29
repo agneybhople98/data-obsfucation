@@ -2443,10 +2443,10 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
     }
 
     // Healthcare Subset Plan 2: Complex condition with GRP/USD, CIS_DIVISION, and BILL_CYC_CD
-    if (
+    else if (
       this.selectedItem === 'CI_ACCT' &&
       this._router.url.includes('/healthcare') &&
-      this.elementData.obsControlId === 'SP-98765'
+      this._router.url.includes('SP-98765')
     ) {
       // Get field references
       const firstField = Object.keys(this.currentConfig.fields)[3]; // Currency CD
@@ -2513,12 +2513,10 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
 
       // Update form control with new query
       this.queryCtrl = this.formBuilder.control(this.query);
-    }
-
-    if (
+    } else if (
       this.selectedItem === 'CI_ACCT' &&
       this._router.url.includes('/healthcare') &&
-      this.elementData.obsControlId === 'SP-98764'
+      this._router.url.includes('SP-98764')
     ) {
       // Get field references
       const firstField = Object.keys(this.currentConfig.fields)[3]; // Currency CD
@@ -2553,12 +2551,10 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
       // Update form control with new query
       this.queryCtrl = this.formBuilder.control(this.query);
       // Subset Plan 2: Complex condition with GRP/USD, CIS_DIVISION, and BILL_CYC_CD
-    }
-
-    if (
+    } else if (
       this.selectedItem === 'CI_ACCT' &&
       this._router.url.includes('/healthcare') &&
-      this.elementData.obsControlId === 'SP-98763'
+      this._router.url.includes('SP-98763')
     ) {
       // Get field references
       const firstField = Object.keys(this.currentConfig.fields)[3]; // Currency CD
@@ -2610,15 +2606,13 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
           },
         ],
       };
-    }
-
-    if (
+    } else if (
       this.selectedItem === 'CI_ACCT' &&
       this._router.url.includes('/healthcare') &&
-      (this.elementData.obsControlId === 'SP-98762' ||
-        this.elementData.obsControlId === 'SP-98761' ||
-        this.elementData.obsControlId === 'SP-98760' ||
-        this.elementData.obsControlId === 'SP-98759')
+      (this._router.url.includes('SP-98762') ||
+        this._router.url.includes('SP-98761') ||
+        this._router.url.includes('SP-98760') ||
+        this._router.url.includes('SP-98759'))
     ) {
       // Get field references
       const firstField = Object.keys(this.currentConfig.fields)[3]; // Currency CD
@@ -2685,11 +2679,7 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
 
       // Update form control with new query
       this.queryCtrl = this.formBuilder.control(this.query);
-    }
-    if (
-      this.selectedItem === 'CI_ACCT' &&
-      this._router.url.includes('/utility')
-    ) {
+    } else {
       const firstField = Object.keys(this.currentConfig.fields)[3]; // Currency CD
       const secondField = Object.keys(this.currentConfig.fields)[15]; // CUST_CL_CD
       const thirdField = Object.keys(this.currentConfig.fields)[2]; // SETUP_DT (for nested condition)

@@ -59,7 +59,9 @@ const normalRoutes: Routes = [
         path: 'subset-plan',
         component: SubsetPlanComponent,
         runGuardsAndResolvers: 'always',
-        children: [{ path: 'create-subset', component: CreateSubsetComponent }],
+        children: [
+          { path: 'create-subset/:id', component: CreateSubsetComponent },
+        ],
       },
 
       {

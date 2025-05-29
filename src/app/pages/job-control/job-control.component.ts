@@ -276,8 +276,6 @@ export class JobControlComponent implements OnInit, OnDestroy {
   }
 
   openDrawer(element: any, isHidden?: boolean) {
-    console.log('element', element);
-
     this.isHidden = false;
     this.selectedSubsetStrategy = element.subsetPlanStrategyName;
     this.selectedObsControl = element.obsfucationControlId;

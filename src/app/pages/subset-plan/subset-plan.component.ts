@@ -33,6 +33,7 @@ import {
 })
 export class SubsetPlanComponent {
   expandedElement: any | null = null;
+  currentDomain: string = 'utility';
   selectedSubSetStrategy = 'Condition'; // Default selected value
 
   subsetStrategies = ['Condition', 'Percentage of rows', 'Date ranges'];
@@ -50,7 +51,6 @@ export class SubsetPlanComponent {
     'createdBy',
   ];
   dataSource!: MatTableDataSource<any>;
-  public currentDomain: string = 'utility';
 
   selectedConditionOn = 'ID_TYPE_CD';
   conditionOn = ['ID_TYPE_CD'];
@@ -82,7 +82,8 @@ export class SubsetPlanComponent {
       this.dataSource = new MatTableDataSource<any>(
         this.subsetService.getAllHealthcareObfuscation()
       );
-    } else {
+    }
+    if (this.currentDomain === 'utility') {
       this.dataSource = new MatTableDataSource<any>(
         this.subsetService.getAllObsfucations()
       );
@@ -90,13 +91,15 @@ export class SubsetPlanComponent {
   }
 
   openCreateObsfucation(element: any) {
-    this.router.navigate([`/${this.currentDomain}/subset-plan/create-subset`], {
-      state: { data: element },
-      replaceUrl: true,
-    });
+    this.router.navigate([
+      `/${this.currentDomain}/subset-plan/create-subset`,
+      element.obsControlId,
+    ]);
   }
 
   createObfuscation() {
-    this.router.navigate([`${this.currentDomain}/subset-plan/create-subset`]);
+    this.router.navigate([
+      `${this.currentDomain}/subset-plan/create-subset/SP-98759`,
+    ]);
   }
 }

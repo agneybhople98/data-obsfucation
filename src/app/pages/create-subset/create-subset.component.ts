@@ -121,10 +121,6 @@ export class CreateSubsetComponent implements OnInit {
     this.dataSource = new MatTableDataSource<SubsetElement>(
       this.subsetDataService.getAllSubsetData()
     );
-    const navigation = this.router.getCurrentNavigation();
-    if (navigation?.extras.state) {
-      this.elementData = navigation.extras.state['data'];
-    }
   }
 
   ngOnInit() {

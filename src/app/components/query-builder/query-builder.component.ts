@@ -2544,28 +2544,8 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
         rules: [
           {
             field: acctIdField,
-            operator: '=',
-            value: '6626465837',
-          },
-          {
-            field: acctIdField,
-            operator: '=',
-            value: '0945885147',
-          },
-          {
-            field: acctIdField,
-            operator: '=',
-            value: '1434124158',
-          },
-          {
-            field: acctIdField,
-            operator: '=',
-            value: '4198853193',
-          },
-          {
-            field: acctIdField,
-            operator: '=',
-            value: '4548338258',
+            operator: 'IN',
+            value: '(6626465837,0945885147,1434124158,4198853193,4548338258)',
           },
         ],
       };

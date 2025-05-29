@@ -111,6 +111,7 @@ export class CreateSubsetComponent implements OnInit {
 
   public selection = new SelectionModel<any>(true, []);
   obsControlData: any;
+  elementData: any;
 
   constructor(
     public subsetDataService: CreateSubsetService,
@@ -120,6 +121,10 @@ export class CreateSubsetComponent implements OnInit {
     this.dataSource = new MatTableDataSource<SubsetElement>(
       this.subsetDataService.getAllSubsetData()
     );
+    const navigation = this.router.getCurrentNavigation();
+    if (navigation?.extras.state) {
+      this.elementData = navigation.extras.state['data'];
+    }
   }
 
   ngOnInit() {

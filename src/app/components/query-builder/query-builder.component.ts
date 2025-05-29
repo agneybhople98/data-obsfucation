@@ -36,6 +36,7 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
   queryBuilderFormGroup!: NgForm;
   public selectedValue: any;
   @Input() public selectedItem: any;
+  @Input() elementData: any;
 
   // domain
   currentDomain: string = 'utility';
@@ -2444,7 +2445,8 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
     // Healthcare Subset Plan 2: Complex condition with GRP/USD, CIS_DIVISION, and BILL_CYC_CD
     if (
       this.selectedItem === 'CI_ACCT' &&
-      this._router.url.includes('/healthcare')
+      this._router.url.includes('/healthcare') &&
+      this.elementData.obsControlId === 'SP-98765'
     ) {
       // Get field references
       const firstField = Object.keys(this.currentConfig.fields)[3]; // Currency CD
@@ -2506,76 +2508,128 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
               },
             ],
           },
-          // Subset Plan 1: ACCT_ID IN specific values
+        ],
+      };
+
+      // Update form control with new query
+      this.queryCtrl = this.formBuilder.control(this.query);
+    }
+
+    if (
+      this.selectedItem === 'CI_ACCT' &&
+      this._router.url.includes('/healthcare') &&
+      this.elementData.obsControlId === 'SP-98764'
+    ) {
+      // Get field references
+      const firstField = Object.keys(this.currentConfig.fields)[3]; // Currency CD
+      const secondField = Object.keys(this.currentConfig.fields)[15]; // CUST_CL_CD
+      const thirdField = Object.keys(this.currentConfig.fields)[2]; // SETUP_DT (for nested condition)
+      const fourthField = Object.keys(this.currentConfig.fields)[8]; // CIS_DIVISION
+      const acctIdField =
+        Object.keys(this.currentConfig.fields).find(
+          (key) =>
+            this.currentConfig.fields[key].name === 'ACCT_ID' ||
+            key === 'ACCT_ID'
+        ) || Object.keys(this.currentConfig.fields)[0]; // fallback to first field if ACCT_ID not found
+      const billCycCdField =
+        Object.keys(this.currentConfig.fields).find(
+          (key) =>
+            this.currentConfig.fields[key].name === 'BILL_CYC_CD' ||
+            key === 'BILL_CYC_CD'
+        ) || Object.keys(this.currentConfig.fields)[10]; // fallback if BILL_CYC_CD not found
+
+      // Subset Plan 1: ACCT_ID IN specific values
+      this.query = {
+        condition: 'or',
+        rules: [
           {
-            condition: 'or',
-            rules: [
-              {
-                field: acctIdField,
-                operator: '=',
-                value: '6626465837',
-              },
-              {
-                field: acctIdField,
-                operator: '=',
-                value: '0945885147',
-              },
-              {
-                field: acctIdField,
-                operator: '=',
-                value: '1434124158',
-              },
-              {
-                field: acctIdField,
-                operator: '=',
-                value: '4198853193',
-              },
-              {
-                field: acctIdField,
-                operator: '=',
-                value: '4548338258',
-              },
-            ],
+            field: acctIdField,
+            operator: '=',
+            value: '6626465837',
           },
-          // Subset Plan 2: Complex condition with GRP/USD, CIS_DIVISION, and BILL_CYC_CD
           {
-            condition: 'and',
-            rules: [
-              // First OR group (CUST_CL_CD = 'GRP' OR CURRENCY_CD = 'USD')
-              {
-                condition: 'or',
-                rules: [
-                  {
-                    field: secondField, // CUST_CL_CD
-                    operator: '=',
-                    value: 'GRP',
-                  },
-                  {
-                    field: firstField, // CURRENCY_CD
-                    operator: '=',
-                    value: 'USD',
-                  },
-                ],
-              },
-              // CIS_DIVISION = 'COM'
-              {
-                field: fourthField, // CIS_DIVISION
-                operator: '=',
-                value: 'COM',
-              },
-              // BILL_CYC_CD = 'MM11'
-              {
-                field: billCycCdField, // BILL_CYC_CD
-                operator: '=',
-                value: 'MM11',
-              },
-            ],
+            field: acctIdField,
+            operator: '=',
+            value: '0945885147',
+          },
+          {
+            field: acctIdField,
+            operator: '=',
+            value: '1434124158',
+          },
+          {
+            field: acctIdField,
+            operator: '=',
+            value: '4198853193',
+          },
+          {
+            field: acctIdField,
+            operator: '=',
+            value: '4548338258',
           },
         ],
       };
 
       // Update form control with new query
       this.queryCtrl = this.formBuilder.control(this.query);
+      // Subset Plan 2: Complex condition with GRP/USD, CIS_DIVISION, and BILL_CYC_CD
+    }
+
+    if (
+      this.selectedItem === 'CI_ACCT' &&
+      this._router.url.includes('/healthcare') &&
+      this.elementData.obsControlId === 'SP-98763'
+    ) {
+      // Get field references
+      const firstField = Object.keys(this.currentConfig.fields)[3]; // Currency CD
+      const secondField = Object.keys(this.currentConfig.fields)[15]; // CUST_CL_CD
+      const thirdField = Object.keys(this.currentConfig.fields)[2]; // SETUP_DT (for nested condition)
+      const fourthField = Object.keys(this.currentConfig.fields)[8]; // CIS_DIVISION
+      const acctIdField =
+        Object.keys(this.currentConfig.fields).find(
+          (key) =>
+            this.currentConfig.fields[key].name === 'ACCT_ID' ||
+            key === 'ACCT_ID'
+        ) || Object.keys(this.currentConfig.fields)[0]; // fallback to first field if ACCT_ID not found
+      const billCycCdField =
+        Object.keys(this.currentConfig.fields).find(
+          (key) =>
+            this.currentConfig.fields[key].name === 'BILL_CYC_CD' ||
+            key === 'BILL_CYC_CD'
+        ) || Object.keys(this.currentConfig.fields)[10]; // fallback if BILL_CYC_CD not found
+      this.query = {
+        condition: 'and',
+        rules: [
+          // First OR group (CUST_CL_CD = 'GRP' OR CURRENCY_CD = 'USD')
+          {
+            condition: 'or',
+            rules: [
+              {
+                field: secondField, // CUST_CL_CD
+                operator: '=',
+                value: 'GRP',
+              },
+              {
+                field: firstField, // CURRENCY_CD
+                operator: '=',
+                value: 'USD',
+              },
+            ],
+          },
+          // CIS_DIVISION = 'COM'
+          {
+            field: fourthField, // CIS_DIVISION
+            operator: '=',
+            value: 'COM',
+          },
+          // BILL_CYC_CD = 'MM11'
+          {
+            field: billCycCdField, // BILL_CYC_CD
+            operator: '=',
+            value: 'MM11',
+          },
+        ],
+      };
     }
 
     if (

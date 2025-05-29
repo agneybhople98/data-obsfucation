@@ -91,7 +91,7 @@ export class SubsetPlanComponent {
 
   openCreateObsfucation(element: any) {
     this.router.navigate([`/${this.currentDomain}/subset-plan/create-subset`], {
-      state: { data: null },
+      state: { data: element },
       replaceUrl: true,
     });
   }

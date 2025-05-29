@@ -41,7 +41,10 @@
           {{ selectedItem }}
         </span>
       </div>
-      <app-query-builder [selectedItem]="selectedItem"></app-query-builder>
+      <app-query-builder
+        [selectedItem]="selectedItem"
+        [elementData]="this.elementData"
+      ></app-query-builder>
     </div>
   </main>
 </div>

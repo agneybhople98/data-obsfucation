@@ -1934,7 +1934,7 @@ const ELEMENT_DATA_JOB_CONTROL_HEALTHCARE: JobDataControlElement[] = [
     API_NAME: 'DO_EXEC_ARCHDEV_2_SS_JOB',
     jobControlDescription:
       'Obfuscates personally identifiable information (PII) in customer and account entities.',
-    subsetPlanStrategyName: 'Customer & Account Subset',
+    subsetPlanStrategyName: 'Membership & Policy Subset Plan',
     lastTriggeredOn: '28/04/2025 07:33:22AM',
     // obsfucationControlId: 'Customer & Account Obfuscation',
     obsfucationControlDescription:

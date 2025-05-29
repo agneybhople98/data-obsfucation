@@ -2441,49 +2441,133 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
       this.queryCtrl = this.formBuilder.control(null);
     }
 
+    // Healthcare Subset Plan 2: Complex condition with GRP/USD, CIS_DIVISION, and BILL_CYC_CD
     if (
       this.selectedItem === 'CI_ACCT' &&
       this._router.url.includes('/healthcare')
     ) {
-      // Create a complex query structure matching the UI
+      // Get field references
       const firstField = Object.keys(this.currentConfig.fields)[3]; // Currency CD
       const secondField = Object.keys(this.currentConfig.fields)[15]; // CUST_CL_CD
       const thirdField = Object.keys(this.currentConfig.fields)[2]; // SETUP_DT (for nested condition)
       const fourthField = Object.keys(this.currentConfig.fields)[8]; // CIS_DIVISION
+      const acctIdField =
+        Object.keys(this.currentConfig.fields).find(
+          (key) =>
+            this.currentConfig.fields[key].name === 'ACCT_ID' ||
+            key === 'ACCT_ID'
+        ) || Object.keys(this.currentConfig.fields)[0]; // fallback to first field if ACCT_ID not found
+      const billCycCdField =
+        Object.keys(this.currentConfig.fields).find(
+          (key) =>
+            this.currentConfig.fields[key].name === 'BILL_CYC_CD' ||
+            key === 'BILL_CYC_CD'
+        ) || Object.keys(this.currentConfig.fields)[10]; // fallback if BILL_CYC_CD not found
 
-      // Reset query with the complex nested structure
+      // Create comprehensive query with all three healthcare conditions
       this.query = {
-        condition: 'and', // Main OR condition
+        condition: 'or', // Main OR condition to include all three subset plans
         rules: [
-          // First AND group
+          // Original healthcare condition
+          {
+            condition: 'and',
+            rules: [
+              // First AND group
+              {
+                condition: 'or',
+                rules: [
+                  {
+                    field: secondField, // CUST_CL_CD
+                    operator: '=',
+                    value: 'INDV',
+                  },
+                  {
+                    field: firstField, // CURRENCY_CD
+                    operator: '=',
+                    value: 'USD',
+                  },
+                ],
+              },
+              // Second AND group (nested)
+              {
+                condition: 'and',
+                rules: [
+                  {
+                    field: thirdField, // SETUP_DT
+                    operator: '>=',
+                    value: '01-10-2024',
+                  },
+                  {
+                    field: fourthField, // CIS_DIVISION
+                    operator: '=',
+                    value: 'CNS',
+                  },
+                ],
+              },
+            ],
+          },
+          // Subset Plan 1: ACCT_ID IN specific values
           {
             condition: 'or',
             rules: [
               {
-                field: secondField, // CUST_CL_CD
+                field: acctIdField,
                 operator: '=',
-                value: 'INDV',
+                value: '6626465837',
               },
               {
-                field: firstField, // SETUP_DT
+                field: acctIdField,
                 operator: '=',
-                value: 'USD',
+                value: '0945885147',
+              },
+              {
+                field: acctIdField,
+                operator: '=',
+                value: '1434124158',
+              },
+              {
+                field: acctIdField,
+                operator: '=',
+                value: '4198853193',
+              },
+              {
+                field: acctIdField,
+                operator: '=',
+                value: '4548338258',
               },
             ],
           },
-          // Second AND group (nested)
+          // Subset Plan 2: Complex condition with GRP/USD, CIS_DIVISION, and BILL_CYC_CD
           {
             condition: 'and',
             rules: [
+              // First OR group (CUST_CL_CD = 'GRP' OR CURRENCY_CD = 'USD')
               {
-                field: thirdField, // SETUP_DT
-                operator: '>=',
-                value: '01-10-2024',
+                condition: 'or',
+                rules: [
+                  {
+                    field: secondField, // CUST_CL_CD
+                    operator: '=',
+                    value: 'GRP',
+                  },
+                  {
+                    field: firstField, // CURRENCY_CD
+                    operator: '=',
+                    value: 'USD',
+                  },
+                ],
               },
+              // CIS_DIVISION = 'COM'
               {
                 field: fourthField, // CIS_DIVISION
                 operator: '=',
-                value: 'CNS',
+                value: 'COM',
+              },
+              // BILL_CYC_CD = 'MM11'
+              {
+                field: billCycCdField, // BILL_CYC_CD
+                operator: '=',
+                value: 'MM11',
               },
             ],
           },

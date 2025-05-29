@@ -1103,7 +1103,9 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
       'Masks insurance coverage data, benefits, and associated financial limits.',
     triggeredOn: '15/04/2025 09:30:33AM',
     status: 'success',
-    obsfucationControlName: 'Coverage & Benefits Obfuscation - Prod',
+    subsetStrategyPlanName: 'Coverage & Benefits Obfuscation - Prod',
+
+    // obsfucationControlName: 'Coverage & Benefits Obfuscation - Prod',
     progress: 10,
     tasks: [
       {
@@ -1195,7 +1197,9 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
       'Anonymizes enrollment details, plan types, and coverage start/end dates.',
     triggeredOn: '20/04/2025 08:11:09AM',
     status: 'success',
-    obsfucationControlName: 'Membership Plan Enrollments Obfuscation',
+    subsetStrategyPlanName: 'Membership & Policy Data Subset Strategy Plan',
+
+    // obsfucationControlName: 'Membership Plan Enrollments Obfuscation',
 
     progress: 10,
     tasks: [

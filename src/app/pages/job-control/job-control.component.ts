@@ -198,6 +198,8 @@ export class JobControlComponent implements OnInit, OnDestroy {
       ? 'RUN-' + jobControlId.substring(3)
       : jobControlId;
 
+    console.log('jobControlId', jobControlId);
+
     // Fix the navigation to use the correct route structure
     // Based on the updated routing configuration, job-details is now a child of dashboard
     this.router.navigate([

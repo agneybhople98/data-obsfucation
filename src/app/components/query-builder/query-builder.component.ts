@@ -2634,6 +2634,80 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
 
     if (
       this.selectedItem === 'CI_ACCT' &&
+      this._router.url.includes('/healthcare') &&
+      (this.elementData.obsControlId === 'SP-98762' ||
+        this.elementData.obsControlId === 'SP-98761' ||
+        this.elementData.obsControlId === 'SP-98760' ||
+        this.elementData.obsControlId === 'SP-98759')
+    ) {
+      // Get field references
+      const firstField = Object.keys(this.currentConfig.fields)[3]; // Currency CD
+      const secondField = Object.keys(this.currentConfig.fields)[15]; // CUST_CL_CD
+      const thirdField = Object.keys(this.currentConfig.fields)[2]; // SETUP_DT (for nested condition)
+      const fourthField = Object.keys(this.currentConfig.fields)[8]; // CIS_DIVISION
+      const acctIdField =
+        Object.keys(this.currentConfig.fields).find(
+          (key) =>
+            this.currentConfig.fields[key].name === 'ACCT_ID' ||
+            key === 'ACCT_ID'
+        ) || Object.keys(this.currentConfig.fields)[0]; // fallback to first field if ACCT_ID not found
+      const billCycCdField =
+        Object.keys(this.currentConfig.fields).find(
+          (key) =>
+            this.currentConfig.fields[key].name === 'BILL_CYC_CD' ||
+            key === 'BILL_CYC_CD'
+        ) || Object.keys(this.currentConfig.fields)[10]; // fallback if BILL_CYC_CD not found
+
+      // Create comprehensive query with all three healthcare conditions
+      this.query = {
+        condition: 'and', // Main OR condition to include all three subset plans
+        rules: [
+          // Original healthcare condition
+          {
+            condition: 'and',
+            rules: [
+              // First AND group
+              {
+                condition: 'or',
+                rules: [
+                  {
+                    field: secondField, // CUST_CL_CD
+                    operator: '=',
+                    value: 'INDV',
+                  },
+                  {
+                    field: firstField, // CURRENCY_CD
+                    operator: '=',
+                    value: 'USD',
+                  },
+                ],
+              },
+              // Second AND group (nested)
+              {
+                condition: 'and',
+                rules: [
+                  {
+                    field: thirdField, // SETUP_DT
+                    operator: '>=',
+                    value: '01-10-2024',
+                  },
+                  {
+                    field: fourthField, // CIS_DIVISION
+                    operator: '=',
+                    value: 'CNS',
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      };
+
+      // Update form control with new query
+      this.queryCtrl = this.formBuilder.control(this.query);
+    }
+    if (
+      this.selectedItem === 'CI_ACCT' &&
       this._router.url.includes('/utility')
     ) {
       const firstField = Object.keys(this.currentConfig.fields)[3]; // Currency CD

@@ -59,6 +59,8 @@ export class JobControlComponent implements OnInit, OnDestroy {
     'Support Interaction Data Extraction',
     'Outage Data Anonymization',
     'Membership & Policy Subset Plan',
+    'Customer & Account Subset Plan',
+    'Billing Transactions - US Region',
   ];
   // healthcare options
   subsetControlOptionsHealthcare = [
@@ -72,6 +74,8 @@ export class JobControlComponent implements OnInit, OnDestroy {
     'Claim Details Subset Plan - EU',
     'Claims Payments & Payouts - AUS',
     'Membership & Policy Subset Plan',
+    'Customer & Account Subset Plan',
+    'Billing Transactions - US Region',
   ];
 
   selectedObsControl = 'No selection'; // Default selected value
@@ -301,6 +305,12 @@ export class JobControlComponent implements OnInit, OnDestroy {
     this.selectedObsControl = element.obsfucationControlId;
     this.selectedObsControlHealthcare = element.obsfucationControlId;
     this.jobControlDetails = element;
+    if (element.jobControlId === 'JC-98762') {
+      this.selectedSubsetStrategy = 'Customer & Account Subset Plan';
+    }
+    if (element.jobControlId === 'JC-98761') {
+      this.selectedSubsetStrategy = 'Billing Transactions - US Region';
+    }
     this.drawer.open();
   }
 

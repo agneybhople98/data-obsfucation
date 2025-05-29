@@ -2468,7 +2468,7 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
 
       // Create comprehensive query with all three healthcare conditions
       this.query = {
-        condition: 'or', // Main OR condition to include all three subset plans
+        condition: 'and', // Main OR condition to include all three subset plans
         rules: [
           // Original healthcare condition
           {

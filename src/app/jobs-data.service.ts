@@ -652,7 +652,7 @@ const ELEMENT_DATA: JobElement[] = [
       {
         taskId: 'TASK-30982345',
         taskDescription: 'CreateMaskingScript',
-        status: 'Completed',
+        status: 'In Progress',
         startTime: (() => {
           const date = new Date();
           const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -891,7 +891,7 @@ const ELEMENT_DATA: JobElement[] = [
       {
         taskId: 'TASK-30982345',
         taskDescription: 'Create Subset Script',
-        status: 'Completed',
+        status: 'In Progress',
         startTime: (() => {
           const date = new Date();
           const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -1160,7 +1160,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
       {
         taskId: 'TASK-30982345',
         taskDescription: 'CreateSubsetScript',
-        status: 'Completed',
+        status: 'In Progress',
         startTime: (() => {
           const date = new Date();
           const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -1255,7 +1255,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
       {
         taskId: 'TASK-30982345',
         taskDescription: 'CreateSubsetScript',
-        status: 'Completed',
+        status: 'In Progress',
         startTime: (() => {
           const date = new Date();
           const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -1662,7 +1662,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
       {
         taskId: 'TASK-30982345',
         taskDescription: 'CreateMaskingScript',
-        status: 'Completed',
+        status: 'In Progress',
         startTime: (() => {
           const date = new Date();
           const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -1899,7 +1899,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
       {
         taskId: 'TASK-30982345',
         taskDescription: 'CreateSubsetScript',
-        status: 'Completed',
+        status: 'In Progress',
         startTime: (() => {
           const date = new Date();
           const month = (date.getMonth() + 1).toString().padStart(2, '0');

@@ -52,7 +52,7 @@
       [class.selected]="isOptionSelected(option)"
       (click)="selectOption(option); $event.stopPropagation()"
     >
-      {{ typeof option === 'object' ? option[displayField] : option }}
+      {{ getDisplayValue(option) }}
     </div>
   </div>
 

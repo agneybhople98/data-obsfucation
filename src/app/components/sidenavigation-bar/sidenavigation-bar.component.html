@@ -32,7 +32,7 @@
             >
               <a
                 class="nav-link"
-                [routerLink]="`${this.currentDomain}/dashboard`"
+                [routerLink]="currentDomain + '/dashboard'"
                 routerLinkActive
                 #dashboardLink="routerLinkActive"
               >
@@ -72,7 +72,7 @@
             >
               <a
                 class="nav-link"
-                [routerLink]="`${this.currentDomain}/subset-plan`"
+                [routerLink]="currentDomain + '/subset-plan'"
                 routerLinkActive
                 #subsetLink="routerLinkActive"
               >
@@ -110,7 +110,7 @@
             >
               <a
                 class="nav-link"
-                [routerLink]="`${this.currentDomain}/obfuscation-plan`"
+                [routerLink]="currentDomain + '/obfuscation-plan'"
                 routerLinkActive
                 #obsfucationLink="routerLinkActive"
               >
@@ -148,7 +148,7 @@
             >
               <a
                 class="nav-link"
-                [routerLink]="`${this.currentDomain}/job-control-list`"
+                [routerLink]="currentDomain + '/job-control-list'"
                 routerLinkActive
                 #jobControlLink="routerLinkActive"
               >

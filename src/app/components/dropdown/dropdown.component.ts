@@ -269,8 +269,4 @@ export class DropdownComponent implements OnDestroy {
       this.positionDropdown();
     }
   }
-
-  getDisplayValue(option: any): string {
-    return typeof option === 'object' ? option[this.displayField] : option;
-  }
 }

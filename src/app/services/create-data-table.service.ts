@@ -838,6 +838,57 @@ export const TABLE_DATA_HEATLHCARE: TableData = {
       ],
     },
     {
+      tableName: 'CI_PER_PHONE',
+      columns: [
+        {
+          columnName: 'PER_ID',
+          displayName: 'Person ID',
+          obfStrategy: undefined,
+          obfRules: {},
+        },
+        {
+          columnName: 'SEQ_NUM',
+          displayName: 'Sequence Number',
+          obfStrategy: undefined,
+          obfRules: {},
+        },
+        {
+          columnName: 'PHONE_TYPE_CD',
+          displayName: 'Phone Type Code',
+          obfStrategy: undefined,
+          obfRules: {},
+        },
+        {
+          columnName: 'COUNTRY_CODE',
+          displayName: 'Country Code',
+          obfStrategy: undefined,
+          obfRules: {},
+        },
+        {
+          columnName: 'PHONE',
+          displayName: 'Phone',
+          obfStrategy: undefined,
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
+        },
+        {
+          columnName: 'EXTENSION',
+          displayName: 'Extension',
+          obfStrategy: undefined,
+          obfRules: {},
+        },
+        {
+          columnName: 'VERSION',
+          displayName: 'Version',
+          obfStrategy: undefined,
+          obfRules: {},
+        },
+      ],
+    },
+
+    {
       tableName: 'CI_PER_NAME',
       columns: [
         {

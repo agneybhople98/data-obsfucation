@@ -894,25 +894,37 @@ export const TABLE_DATA_HEATLHCARE: TableData = {
           columnName: 'PER_ID',
           displayName: 'Person ID',
           obfStrategy: undefined,
-          obfRules: {},
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
         },
         {
           columnName: 'SEQ_NUM',
           displayName: 'Sequence Number',
           obfStrategy: undefined,
-          obfRules: {},
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
         },
         {
           columnName: 'PHONE_TYPE_CD',
           displayName: 'Phone Type Code',
           obfStrategy: undefined,
-          obfRules: {},
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
         },
         {
           columnName: 'COUNTRY_CODE',
           displayName: 'Country Code',
           obfStrategy: undefined,
-          obfRules: {},
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
         },
         {
           columnName: 'PHONE',
@@ -927,13 +939,19 @@ export const TABLE_DATA_HEATLHCARE: TableData = {
           columnName: 'EXTENSION',
           displayName: 'Extension',
           obfStrategy: undefined,
-          obfRules: {},
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
         },
         {
           columnName: 'VERSION',
           displayName: 'Version',
           obfStrategy: undefined,
-          obfRules: {},
+          obfRules: {
+            first: undefined,
+            second: undefined,
+          },
         },
       ],
     },

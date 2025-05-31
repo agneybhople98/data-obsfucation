@@ -287,10 +287,14 @@ export class JobDetailsComponent implements OnInit, AfterViewInit, OnDestroy {
     this.headerTitle = 'View Job Control';
   }
   openSubsetPlanDrawer(jobDetails: any) {
-    // this.drawer.open();
-    // this.jobDetailsDrawer = jobDetails;
-    // this.headerTitle = 'View Subset Plan';
-    this.router.navigate([`${this.currentDomain}/subset-plan/create-subset`]);
+    const subsetId = jobDetails.jobId.startsWith('RUN-')
+      ? 'SP' + jobDetails.jobId.substring(3)
+      : jobDetails.jobControlId;
+
+    this.router.navigate([
+      `${this.currentDomain}/subset-plan/create-subset`,
+      subsetId,
+    ]);
   }
 
   isExpansionDetailRow = (i: number, row: any) =>

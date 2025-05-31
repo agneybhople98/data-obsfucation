@@ -81,7 +81,7 @@ const ELEMENT_DATA: JobElement[] = [
     triggeredOn: '10/04/2025 09:30:33AM',
     status: 'success',
     obsfucationControlName: 'Support Interaction Data Masking',
-    progress: 100,
+    progress: 50,
     tasks: [
       {
         taskId: 'TASK-55675291',
@@ -453,7 +453,7 @@ const ELEMENT_DATA: JobElement[] = [
     triggeredOn: '25/04/2025 08:22:10AM',
     status: 'failed',
     obsfucationControlName: 'Person Entity Anonymization',
-    progress: 50,
+    progress: 20,
     additionalRunIdDetails: [
       {
         jobId: 'RUN-98019',

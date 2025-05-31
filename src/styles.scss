@@ -1,6 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
-@use "tailwindcss";
 @use "./table.scss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 html,
 body {
@@ -71,3 +73,11 @@ body {
     background-color: white !important;
   }
 }
+
+/* Remove box-shadow from all tables */
+table {
+  box-shadow: none !important;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

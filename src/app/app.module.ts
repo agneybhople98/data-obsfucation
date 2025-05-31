@@ -52,6 +52,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { ToggleButtonComponent } from './components/toggle-button/toggle-button.component';
 import { MaintenancePageComponent } from './pages/maintenance-page/maintenance-page.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 @NgModule({
   declarations: [
@@ -110,7 +111,7 @@ import { MaintenancePageComponent } from './pages/maintenance-page/maintenance-p
     HttpClientModule,
     ToastrModule.forRoot(),
   ],
-  providers: [provideNativeDateAdapter()],
+  providers: [provideNativeDateAdapter(), provideAnimationsAsync()],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

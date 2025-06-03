@@ -1115,12 +1115,12 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
     subsetStrategyPlanName: 'Coverage & Benefits Obfuscation - Prod',
 
     // obsfucationControlName: 'Coverage & Benefits Obfuscation - Prod',
-    progress: 10,
+    progress: 100,
     tasks: [
       {
         taskId: 'TASK-78901234',
         taskDescription: 'CopySchemaAndData',
-        status: 'In Progress',
+        status: 'Completed',
         startTime: (() => {
           const date = new Date();
           const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -1140,7 +1140,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
       {
         taskId: 'TASK-20547689',
         taskDescription: 'CreateProceduresAndFunctions',
-        status: 'In Progress',
+        status: 'Completed',
         startTime: (() => {
           const date = new Date();
           const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -1210,12 +1210,12 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
 
     // obsfucationControlName: 'Membership Plan Enrollments Obfuscation',
 
-    progress: 10,
+    progress: 100,
     tasks: [
       {
         taskId: 'TASK-78901234',
         taskDescription: 'CopySchemaAndData',
-        status: 'In Progress',
+        status: 'Completed',
         startTime: (() => {
           const date = new Date();
           const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -1235,7 +1235,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
       {
         taskId: 'TASK-20547689',
         taskDescription: 'CreateProceduresAndFunctions',
-        status: 'In Progress',
+        status: 'Completed',
         startTime: (() => {
           const date = new Date();
           const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -1255,7 +1255,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
       {
         taskId: 'TASK-30982345',
         taskDescription: 'CreateSubsetScript',
-        status: 'In Progress',
+        status: 'Completed',
         startTime: (() => {
           const date = new Date();
           const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -1275,7 +1275,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
       {
         taskId: 'TASK-55678903',
         taskDescription: 'CI_ACCT-Based Data Subsetting',
-        status: 'In Progress',
+        status: 'Completed',
         startTime: (() => {
           const date = new Date();
           const month = (date.getMonth() + 1).toString().padStart(2, '0');

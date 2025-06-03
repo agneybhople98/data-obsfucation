@@ -68,7 +68,7 @@ export class DashboardComponent implements AfterViewInit, OnInit, OnDestroy {
     this.subscription.add(
       this.jobService.jobsData$.subscribe((jobs) => {
         // Sort the jobs data before assigning to dataSource
-        const sortedJobs = this.sortJobsByProgress(jobs);
+        const sortedJobs = this.sortJobsByTriggeredDate(jobs);
         this.dataSource.data = sortedJobs;
         if (this.paginator) {
           this.dataSource.paginator = this.paginator;
@@ -83,35 +83,54 @@ export class DashboardComponent implements AfterViewInit, OnInit, OnDestroy {
   }
 
   /**
-   * Sort jobs by progress: 100% first, then in-progress, then others
+   * Sort jobs by triggered date: most recent first
    */
-  private sortJobsByProgress(jobs: JobElement[]): JobElement[] {
+  private sortJobsByTriggeredDate(jobs: JobElement[]): JobElement[] {
     return jobs.sort((a, b) => {
-      // Priority order: 100% progress first, then in-progress, then others
-      const getPriority = (job: JobElement): number => {
-        if (job.progress === 100) return 1; // Highest priority
-        if (job.status === 'in-progress') return 2; // Second priority
-        return 3; // Lowest priority for failed, pending, etc.
-      };
+      // Parse DD/MM/YYYY HH:MM:SSAM/PM format to proper Date objects
+      const dateA = this.parseCustomDate(a.triggeredOn);
+      const dateB = this.parseCustomDate(b.triggeredOn);
 
-      const priorityA = getPriority(a);
-      const priorityB = getPriority(b);
-
-      // If priorities are different, sort by priority
-      if (priorityA !== priorityB) {
-        return priorityA - priorityB;
-      }
-
-      // If same priority, sort by progress percentage (descending)
-      if (a.progress !== b.progress) {
-        return b.progress - a.progress;
-      }
-
-      // If same progress, sort by triggered date (most recent first)
-      return (
-        new Date(b.triggeredOn).getTime() - new Date(a.triggeredOn).getTime()
-      );
+      // Sort by triggered date (most recent first)
+      return dateB.getTime() - dateA.getTime();
     });
+  }
+
+  /**
+   * Parse custom date format DD/MM/YYYY HH:MM:SSAM/PM to Date object
+   */
+  private parseCustomDate(dateString: string): Date {
+    // Split date and time parts
+    const [datePart, timePart] = dateString.split(' ');
+
+    // Parse date part (DD/MM/YYYY)
+    const [day, month, year] = datePart.split('/').map(Number);
+
+    // Parse time part (HH:MM:SSAM/PM)
+    const timeMatch = timePart.match(/(\d{1,2}):(\d{2}):(\d{2})(AM|PM)/);
+    if (!timeMatch) {
+      throw new Error(`Invalid time format: ${timePart}`);
+    }
+
+    let [, hours, minutes, seconds, ampm] = timeMatch;
+    let hour24 = parseInt(hours);
+
+    // Convert to 24-hour format
+    if (ampm === 'AM' && hour24 === 12) {
+      hour24 = 0;
+    } else if (ampm === 'PM' && hour24 !== 12) {
+      hour24 += 12;
+    }
+
+    // Create Date object (month is 0-indexed in JavaScript)
+    return new Date(
+      year,
+      month - 1,
+      day,
+      hour24,
+      parseInt(minutes),
+      parseInt(seconds)
+    );
   }
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -184,7 +203,7 @@ export class DashboardComponent implements AfterViewInit, OnInit, OnDestroy {
 
     // Re-sort the filtered data
     if (this.dataSource.filteredData) {
-      this.dataSource.filteredData = this.sortJobsByProgress(
+      this.dataSource.filteredData = this.sortJobsByTriggeredDate(
         this.dataSource.filteredData
       );
     }

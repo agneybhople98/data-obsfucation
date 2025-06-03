@@ -1107,9 +1107,9 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
   },
   {
     jobId: 'RUN-98761',
-    jobName: 'Coverage & Benefits Obfuscation - Prod',
+    jobName: 'Coverage & Benefits Subset',
     jobDescription:
-      'Masks insurance coverage data, benefits, and associated financial limits.',
+      'Reduce the size of insurance coverage data and associated financial data.',
     triggeredOn: '15/04/2025 09:30:33AM',
     status: 'success',
     subsetStrategyPlanName: 'Coverage & Benefits Obfuscation - Prod',
@@ -1201,9 +1201,9 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
   },
   {
     jobId: 'RUN-98762',
-    jobName: 'Membership Plan Enrollments Obfuscation',
+    jobName: 'Subset Membership Plan Enrolments',
     jobDescription:
-      'Anonymizes enrollment details, plan types, and coverage start/end dates.',
+      'Extract enrolment details, plan types for list of accounts.',
     triggeredOn: '20/04/2025 08:11:09AM',
     status: 'success',
     subsetStrategyPlanName: 'Membership & Policy Data Subset Strategy Plan',

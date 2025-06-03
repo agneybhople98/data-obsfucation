@@ -123,7 +123,7 @@ const ELEMENT_DATA_HEALTHCARE: any[] = [
     obsControlId: 'SP-98764',
     obsControlName: 'Customer & Account Subset Plan',
     obsControlDescription:
-      'Extracts personally identifiable information (PII) in customer and account entities.',
+      'Extract Customer & Account details for list of accounts',
     createdBy: 'Smith Wilson',
     details: {
       name: 'Testing',
@@ -136,9 +136,8 @@ const ELEMENT_DATA_HEALTHCARE: any[] = [
   },
   {
     obsControlId: 'SP-98763',
-    obsControlName: 'Billing Transactions - US Region',
-    obsControlDescription:
-      'Secures billing, adjustments, and payment data for performance testing.',
+    obsControlName: 'Billing Transactions data subset plan',
+    obsControlDescription: 'Subset billing data for M11 bill cycle accounts.',
     createdBy: 'Jonny Johnson',
     details: {
       name: 'Testing',
@@ -166,7 +165,7 @@ const ELEMENT_DATA_HEALTHCARE: any[] = [
   },
   {
     obsControlId: 'SP-98761',
-    obsControlName: 'Coverage & Benefits Subset Plan - Prod',
+    obsControlName: 'Billing Transactions data subset JobPlan - Prod',
     obsControlDescription:
       'Extract subset insurance coverage data, benefits, and associated financial limits.',
     createdBy: 'Maria Garcia',

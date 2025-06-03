@@ -1109,7 +1109,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
     jobId: 'RUN-98761',
     jobName: 'Coverage & Benefits Subset',
     jobDescription:
-      'Reduce the size of insurance coverage data and associated financial data.',
+      'Reduce the size of Billing data to M11 bill cycle accounts.',
     triggeredOn: '15/04/2025 09:30:33AM',
     status: 'success',
     subsetStrategyPlanName: 'Coverage & Benefits Obfuscation - Prod',
@@ -1201,9 +1201,8 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
   },
   {
     jobId: 'RUN-98762',
-    jobName: 'Subset Membership Plan Enrolments',
-    jobDescription:
-      'Extract enrolment details, plan types for list of accounts.',
+    jobName: 'Customer & Account Subset Job',
+    jobDescription: 'Extract Customer & Account details for list of accounts.',
     triggeredOn: '20/04/2025 08:11:09AM',
     status: 'success',
     subsetStrategyPlanName: 'Membership & Policy Data Subset Strategy Plan',
@@ -1995,11 +1994,11 @@ const ELEMENT_DATA_JOB_CONTROL_HEALTHCARE: JobDataControlElement[] = [
   },
   {
     jobControlId: 'JC-98762',
-    jobControlName: 'Subset Membership Plan Enrolments',
+    jobControlName: 'Customer & Account Subset Job',
     subsetControlId: 'SP-98764',
 
     jobControlDescription:
-      'Extract enrolment details, plan types for list of accounts.',
+      'Extract Customer & Account details for list of accounts.',
     API_NAME: 'DO_EXEC_ARCHDEV_21_SS_JOB',
     subsetPlanStrategyName: 'Customer & Account Subset Plan',
     lastTriggeredOn: '20/04/2025 08:22:10AM',
@@ -2013,7 +2012,7 @@ const ELEMENT_DATA_JOB_CONTROL_HEALTHCARE: JobDataControlElement[] = [
 
     jobControlName: 'Coverage & Benefits Subset',
     jobControlDescription:
-      'Reduce the size of insurance coverage data and associated financial data.',
+      'Reduce the size of Billing data to M11 bill cycle accounts.',
     API_NAME: 'DO_EXEC_ARCHDEV_22_SS_JOB',
     lastTriggeredOn: '15/04/2025 09:30:33AM',
     subsetPlanStrategyName: 'Billing Transactions - US Region',

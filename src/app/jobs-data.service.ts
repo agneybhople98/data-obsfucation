@@ -1995,11 +1995,11 @@ const ELEMENT_DATA_JOB_CONTROL_HEALTHCARE: JobDataControlElement[] = [
   },
   {
     jobControlId: 'JC-98762',
-    jobControlName: 'Membership Plan Enrollments Obfuscation',
+    jobControlName: 'Subset Membership Plan Enrolments',
     subsetControlId: 'SP-98764',
 
     jobControlDescription:
-      'Anonymizes enrollment details, plan types, and coverage start/end dates.',
+      'Extract enrolment details, plan types for list of accounts.',
     API_NAME: 'DO_EXEC_ARCHDEV_21_SS_JOB',
     subsetPlanStrategyName: 'Customer & Account Subset Plan',
     lastTriggeredOn: '20/04/2025 08:22:10AM',
@@ -2011,9 +2011,9 @@ const ELEMENT_DATA_JOB_CONTROL_HEALTHCARE: JobDataControlElement[] = [
     jobControlId: 'JC-98761',
     subsetControlId: 'SP-98763',
 
-    jobControlName: 'Coverage & Benefits Obfuscation - Prod',
+    jobControlName: 'Coverage & Benefits Subset',
     jobControlDescription:
-      'Masks insurance coverage data, benefits, and associated financial limits.',
+      'Reduce the size of insurance coverage data and associated financial data.',
     API_NAME: 'DO_EXEC_ARCHDEV_22_SS_JOB',
     lastTriggeredOn: '15/04/2025 09:30:33AM',
     subsetPlanStrategyName: 'Billing Transactions - US Region',

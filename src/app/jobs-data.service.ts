@@ -116,7 +116,7 @@ const ELEMENT_DATA: JobElement[] = [
     triggeredOn: '15/04/2025 09:30:33AM',
     status: 'success',
     obsfucationControlName: 'Billing & Financial History',
-    progress: 100,
+    progress: 80,
     tasks: [
       {
         taskId: 'TASK-55678292',
@@ -1115,7 +1115,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
     subsetStrategyPlanName: 'Coverage & Benefits Obfuscation - Prod',
 
     // obsfucationControlName: 'Coverage & Benefits Obfuscation - Prod',
-    progress: 100,
+    progress: 80,
     tasks: [
       {
         taskId: 'TASK-78901234',
@@ -1210,7 +1210,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
 
     // obsfucationControlName: 'Membership Plan Enrollments Obfuscation',
 
-    progress: 100,
+    progress: 80,
     tasks: [
       {
         taskId: 'TASK-78901234',

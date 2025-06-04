@@ -1407,7 +1407,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
 
       {
         taskId: 'TASK-55678905',
-        taskDescription: "ObfuscateTable-'CI_PER_ADDR_SEAS'",
+        taskDescription: "ObfuscateTable-'CI_PER_NAME'",
         status: 'Pending',
         startTime: (() => {
           const date = new Date();
@@ -1423,11 +1423,11 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
         })(),
         endTime: null,
         recordsProcessed: 5,
-        message: [{ name: 'FAKER applied on  ADDRESS1 column.' }],
+        message: [{ name: 'FAKER applied on CI_PER_NAME column.' }],
       },
       {
         taskId: 'TASK-55678906',
-        taskDescription: "ObfuscateTable-'C1_ADDRESS'",
+        taskDescription: "ObfuscateTable-'CI_PER_PHONE'",
         status: 'Pending',
         startTime: (() => {
           const date = new Date();
@@ -1458,7 +1458,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
       },
       {
         taskId: 'TASK-55678907',
-        taskDescription: "ObfuscateTable-'CI_PER_NAME'",
+        taskDescription: "ObfuscateTable-'CI_PER_ADDREAS'",
         status: 'Pending',
         startTime: (() => {
           const date = new Date();
@@ -1474,11 +1474,11 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
         })(),
         endTime: null,
         recordsProcessed: 20,
-        message: [{ name: 'FAKER applied on  FULLNAME column.' }],
+        message: [{ name: 'FAKER applied on FULLNAME column.' }],
       },
       {
         taskId: 'TASK-55678908',
-        taskDescription: "ObfuscateTable-'CI_PER_PHONE'",
+        taskDescription: "ObfuscateTable-'CI_PER_ID'",
         status: 'Pending',
         startTime: (() => {
           const date = new Date();
@@ -1498,7 +1498,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
       },
       {
         taskId: 'TASK-55678909',
-        taskDescription: "ObfuscateTable-'CI_PER_ID'",
+        taskDescription: "ObfuscateTable-'CI_PER_CHAR'",
         status: 'Pending',
         startTime: (() => {
           const date = new Date();

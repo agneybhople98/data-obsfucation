@@ -121,7 +121,7 @@ const ELEMENT_DATA: JobElement[] = [
       {
         taskId: 'TASK-55678292',
         taskDescription: 'Shuffling demographic data',
-        status: 'Completed',
+        status: 'In Progress',
         errorMessage: null,
         startTime: (() => {
           const date = new Date();
@@ -148,12 +148,12 @@ const ELEMENT_DATA: JobElement[] = [
     status: 'success',
     obsfucationControlName: 'Field Activity Data Obfuscation',
 
-    progress: 100,
+    progress: 20,
     tasks: [
       {
         taskId: 'TASK-55678291',
         taskDescription: 'Masking phone numbers',
-        status: 'Completed',
+        status: 'In Progress',
         errorMessage: null,
         startTime: (() => {
           const date = new Date();

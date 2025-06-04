@@ -45,7 +45,14 @@ export class BreadcrumbComponent implements OnInit {
 
       for (let i = 0; i < urlSegments.length; i++) {
         currentPath += `/${urlSegments[i]}`;
-        const label = this.getPageLabel(urlSegments[i]);
+        const segment = urlSegments[i];
+
+        // Skip 'create-subset' segment in breadcrumbs
+        if (segment === 'create-subset') {
+          continue;
+        }
+
+        const label = this.getPageLabel(segment);
 
         // Skip adding Dashboard if it's not the first segment
         if (label && (i > 0 || label !== 'Dashboard')) {
@@ -78,6 +85,8 @@ export class BreadcrumbComponent implements OnInit {
         return 'Job Control List';
       case 'history':
         return 'History';
+      case 'create-subset':
+        return ''; // Return empty string to exclude from breadcrumb
       default:
         return this.capitalizeFirstLetter(segment.replace(/-/g, ' '));
     }

@@ -189,19 +189,19 @@ export const TABLE_DATA_HEATLHCARE: TableData = {
         {
           columnName: 'POSTAL',
           displayName: 'Postal Code',
-          obfStrategy: 'RANDOMIZE',
+          obfStrategy: undefined,
           obfRules: {
-            first: 'NUMERIC',
-            second: '6',
+            first: undefined,
+            second: undefined,
           },
         },
         {
           columnName: 'CITY',
           displayName: 'City',
-          obfStrategy: 'STARIFY',
+          obfStrategy: undefined,
           obfRules: {
-            first: 'L',
-            second: '3',
+            first: undefined,
+            second: undefined,
           },
         },
 
@@ -226,9 +226,9 @@ export const TABLE_DATA_HEATLHCARE: TableData = {
         {
           columnName: 'ADDRESS1',
           displayName: 'Address 1',
-          obfStrategy: 'FAKER',
+          obfStrategy: undefined,
           obfRules: {
-            first: 'ADDRESS',
+            first: undefined,
             second: undefined,
           },
         },

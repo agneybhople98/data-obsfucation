@@ -13,7 +13,7 @@ const ELEMENT_DATA: any[] = [
       url: 'https://do.uat.riaproducts.com/',
       username: 'RIA Advisory',
       password: 'riahealthcare123',
-      schemaName: 'ARCHDEVDEMO',
+      schemaName: 'ARCHDEV',
     },
   },
   {
@@ -28,7 +28,7 @@ const ELEMENT_DATA: any[] = [
       url: 'https://do.uat.riaproducts.com/',
       username: 'RIA_Advisory',
       password: 'riahealthcare123',
-      schemaName: 'ARCHDEVDEMO',
+      schemaName: 'ARCHDEV',
     },
   },
   {
@@ -43,7 +43,7 @@ const ELEMENT_DATA: any[] = [
       url: 'https://do.uat.riaproducts.com/',
       username: 'RIA Advisory',
       password: 'riahealthcare123',
-      schemaName: 'ARCHDEVDEMO',
+      schemaName: 'ARCHDEV',
     },
   },
   {
@@ -58,7 +58,7 @@ const ELEMENT_DATA: any[] = [
       url: 'https://do.uat.riaproducts.com/',
       username: 'RIA Advisory',
       password: 'riahealthcare123',
-      schemaName: 'ARCHDEVDEMO',
+      schemaName: 'ARCHDEV',
     },
   },
   {
@@ -72,7 +72,7 @@ const ELEMENT_DATA: any[] = [
       url: 'https://do.uat.riaproducts.com/',
       username: 'RIA Advisory',
       password: 'riahealthcare123',
-      schemaName: 'ARCHDEVDEMO',
+      schemaName: 'ARCHDEV',
     },
   },
   {
@@ -86,7 +86,7 @@ const ELEMENT_DATA: any[] = [
       url: 'https://do.uat.riaproducts.com/',
       username: 'RIA Advisory',
       password: 'riahealthcare123',
-      schemaName: 'ARCHDEVDEMO',
+      schemaName: 'ARCHDEV',
     },
   },
   {
@@ -101,7 +101,7 @@ const ELEMENT_DATA: any[] = [
       url: 'https://do.uat.riaproducts.com/',
       username: 'RIA Advisory',
       password: 'riahealthcare123',
-      schemaName: 'ARCHDEVDEMO',
+      schemaName: 'ARCHDEV',
     },
   },
 ];
@@ -118,7 +118,7 @@ const ELEMENT_DATA_HEALTHCARE: any[] = [
       url: 'https://do.uat.riaproducts.com/',
       username: 'RIA Advisory',
       password: 'riahealthcare123',
-      schemaName: 'ARCHDEVDEMO',
+      schemaName: 'ARCHDEV',
     },
   },
   {
@@ -133,7 +133,7 @@ const ELEMENT_DATA_HEALTHCARE: any[] = [
       url: 'https://do.uat.riaproducts.com/',
       username: 'RIA_Advisory',
       password: 'riahealthcare123',
-      schemaName: 'ARCHDEVDEMO',
+      schemaName: 'ARCHDEV',
     },
   },
   {
@@ -148,7 +148,7 @@ const ELEMENT_DATA_HEALTHCARE: any[] = [
       url: 'https://do.uat.riaproducts.com/',
       username: 'RIA Advisory',
       password: 'riahealthcare123',
-      schemaName: 'ARCHDEVDEMO',
+      schemaName: 'ARCHDEV',
     },
   },
   {
@@ -163,7 +163,7 @@ const ELEMENT_DATA_HEALTHCARE: any[] = [
       url: 'https://do.uat.riaproducts.com/',
       username: 'RIA Advisory',
       password: 'riahealthcare123',
-      schemaName: 'ARCHDEVDEMO',
+      schemaName: 'ARCHDEV',
     },
   },
   {
@@ -178,7 +178,7 @@ const ELEMENT_DATA_HEALTHCARE: any[] = [
       url: 'https://do.uat.riaproducts.com/',
       username: 'RIA Advisory',
       password: 'riahealthcare123',
-      schemaName: 'ARCHDEVDEMO',
+      schemaName: 'ARCHDEV',
     },
   },
   {
@@ -193,7 +193,7 @@ const ELEMENT_DATA_HEALTHCARE: any[] = [
       url: 'https://do.uat.riaproducts.com/',
       username: 'RIA Advisory',
       password: 'riahealthcare123',
-      schemaName: 'ARCHDEVDEMO',
+      schemaName: 'ARCHDEV',
     },
   },
   {
@@ -208,7 +208,7 @@ const ELEMENT_DATA_HEALTHCARE: any[] = [
       url: 'https://do.uat.riaproducts.com/',
       username: 'RIA Advisory',
       password: 'riahealthcare123',
-      schemaName: 'ARCHDEVDEMO',
+      schemaName: 'ARCHDEV',
     },
   },
 ];

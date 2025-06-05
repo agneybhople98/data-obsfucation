@@ -1271,7 +1271,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
   {
     jobId: 'RUN-98763',
     jobName: 'Membership & Policy Data Obfuscation',
-    subsetStrategyPlanName: 'Memebership & Policy Data Subset Strategy Plan',
+    subsetStrategyPlanName: 'Membership & Policy Data Subset Strategy Plan',
     jobDescription:
       'Masks sensitive details in customer memberships, policies, and eligibility for staging.',
     triggeredOn: (() => {

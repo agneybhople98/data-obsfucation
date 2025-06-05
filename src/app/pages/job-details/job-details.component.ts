@@ -292,7 +292,7 @@ export class JobDetailsComponent implements OnInit, AfterViewInit, OnDestroy {
       : jobDetails.jobControlId;
 
     this.router.navigate([
-      `${this.currentDomain}/subset-plan/create-subset`,
+      `${this.currentDomain}/subset-plan/view-subset`,
       subsetId,
     ]);
   }

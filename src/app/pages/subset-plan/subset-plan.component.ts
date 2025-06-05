@@ -90,9 +90,9 @@ export class SubsetPlanComponent {
     }
   }
 
-  openCreateObsfucation(element: any) {
+  viewSubsetPlan(element: any) {
     this.router.navigate([
-      `/${this.currentDomain}/subset-plan/create-subset`,
+      `/${this.currentDomain}/subset-plan/view-subset`,
       element.obsControlId,
     ]);
   }

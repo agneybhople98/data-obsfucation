@@ -11,6 +11,7 @@ import { SubsetPlanComponent } from '../pages/subset-plan/subset-plan.component'
 import { RouteResolverService } from '../services/route-resolver.service';
 import { CreateSubsetComponent } from '../pages/create-subset/create-subset.component';
 import { MaintenancePageComponent } from '../pages/maintenance-page/maintenance-page.component';
+import { ViewSubsetPlanComponent } from '../pages/view-subset-plan/view-subset-plan.component';
 
 // Set this to true to enable maintenance mode
 const MAINTENANCE_MODE = false;
@@ -61,12 +62,18 @@ const normalRoutes: Routes = [
         runGuardsAndResolvers: 'always',
         children: [
           { path: 'create-subset/:id', component: CreateSubsetComponent },
+          { path: 'view-subset/:id', component: ViewSubsetPlanComponent },
         ],
       },
 
       {
         path: 'create-subset',
         component: CreateSubsetComponent,
+        runGuardsAndResolvers: 'always',
+      },
+      {
+        path: 'view-subset',
+        component: ViewSubsetPlanComponent,
         runGuardsAndResolvers: 'always',
       },
 

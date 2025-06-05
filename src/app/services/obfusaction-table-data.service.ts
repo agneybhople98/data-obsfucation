@@ -1160,7 +1160,7 @@ export const TABLE_DATA_HEATLHCARE: TableData = {
               selectedValue: 'CMLNAME',
               selectedObfStrategy: 'STARIFY',
               selectedObfRule: 'L',
-              inputValue: '3',
+              inputValue: '4',
             },
             // show second option when clicked
 

@@ -48,7 +48,7 @@ export class BreadcrumbComponent implements OnInit {
         const segment = urlSegments[i];
 
         // Skip 'create-subset' segment in breadcrumbs
-        if (segment === 'create-subset') {
+        if (segment === 'create-subset' || segment === 'view-subset') {
           continue;
         }
 

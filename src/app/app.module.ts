@@ -53,6 +53,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { ToggleButtonComponent } from './components/toggle-button/toggle-button.component';
 import { MaintenancePageComponent } from './pages/maintenance-page/maintenance-page.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { ViewSubsetPlanComponent } from './pages/view-subset-plan/view-subset-plan.component';
 
 @NgModule({
   declarations: [
@@ -77,6 +78,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     QueryBuilderComponent,
     ToggleButtonComponent,
     MaintenancePageComponent,
+    ViewSubsetPlanComponent,
   ],
   imports: [
     FormsModule,

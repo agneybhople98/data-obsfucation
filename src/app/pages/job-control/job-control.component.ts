@@ -260,10 +260,9 @@ export class JobControlComponent implements OnInit, OnDestroy {
     //   ? 'SP-' + element.jobControlId.substring(3)
     //   : element.jobControlId;
 
-    console.log(element);
     if (element.subsetPlanStrategyName) {
       this.router.navigate([
-        `${this.currentDomain}/subset-plan/create-subset`,
+        `${this.currentDomain}/subset-plan/view-subset`,
         element.subsetControlId,
       ]);
     }

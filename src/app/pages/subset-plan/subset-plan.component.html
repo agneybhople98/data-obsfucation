@@ -4,7 +4,12 @@
 
 <router-outlet></router-outlet>
 
-<div class="bg-white" *ngIf="!router.url.includes('create-subset')">
+<div
+  class="bg-white"
+  *ngIf="
+    !router.url.includes('create-subset') && !router.url.includes('view-subset')
+  "
+>
   <mat-drawer-container
     class="!min-h-[calc(100vh-64px-60px)]"
     hasBackdrop="false"
@@ -265,7 +270,7 @@
                   style="color: #3179e5"
                   mat-cell
                   *matCellDef="let element"
-                  (click)="openCreateObsfucation(element)"
+                  (click)="viewSubsetPlan(element)"
                 >
                   {{ element.obsControlId }}
                 </td>

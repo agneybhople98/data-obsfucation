@@ -79,7 +79,7 @@ const ELEMENT_DATA: JobElement[] = [
     jobName: 'Support Interaction Data Masking',
     jobDescription: 'Mask support tickets and customer interactions.',
     triggeredOn: '10/04/2025 09:30:33AM',
-    status: 'success',
+    status: 'in-progress',
     obsfucationControlName: 'Support Interaction Data Masking',
     progress: 50,
     tasks: [
@@ -114,14 +114,14 @@ const ELEMENT_DATA: JobElement[] = [
     jobName: 'Billing & Financial History Obfuscation',
     jobDescription: 'Obfuscates billing and financial history data.',
     triggeredOn: '15/04/2025 09:30:33AM',
-    status: 'success',
+    status: 'in-progress',
     obsfucationControlName: 'Billing & Financial History',
     progress: 20,
     tasks: [
       {
         taskId: 'TASK-55678292',
         taskDescription: 'Shuffling demographic data',
-        status: 'In Progress',
+        status: 'Pending',
         errorMessage: null,
         startTime: (() => {
           const date = new Date();
@@ -145,7 +145,7 @@ const ELEMENT_DATA: JobElement[] = [
     jobName: 'Field Activity Data Obfuscation – Dev/Test',
     jobDescription: 'Obfuscate field activity data for development/test usage.',
     triggeredOn: '20/04/2025 08:11:09AM',
-    status: 'success',
+    status: 'in-progress',
     obsfucationControlName: 'Field Activity Data Obfuscation',
 
     progress: 20,
@@ -153,7 +153,7 @@ const ELEMENT_DATA: JobElement[] = [
       {
         taskId: 'TASK-55678291',
         taskDescription: 'Masking phone numbers',
-        status: 'In Progress',
+        status: 'Pending',
         errorMessage: null,
         startTime: (() => {
           const date = new Date();
@@ -197,7 +197,7 @@ const ELEMENT_DATA: JobElement[] = [
       {
         taskId: 'TASK-55678900',
         taskDescription: 'CopySchemaAndData',
-        status: 'In Progress',
+        status: 'Pending',
         // Format the startTime consistently with endTime
         startTime: (() => {
           const date = new Date();
@@ -222,7 +222,7 @@ const ELEMENT_DATA: JobElement[] = [
       {
         taskId: 'TASK-55678901',
         taskDescription: 'CreateProceduresAndFunctions',
-        status: 'In Progress',
+        status: 'Pending',
         startTime: (() => {
           const date = new Date();
           const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -246,7 +246,7 @@ const ELEMENT_DATA: JobElement[] = [
       {
         taskId: 'TASK-55678902',
         taskDescription: 'CreateSubsetScript',
-        status: 'In Progress',
+        status: 'Pending',
         startTime: (() => {
           const date = new Date();
           const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -267,7 +267,7 @@ const ELEMENT_DATA: JobElement[] = [
       {
         taskId: 'TASK-55678903',
         taskDescription: 'CI_ACCT-Based Data Subsetting',
-        status: 'In Progress',
+        status: 'Pending',
         startTime: (() => {
           const date = new Date();
           const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -288,7 +288,7 @@ const ELEMENT_DATA: JobElement[] = [
       {
         taskId: 'TASK-55678904',
         taskDescription: "ObfuscateTable-'CI_PER'",
-        status: 'In Progress',
+        status: 'Pending',
         startTime: (() => {
           const date = new Date();
           const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -420,7 +420,7 @@ const ELEMENT_DATA: JobElement[] = [
         message: [
           { name: 'REPLACE_WITH_CONSTANT applied on CHAR_VAL column.' },
           {
-            name: 'STARIFY, FAKER applied on ADHOC_CHAR_VAL column',
+            name: 'FAKER applied on ADHOC_CHAR_VAL column.',
           },
         ],
       },
@@ -451,7 +451,7 @@ const ELEMENT_DATA: JobElement[] = [
     jobName: 'Person Entity Anonymization – Pre-Prod',
     jobDescription: 'Anonymize persons for secure pre-production and testing.',
     triggeredOn: '25/04/2025 08:22:10AM',
-    status: 'failed',
+    status: 'in-progress',
     obsfucationControlName: 'Person Entity Anonymization',
     progress: 20,
     additionalRunIdDetails: [
@@ -461,7 +461,7 @@ const ELEMENT_DATA: JobElement[] = [
         jobDescription:
           'Anonymize persons for secure pre-production and testing.',
         triggeredOn: '03/04/2025 09:22:10AM',
-        status: 'failed',
+        status: 'in-progress',
         obsfucationControlName: 'Person Entity Anonymization',
         progress: 30,
 
@@ -469,7 +469,7 @@ const ELEMENT_DATA: JobElement[] = [
           {
             taskId: 'TASK-55678904',
             taskDescription: "ObfuscateTable-'CI_PER'",
-            status: 'In Progress',
+            status: 'Pending',
             startTime: (() => {
               const date = new Date();
               const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -601,7 +601,7 @@ const ELEMENT_DATA: JobElement[] = [
             message: [
               { name: 'REPLACE_WITH_CONSTANT applied on CHAR_VAL column.' },
               {
-                name: 'STARIFY, FAKER applied on ADHOC_CHAR_VAL column',
+                name: 'FAKER applied on ADHOC_CHAR_VAL column.',
               },
             ],
           },
@@ -612,7 +612,7 @@ const ELEMENT_DATA: JobElement[] = [
       {
         taskId: 'TASK-78901234',
         taskDescription: 'CopySchemaAndData',
-        status: 'In Progress',
+        status: 'Pending',
         startTime: (() => {
           const date = new Date();
           const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -632,7 +632,7 @@ const ELEMENT_DATA: JobElement[] = [
       {
         taskId: 'TASK-20547689',
         taskDescription: 'CreateProceduresAndFunctions',
-        status: 'Completed',
+        status: 'Pending',
         startTime: (() => {
           const date = new Date();
           const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -652,7 +652,7 @@ const ELEMENT_DATA: JobElement[] = [
       {
         taskId: 'TASK-30982345',
         taskDescription: 'CreateMaskingScript',
-        status: 'In Progress',
+        status: 'Pending',
         startTime: (() => {
           const date = new Date();
           const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -672,7 +672,7 @@ const ELEMENT_DATA: JobElement[] = [
       {
         taskId: 'TASK-55678904',
         taskDescription: "ObfuscateTable-'CI_PER'",
-        status: 'In Progress',
+        status: 'Pending',
         startTime: (() => {
           const date = new Date();
           const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -819,14 +819,14 @@ const ELEMENT_DATA: JobElement[] = [
     triggeredOn: '28/04/2025 07:33:22AM',
     subsetStrategyPlanName:
       'Financial Data Masking – Utility Systems Subset Plan',
-    status: 'failed',
+    status: 'in-progress',
     // obsfucationControlName: 'Financial Data Masking',
     progress: 10,
     tasks: [
       {
         taskId: 'TASK-78901234',
         taskDescription: 'CopySchemaAndData',
-        status: 'In Progress',
+        status: 'Pending',
         startTime: (() => {
           const date = new Date();
           const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -846,7 +846,7 @@ const ELEMENT_DATA: JobElement[] = [
       {
         taskId: 'TASK-20547689',
         taskDescription: 'CreateProceduresAndFunctions',
-        status: 'Completed',
+        status: 'Pending',
         startTime: (() => {
           const date = new Date();
           const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -866,7 +866,7 @@ const ELEMENT_DATA: JobElement[] = [
       {
         taskId: 'TASK-30982345',
         taskDescription: 'Create Subset Script',
-        status: 'In Progress',
+        status: 'Pending',
         startTime: (() => {
           const date = new Date();
           const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -886,7 +886,7 @@ const ELEMENT_DATA: JobElement[] = [
       {
         taskId: 'TASK-55678903',
         taskDescription: 'CI_ACCT-Based Data Subsetting',
-        status: 'In Progress',
+        status: 'Pending',
         startTime: (() => {
           const date = new Date();
           const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -1018,7 +1018,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
     jobDescription:
       'Anonymizes financial disbursements, payment references, and claim resolution info.',
     triggeredOn: '05/04/2025 09:30:33AM',
-    status: 'success',
+    status: 'in-progress',
     obsfucationControlName: 'Claims Payments & Payouts - AUS',
     progress: 100,
     tasks: [
@@ -1050,7 +1050,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
     jobDescription:
       'Obfuscates claim headers and line items, including statuses and adjudication outcomes.',
     triggeredOn: '10/04/2025 09:30:33AM',
-    status: 'success',
+    status: 'in-progress',
     obsfucationControlName: 'Claim Details Obfuscation - EU',
     progress: 100,
     tasks: [
@@ -1086,7 +1086,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
     jobDescription:
       'Reduce the size of Billing data to M11 bill cycle accounts.',
     triggeredOn: '15/04/2025 09:30:33AM',
-    status: 'success',
+    status: 'in-progress',
     subsetStrategyPlanName: 'Coverage & Benefits Obfuscation - Prod',
 
     // obsfucationControlName: 'Coverage & Benefits Obfuscation - Prod',
@@ -1095,7 +1095,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
       {
         taskId: 'TASK-78901234',
         taskDescription: 'CopySchemaAndData',
-        status: 'In Progress',
+        status: 'Pending',
         startTime: (() => {
           const date = new Date();
           const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -1115,7 +1115,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
       {
         taskId: 'TASK-20547689',
         taskDescription: 'CreateProceduresAndFunctions',
-        status: 'In Progress',
+        status: 'Pending',
         startTime: (() => {
           const date = new Date();
           const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -1135,7 +1135,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
       {
         taskId: 'TASK-30982345',
         taskDescription: 'CreateSubsetScript',
-        status: 'In Progress',
+        status: 'Pending',
         startTime: (() => {
           const date = new Date();
           const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -1155,7 +1155,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
       {
         taskId: 'TASK-55678903',
         taskDescription: 'CI_ACCT-Based Data Subsetting',
-        status: 'In Progress',
+        status: 'Pending',
         startTime: (() => {
           const date = new Date();
           const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -1179,7 +1179,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
     jobName: 'Customer & Account Subset Job',
     jobDescription: 'Extract Customer & Account details for list of accounts.',
     triggeredOn: '20/04/2025 08:11:09AM',
-    status: 'success',
+    status: 'in-progress',
     subsetStrategyPlanName: 'Membership & Policy Data Subset Strategy Plan',
 
     // obsfucationControlName: 'Membership Plan Enrollments Obfuscation',
@@ -1189,7 +1189,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
       {
         taskId: 'TASK-78901234',
         taskDescription: 'CopySchemaAndData',
-        status: 'In Progress',
+        status: 'Pending',
         startTime: (() => {
           const date = new Date();
           const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -1209,7 +1209,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
       {
         taskId: 'TASK-20547689',
         taskDescription: 'CreateProceduresAndFunctions',
-        status: 'In Progress',
+        status: 'Pending',
         startTime: (() => {
           const date = new Date();
           const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -1229,7 +1229,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
       {
         taskId: 'TASK-30982345',
         taskDescription: 'CreateSubsetScript',
-        status: 'In Progress',
+        status: 'Pending',
         startTime: (() => {
           const date = new Date();
           const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -1249,7 +1249,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
       {
         taskId: 'TASK-55678903',
         taskDescription: 'CI_ACCT-Based Data Subsetting',
-        status: 'In Progress',
+        status: 'Pending',
         startTime: (() => {
           const date = new Date();
           const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -1293,7 +1293,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
       {
         taskId: 'TASK-55678900',
         taskDescription: 'CopySchemaAndData',
-        status: 'In Progress',
+        status: 'Pending',
         // Format the startTime consistently with endTime
         startTime: (() => {
           const date = new Date();
@@ -1317,7 +1317,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
       {
         taskId: 'TASK-55678901',
         taskDescription: 'CreateProceduresAndFunctions',
-        status: 'In Progress',
+        status: 'Pending',
         startTime: (() => {
           const date = new Date();
           const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -1340,7 +1340,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
       {
         taskId: 'TASK-55678902',
         taskDescription: 'CreateSubsetScript',
-        status: 'In Progress',
+        status: 'Pending',
         startTime: (() => {
           const date = new Date();
           const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -1360,7 +1360,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
       {
         taskId: 'TASK-55678903',
         taskDescription: 'CI_ACCT-Based Data Subsetting',
-        status: 'In Progress',
+        status: 'Pending',
         startTime: (() => {
           const date = new Date();
           const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -1381,7 +1381,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
       {
         taskId: 'TASK-55678904',
         taskDescription: "ObfuscateTable-'CI_PER'",
-        status: 'In Progress',
+        status: 'Pending',
         startTime: (() => {
           const date = new Date();
           const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -1398,10 +1398,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
         recordsProcessed: 500,
         message: [
           { name: 'FAKER applied on EMAILID column.' },
-          { name: 'STARIFY applied on CITY column.' },
-          { name: 'FAKER applied on ADDRESS column.' },
           { name: 'REPLACE_WITH_CONSTANT applied on LANGUAGE_CD column.' },
-          { name: 'RANDOMIZE applied on POSTAL column.' },
         ],
       },
 
@@ -1423,7 +1420,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
         })(),
         endTime: null,
         recordsProcessed: 5,
-        message: [{ name: 'FAKER applied on CI_PER_NAME column.' }],
+        message: [{ name: 'FAKER applied on  FULLNAME column.' }],
       },
       {
         taskId: 'TASK-55678906',
@@ -1443,17 +1440,31 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
         })(),
         endTime: null,
         recordsProcessed: 1400,
+        message: [{ name: 'FAKER applied on  PHONE column.' }],
+      },
+      {
+        taskId: 'TASK-55678908',
+        taskDescription: "ObfuscateTable-'C1_ADDRESS'",
+        status: 'Pending',
+        startTime: (() => {
+          const date = new Date();
+          const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const day = date.getDate().toString().padStart(2, '0');
+          const year = date.getFullYear();
+          const hours = date.getHours() % 12 || 12;
+          const minutes = date.getMinutes().toString().padStart(2, '0');
+          const seconds = date.getSeconds().toString().padStart(2, '0');
+          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+        })(),
+        endTime: null,
+        recordsProcessed: 30,
         message: [
-          { name: 'FAKER applied on ADDRESS1 column.' },
-          {
-            name: 'RANDOMIZE applied on POSTAL column.',
-          },
-          {
-            name: 'REPLACE_WITH_CONSTANT applied on CITY column.',
-          },
-          {
-            name: 'REPLACE_WITH_CONSTANT applied on STATE column.',
-          },
+          { name: 'FAKER applied on PER_ID_NBR column.' },
+          { name: 'RANDOMIZE applied on POSTAL column.' },
+          { name: 'REPLACE_WITH_CONSTANT applied on CITY column.' },
+          { name: 'REPLACE_WITH_CONSTANT applied on STATE column.' },
         ],
       },
       {
@@ -1474,7 +1485,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
         })(),
         endTime: null,
         recordsProcessed: 20,
-        message: [{ name: 'FAKER applied on FULLNAME column.' }],
+        message: [{ name: 'FAKER applied on  ADDRESS1 column.' }],
       },
       {
         taskId: 'TASK-55678908',
@@ -1494,7 +1505,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
         })(),
         endTime: null,
         recordsProcessed: 30,
-        message: [{ name: 'FAKER applied on  PHONE column.' }],
+        message: [{ name: 'FAKER applied on PER_ID_NBR column.' }],
       },
       {
         taskId: 'TASK-55678909',
@@ -1514,31 +1525,10 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
         })(),
         endTime: null,
         recordsProcessed: 20,
-        message: [{ name: 'FAKER applied on PER_ID_NBR column.' }],
-      },
-      {
-        taskId: 'TASK-55678910',
-        taskDescription: "ObfuscateTable-'CI_PER_CHAR'",
-        status: 'Pending',
-        startTime: (() => {
-          const date = new Date();
-          const month = (date.getMonth() + 1).toString().padStart(2, '0');
-          const day = date.getDate().toString().padStart(2, '0');
-          const year = date.getFullYear();
-          const hours = date.getHours() % 12 || 12;
-          const minutes = date.getMinutes().toString().padStart(2, '0');
-          const seconds = date.getSeconds().toString().padStart(2, '0');
-          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
-
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
-        })(),
-        endTime: null,
-        recordsProcessed: 20,
         message: [
           { name: 'REPLACE_WITH_CONSTANT applied on CHAR_VAL column.' },
-          {
-            name: 'STARIFY, FAKER applied on ADHOC_CHAR_VAL column',
-          },
+
+          { name: 'STARIFY, FAKER applied on ADHOC_CHAR_VAL column.' },
         ],
       },
     ],
@@ -1549,7 +1539,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
     jobDescription:
       'Secures billing, adjustments, and payment data for performance testing.',
     triggeredOn: '25/04/2025 08:22:10AM',
-    status: 'failed',
+    status: 'in-progress',
     obsfucationControlName: 'Billing Transactions - US Region',
     progress: 20,
     additionalRunIdDetails: [
@@ -1559,7 +1549,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
         jobDescription:
           'Secures billing, adjustments, and payment data for performance testing.',
         triggeredOn: '03/04/2025 11:22:10AM',
-        status: 'failed',
+        status: 'in-progress',
         obsfucationControlName: 'Billing Transactions - US Region',
         progress: 20,
 
@@ -1596,7 +1586,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
       {
         taskId: 'TASK-78901234',
         taskDescription: 'CopySchemaAndData',
-        status: 'In Progress',
+        status: 'Pending',
         startTime: (() => {
           const date = new Date();
           const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -1616,7 +1606,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
       {
         taskId: 'TASK-20547689',
         taskDescription: 'CreateProceduresAndFunctions',
-        status: 'Completed',
+        status: 'Pending',
         startTime: (() => {
           const date = new Date();
           const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -1636,7 +1626,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
       {
         taskId: 'TASK-30982345',
         taskDescription: 'CreateMaskingScript',
-        status: 'In Progress',
+        status: 'Pending',
         startTime: (() => {
           const date = new Date();
           const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -1653,10 +1643,11 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
 
         message: [{ name: 'Create Masking Script is Successful' }],
       },
+
       {
         taskId: 'TASK-55678904',
         taskDescription: "ObfuscateTable-'CI_PER'",
-        status: 'In Progress',
+        status: 'Pending',
         startTime: (() => {
           const date = new Date();
           const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -1670,65 +1661,15 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
           return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
-        recordsProcessed: 2000,
+        recordsProcessed: 500,
         message: [
-          {
-            name: 'FAKER applied on EMAILID column. ',
-          },
-          { name: 'STARIFY applied on CITY column.' },
-          { name: 'FAKER applied on ADDRESS column.' },
+          { name: 'FAKER applied on EMAILID column.' },
           { name: 'REPLACE_WITH_CONSTANT applied on LANGUAGE_CD column.' },
-          { name: 'RANDOMIZE applied on POSTAL column.' },
         ],
       },
 
       {
         taskId: 'TASK-55678905',
-        taskDescription: "ObfuscateTable-'CI_PER_ADDR_SEAS'",
-        status: 'Pending',
-        startTime: (() => {
-          const date = new Date();
-          const month = (date.getMonth() + 1).toString().padStart(2, '0');
-          const day = date.getDate().toString().padStart(2, '0');
-          const year = date.getFullYear();
-          const hours = date.getHours() % 12 || 12;
-          const minutes = date.getMinutes().toString().padStart(2, '0');
-          const seconds = date.getSeconds().toString().padStart(2, '0');
-          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
-
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
-        })(),
-        endTime: null,
-        recordsProcessed: 100,
-        message: [{ name: 'FAKER applied on  ADDRESS1 column.' }],
-      },
-
-      {
-        taskId: 'TASK-55678906',
-        taskDescription: "ObfuscateTable-'CI_PER_CONTDET'",
-        status: 'Pending',
-        startTime: (() => {
-          const date = new Date();
-          const month = (date.getMonth() + 1).toString().padStart(2, '0');
-          const day = date.getDate().toString().padStart(2, '0');
-          const year = date.getFullYear();
-          const hours = date.getHours() % 12 || 12;
-          const minutes = date.getMinutes().toString().padStart(2, '0');
-          const seconds = date.getSeconds().toString().padStart(2, '0');
-          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
-
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
-        })(),
-        endTime: null,
-        recordsProcessed: 1500,
-        message: [
-          {
-            name: 'FAKER applied on  PHONE column.',
-          },
-        ],
-      },
-      {
-        taskId: 'TASK-55678907',
         taskDescription: "ObfuscateTable-'CI_PER_NAME'",
         status: 'Pending',
         startTime: (() => {
@@ -1744,8 +1685,73 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
           return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
-        recordsProcessed: 1200,
-        message: [{ name: 'FAKER applied on  ENTITY_NAME column.' }],
+        recordsProcessed: 5,
+        message: [{ name: 'FAKER applied on  FULLNAME column.' }],
+      },
+      {
+        taskId: 'TASK-55678906',
+        taskDescription: "ObfuscateTable-'CI_PER_PHONE'",
+        status: 'Pending',
+        startTime: (() => {
+          const date = new Date();
+          const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const day = date.getDate().toString().padStart(2, '0');
+          const year = date.getFullYear();
+          const hours = date.getHours() % 12 || 12;
+          const minutes = date.getMinutes().toString().padStart(2, '0');
+          const seconds = date.getSeconds().toString().padStart(2, '0');
+          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+        })(),
+        endTime: null,
+        recordsProcessed: 1400,
+        message: [{ name: 'FAKER applied on  PHONE column.' }],
+      },
+      {
+        taskId: 'TASK-55678908',
+        taskDescription: "ObfuscateTable-'C1_ADDRESS'",
+        status: 'Pending',
+        startTime: (() => {
+          const date = new Date();
+          const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const day = date.getDate().toString().padStart(2, '0');
+          const year = date.getFullYear();
+          const hours = date.getHours() % 12 || 12;
+          const minutes = date.getMinutes().toString().padStart(2, '0');
+          const seconds = date.getSeconds().toString().padStart(2, '0');
+          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+        })(),
+        endTime: null,
+        recordsProcessed: 30,
+        message: [
+          { name: 'FAKER applied on PER_ID_NBR column.' },
+          { name: 'RANDOMIZE applied on POSTAL column.' },
+          { name: 'REPLACE_WITH_CONSTANT applied on CITY column.' },
+          { name: 'REPLACE_WITH_CONSTANT applied on STATE column.' },
+        ],
+      },
+      {
+        taskId: 'TASK-55678907',
+        taskDescription: "ObfuscateTable-'CI_PER_ADDREAS'",
+        status: 'Pending',
+        startTime: (() => {
+          const date = new Date();
+          const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const day = date.getDate().toString().padStart(2, '0');
+          const year = date.getFullYear();
+          const hours = date.getHours() % 12 || 12;
+          const minutes = date.getMinutes().toString().padStart(2, '0');
+          const seconds = date.getSeconds().toString().padStart(2, '0');
+          const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+        })(),
+        endTime: null,
+        recordsProcessed: 20,
+        message: [{ name: 'FAKER applied on  ADDRESS1 column.' }],
       },
       {
         taskId: 'TASK-55678908',
@@ -1764,8 +1770,8 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
           return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
-        recordsProcessed: 20,
-        message: [{ name: 'FAKER applied on CI_PER_ID column.' }],
+        recordsProcessed: 30,
+        message: [{ name: 'FAKER applied on PER_ID_NBR column.' }],
       },
       {
         taskId: 'TASK-55678909',
@@ -1787,9 +1793,8 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
         recordsProcessed: 20,
         message: [
           { name: 'REPLACE_WITH_CONSTANT applied on CHAR_VAL column.' },
-          {
-            name: 'STARIFY, FAKER applied on ADHOC_CHAR_VAL column',
-          },
+
+          { name: 'STARIFY, FAKER applied on ADHOC_CHAR_VAL column.' },
         ],
       },
     ],
@@ -1801,14 +1806,14 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
     jobDescription:
       'Obfuscates personally identifiable information (PII) in customer and account entities.',
     triggeredOn: '28/04/2025 07:33:22AM',
-    status: 'failed',
+    status: 'in-progress',
     // obsfucationControlName: 'Customer & Account Obfuscation',
     progress: 10,
     tasks: [
       {
         taskId: 'TASK-78901234',
         taskDescription: 'CopySchemaAndData',
-        status: 'In Progress',
+        status: 'Pending',
         startTime: (() => {
           const date = new Date();
           const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -1828,7 +1833,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
       {
         taskId: 'TASK-20547689',
         taskDescription: 'CreateProceduresAndFunctions',
-        status: 'In Progress',
+        status: 'Pending',
         startTime: (() => {
           const date = new Date();
           const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -1848,7 +1853,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
       {
         taskId: 'TASK-30982345',
         taskDescription: 'CreateSubsetScript',
-        status: 'In Progress',
+        status: 'Pending',
         startTime: (() => {
           const date = new Date();
           const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -1868,7 +1873,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
       {
         taskId: 'TASK-55678903',
         taskDescription: 'CI_ACCT-Based Data Subsetting',
-        status: 'In Progress',
+        status: 'Pending',
         startTime: (() => {
           const date = new Date();
           const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -2051,7 +2056,6 @@ export class JobsDataService {
   getAllJobControlData(): JobDataControlElement[] {
     return this.jobsDataControlData.value;
   }
-
   private updateSingleTaskStatus(
     jobId: string,
     taskIndex: number
@@ -2071,42 +2075,51 @@ export class JobsDataService {
     const job = { ...updatedJobs[jobIndex] };
     const tasks = [...job.tasks];
 
+    // Complete the previous task if it's still "In Progress" when starting a new one
     if (taskIndex > 0) {
       const previousTask = tasks[taskIndex - 1];
-      if (previousTask.status !== 'Completed') {
-        return job;
+      if (previousTask.status === 'In Progress') {
+        previousTask.status = 'Completed';
+        const endDate = new Date();
+        previousTask.endTime = this.formatDate(endDate);
+        tasks[taskIndex - 1] = previousTask;
+
+        // Update progress when completing previous task
+        const completedTasks = tasks.filter(
+          (t: any) => t.status === 'Completed'
+        ).length;
+        job.progress = Math.round((completedTasks / tasks.length) * 100);
       }
     }
 
     const task = { ...tasks[taskIndex] };
-
     const startDate = new Date();
     task.startTime = this.formatDate(startDate);
-    task.status = 'In Progress';
 
-    setTimeout(() => {
-      task.status = 'Completed';
-      const endDate = new Date(startDate.getTime() + 4000);
-      task.endTime = this.formatDate(endDate);
-
-      tasks[taskIndex] = task;
-
-      const completedTasks = tasks.filter(
-        (t: any) => t.status === 'Completed'
-      ).length;
-      job.progress = Math.round((completedTasks / tasks.length) * 100);
-      if (completedTasks === tasks.length) {
-        job.status = 'success';
-      }
-
-      updatedJobs[jobIndex] = job;
-      this.jobsDataSubject.next(updatedJobs);
-    }, 300);
-
+    // Start with Pending status
+    task.status = 'Pending';
     tasks[taskIndex] = task;
     job.tasks = tasks;
     updatedJobs[jobIndex] = job;
     this.jobsDataSubject.next(updatedJobs);
+
+    // Change to In Progress after a brief moment
+    setTimeout(() => {
+      const currentJobs = this.jobsDataSubject.value;
+      const jobIndex = currentJobs.findIndex((job) => job.jobId === jobId);
+      if (jobIndex === -1) return;
+
+      const updatedJobs = [...currentJobs];
+      const job = { ...updatedJobs[jobIndex] };
+      const tasks = [...job.tasks];
+      const task = { ...tasks[taskIndex] };
+
+      task.status = 'In Progress';
+      tasks[taskIndex] = task;
+      job.tasks = tasks;
+      updatedJobs[jobIndex] = job;
+      this.jobsDataSubject.next(updatedJobs);
+    }, 100);
 
     return job;
   }
@@ -2127,6 +2140,7 @@ export class JobsDataService {
           const updatedJob = { ...currentJobs[jobIndex] };
           updatedJob.tasks = updatedJob.tasks.map((task: any) => ({
             ...task,
+            status: 'Pending',
             startTime: undefined,
             endTime: null,
           }));
@@ -2139,13 +2153,13 @@ export class JobsDataService {
         const taskCount = job.tasks.length;
         const updateObservables: Observable<JobElement | undefined>[] = [];
 
-        // Special timing for RUN-98764 to complete in 20 seconds
+        // Timing between task starts (when next task begins, previous completes)
         const delayPerTask =
           jobId === 'RUN-98765' ||
           jobId === 'RUN-98762' ||
           jobId === 'RUN-98761'
             ? 1800
-            : 400; // ~1818ms per task for 20 second total
+            : 1000; // 1 second between each task start
 
         for (let i = 0; i < taskCount; i++) {
           const updateObservable = timer(delayPerTask * (i + 1)).pipe(
@@ -2154,11 +2168,49 @@ export class JobsDataService {
           updateObservables.push(updateObservable);
         }
 
-        return concat(...updateObservables);
+        // Add final observable to complete the last task
+        const finalObservable = timer(delayPerTask * (taskCount + 1)).pipe(
+          map(() => {
+            const currentJobs = this.jobsDataSubject.value;
+            const jobIndex = currentJobs.findIndex(
+              (job) => job.jobId === jobId
+            );
+            if (jobIndex === -1) return undefined;
+
+            const updatedJobs = [...currentJobs];
+            const job = { ...updatedJobs[jobIndex] };
+            const tasks = [...job.tasks];
+
+            // Complete the last task
+            const lastTask = { ...tasks[taskCount - 1] };
+            if (lastTask.status === 'In Progress') {
+              lastTask.status = 'Completed';
+              lastTask.endTime = this.formatDate(new Date());
+              tasks[taskCount - 1] = lastTask;
+
+              // Update progress and job status
+              const completedTasks = tasks.filter(
+                (t: any) => t.status === 'Completed'
+              ).length;
+              job.progress = Math.round((completedTasks / tasks.length) * 100);
+              job.tasks = tasks;
+
+              if (completedTasks === tasks.length) {
+                job.status = 'success';
+              }
+
+              updatedJobs[jobIndex] = job;
+              this.jobsDataSubject.next(updatedJobs);
+            }
+
+            return job;
+          })
+        );
+
+        return concat(...updateObservables, finalObservable);
       })
     );
   }
-
   runJobByName(jobName: string): Observable<any> {
     return this.http.post(`${this.apiUrl}?jobName=${jobName}`, {}).pipe(
       tap((response) => console.log('Job run response:', response)),

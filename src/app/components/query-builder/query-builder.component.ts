@@ -2429,21 +2429,27 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
       case 'CI_PER_ID':
         this.currentConfig = this.ciPerIdConfig;
         break;
-
       default:
         this.currentConfig = this.ciPerConfig; // Use default config if no match
         break;
     }
-    if (this.selectedItem === 'CI_PER') {
-      // Reset query to null/empty state
-      this.query = null;
 
-      // Update form control with null query
-      this.queryCtrl = this.formBuilder.control(null);
+    // Check if we're in create subset mode
+    if (this._router.url.includes('create-subset')) {
+      // Initialize with empty conditions for create subset
+      this.query = {
+        condition: 'and',
+        rules: [],
+      };
+      this.queryCtrl = this.formBuilder.control(this.query);
+      return; // Exit early for create subset mode
     }
 
-    // Healthcare Subset Plan 2: Complex condition with GRP/USD, CIS_DIVISION, and BILL_CYC_CD
-    else if (
+    // Keep all existing conditions for view subset mode
+    if (this.selectedItem === 'CI_PER') {
+      this.query = null;
+      this.queryCtrl = this.formBuilder.control(null);
+    } else if (
       this.selectedItem === 'CI_ACCT' &&
       this._router.url.includes('/healthcare') &&
       this._router.url.includes('SP-98765')
@@ -2544,7 +2550,6 @@ export class QueryBuilderComponent implements OnInit, OnChanges {
 
       // Update form control with new query
       this.queryCtrl = this.formBuilder.control(this.query);
-      // Subset Plan 2: Complex condition with GRP/USD, CIS_DIVISION, and BILL_CYC_CD
     } else if (
       this.selectedItem === 'CI_ACCT' &&
       this._router.url.includes('/healthcare') &&

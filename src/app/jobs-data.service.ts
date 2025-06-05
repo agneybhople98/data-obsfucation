@@ -55,7 +55,7 @@ const ELEMENT_DATA: JobElement[] = [
       {
         taskId: 'TASK-55678091',
         taskDescription: 'Substituting email addresses',
-        status: 'Completed',
+        status: 'Failed',
         errorMessage: `RUN-98759 'SQL Error: ORA-00904: "EMAILID": invalid identifier https://docs.oracle.com/error-help/db/ora-00904/00904. 00000 - "%s: invalid identifier"'`,
         startTime: (() => {
           const date = new Date();
@@ -79,7 +79,7 @@ const ELEMENT_DATA: JobElement[] = [
     jobName: 'Support Interaction Data Masking',
     jobDescription: 'Mask support tickets and customer interactions.',
     triggeredOn: '10/04/2025 09:30:33AM',
-    status: 'in-progress',
+    status: 'failed',
     obsfucationControlName: 'Support Interaction Data Masking',
     progress: 50,
     tasks: [

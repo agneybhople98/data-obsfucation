@@ -48,14 +48,14 @@ const ELEMENT_DATA: JobElement[] = [
     jobDescription:
       'Obfuscates claim headers and line items, including statuses and adjudication outcomes.',
     triggeredOn: '05/04/2025 09:30:33AM',
-    status: 'success',
+    status: 'failed',
     obsfucationControlName: 'Outage Data Anonymization',
-    progress: 100,
+    progress: 50,
     tasks: [
       {
         taskId: 'TASK-55678091',
         taskDescription: 'Substituting email addresses',
-        status: 'Failed',
+        status: 'Completed',
         errorMessage: `RUN-98759 'SQL Error: ORA-00904: "EMAILID": invalid identifier https://docs.oracle.com/error-help/db/ora-00904/00904. 00000 - "%s: invalid identifier"'`,
         startTime: (() => {
           const date = new Date();
@@ -1018,9 +1018,9 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
     jobDescription:
       'Anonymizes financial disbursements, payment references, and claim resolution info.',
     triggeredOn: '05/04/2025 09:30:33AM',
-    status: 'in-progress',
+    status: 'failed',
     obsfucationControlName: 'Claims Payments & Payouts - AUS',
-    progress: 100,
+    progress: 50,
     tasks: [
       {
         taskId: 'TASK-55678091',
@@ -1050,9 +1050,9 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
     jobDescription:
       'Obfuscates claim headers and line items, including statuses and adjudication outcomes.',
     triggeredOn: '10/04/2025 09:30:33AM',
-    status: 'in-progress',
+    status: 'failed',
     obsfucationControlName: 'Claim Details Obfuscation - EU',
-    progress: 100,
+    progress: 50,
     tasks: [
       {
         taskId: 'TASK-55675291',

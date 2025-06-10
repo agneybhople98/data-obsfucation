@@ -54,6 +54,7 @@ import { ToggleButtonComponent } from './components/toggle-button/toggle-button.
 import { MaintenancePageComponent } from './pages/maintenance-page/maintenance-page.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { ViewSubsetPlanComponent } from './pages/view-subset-plan/view-subset-plan.component';
+import { TopNavigationBarComponent } from './components/top-navigation-bar/top-navigation-bar.component';
 
 @NgModule({
   declarations: [
@@ -79,6 +80,7 @@ import { ViewSubsetPlanComponent } from './pages/view-subset-plan/view-subset-pl
     ToggleButtonComponent,
     MaintenancePageComponent,
     ViewSubsetPlanComponent,
+    TopNavigationBarComponent,
   ],
   imports: [
     FormsModule,

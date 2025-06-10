@@ -15,11 +15,6 @@
     class="sidenav"
     [class.expanded]="isExpanded"
   >
-    <!-- Logo Section -->
-    <div class="logo-container">
-      <img src="../../../assets/DO Black BG 1.svg" alt="DO Logo" class="logo" />
-    </div>
-
     <!-- Navigation Items -->
     <mat-nav-list>
       <aside class="sidebar">
@@ -212,43 +207,6 @@
   <!-- Main Content -->
   <mat-sidenav-content>
     <!-- Top Navigation Bar -->
-    <mat-toolbar class="top-toolbar">
-      <button
-        class="mat-menu !text-white"
-        mat-icon-button
-        (click)="toggleSidebar()"
-      >
-        <mat-icon>menu</mat-icon>
-      </button>
-
-      <span class="toolbar-spacer"></span>
-
-      <!-- User Profile Section -->
-      <div class="user-profile !px-2">
-        <div class="flex items-center gap-2" [matMenuTriggerFor]="userMenu">
-          <button mat-icon-button class="user-avatar cursor-pointer">
-            <img src="../../../assets/avatar.png" alt="User Avatar" />
-          </button>
-          <span class="user-name cursor-pointer" *ngIf="isExpanded">{{
-            userName
-          }}</span>
-        </div>
-        <mat-menu #userMenu="matMenu">
-          <button mat-menu-item>
-            <mat-icon>person</mat-icon>
-            <span>Profile</span>
-          </button>
-          <button mat-menu-item>
-            <mat-icon>settings</mat-icon>
-            <span>Settings</span>
-          </button>
-          <button mat-menu-item>
-            <mat-icon>logout</mat-icon>
-            <span>Logout</span>
-          </button>
-        </mat-menu>
-      </div>
-    </mat-toolbar>
 
     <!-- Page Content -->
     <div class="content">

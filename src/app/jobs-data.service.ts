@@ -1438,7 +1438,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
       },
       {
         taskId: 'TASK-55678907',
-        taskDescription: "ObfuscateTable-'CI_PER_ADDREAS'",
+        taskDescription: "ObfuscateTable-'CI_PER_ADDR_SEAS'",
         status: 'Pending',
         startTime: (() => {
           const date = new Date();
@@ -1704,7 +1704,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
       },
       {
         taskId: 'TASK-55678907',
-        taskDescription: "ObfuscateTable-'CI_PER_ADDREAS'",
+        taskDescription: "ObfuscateTable-'CI_PER_ADDR_SEAS'",
         status: 'Pending',
         startTime: (() => {
           const date = new Date();

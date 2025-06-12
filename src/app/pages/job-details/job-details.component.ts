@@ -316,7 +316,10 @@ export class JobDetailsComponent implements OnInit, AfterViewInit, OnDestroy {
     return message.replace(urlRegex, '');
   }
 
-  formatMessage(message: string): string {
+  formatMessage(message: string | undefined | null): string {
+    if (!message) {
+      return '';
+    }
     // Split the message into words
     return message
       .split(' ')
@@ -331,6 +334,15 @@ export class JobDetailsComponent implements OnInit, AfterViewInit, OnDestroy {
         return word;
       })
       .join(' ');
+  }
+
+  getMessageArray(message: any): any[] {
+    if (Array.isArray(message)) {
+      return message;
+    } else if (typeof message === 'string') {
+      return [{ name: message }];
+    }
+    return [];
   }
 
   navigateToObfuscationPlan(element: any) {

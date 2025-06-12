@@ -86,7 +86,7 @@ const ELEMENT_DATA: JobElement[] = [
       {
         taskId: 'TASK-55675291',
         taskDescription: 'Substituting email addresses',
-        status: 'Failed',
+        status: 'Completed',
         // errorMessage: `RUN-98760 'SQL Error: ORA-00904: "EMAILID": invalid identifier https://docs.oracle.com/error-help/db/ora-00904/00904. 00000 - "%s: invalid identifier"'`,
         startTime: (() => {
           const date = new Date();
@@ -918,7 +918,7 @@ const ELEMENT_DATA_JOB_CONTROL: JobDataControlElement[] = [
       'Mask utility financial data for safe use in test and development environments.',
     lastTriggeredOn: '28/04/2025 07:33:22AM',
     subsetPlanStrategyName: 'Financial Data Masking Subset',
-    // obsfucationControlId: 'Financial Data Masking',
+    obsfucationControlId: 'Financial Data Masking',
     obsfucationControlDescription:
       'Mask utility financial data for safe use in test and development environments.',
   },
@@ -1895,7 +1895,7 @@ const ELEMENT_DATA_JOB_CONTROL_HEALTHCARE: JobDataControlElement[] = [
       'Obfuscates personally identifiable information (PII) in customer and account entities.',
     subsetPlanStrategyName: 'Membership & Policy Subset Plan',
     lastTriggeredOn: '28/04/2025 07:33:22AM',
-    // obsfucationControlId: 'Customer & Account Obfuscation',
+    obsfucationControlId: 'Customer & Account Obfuscation',
     obsfucationControlDescription:
       'Obfuscates personally identifiable information (PII) in customer and account entities.',
   },
@@ -1903,7 +1903,6 @@ const ELEMENT_DATA_JOB_CONTROL_HEALTHCARE: JobDataControlElement[] = [
     jobControlId: 'JC-98764',
     jobControlName: 'Billing Transactions - US Region',
     subsetControlId: 'SP-98764',
-
     API_NAME: 'DO_EXEC_ARCHDEV_3_OBF_JOB',
     jobControlDescription:
       'Secures billing, adjustments, and payment data for performance testing.',

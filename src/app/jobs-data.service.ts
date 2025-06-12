@@ -79,15 +79,15 @@ const ELEMENT_DATA: JobElement[] = [
     jobName: 'Support Interaction Data Masking',
     jobDescription: 'Mask support tickets and customer interactions.',
     triggeredOn: '10/04/2025 09:30:33AM',
-    status: 'failed',
+    status: 'success',
     obsfucationControlName: 'Support Interaction Data Masking',
-    progress: 50,
+    progress: 100,
     tasks: [
       {
         taskId: 'TASK-55675291',
         taskDescription: 'Substituting email addresses',
         status: 'Failed',
-        errorMessage: `RUN-98760 'SQL Error: ORA-00904: "EMAILID": invalid identifier https://docs.oracle.com/error-help/db/ora-00904/00904. 00000 - "%s: invalid identifier"'`,
+        // errorMessage: `RUN-98760 'SQL Error: ORA-00904: "EMAILID": invalid identifier https://docs.oracle.com/error-help/db/ora-00904/00904. 00000 - "%s: invalid identifier"'`,
         startTime: (() => {
           const date = new Date();
           const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -101,11 +101,12 @@ const ELEMENT_DATA: JobElement[] = [
           return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
-        message: [
-          {
-            name: 'SQL Error: ORA-00904: "EMAILID": invalid identifier https://docs.oracle.com/error-help/db/ora-00904/00904. 00000 - "%s: invalid identifier"',
-          },
-        ],
+        // message: [
+        //   {
+        //     name: 'SQL Error: ORA-00904: "EMAILID": invalid identifier https://docs.oracle.com/error-help/db/ora-00904/00904. 00000 - "%s: invalid identifier"',
+        //   },
+        // ],
+        message: 'Substituting email addresses successful',
       },
     ],
   },
@@ -114,14 +115,14 @@ const ELEMENT_DATA: JobElement[] = [
     jobName: 'Billing & Financial History Obfuscation',
     jobDescription: 'Obfuscates billing and financial history data.',
     triggeredOn: '15/04/2025 09:30:33AM',
-    status: 'in-progress',
+    status: 'success',
     obsfucationControlName: 'Billing & Financial History',
-    progress: 20,
+    progress: 100,
     tasks: [
       {
         taskId: 'TASK-55678292',
         taskDescription: 'Shuffling demographic data',
-        status: 'Pending',
+        status: 'Completed',
         errorMessage: null,
         startTime: (() => {
           const date = new Date();
@@ -145,15 +146,15 @@ const ELEMENT_DATA: JobElement[] = [
     jobName: 'Field Activity Data Obfuscation – Dev/Test',
     jobDescription: 'Obfuscate field activity data for development/test usage.',
     triggeredOn: '20/04/2025 08:11:09AM',
-    status: 'in-progress',
+    status: 'success',
     obsfucationControlName: 'Field Activity Data Obfuscation',
 
-    progress: 20,
+    progress: 100,
     tasks: [
       {
         taskId: 'TASK-55678291',
         taskDescription: 'Masking phone numbers',
-        status: 'Pending',
+        status: 'Completed',
         errorMessage: null,
         startTime: (() => {
           const date = new Date();
@@ -1039,15 +1040,15 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
     jobDescription:
       'Obfuscates claim headers and line items, including statuses and adjudication outcomes.',
     triggeredOn: '10/04/2025 09:30:33AM',
-    status: 'failed',
+    status: 'success',
     obsfucationControlName: 'Claim Details Obfuscation - EU',
-    progress: 50,
+    progress: 100,
     tasks: [
       {
         taskId: 'TASK-55675291',
         taskDescription: 'Substituting email addresses',
-        status: 'Failed',
-        errorMessage: `RUN-98760 'SQL Error: ORA-00904: "EMAILID": invalid identifier https://docs.oracle.com/error-help/db/ora-00904/00904. 00000 - "%s: invalid identifier"'`,
+        status: 'Completed',
+        // errorMessage: `RUN-98760 'SQL Error: ORA-00904: "EMAILID": invalid identifier https://docs.oracle.com/error-help/db/ora-00904/00904. 00000 - "%s: invalid identifier"'`,
         startTime: (() => {
           const date = new Date();
           const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -1061,11 +1062,12 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
           return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
-        message: [
-          {
-            name: 'SQL Error: ORA-00904: "EMAILID": invalid identifier https://docs.oracle.com/error-help/db/ora-00904/00904. 00000 - "%s: invalid identifier"',
-          },
-        ],
+        // message: [
+        //   {
+        //     name: 'SQL Error: ORA-00904: "EMAILID": invalid identifier https://docs.oracle.com/error-help/db/ora-00904/00904. 00000 - "%s: invalid identifier"',
+        //   },
+        // ],
+        message: 'Claim Details Obfuscation - EU successful',
       },
     ],
   },
@@ -1075,16 +1077,16 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
     jobDescription:
       'Reduce the size of Billing data to M11 bill cycle accounts.',
     triggeredOn: '15/04/2025 09:30:33AM',
-    status: 'in-progress',
+    status: 'success',
     subsetStrategyPlanName: 'Coverage & Benefits Obfuscation - Prod',
 
     // obsfucationControlName: 'Coverage & Benefits Obfuscation - Prod',
-    progress: 20,
+    progress: 100,
     tasks: [
       {
         taskId: 'TASK-78901234',
         taskDescription: 'CopySchemaAndData',
-        status: 'Pending',
+        status: 'Completed',
         startTime: (() => {
           const date = new Date();
           const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -1168,17 +1170,17 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
     jobName: 'Customer & Account Subset Job',
     jobDescription: 'Extract Customer & Account details for list of accounts.',
     triggeredOn: '20/04/2025 08:11:09AM',
-    status: 'in-progress',
+    status: 'success',
     subsetStrategyPlanName: 'Membership & Policy Data Subset Strategy Plan',
 
     // obsfucationControlName: 'Membership Plan Enrollments Obfuscation',
 
-    progress: 20,
+    progress: 100,
     tasks: [
       {
         taskId: 'TASK-78901234',
         taskDescription: 'CopySchemaAndData',
-        status: 'Pending',
+        status: 'Completed',
         startTime: (() => {
           const date = new Date();
           const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -1198,7 +1200,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
       {
         taskId: 'TASK-20547689',
         taskDescription: 'CreateProceduresAndFunctions',
-        status: 'Pending',
+        status: 'Completed',
         startTime: (() => {
           const date = new Date();
           const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -1218,7 +1220,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
       {
         taskId: 'TASK-30982345',
         taskDescription: 'CreateSubsetScript',
-        status: 'Pending',
+        status: 'Completed',
         startTime: (() => {
           const date = new Date();
           const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -1238,7 +1240,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
       {
         taskId: 'TASK-55678903',
         taskDescription: 'CI_ACCT-Based Data Subsetting',
-        status: 'Pending',
+        status: 'Completed',
         startTime: (() => {
           const date = new Date();
           const month = (date.getMonth() + 1).toString().padStart(2, '0');

@@ -110,7 +110,7 @@ const ELEMENT_DATA_HEALTHCARE: any[] = [
     obsControlId: 'OP-98765',
     obsControlName: 'Membership & Policy Data Obfuscation',
     obsControlDescription:
-      'Masks sensitive details in customer memberships, policies, and eligibility for staging.',
+      'Extracts details in customer memberships, policies, and eligibility for staging.',
     createdBy: 'Miller Smith',
     details: {
       name: 'Testing',

@@ -454,7 +454,7 @@ const ELEMENT_DATA: JobElement[] = [
     triggeredOn: '25/04/2025 08:22:10AM',
     status: 'in-progress',
     obsfucationControlName: 'Person Entity Anonymization',
-    progress: 20,
+    progress: 10,
     additionalRunIdDetails: [
       {
         jobId: 'RUN-98019',
@@ -464,7 +464,7 @@ const ELEMENT_DATA: JobElement[] = [
         triggeredOn: '03/04/2025 09:22:10AM',
         status: 'in-progress',
         obsfucationControlName: 'Person Entity Anonymization',
-        progress: 30,
+        progress: 10,
 
         tasks: [
           {
@@ -1106,7 +1106,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
       {
         taskId: 'TASK-20547689',
         taskDescription: 'CreateProceduresAndFunctions',
-        status: 'Pending',
+        status: 'Completed',
         startTime: (() => {
           const date = new Date();
           const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -1126,7 +1126,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
       {
         taskId: 'TASK-30982345',
         taskDescription: 'CreateSubsetScript',
-        status: 'Pending',
+        status: 'Completed',
         startTime: (() => {
           const date = new Date();
           const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -1146,7 +1146,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
       {
         taskId: 'TASK-55678903',
         taskDescription: 'CI_ACCT-Based Data Subsetting',
-        status: 'Pending',
+        status: 'Completed',
         startTime: (() => {
           const date = new Date();
           const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -1532,7 +1532,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
     triggeredOn: '25/04/2025 08:22:10AM',
     status: 'in-progress',
     obsfucationControlName: 'Billing Transactions - US Region',
-    progress: 20,
+    progress: 10,
     additionalRunIdDetails: [
       {
         jobId: 'RUN-98710',
@@ -1542,7 +1542,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
         triggeredOn: '03/04/2025 11:22:10AM',
         status: 'in-progress',
         obsfucationControlName: 'Billing Transactions - US Region',
-        progress: 20,
+        progress: 10,
 
         tasks: [
           {
@@ -2184,6 +2184,11 @@ export class JobsDataService {
     const job = { ...updatedJobs[jobIndex] };
     const tasks = [...job.tasks];
 
+    // Check if current task is already completed - skip if so
+    if (tasks[taskIndex].status === 'Completed') {
+      return job;
+    }
+
     // Complete the previous task if it's still "In Progress" when starting a new one
     if (taskIndex > 0) {
       const previousTask = tasks[taskIndex - 1];
@@ -2223,11 +2228,14 @@ export class JobsDataService {
       const tasks = [...job.tasks];
       const task = { ...tasks[taskIndex] };
 
-      task.status = 'In Progress';
-      tasks[taskIndex] = task;
-      job.tasks = tasks;
-      updatedJobs[jobIndex] = job;
-      this.jobsDataSubject.next(updatedJobs);
+      // Double check task isn't already completed before updating to In Progress
+      if (task.status !== 'Completed') {
+        task.status = 'In Progress';
+        tasks[taskIndex] = task;
+        job.tasks = tasks;
+        updatedJobs[jobIndex] = job;
+        this.jobsDataSubject.next(updatedJobs);
+      }
     }, 100);
 
     return job;
@@ -2243,18 +2251,48 @@ export class JobsDataService {
           return of(undefined);
         }
 
+        // Check if all tasks are already completed
+        const allTasksCompleted = job.tasks.every(
+          (task: any) => task.status === 'Completed'
+        );
+        if (allTasksCompleted) {
+          // If all tasks are completed, just return the job without animation
+          return of(job);
+        }
+
+        // Find the first non-completed task to start from
+        const firstIncompleteTaskIndex = job.tasks.findIndex(
+          (task: any) => task.status !== 'Completed'
+        );
+
         const currentJobs = [...this.jobsDataSubject.value];
         const jobIndex = currentJobs.findIndex((j) => j.jobId === jobId);
         if (jobIndex !== -1) {
           const updatedJob = { ...currentJobs[jobIndex] };
-          updatedJob.tasks = updatedJob.tasks.map((task: any) => ({
-            ...task,
-            status: 'Pending',
-            startTime: undefined,
-            endTime: null,
-          }));
+
+          // Only reset tasks that aren't already completed
+          updatedJob.tasks = updatedJob.tasks.map((task: any) => {
+            if (task.status === 'Completed') {
+              return task; // Keep completed tasks as they are
+            }
+            return {
+              ...task,
+              status: 'Pending',
+              startTime: undefined,
+              endTime: null,
+            };
+          });
+
           updatedJob.status = 'in-progress';
-          updatedJob.progress = 0;
+
+          // Calculate initial progress based on already completed tasks
+          const completedTasks = updatedJob.tasks.filter(
+            (task: any) => task.status === 'Completed'
+          ).length;
+          updatedJob.progress = Math.round(
+            (completedTasks / updatedJob.tasks.length) * 100
+          );
+
           currentJobs[jobIndex] = updatedJob;
           this.jobsDataSubject.next(currentJobs);
         }
@@ -2270,53 +2308,81 @@ export class JobsDataService {
             ? 1800
             : 1000; // 1 second between each task start
 
+        // Only create update observables for tasks that aren't completed
         for (let i = 0; i < taskCount; i++) {
-          const updateObservable = timer(delayPerTask * (i + 1)).pipe(
-            map(() => this.updateSingleTaskStatus(jobId, i))
-          );
+          // Skip tasks that are already completed
+          if (job.tasks[i].status === 'Completed') {
+            continue;
+          }
+
+          const updateObservable = timer(
+            delayPerTask * (i + 1 - firstIncompleteTaskIndex)
+          ).pipe(map(() => this.updateSingleTaskStatus(jobId, i)));
           updateObservables.push(updateObservable);
         }
 
-        // Add final observable to complete the last task
-        const finalObservable = timer(delayPerTask * (taskCount + 1)).pipe(
-          map(() => {
-            const currentJobs = this.jobsDataSubject.value;
-            const jobIndex = currentJobs.findIndex(
-              (job) => job.jobId === jobId
-            );
-            if (jobIndex === -1) return undefined;
+        // Add final observable to complete the last task (only if there are incomplete tasks)
+        if (updateObservables.length > 0) {
+          const lastIncompleteTaskIndex =
+            job.tasks
+              .map((task: any, index: number) => ({ task, index }))
+              .filter((task: any) => task.status !== 'Completed')
+              .pop()?.index || 0;
 
-            const updatedJobs = [...currentJobs];
-            const job = { ...updatedJobs[jobIndex] };
-            const tasks = [...job.tasks];
+          const finalObservable = timer(
+            delayPerTask *
+              (lastIncompleteTaskIndex + 2 - firstIncompleteTaskIndex)
+          ).pipe(
+            map(() => {
+              const currentJobs = this.jobsDataSubject.value;
+              const jobIndex = currentJobs.findIndex(
+                (job) => job.jobId === jobId
+              );
+              if (jobIndex === -1) return undefined;
 
-            // Complete the last task
-            const lastTask = { ...tasks[taskCount - 1] };
-            if (lastTask.status === 'In Progress') {
-              lastTask.status = 'Completed';
-              lastTask.endTime = this.formatDate(new Date());
-              tasks[taskCount - 1] = lastTask;
+              const updatedJobs = [...currentJobs];
+              const job = { ...updatedJobs[jobIndex] };
+              const tasks: any = [...job.tasks];
 
-              // Update progress and job status
-              const completedTasks = tasks.filter(
-                (t: any) => t.status === 'Completed'
-              ).length;
-              job.progress = Math.round((completedTasks / tasks.length) * 100);
-              job.tasks = tasks;
+              // Complete the last task that was in progress
+              const lastTaskInProgress = tasks.findLast(
+                (t: any) => t.status === 'In Progress'
+              );
+              if (lastTaskInProgress) {
+                const lastTaskIndex = tasks.findLastIndex(
+                  (t: any) => t.status === 'In Progress'
+                );
+                const lastTask = { ...tasks[lastTaskIndex] };
+                lastTask.status = 'Completed';
+                lastTask.endTime = this.formatDate(new Date());
+                tasks[lastTaskIndex] = lastTask;
 
-              if (completedTasks === tasks.length) {
-                job.status = 'success';
+                // Update progress and job status
+                const completedTasks = tasks.filter(
+                  (t: any) => t.status === 'Completed'
+                ).length;
+                job.progress = Math.round(
+                  (completedTasks / tasks.length) * 100
+                );
+                job.tasks = tasks;
+
+                if (completedTasks === tasks.length) {
+                  job.status = 'success';
+                }
+
+                updatedJobs[jobIndex] = job;
+                this.jobsDataSubject.next(updatedJobs);
               }
 
-              updatedJobs[jobIndex] = job;
-              this.jobsDataSubject.next(updatedJobs);
-            }
+              return job;
+            })
+          );
 
-            return job;
-          })
-        );
-
-        return concat(...updateObservables, finalObservable);
+          return concat(...updateObservables, finalObservable);
+        } else {
+          // If no tasks need updating, just return the job
+          return of(job);
+        }
       })
     );
   }

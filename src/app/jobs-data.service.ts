@@ -907,7 +907,7 @@ const ELEMENT_DATA_JOB_CONTROL: JobDataControlElement[] = [
       'Mask utility financial data for safe use in test and development environments.',
     lastTriggeredOn: '28/04/2025 07:33:22AM',
     subsetPlanStrategyName: 'Financial Data Masking Subset',
-    obsfucationControlId: 'Financial Data Masking',
+    // obsfucationControlId: 'Financial Data Masking',
     obsfucationControlDescription:
       'Mask utility financial data for safe use in test and development environments.',
   },
@@ -1866,14 +1866,14 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
 const ELEMENT_DATA_JOB_CONTROL_HEALTHCARE: JobDataControlElement[] = [
   {
     jobControlId: 'JC-98765',
-    jobControlName: 'Customer & Account Obfuscation',
+    jobControlName: 'Membership & Policy Data Subset Job',
     API_NAME: 'DO_EXEC_ARCHDEV_2_SS_JOB',
     subsetControlId: 'SP-98765',
     jobControlDescription:
-      'Obfuscates personally identifiable information (PII) in customer and account entities.',
+      'Extracts details in customer memberships, policies, and eligibility for staging.',
     subsetPlanStrategyName: 'Membership & Policy Subset Plan',
     lastTriggeredOn: '28/04/2025 07:33:22AM',
-    obsfucationControlId: 'Customer & Account Obfuscation',
+    // obsfucationControlId: 'Customer & Account Obfuscation',
     obsfucationControlDescription:
       'Obfuscates personally identifiable information (PII) in customer and account entities.',
   },

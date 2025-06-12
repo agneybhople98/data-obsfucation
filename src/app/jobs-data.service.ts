@@ -1253,7 +1253,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
     jobName: 'Membership & Policy Data Obfuscation',
     subsetStrategyPlanName: 'Membership & Policy Data Subset Strategy Plan',
     jobDescription:
-      'Masks sensitive details in customer memberships, policies, and eligibility for staging.',
+      'Extracts details in customer memberships, policies, and eligibility for staging.',
     triggeredOn: '11/06/2025 08:11:09AM',
     status: 'in-progress',
     obsfucationControlName: 'Membership & Policy Data Obfuscation',
@@ -1897,12 +1897,12 @@ const ELEMENT_DATA_JOB_CONTROL_HEALTHCARE: JobDataControlElement[] = [
 
     API_NAME: 'DO_EXEC_ARCHDEV_1_SS_OBF_JOB',
     jobControlDescription:
-      'Masks sensitive details in customer memberships, policies, and eligibility for staging.',
+      'Extracts details in customer memberships, policies, and eligibility for staging.',
     subsetPlanStrategyName: 'Membership & Policy Subset Plan',
     lastTriggeredOn: '23/04/2025 08:11:09AM',
     obsfucationControlId: 'Membership & Policy Data Obfuscation',
     obsfucationControlDescription:
-      'Masks sensitive details in customer memberships, policies, and eligibility for staging.',
+      'Extracts details in customer memberships, policies, and eligibility for staging.',
   },
   {
     jobControlId: 'JC-98762',
@@ -1930,7 +1930,7 @@ const ELEMENT_DATA_JOB_CONTROL_HEALTHCARE: JobDataControlElement[] = [
     subsetPlanStrategyName: 'Billing Transactions - US Region',
     // obsfucationControlId: 'Coverage & Benefits Obfuscation - Prod',
     obsfucationControlDescription:
-      'Masks insurance coverage data, benefits, and associated financial limits.',
+      'Extracts coverage data, benefits, and associated financial limits.',
   },
   {
     jobControlId: 'JC-98760',

@@ -2108,6 +2108,16 @@ export class JobsDataService {
     const jobIndex = ELEMENT_DATA_JOB_CONTROL.findIndex(
       (job) => job.jobControlId === jobControlId
     );
+    const modifiedId = jobControlId.startsWith('JC-')
+      ? 'RUN-' + jobControlId.substring(3)
+      : jobControlId;
+
+    const jobIndexOverall = ELEMENT_DATA.findIndex(
+      (job) => job.jobId === modifiedId
+    );
+    if (jobIndexOverall !== -1) {
+      ELEMENT_DATA[jobIndexOverall].triggeredOn = this.formatDate(new Date());
+    }
 
     if (jobIndex !== -1) {
       ELEMENT_DATA_JOB_CONTROL[jobIndex].lastTriggeredOn = this.formatDate(
@@ -2120,10 +2130,22 @@ export class JobsDataService {
     const jobIndex = ELEMENT_DATA_JOB_CONTROL_HEALTHCARE.findIndex(
       (job) => job.jobControlId === jobControlId
     );
+    const modifiedId = jobControlId.startsWith('JC-')
+      ? 'RUN-' + jobControlId.substring(3)
+      : jobControlId;
+
+    const jobIndexOverall = ELEMENT_DATA_HEALTHCARE.findIndex(
+      (job) => job.jobId === modifiedId
+    );
 
     if (jobIndex !== -1) {
       ELEMENT_DATA_JOB_CONTROL_HEALTHCARE[jobIndex].lastTriggeredOn =
         this.formatDate(new Date());
+    }
+    if (jobIndexOverall !== -1) {
+      ELEMENT_DATA_HEALTHCARE[jobIndexOverall].triggeredOn = this.formatDate(
+        new Date()
+      );
     }
   }
 

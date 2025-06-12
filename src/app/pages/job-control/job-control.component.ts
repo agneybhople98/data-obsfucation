@@ -225,6 +225,9 @@ export class JobControlComponent implements OnInit, OnDestroy {
         // console.log('Sequential task updates completed');
       }
     );
+    this._jobDataService.updateJobControlLastTriggered(jobControlId);
+    this._jobDataService.updateJobControlHealthcareLastTriggered(jobControlId);
+    this.changeDetectorRef.detectChanges();
   }
 
   runAPI(element: any) {

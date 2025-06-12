@@ -943,18 +943,7 @@ const ELEMENT_DATA_JOB_CONTROL: JobDataControlElement[] = [
       'Obfuscate utility accounts for non-production environments.',
 
     subsetPlanStrategyName: 'Utility Account Subset Plan',
-    lastTriggeredOn: (() => {
-      const date = new Date();
-      const month = (date.getMonth() + 1).toString().padStart(2, '0');
-      const day = date.getDate().toString().padStart(2, '0');
-      const year = date.getFullYear();
-      const hours = date.getHours() % 12 || 12;
-      const minutes = date.getMinutes().toString().padStart(2, '0');
-      const seconds = date.getSeconds().toString().padStart(2, '0');
-      const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
-
-      return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
-    })(),
+    lastTriggeredOn: '23/04/2025 08:11:09AM',
     obsfucationControlId: 'Utility Account Obfuscation',
     obsfucationControlDescription:
       'Obfuscate utility accounts for non-production environments.',
@@ -1931,18 +1920,7 @@ const ELEMENT_DATA_JOB_CONTROL_HEALTHCARE: JobDataControlElement[] = [
     jobControlDescription:
       'Masks sensitive details in customer memberships, policies, and eligibility for staging.',
     subsetPlanStrategyName: 'Membership & Policy Subset Plan',
-    lastTriggeredOn: (() => {
-      const date = new Date();
-      const month = (date.getMonth() + 1).toString().padStart(2, '0');
-      const day = date.getDate().toString().padStart(2, '0');
-      const year = date.getFullYear();
-      const hours = date.getHours() % 12 || 12;
-      const minutes = date.getMinutes().toString().padStart(2, '0');
-      const seconds = date.getSeconds().toString().padStart(2, '0');
-      const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
-
-      return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
-    })(),
+    lastTriggeredOn: '23/04/2025 08:11:09AM',
     obsfucationControlId: 'Membership & Policy Data Obfuscation',
     obsfucationControlDescription:
       'Masks sensitive details in customer memberships, policies, and eligibility for staging.',
@@ -2016,6 +1994,135 @@ export class JobsDataService {
   constructor(private http: HttpClient) {
     // Initialize with utility data by default
     this.initializeUtilityData();
+    // this.initializeJobControlData();
+  }
+  // private initializeJobControlData(): void {
+  //   // Check if this is the first time loading
+  //   const isFirstLoad =
+  //     !localStorage.getItem('jobControlData') &&
+  //     !localStorage.getItem('jobControlDataHealthcare');
+
+  //   if (isFirstLoad) {
+  //     // Save default data to localStorage on first load
+  //     localStorage.setItem(
+  //       'jobControlData',
+  //       JSON.stringify(ELEMENT_DATA_JOB_CONTROL)
+  //     );
+  //     localStorage.setItem(
+  //       'jobControlDataHealthcare',
+  //       JSON.stringify(ELEMENT_DATA_JOB_CONTROL_HEALTHCARE)
+  //     );
+  //     console.log('First load: Saved default data to localStorage');
+  //     return;
+  //   }
+
+  //   // Load regular job control data
+  //   const savedData = localStorage.getItem('jobControlData');
+  //   if (savedData) {
+  //     try {
+  //       const parsedData = JSON.parse(savedData);
+  //       ELEMENT_DATA_JOB_CONTROL.length = 0;
+  //       ELEMENT_DATA_JOB_CONTROL.push(...parsedData);
+  //     } catch (e) {
+  //       console.warn('Failed to parse saved job control data, using default');
+  //     }
+  //   }
+
+  //   // Load healthcare job control data
+  //   const savedDataHealthcare = localStorage.getItem(
+  //     'jobControlDataHealthcare'
+  //   );
+  //   if (savedDataHealthcare) {
+  //     try {
+  //       const parsedDataHealthcare = JSON.parse(savedDataHealthcare);
+  //       ELEMENT_DATA_JOB_CONTROL_HEALTHCARE.length = 0;
+  //       ELEMENT_DATA_JOB_CONTROL_HEALTHCARE.push(...parsedDataHealthcare);
+  //     } catch (e) {
+  //       console.warn(
+  //         'Failed to parse saved healthcare job control data, using default'
+  //       );
+  //     }
+  //   }
+  // }
+
+  // // Simple update method with localStorage
+  // updateJobControlLastTriggered(jobControlId: string): void {
+  //   const timestamp = this.formatDate(new Date());
+
+  //   // Check regular job control data first
+  //   const jobIndex = ELEMENT_DATA_JOB_CONTROL.findIndex(
+  //     (job) => job.jobControlId === jobControlId
+  //   );
+
+  //   if (jobIndex !== -1) {
+  //     ELEMENT_DATA_JOB_CONTROL[jobIndex].lastTriggeredOn = timestamp;
+
+  //     try {
+  //       localStorage.setItem(
+  //         'jobControlData',
+  //         JSON.stringify(ELEMENT_DATA_JOB_CONTROL)
+  //       );
+  //       console.log('Updated lastTriggeredOn for regular job:', jobControlId);
+  //     } catch (e) {
+  //       console.error(
+  //         'Failed to save regular job control data to localStorage:',
+  //         e
+  //       );
+  //     }
+  //     return; // Exit early if found in regular data
+  //   }
+
+  //   // Check healthcare job control data
+  //   const jobIndexHealthcare = ELEMENT_DATA_JOB_CONTROL_HEALTHCARE.findIndex(
+  //     (job) => job.jobControlId === jobControlId
+  //   );
+
+  //   if (jobIndexHealthcare !== -1) {
+  //     ELEMENT_DATA_JOB_CONTROL_HEALTHCARE[jobIndexHealthcare].lastTriggeredOn =
+  //       timestamp;
+
+  //     try {
+  //       localStorage.setItem(
+  //         'jobControlDataHealthcare',
+  //         JSON.stringify(ELEMENT_DATA_JOB_CONTROL_HEALTHCARE)
+  //       );
+  //       console.log(
+  //         'Updated lastTriggeredOn for healthcare job:',
+  //         jobControlId
+  //       );
+  //     } catch (e) {
+  //       console.error(
+  //         'Failed to save healthcare job control data to localStorage:',
+  //         e
+  //       );
+  //     }
+  //     return;
+  //   }
+
+  //   console.warn('Job control ID not found in either dataset:', jobControlId);
+  // }
+
+  updateJobControlLastTriggered(jobControlId: string): void {
+    const jobIndex = ELEMENT_DATA_JOB_CONTROL.findIndex(
+      (job) => job.jobControlId === jobControlId
+    );
+
+    if (jobIndex !== -1) {
+      ELEMENT_DATA_JOB_CONTROL[jobIndex].lastTriggeredOn = this.formatDate(
+        new Date()
+      );
+    }
+  }
+
+  updateJobControlHealthcareLastTriggered(jobControlId: string): void {
+    const jobIndex = ELEMENT_DATA_JOB_CONTROL_HEALTHCARE.findIndex(
+      (job) => job.jobControlId === jobControlId
+    );
+
+    if (jobIndex !== -1) {
+      ELEMENT_DATA_JOB_CONTROL_HEALTHCARE[jobIndex].lastTriggeredOn =
+        this.formatDate(new Date());
+    }
   }
 
   initializeUtilityData() {

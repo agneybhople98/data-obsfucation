@@ -88,7 +88,9 @@ export class ObfuscationPlan implements OnInit, AfterViewInit {
         }
       );
     } else {
-      console.error('No matching obfuscation control data found');
+      this.router.navigate([
+        `/${this.currentDomain}/obfuscation-plan/view-obfuscation`,
+      ]);
     }
   }
 

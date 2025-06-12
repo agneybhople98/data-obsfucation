@@ -1771,7 +1771,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
   {
     jobId: 'RUN-98765',
     jobName: 'Membership & Policy Data Subset Job',
-    subsetStrategyPlanName: 'Membership & Policy Data Subset Job',
+    subsetStrategyPlanName: 'Membership & Policy Data Subset Plan',
     jobDescription:
       'Extracts details in customer memberships, policies, and eligibility for staging.',
     triggeredOn: '28/04/2025 07:33:22AM',

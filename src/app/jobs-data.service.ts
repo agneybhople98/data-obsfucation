@@ -2195,7 +2195,27 @@ export class JobsDataService {
       if (previousTask.status === 'In Progress') {
         previousTask.status = 'Completed';
         const endDate = new Date();
-        previousTask.endTime = this.formatDate(endDate);
+        // Set endTime with a delay
+        setTimeout(() => {
+          const currentJobs = this.jobsDataSubject.value;
+          const jobIndex = currentJobs.findIndex((job) => job.jobId === jobId);
+          if (jobIndex !== -1) {
+            const updatedJobs = [...currentJobs];
+            const job = { ...updatedJobs[jobIndex] };
+            const tasks = [...job.tasks];
+
+            if (tasks[taskIndex - 1].status === 'Completed') {
+              tasks[taskIndex - 1] = {
+                ...tasks[taskIndex - 1],
+                endTime: this.formatDate(new Date()),
+              };
+
+              job.tasks = tasks;
+              updatedJobs[jobIndex] = job;
+              this.jobsDataSubject.next(updatedJobs);
+            }
+          }
+        }, 1000);
         tasks[taskIndex - 1] = previousTask;
 
         // Update progress when completing previous task

@@ -179,18 +179,7 @@ const ELEMENT_DATA: JobElement[] = [
     jobDescription:
       'Obfuscate utility accounts for non-production environments.',
     subsetStrategyPlanName: 'Utility Account Subset',
-    triggeredOn: (() => {
-      const date = new Date();
-      const month = (date.getMonth() + 1).toString().padStart(2, '0');
-      const day = date.getDate().toString().padStart(2, '0');
-      const year = date.getFullYear();
-      const hours = date.getHours() % 12 || 12;
-      const minutes = date.getMinutes().toString().padStart(2, '0');
-      const seconds = date.getSeconds().toString().padStart(2, '0');
-      const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
-
-      return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
-    })(),
+    triggeredOn: '11/06/2025 08:11:09AM',
     status: 'in-progress',
     obsfucationControlName: 'Utility Account Obfuscation',
     progress: 0,
@@ -1265,18 +1254,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
     subsetStrategyPlanName: 'Membership & Policy Data Subset Strategy Plan',
     jobDescription:
       'Masks sensitive details in customer memberships, policies, and eligibility for staging.',
-    triggeredOn: (() => {
-      const date = new Date();
-      const month = (date.getMonth() + 1).toString().padStart(2, '0');
-      const day = date.getDate().toString().padStart(2, '0');
-      const year = date.getFullYear();
-      const hours = date.getHours() % 12 || 12;
-      const minutes = date.getMinutes().toString().padStart(2, '0');
-      const seconds = date.getSeconds().toString().padStart(2, '0');
-      const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
-
-      return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
-    })(),
+    triggeredOn: '11/06/2025 08:11:09AM',
     status: 'in-progress',
     obsfucationControlName: 'Membership & Policy Data Obfuscation',
     progress: 0,

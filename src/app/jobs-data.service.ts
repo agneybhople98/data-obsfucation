@@ -1770,10 +1770,10 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
   },
   {
     jobId: 'RUN-98765',
-    jobName: 'Customer & Account Obfuscation',
-    subsetStrategyPlanName: 'Customer & Account Data Subset Plan',
+    jobName: 'Membership & Policy Data Subset Job',
+    subsetStrategyPlanName: 'Membership & Policy Data Subset Job',
     jobDescription:
-      'Obfuscates personally identifiable information (PII) in customer and account entities.',
+      'Extracts details in customer memberships, policies, and eligibility for staging.',
     triggeredOn: '28/04/2025 07:33:22AM',
     status: 'in-progress',
     // obsfucationControlName: 'Customer & Account Obfuscation',

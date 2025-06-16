@@ -117,12 +117,12 @@ const ELEMENT_DATA: JobElement[] = [
     triggeredOn: '15/04/2025 09:30:33AM',
     status: 'success',
     obsfucationControlName: 'Billing & Financial History',
-    progress: 100,
+    progress: 10,
     tasks: [
       {
         taskId: 'TASK-55678292',
         taskDescription: 'Shuffling demographic data',
-        status: 'Completed',
+        status: 'Pending',
         errorMessage: null,
         startTime: (() => {
           const date = new Date();
@@ -149,12 +149,12 @@ const ELEMENT_DATA: JobElement[] = [
     status: 'success',
     obsfucationControlName: 'Field Activity Data Obfuscation',
 
-    progress: 100,
+    progress: 0,
     tasks: [
       {
         taskId: 'TASK-55678291',
         taskDescription: 'Masking phone numbers',
-        status: 'Completed',
+        status: 'Pending',
         errorMessage: null,
         startTime: (() => {
           const date = new Date();
@@ -1070,12 +1070,12 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
     subsetStrategyPlanName: 'Coverage & Benefits Obfuscation - Prod',
 
     // obsfucationControlName: 'Coverage & Benefits Obfuscation - Prod',
-    progress: 100,
+    progress: 0,
     tasks: [
       {
         taskId: 'TASK-78901234',
         taskDescription: 'CopySchemaAndData',
-        status: 'Completed',
+        status: 'Pending',
         startTime: (() => {
           const date = new Date();
           const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -1095,7 +1095,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
       {
         taskId: 'TASK-20547689',
         taskDescription: 'CreateProceduresAndFunctions',
-        status: 'Completed',
+        status: 'Pending',
         startTime: (() => {
           const date = new Date();
           const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -1115,7 +1115,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
       {
         taskId: 'TASK-30982345',
         taskDescription: 'CreateSubsetScript',
-        status: 'Completed',
+        status: 'Pending',
         startTime: (() => {
           const date = new Date();
           const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -1135,7 +1135,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
       {
         taskId: 'TASK-55678903',
         taskDescription: 'CI_ACCT-Based Data Subsetting',
-        status: 'Completed',
+        status: 'Pending',
         startTime: (() => {
           const date = new Date();
           const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -1164,12 +1164,12 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
 
     // obsfucationControlName: 'Membership Plan Enrollments Obfuscation',
 
-    progress: 100,
+    progress: 10,
     tasks: [
       {
         taskId: 'TASK-78901234',
         taskDescription: 'CopySchemaAndData',
-        status: 'Completed',
+        status: 'Pending',
         startTime: (() => {
           const date = new Date();
           const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -1189,7 +1189,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
       {
         taskId: 'TASK-20547689',
         taskDescription: 'CreateProceduresAndFunctions',
-        status: 'Completed',
+        status: 'Pending',
         startTime: (() => {
           const date = new Date();
           const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -1209,7 +1209,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
       {
         taskId: 'TASK-30982345',
         taskDescription: 'CreateSubsetScript',
-        status: 'Completed',
+        status: 'Pending',
         startTime: (() => {
           const date = new Date();
           const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -1229,7 +1229,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
       {
         taskId: 'TASK-55678903',
         taskDescription: 'CI_ACCT-Based Data Subsetting',
-        status: 'Completed',
+        status: 'Pending',
         startTime: (() => {
           const date = new Date();
           const month = (date.getMonth() + 1).toString().padStart(2, '0');

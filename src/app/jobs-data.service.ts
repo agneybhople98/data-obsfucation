@@ -115,7 +115,7 @@ const ELEMENT_DATA: JobElement[] = [
     jobName: 'Billing & Financial History Obfuscation',
     jobDescription: 'Obfuscates billing and financial history data.',
     triggeredOn: '15/04/2025 09:30:33AM',
-    status: 'success',
+    status: 'in-progress',
     obsfucationControlName: 'Billing & Financial History',
     progress: 10,
     tasks: [
@@ -146,7 +146,7 @@ const ELEMENT_DATA: JobElement[] = [
     jobName: 'Field Activity Data Obfuscation – Dev/Test',
     jobDescription: 'Obfuscate field activity data for development/test usage.',
     triggeredOn: '20/04/2025 08:11:09AM',
-    status: 'success',
+    status: 'in-progress',
     obsfucationControlName: 'Field Activity Data Obfuscation',
 
     progress: 0,
@@ -1066,7 +1066,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
     jobDescription:
       'Reduce the size of Billing data to M11 bill cycle accounts.',
     triggeredOn: '15/04/2025 09:30:33AM',
-    status: 'success',
+    status: 'in-progress',
     subsetStrategyPlanName: 'Coverage & Benefits Obfuscation - Prod',
 
     // obsfucationControlName: 'Coverage & Benefits Obfuscation - Prod',
@@ -1159,7 +1159,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
     jobName: 'Customer & Account Subset Job',
     jobDescription: 'Extract Customer & Account details for list of accounts.',
     triggeredOn: '20/04/2025 08:11:09AM',
-    status: 'success',
+    status: 'in-progress',
     subsetStrategyPlanName: 'Membership & Policy Data Subset Strategy Plan',
 
     // obsfucationControlName: 'Membership Plan Enrollments Obfuscation',

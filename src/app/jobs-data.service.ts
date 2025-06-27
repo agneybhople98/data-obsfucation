@@ -1256,7 +1256,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
       'Extracts details in customer memberships, policies, and eligibility for staging.',
     triggeredOn: '11/06/2025 08:11:09AM',
     status: 'in-progress',
-    obsfucationControlName: 'Membership & Policy Data Obfuscation',
+    obsfucationControlName: 'Customer PII Data Obfuscation Plan',
     progress: 0,
     tasks: [
       {

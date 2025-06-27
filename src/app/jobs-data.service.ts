@@ -1252,8 +1252,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
     jobId: 'RUN-98763',
     jobName: 'Membership & Policy Data Obfuscation',
     subsetStrategyPlanName: 'Membership & Policy Data Subset Strategy Plan',
-    jobDescription:
-      'Extracts details in customer memberships, policies, and eligibility for staging.',
+    jobDescription: 'Extracts and obfuscates customer PII details',
     triggeredOn: '11/06/2025 08:11:09AM',
     status: 'in-progress',
     obsfucationControlName: 'Customer PII Data Obfuscation Plan',
@@ -1895,13 +1894,12 @@ const ELEMENT_DATA_JOB_CONTROL_HEALTHCARE: JobDataControlElement[] = [
     subsetControlId: 'SP-98763',
 
     API_NAME: 'DO_EXEC_ARCHDEV_1_SS_OBF_JOB',
-    jobControlDescription:
-      'Extracts details in customer memberships, policies, and eligibility for staging.',
+    jobControlDescription: 'Extracts and obfuscates customer PII details.',
     subsetPlanStrategyName: 'Membership & Policy Subset Plan',
     lastTriggeredOn: '23/04/2025 08:11:09AM',
     obsfucationControlId: 'Customer PII Data Obfuscation Plan',
     obsfucationControlDescription:
-      'Extracts details in customer memberships, policies, and eligibility for staging.',
+      'Extracts and obfuscates customer PII details.',
   },
   {
     jobControlId: 'JC-98762',

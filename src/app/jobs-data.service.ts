@@ -1879,16 +1879,16 @@ const ELEMENT_DATA_JOB_CONTROL_HEALTHCARE: JobDataControlElement[] = [
   },
   {
     jobControlId: 'JC-98764',
-    jobControlName: 'Billing Transactions - US Region',
+    jobControlName: 'Customer PII Data Obfuscation Job',
     subsetControlId: 'SP-98764',
     API_NAME: 'DO_EXEC_ARCHDEV_3_OBF_JOB',
     jobControlDescription:
-      'Secures billing, adjustments, and payment data for performance testing.',
+      'Customer PII Data Obfuscation for staging environment.',
     // subsetPlanStrategyName: 'Billing Transactions - US Region',
     lastTriggeredOn: '25/04/2025 08:11:09AM',
-    obsfucationControlId: 'Billing Transactions - US Region',
+    obsfucationControlId: 'Customer PII Data Obfuscation Plan',
     obsfucationControlDescription:
-      'Secures billing, adjustments, and payment data for performance testing.',
+      'Customer PII Data Obfuscation for staging environment.',
   },
   {
     jobControlId: 'JC-98763',
@@ -1900,7 +1900,7 @@ const ELEMENT_DATA_JOB_CONTROL_HEALTHCARE: JobDataControlElement[] = [
       'Extracts details in customer memberships, policies, and eligibility for staging.',
     subsetPlanStrategyName: 'Membership & Policy Subset Plan',
     lastTriggeredOn: '23/04/2025 08:11:09AM',
-    obsfucationControlId: 'Membership & Policy Data Obfuscation',
+    obsfucationControlId: 'Customer PII Data Obfuscation Plan',
     obsfucationControlDescription:
       'Extracts details in customer memberships, policies, and eligibility for staging.',
   },

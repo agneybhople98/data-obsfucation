@@ -996,7 +996,7 @@ export const TABLE_DATA_HEATLHCARE: TableData = {
           obfStrategy: 'RANDOMIZE',
           obfRules: {
             first: 'NUMERIC',
-            second: '6',
+            second: '5',
           },
         },
         {

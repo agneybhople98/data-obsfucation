@@ -108,9 +108,11 @@ const ELEMENT_DATA: any[] = [
 const ELEMENT_DATA_HEALTHCARE: any[] = [
   {
     obsControlId: 'OP-98765',
-    obsControlName: 'Membership & Policy Data Obfuscation',
+    obsControlName: 'Customer PII Data Obfuscation Plan',
+
     obsControlDescription:
-      'Extracts details in customer memberships, policies, and eligibility for staging.',
+      'Obfuscates personally identifiable information (PII) of customers.',
+
     createdBy: 'Miller Smith',
     details: {
       name: 'Testing',
@@ -123,9 +125,9 @@ const ELEMENT_DATA_HEALTHCARE: any[] = [
   },
   {
     obsControlId: 'OP-98764',
-    obsControlName: 'Customer & Account Obfuscation',
+    obsControlName: 'Membership & Policy Data Obfuscation',
     obsControlDescription:
-      'Obfuscates personally identifiable information (PII) in customer and account entities.',
+      'Extracts details in customer memberships, policies, and eligibility for staging.',
     createdBy: 'Smith Wilson',
     details: {
       name: 'Testing',

@@ -44,6 +44,7 @@ export class JobControlComponent implements OnInit, OnDestroy {
     'Coverage & Benefits Obfuscation - Prod',
     'Claim Details Obfuscation - EU',
     'Claims Payments & Payouts - AUS',
+    'Customer PII Data Obfuscation Plan',
   ];
 
   // subset strategy

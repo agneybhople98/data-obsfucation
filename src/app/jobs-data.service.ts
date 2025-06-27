@@ -1504,12 +1504,11 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
   },
   {
     jobId: 'RUN-98764',
-    jobName: 'Billing Transactions - US Region',
-    jobDescription:
-      'Secures billing, adjustments, and payment data for performance testing.',
+    jobName: 'Customer PII Data Obfuscation Job',
+    jobDescription: 'Customer PII Data Obfuscation for staging environment.',
     triggeredOn: '25/04/2025 08:22:10AM',
     status: 'in-progress',
-    obsfucationControlName: 'Billing Transactions - US Region',
+    obsfucationControlName: 'Customer PII Data Obfuscation Plan',
     progress: 10,
     additionalRunIdDetails: [
       {

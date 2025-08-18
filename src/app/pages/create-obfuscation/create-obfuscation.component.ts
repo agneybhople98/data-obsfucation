@@ -168,7 +168,6 @@ export class CreateObfuscationPlanComponent implements OnInit {
   tableItemsUtility = [
     'CI_PER',
     'CI_PER_NAME',
-    'CI_PER_PHONE',
     'CI_PER_ADDR_SEAS',
     'CI_PER_CONTDET',
     'CI_PER_ID',
@@ -377,6 +376,20 @@ export class CreateObfuscationPlanComponent implements OnInit {
     return false;
   }
 
+  isPerChecked(row: ColumnDefinition): any {
+    if (this.currentDomain === 'utility') {
+      if (row.columnName === 'CHAR_VAL') {
+        console.log('row columnnane', row.columnName);
+        return true;
+      }
+      if (row.columnName === 'ADHOC_CHAR_VAL') {
+        console.log('row columnnane', row.columnName);
+        return true;
+      }
+    }
+
+    return false;
+  }
   valueSelection(): boolean {
     // Prevent selection of PER_ID rows and ensure they're always deselected
     this.selection.selected.forEach((row) => {

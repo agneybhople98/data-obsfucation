@@ -121,7 +121,7 @@
                   color="primary"
                   (click)="$event.stopPropagation()"
                   (change)="$event ? selection.toggle(row) : null"
-                  [checked]="selection.isSelected(row)"
+                  [checked]="isPerChecked(row)"
                   [aria-label]="checkboxLabel(row)"
                   [disabled]="isRowDisabledForPerID(row)"
                 >

@@ -168,7 +168,6 @@ export class ViewObfuscationPlanComponent implements OnInit {
   tableItemsUtility = [
     'CI_PER',
     'CI_PER_NAME',
-    'CI_PER_PHONE',
     'CI_PER_ADDR_SEAS',
     'CI_PER_CONTDET',
     'CI_PER_ID',
@@ -374,6 +373,21 @@ export class ViewObfuscationPlanComponent implements OnInit {
     if (row.columnName === 'PER_ID') {
       return true;
     }
+    return false;
+  }
+
+  isPerChecked(row: ColumnDefinition): any {
+    if (this.currentDomain === 'utility') {
+      if (row.columnName === 'CHAR_VAL') {
+        console.log('row columnnane', row.columnName);
+        return true;
+      }
+      if (row.columnName === 'ADHOC_CHAR_VAL') {
+        console.log('row columnnane', row.columnName);
+        return true;
+      }
+    }
+
     return false;
   }
 

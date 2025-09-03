@@ -902,14 +902,14 @@ const ELEMENT_DATA_JOB_CONTROL: JobDataControlElement[] = [
     jobControlId: 'JC-98765',
     subsetControlId: 'SP-98765',
     API_NAME: 'DO_EXEC_UTILITY_2_SS_JOB',
-    jobControlName: 'Financial Data Masking – Utility Systems',
+    jobControlName: 'Utility Account Subset Job Control - Utility Systems',
     jobControlDescription:
-      'Mask utility financial data for safe use in test and development environments.',
+      'Subset utility account data for safe use in test and development environments.',
     lastTriggeredOn: '28/04/2025 07:33:22AM',
-    subsetPlanStrategyName: 'Financial Data Masking Subset',
+    subsetPlanStrategyName: 'Utility Account Subset Plan',
     // obsfucationControlId: 'Financial Data Masking',
     obsfucationControlDescription:
-      'Mask utility financial data for safe use in test and development environments.',
+      'Subset utility account data for safe use in test and development environments.',
   },
   {
     jobControlId: 'JC-98764',
@@ -928,15 +928,15 @@ const ELEMENT_DATA_JOB_CONTROL: JobDataControlElement[] = [
     jobControlId: 'JC-98763',
     subsetControlId: 'SP-98763',
     API_NAME: 'DO_EXEC_UTILITY_1_SS_OBF_JOB',
-    jobControlName: 'Utility Account Obfuscation – Non-Prod',
+    jobControlName: 'Utility Account Subsetting and Obfuscation',
     jobControlDescription:
-      'Obfuscate utility accounts for non-production environments.',
+      'Subset and Obfuscate utility accounts for non-production environments.',
 
     subsetPlanStrategyName: 'Utility Account Subset Plan',
     lastTriggeredOn: '23/04/2025 08:11:09AM',
     obsfucationControlId: 'Utility Account Obfuscation',
     obsfucationControlDescription:
-      'Obfuscate utility accounts for non-production environments.',
+      'Subset and Obfuscate utility accounts for non-production environments.',
   },
   {
     jobControlId: 'JC-98762',

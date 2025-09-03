@@ -60,7 +60,7 @@ export class JobDetailsComponent implements OnInit, AfterViewInit, OnDestroy {
   ];
   jobControlOptionsUtility = [
     'Utility Account Obfuscation – Non-Prod',
-    'Financial Data Masking – Utility Systems',
+    'Utility Account Subset Job Control - Utility Systems',
     'Person Entity Anonymization – Pre-Prod',
     'Field Activity Data Obfuscation – Dev/Test',
     'Billing & Financial History Obfuscation',

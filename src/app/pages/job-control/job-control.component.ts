@@ -53,6 +53,7 @@ export class JobControlComponent implements OnInit, OnDestroy {
     'No selection',
     'Financial Data Masking Subset',
     'Utility Account Subset Plan',
+    'Utility Account Subset Job Control - Utility Systems',
     'Financial Data Extraction',
     'Person Entity Anonymization',
     'Field Activity Data Subse',
@@ -290,6 +291,7 @@ export class JobControlComponent implements OnInit, OnDestroy {
   openDrawer(element: any, isHidden?: boolean) {
     this.isHidden = false;
     this.selectedSubsetStrategy = element.subsetPlanStrategyName;
+    console.log('element', element);
     this.selectedObsControl = element.obsfucationControlId;
     this.selectedObsControlHealthcare = element.obsfucationControlId;
     this.jobControlDetails = element;

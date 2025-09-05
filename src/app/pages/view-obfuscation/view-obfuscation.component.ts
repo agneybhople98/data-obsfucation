@@ -375,17 +375,34 @@ export class ViewObfuscationPlanComponent implements OnInit {
     }
     return false;
   }
-
   isPerChecked(row: ColumnDefinition): any {
     if (this.currentDomain === 'utility') {
-      if (row.columnName === 'CHAR_VAL') {
-        console.log('row columnnane', row.columnName);
+      if (
+        (row.columnName === 'CHAR_VAL' ||
+          row.columnName === 'ADHOC_CHAR_VAL' ||
+          row.columnName === 'PER_ID_NBR' ||
+          row.columnName === 'CONTACT_VALUE') &&
+        row.isExpandable === true
+      ) {
         return true;
       }
-      if (row.columnName === 'ADHOC_CHAR_VAL') {
-        console.log('row columnnane', row.columnName);
+    }
+
+    if (this.currentDomain === 'healthcare') {
+      if (
+        (row.columnName === 'CHAR_VAL' ||
+          row.columnName === 'ADHOC_CHAR_VAL' ||
+          row.columnName === 'PER_ID_NBR' ||
+          row.columnName === 'CONTACT_VALUE') &&
+        row.isExpandable === true
+      ) {
         return true;
       }
+    }
+
+    // ✅ Check if obfStrategy and obfRules exist
+    if (row.obfStrategy && row.obfRules) {
+      return true;
     }
 
     return false;

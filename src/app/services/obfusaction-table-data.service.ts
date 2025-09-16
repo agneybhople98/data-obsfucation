@@ -13,6 +13,7 @@ export interface ColumnDefinition {
   columnName: string;
   displayName: string;
   obfStrategy?: string;
+  aiGenerated?: boolean;
   obfRules?: any;
   isExpandable?: boolean;
   options?: any;
@@ -1251,6 +1252,7 @@ export const TABLE_DATA_UTILITY: TableData = {
         {
           columnName: 'LANGUAGE_CD',
           displayName: 'Language Code',
+          aiGenerated: true,
           obfStrategy: 'REPLACE_WITH_CONSTANT',
           obfRules: {
             first: 'ENG',

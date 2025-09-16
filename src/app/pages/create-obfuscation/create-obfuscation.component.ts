@@ -18,6 +18,7 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
+import { LlmService } from '../../llm.service';
 
 @Component({
   selector: 'app-create-obfuscation',
@@ -40,6 +41,7 @@ export class CreateObfuscationPlanComponent implements OnInit {
   expandedElement: any | null = null;
   selectedTable: string = '';
   currentDomain: string = 'utility';
+  public loading: boolean = false;
 
   displayedColumns: string[] = [
     'expand',
@@ -188,7 +190,8 @@ export class CreateObfuscationPlanComponent implements OnInit {
   constructor(
     private _obsufactionService: ObsfucationService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private llmService: LlmService
   ) {}
 
   toggleAllRows() {
@@ -200,7 +203,6 @@ export class CreateObfuscationPlanComponent implements OnInit {
 
     // Select all rows except PER_ID when checking
     this.dataSource.data.forEach((row) => {
-      console.log('rw', row);
       if (row.columnName !== 'PER_ID') {
         this.selection.select(row);
       }
@@ -379,11 +381,9 @@ export class CreateObfuscationPlanComponent implements OnInit {
   isPerChecked(row: ColumnDefinition): any {
     if (this.currentDomain === 'utility') {
       if (row.columnName === 'CHAR_VAL') {
-        console.log('row columnnane', row.columnName);
         return true;
       }
       if (row.columnName === 'ADHOC_CHAR_VAL') {
-        console.log('row columnnane', row.columnName);
         return true;
       }
     }
@@ -514,5 +514,223 @@ export class CreateObfuscationPlanComponent implements OnInit {
     }
 
     return options;
+  }
+
+  private strategyMapping: { [key: string]: string } = {
+    Starify: 'STARIFY',
+    Randomize: 'RANDOMIZE',
+    Faker: 'FAKER',
+    ReplaceWithConstant: 'REPLACE_WITH_CONSTANT',
+    Hashing: 'HASH',
+  };
+
+  askLLM(): void {
+    const userPrompt = `/no_think System Prompt : 
+
+You are a data privacy and compliance expert with deep knowledge of HIPAA, GDPR, and PCI-DSS.
+Your task is to identify sensitive columns in database schemas and suggest the most appropriate
+data obfuscation function for each sensitive column.
+
+Obfuscation functions available:
+1. Starify → Mask part of the value with '*', e.g., "john.doe@gmail.com" → "j***@gmail.com".
+2. Randomize → Replace with a random but valid value of the same type/format.
+3. Faker → Replace with a realistic fake value (name, email, phone, address, etc.).
+4. ReplaceWithConstant → Replace with a fixed placeholder value (e.g., "XXXX").
+5. Hashing → Irreversibly hash the value (used for identifiers, SSN, card numbers).
+
+Rules:
+- Consider HIPAA, GDPR, PCI regulations when determining sensitive data.
+- Sensitive columns include personally identifiable information (PII), protected health information (PHI), and payment card data.
+- Always return output in valid JSON format. Do not include explanations outside JSON.
+
+JSON response format:
+{
+  "recommendations": [
+    {
+      "table": "<table_name>",
+      "column": "<column_name>",
+      "is_sensitive": true/false,
+      "recommended_function": "<Starify|Randomize|Faker|ReplaceWithConstant|Hashing>"
+    }
+  ]
+}
+
+User Prompt : 
+
+Here is my database schema with tables and columns.
+Identify sensitive columns as per HIPAA, GDPR, and PCI,
+and suggest an appropriate obfuscation function for each column.
+
+Schema:
+Table: CI_PER. Columns: PER_ID, LANGUAGE_CD, PER_OR_BUS_FLG, LS_SL_FLG, LS_SL_DESCR, EMAILID, OVRD_MAIL_NAME1, OVRD_MAIL_NAME2, OVRD_MAIL_NAME3, ADDRESS1
+Table: CI_PER_NAME. Columns: PER_ID, SEQ_NUM, ENTITY_NAME, NAME_TYPE_FLG, VERSION, PRIM_NAME_SW, ENTITY_NAME_UPR
+Table: CI_PER_ADDR_SEAS. Columns: PER_ID, SEQ_NUM, ADDRESS1, ADDRESS2, ADDRESS3, ADDRESS4, CITY, NUM1, NUM2, COUNTY
+Table: CI_PER_CONTDET. Columns: C1_CONTACT_ID, CONTACT_VALUE, PER_ID, COMM_RTE_TYPE_CD, CONTACT_VALUE, CND_PRIMARY_FLAG, CONTACT_VALUE_EXT, DND_START_TM, DND_END_TM, CND_VERIFY_STATUS_FLAG
+Table: CI_PER_ID. Columns: PER_ID, ID_TYPE_CD, PER_ID_NBR, PRIM_SW, VERSION, ENCR_PER_ID_NBR, HASH_PER_ID_NBR
+Table: CI_PER_CHAR. Columns: PER_ID, CHAR_TYPE_CD, CHAR_VAL, EFFDT, ADHOC_CHAR_VAL, VERSION, CHAR_VAL_FK1, CHAR_VAL_FK2, CHAR_VAL_FK3, CHAR_VAL_FK4
+`;
+
+    this.loading = true;
+    this.llmService.askLLM(userPrompt).subscribe({
+      next: (response) => {
+        console.log('LLM Response:', response.choices[0].message.content);
+
+        try {
+          // Extract JSON from the response (handle <think> tags or other text)
+          const responseContent = response.choices[0].message.content;
+          const jsonMatch = responseContent.match(/```json\s*([\s\S]*?)\s*```/);
+
+          let jsonString = '';
+          if (jsonMatch && jsonMatch[1]) {
+            // If JSON is wrapped in code blocks
+            jsonString = jsonMatch[1].trim();
+          } else {
+            // Try to find JSON object directly
+            const jsonStart = responseContent.indexOf('{');
+            const jsonEnd = responseContent.lastIndexOf('}');
+            if (jsonStart !== -1 && jsonEnd !== -1 && jsonEnd > jsonStart) {
+              jsonString = responseContent.substring(jsonStart, jsonEnd + 1);
+            } else {
+              throw new Error('No valid JSON found in response');
+            }
+          }
+
+          // Parse the extracted JSON
+          const llmResponse = JSON.parse(jsonString);
+
+          // Apply recommendations to current table data
+          this.applyLLMRecommendations(llmResponse.recommendations);
+
+          this.loading = false;
+        } catch (error) {
+          console.error('Error parsing LLM response:', error);
+
+          this.loading = false;
+        }
+      },
+      error: (error) => {
+        console.error('Error from LLM:', error);
+        this.loading = false;
+      },
+    });
+  }
+
+  // Add this new method to apply LLM recommendations
+  private applyLLMRecommendations(recommendations: any[]): void {
+    if (!this.selectedTable) {
+      console.warn('No table selected to apply recommendations');
+      return;
+    }
+
+    // Clear all existing selections first
+    this.selection.clear();
+
+    // Filter recommendations for the currently selected table
+    const currentTableRecommendations = recommendations.filter(
+      (rec) => rec.table === this.selectedTable
+    );
+
+    if (currentTableRecommendations.length === 0) {
+      console.warn(`No recommendations found for table: ${this.selectedTable}`);
+      return;
+    }
+
+    // Apply recommendations to dataSource - match by exact column name
+    this.dataSource.data.forEach((row: ColumnDefinition) => {
+      const recommendation = currentTableRecommendations.find(
+        (rec) => rec.column === row.columnName && rec.is_sensitive === true
+      );
+
+      if (recommendation) {
+        // Map the LLM recommendation to your strategy values
+        const mappedStrategy =
+          this.strategyMapping[recommendation.recommended_function];
+
+        if (mappedStrategy) {
+          // Update the obfuscation strategy for this specific column
+          row.obfStrategy = mappedStrategy;
+
+          // Set default rules based on strategy and column
+          this.setDefaultRulesForStrategy(row, mappedStrategy);
+
+          // Select/check the row - this will make mat-checkbox checked
+          // Only select if it's not PER_ID (since PER_ID is disabled)
+          if (row.columnName !== 'PER_ID') {
+            this.selection.select(row);
+          }
+        } else {
+          // Clear strategy for columns not in recommendations
+
+          row.obfStrategy = '';
+          if (row.obfRules) {
+            row.obfRules.first = '';
+            row.obfRules.second = '';
+          }
+          // Row will remain unselected since we cleared all selections at the start
+        }
+      }
+    });
+
+    // Force table to refresh and detect changes
+    this.dataSource._updateChangeSubscription();
+  }
+
+  private setDefaultRulesForStrategy(
+    row: ColumnDefinition,
+    strategy: string
+  ): void {
+    // Initialize obfRules if not exists
+    if (!row.obfRules) {
+      row.obfRules = { first: '', second: '' };
+    }
+
+    // Set default rules based on strategy and column type
+    switch (strategy) {
+      case 'FAKER':
+        if (
+          row.columnName.includes('NAME') ||
+          row.columnName.includes('ENTITY_NAME')
+        ) {
+          row.obfRules.first = '';
+        } else if (row.columnName.includes('EMAIL')) {
+          row.obfRules.first = '';
+        } else if (row.columnName.includes('ADDRESS')) {
+          row.obfRules.first = '';
+        } else if (
+          row.columnName.includes('PHONE') ||
+          row.columnName.includes('CONTACT')
+        ) {
+          row.obfRules.first = '';
+        } else {
+          row.obfRules.first = ''; // Default
+        }
+        row.obfRules.second = '';
+        break;
+
+      case 'HASH':
+        row.obfRules.first = ''; // or 'SHA1'
+        row.obfRules.second = '';
+        break;
+
+      case 'STARIFY':
+        row.obfRules.first = ''; // Left preserve
+        row.obfRules.second = ''; // Preserve 2 characters
+        break;
+
+      case 'RANDOMIZE':
+        row.obfRules.first = '';
+        row.obfRules.second = '';
+        break;
+
+      case 'REPLACE_WITH_CONSTANT':
+        row.obfRules.first = '';
+        row.obfRules.second = '';
+        break;
+
+      default:
+        row.obfRules.first = '';
+        row.obfRules.second = '';
+        break;
+    }
   }
 }

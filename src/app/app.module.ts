@@ -55,6 +55,8 @@ import { MaintenancePageComponent } from './pages/maintenance-page/maintenance-p
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { ViewSubsetPlanComponent } from './pages/view-subset-plan/view-subset-plan.component';
 import { TopNavigationBarComponent } from './components/top-navigation-bar/top-navigation-bar.component';
+import { MatSpinner } from '@angular/material/progress-spinner';
+import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
   declarations: [
@@ -113,6 +115,8 @@ import { TopNavigationBarComponent } from './components/top-navigation-bar/top-n
     MatMomentDateModule,
     MatRadioModule,
     HttpClientModule,
+    MatChipsModule,
+    MatSpinner,
     ToastrModule.forRoot(),
   ],
   providers: [provideNativeDateAdapter(), provideAnimationsAsync()],

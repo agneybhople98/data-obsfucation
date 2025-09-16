@@ -18,6 +18,7 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
+import { LlmService } from '../../llm.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -41,12 +42,16 @@ export class DashboardComponent implements AfterViewInit, OnInit, OnDestroy {
   public domain: string = '';
   private subscription = new Subscription();
   currentDomain: string = 'utility';
+  userPrompt: string = '';
+  public loading: boolean = false;
+  message: any;
 
   constructor(
     private _router: Router,
     public jobService: JobsDataService,
     private changeDetectorRef: ChangeDetectorRef,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private llmService: LlmService
   ) {
     this.dataSource = new MatTableDataSource<JobElement>([]);
   }
@@ -189,6 +194,26 @@ export class DashboardComponent implements AfterViewInit, OnInit, OnDestroy {
       path: '../../../assets/failed-jobs.svg',
     },
   ];
+  // for multiple prompts we can use this to resolve
+  // async askLLMAsync(): Promise<void> {
+  //   const response = await this.llmService.askLLMPromise('Hello, how are you?');
+  //   console.log('LLM Response (Promise):', response);
+  // }
+
+  askLLM(): void {
+    this.loading = true;
+    this.llmService.askLLM(this.userPrompt).subscribe({
+      next: (response) => {
+        console.log('LLM Response:', response.choices[0].message.content);
+        this.message = response.choices[0].message.content;
+        this.loading = false;
+      },
+      error: (error) => {
+        console.error('Error from LLM:', error);
+        this.loading = false;
+      },
+    });
+  }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

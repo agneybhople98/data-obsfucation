@@ -18,6 +18,41 @@
     ></app-input>
   </div>
 
+  <!-- Using promise -->
+
+  <!-- <button mat-flat-button (click)="askLLMAsync()">Ask LLM (promise)</button> -->
+
+  <!-- <textarea
+    [(ngModel)]="userPrompt"
+    placeholder="Enter your prompt..."
+    rows="4"
+    cols="50"
+  >
+  </textarea>
+
+  <button
+    *ngIf="!loading; else loadingTemplate"
+    mat-flat-button
+    color="primary"
+    (click)="askLLM()"
+  >
+    Ask LLM
+  </button>
+
+  <ng-template #loadingTemplate>
+    <button mat-flat-button color="primary">
+      Generating...
+
+      <mat-icon
+        ><mat-spinner color="warn " diameter="15"> </mat-spinner
+      ></mat-icon>
+    </button>
+  </ng-template> -->
+
+  <!-- Generated Response -->
+
+  <div style="padding: 8px">{{ message ? message : null }}</div>
+
   <div class="jobs-table mt-4">
     <table
       mat-table

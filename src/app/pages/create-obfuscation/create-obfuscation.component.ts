@@ -186,6 +186,7 @@ export class CreateObfuscationPlanComponent implements OnInit {
   searchText = '';
   selectedItem: string | null = null;
   hideButton = true;
+  autoFilled: boolean = false;
 
   constructor(
     private _obsufactionService: ObsfucationService,
@@ -649,7 +650,7 @@ Table: CI_PER_CHAR. Columns: PER_ID, CHAR_TYPE_CD, CHAR_VAL, EFFDT, ADHOC_CHAR_V
         if (mappedStrategy) {
           // Update the obfuscation strategy for this specific column
           row.obfStrategy = mappedStrategy;
-
+          this.autoFilled = true;
           // Set default rules based on strategy and column
           this.setDefaultRulesForStrategy(row, mappedStrategy);
 

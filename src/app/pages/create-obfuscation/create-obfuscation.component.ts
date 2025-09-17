@@ -195,21 +195,6 @@ export class CreateObfuscationPlanComponent implements OnInit {
     private llmService: LlmService
   ) {}
 
-  toggleAllRows() {
-    if (this.isAllSelected()) {
-      // Clear all selections when unchecking
-      this.selection.clear();
-      return;
-    }
-
-    // Select all rows except PER_ID when checking
-    this.dataSource.data.forEach((row) => {
-      if (row.columnName !== 'PER_ID') {
-        this.selection.select(row);
-      }
-    });
-  }
-
   /** The label for the checkbox on the passed row */
   checkboxLabel(row?: ColumnDefinition): string {
     if (!row) {
@@ -221,15 +206,17 @@ export class CreateObfuscationPlanComponent implements OnInit {
     }`;
   }
 
-  /** Whether the number of selected elements matches the total number of rows. */
   isAllSelected() {
-    // Count only non-PER_ID rows for total
-    const totalRows = this.dataSource.data.filter(
-      (row) => row.columnName !== 'PER_ID'
-    ).length;
-    const numSelected = this.selection.selected.filter(
-      (row) => row.columnName !== 'PER_ID'
-    ).length;
+    // Determine which rows should be counted based on LLM application status
+    const selectableRows = this.dataSource.data.filter((row) => {
+      if (row.columnName === 'PER_ID' && !this.autoFilled) {
+        return false; // Exclude PER_ID if LLM hasn't been applied
+      }
+      return true; // Include all other rows, and PER_ID if LLM has been applied
+    });
+
+    const totalRows = selectableRows.length;
+    const numSelected = this.selection.selected.length;
     return numSelected === totalRows;
   }
 
@@ -330,9 +317,13 @@ export class CreateObfuscationPlanComponent implements OnInit {
    * @returns Disabled state of the dropdown for unselected row
    */
   isDropdownDisabled(element: any): boolean {
-    // Always disable dropdowns for PER_ID rows, regardless of selection state
-    if (element.columnName === 'PER_ID') {
+    // If PER_ID and LLM recommendations haven't been applied, disable it
+    if (element.columnName === 'PER_ID' && !this.autoFilled) {
       return true;
+    }
+    // If PER_ID and LLM recommendations have been applied, enable it when selected
+    if (element.columnName === 'PER_ID' && this.autoFilled) {
+      return !this.selection.isSelected(element);
     }
     // For other rows, enable dropdowns only when selected
     return !this.selection.isSelected(element);
@@ -374,7 +365,8 @@ export class CreateObfuscationPlanComponent implements OnInit {
 
   isRowDisabledForPerID(row: ColumnDefinition): any {
     if (row.columnName === 'PER_ID') {
-      return true;
+      // Enable PER_ID row if LLM recommendations have been applied
+      return !this.autoFilled;
     }
     return false;
   }
@@ -391,13 +383,16 @@ export class CreateObfuscationPlanComponent implements OnInit {
 
     return false;
   }
+
   valueSelection(): boolean {
-    // Prevent selection of PER_ID rows and ensure they're always deselected
-    this.selection.selected.forEach((row) => {
-      if (row.columnName === 'PER_ID') {
-        this.selection.deselect(row);
-      }
-    });
+    // Only prevent selection of PER_ID rows if LLM recommendations haven't been applied
+    if (!this.autoFilled) {
+      this.selection.selected.forEach((row) => {
+        if (row.columnName === 'PER_ID') {
+          this.selection.deselect(row);
+        }
+      });
+    }
     return false;
   }
 
@@ -414,9 +409,45 @@ export class CreateObfuscationPlanComponent implements OnInit {
 
     // Update data source if table found
     if (selectedTableData) {
+      // Store the current selections before updating dataSource
+      const previouslySelectedColumns = this.selection.selected.map(
+        (row) => row.columnName
+      );
+
+      // Update the dataSource with new data
       this.dataSource.data = selectedTableData.columns;
+
+      // Clear current selections
+      this.selection.clear();
+
+      // Restore selections based on column names and obfuscation strategy
+      setTimeout(() => {
+        this.dataSource.data.forEach((row: ColumnDefinition) => {
+          // Re-select rows that:
+          // 1. Were previously selected, OR
+          // 2. Have obfuscation strategy set (from LLM recommendations)
+          // 3. Now include PER_ID if LLM recommendations have been applied
+          const wasPreviouslySelected = previouslySelectedColumns.includes(
+            row.columnName
+          );
+          const hasObfuscationStrategy =
+            row.obfStrategy && row.obfStrategy.trim() !== '';
+
+          // Include PER_ID in selection logic if LLM recommendations have been applied
+          const shouldSelect = wasPreviouslySelected || hasObfuscationStrategy;
+
+          if (shouldSelect) {
+            // If it's PER_ID, only select it if LLM recommendations have been applied
+            if (row.columnName === 'PER_ID' && !this.autoFilled) {
+              return; // Don't select PER_ID if LLM hasn't been applied
+            }
+            this.selection.select(row);
+          }
+        });
+      }, 0);
     } else {
       this.dataSource.data = [];
+      this.selection.clear();
     }
   }
 
@@ -463,6 +494,24 @@ export class CreateObfuscationPlanComponent implements OnInit {
     if (element.options && index >= 1 && index < element.options.length) {
       element.options.splice(index, 1);
     }
+  }
+
+  toggleAllRows() {
+    if (this.isAllSelected()) {
+      // Clear all selections when unchecking
+      this.selection.clear();
+      return;
+    }
+
+    // Select all rows when checking
+    this.dataSource.data.forEach((row) => {
+      // If LLM recommendations haven't been applied, exclude PER_ID
+      if (!this.autoFilled && row.columnName === 'PER_ID') {
+        return; // Skip PER_ID if LLM hasn't been applied
+      }
+      // Otherwise, select all rows including PER_ID (if LLM applied)
+      this.selection.select(row);
+    });
   }
 
   // Toggle edit mode for an option
@@ -574,7 +623,10 @@ Table: CI_PER_CHAR. Columns: PER_ID, CHAR_TYPE_CD, CHAR_VAL, EFFDT, ADHOC_CHAR_V
     this.loading = true;
     this.llmService.askLLM(userPrompt).subscribe({
       next: (response) => {
-        console.log('LLM Response:', response.choices[0].message.content);
+        console.log(
+          'LLM Response:(for personal use)',
+          response.choices[0].message.content
+        );
 
         try {
           // Extract JSON from the response (handle <think> tags or other text)
@@ -618,62 +670,73 @@ Table: CI_PER_CHAR. Columns: PER_ID, CHAR_TYPE_CD, CHAR_VAL, EFFDT, ADHOC_CHAR_V
 
   // Add this new method to apply LLM recommendations
   private applyLLMRecommendations(recommendations: any[]): void {
-    if (!this.selectedTable) {
-      console.warn('No table selected to apply recommendations');
+    if (!this.tableData || !this.tableData.tables) {
+      console.warn('No table data available to apply recommendations');
       return;
     }
 
     // Clear all existing selections first
     this.selection.clear();
 
-    // Filter recommendations for the currently selected table
-    const currentTableRecommendations = recommendations.filter(
-      (rec) => rec.table === this.selectedTable
-    );
-
-    if (currentTableRecommendations.length === 0) {
-      console.warn(`No recommendations found for table: ${this.selectedTable}`);
-      return;
-    }
-
-    // Apply recommendations to dataSource - match by exact column name
-    this.dataSource.data.forEach((row: ColumnDefinition) => {
-      const recommendation = currentTableRecommendations.find(
-        (rec) => rec.column === row.columnName && rec.is_sensitive === true
+    // Apply recommendations to ALL tables in tableData
+    this.tableData.tables.forEach((table: any) => {
+      // Filter recommendations for the current table being processed
+      const currentTableRecommendations = recommendations.filter(
+        (rec) => rec.table === table.tableName
       );
 
-      if (recommendation) {
-        // Map the LLM recommendation to your strategy values
-        const mappedStrategy =
-          this.strategyMapping[recommendation.recommended_function];
+      if (currentTableRecommendations.length === 0) {
+        console.warn(`No recommendations found for table: ${table.tableName}`);
+        return;
+      }
 
-        if (mappedStrategy) {
-          // Update the obfuscation strategy for this specific column
-          row.obfStrategy = mappedStrategy;
-          this.autoFilled = true;
-          // Set default rules based on strategy and column
-          this.setDefaultRulesForStrategy(row, mappedStrategy);
+      // Apply recommendations to each column in the current table
+      table.columns.forEach((column: ColumnDefinition) => {
+        const recommendation = currentTableRecommendations.find(
+          (rec) => rec.column === column.columnName && rec.is_sensitive === true
+        );
 
-          // Select/check the row - this will make mat-checkbox checked
-          // Only select if it's not PER_ID (since PER_ID is disabled)
-          if (row.columnName !== 'PER_ID') {
-            this.selection.select(row);
+        if (recommendation) {
+          // Map the LLM recommendation to your strategy values
+          const mappedStrategy =
+            this.strategyMapping[recommendation.recommended_function];
+
+          if (mappedStrategy) {
+            // Update the obfuscation strategy for this specific column
+            column.obfStrategy = mappedStrategy;
+            this.autoFilled = true;
+
+            // Set default rules based on strategy and column
+            this.setDefaultRulesForStrategy(column, mappedStrategy);
           }
         } else {
-          // Clear strategy for columns not in recommendations
-
-          row.obfStrategy = '';
-          if (row.obfRules) {
-            row.obfRules.first = '';
-            row.obfRules.second = '';
+          // Clear strategy for columns not in recommendations or not sensitive
+          column.obfStrategy = '';
+          if (column.obfRules) {
+            column.obfRules.first = '';
+            column.obfRules.second = '';
           }
-          // Row will remain unselected since we cleared all selections at the start
         }
-      }
+      });
     });
 
-    // Force table to refresh and detect changes
-    this.dataSource._updateChangeSubscription();
+    // If there's a currently selected table, update the dataSource and selections
+    if (this.selectedTable) {
+      this.updateTableData();
+
+      // After updating table data, select rows that have recommendations
+      setTimeout(() => {
+        this.dataSource.data.forEach((row: ColumnDefinition) => {
+          // Now include PER_ID in selection since LLM recommendations have been applied
+          if (row.obfStrategy && row.obfStrategy.trim() !== '') {
+            this.selection.select(row);
+          }
+        });
+
+        // Force table to refresh and detect changes
+        this.dataSource._updateChangeSubscription();
+      }, 0);
+    }
   }
 
   private setDefaultRulesForStrategy(

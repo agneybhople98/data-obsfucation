@@ -193,6 +193,8 @@ export class CreateObfuscationPlanComponent implements OnInit {
   selectedItem: string | null = null;
   hideButton = true;
   autoFilled: boolean = false;
+  isAutoPlanDisabled: boolean = false;
+  isResetDisabled: boolean = true;
 
   constructor(
     private _obsufactionService: ObsfucationService,
@@ -697,11 +699,15 @@ Table: CI_PER_CHAR. Columns: PER_ID, CHAR_TYPE_CD, CHAR_VAL, EFFDT, ADHOC_CHAR_V
             // Close modal with success result
             if (this.loadingModalRef) {
               this.loadingModalRef.componentInstance.closeModal('success');
+              this.isAutoPlanDisabled = true;
+              this.isResetDisabled = false;
             }
           }, 1500);
         } catch (error) {
           console.error('Error parsing LLM response:', error);
           this.loading = false;
+          this.isAutoPlanDisabled = false;
+          this.isResetDisabled = true;
 
           // Close modal with error
           if (this.loadingModalRef) {
@@ -857,5 +863,9 @@ Table: CI_PER_CHAR. Columns: PER_ID, CHAR_TYPE_CD, CHAR_VAL, EFFDT, ADHOC_CHAR_V
         row.obfRules.second = '';
         break;
     }
+  }
+
+  public resetLLM() {
+    window.location.reload();
   }
 }

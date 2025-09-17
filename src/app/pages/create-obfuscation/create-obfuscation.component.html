@@ -84,32 +84,40 @@
       <div class="!ms-5">
         <div class="flex items-center justify-between mx-2">
           <div>Set Obfuscation Strategies</div>
-          <button
-            *ngIf="!loading; else loadingTemplate"
-            mat-flat-button
-            color="primary"
-            (click)="askLLM()"
-          >
-            ✨ AutoPlan
-          </button>
+          <div class="flex">
+            <div>
+              <button
+                *ngIf="!loading; else loadingTemplate"
+                mat-flat-button
+                [disabled]="isAutoPlanDisabled"
+                color="primary"
+                (click)="askLLM()"
+              >
+                ✨ AutoPlan
+              </button>
+              <div
+                class="text-xs mt-2 flex justify-self-center"
+                *ngIf="autoFilled"
+                style="color: #34a135"
+              >
+                Auto filled with AI
+              </div>
+            </div>
 
-          <ng-template #loadingTemplate>
-            <button mat-flat-button color="primary">
-              Generating...
+            <ng-template #loadingTemplate>
+              <button mat-flat-button color="primary">Generating...</button>
+            </ng-template>
 
-              <mat-icon
-                ><mat-spinner color="warn " diameter="15"> </mat-spinner
-              ></mat-icon>
+            <button
+              class="ms-4"
+              mat-flat-button
+              color="primary"
+              (click)="resetLLM()"
+              [disabled]="isResetDisabled"
+            >
+              🔄 Reset
             </button>
-          </ng-template>
-        </div>
-
-        <div
-          class="flex justify-end item-start text-xs mt-2 !me-[20px]"
-          *ngIf="autoFilled"
-          style="color: #34a135"
-        >
-          Auto filled with AI
+          </div>
         </div>
 
         <div class="table-container !mt-4">

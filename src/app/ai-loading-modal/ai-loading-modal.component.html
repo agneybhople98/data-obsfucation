@@ -1,0 +1,98 @@
+<div class="loading-modal-content">
+  <!-- Header -->
+  <div class="modal-header">
+    <h2 mat-dialog-title>
+      <span class="ai-icon">🤖</span>
+      AI Obfuscation Planner
+    </h2>
+    <p class="modal-subtitle">Analyzing your database schema for compliance</p>
+  </div>
+
+  <!-- AI Animation Section -->
+  <div class="ai-animation-section">
+    <div class="circuit-board">
+      <div class="circuit-line line-1"></div>
+      <div class="circuit-line line-2"></div>
+      <div class="circuit-line line-3"></div>
+      <div class="circuit-node node-1"></div>
+      <div class="circuit-node node-2"></div>
+      <div class="circuit-node node-3"></div>
+    </div>
+  </div>
+
+  <!-- Progress Section -->
+  <div class="progress-section">
+    <div class="progress-bar-container">
+      <mat-progress-bar
+        mode="indeterminate"
+        color="primary"
+        class="custom-progress-bar"
+      >
+      </mat-progress-bar>
+    </div>
+
+    <!-- Loading Steps -->
+    <div class="loading-steps">
+      <div class="step" [class.active]="currentStep >= 0">
+        <div class="step-icon">
+          <mat-icon>search</mat-icon>
+        </div>
+        <div class="step-text">Analyzing Schema</div>
+      </div>
+      <div class="step" [class.active]="currentStep >= 1">
+        <div class="step-icon">
+          <mat-icon>security</mat-icon>
+        </div>
+        <div class="step-text">Identifying Sensitive Data</div>
+      </div>
+      <div class="step" [class.active]="currentStep >= 2">
+        <div class="step-icon">
+          <mat-icon>settings</mat-icon>
+        </div>
+        <div class="step-text">Generating Strategies</div>
+      </div>
+      <div class="step" [class.active]="currentStep >= 3">
+        <div class="step-icon">
+          <mat-icon>check_circle</mat-icon>
+        </div>
+        <div class="step-text">Applying Recommendations</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats Section -->
+  <div class="stats-section">
+    <div class="loading-message">
+      <p>{{ currentMessage }}</p>
+    </div>
+
+    <div class="ai-stats" *ngIf="showStats">
+      <mat-card class="stat-card">
+        <mat-card-content>
+          <div class="stat-value">{{ analyzedColumns }}</div>
+          <div class="stat-label">Columns Analyzed</div>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class="stat-card">
+        <mat-card-content>
+          <div class="stat-value">{{ sensitiveFound }}</div>
+          <div class="stat-label">Sensitive Fields Found</div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+
+  <!-- Action Section -->
+  <div class="action-section" *ngIf="showCancelButton">
+    <button
+      mat-stroked-button
+      color="warn"
+      (click)="onCancel()"
+      class="cancel-button"
+    >
+      <mat-icon>close</mat-icon>
+      Cancel
+    </button>
+  </div>
+</div>

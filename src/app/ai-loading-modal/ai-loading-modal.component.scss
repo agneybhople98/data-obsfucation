@@ -1,0 +1,299 @@
+.loading-modal-content {
+  padding: 0;
+  //   max-width: 500px;
+  width: 100%;
+}
+
+.modal-header {
+  text-align: center;
+  padding: 24px 24px 16px;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  border-radius: 4px 4px 0 0;
+}
+
+.modal-header h2 {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: #1976d2;
+  font-weight: 600;
+}
+
+.ai-icon {
+  font-size: 24px;
+  animation: aiPulse 2s ease-in-out infinite;
+}
+
+.modal-subtitle {
+  margin: 8px 0 0;
+  color: #666;
+  font-size: 14px;
+}
+
+.ai-animation-section {
+  padding: 32px 24px;
+  position: relative;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.circuit-board {
+  position: relative;
+  width: 100%;
+  height: 60px;
+}
+
+.circuit-line {
+  position: absolute;
+  background: linear-gradient(90deg, transparent, #1976d2, transparent);
+  border-radius: 2px;
+  height: 2px;
+}
+
+.line-1 {
+  top: 10px;
+  left: 0;
+  width: 100%;
+  animation: circuitFlow 3s ease-in-out infinite;
+}
+
+.line-2 {
+  top: 30px;
+  left: 20px;
+  width: 60%;
+  animation: circuitFlow 3s ease-in-out infinite 0.5s;
+}
+
+.line-3 {
+  top: 50px;
+  left: 10px;
+  width: 80%;
+  animation: circuitFlow 3s ease-in-out infinite 1s;
+}
+
+.circuit-node {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: #1976d2;
+  border-radius: 50%;
+  animation: nodePulse 2s ease-in-out infinite;
+}
+
+.node-1 {
+  top: 6px;
+  left: 30%;
+  animation-delay: 0s;
+}
+.node-2 {
+  top: 26px;
+  right: 30%;
+  animation-delay: 0.7s;
+}
+.node-3 {
+  top: 46px;
+  left: 50%;
+  animation-delay: 1.4s;
+}
+
+.progress-section {
+  padding: 0 24px 24px;
+}
+
+.progress-bar-container {
+  margin-bottom: 24px;
+}
+
+.custom-progress-bar {
+  height: 4px;
+  border-radius: 2px;
+}
+
+.loading-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  opacity: 0.4;
+  transition: all 0.3s ease;
+  padding: 12px 8px;
+  border-radius: 8px;
+}
+
+.step.active {
+  opacity: 1;
+  background: rgba(25, 118, 210, 0.1);
+  transform: scale(1.02);
+}
+
+.step-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #f5f5f5;
+  transition: all 0.3s ease;
+}
+
+.step.active .step-icon {
+  background: #e3f2fd;
+  color: #1976d2;
+  animation: iconBounce 1s ease-in-out infinite;
+}
+
+.step-icon mat-icon {
+  font-size: 20px;
+}
+
+.step-text {
+  font-size: 12px;
+  font-weight: 500;
+  text-align: center;
+  color: #666;
+}
+
+.step.active .step-text {
+  color: #1976d2;
+  font-weight: 600;
+}
+
+.stats-section {
+  padding: 0 24px 24px;
+}
+
+.loading-message {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.loading-message p {
+  color: #666;
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.ai-stats {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+.stat-card {
+  flex: 1;
+  max-width: 140px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+.stat-card mat-card-content {
+  padding: 16px !important;
+}
+
+.stat-value {
+  font-size: 24px;
+  font-weight: bold;
+  color: #1976d2;
+  animation: countUp 0.5s ease-out;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: #666;
+  margin-top: 4px;
+}
+
+.action-section {
+  padding: 0 24px 24px;
+  text-align: center;
+}
+
+.cancel-button {
+  min-width: 120px;
+}
+
+/* Animations */
+@keyframes aiPulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes circuitFlow {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scaleX(0.5);
+  }
+  50% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+@keyframes nodePulse {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(25, 118, 210, 0.7);
+  }
+  50% {
+    transform: scale(1.2);
+    box-shadow: 0 0 0 8px rgba(25, 118, 210, 0);
+  }
+}
+
+@keyframes iconBounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes countUp {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .loading-steps {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .ai-stats {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .stat-card {
+    max-width: 200px;
+  }
+}

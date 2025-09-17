@@ -19,6 +19,11 @@ import {
   trigger,
 } from '@angular/animations';
 import { LlmService } from '../../llm.service';
+import {
+  AiLoadingModalComponent,
+  LoadingModalData,
+} from '../../ai-loading-modal/ai-loading-modal.component';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-create-obfuscation',
@@ -42,6 +47,7 @@ export class CreateObfuscationPlanComponent implements OnInit {
   selectedTable: string = '';
   currentDomain: string = 'utility';
   public loading: boolean = false;
+  private loadingModalRef!: MatDialogRef<AiLoadingModalComponent>;
 
   displayedColumns: string[] = [
     'expand',
@@ -192,7 +198,8 @@ export class CreateObfuscationPlanComponent implements OnInit {
     private _obsufactionService: ObsfucationService,
     private router: Router,
     private route: ActivatedRoute,
-    private llmService: LlmService
+    private llmService: LlmService,
+    private dialog: MatDialog
   ) {}
 
   /** The label for the checkbox on the passed row */
@@ -620,13 +627,34 @@ Table: CI_PER_ID. Columns: PER_ID, ID_TYPE_CD, PER_ID_NBR, PRIM_SW, VERSION, ENC
 Table: CI_PER_CHAR. Columns: PER_ID, CHAR_TYPE_CD, CHAR_VAL, EFFDT, ADHOC_CHAR_VAL, VERSION, CHAR_VAL_FK1, CHAR_VAL_FK2, CHAR_VAL_FK3, CHAR_VAL_FK4
 `;
 
+    // Open the loading modal
+    const dialogData: LoadingModalData = {
+      totalColumns: this.getTotalColumnsCount(),
+    };
+
+    this.loadingModalRef = this.dialog.open(AiLoadingModalComponent, {
+      width: '520px',
+      maxWidth: '95vw',
+      panelClass: 'ai-loading-modal',
+      disableClose: true,
+      data: dialogData,
+    });
+
+    // Handle modal cancellation
+    this.loadingModalRef.afterClosed().subscribe((result) => {
+      if (result === 'cancelled') {
+        console.log('AI analysis cancelled by user');
+        this.loading = false;
+        // You might want to cancel the HTTP request here if possible
+      }
+      this.loadingModalRef = null as any;
+    });
+
     this.loading = true;
+
     this.llmService.askLLM(userPrompt).subscribe({
       next: (response) => {
-        console.log(
-          'LLM Response:(for personal use)',
-          response.choices[0].message.content
-        );
+        console.log('LLM Response:', response.choices[0].message.content);
 
         try {
           // Extract JSON from the response (handle <think> tags or other text)
@@ -651,21 +679,54 @@ Table: CI_PER_CHAR. Columns: PER_ID, CHAR_TYPE_CD, CHAR_VAL, EFFDT, ADHOC_CHAR_V
           // Parse the extracted JSON
           const llmResponse = JSON.parse(jsonString);
 
-          // Apply recommendations to current table data
-          this.applyLLMRecommendations(llmResponse.recommendations);
+          // Update modal to final step with sensitive count
+          const sensitiveCount = llmResponse.recommendations.filter(
+            (rec: any) => rec.is_sensitive
+          ).length;
+          if (this.loadingModalRef) {
+            this.loadingModalRef.componentInstance.updateToFinalStep(
+              sensitiveCount
+            );
+          }
 
-          this.loading = false;
+          // Apply recommendations after showing final step
+          setTimeout(() => {
+            this.applyLLMRecommendations(llmResponse.recommendations);
+            this.loading = false;
+
+            // Close modal with success result
+            if (this.loadingModalRef) {
+              this.loadingModalRef.componentInstance.closeModal('success');
+            }
+          }, 1500);
         } catch (error) {
           console.error('Error parsing LLM response:', error);
-
           this.loading = false;
+
+          // Close modal with error
+          if (this.loadingModalRef) {
+            this.loadingModalRef.componentInstance.closeModal('error');
+          }
         }
       },
       error: (error) => {
         console.error('Error from LLM:', error);
         this.loading = false;
+
+        // Close modal with error
+        if (this.loadingModalRef) {
+          this.loadingModalRef.componentInstance.closeModal('error');
+        }
       },
     });
+  }
+
+  private getTotalColumnsCount(): number {
+    if (!this.tableData || !this.tableData.tables) return 0;
+
+    return this.tableData.tables.reduce((total: number, table: any) => {
+      return total + (table.columns ? table.columns.length : 0);
+    }, 0);
   }
 
   // Add this new method to apply LLM recommendations

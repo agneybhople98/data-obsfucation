@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
@@ -57,6 +57,7 @@ import { ViewSubsetPlanComponent } from './pages/view-subset-plan/view-subset-pl
 import { TopNavigationBarComponent } from './components/top-navigation-bar/top-navigation-bar.component';
 import { MatSpinner } from '@angular/material/progress-spinner';
 import { MatChipsModule } from '@angular/material/chips';
+import { AiLoadingModalComponent } from './ai-loading-modal/ai-loading-modal.component';
 
 @NgModule({
   declarations: [
@@ -83,6 +84,7 @@ import { MatChipsModule } from '@angular/material/chips';
     MaintenancePageComponent,
     ViewSubsetPlanComponent,
     TopNavigationBarComponent,
+    AiLoadingModalComponent,
   ],
   imports: [
     FormsModule,
@@ -121,5 +123,6 @@ import { MatChipsModule } from '@angular/material/chips';
   ],
   providers: [provideNativeDateAdapter(), provideAnimationsAsync()],
   bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule {}

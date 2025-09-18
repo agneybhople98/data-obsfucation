@@ -4,7 +4,6 @@ import {
   OnInit,
   ViewChild,
   OnDestroy,
-  CUSTOM_ELEMENTS_SCHEMA,
 } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
@@ -20,7 +19,6 @@ import {
   trigger,
 } from '@angular/animations';
 import { LlmService } from '../../llm.service';
-import 'ria-chat-widget';
 
 @Component({
   selector: 'app-dashboard',
@@ -56,20 +54,6 @@ export class DashboardComponent implements AfterViewInit, OnInit, OnDestroy {
     private llmService: LlmService
   ) {
     this.dataSource = new MatTableDataSource<JobElement>([]);
-  }
-
-  protected readonly API_BASE = 'http://localhost:8080';
-
-  onNewMessage(message: any) {
-    console.log('New message:', message);
-  }
-
-  onError(error: any) {
-    console.error('Chat error:', error);
-  }
-
-  onReady() {
-    console.log('Chat widget is ready');
   }
 
   ngOnInit(): void {

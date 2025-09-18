@@ -18,14 +18,6 @@
     ></app-input>
   </div>
 
-  <modern-sage-chat
-    [api-base]="API_BASE"
-    (newMessage)="onNewMessage($event)"
-    (error)="onError($event)"
-    (ready)="onReady()"
-  >
-  </modern-sage-chat>
-
   <!-- Using promise -->
 
   <!-- <button mat-flat-button (click)="askLLMAsync()">Ask LLM (promise)</button> -->

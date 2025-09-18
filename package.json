@@ -25,6 +25,7 @@
     "moment": "^2.30.1",
     "ngx-angular-query-builder": "^17.0.0",
     "ngx-toastr": "^18.0.0",
+    "ria-chat-widget": "file:ria-chat-widget-1.0.0.tgz",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"

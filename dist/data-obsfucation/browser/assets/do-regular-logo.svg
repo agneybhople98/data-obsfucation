@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 127.19 30">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #519fd7;
+        stroke-miterlimit: 10;
+      }
+
+      .cls-2 {
+        letter-spacing: 0em;
+      }
+
+      .cls-3 {
+        font-family: Calibri-Bold, Calibri;
+        font-size: 12px;
+        font-weight: 700;
+      }
+
+      .cls-3, .cls-4 {
+        fill: #519fd7;
+      }
+
+      .cls-5 {
+        letter-spacing: 0em;
+      }
+
+      .cls-6 {
+        fill: #1a2a55;
+      }
+
+      .cls-6, .cls-4, .cls-7 {
+        fill-rule: evenodd;
+      }
+
+      .cls-8 {
+        letter-spacing: 0em;
+      }
+
+      .cls-7 {
+        fill: #1e4079;
+      }
+
+      .cls-9 {
+        letter-spacing: 0em;
+      }
+    </style>
+  </defs>
+  <g id="_2029436410752" data-name=" 2029436410752">
+    <polygon class="cls-7" points="4.77 5.01 25.05 5.01 19.4 10.68 10.42 10.65 10.4 25 4.77 25 4.77 5.01"/>
+    <polygon class="cls-6" points="15.82 10.67 25.05 5.01 19.4 10.68 17.29 10.67 15.82 10.67"/>
+    <polygon class="cls-6" points="4.77 19.5 10.41 16.61 4.77 21.32 4.77 19.5"/>
+    <polygon class="cls-7" points="28.28 5.01 33.9 5.01 33.9 24.1 28.28 25 28.28 5.01"/>
+    <polygon class="cls-4" points="28.32 24.99 43.15 5 57.18 24.99 49.22 24.99 42.99 15.63 36.4 24.99 28.32 24.99"/>
+    <polygon class="cls-4" points="12.62 14.93 25.05 5.01 25.05 12.9 20.8 16.01 28.28 25 20.84 25 12.62 14.93"/>
+    <polygon class="cls-4" points="0 25 10.41 16.61 10.4 25 0 25"/>
+    <polygon class="cls-6" points="28.28 22.5 33.9 17.43 28.28 25 28.28 22.84 28.28 22.5"/>
+  </g>
+  <line class="cls-1" x1="62" x2="62" y2="30"/>
+  <text class="cls-3" transform="translate(67 13.79)"><tspan x="0" y="0">D</tspan><tspan class="cls-5" x="7.56" y="0">a</tspan><tspan class="cls-2" x="13.38" y="0">t</tspan><tspan x="17.42" y="0">a</tspan><tspan x="0" y="10">O</tspan><tspan class="cls-8" x="8.12" y="10">b</tspan><tspan x="14.49" y="10">fus</tspan><tspan class="cls-9" x="29.51" y="10">c</tspan><tspan class="cls-5" x="34.46" y="10">a</tspan><tspan x="40.28" y="10">tion</tspan></text>
+</svg>

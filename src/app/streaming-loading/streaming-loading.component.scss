@@ -1,0 +1,158 @@
+.loading-modal {
+  padding: 24px;
+  min-width: 500px;
+  max-width: 600px;
+  font-family: "Roboto", sans-serif;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 16px;
+}
+.modal-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 500;
+}
+.modal-text {
+  font-size: 14px;
+}
+
+.progress-section {
+  margin-bottom: 24px;
+}
+
+.progress-info {
+  margin-bottom: 16px;
+}
+
+.progress-text {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 8px;
+  display: block;
+  min-height: 20px;
+}
+
+.success-text {
+  color: #4caf50;
+  font-weight: 500;
+}
+
+.error-text {
+  color: #f44336;
+  font-weight: 500;
+}
+
+.current-processing {
+  font-size: 12px;
+  color: #2196f3;
+  font-style: italic;
+  margin-top: 4px;
+  min-height: 16px;
+}
+
+.current-processing strong {
+  font-weight: 500;
+}
+
+.progress-bar-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.progress-bar-container mat-progress-bar {
+  flex: 1;
+  height: 8px;
+  border-radius: 4px;
+}
+
+.progress-percentage {
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  min-width: 40px;
+  text-align: right;
+}
+
+.processing-details {
+  background: #f5f5f5;
+  padding: 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  border: 1px solid #eee;
+}
+
+.processed-count {
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.recent-recommendations h4 {
+  margin: 12px 0 8px 0;
+  font-size: 12px;
+  color: #666;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.recommendation-list {
+  max-height: 105px;
+  overflow-y: auto;
+}
+
+.recommendation-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 4px;
+  border-bottom: 1px solid #eee;
+}
+
+.recommendation-item:last-child {
+  border-bottom: none;
+}
+
+.column-name {
+  font-weight: 500;
+  flex: 1;
+  color: #444;
+}
+
+.sensitive-badge {
+  background: #ffebee;
+  color: #c62828;
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.non-sensitive-badge {
+  background: #e8f5e9;
+  color: #2e7d32;
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+  border-top: 1px solid #e0e0e0;
+  padding-top: 16px;
+}

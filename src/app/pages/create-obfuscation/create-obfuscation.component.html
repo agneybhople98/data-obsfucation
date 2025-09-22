@@ -87,35 +87,23 @@
           <div class="flex">
             <div>
               <button
-                *ngIf="!loading; else loadingTemplate"
-                mat-flat-button
                 [disabled]="isAutoPlanDisabled"
                 color="primary"
                 (click)="askLLM()"
+                mat-fab
               >
-                ✨ AutoPlan
+                <div style="font-size: 30px">✨</div>
               </button>
-              <div
-                class="text-xs mt-2 flex justify-self-center"
-                *ngIf="autoFilled"
-                style="color: #34a135"
-              >
-                Auto filled with AI
-              </div>
             </div>
-
-            <ng-template #loadingTemplate>
-              <button mat-flat-button color="primary">Generating...</button>
-            </ng-template>
 
             <button
               class="ms-4"
-              mat-flat-button
               color="primary"
               (click)="resetLLM()"
               [disabled]="isResetDisabled"
+              mat-fab
             >
-              🔄 Reset
+              🔄
             </button>
           </div>
         </div>

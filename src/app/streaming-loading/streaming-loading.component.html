@@ -1,0 +1,139 @@
+<!-- 
+  This is the updated HTML template for your AI Analysis progress dialog.
+  It includes a more detailed view with real-time updates on the
+  columns being processed and a list of recent findings.
+-->
+<div class="loading-modal">
+  <!-- Header -->
+  <div class="modal-header">
+    <div class="modal-body">
+      <h2 class="modal-title">AI Obfuscation Planner</h2>
+      <div class="modal-text">
+        Analyzing your database schema for compliance
+      </div>
+    </div>
+    <button
+      mat-icon-button
+      (click)="cancelAnalysis()"
+      class="close-btn"
+      [disabled]="isComplete"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <!-- Progress Section -->
+  <div class="progress-section">
+    <div class="progress-info">
+      <div class="progress-text">
+        <span *ngIf="!isComplete">
+          {{ currentStep }}/{{ totalSteps }} - {{ currentStepText }}
+        </span>
+        <span *ngIf="isComplete && !hasError" class="success-text">
+          ✅ Generation completed! Processed
+          {{ sensitiveColumnsCount }}/{{ actualTotalColumns }} sensitive columns
+        </span>
+        <span *ngIf="hasError" class="error-text">
+          ❌ Generation failed: {{ errorMessage }}
+        </span>
+      </div>
+
+      <!-- Real-time table/column being processed -->
+
+      <div
+        *ngIf="
+          this.currentStep === 1 && currentStepText === 'Scanning schemas...'
+        "
+      >
+        <mat-spinner diameter="15"></mat-spinner>
+      </div>
+      <div
+        *ngIf="currentTable && currentColumn && !isComplete"
+        class="current-processing"
+      >
+        Processing tables & columns:
+        <strong>{{ currentTable }} - {{ currentColumn }}</strong>
+      </div>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar-container">
+      <mat-progress-bar
+        mode="determinate"
+        [value]="progressPercentage"
+        [color]="hasError ? 'warn' : 'primary'"
+      ></mat-progress-bar>
+      <span class="progress-percentage"
+        >{{ progressPercentage | number : "1.0-0" }}%</span
+      >
+    </div>
+
+    <!-- Column Processing Details -->
+    <div *ngIf="processedColumns > 0" class="processing-details">
+      <div *ngIf="!isComplete" class="processed-count">
+        Processed: {{ processedColumns }} / {{ totalColumns }} columns
+      </div>
+
+      <!-- Recent recommendations preview -->
+      <div
+        *ngIf="recentRecommendations.length > 0"
+        class="recent-recommendations"
+      >
+        <h4>Logs:</h4>
+        <div class="recommendation-list">
+          <div
+            *ngFor="let rec of recentRecommendations"
+            class="recommendation-item"
+            [class.sensitive]="rec.is_sensitive"
+          >
+            <span class="column-name">{{ rec.column }}</span>
+            <span *ngIf="rec.is_sensitive" class="sensitive-badge">
+              🔒 {{ rec.recommended_function }}
+            </span>
+            <span *ngIf="!rec.is_sensitive" class="non-sensitive-badge">
+              ✓ Non-sensitive
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Action Buttons -->
+  <div class="action-buttons">
+    <button
+      *ngIf="!isComplete"
+      mat-stroked-button
+      color="warn"
+      (click)="cancelAnalysis()"
+    >
+      Cancel
+    </button>
+
+    <!-- Ask for confirmation before applying recommendations -->
+    <!-- <button
+      mat-stroked-button
+      color="primary"
+      *ngIf="isComplete && !hasError"
+      (click)="doNotApply()"
+    >
+      Keep Current Schema
+    </button> -->
+    <button
+      *ngIf="isComplete && !hasError"
+      mat-flat-button
+      color="primary"
+      (click)="applyRecommendations()"
+    >
+      Close
+    </button>
+
+    <!-- <button
+      *ngIf="isComplete && hasError"
+      mat-button
+      (click)="closeModal('error')"
+    >
+      Close
+    </button> -->
+  </div>
+</div>

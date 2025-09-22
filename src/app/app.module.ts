@@ -22,6 +22,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { SidenavigationBarComponent } from './components/sidenavigation-bar/sidenavigation-bar.component';
 import { JobDetailsComponent } from './pages/job-details/job-details.component';
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
@@ -58,6 +59,8 @@ import { TopNavigationBarComponent } from './components/top-navigation-bar/top-n
 import { MatSpinner } from '@angular/material/progress-spinner';
 import { MatChipsModule } from '@angular/material/chips';
 import { AiLoadingModalComponent } from './ai-loading-modal/ai-loading-modal.component';
+import { StreamingLoadingComponent } from './streaming-loading/streaming-loading.component';
+import { CdkOverlayOrigin } from "@angular/cdk/overlay";
 
 @NgModule({
   declarations: [
@@ -85,6 +88,7 @@ import { AiLoadingModalComponent } from './ai-loading-modal/ai-loading-modal.com
     ViewSubsetPlanComponent,
     TopNavigationBarComponent,
     AiLoadingModalComponent,
+    StreamingLoadingComponent,
   ],
   imports: [
     FormsModule,
@@ -118,9 +122,11 @@ import { AiLoadingModalComponent } from './ai-loading-modal/ai-loading-modal.com
     MatRadioModule,
     HttpClientModule,
     MatChipsModule,
+    MatProgressBarModule,
     MatSpinner,
     ToastrModule.forRoot(),
-  ],
+    CdkOverlayOrigin
+],
   providers: [provideNativeDateAdapter(), provideAnimationsAsync()],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

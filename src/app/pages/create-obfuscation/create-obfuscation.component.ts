@@ -24,6 +24,11 @@ import {
   LoadingModalData,
 } from '../../ai-loading-modal/ai-loading-modal.component';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import {
+  LlmStreamingService,
+  StreamingProgress,
+} from '../../llm-streaming.service';
+import { StreamingLoadingComponent } from '../../streaming-loading/streaming-loading.component';
 
 @Component({
   selector: 'app-create-obfuscation',
@@ -47,7 +52,7 @@ export class CreateObfuscationPlanComponent implements OnInit {
   selectedTable: string = '';
   currentDomain: string = 'utility';
   public loading: boolean = false;
-  private loadingModalRef!: MatDialogRef<AiLoadingModalComponent>;
+  private loadingModalRef!: MatDialogRef<any>;
 
   displayedColumns: string[] = [
     'expand',
@@ -201,7 +206,8 @@ export class CreateObfuscationPlanComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private llmService: LlmService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private llmStreamingService: LlmStreamingService
   ) {}
 
   /** The label for the checkbox on the passed row */
@@ -629,102 +635,185 @@ Table: CI_PER_ID. Columns: PER_ID, ID_TYPE_CD, PER_ID_NBR, PRIM_SW, VERSION, ENC
 Table: CI_PER_CHAR. Columns: PER_ID, CHAR_TYPE_CD, CHAR_VAL, EFFDT, ADHOC_CHAR_VAL, VERSION, CHAR_VAL_FK1, CHAR_VAL_FK2, CHAR_VAL_FK3, CHAR_VAL_FK4
 `;
 
-    // Open the loading modal
-    const dialogData: LoadingModalData = {
+    // Open the streaming loading modal
+    const dialogData = {
       totalColumns: this.getTotalColumnsCount(),
     };
 
-    this.loadingModalRef = this.dialog.open(AiLoadingModalComponent, {
-      width: '520px',
+    this.loadingModalRef = this.dialog.open(StreamingLoadingComponent, {
+      width: '600px',
       maxWidth: '95vw',
-      panelClass: 'ai-loading-modal',
+      panelClass: 'streaming-loading-modal',
       disableClose: true,
       data: dialogData,
     });
 
-    // Handle modal cancellation
-    this.loadingModalRef.afterClosed().subscribe((result) => {
-      if (result === 'cancelled') {
-        console.log('AI analysis cancelled by user');
-        this.loading = false;
-        // You might want to cancel the HTTP request here if possible
-      }
-      this.loadingModalRef = null as any;
-    });
-
     this.loading = true;
 
-    this.llmService.askLLM(userPrompt).subscribe({
-      next: (response) => {
-        console.log('LLM Response:', response.choices[0].message.content);
-
-        try {
-          // Extract JSON from the response (handle <think> tags or other text)
-          const responseContent = response.choices[0].message.content;
-          const jsonMatch = responseContent.match(/```json\s*([\s\S]*?)\s*```/);
-
-          let jsonString = '';
-          if (jsonMatch && jsonMatch[1]) {
-            // If JSON is wrapped in code blocks
-            jsonString = jsonMatch[1].trim();
-          } else {
-            // Try to find JSON object directly
-            const jsonStart = responseContent.indexOf('{');
-            const jsonEnd = responseContent.lastIndexOf('}');
-            if (jsonStart !== -1 && jsonEnd !== -1 && jsonEnd > jsonStart) {
-              jsonString = responseContent.substring(jsonStart, jsonEnd + 1);
-            } else {
-              throw new Error('No valid JSON found in response');
-            }
-          }
-
-          // Parse the extracted JSON
-          const llmResponse = JSON.parse(jsonString);
-
-          // Update modal to final step with sensitive count
-          const sensitiveCount = llmResponse.recommendations.filter(
-            (rec: any) => rec.is_sensitive
-          ).length;
+    // Subscribe to streaming updates
+    const streamSubscription = this.llmStreamingService
+      .askLLMStreaming(userPrompt)
+      .subscribe({
+        next: (progress: StreamingProgress) => {
+          // Update the modal with real-time progress
           if (this.loadingModalRef) {
-            this.loadingModalRef.componentInstance.updateToFinalStep(
-              sensitiveCount
-            );
+            this.loadingModalRef.componentInstance.updateProgress(progress);
           }
 
-          // Apply recommendations after showing final step
-          setTimeout(() => {
-            this.applyLLMRecommendations(llmResponse.recommendations);
+          // Apply partial recommendations as they come in
+          if (progress.recommendations.length > 0) {
+            this.applyPartialRecommendations(progress.recommendations);
+          }
+
+          // Handle completion
+          if (progress.isComplete) {
             this.loading = false;
 
-            // Close modal with success result
-            if (this.loadingModalRef) {
-              this.loadingModalRef.componentInstance.closeModal('success');
+            if (progress.error) {
+              console.error('LLM error:', progress.error);
+              this.isAutoPlanDisabled = false;
+              this.isResetDisabled = true;
+            } else {
+              // Apply final recommendations
+              this.applyLLMRecommendations(progress.recommendations);
               this.isAutoPlanDisabled = true;
               this.isResetDisabled = false;
             }
-          }, 1500);
-        } catch (error) {
-          console.error('Error parsing LLM response:', error);
+          }
+        },
+        error: (error) => {
+          console.error('Streaming error:', error);
           this.loading = false;
           this.isAutoPlanDisabled = false;
           this.isResetDisabled = true;
 
-          // Close modal with error
           if (this.loadingModalRef) {
-            this.loadingModalRef.componentInstance.closeModal('error');
+            this.loadingModalRef.componentInstance.updateProgress({
+              isComplete: true,
+              error: error.message,
+              recommendations: [],
+              totalColumns: 0,
+              processedColumns: 0,
+            });
+          }
+        },
+      });
+
+    // Handle modal close
+    this.loadingModalRef.afterClosed().subscribe((result) => {
+      streamSubscription.unsubscribe();
+
+      if (result === 'cancelled') {
+        console.log('AI analysis cancelled by user');
+        this.loading = false;
+      } else if (result && result.action === 'apply') {
+        // User clicked apply recommendations
+        console.log('Applying recommendations from modal');
+        console.log('result recommendations', result.recommendations);
+        this.applyLLMRecommendations(result.recommendations);
+      }
+
+      this.loadingModalRef = null as any;
+    });
+  }
+
+  private applyPartialRecommendations(recommendations: any[]): void {
+    if (!this.tableData || !this.tableData.tables) {
+      return;
+    }
+
+    // Update only the tables and columns that have new recommendations
+    this.tableData.tables.forEach((table: any) => {
+      const tableRecommendations = recommendations.filter(
+        (rec) => rec.table === table.tableName
+      );
+
+      table.columns.forEach((column: ColumnDefinition) => {
+        const recommendation = tableRecommendations.find(
+          (rec) => rec.column === column.columnName
+        );
+
+        if (recommendation && recommendation.is_sensitive) {
+          const mappedStrategy =
+            this.strategyMapping[recommendation.recommended_function];
+          if (mappedStrategy && column.obfStrategy !== mappedStrategy) {
+            // Only update if the strategy has changed to avoid flickering
+            column.obfStrategy = mappedStrategy;
+            this.setDefaultRulesForStrategy(column, mappedStrategy);
+            this.autoFilled = true;
+
+            // Visual feedback for real-time updates
+            this.highlightUpdatedColumn(table.tableName, column.columnName);
           }
         }
-      },
-      error: (error) => {
-        console.error('Error from LLM:', error);
-        this.loading = false;
-
-        // Close modal with error
-        if (this.loadingModalRef) {
-          this.loadingModalRef.componentInstance.closeModal('error');
-        }
-      },
+      });
     });
+
+    // Update current table view if it matches
+    if (this.selectedTable) {
+      this.updateTableDataWithAnimation();
+    }
+  }
+
+  // Add visual feedback for real-time updates
+  private highlightUpdatedColumn(tableName: string, columnName: string): void {
+    if (this.selectedTable === tableName) {
+      // Find the row in the current dataSource and add a temporary highlight class
+      setTimeout(() => {
+        const tableElement = document.querySelector('table');
+        if (tableElement) {
+          const rows = tableElement.querySelectorAll('tr');
+          rows.forEach((row) => {
+            const nameCell = row.querySelector('td');
+            if (nameCell && nameCell.textContent?.trim() === columnName) {
+              row.classList.add('newly-updated');
+
+              // Remove highlight after 2 seconds
+              setTimeout(() => {
+                row.classList.remove('newly-updated');
+              }, 2000);
+            }
+          });
+        }
+      }, 100);
+    }
+  }
+
+  private updateTableDataWithAnimation(): void {
+    const previouslySelectedColumns = this.selection.selected.map(
+      (row) => row.columnName
+    );
+
+    // Find selected table definition
+    const selectedTableData = this.tableData.tables.find(
+      (table: any) => table.tableName === this.selectedTable
+    );
+
+    if (selectedTableData) {
+      this.dataSource.data = selectedTableData.columns;
+      this.selection.clear();
+
+      // Animate the update
+      setTimeout(() => {
+        this.dataSource.data.forEach((row: ColumnDefinition) => {
+          const wasPreviouslySelected = previouslySelectedColumns.includes(
+            row.columnName
+          );
+          const hasObfuscationStrategy =
+            row.obfStrategy && row.obfStrategy.trim() !== '';
+
+          if (wasPreviouslySelected || hasObfuscationStrategy) {
+            if (row.columnName === 'PER_ID' && !this.autoFilled) {
+              return;
+            }
+            this.selection.select(row);
+          }
+        });
+
+        // Force change detection
+        this.dataSource._updateChangeSubscription();
+      }, 0);
+    }
   }
 
   private getTotalColumnsCount(): number {

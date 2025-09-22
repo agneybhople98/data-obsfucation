@@ -28,6 +28,7 @@ export class LlmService {
     const body: any = {
       model: 'Qwen/Qwen3-32B',
       messages: messages,
+      stream: true,
     };
 
     return this.http.post<any>(this.URL, body, { headers }).pipe(

@@ -31,7 +31,7 @@
         </span>
         <span *ngIf="isComplete && !hasError" class="success-text">
           ✅ Generation completed! Processed
-          {{ sensitiveColumnsCount }}/{{ actualTotalColumns }} sensitive columns
+          {{ sensitiveColumnsCount }}/{{ actualTotalColumns }} total columns
         </span>
         <span *ngIf="hasError" class="error-text">
           ❌ Generation failed: {{ errorMessage }}

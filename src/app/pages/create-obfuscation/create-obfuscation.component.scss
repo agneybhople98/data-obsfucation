@@ -23,6 +23,22 @@
   text-overflow: ellipsis;
 }
 
+.autoplan-btn {
+  padding: 6px 20px;
+  background: white;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #333;
+  background-clip: padding-box;
+  background-image: linear-gradient(white, white),
+    linear-gradient(90deg, #50bfe9 0%, #c670e9 50%, #ea4e5b 100%);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+}
+
 // Inner expandable section
 
 tr.detail-row {

@@ -87,16 +87,19 @@
           <div class="flex">
             <div>
               <button
-                [disabled]="isAutoPlanDisabled"
-                color="primary"
                 (click)="askLLM()"
-                mat-fab
+                class="autoplan-btn"
+                matTooltip="Generates and autoplans obfuscation strategies for columns using AI."
+                matTooltipPosition="above"
               >
-                <div style="font-size: 30px">✨</div>
+                <div class="flex gap-2">
+                  <img src="../../../assets/robot-face 1.svg" alt="" />
+                  <span> Auto Populate </span>
+                </div>
               </button>
             </div>
 
-            <button
+            <!-- <button
               class="ms-4"
               color="primary"
               (click)="resetLLM()"
@@ -104,7 +107,7 @@
               mat-fab
             >
               <div style="font-size: 24px">🔄</div>
-            </button>
+            </button> -->
           </div>
         </div>
 

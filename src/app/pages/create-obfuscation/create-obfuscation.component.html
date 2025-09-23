@@ -87,6 +87,7 @@
           <div class="flex">
             <div>
               <button
+                *ngIf="!loading; else loadingTemplate"
                 (click)="askLLM()"
                 class="autoplan-btn"
                 matTooltip="Generates and autoplans obfuscation strategies for columns using AI."
@@ -94,10 +95,25 @@
               >
                 <div class="flex gap-2">
                   <img src="../../../assets/robot-face 1.svg" alt="" />
-                  <span> Auto Populate </span>
+                  <span>Auto Populate</span>
                 </div>
               </button>
             </div>
+
+            <ng-template #loadingTemplate>
+              <button class="autoplan-btn loading">
+                <div class="loading-content">
+                  <!-- Option 2: Particle Animation -->
+                  <div class="ai-particles">
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                  </div>
+                  <span>Generating Plan...</span>
+                </div>
+              </button>
+            </ng-template>
 
             <!-- <button
               class="ms-4"

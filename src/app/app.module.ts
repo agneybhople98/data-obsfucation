@@ -60,7 +60,8 @@ import { MatSpinner } from '@angular/material/progress-spinner';
 import { MatChipsModule } from '@angular/material/chips';
 import { AiLoadingModalComponent } from './ai-loading-modal/ai-loading-modal.component';
 import { StreamingLoadingComponent } from './streaming-loading/streaming-loading.component';
-import { CdkOverlayOrigin } from "@angular/cdk/overlay";
+import { MatTreeModule } from '@angular/material/tree';
+import { CdkOverlayOrigin } from '@angular/cdk/overlay';
 
 @NgModule({
   declarations: [
@@ -101,6 +102,7 @@ import { CdkOverlayOrigin } from "@angular/cdk/overlay";
     MatIconModule,
     MatButtonModule,
     MatToolbarModule,
+    MatTreeModule,
     MatSidenavModule,
     MatListModule,
     AppRoutingModule,
@@ -125,8 +127,8 @@ import { CdkOverlayOrigin } from "@angular/cdk/overlay";
     MatProgressBarModule,
     MatSpinner,
     ToastrModule.forRoot(),
-    CdkOverlayOrigin
-],
+    CdkOverlayOrigin,
+  ],
   providers: [provideNativeDateAdapter(), provideAnimationsAsync()],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

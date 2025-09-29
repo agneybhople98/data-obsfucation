@@ -18,6 +18,13 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
+import { MatTreeNestedDataSource } from '@angular/material/tree';
+import { NestedTreeControl } from '@angular/cdk/tree';
+
+interface TreeNode {
+  name: string;
+  children?: TreeNode[];
+}
 
 @Component({
   selector: 'app-view-obfuscation',
@@ -36,6 +43,10 @@ import {
   ],
 })
 export class ViewObfuscationPlanComponent implements OnInit {
+  // Tree control for nested tree
+  treeControl = new NestedTreeControl<TreeNode>((node) => node.children);
+  treeDataSource = new MatTreeNestedDataSource<TreeNode>();
+
   tableData: any;
   expandedElement: any | null = null;
   selectedTable: string = '';
@@ -89,7 +100,6 @@ export class ViewObfuscationPlanComponent implements OnInit {
   ];
 
   // dropdown for utility if CI_PER_ID is for this PER_ID_NBR
-
   obfValues_UTILITY_CI_PER_ID_FOR_PER_ID_NBR = [
     'CIF',
     'DL',
@@ -100,15 +110,12 @@ export class ViewObfuscationPlanComponent implements OnInit {
   ];
 
   // dropdown for utility if CI_PER_CHAR for CHAR_VAL
-
   obfValues_UTILITY_CI_PER_CHAR_CHAR_VAL = ['C2M_SNR', 'C2M_SVRT'];
 
   // dropdown for utility if CI_PER_CHAR for ADHOC_CHAR_VAL
-
   obfValues_UTILITY_CI_PER_CHAR_ADHOC_CHAR_VAL = ['C2MBTHDT'];
 
   // dropdown for utility if CI_PER_CONTDET for ADHOC_CHAR_VAL
-
   obfValues_UTILITY_CI_PER_CONTDET = [
     'HOMEPHONE',
     'CELLPHONE',
@@ -117,7 +124,6 @@ export class ViewObfuscationPlanComponent implements OnInit {
   ];
 
   // dropdown for healthcare if CI_PER_CHAR for CHAR_VAL
-
   obfValues_HEALTHCARE_CI_PER_CHAR_CHAR_VAL = [
     'CM-GENDR',
     'CMNMPFX ',
@@ -129,7 +135,6 @@ export class ViewObfuscationPlanComponent implements OnInit {
   ];
 
   // dropdown for healthcare if CI_PER_CHAR for ADHOC_CHAR_VAL
-
   obfValues_HEALTHCARE_CI_PER_CHAR_ADHOC_CHAR_VAL = [
     'CMFNAME',
     'CMLNAME',
@@ -156,18 +161,16 @@ export class ViewObfuscationPlanComponent implements OnInit {
   public selection = new SelectionModel<any>(true, []);
   obsControlData: any;
 
-  tableItemsHealthcare = [
-    'CI_PER',
-    'CI_PER_NAME',
+  tableItemsHealthcare = ['CI_PER', 'CI_PER_NAME'];
+  tableItemsUtility = ['CI_PER', 'CI_PER_NAME'];
+  tableItemsHealthcareTwo = [
     'CI_PER_PHONE',
     'CI_PER_ADDR_SEAS',
     'C1_ADDRESS',
     'CI_PER_ID',
     'CI_PER_CHAR',
   ];
-  tableItemsUtility = [
-    'CI_PER',
-    'CI_PER_NAME',
+  tableItemsUtilityTwo = [
     'CI_PER_ADDR_SEAS',
     'CI_PER_CONTDET',
     'CI_PER_ID',
@@ -179,58 +182,23 @@ export class ViewObfuscationPlanComponent implements OnInit {
       ? this.tableItemsHealthcare
       : this.tableItemsUtility;
   }
+  get tableItemsTwo() {
+    return this.currentDomain === 'healthcare'
+      ? this.tableItemsHealthcareTwo
+      : this.tableItemsUtilityTwo;
+  }
 
-  filteredTableItems: string[] = [];
   searchText = '';
   selectedItem: string | null = null;
   hideButton = true;
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(
     private _obsufactionService: ObsfucationService,
     private router: Router,
     private route: ActivatedRoute
   ) {}
-
-  toggleAllRows() {
-    if (this.isAllSelected()) {
-      // Clear all selections when unchecking
-      this.selection.clear();
-      return;
-    }
-
-    // Select all rows except PER_ID when checking
-    this.dataSource.data.forEach((row) => {
-      console.log('rw', row);
-      if (row.columnName !== 'PER_ID') {
-        this.selection.select(row);
-      }
-    });
-  }
-
-  /** The label for the checkbox on the passed row */
-  checkboxLabel(row?: ColumnDefinition): string {
-    if (!row) {
-      return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
-    }
-
-    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${
-      row.columnName + 1
-    }`;
-  }
-
-  /** Whether the number of selected elements matches the total number of rows. */
-  isAllSelected() {
-    // Count only non-PER_ID rows for total
-    const totalRows = this.dataSource.data.filter(
-      (row) => row.columnName !== 'PER_ID'
-    ).length;
-    const numSelected = this.selection.selected.filter(
-      (row) => row.columnName !== 'PER_ID'
-    ).length;
-    return numSelected === totalRows;
-  }
-
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
@@ -271,7 +239,8 @@ export class ViewObfuscationPlanComponent implements OnInit {
       this.obsControlData = history.state.data;
     }
 
-    this.filteredTableItems = [...this.tableItems];
+    // Initialize tree data
+    this.initializeTreeData();
 
     // Initial table setup
     this.onTableChange();
@@ -282,6 +251,48 @@ export class ViewObfuscationPlanComponent implements OnInit {
         this.selection.select(row);
       }
     });
+  }
+
+  /**
+   * Initialize the tree structure with table items
+   */
+  initializeTreeData() {
+    const treeData: TreeNode[] = [
+      {
+        name: 'Person',
+        children: this.tableItems.map((item) => ({
+          name: item,
+          children: [],
+        })),
+      },
+      {
+        name: 'Person Details',
+        children: this.tableItemsTwo.map((item) => ({
+          name: item,
+          children: [],
+        })),
+      },
+    ];
+
+    this.treeDataSource.data = treeData;
+
+    // Expand the root node by default
+    if (treeData.length > 0) {
+      this.treeControl.expand(treeData[0]);
+    }
+  }
+
+  /**
+   * Check if node has children
+   */
+  hasChild = (_: number, node: TreeNode) =>
+    !!node.children && node.children.length > 0;
+
+  /**
+   * Check if item is selected
+   */
+  isItemSelected(item: string): boolean {
+    return this.selectedItem === item;
   }
 
   // Load the correct table data based on current domain
@@ -297,8 +308,8 @@ export class ViewObfuscationPlanComponent implements OnInit {
       this.selectedTable = this.tableData.selectedTable;
     }
 
-    // Update filtered items based on current domain
-    this.filteredTableItems = [...this.tableItems];
+    // Update tree with current domain items
+    this.initializeTreeData();
 
     // Update table data if a table is already selected
     if (this.selectedTable) {
@@ -322,9 +333,7 @@ export class ViewObfuscationPlanComponent implements OnInit {
   }
 
   /**
-   *
-   * @param element
-   * @returns Disabled state of the dropdown for unselected row
+   * Disabled state of the dropdown for unselected row
    */
   isDropdownDisabled(element: any): boolean {
     // Always disable dropdowns for PER_ID rows, regardless of selection state
@@ -349,6 +358,11 @@ export class ViewObfuscationPlanComponent implements OnInit {
   }
 
   selectItem(item: string) {
+    // Don't select the parent "Table Items" node
+    if (item === 'Table Items') {
+      return;
+    }
+
     // Update selected item
     this.selectedItem = item;
 
@@ -375,6 +389,7 @@ export class ViewObfuscationPlanComponent implements OnInit {
     }
     return false;
   }
+
   isPerChecked(row: ColumnDefinition): any {
     if (this.currentDomain === 'utility') {
       if (
@@ -400,7 +415,7 @@ export class ViewObfuscationPlanComponent implements OnInit {
       }
     }
 
-    // ✅ Check if obfStrategy and obfRules exist
+    // Check if obfStrategy and obfRules exist
     if (row.obfStrategy && row.obfRules) {
       return true;
     }
@@ -438,15 +453,79 @@ export class ViewObfuscationPlanComponent implements OnInit {
   }
 
   applySearch(event: Event) {
-    const searchValue = (event.target as HTMLInputElement).value;
+    const searchValue = (event.target as HTMLInputElement).value.toLowerCase();
     this.searchText = searchValue;
-    this.filteredTableItems = this.tableItems.filter((item) =>
-      item.toLowerCase().includes(searchValue.toLowerCase())
+
+    if (!searchValue) {
+      // Reset to original tree structure
+      this.initializeTreeData();
+      return;
+    }
+
+    // Filter table items based on search
+    const filteredItems = this.tableItems.filter((item) =>
+      item.toLowerCase().includes(searchValue)
     );
+
+    // Update tree with filtered items
+    const treeData: TreeNode[] = [
+      {
+        name: 'Table Items',
+        children: filteredItems.map((item) => ({
+          name: item,
+          children: [],
+        })),
+      },
+    ];
+
+    this.treeDataSource.data = treeData;
+
+    // Expand all nodes when searching
+    if (searchValue && treeData.length > 0) {
+      this.treeControl.expand(treeData[0]);
+    }
   }
 
   navigateTo() {
     this.router.navigate([`${this.currentDomain}/obfuscation-plan`]);
+  }
+
+  toggleAllRows() {
+    if (this.isAllSelected()) {
+      // Clear all selections when unchecking
+      this.selection.clear();
+      return;
+    }
+
+    // Select all rows except PER_ID when checking
+    this.dataSource.data.forEach((row) => {
+      if (row.columnName !== 'PER_ID') {
+        this.selection.select(row);
+      }
+    });
+  }
+
+  /** The label for the checkbox on the passed row */
+  checkboxLabel(row?: ColumnDefinition): string {
+    if (!row) {
+      return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
+    }
+
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${
+      row.columnName + 1
+    }`;
+  }
+
+  /** Whether the number of selected elements matches the total number of rows. */
+  isAllSelected() {
+    // Count only non-PER_ID rows for total
+    const totalRows = this.dataSource.data.filter(
+      (row) => row.columnName !== 'PER_ID'
+    ).length;
+    const numSelected = this.selection.selected.filter(
+      (row) => row.columnName !== 'PER_ID'
+    ).length;
+    return numSelected === totalRows;
   }
 
   // Methods for handling options (add/remove)
@@ -464,21 +543,15 @@ export class ViewObfuscationPlanComponent implements OnInit {
       selectedObfStrategy: 'FAKER',
       selectedObfRule: 'FIRSTNAME',
       inputValue: '',
-      isEditing: false, // New property to track edit state
+      isEditing: true, // New option is editable by default
     };
 
     element.options.push(newOption);
-
-    // Make the previous options non-editable by default
-    if (element.options.length > 0) {
-      // Set the previous option to be in non-editing mode
-      element.options[element.options.length - 1].isEditing = true;
-    }
   }
 
   // Remove an option at the specified index
   removeOption(element: any, index: number) {
-    if (element.options && index >= 1 && index < element.options.length) {
+    if (element.options && index >= 0 && index < element.options.length) {
       element.options.splice(index, 1);
     }
   }
@@ -497,9 +570,8 @@ export class ViewObfuscationPlanComponent implements OnInit {
   isFieldDisabled(option: any): boolean {
     return !option.isEditing;
   }
-  // get dropdown options
 
-  // Add this function to your component class
+  // Get dropdown options based on table and column
   getDropdownOptions(tableName: string, columnName: string): string[] {
     let options = this.obfValues_GENERAL;
 

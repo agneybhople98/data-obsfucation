@@ -353,7 +353,8 @@ export class ViewObfuscationPlanComponent implements OnInit {
 
   selectItem(item: string) {
     // Don't select the parent "Table Items" node
-    if (item === 'Table Items') {
+
+    if (item === 'Person' || item === 'Person Details') {
       return;
     }
 
@@ -460,23 +461,42 @@ export class ViewObfuscationPlanComponent implements OnInit {
     const filteredItems = this.tableItems.filter((item) =>
       item.toLowerCase().includes(searchValue)
     );
+    const filteredItemsTwo = this.tableItemsTwo.filter((item) =>
+      item.toLowerCase().includes(searchValue)
+    );
 
     // Update tree with filtered items
-    const treeData: TreeNode[] = [
-      {
-        name: 'Table Items',
+    const treeData: TreeNode[] = [];
+
+    // Only add Person node if it has filtered children
+    if (filteredItems.length > 0) {
+      treeData.push({
+        name: 'Person',
         children: filteredItems.map((item) => ({
           name: item,
           children: [],
         })),
-      },
-    ];
+      });
+    }
+
+    // Only add Person Details node if it has filtered children
+    if (filteredItemsTwo.length > 0) {
+      treeData.push({
+        name: 'Person Details',
+        children: filteredItemsTwo.map((item) => ({
+          name: item,
+          children: [],
+        })),
+      });
+    }
 
     this.treeDataSource.data = treeData;
 
-    // Expand all nodes when searching
+    // Expand all parent nodes when searching to show filtered results
     if (searchValue && treeData.length > 0) {
-      this.treeControl.expand(treeData[0]);
+      treeData.forEach((node) => {
+        this.treeControl.expand(node);
+      });
     }
   }
 

@@ -29,9 +29,36 @@
         <span *ngIf="!isComplete">
           {{ currentStep }}/{{ totalSteps }} - {{ currentStepText }}
         </span>
-        <span *ngIf="isComplete && !hasError" class="success-text">
-          ✅ Generation completed! Processed
-          {{ sensitiveColumnsCount }}/{{ actualTotalColumns }} total columns
+        <span *ngIf="isComplete && !hasError" class="success-container">
+          <div class="success-header">
+            <span class="success-icon">✅</span>
+            <span class="success-title">Generation Completed!</span>
+          </div>
+
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-label">Tables Scanned</span>
+              <span class="stat-value">{{ tablesScannedCount }}</span>
+            </div>
+
+            <div class="stat-divider"></div>
+
+            <div class="stat-item">
+              <span class="stat-label">Columns Processed</span>
+              <span class="stat-value"
+                >{{ processedColumns }}/{{ actualTotalColumns }}</span
+              >
+            </div>
+
+            <div class="stat-divider"></div>
+
+            <div class="stat-item">
+              <span class="stat-label">Sensitive Columns</span>
+              <span class="stat-value highlight">{{
+                sensitiveColumnsCount
+              }}</span>
+            </div>
+          </div>
         </span>
         <span *ngIf="hasError" class="error-text">
           ❌ Generation failed: {{ errorMessage }}
@@ -51,8 +78,19 @@
         *ngIf="currentTable && currentColumn && !isComplete"
         class="current-processing"
       >
-        Processing tables & columns:
-        <strong>{{ currentTable }} - {{ currentColumn }}</strong>
+        <!-- <div style="font-size: 14px; color: black; margin-bottom: 4px">
+          Processing tables and columns
+        </div> -->
+        <div class="processing-hierarchy">
+          <span class="entity-label">Entity:</span>
+          <span class="entity-name">{{ currentEntity }}</span>
+          <span class="hierarchy-arrow">→</span>
+          <span class="table-label">Table:</span>
+          <span class="table-name">{{ currentTable }}</span>
+          <span class="hierarchy-arrow">→</span>
+          <span class="column-label">Column:</span>
+          <span class="column-name">{{ currentColumn }}</span>
+        </div>
       </div>
     </div>
 

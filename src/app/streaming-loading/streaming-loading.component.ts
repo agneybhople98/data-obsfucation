@@ -16,6 +16,9 @@ export class StreamingLoadingComponent {
   isComplete = false;
   hasError = false;
   errorMessage = '';
+  scannedTables = new Set<string>(); // Track unique tables
+  tablesScannedCount = 0;
+  currentEntity = 'Person'; // Since all your tables are under Person entity
 
   // Real-time streaming data
   currentTable = '';
@@ -47,12 +50,23 @@ export class StreamingLoadingComponent {
   }
 
   // Method to be called by the parent component to update progress
+  // Update the updateProgress method:
   updateProgress(progress: any): void {
     this.currentTable = progress.currentTable || '';
     this.currentColumn = progress.currentColumn || '';
     this.processedColumns = progress.processedColumns || 0;
     this.totalColumns = progress.totalColumns || this.totalColumns;
     this.recentRecommendations = progress.recommendations || [];
+
+    if (this.currentTable) {
+      this.currentEntity = 'Person';
+    }
+
+    // Track unique tables scanned
+    if (this.currentTable) {
+      this.scannedTables.add(this.currentTable);
+      this.tablesScannedCount = this.scannedTables.size;
+    }
 
     // Calculate progress percentage
     if (this.totalColumns > 0) {
@@ -81,18 +95,12 @@ export class StreamingLoadingComponent {
         (r) => r.is_sensitive
       ).length;
 
-      // this.dialogRef.close({
-      //   action: 'apply',
-      //   recommendations: this.recentRecommendations,
-      // });
-
       if (progress.error) {
         this.hasError = true;
         this.errorMessage = progress.error;
       }
     }
   }
-
   cancelAnalysis(): void {
     this.dialogRef.close('cancelled');
     window.location.reload();

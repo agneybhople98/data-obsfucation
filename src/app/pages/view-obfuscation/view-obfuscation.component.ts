@@ -161,25 +161,28 @@ export class ViewObfuscationPlanComponent implements OnInit {
   public selection = new SelectionModel<any>(true, []);
   obsControlData: any;
 
-  tableItemsHealthcare = ['CI_PER', 'CI_PER_NAME', 'CI_PER_ID'];
-  tableItemsUtility = ['CI_PER', 'CI_PER_NAME', 'CI_PER_ID'];
-  tableItemsHealthcareTwo = [
+  tableItemsHealthcare = [
+    'CI_PER',
+    'CI_PER_NAME',
+    'CI_PER_ID',
     'CI_PER_PHONE',
     'CI_PER_ADDR_SEAS',
     'C1_ADDRESS',
     'CI_PER_CHAR',
   ];
-  tableItemsUtilityTwo = ['CI_PER_ADDR_SEAS', 'CI_PER_CONTDET', 'CI_PER_CHAR'];
+  tableItemsUtility = [
+    'CI_PER',
+    'CI_PER_NAME',
+    'CI_PER_ID',
+    'CI_PER_ADDR_SEAS',
+    'CI_PER_CONTDET',
+    'CI_PER_CHAR',
+  ];
 
   get tableItems() {
     return this.currentDomain === 'healthcare'
       ? this.tableItemsHealthcare
       : this.tableItemsUtility;
-  }
-  get tableItemsTwo() {
-    return this.currentDomain === 'healthcare'
-      ? this.tableItemsHealthcareTwo
-      : this.tableItemsUtilityTwo;
   }
 
   searchText = '';
@@ -255,13 +258,6 @@ export class ViewObfuscationPlanComponent implements OnInit {
       {
         name: 'Person',
         children: this.tableItems.map((item) => ({
-          name: item,
-          children: [],
-        })),
-      },
-      {
-        name: 'Person Details',
-        children: this.tableItemsTwo.map((item) => ({
           name: item,
           children: [],
         })),
@@ -461,9 +457,6 @@ export class ViewObfuscationPlanComponent implements OnInit {
     const filteredItems = this.tableItems.filter((item) =>
       item.toLowerCase().includes(searchValue)
     );
-    const filteredItemsTwo = this.tableItemsTwo.filter((item) =>
-      item.toLowerCase().includes(searchValue)
-    );
 
     // Update tree with filtered items
     const treeData: TreeNode[] = [];
@@ -480,15 +473,6 @@ export class ViewObfuscationPlanComponent implements OnInit {
     }
 
     // Only add Person Details node if it has filtered children
-    if (filteredItemsTwo.length > 0) {
-      treeData.push({
-        name: 'Person Details',
-        children: filteredItemsTwo.map((item) => ({
-          name: item,
-          children: [],
-        })),
-      });
-    }
 
     this.treeDataSource.data = treeData;
 

@@ -19,16 +19,19 @@ import {
   trigger,
 } from '@angular/animations';
 import { LlmService } from '../../llm.service';
-import {
-  AiLoadingModalComponent,
-  LoadingModalData,
-} from '../../ai-loading-modal/ai-loading-modal.component';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import {
   LlmStreamingService,
   StreamingProgress,
 } from '../../llm-streaming.service';
 import { StreamingLoadingComponent } from '../../streaming-loading/streaming-loading.component';
+import { NestedTreeControl } from '@angular/cdk/tree';
+import { MatTreeNestedDataSource } from '@angular/material/tree';
+
+interface TreeNode {
+  name: string;
+  children?: TreeNode[];
+}
 
 @Component({
   selector: 'app-create-obfuscation',
@@ -47,6 +50,8 @@ import { StreamingLoadingComponent } from '../../streaming-loading/streaming-loa
   styleUrl: './create-obfuscation.component.scss',
 })
 export class CreateObfuscationPlanComponent implements OnInit {
+  treeControl = new NestedTreeControl<TreeNode>((node) => node.children);
+  treeDataSource = new MatTreeNestedDataSource<TreeNode>();
   tableData: any;
   expandedElement: any | null = null;
   selectedTable: string = '';
@@ -245,6 +250,9 @@ export class CreateObfuscationPlanComponent implements OnInit {
     // First detect the domain from URL
     this.detectDomainFromUrl();
 
+    // Load table data immediately
+    this.loadTableDataBasedOnDomain();
+
     // Extract domain from route parameters
     this.route.params.subscribe((params) => {
       if (params['domain']) {
@@ -253,7 +261,7 @@ export class CreateObfuscationPlanComponent implements OnInit {
       }
     });
 
-    // Also listen to parent route parameters (for nested routes)
+    // Also listen to parent route parameters
     this.route.parent?.params.subscribe((params) => {
       if (params['domain']) {
         this.currentDomain = params['domain'];
@@ -265,28 +273,73 @@ export class CreateObfuscationPlanComponent implements OnInit {
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe(() => {
         this.detectDomainFromUrl();
+        this.loadTableDataBasedOnDomain();
       });
 
     // Get state data from navigation
     this.obsControlData =
       this.router.getCurrentNavigation()?.extras.state?.['data'];
-
-    // If no data in navigation, try to get it from history state
     if (!this.obsControlData) {
       this.obsControlData = history.state.data;
     }
 
     this.filteredTableItems = [...this.tableItems];
 
+    // Initialize tree structure
+    this.initializeTreeData();
+
+    // Set default table selection
+    if (!this.selectedTable && this.tableItems.length > 0) {
+      this.selectedTable = this.tableItems[0];
+      this.selectedItem = this.tableItems[0];
+    }
+
     // Initial table setup
     this.onTableChange();
 
     // Check rows that have all required values
-    this.dataSource.data.forEach((row: ColumnDefinition) => {
-      if (row.columnName && row.obfStrategy && row.obfRules?.first) {
-        this.selection.select(row);
-      }
-    });
+    setTimeout(() => {
+      this.dataSource.data.forEach((row: ColumnDefinition) => {
+        if (row.columnName && row.obfStrategy && row.obfRules?.first) {
+          this.selection.select(row);
+        }
+      });
+    }, 100);
+  }
+
+  /**
+   * Initialize the tree structure with table items
+   */
+  initializeTreeData() {
+    const treeData: TreeNode[] = [
+      {
+        name: 'Person',
+        children: this.tableItems.map((item) => ({
+          name: item,
+          children: [],
+        })),
+      },
+    ];
+
+    this.treeDataSource.data = treeData;
+
+    // Expand the root node by default
+    if (treeData.length > 0) {
+      this.treeControl.expand(treeData[0]);
+    }
+  }
+
+  /**
+   * Check if node has children
+   */
+  hasChild = (_: number, node: TreeNode) =>
+    !!node.children && node.children.length > 0;
+
+  /**
+   * Check if item is selected
+   */
+  isItemSelected(item: string): boolean {
+    return this.selectedItem === item;
   }
 
   // Load the correct table data based on current domain
@@ -467,11 +520,44 @@ export class CreateObfuscationPlanComponent implements OnInit {
   }
 
   applySearch(event: Event) {
-    const searchValue = (event.target as HTMLInputElement).value;
+    const searchValue = (event.target as HTMLInputElement).value.toLowerCase();
     this.searchText = searchValue;
-    this.filteredTableItems = this.tableItems.filter((item) =>
-      item.toLowerCase().includes(searchValue.toLowerCase())
+
+    if (!searchValue) {
+      // Reset to original tree structure
+      this.initializeTreeData();
+      return;
+    }
+
+    // Filter table items based on search
+    const filteredItems = this.tableItems.filter((item) =>
+      item.toLowerCase().includes(searchValue)
     );
+
+    // Update tree with filtered items
+    const treeData: TreeNode[] = [];
+
+    // Only add Person node if it has filtered children
+    if (filteredItems.length > 0) {
+      treeData.push({
+        name: 'Person',
+        children: filteredItems.map((item) => ({
+          name: item,
+          children: [],
+        })),
+      });
+    }
+
+    // Only add Person Details node if it has filtered children
+
+    this.treeDataSource.data = treeData;
+
+    // Expand all parent nodes when searching to show filtered results
+    if (searchValue && treeData.length > 0) {
+      treeData.forEach((node) => {
+        this.treeControl.expand(node);
+      });
+    }
   }
 
   navigateTo() {

@@ -105,7 +105,7 @@
     color: #333;
 
     &.highlight {
-      color: #2e7d32;
+      color: #f44336;
     }
   }
 }
@@ -254,20 +254,20 @@
 }
 
 .entity-name {
-  font-weight: 700;
+  font-weight: 600;
   color: #1565c0;
   font-size: 12px;
 }
 
 .table-name {
   font-weight: 600;
-  color: #0277bd;
+  color: #1565c0;
   font-size: 12px;
 }
 
 .column-name {
-  font-weight: 500;
-  color: #01579b;
+  font-weight: 600;
+  color: #1565c0;
   font-size: 12px;
 }
 

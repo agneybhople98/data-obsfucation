@@ -58,7 +58,7 @@ export class DashboardComponent implements AfterViewInit, OnInit, OnDestroy {
     this.dataSource = new MatTableDataSource<JobElement>([]);
   }
 
-  protected readonly API_BASE = 'http://localhost:8080';
+  protected readonly API_BASE = 'https://do-chat-assistant.demo.riaapps.com';
 
   onNewMessage(message: any) {
     console.log('New message:', message);

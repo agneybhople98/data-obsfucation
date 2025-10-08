@@ -47,7 +47,7 @@ const ELEMENT_DATA: JobElement[] = [
     jobName: 'Outage Data Anonymization – Global Compliance',
     jobDescription:
       'Obfuscates claim headers and line items, including statuses and adjudication outcomes.',
-    triggeredOn: '05/04/2025 09:30:33AM',
+    triggeredOn: '04/05/2025 09:30:33AM',
     status: 'failed',
     obsfucationControlName: 'Outage Data Anonymization',
     progress: 50,
@@ -67,7 +67,7 @@ const ELEMENT_DATA: JobElement[] = [
           const seconds = date.getSeconds().toString().padStart(2, '0');
           const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
 
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+          return `${month}/${day}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
         message: 'SQL Log: Cloning Schema is Successful',
@@ -78,7 +78,7 @@ const ELEMENT_DATA: JobElement[] = [
     jobId: 'RUN-98760',
     jobName: 'Support Interaction Data Masking',
     jobDescription: 'Mask support tickets and customer interactions.',
-    triggeredOn: '10/04/2025 09:30:33AM',
+    triggeredOn: '04/10/2025 09:30:33AM',
     status: 'success',
     obsfucationControlName: 'Support Interaction Data Masking',
     progress: 100,
@@ -98,7 +98,7 @@ const ELEMENT_DATA: JobElement[] = [
           const seconds = date.getSeconds().toString().padStart(2, '0');
           const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
 
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+          return `${month}/${day}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
         // message: [
@@ -114,7 +114,7 @@ const ELEMENT_DATA: JobElement[] = [
     jobId: 'RUN-98761',
     jobName: 'Billing & Financial History Obfuscation',
     jobDescription: 'Obfuscates billing and financial history data.',
-    triggeredOn: '15/04/2025 09:30:33AM',
+    triggeredOn: '04/15/2025 09:30:33AM',
     status: 'in-progress',
     obsfucationControlName: 'Billing & Financial History',
     progress: 10,
@@ -134,7 +134,7 @@ const ELEMENT_DATA: JobElement[] = [
           const seconds = date.getSeconds().toString().padStart(2, '0');
           const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
 
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+          return `${month}/${day}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
         message: [{ name: 'Shuffling demographic data is Successful' }],
@@ -145,7 +145,7 @@ const ELEMENT_DATA: JobElement[] = [
     jobId: 'RUN-98762',
     jobName: 'Field Activity Data Obfuscation – Dev/Test',
     jobDescription: 'Obfuscate field activity data for development/test usage.',
-    triggeredOn: '20/04/2025 08:11:09AM',
+    triggeredOn: '04/20/2025 08:11:09AM',
     status: 'in-progress',
     obsfucationControlName: 'Field Activity Data Obfuscation',
 
@@ -166,7 +166,7 @@ const ELEMENT_DATA: JobElement[] = [
           const seconds = date.getSeconds().toString().padStart(2, '0');
           const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
 
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+          return `${month}/${day}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
         message: [{ name: 'Obfuscating phone numbers successfull' }],
@@ -179,7 +179,7 @@ const ELEMENT_DATA: JobElement[] = [
     jobDescription:
       'Obfuscate utility accounts for non-production environments.',
     subsetStrategyPlanName: 'Utility Account Subset',
-    triggeredOn: '11/06/2025 08:11:09AM',
+    triggeredOn: '06/11/2025 08:11:09AM',
     status: 'in-progress',
     obsfucationControlName: 'Utility Account Obfuscation',
     progress: 0,
@@ -199,7 +199,7 @@ const ELEMENT_DATA: JobElement[] = [
           const seconds = date.getSeconds().toString().padStart(2, '0');
           const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
 
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+          return `${month}/${day}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
 
@@ -223,7 +223,7 @@ const ELEMENT_DATA: JobElement[] = [
           const seconds = date.getSeconds().toString().padStart(2, '0');
           const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
 
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+          return `${month}/${day}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
 
@@ -247,7 +247,7 @@ const ELEMENT_DATA: JobElement[] = [
           const seconds = date.getSeconds().toString().padStart(2, '0');
           const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
 
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+          return `${month}/${day}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
 
@@ -268,7 +268,7 @@ const ELEMENT_DATA: JobElement[] = [
           const seconds = date.getSeconds().toString().padStart(2, '0');
           const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
 
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+          return `${month}/${day}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
 
@@ -289,7 +289,7 @@ const ELEMENT_DATA: JobElement[] = [
           const seconds = date.getSeconds().toString().padStart(2, '0');
           const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
 
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+          return `${month}/${day}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
         recordsProcessed: 2000,
@@ -318,7 +318,7 @@ const ELEMENT_DATA: JobElement[] = [
           const seconds = date.getSeconds().toString().padStart(2, '0');
           const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
 
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+          return `${month}/${day}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
         recordsProcessed: 100,
@@ -339,7 +339,7 @@ const ELEMENT_DATA: JobElement[] = [
           const seconds = date.getSeconds().toString().padStart(2, '0');
           const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
 
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+          return `${month}/${day}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
         recordsProcessed: 1500,
@@ -363,7 +363,7 @@ const ELEMENT_DATA: JobElement[] = [
           const seconds = date.getSeconds().toString().padStart(2, '0');
           const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
 
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+          return `${month}/${day}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
         recordsProcessed: 1200,
@@ -383,7 +383,7 @@ const ELEMENT_DATA: JobElement[] = [
           const seconds = date.getSeconds().toString().padStart(2, '0');
           const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
 
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+          return `${month}/${day}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
         recordsProcessed: 20,
@@ -403,7 +403,7 @@ const ELEMENT_DATA: JobElement[] = [
           const seconds = date.getSeconds().toString().padStart(2, '0');
           const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
 
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+          return `${month}/${day}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
         recordsProcessed: 20,
@@ -428,7 +428,7 @@ const ELEMENT_DATA: JobElement[] = [
       //     const seconds = date.getSeconds().toString().padStart(2, '0');
       //     const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
 
-      //     return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+      //     return `${month}/${day}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
       //   })(),
       //   endTime: null,
       //   recordsProcessed: 900,
@@ -440,7 +440,7 @@ const ELEMENT_DATA: JobElement[] = [
     jobId: 'RUN-98764',
     jobName: 'Person Entity Anonymization – Pre-Prod',
     jobDescription: 'Anonymize persons for secure pre-production and testing.',
-    triggeredOn: '25/04/2025 08:22:10AM',
+    triggeredOn: '04/25/2025 08:22:10AM',
     status: 'in-progress',
     obsfucationControlName: 'Person Entity Anonymization',
     progress: 10,
@@ -450,7 +450,7 @@ const ELEMENT_DATA: JobElement[] = [
         jobName: 'Person Entity Anonymization – Pre-Prod',
         jobDescription:
           'Anonymize persons for secure pre-production and testing.',
-        triggeredOn: '03/04/2025 09:22:10AM',
+        triggeredOn: '04/03/2025 09:22:10AM',
         status: 'in-progress',
         obsfucationControlName: 'Person Entity Anonymization',
         progress: 10,
@@ -470,7 +470,7 @@ const ELEMENT_DATA: JobElement[] = [
               const seconds = date.getSeconds().toString().padStart(2, '0');
               const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
 
-              return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+              return `${month}/${day}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
             })(),
             endTime: null,
             recordsProcessed: 2000,
@@ -499,7 +499,7 @@ const ELEMENT_DATA: JobElement[] = [
               const seconds = date.getSeconds().toString().padStart(2, '0');
               const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
 
-              return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+              return `${month}/${day}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
             })(),
             endTime: null,
             recordsProcessed: 100,
@@ -520,7 +520,7 @@ const ELEMENT_DATA: JobElement[] = [
               const seconds = date.getSeconds().toString().padStart(2, '0');
               const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
 
-              return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+              return `${month}/${day}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
             })(),
             endTime: null,
             recordsProcessed: 1500,
@@ -544,7 +544,7 @@ const ELEMENT_DATA: JobElement[] = [
               const seconds = date.getSeconds().toString().padStart(2, '0');
               const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
 
-              return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+              return `${month}/${day}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
             })(),
             endTime: null,
             recordsProcessed: 1200,
@@ -564,7 +564,7 @@ const ELEMENT_DATA: JobElement[] = [
               const seconds = date.getSeconds().toString().padStart(2, '0');
               const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
 
-              return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+              return `${month}/${day}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
             })(),
             endTime: null,
             recordsProcessed: 20,
@@ -584,7 +584,7 @@ const ELEMENT_DATA: JobElement[] = [
               const seconds = date.getSeconds().toString().padStart(2, '0');
               const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
 
-              return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+              return `${month}/${day}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
             })(),
             endTime: null,
             recordsProcessed: 20,
@@ -613,7 +613,7 @@ const ELEMENT_DATA: JobElement[] = [
           const seconds = date.getSeconds().toString().padStart(2, '0');
           const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
 
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+          return `${month}/${day}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
 
@@ -633,7 +633,7 @@ const ELEMENT_DATA: JobElement[] = [
           const seconds = date.getSeconds().toString().padStart(2, '0');
           const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
 
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+          return `${month}/${day}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
 
@@ -653,7 +653,7 @@ const ELEMENT_DATA: JobElement[] = [
           const seconds = date.getSeconds().toString().padStart(2, '0');
           const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
 
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+          return `${month}/${day}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
 
@@ -673,7 +673,7 @@ const ELEMENT_DATA: JobElement[] = [
           const seconds = date.getSeconds().toString().padStart(2, '0');
           const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
 
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+          return `${month}/${day}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
         recordsProcessed: 2000,
@@ -702,7 +702,7 @@ const ELEMENT_DATA: JobElement[] = [
           const seconds = date.getSeconds().toString().padStart(2, '0');
           const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
 
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+          return `${month}/${day}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
         recordsProcessed: 100,
@@ -723,7 +723,7 @@ const ELEMENT_DATA: JobElement[] = [
           const seconds = date.getSeconds().toString().padStart(2, '0');
           const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
 
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+          return `${month}/${day}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
         recordsProcessed: 1500,
@@ -747,7 +747,7 @@ const ELEMENT_DATA: JobElement[] = [
           const seconds = date.getSeconds().toString().padStart(2, '0');
           const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
 
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+          return `${month}/${day}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
         recordsProcessed: 1200,
@@ -767,7 +767,7 @@ const ELEMENT_DATA: JobElement[] = [
           const seconds = date.getSeconds().toString().padStart(2, '0');
           const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
 
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+          return `${month}/${day}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
         recordsProcessed: 20,
@@ -787,7 +787,7 @@ const ELEMENT_DATA: JobElement[] = [
           const seconds = date.getSeconds().toString().padStart(2, '0');
           const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
 
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+          return `${month}/${day}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
         recordsProcessed: 20,
@@ -806,7 +806,7 @@ const ELEMENT_DATA: JobElement[] = [
     jobName: 'Financial Data Masking – Utility Systems',
     jobDescription:
       'Mask utility financial data for safe use in test and development environments.',
-    triggeredOn: '28/04/2025 07:33:22AM',
+    triggeredOn: '04/28/2025 07:33:22AM',
     subsetStrategyPlanName:
       'Financial Data Masking – Utility Systems Subset Plan',
     status: 'in-progress',
@@ -827,7 +827,7 @@ const ELEMENT_DATA: JobElement[] = [
           const seconds = date.getSeconds().toString().padStart(2, '0');
           const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
 
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+          return `${month}/${day}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
 
@@ -847,7 +847,7 @@ const ELEMENT_DATA: JobElement[] = [
           const seconds = date.getSeconds().toString().padStart(2, '0');
           const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
 
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+          return `${month}/${day}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
 
@@ -867,7 +867,7 @@ const ELEMENT_DATA: JobElement[] = [
           const seconds = date.getSeconds().toString().padStart(2, '0');
           const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
 
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+          return `${month}/${day}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
 
@@ -887,7 +887,7 @@ const ELEMENT_DATA: JobElement[] = [
           const seconds = date.getSeconds().toString().padStart(2, '0');
           const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
 
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+          return `${month}/${day}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
 
@@ -905,7 +905,7 @@ const ELEMENT_DATA_JOB_CONTROL: JobDataControlElement[] = [
     jobControlName: 'Utility Account Subset Job Control - Utility Systems',
     jobControlDescription:
       'Subset utility account data for safe use in test and development environments.',
-    lastTriggeredOn: '28/04/2025 07:33:22AM',
+    lastTriggeredOn: '04/28/2025 07:33:22AM',
     subsetPlanStrategyName: 'Utility Account Subset Plan',
     // obsfucationControlId: 'Financial Data Masking',
     obsfucationControlDescription:
@@ -918,7 +918,7 @@ const ELEMENT_DATA_JOB_CONTROL: JobDataControlElement[] = [
     jobControlName: 'Person Entity Anonymization – Pre-Prod',
     jobControlDescription:
       'Anonymize persons for secure pre-production and testing.',
-    lastTriggeredOn: '25/04/2025 08:11:09AM',
+    lastTriggeredOn: '04/25/2025 08:11:09AM',
     // subsetPlanStrategyName: 'Person Entity Anonymization Subset',
     obsfucationControlId: 'Person Entity Anonymization',
     obsfucationControlDescription:
@@ -933,7 +933,7 @@ const ELEMENT_DATA_JOB_CONTROL: JobDataControlElement[] = [
       'Subset and Obfuscate utility accounts for non-production environments.',
 
     subsetPlanStrategyName: 'Utility Account Subset Plan',
-    lastTriggeredOn: '23/04/2025 08:11:09AM',
+    lastTriggeredOn: '04/23/2025 08:11:09AM',
     obsfucationControlId: 'Utility Account Obfuscation',
     obsfucationControlDescription:
       'Subset and Obfuscate utility accounts for non-production environments.',
@@ -946,7 +946,7 @@ const ELEMENT_DATA_JOB_CONTROL: JobDataControlElement[] = [
     jobControlDescription:
       'Obfuscate field activity data for development/test usage.',
     subsetPlanStrategyName: 'Field Activity Data Obfuscation Subset Plan',
-    lastTriggeredOn: '20/04/2025 08:22:10AM',
+    lastTriggeredOn: '04/20/2025 08:22:10AM',
     obsfucationControlId: 'Field Activity Data Obfuscation',
     obsfucationControlDescription:
       'Obfuscate field activity data for development/test usage.',
@@ -957,7 +957,7 @@ const ELEMENT_DATA_JOB_CONTROL: JobDataControlElement[] = [
     API_NAME: 'OBF_EXECUTE_MAIN_JOB_CISADM',
     jobControlName: 'Billing & Financial History Obfuscation',
     jobControlDescription: 'Obfuscates billing and financial history data.',
-    lastTriggeredOn: '15/04/2025 09:30:33AM',
+    lastTriggeredOn: '04/15/2025 09:30:33AM',
     obsfucationControlId: 'Billing & Financial History',
     obsfucationControlDescription:
       'Obfuscates billing and financial history data.',
@@ -968,7 +968,7 @@ const ELEMENT_DATA_JOB_CONTROL: JobDataControlElement[] = [
     API_NAME: 'OBF_EXECUTE_MAIN_JOB_CISADM',
     jobControlName: 'Support Interaction Data Masking',
     jobControlDescription: 'Mask support tickets and customer interactions.',
-    lastTriggeredOn: '10/04/2025 09:30:33AM',
+    lastTriggeredOn: '04/10/2025 09:30:33AM',
     obsfucationControlId: 'Support Interaction Data Masking',
     obsfucationControlDescription:
       'Mask support tickets and customer interactions.',
@@ -980,7 +980,7 @@ const ELEMENT_DATA_JOB_CONTROL: JobDataControlElement[] = [
     jobControlName: 'Outage Data Anonymization – Global Compliance',
     jobControlDescription:
       'Obfuscates claim headers and line items, including statuses and adjudication outcomes.',
-    lastTriggeredOn: '05/04/2025 09:30:33AM',
+    lastTriggeredOn: '04/05/2025 09:30:33AM',
     obsfucationControlId: 'Outage Data Anonymization',
     obsfucationControlDescription:
       'Obfuscates claim headers and line items, including statuses and adjudication outcomes.',
@@ -996,7 +996,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
     jobName: 'Claims Payments & Payouts - AUS ',
     jobDescription:
       'Anonymizes financial disbursements, payment references, and claim resolution info.',
-    triggeredOn: '05/04/2025 09:30:33AM',
+    triggeredOn: '04/05/2025 09:30:33AM',
     status: 'failed',
     obsfucationControlName: 'Claims Payments & Payouts - AUS',
     progress: 50,
@@ -1016,7 +1016,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
           const seconds = date.getSeconds().toString().padStart(2, '0');
           const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
 
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+          return `${month}/${day}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
         message: 'SQL Log: Cloning Schema is Successful',
@@ -1028,7 +1028,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
     jobName: 'Claim Details Obfuscation - EU',
     jobDescription:
       'Obfuscates claim headers and line items, including statuses and adjudication outcomes.',
-    triggeredOn: '10/04/2025 09:30:33AM',
+    triggeredOn: '04/10/2025 09:30:33AM',
     status: 'success',
     obsfucationControlName: 'Claim Details Obfuscation - EU',
     progress: 100,
@@ -1048,7 +1048,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
           const seconds = date.getSeconds().toString().padStart(2, '0');
           const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
 
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+          return `${month}/${day}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
         // message: [
@@ -1065,7 +1065,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
     jobName: 'Coverage & Benefits Subset',
     jobDescription:
       'Reduce the size of Billing data to M11 bill cycle accounts.',
-    triggeredOn: '15/04/2025 09:30:33AM',
+    triggeredOn: '04/15/2025 09:30:33AM',
     status: 'in-progress',
     subsetStrategyPlanName: 'Coverage & Benefits Obfuscation - Prod',
 
@@ -1086,7 +1086,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
           const seconds = date.getSeconds().toString().padStart(2, '0');
           const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
 
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+          return `${month}/${day}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
 
@@ -1106,7 +1106,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
           const seconds = date.getSeconds().toString().padStart(2, '0');
           const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
 
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+          return `${month}/${day}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
 
@@ -1126,7 +1126,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
           const seconds = date.getSeconds().toString().padStart(2, '0');
           const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
 
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+          return `${month}/${day}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
 
@@ -1146,7 +1146,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
           const seconds = date.getSeconds().toString().padStart(2, '0');
           const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
 
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+          return `${month}/${day}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
 
@@ -1158,7 +1158,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
     jobId: 'RUN-98762',
     jobName: 'Customer & Account Subset Job',
     jobDescription: 'Extract Customer & Account details for list of accounts.',
-    triggeredOn: '20/04/2025 08:11:09AM',
+    triggeredOn: '04/20/2025 08:11:09AM',
     status: 'in-progress',
     subsetStrategyPlanName: 'Membership & Policy Data Subset Strategy Plan',
 
@@ -1180,7 +1180,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
           const seconds = date.getSeconds().toString().padStart(2, '0');
           const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
 
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+          return `${month}/${day}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
 
@@ -1200,7 +1200,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
           const seconds = date.getSeconds().toString().padStart(2, '0');
           const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
 
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+          return `${month}/${day}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
 
@@ -1220,7 +1220,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
           const seconds = date.getSeconds().toString().padStart(2, '0');
           const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
 
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+          return `${month}/${day}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
 
@@ -1240,7 +1240,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
           const seconds = date.getSeconds().toString().padStart(2, '0');
           const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
 
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+          return `${month}/${day}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
 
@@ -1253,7 +1253,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
     jobName: 'Membership & Policy Data Obfuscation',
     subsetStrategyPlanName: 'Membership & Policy Data Subset Strategy Plan',
     jobDescription: 'Extracts and obfuscates customer PII details.',
-    triggeredOn: '11/06/2025 08:11:09AM',
+    triggeredOn: '06/11/2025 08:11:09AM',
     status: 'in-progress',
     obsfucationControlName: 'Customer PII Data Obfuscation Plan',
     progress: 0,
@@ -1273,7 +1273,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
           const seconds = date.getSeconds().toString().padStart(2, '0');
           const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
 
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+          return `${month}/${day}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
         message: [
@@ -1296,7 +1296,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
           const seconds = date.getSeconds().toString().padStart(2, '0');
           const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
 
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+          return `${month}/${day}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
         message: [
@@ -1319,7 +1319,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
           const seconds = date.getSeconds().toString().padStart(2, '0');
           const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
 
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+          return `${month}/${day}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
 
@@ -1339,7 +1339,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
           const seconds = date.getSeconds().toString().padStart(2, '0');
           const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
 
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+          return `${month}/${day}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
 
@@ -1360,7 +1360,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
           const seconds = date.getSeconds().toString().padStart(2, '0');
           const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
 
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+          return `${month}/${day}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
         recordsProcessed: 500,
@@ -1384,7 +1384,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
           const seconds = date.getSeconds().toString().padStart(2, '0');
           const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
 
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+          return `${month}/${day}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
         recordsProcessed: 5,
@@ -1404,7 +1404,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
           const seconds = date.getSeconds().toString().padStart(2, '0');
           const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
 
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+          return `${month}/${day}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
         recordsProcessed: 1400,
@@ -1424,7 +1424,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
           const seconds = date.getSeconds().toString().padStart(2, '0');
           const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
 
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+          return `${month}/${day}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
         recordsProcessed: 30,
@@ -1449,7 +1449,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
           const seconds = date.getSeconds().toString().padStart(2, '0');
           const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
 
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+          return `${month}/${day}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
         recordsProcessed: 20,
@@ -1469,7 +1469,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
           const seconds = date.getSeconds().toString().padStart(2, '0');
           const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
 
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+          return `${month}/${day}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
         recordsProcessed: 30,
@@ -1489,7 +1489,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
           const seconds = date.getSeconds().toString().padStart(2, '0');
           const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
 
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+          return `${month}/${day}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
         recordsProcessed: 20,
@@ -1505,7 +1505,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
     jobId: 'RUN-98764',
     jobName: 'Customer PII Data Obfuscation Job',
     jobDescription: 'Customer PII Data Obfuscation for staging environment.',
-    triggeredOn: '25/04/2025 08:22:10AM',
+    triggeredOn: '04/25/2025 08:22:10AM',
     status: 'in-progress',
     obsfucationControlName: 'Customer PII Data Obfuscation Plan',
     progress: 10,
@@ -1537,7 +1537,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
               const seconds = date.getSeconds().toString().padStart(2, '0');
               const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
 
-              return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+              return `${month}/${day}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
             })(),
             endTime: null,
             message: [
@@ -1564,7 +1564,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
           const seconds = date.getSeconds().toString().padStart(2, '0');
           const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
 
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+          return `${month}/${day}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
 
@@ -1584,7 +1584,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
           const seconds = date.getSeconds().toString().padStart(2, '0');
           const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
 
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+          return `${month}/${day}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
 
@@ -1604,7 +1604,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
           const seconds = date.getSeconds().toString().padStart(2, '0');
           const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
 
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+          return `${month}/${day}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
 
@@ -1625,7 +1625,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
           const seconds = date.getSeconds().toString().padStart(2, '0');
           const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
 
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+          return `${month}/${day}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
         recordsProcessed: 500,
@@ -1649,7 +1649,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
           const seconds = date.getSeconds().toString().padStart(2, '0');
           const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
 
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+          return `${month}/${day}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
         recordsProcessed: 5,
@@ -1669,7 +1669,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
           const seconds = date.getSeconds().toString().padStart(2, '0');
           const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
 
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+          return `${month}/${day}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
         recordsProcessed: 1400,
@@ -1689,7 +1689,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
           const seconds = date.getSeconds().toString().padStart(2, '0');
           const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
 
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+          return `${month}/${day}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
         recordsProcessed: 30,
@@ -1714,7 +1714,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
           const seconds = date.getSeconds().toString().padStart(2, '0');
           const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
 
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+          return `${month}/${day}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
         recordsProcessed: 20,
@@ -1734,7 +1734,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
           const seconds = date.getSeconds().toString().padStart(2, '0');
           const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
 
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+          return `${month}/${day}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
         recordsProcessed: 30,
@@ -1754,7 +1754,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
           const seconds = date.getSeconds().toString().padStart(2, '0');
           const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
 
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+          return `${month}/${day}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
         recordsProcessed: 20,
@@ -1772,7 +1772,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
     subsetStrategyPlanName: 'Membership & Policy Data Subset Plan',
     jobDescription:
       'Extracts details in customer memberships, policies, and eligibility for staging.',
-    triggeredOn: '28/04/2025 07:33:22AM',
+    triggeredOn: '04/28/2025 07:33:22AM',
     status: 'in-progress',
     // obsfucationControlName: 'Customer & Account Obfuscation',
     progress: 10,
@@ -1791,7 +1791,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
           const seconds = date.getSeconds().toString().padStart(2, '0');
           const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
 
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+          return `${month}/${day}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
 
@@ -1811,7 +1811,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
           const seconds = date.getSeconds().toString().padStart(2, '0');
           const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
 
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+          return `${month}/${day}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
 
@@ -1831,7 +1831,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
           const seconds = date.getSeconds().toString().padStart(2, '0');
           const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
 
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+          return `${month}/${day}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
 
@@ -1851,7 +1851,7 @@ const ELEMENT_DATA_HEALTHCARE: JobElement[] = [
           const seconds = date.getSeconds().toString().padStart(2, '0');
           const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
 
-          return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+          return `${month}/${day}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
         })(),
         endTime: null,
 
@@ -1870,7 +1870,7 @@ const ELEMENT_DATA_JOB_CONTROL_HEALTHCARE: JobDataControlElement[] = [
     jobControlDescription:
       'Extracts details in customer memberships, policies, and eligibility for staging.',
     subsetPlanStrategyName: 'Membership & Policy Subset Plan',
-    lastTriggeredOn: '28/04/2025 07:33:22AM',
+    lastTriggeredOn: '04/28/2025 07:33:22AM',
     // obsfucationControlId: 'Customer & Account Obfuscation',
     obsfucationControlDescription:
       'Obfuscates personally identifiable information (PII) in customer and account entities.',
@@ -1883,7 +1883,7 @@ const ELEMENT_DATA_JOB_CONTROL_HEALTHCARE: JobDataControlElement[] = [
     jobControlDescription:
       'Customer PII Data Obfuscation for staging environment.',
     // subsetPlanStrategyName: 'Billing Transactions - US Region',
-    lastTriggeredOn: '25/04/2025 08:11:09AM',
+    lastTriggeredOn: '04/25/2025 08:11:09AM',
     obsfucationControlId: 'Customer PII Data Obfuscation Plan',
     obsfucationControlDescription:
       'Customer PII Data Obfuscation for staging environment.',
@@ -1896,7 +1896,7 @@ const ELEMENT_DATA_JOB_CONTROL_HEALTHCARE: JobDataControlElement[] = [
     API_NAME: 'DO_EXEC_ARCHDEV_1_SS_OBF_JOB',
     jobControlDescription: 'Extracts and obfuscates customer PII details.',
     subsetPlanStrategyName: 'Membership & Policy Subset Plan',
-    lastTriggeredOn: '23/04/2025 08:11:09AM',
+    lastTriggeredOn: '04/23/2025 08:11:09AM',
     obsfucationControlId: 'Customer PII Data Obfuscation Plan',
     obsfucationControlDescription:
       'Extracts and obfuscates customer PII details.',
@@ -1910,7 +1910,7 @@ const ELEMENT_DATA_JOB_CONTROL_HEALTHCARE: JobDataControlElement[] = [
       'Extract Customer & Account details for list of accounts.',
     API_NAME: 'DO_EXEC_ARCHDEV_21_SS_JOB',
     subsetPlanStrategyName: 'Customer & Account Subset Plan',
-    lastTriggeredOn: '20/04/2025 08:22:10AM',
+    lastTriggeredOn: '04/20/2025 08:22:10AM',
     // obsfucationControlId: 'Membership Plan Enrollments Obfuscation',
     obsfucationControlDescription:
       'Anonymizes enrollment details, plan types, and coverage start/end dates.',
@@ -1923,7 +1923,7 @@ const ELEMENT_DATA_JOB_CONTROL_HEALTHCARE: JobDataControlElement[] = [
     jobControlDescription:
       'Reduce the size of Billing data to M11 bill cycle accounts.',
     API_NAME: 'DO_EXEC_ARCHDEV_22_SS_JOB',
-    lastTriggeredOn: '15/04/2025 09:30:33AM',
+    lastTriggeredOn: '04/15/2025 09:30:33AM',
     subsetPlanStrategyName: 'Billing Transactions - US Region',
     // obsfucationControlId: 'Coverage & Benefits Obfuscation - Prod',
     obsfucationControlDescription:
@@ -1936,7 +1936,7 @@ const ELEMENT_DATA_JOB_CONTROL_HEALTHCARE: JobDataControlElement[] = [
     jobControlName: 'Claim Details Obfuscation - EU',
     jobControlDescription:
       'Obfuscates claim headers and line items, including statuses and adjudication outcomes.',
-    lastTriggeredOn: '10/04/2025 09:30:33AM',
+    lastTriggeredOn: '04/10/2025 09:30:33AM',
     obsfucationControlId: 'Claim Details Obfuscation - EU',
     obsfucationControlDescription:
       'Obfuscates claim headers and line items, including statuses and adjudication outcomes.',
@@ -1948,7 +1948,7 @@ const ELEMENT_DATA_JOB_CONTROL_HEALTHCARE: JobDataControlElement[] = [
     jobControlName: 'Claims Payments & Payouts - AUS',
     jobControlDescription:
       'Anonymizes financial disbursements, payment references, and claim resolution info.',
-    lastTriggeredOn: '05/04/2025 09:30:33AM',
+    lastTriggeredOn: '04/05/2025 09:30:33AM',
     obsfucationControlId: 'Claims Payments & Payouts - AUS',
     obsfucationControlDescription:
       'Anonymizes financial disbursements, payment references, and claim resolution info.',
@@ -2422,6 +2422,6 @@ export class JobsDataService {
     const seconds = d.getSeconds().toString().padStart(2, '0');
     const ampm = d.getHours() >= 12 ? 'PM' : 'AM';
 
-    return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+    return `${month}/${day}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
   }
 }

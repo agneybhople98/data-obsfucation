@@ -50,7 +50,7 @@ export class LlmStreamingService {
       },
       // Corrected: The body must be a JSON string, and 'messages' should be an array.
       body: JSON.stringify({
-        model: 'Qwen/Qwen3-32B',
+        model: 'gpt-4o',
         messages: [{ role: 'user', content: userPrompt }],
         stream: true,
       }),
